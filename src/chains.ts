@@ -37,9 +37,13 @@ const Chains: ChainInfo[] = [
     chain: mainnet,
     symbol: "ETH",
     apiUrl:
-      process.env.ETHEREUM_API_URI ?? process.env.NEXT_PUBLIC_ETHEREUM_API_URI,
+      process.env.ETHEREUM_API_URI ??
+      process.env.NEXT_PUBLIC_ETHEREUM_API_URI ??
+      process.env.VITE_ETHEREUM_API_URI,
     rpcUrl:
-      process.env.ETHEREUM_RPC_URL ?? process.env.NEXT_PUBLIC_ETHEREUM_RPC_URL,
+      process.env.ETHEREUM_RPC_URL ??
+      process.env.NEXT_PUBLIC_ETHEREUM_RPC_URL ??
+      process.env.VITE_ETHEREUM_RPC_URL,
     blockExplorer: "https://etherscan.io",
     logoPath: IconEthereum as any,
     wrappedTokenInfo: new TokenInfo({
@@ -55,49 +59,57 @@ const Chains: ChainInfo[] = [
       core: {
         address:
           process.env.ETHEREUM_CORE_ADDRESS ??
-          process.env.NEXT_PUBLIC_ETHEREUM_CORE_ADDRESS,
+          process.env.NEXT_PUBLIC_ETHEREUM_CORE_ADDRESS ??
+          process.env.VITE_ETHEREUM_CORE_ADDRESS,
         abi: CoreABI,
       },
       token: {
         address:
           process.env.ETHEREUM_TOKEN_ADDRESS ??
-          process.env.NEXT_PUBLIC_ETHEREUM_TOKEN_ADDRESS,
+          process.env.NEXT_PUBLIC_ETHEREUM_TOKEN_ADDRESS ??
+          process.env.VITE_ETHEREUM_TOKEN_ADDRESS,
         abi: NativeTokenABI,
       },
       badgeManager: {
         address:
           process.env.ETHEREUM_BADGE_MGR_ADDRESS ??
-          process.env.NEXT_PUBLIC_ETHEREUM_BADGE_MGR_ADDRESS,
+          process.env.NEXT_PUBLIC_ETHEREUM_BADGE_MGR_ADDRESS ??
+          process.env.VITE_ETHEREUM_BADGE_MGR_ADDRESS,
         abi: BadgeManagerABI,
       },
       marketCore: {
         address:
           process.env.ETHEREUM_MARKET_CORE_ADDRESS ??
-          process.env.NEXT_PUBLIC_ETHEREUM_MARKET_CORE_ADDRESS,
+          process.env.NEXT_PUBLIC_ETHEREUM_MARKET_CORE_ADDRESS ??
+          process.env.VITE_ETHEREUM_MARKET_CORE_ADDRESS,
         abi: MarketCoreABI,
       },
       disputeManager: {
         address:
           process.env.ETHEREUM_DISPUTE_MGR_ADDRESS ??
-          process.env.NEXT_PUBLIC_ETHEREUM_DISPUTE_MGR_ADDRESS,
+          process.env.NEXT_PUBLIC_ETHEREUM_DISPUTE_MGR_ADDRESS ??
+          process.env.VITE_ETHEREUM_DISPUTE_MGR_ADDRESS,
         abi: DisputeManagerABI,
       },
       mediatorManager: {
         address:
           process.env.ETHEREUM_MEDIATOR_MGR_ADDRESS ??
-          process.env.NEXT_PUBLIC_ETHEREUM_MEDIATOR_MGR_ADDRESS,
+          process.env.NEXT_PUBLIC_ETHEREUM_MEDIATOR_MGR_ADDRESS ??
+          process.env.VITE_ETHEREUM_MEDIATOR_MGR_ADDRESS,
         abi: MediatorManagerABI,
       },
       energon: {
         address:
           process.env.ETHEREUM_ENERGON_ADDRESS ??
-          process.env.NEXT_PUBLIC_ETHEREUM_ENERGON_ADDRESS,
+          process.env.NEXT_PUBLIC_ETHEREUM_ENERGON_ADDRESS ??
+          process.env.VITE_ETHEREUM_ENERGON_ADDRESS,
         abi: EnergonABI,
       },
       nft: {
         address:
           process.env.ETHEREUM_NFT_ADDRESS ??
-          process.env.NEXT_PUBLIC_ETHEREUM_NFT_ADDRESS,
+          process.env.NEXT_PUBLIC_ETHEREUM_NFT_ADDRESS ??
+          process.env.VITE_ETHEREUM_NFT_ADDRESS,
         abi: NftABI,
       },
     },
@@ -110,15 +122,20 @@ const Chains: ChainInfo[] = [
     chain: polygon,
     symbol: "MATIC",
     apiUrl:
-      process.env.POLYGON_API_URI ?? process.env.NEXT_PUBLIC_POLYGON_API_URI,
+      process.env.POLYGON_API_URI ??
+      process.env.NEXT_PUBLIC_POLYGON_API_URI ??
+      process.env.VITE_POLYGON_API_URI,
     rpcUrl:
-      process.env.POLYGON_RPC_URL ?? process.env.NEXT_PUBLIC_POLYGON_RPC_URL,
+      process.env.POLYGON_RPC_URL ??
+      process.env.NEXT_PUBLIC_POLYGON_RPC_URL ??
+      process.env.VITE_POLYGON_RPC_URL,
     blockExplorer: "https://polygonscan.com",
     logoPath: IconPolygon as any,
     wrappedTokenInfo: new TokenInfo({
       address:
         process.env.POLYGON_WRAPPED_TOKEN_ADDRESS ??
-        process.env.NEXT_PUBLIC_POLYGON_WRAPPED_TOKEN_ADDRESS,
+        process.env.NEXT_PUBLIC_POLYGON_WRAPPED_TOKEN_ADDRESS ??
+        process.env.VITE_POLYGON_WRAPPED_TOKEN_ADDRESS,
       name: "WMATIC",
       symbol: "WMATIC",
       abi: WETHABI,
@@ -135,15 +152,20 @@ const Chains: ChainInfo[] = [
     chain: optimism,
     symbol: "ETH",
     apiUrl:
-      process.env.OPTIMISM_API_URI ?? process.env.NEXT_PUBLIC_OPTIMISM_API_URI,
+      process.env.OPTIMISM_API_URI ??
+      process.env.NEXT_PUBLIC_OPTIMISM_API_URI ??
+      process.env.VITE_OPTIMISM_API_URI,
     rpcUrl:
-      process.env.OPTIMISM_RPC_URL ?? process.env.NEXT_PUBLIC_OPTIMISM_RPC_URL,
+      process.env.OPTIMISM_RPC_URL ??
+      process.env.NEXT_PUBLIC_OPTIMISM_RPC_URL ??
+      process.env.VITE_OPTIMISM_RPC_URL,
     blockExplorer: "https://optimistic.etherscan.io",
     logoPath: IconOptimism as any,
     wrappedTokenInfo: new TokenInfo({
       address:
         process.env.OPTIMISM_WRAPPED_TOKEN_ADDRESS ??
-        process.env.NEXT_PUBLIC_OPTIMISM_WRAPPED_TOKEN_ADDRESS,
+        process.env.NEXT_PUBLIC_OPTIMISM_WRAPPED_TOKEN_ADDRESS ??
+        process.env.VITE_OPTIMISM_WRAPPED_TOKEN_ADDRESS,
       name: "WETH",
       symbol: "WETH",
       decimals: 18,
@@ -161,15 +183,20 @@ const Chains: ChainInfo[] = [
     chain: bsc,
     symbol: "BNB",
     apiUrl:
-      process.env.BINANCE_API_URI ?? process.env.NEXT_PUBLIC_BINANCE_API_URI,
+      process.env.BINANCE_API_URI ??
+      process.env.NEXT_PUBLIC_BINANCE_API_URI ??
+      process.env.VITE_BINANCE_API_URI,
     rpcUrl:
-      process.env.BINANCE_RPC_URL ?? process.env.NEXT_PUBLIC_BINANCE_RPC_URL,
+      process.env.BINANCE_RPC_URL ??
+      process.env.NEXT_PUBLIC_BINANCE_RPC_URL ??
+      process.env.VITE_BINANCE_RPC_URL,
     blockExplorer: "https://bscscan.com",
     logoPath: IconBSC as any,
     wrappedTokenInfo: new TokenInfo({
       address:
         process.env.BINANCE_WRAPPED_TOKEN_ADDRESS ??
-        process.env.NEXT_PUBLIC_BINANCE_WRAPPED_TOKEN_ADDRESS,
+        process.env.NEXT_PUBLIC_BINANCE_WRAPPED_TOKEN_ADDRESS ??
+        process.env.VITE_BINANCE_WRAPPED_TOKEN_ADDRESS,
       name: "WBNB",
       symbol: "WBNB",
       decimals: 18,
@@ -186,15 +213,20 @@ const Chains: ChainInfo[] = [
     chain: arbitrum,
     symbol: "ETH",
     apiUrl:
-      process.env.ARBITRUM_API_URI ?? process.env.NEXT_PUBLIC_ARBITRUM_API_URI,
+      process.env.ARBITRUM_API_URI ??
+      process.env.NEXT_PUBLIC_ARBITRUM_API_URI ??
+      process.env.VITE_ARBITRUM_API_URI,
     rpcUrl:
-      process.env.ARBITRUM_RPC_URL ?? process.env.NEXT_PUBLIC_ARBITRUM_RPC_URL,
+      process.env.ARBITRUM_RPC_URL ??
+      process.env.NEXT_PUBLIC_ARBITRUM_RPC_URL ??
+      process.env.VITE_ARBITRUM_RPC_URL,
     blockExplorer: "https://arbiscan.io",
     logoPath: IconArbitrum as any,
     wrappedTokenInfo: new TokenInfo({
       address:
         process.env.ARBITRUM_WRAPPED_TOKEN_ADDRESS ??
-        process.env.NEXT_PUBLIC_ARBITRUM_WRAPPED_TOKEN_ADDRESS,
+        process.env.NEXT_PUBLIC_ARBITRUM_WRAPPED_TOKEN_ADDRESS ??
+        process.env.VITE_ARBITRUM_WRAPPED_TOKEN_ADDRESS,
       name: "WETH",
       symbol: "WETH",
       decimals: 18,
@@ -211,16 +243,20 @@ const Chains: ChainInfo[] = [
     chain: sepolia,
     symbol: "ETH",
     apiUrl:
-      process.env.SEPOLIA_API_URI ?? process.env.NEXT_PUBLIC_SEPOLIA_API_URI,
+      process.env.SEPOLIA_API_URI ??
+      process.env.NEXT_PUBLIC_SEPOLIA_API_URI ??
+      process.env.VITE_SEPOLIA_API_URI,
     rpcUrl:
-      process.env.VITE_SEPOLIA_RPC_URL ??
-      process.env.NEXT_PUBLIC_VITE_SEPOLIA_RPC_URL,
+      process.env.SEPOLIA_RPC_URL ??
+      process.env.NEXT_PUBLIC_SEPOLIA_RPC_URL ??
+      process.env.VITE_SEPOLIA_RPC_URL,
     blockExplorer: "https://sepolia.etherscan.io",
     logoPath: IconEthereum as any,
     wrappedTokenInfo: new TokenInfo({
       address:
-        process.env.VITE_SEPOLIA_WRAPPED_TOKEN_ADDRESS ??
-        process.env.NEXT_PUBLIC_VITE_SEPOLIA_WRAPPED_TOKEN_ADDRESS,
+        process.env.SEPOLIA_WRAPPED_TOKEN_ADDRESS ??
+        process.env.NEXT_PUBLIC_SEPOLIA_WRAPPED_TOKEN_ADDRESS ??
+        process.env.VITE_SEPOLIA_WRAPPED_TOKEN_ADDRESS,
       name: "WETH",
       symbol: "WETH",
       decimals: 18,
@@ -232,49 +268,57 @@ const Chains: ChainInfo[] = [
       core: {
         address:
           process.env.SEPOLIA_CORE_ADDRESS ??
-          process.env.NEXT_PUBLIC_SEPOLIA_CORE_ADDRESS,
+          process.env.NEXT_PUBLIC_SEPOLIA_CORE_ADDRESS ??
+          process.env.VITE_SEPOLIA_CORE_ADDRESS,
         abi: CoreABI,
       },
       token: {
         address:
           process.env.SEPOLIA_TOKEN_ADDRESS ??
-          process.env.NEXT_PUBLIC_SEPOLIA_TOKEN_ADDRESS,
+          process.env.NEXT_PUBLIC_SEPOLIA_TOKEN_ADDRESS ??
+          process.env.VITE_SEPOLIA_TOKEN_ADDRESS,
         abi: NativeTokenABI,
       },
       badgeManager: {
         address:
           process.env.SEPOLIA_BADGE_MGR_ADDRESS ??
-          process.env.NEXT_PUBLIC_SEPOLIA_BADGE_MGR_ADDRESS,
+          process.env.NEXT_PUBLIC_SEPOLIA_BADGE_MGR_ADDRESS ??
+          process.env.VITE_SEPOLIA_BADGE_MGR_ADDRESS,
         abi: BadgeManagerABI,
       },
       marketCore: {
         address:
           process.env.SEPOLIA_MARKET_CORE_ADDRESS ??
-          process.env.NEXT_PUBLIC_SEPOLIA_MARKET_CORE_ADDRESS,
+          process.env.NEXT_PUBLIC_SEPOLIA_MARKET_CORE_ADDRESS ??
+          process.env.VITE_SEPOLIA_MARKET_CORE_ADDRESS,
         abi: MarketCoreABI,
       },
       disputeManager: {
         address:
           process.env.SEPOLIA_DISPUTE_MGR_ADDRESS ??
-          process.env.NEXT_PUBLIC_SEPOLIA_DISPUTE_MGR_ADDRESS,
+          process.env.NEXT_PUBLIC_SEPOLIA_DISPUTE_MGR_ADDRESS ??
+          process.env.VITE_SEPOLIA_DISPUTE_MGR_ADDRESS,
         abi: DisputeManagerABI,
       },
       mediatorManager: {
         address:
           process.env.SEPOLIA_MEDIATOR_MGR_ADDRESS ??
-          process.env.NEXT_PUBLIC_SEPOLIA_MEDIATOR_MGR_ADDRESS,
+          process.env.NEXT_PUBLIC_SEPOLIA_MEDIATOR_MGR_ADDRESS ??
+          process.env.VITE_SEPOLIA_MEDIATOR_MGR_ADDRESS,
         abi: MediatorManagerABI,
       },
       energon: {
         address:
           process.env.SEPOLIA_ENERGON_ADDRESS ??
-          process.env.NEXT_PUBLIC_SEPOLIA_ENERGON_ADDRESS,
+          process.env.NEXT_PUBLIC_SEPOLIA_ENERGON_ADDRESS ??
+          process.env.VITE_SEPOLIA_ENERGON_ADDRESS,
         abi: EnergonABI,
       },
       nft: {
         address:
           process.env.SEPOLIA_NFT_ADDRESS ??
-          process.env.NEXT_PUBLIC_SEPOLIA_NFT_ADDRESS,
+          process.env.NEXT_PUBLIC_SEPOLIA_NFT_ADDRESS ??
+          process.env.VITE_SEPOLIA_NFT_ADDRESS,
         abi: NftABI,
       },
     },
@@ -287,18 +331,20 @@ const Chains: ChainInfo[] = [
     chain: hardhat,
     symbol: "ETH",
     apiUrl:
-      process.env.VITE_LOCALHOST_API_URI ??
-      process.env.NEXT_PUBLIC_VITE_LOCALHOST_API_URI,
+      process.env.LOCALHOST_API_URI ??
+      process.env.NEXT_PUBLIC_LOCALHOST_API_URI ??
+      process.env.VITE_LOCALHOST_API_URI,
     rpcUrl:
-      process.env.VITE_LOCALHOST_RPC_URL ??
-      process.env.NEXT_PUBLIC_VITE_LOCALHOST_RPC_URL ??
+      process.env.LOCALHOST_RPC_URL ??
+      process.env.NEXT_PUBLIC_LOCALHOST_RPC_URL ??
       "",
     blockExplorer: "https://etherscan.io",
     logoPath: IconEthereum as any,
     wrappedTokenInfo: new TokenInfo({
       address:
-        process.env.VITE_LOCALHOST_WRAPPED_TOKEN_ADDRESS ??
-        process.env.NEXT_PUBLIC_VITE_LOCALHOST_WRAPPED_TOKEN_ADDRESS,
+        process.env.LOCALHOST_WRAPPED_TOKEN_ADDRESS ??
+        process.env.NEXT_PUBLIC_LOCALHOST_WRAPPED_TOKEN_ADDRESS ??
+        process.env.VITE_LOCALHOST_WRAPPED_TOKEN_ADDRESS,
       name: "WETH",
       symbol: "WETH",
       decimals: 18,
@@ -310,49 +356,57 @@ const Chains: ChainInfo[] = [
       core: {
         address:
           process.env.LOCALHOST_CORE_ADDRESS ??
-          process.env.NEXT_PUBLIC_LOCALHOST_CORE_ADDRESS,
+          process.env.NEXT_PUBLIC_LOCALHOST_CORE_ADDRESS ??
+          process.env.VITE_LOCALHOST_CORE_ADDRESS,
         abi: CoreABI,
       },
       token: {
         address:
           process.env.LOCALHOST_TOKEN_ADDRESS ??
-          process.env.NEXT_PUBLIC_LOCALHOST_TOKEN_ADDRESS,
+          process.env.NEXT_PUBLIC_LOCALHOST_TOKEN_ADDRESS ??
+          process.env.VITE_LOCALHOST_TOKEN_ADDRESS,
         abi: NativeTokenABI,
       },
       badgeManager: {
         address:
           process.env.LOCALHOST_BADGE_MGR_ADDRESS ??
-          process.env.NEXT_PUBLIC_LOCALHOST_BADGE_MGR_ADDRESS,
+          process.env.NEXT_PUBLIC_LOCALHOST_BADGE_MGR_ADDRESS ??
+          process.env.VITE_LOCALHOST_BADGE_MGR_ADDRESS,
         abi: BadgeManagerABI,
       },
       marketCore: {
         address:
           process.env.LOCALHOST_MARKET_CORE_ADDRESS ??
-          process.env.NEXT_PUBLIC_LOCALHOST_MARKET_CORE_ADDRESS,
+          process.env.NEXT_PUBLIC_LOCALHOST_MARKET_CORE_ADDRESS ??
+          process.env.VITE_LOCALHOST_MARKET_CORE_ADDRESS,
         abi: MarketCoreABI,
       },
       disputeManager: {
         address:
           process.env.LOCALHOST_DISPUTE_MGR_ADDRESS ??
-          process.env.NEXT_PUBLIC_LOCALHOST_DISPUTE_MGR_ADDRESS,
+          process.env.NEXT_PUBLIC_LOCALHOST_DISPUTE_MGR_ADDRESS ??
+          process.env.VITE_LOCALHOST_DISPUTE_MGR_ADDRESS,
         abi: DisputeManagerABI,
       },
       mediatorManager: {
         address:
           process.env.LOCALHOST_MEDIATOR_MGR_ADDRESS ??
-          process.env.NEXT_PUBLIC_LOCALHOST_MEDIATOR_MGR_ADDRESS,
+          process.env.NEXT_PUBLIC_LOCALHOST_MEDIATOR_MGR_ADDRESS ??
+          process.env.VITE_LOCALHOST_MEDIATOR_MGR_ADDRESS,
         abi: MediatorManagerABI,
       },
       energon: {
         address:
           process.env.LOCALHOST_ENERGON_ADDRESS ??
-          process.env.NEXT_PUBLIC_LOCALHOST_ENERGON_ADDRESS,
+          process.env.NEXT_PUBLIC_LOCALHOST_ENERGON_ADDRESS ??
+          process.env.VITE_LOCALHOST_ENERGON_ADDRESS,
         abi: EnergonABI,
       },
       nft: {
         address:
           process.env.LOCALHOST_NFT_ADDRESS ??
-          process.env.NEXT_PUBLIC_LOCALHOST_NFT_ADDRESS,
+          process.env.NEXT_PUBLIC_LOCALHOST_NFT_ADDRESS ??
+          process.env.VITE_LOCALHOST_NFT_ADDRESS,
         abi: NftABI,
       },
     },
