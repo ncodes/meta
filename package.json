@@ -1,0 +1,31 @@
+{
+  "name": "@jointlabs/chains-info",
+  "version": "0.0.1",
+  "type": "module",
+  "engines": {
+    "node": ">=18.17.1"
+  },
+  "description": "Information about chains supported by Joint interface and supporting applications. ",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "license": "MIT",
+  "scripts": {
+    "build": "rimraf dist && tsup && yarn build-cjs",
+    "build-cjs": "tsup --config=tsup.config.cjs.ts"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "viem": "^1.2.13"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.39",
+    "prettier": "^3.1.0",
+    "replace-in-file": "^7.0.2",
+    "rifraf": "^2.0.3",
+    "tsup": "^8.0.1"
+  },
+  "peerDependencies": {
+    "viem": "^1.2.13"
+  }
+}

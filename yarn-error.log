@@ -1,0 +1,42 @@
+Arguments: 
+  /Users/nedy/.nvm/versions/node/v18.18.0/bin/node /opt/homebrew/Cellar/yarn/1.22.19/libexec/bin/yarn.js add viem
+
+PATH: 
+  /Users/nedy/.bun/bin:/Users/nedy/google-cloud-sdk/bin:/opt/homebrew/opt/postgresql@12/bin:/Users/nedy/.nvm/versions/node/v18.18.0/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/Library/Frameworks/Python.framework/Versions/3.10/bin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/share/dotnet:~/.dotnet/tools:/Library/Apple/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/Users/nedy/.local/bin:/Users/nedy/.bun/bin:/Users/nedy/google-cloud-sdk/bin:/opt/homebrew/opt/postgresql@12/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/Library/Frameworks/Python.framework/Versions/3.10/bin:/Users/nedy/.cargo/bin:/Users/nedy/Library/Application Support/JetBrains/Toolbox/scripts:/Users/nedy/flutter/bin:/Users/nedy/go/bin:/Users/nedy/Library/Android/sdk/platform-tools:/Users/nedy/Library/Android/sdk/emulator:/Users/nedy/Library/Application Support/JetBrains/Toolbox/scripts:/Users/nedy/flutter/bin:/Users/nedy/go/bin:/Users/nedy/Library/Android/sdk/platform-tools:/Users/nedy/Library/Android/sdk/emulator
+
+Yarn version: 
+  1.22.19
+
+Node version: 
+  18.18.0
+
+Platform: 
+  darwin arm64
+
+Trace: 
+  SyntaxError: /Users/nedy/projects/chains/package.json: Unexpected token } in JSON at position 314
+      at JSON.parse (<anonymous>)
+      at /opt/homebrew/Cellar/yarn/1.22.19/libexec/lib/cli.js:1629:59
+      at Generator.next (<anonymous>)
+      at step (/opt/homebrew/Cellar/yarn/1.22.19/libexec/lib/cli.js:310:30)
+      at /opt/homebrew/Cellar/yarn/1.22.19/libexec/lib/cli.js:321:13
+
+npm manifest: 
+  {
+    "name": "chains",
+    "version": "1.0.0",
+    "description": "Information about chains supported by Joint interface and supporting applications. ",
+    "main": "index.js",
+    "license": "MIT",
+    "scripts": {
+      "clean": "rimraf dist",
+      "build": "npm run clean && tsc -b",
+      "start": "node dist/src/index.js",
+    },
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
