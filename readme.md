@@ -16,6 +16,10 @@ This file includes the token list for each chain. It is used by the indexer to d
 
 This file contains all the payment methods supported. It is includes the full badge name, region and logo.
 
+### `src/mediator_pools.ts`
+
+This file contains the mediator pools supported by the Joint Interface. It is used to display the pools available for each chain, allowing ticket purchasers to select the pool they want to join after purchasing a ticket.
+
 ## Environment variables
 
 Below are environment variables that can be used to set the chain information. The {PREFIX} should be replaced with the prefix used by the host framework (e.g. NextJS = `NEXT_PUBLIC_`, Vite = `VITE_`) is the chain name in uppercase.

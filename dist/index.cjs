@@ -30,6 +30,7 @@ var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: tru
 // src/index.ts
 var src_exports = {};
 __export(src_exports, {
+  MediatorPools: () => MediatorPools,
   TokenLists: () => TokenLists,
   default: () => src_default,
   findTokenInLocalhost: () => findTokenInLocalhost,
@@ -11879,6 +11880,36 @@ function isValidChain(chain) {
 }
 var chains_default = Chains;
 
+// src/mediator_pools.ts
+var MediatorPools = {
+  localhost: [
+    {
+      name: "General",
+      description: "For mediators specializing in global crypto to cash swaps.",
+      id: 0,
+      reqBond: "10000000000000000000",
+      draftReward: "10000000000000000000",
+      winReward: "10000000000000000000",
+      noVoteSlashBP: 1e3,
+      loseVoteSlashBP: 1e3,
+      numDraftees: 3
+    }
+  ],
+  ethereum: [
+    {
+      name: "General",
+      description: "For mediators specializing in global crypto to cash swaps.",
+      id: 0,
+      reqBond: "10000000000000000000",
+      draftReward: "10000000000000000000",
+      winReward: "10000000000000000000",
+      noVoteSlashBP: 1e3,
+      loseVoteSlashBP: 1e3,
+      numDraftees: 3
+    }
+  ]
+};
+
 // src/payment_methods.ts
 var paymentMethods = {
   ethereum: [
@@ -16709,6 +16740,7 @@ function findTokenInSynthetic(address) {
 var src_default = chains_default;
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
+  MediatorPools,
   TokenLists,
   findTokenInLocalhost,
   findTokenInSynthetic,

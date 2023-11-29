@@ -11845,6 +11845,36 @@ function isValidChain(chain) {
 }
 var chains_default = Chains;
 
+// src/mediator_pools.ts
+var MediatorPools = {
+  localhost: [
+    {
+      name: "General",
+      description: "For mediators specializing in global crypto to cash swaps.",
+      id: 0,
+      reqBond: "10000000000000000000",
+      draftReward: "10000000000000000000",
+      winReward: "10000000000000000000",
+      noVoteSlashBP: 1e3,
+      loseVoteSlashBP: 1e3,
+      numDraftees: 3
+    }
+  ],
+  ethereum: [
+    {
+      name: "General",
+      description: "For mediators specializing in global crypto to cash swaps.",
+      id: 0,
+      reqBond: "10000000000000000000",
+      draftReward: "10000000000000000000",
+      winReward: "10000000000000000000",
+      noVoteSlashBP: 1e3,
+      loseVoteSlashBP: 1e3,
+      numDraftees: 3
+    }
+  ]
+};
+
 // src/payment_methods.ts
 var paymentMethods = {
   ethereum: [
@@ -16674,6 +16704,7 @@ function findTokenInSynthetic(address) {
 // src/index.ts
 var src_default = chains_default;
 export {
+  MediatorPools,
   TokenLists,
   src_default as default,
   findTokenInLocalhost,

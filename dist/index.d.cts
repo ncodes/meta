@@ -117,6 +117,22 @@ declare function getChainID(name: string): number;
  */
 declare function isValidChain(chain: string): boolean;
 
+declare type MediatorPool = {
+    name: string;
+    description: string;
+    id: number;
+    reqBond: string;
+    draftReward: string;
+    winReward: string;
+    noVoteSlashBP: number;
+    loseVoteSlashBP: number;
+    numDraftees: number;
+};
+declare type KnownMediatorPools = {
+    [key in ChainNames]?: MediatorPool[];
+};
+declare const MediatorPools: KnownMediatorPools;
+
 declare type PaymentMethods = {
     [key in ChainNames]?: {
         badge: string;
@@ -149,4 +165,4 @@ declare function findTokenInLocalhost(address: string): TokenList.Token | undefi
  */
 declare function findTokenInSynthetic(address: string): TokenList.Token | undefined;
 
-export { type ChainInfo, type ChainNames, type ContractInfo, type ContractNames, type Contracts, type PaymentMethods, TokenLists, Chains as default, findTokenInLocalhost, findTokenInSynthetic, getChain, getChainByName, getChainID, getChainNames, getChains, getChainsID, getTokenInfo, isValidChain, paymentMethods };
+export { type ChainInfo, type ChainNames, type ContractInfo, type ContractNames, type Contracts, type MediatorPool, MediatorPools, type PaymentMethods, TokenLists, Chains as default, findTokenInLocalhost, findTokenInSynthetic, getChain, getChainByName, getChainID, getChainNames, getChains, getChainsID, getTokenInfo, isValidChain, paymentMethods };
