@@ -10,7 +10,9 @@ import * as synthetic from "./tokenlist/synthetic.json";
 import { ChainNames } from "./types/chain";
 import { TokenList } from "./types/token";
 
-export const TokenLists: { [key in ChainNames]: TokenList.TokenData } = {
+type TokenListNames = ChainNames | "synthetic";
+
+export const TokenLists: { [key in TokenListNames]: TokenList.TokenData } = {
   ethereum,
   polygon,
   binance,

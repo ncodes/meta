@@ -54,7 +54,7 @@ declare namespace TokenList {
     export {  };
 }
 
-declare type ChainNames = "ethereum" | "polygon" | "binance" | "optimism" | "localhost" | "synthetic" | "sepolia";
+declare type ChainNames = "ethereum" | "polygon" | "binance" | "optimism" | "localhost" | "sepolia";
 interface ChainInfo {
     displayName: string;
     altDisplayName?: string;
@@ -128,8 +128,9 @@ declare type PaymentMethods = {
 };
 declare const paymentMethods: PaymentMethods;
 
+declare type TokenListNames = ChainNames | "synthetic";
 declare const TokenLists: {
-    [key in ChainNames]: TokenList.TokenData;
+    [key in TokenListNames]: TokenList.TokenData;
 };
 /**
  * Get token info
