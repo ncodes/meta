@@ -8,7 +8,6 @@ export type ChainNames =
   | "binance"
   | "optimism"
   | "localhost"
-  | "synthetic"
   | "sepolia";
 
 export interface ChainInfo {
