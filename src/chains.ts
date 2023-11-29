@@ -23,10 +23,10 @@ import IconEthereum from "./icons/IconEthereum";
 import IconOptimism from "./icons/IconOptimism";
 import IconPolygon from "./icons/IconPolygon";
 import { ChainInfo } from "./types/chain";
-import TokenInfo from "./types/token_info";
+import TokenInfo from "./types/token";
 
 /**
- * Mapping of supported networks' information
+ * Mapping of supported chains' information
  */
 const Chains: ChainInfo[] = [
   {
@@ -414,7 +414,7 @@ const Chains: ChainInfo[] = [
 ];
 
 /**
- * Get IDs of all supported networks
+ * Get IDs of all supported chains
  * @param testnetOnly Indicate whether to only return testnet chains
  * @param ignoreTestnet Indicate whether to ignore testnet chains
  * @param ignore - Optionally specify an ID to omit in the result
@@ -441,7 +441,7 @@ export function getChainsID(
 }
 
 /**
- * Get chain object of all supported network
+ * Get viem chain object of all supported chains
  * @param testnetOnly Indicate whether to only return testnet chains
  * @param ignoreTestnet Indicate whether to ignore testnet chains
  * @param ignore - Optionally specify an ID to omit in the result
@@ -481,8 +481,37 @@ export function getChain(id: number | string) {
  * Get a chain by its query name
  * @param name - The query name
  */
-function getChainByName(name: string) {
+export function getChainByName(name: string) {
   return Chains.find((s) => s.queryName === name);
+}
+
+/**
+ * Get the name of all supported chains
+ * @returns
+ */
+export function getChainNames() {
+  return Chains.map((chain) => {
+    return chain.queryName;
+  });
+}
+
+/**
+ * Get chain ID by its name
+ * @param name
+ */
+export function getChainID(name: string): number {
+  const chain = getChainByName(name);
+  if (!chain) throw new Error(`Chain ${name} is not supported`);
+  return chain.chainId;
+}
+
+/**
+ * Check if a chain is supported
+ * @param chain The chain name
+ * @returns
+ */
+export function isValidChain(chain: string) {
+  return getChainByName(chain) !== undefined;
 }
 
 export default Chains;

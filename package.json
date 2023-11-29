@@ -1,6 +1,6 @@
 {
   "name": "@jointlabs/chains-info",
-  "version": "0.0.2",
+  "version": "0.0.4",
   "type": "module",
   "engines": {
     "node": ">=18.17.1"
@@ -15,6 +15,7 @@
     "build-cjs": "tsup --config=tsup.config.cjs.ts"
   },
   "dependencies": {
+    "lodash": "^4.17.21",
     "react": "^18.2.0",
     "viem": "^1.2.13"
   },

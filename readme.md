@@ -1,11 +1,20 @@
 # Chains Info
 
-This repository includes information about the chains supported by Joint Interface, Indexer and other
-components of the Joint ecosystem. It is meant to be the source of truth for chain metadata.
+This repository includes information about the chains and payment methods supported by Joint Interface, Indexer and other components of the Joint ecosystem. It is meant to be the source of truth for chain metadata.
 
-# How it works
+# Files
 
-`chains.json` contains the relevant information about the chains. This includes basic metadata (name, symbol, etc), It also includes fields such as contract address, rpc and indexer url that are set through environment variables.
+### `src/chains.ts`
+
+This file contains the relevant information about the supported chains. This includes basic metadata (name, symbol, etc), It also includes fields such as contract address, rpc and indexer url that are set through environment variables.
+
+### `src/token_list.ts`
+
+This file includes the token list for each chain. It is used by the indexer to determine which tokens to index. It is also used by the Joint Interface to display the tokens supported by each chain.
+
+### `src/payment_methods.ts`
+
+This file contains all the payment methods supported. It is includes the full badge name, region and logo.
 
 ## Environment variables
 
@@ -77,4 +86,5 @@ Below are environment variables that can be used to set the chain information. T
 - {PREFIX}LOCALHOST_NFT_ADDRESS
 
 # License
+
 MIT

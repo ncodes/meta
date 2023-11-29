@@ -1,6 +1,15 @@
 import { Chain } from "viem/_types/types/chain";
 import { Contracts } from "./contract";
-import TokenInfo from "./token_info";
+import TokenInfo from "./token";
+
+export type ChainNames =
+  | "ethereum"
+  | "polygon"
+  | "binance"
+  | "optimism"
+  | "localhost"
+  | "synthetic"
+  | "sepolia";
 
 export interface ChainInfo {
   displayName: string; // The primary name of the chain
