@@ -5,13 +5,13 @@ export default defineConfig({
   entry: ["src/index.ts"],
   format: ["esm"],
   outDir: "dist/nextjs",
-  dts: true,
+  dts: false,
   splitting: false,
   sourcemap: true,
   clean: false,
   onSuccess: async () => {
     replaceInFileSync({
-      files: "dist/index.cjs",
+      files: "dist/nextjs/index.js",
       from: /import.meta.env/g,
       to: "process.env",
     });
