@@ -1,6 +1,20 @@
 # Chains Info
 
-This repository includes information about the chains and payment methods supported by Joint Interface, Indexer and other components of the Joint ecosystem. It is meant to be the source of truth for chain metadata.
+This repository includes information about the chains and payment methods supported by the Joint Interface, Indexer and other components of the Joint ecosystem. It is meant to be the source of truth for chain metadata.
+
+# Usage
+
+```
+import chains,{getChainByName} from '@jointlabs/chains-info'
+```
+
+# Usage with NextJS
+
+```
+import chains,{getChainByName} from '@jointlabs/chains-info/next'
+```
+
+Add `/next` to the import path to use the NextJS version of the library. This version will use `process.env` to set the chain information but still outputs an ESM module.
 
 # Files
 

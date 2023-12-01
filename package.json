@@ -1,6 +1,6 @@
 {
   "name": "@jointlabs/chains-info",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "type": "module",
   "engines": {
     "node": ">=18.17.1"
@@ -13,12 +13,17 @@
     ".": {
       "import": "./dist/index.js",
       "require": "./dist/index.cjs"
+    },
+    "./next": {
+      "import": "./dist/nextjs/index.js",
+      "require": "./dist/index.cjs"
     }
   },
   "license": "MIT",
   "scripts": {
-    "build": "rimraf dist && tsup && yarn build-cjs",
-    "build-cjs": "tsup --config=tsup.config.cjs.ts"
+    "build": "rimraf dist && tsup && yarn build-cjs && yarn build-nextjs",
+    "build-cjs": "tsup --config=tsup.config.cjs.ts",
+    "build-nextjs": "tsup --config=tsup.config.nextjs.ts"
   },
   "dependencies": {
     "lodash": "^4.17.21",
