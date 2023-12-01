@@ -1,5 +1,5 @@
 {
-  "include": ["src", "import-meta-env.polyfill.ts"],
+  "include": ["src", "import-meta-env.polyfill.ts", "global.d.ts"],
   "exclude": ["node_modules"],
   "types": ["react"],
   "compilerOptions": {

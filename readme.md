@@ -14,7 +14,7 @@ This file includes the token list for each chain. It is used by the indexer to d
 
 ### `src/payment_methods.ts`
 
-This file contains all the payment methods supported. It is includes the full badge name, region and logo.
+This file contains all the payment methods supported. It includes the full badge name, region and logo.
 
 ### `src/mediator_pools.ts`
 

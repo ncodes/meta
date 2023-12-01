@@ -11591,6 +11591,7 @@ var TokenInfo = class {
 };
 
 // src/chains.ts
+var import_meta = {};
 var Chains = [
   {
     disabled: true,
