@@ -1,3 +1,4 @@
+import { Abi } from "./abi";
 import Chains, {
   getChain,
   getChainByName,
@@ -20,6 +21,7 @@ import { ContractInfo, ContractNames, Contracts } from "./types/contract";
 
 export default Chains;
 export {
+  Abi,
   ChainInfo,
   ChainNames,
   ContractInfo,

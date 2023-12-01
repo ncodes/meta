@@ -16,23 +16,25 @@ import chains,{getChainByName} from '@jointlabs/chains-info/next'
 
 Add `/next` to the import path to use the NextJS version of the library. This version will use `process.env` to set the chain information but still outputs an ESM module.
 
-# Files
+### Chains Information
 
-### `src/chains.ts`
+`src/chains.ts` contains the relevant information about the supported chains. This includes basic metadata (name, symbol, etc), It also includes fields such as contract address, rpc and indexer url that are set through environment variables.
 
-This file contains the relevant information about the supported chains. This includes basic metadata (name, symbol, etc), It also includes fields such as contract address, rpc and indexer url that are set through environment variables.
+### Tokens Lists
 
-### `src/token_list.ts`
+`src/token_list.ts` includes the token list for each chain. It is used by the indexer to determine which tokens to index. It is also used by the Joint Interface to display the tokens supported by each chain.
 
-This file includes the token list for each chain. It is used by the indexer to determine which tokens to index. It is also used by the Joint Interface to display the tokens supported by each chain.
+### Payment Methods
 
-### `src/payment_methods.ts`
+`src/payment_methods.ts` contains all the payment methods supported. It includes the full badge name, region and logo.
 
-This file contains all the payment methods supported. It includes the full badge name, region and logo.
+### Mediator Pools
 
-### `src/mediator_pools.ts`
+`src/mediator_pools.ts` contains the mediator pools supported by the Joint Interface. It is used to display the pools available for each chain, allowing ticket purchasers to select the pool they want to join after purchasing a ticket.
 
-This file contains the mediator pools supported by the Joint Interface. It is used to display the pools available for each chain, allowing ticket purchasers to select the pool they want to join after purchasing a ticket.
+### ABI
+
+`src/abi/index.ts` contains the ABI for the contracts used by the Joint Interface and services. It is paired with web3 packages viem or ethers.js to facilitate interactions with Joint contracts.
 
 ## Environment variables
 
