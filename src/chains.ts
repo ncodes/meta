@@ -337,7 +337,7 @@ const Chains: ChainInfo[] = [
     rpcUrl:
       process.env.LOCALHOST_RPC_URL ??
       process.env.NEXT_PUBLIC_LOCALHOST_RPC_URL ??
-      "",
+      import.meta.env.VITE_LOCALHOST_RPC_URL,
     blockExplorer: "https://etherscan.io",
     logoPath: IconEthereum as any,
     wrappedTokenInfo: new TokenInfo({

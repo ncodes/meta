@@ -14990,7 +14990,7 @@ var Chains = [
     chain: hardhat,
     symbol: "ETH",
     apiUrl: process.env.LOCALHOST_API_URI ?? process.env.NEXT_PUBLIC_LOCALHOST_API_URI ?? process.env.VITE_LOCALHOST_API_URI,
-    rpcUrl: process.env.LOCALHOST_RPC_URL ?? process.env.NEXT_PUBLIC_LOCALHOST_RPC_URL ?? "",
+    rpcUrl: process.env.LOCALHOST_RPC_URL ?? process.env.NEXT_PUBLIC_LOCALHOST_RPC_URL ?? process.env.VITE_LOCALHOST_RPC_URL,
     blockExplorer: "https://etherscan.io",
     logoPath: IconEthereum,
     wrappedTokenInfo: new TokenInfo({
