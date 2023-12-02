@@ -1,4 +1,9 @@
 import { Abi } from "./abi";
+import {
+  BadgeManifest,
+  ChainBadgeManifest,
+  parseBadgeLocals,
+} from "./badge_manifest";
 import Chains, {
   getChain,
   getChainByName,
@@ -22,6 +27,8 @@ import { ContractInfo, ContractNames, Contracts } from "./types/contract";
 export default Chains;
 export {
   Abi,
+  BadgeManifest,
+  ChainBadgeManifest,
   ChainInfo,
   ChainNames,
   ContractInfo,
@@ -41,5 +48,6 @@ export {
   getChainsID,
   getTokenInfo,
   isValidChain,
+  parseBadgeLocals,
   paymentMethods,
 };

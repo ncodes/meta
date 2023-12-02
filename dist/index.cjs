@@ -31,6 +31,7 @@ var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: tru
 var src_exports = {};
 __export(src_exports, {
   Abi: () => Abi,
+  BadgeManifest: () => BadgeManifest,
   MediatorPools: () => MediatorPools,
   TokenLists: () => TokenLists,
   default: () => src_default,
@@ -44,6 +45,7 @@ __export(src_exports, {
   getChainsID: () => getChainsID,
   getTokenInfo: () => getTokenInfo,
   isValidChain: () => isValidChain,
+  parseBadgeLocals: () => parseBadgeLocals,
   paymentMethods: () => paymentMethods
 });
 module.exports = __toCommonJS(src_exports);
@@ -14622,6 +14624,32 @@ var Abi = {
   TokenPool: TokenPool_default
 };
 
+// src/badge_manifest.ts
+var BadgeManifest = {
+  localhost: {
+    "^kyc(/[a-zA-Z]{3})?$": {
+      name: "KYC",
+      issuer: "Joint Labs",
+      issuerAddress: "0x0B9Fc80B571e99C4ea796Eb34E75df59470826F3",
+      logoUrl: "https://storage.googleapis.com/joint-images/kyc-badge-icon.svg",
+      claimPageUrl: "http://localhost:3002/claim/kyc",
+      shortDescription: "Claim KYC Badge",
+      longDescriptions: [
+        "Complete the KYC verification process to claim a global or national KYC badge that will grant you access to a market or liquidity that require KYC.",
+        "See our [privacy policy](http://joint.exchange/legal/privacy-policy) to learn how we handle your data."
+      ]
+    }
+  }
+};
+function parseBadgeLocals(badge, locals) {
+  const badgeAsStr = JSON.stringify(badge);
+  let str = badgeAsStr;
+  for (const key in locals) {
+    str = str.replace(new RegExp(`{${key}}`, "g"), locals[key]);
+  }
+  return JSON.parse(str);
+}
+
 // src/chains.ts
 var import_chains = require("viem/chains");
 
@@ -19917,6 +19945,7 @@ var src_default = chains_default;
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
   Abi,
+  BadgeManifest,
   MediatorPools,
   TokenLists,
   findTokenInLocalhost,
@@ -19929,6 +19958,7 @@ var src_default = chains_default;
   getChainsID,
   getTokenInfo,
   isValidChain,
+  parseBadgeLocals,
   paymentMethods
 });
 //# sourceMappingURL=index.cjs.map

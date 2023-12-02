@@ -1,6 +1,6 @@
 {
   "name": "@jointlabs/chains-info",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "type": "module",
   "engines": {
     "node": ">=18.17.1"

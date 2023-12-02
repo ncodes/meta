@@ -32,6 +32,10 @@ Add `/next` to the import path to use the NextJS version of the library. This ve
 
 `src/mediator_pools.ts` contains the mediator pools supported by the Joint Interface. It is used to display the pools available for each chain, allowing ticket purchasers to select the pool they want to join after purchasing a ticket.
 
+### Badge Manifest
+
+`src/badge_manifest.ts` contains the information about badges that can be claimed on a Joint Interface.
+
 ### ABI
 
 `src/abi/index.ts` contains the ABI for the contracts used by the Joint Interface and services. It is paired with web3 packages viem or ethers.js to facilitate interactions with Joint contracts.

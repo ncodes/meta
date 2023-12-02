@@ -827,6 +827,31 @@ interface ChainInfo {
     contracts?: Contracts;
 }
 
+declare type ChainBadgeManifest = {
+    [key in ChainNames]?: {
+        [badge: string]: BadgeManifest;
+    };
+};
+declare type BadgeManifest = {
+    name: string;
+    issuer: string;
+    issuerAddress: string;
+    logoUrl: string;
+    shortDescription: string;
+    longDescriptions: string[];
+    claimPageUrl: string;
+};
+declare const BadgeManifest: ChainBadgeManifest;
+/**
+ * Parse badge local variables
+ * @param badge The badge manifest
+ * @param locals The local variables
+ * @returns
+ */
+declare function parseBadgeLocals(badge: BadgeManifest, locals: {
+    [key: string]: string;
+}): BadgeManifest;
+
 /**
  * Mapping of supported chains' information
  */
@@ -920,4 +945,4 @@ declare function findTokenInLocalhost(address: string): TokenList.Token | undefi
  */
 declare function findTokenInSynthetic(address: string): TokenList.Token | undefined;
 
-export { Abi, type ChainInfo, type ChainNames, type ContractInfo, type ContractNames, type Contracts, type MediatorPool, MediatorPools, type PaymentMethods, TokenLists, Chains as default, findTokenInLocalhost, findTokenInSynthetic, getChain, getChainByName, getChainID, getChainNames, getChains, getChainsID, getTokenInfo, isValidChain, paymentMethods };
+export { Abi, BadgeManifest, type ChainBadgeManifest, type ChainInfo, type ChainNames, type ContractInfo, type ContractNames, type Contracts, type MediatorPool, MediatorPools, type PaymentMethods, TokenLists, Chains as default, findTokenInLocalhost, findTokenInSynthetic, getChain, getChainByName, getChainID, getChainNames, getChains, getChainsID, getTokenInfo, isValidChain, parseBadgeLocals, paymentMethods };
