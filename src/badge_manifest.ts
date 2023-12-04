@@ -24,7 +24,11 @@ export const BadgeManifest: ChainBadgeManifest = {
       issuer: "Joint Labs",
       issuerAddress: "0x0B9Fc80B571e99C4ea796Eb34E75df59470826F3",
       logoUrl: "https://storage.googleapis.com/joint-images/kyc-badge-icon.svg",
-      claimPageUrl: "http://localhost:3002/claim/kyc",
+      claimPageUrl:
+        process.env.LOCALHOST_KYC_BADGE_MANIFEST_CLAIM_PAGE_URL ??
+        process.env.NEXT_PUBLIC_LOCALHOST_KYC_BADGE_MANIFEST_CLAIM_PAGE_URL ??
+        import.meta.env.VITE_LOCALHOST_KYC_BADGE_MANIFEST_CLAIM_PAGE_URL ??
+        "http://localhost:3002/claim/kyc",
       shortDescription: "Claim KYC Badge",
       longDescriptions: [
         "Complete the KYC verification process to claim a global or national KYC badge that will grant you access to a market or liquidity that require KYC.",
@@ -38,7 +42,11 @@ export const BadgeManifest: ChainBadgeManifest = {
       issuer: "Joint Labs",
       issuerAddress: "0x7D66e2a2Ad08e8708e92B2f01f36181502D2c964",
       logoUrl: "https://storage.googleapis.com/joint-images/kyc-badge-icon.svg",
-      claimPageUrl: "https://badge-issuer-app.vercel.app/claim/kyc",
+      claimPageUrl:
+        process.env.SEPOLIA_KYC_BADGE_MANIFEST_CLAIM_PAGE_URL ??
+        process.env.NEXT_PUBLIC_SEPOLIA_KYC_BADGE_MANIFEST_CLAIM_PAGE_URL ??
+        import.meta.env.VITE_SEPOLIA_KYC_BADGE_MANIFEST_CLAIM_PAGE_URL ??
+        "https://kycbadge.joint.exchange/claim/kyc",
       shortDescription: "Claim KYC Badge",
       longDescriptions: [
         "Complete the KYC verification process to claim a global or national KYC badge that will grant you access to a market or liquidity that require KYC.",

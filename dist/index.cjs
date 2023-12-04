@@ -14625,6 +14625,7 @@ var Abi = {
 };
 
 // src/badge_manifest.ts
+var import_meta = {};
 var BadgeManifest = {
   localhost: {
     "^kyc(/[a-zA-Z]{3})?$": {
@@ -14632,7 +14633,7 @@ var BadgeManifest = {
       issuer: "Joint Labs",
       issuerAddress: "0x0B9Fc80B571e99C4ea796Eb34E75df59470826F3",
       logoUrl: "https://storage.googleapis.com/joint-images/kyc-badge-icon.svg",
-      claimPageUrl: "http://localhost:3002/claim/kyc",
+      claimPageUrl: process.env.LOCALHOST_KYC_BADGE_MANIFEST_CLAIM_PAGE_URL ?? process.env.NEXT_PUBLIC_LOCALHOST_KYC_BADGE_MANIFEST_CLAIM_PAGE_URL ?? process.env.VITE_LOCALHOST_KYC_BADGE_MANIFEST_CLAIM_PAGE_URL ?? "http://localhost:3002/claim/kyc",
       shortDescription: "Claim KYC Badge",
       longDescriptions: [
         "Complete the KYC verification process to claim a global or national KYC badge that will grant you access to a market or liquidity that require KYC.",
@@ -14646,7 +14647,7 @@ var BadgeManifest = {
       issuer: "Joint Labs",
       issuerAddress: "0x7D66e2a2Ad08e8708e92B2f01f36181502D2c964",
       logoUrl: "https://storage.googleapis.com/joint-images/kyc-badge-icon.svg",
-      claimPageUrl: "https://badge-issuer-app.vercel.app/claim/kyc",
+      claimPageUrl: process.env.SEPOLIA_KYC_BADGE_MANIFEST_CLAIM_PAGE_URL ?? process.env.NEXT_PUBLIC_SEPOLIA_KYC_BADGE_MANIFEST_CLAIM_PAGE_URL ?? process.env.VITE_SEPOLIA_KYC_BADGE_MANIFEST_CLAIM_PAGE_URL ?? "https://kycbadge.joint.exchange/claim/kyc",
       shortDescription: "Claim KYC Badge",
       longDescriptions: [
         "Complete the KYC verification process to claim a global or national KYC badge that will grant you access to a market or liquidity that require KYC.",
@@ -14870,7 +14871,7 @@ var TokenInfo = class {
 };
 
 // src/chains.ts
-var import_meta = {};
+var import_meta2 = {};
 var Chains = [
   {
     disabled: true,
@@ -15028,27 +15029,27 @@ var Chains = [
     }),
     contracts: {
       core: {
-        address: process.env.SEPOLIA_CORE_ADDRESS ?? process.env.NEXT_PUBLIC_SEPOLIA_CORE_ADDRESS ?? process.env.VITE_SEPOLIA_CORE_ADDRESS,
+        address: process.env.SEPOLIA_CORE_ADDRESS ?? process.env.NEXT_PUBLIC_SEPOLIA_CORE_ADDRESS ?? process.env.VITE_SEPOLIA_CORE_ADDRESS ?? "0x70b34cae2ba32a4b777e491c717d5e837574bd65",
         abi: Core_default
       },
       token: {
-        address: process.env.SEPOLIA_TOKEN_ADDRESS ?? process.env.NEXT_PUBLIC_SEPOLIA_TOKEN_ADDRESS ?? process.env.VITE_SEPOLIA_TOKEN_ADDRESS,
+        address: process.env.SEPOLIA_TOKEN_ADDRESS ?? process.env.NEXT_PUBLIC_SEPOLIA_TOKEN_ADDRESS ?? process.env.VITE_SEPOLIA_TOKEN_ADDRESS ?? "0xd0dE9c8983C1e7071dC2cB826eb7b9F6D3ac60d2",
         abi: Token_default
       },
       badgeManager: {
-        address: process.env.SEPOLIA_BADGE_MGR_ADDRESS ?? process.env.NEXT_PUBLIC_SEPOLIA_BADGE_MGR_ADDRESS ?? process.env.VITE_SEPOLIA_BADGE_MGR_ADDRESS,
+        address: process.env.SEPOLIA_BADGE_MGR_ADDRESS ?? process.env.NEXT_PUBLIC_SEPOLIA_BADGE_MGR_ADDRESS ?? process.env.VITE_SEPOLIA_BADGE_MGR_ADDRESS ?? "0x6cF0ec545403eC6792eF4F62cfcE2FE494bF1591",
         abi: BadgeManager_default
       },
       marketCore: {
-        address: process.env.SEPOLIA_MARKET_CORE_ADDRESS ?? process.env.NEXT_PUBLIC_SEPOLIA_MARKET_CORE_ADDRESS ?? process.env.VITE_SEPOLIA_MARKET_CORE_ADDRESS,
+        address: process.env.SEPOLIA_MARKET_CORE_ADDRESS ?? process.env.NEXT_PUBLIC_SEPOLIA_MARKET_CORE_ADDRESS ?? process.env.VITE_SEPOLIA_MARKET_CORE_ADDRESS ?? "0x588Dc811aF25Ea75fd5b7FEEeAB368ca63D6EcBE",
         abi: MarketCore_default
       },
       disputeManager: {
-        address: process.env.SEPOLIA_DISPUTE_MGR_ADDRESS ?? process.env.NEXT_PUBLIC_SEPOLIA_DISPUTE_MGR_ADDRESS ?? process.env.VITE_SEPOLIA_DISPUTE_MGR_ADDRESS,
+        address: process.env.SEPOLIA_DISPUTE_MGR_ADDRESS ?? process.env.NEXT_PUBLIC_SEPOLIA_DISPUTE_MGR_ADDRESS ?? process.env.VITE_SEPOLIA_DISPUTE_MGR_ADDRESS ?? "0xe3DC1f3D53c2b821e713073f02A0b358706B69a2",
         abi: DisputeManager_default
       },
       mediatorManager: {
-        address: process.env.SEPOLIA_MEDIATOR_MGR_ADDRESS ?? process.env.NEXT_PUBLIC_SEPOLIA_MEDIATOR_MGR_ADDRESS ?? process.env.VITE_SEPOLIA_MEDIATOR_MGR_ADDRESS,
+        address: process.env.SEPOLIA_MEDIATOR_MGR_ADDRESS ?? process.env.NEXT_PUBLIC_SEPOLIA_MEDIATOR_MGR_ADDRESS ?? process.env.VITE_SEPOLIA_MEDIATOR_MGR_ADDRESS ?? "0x0056905103f8F18fe18c04Ec9d256bF759C3Dd5D",
         abi: MediatorManager_default
       },
       energon: {
@@ -15056,7 +15057,7 @@ var Chains = [
         abi: Energon_default
       },
       nft: {
-        address: process.env.SEPOLIA_NFT_ADDRESS ?? process.env.NEXT_PUBLIC_SEPOLIA_NFT_ADDRESS ?? process.env.VITE_SEPOLIA_NFT_ADDRESS,
+        address: process.env.SEPOLIA_NFT_ADDRESS ?? process.env.NEXT_PUBLIC_SEPOLIA_NFT_ADDRESS ?? process.env.VITE_SEPOLIA_NFT_ADDRESS ?? "0x3b457DE90E5145CF4d6a9F2945d56e00A88D5Ab8",
         abi: NFT_default
       }
     }

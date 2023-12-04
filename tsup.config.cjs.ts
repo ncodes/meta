@@ -12,7 +12,7 @@ export default defineConfig({
   onSuccess: async () => {
     replaceInFileSync({
       files: "dist/index.cjs",
-      from: /import.meta.env/g,
+      from: /import.meta[0-9]?.env/g,
       to: "process.env",
     });
     return;

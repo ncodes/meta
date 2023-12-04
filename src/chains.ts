@@ -269,42 +269,48 @@ const Chains: ChainInfo[] = [
         address:
           process.env.SEPOLIA_CORE_ADDRESS ??
           process.env.NEXT_PUBLIC_SEPOLIA_CORE_ADDRESS ??
-          import.meta.env.VITE_SEPOLIA_CORE_ADDRESS,
+          import.meta.env.VITE_SEPOLIA_CORE_ADDRESS ??
+          "0x70b34cae2ba32a4b777e491c717d5e837574bd65",
         abi: CoreABI,
       },
       token: {
         address:
           process.env.SEPOLIA_TOKEN_ADDRESS ??
           process.env.NEXT_PUBLIC_SEPOLIA_TOKEN_ADDRESS ??
-          import.meta.env.VITE_SEPOLIA_TOKEN_ADDRESS,
+          import.meta.env.VITE_SEPOLIA_TOKEN_ADDRESS ??
+          "0xd0dE9c8983C1e7071dC2cB826eb7b9F6D3ac60d2",
         abi: NativeTokenABI,
       },
       badgeManager: {
         address:
           process.env.SEPOLIA_BADGE_MGR_ADDRESS ??
           process.env.NEXT_PUBLIC_SEPOLIA_BADGE_MGR_ADDRESS ??
-          import.meta.env.VITE_SEPOLIA_BADGE_MGR_ADDRESS,
+          import.meta.env.VITE_SEPOLIA_BADGE_MGR_ADDRESS ??
+          "0x6cF0ec545403eC6792eF4F62cfcE2FE494bF1591",
         abi: BadgeManagerABI,
       },
       marketCore: {
         address:
           process.env.SEPOLIA_MARKET_CORE_ADDRESS ??
           process.env.NEXT_PUBLIC_SEPOLIA_MARKET_CORE_ADDRESS ??
-          import.meta.env.VITE_SEPOLIA_MARKET_CORE_ADDRESS,
+          import.meta.env.VITE_SEPOLIA_MARKET_CORE_ADDRESS ??
+          "0x588Dc811aF25Ea75fd5b7FEEeAB368ca63D6EcBE",
         abi: MarketCoreABI,
       },
       disputeManager: {
         address:
           process.env.SEPOLIA_DISPUTE_MGR_ADDRESS ??
           process.env.NEXT_PUBLIC_SEPOLIA_DISPUTE_MGR_ADDRESS ??
-          import.meta.env.VITE_SEPOLIA_DISPUTE_MGR_ADDRESS,
+          import.meta.env.VITE_SEPOLIA_DISPUTE_MGR_ADDRESS ??
+          "0xe3DC1f3D53c2b821e713073f02A0b358706B69a2",
         abi: DisputeManagerABI,
       },
       mediatorManager: {
         address:
           process.env.SEPOLIA_MEDIATOR_MGR_ADDRESS ??
           process.env.NEXT_PUBLIC_SEPOLIA_MEDIATOR_MGR_ADDRESS ??
-          import.meta.env.VITE_SEPOLIA_MEDIATOR_MGR_ADDRESS,
+          import.meta.env.VITE_SEPOLIA_MEDIATOR_MGR_ADDRESS ??
+          "0x0056905103f8F18fe18c04Ec9d256bF759C3Dd5D",
         abi: MediatorManagerABI,
       },
       energon: {
@@ -318,7 +324,8 @@ const Chains: ChainInfo[] = [
         address:
           process.env.SEPOLIA_NFT_ADDRESS ??
           process.env.NEXT_PUBLIC_SEPOLIA_NFT_ADDRESS ??
-          import.meta.env.VITE_SEPOLIA_NFT_ADDRESS,
+          import.meta.env.VITE_SEPOLIA_NFT_ADDRESS ??
+          "0x3b457DE90E5145CF4d6a9F2945d56e00A88D5Ab8",
         abi: NftABI,
       },
     },
