@@ -31,7 +31,7 @@ var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: tru
 var src_exports = {};
 __export(src_exports, {
   Abi: () => Abi,
-  BadgeManifest: () => BadgeManifest,
+  BadgeManifests: () => BadgeManifests,
   MediatorPools: () => MediatorPools,
   TokenLists: () => TokenLists,
   default: () => src_default,
@@ -14626,7 +14626,7 @@ var Abi = {
 
 // src/badge_manifest.ts
 var import_meta = {};
-var BadgeManifest = {
+var BadgeManifests = {
   localhost: {
     "^kyc(/[a-zA-Z]{3})?$": {
       name: "KYC",
@@ -19960,7 +19960,7 @@ var src_default = chains_default;
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
   Abi,
-  BadgeManifest,
+  BadgeManifests,
   MediatorPools,
   TokenLists,
   findTokenInLocalhost,

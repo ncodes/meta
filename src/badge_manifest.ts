@@ -17,7 +17,7 @@ export type ChainBadgeManifest = {
 // BadgeManifest contains information about a badge, the issuer and
 // information required by the client to grant, manage and revoke the badge.
 // The keys are regular expressions that match a badge being queried.
-export const BadgeManifest: ChainBadgeManifest = {
+export const BadgeManifests: ChainBadgeManifest = {
   localhost: {
     "^kyc(/[a-zA-Z]{3})?$": {
       name: "KYC",

@@ -14579,7 +14579,7 @@ var Abi = {
 };
 
 // src/badge_manifest.ts
-var BadgeManifest = {
+var BadgeManifests = {
   localhost: {
     "^kyc(/[a-zA-Z]{3})?$": {
       name: "KYC",
@@ -19919,7 +19919,7 @@ function findTokenInSynthetic(address) {
 var src_default = chains_default;
 export {
   Abi,
-  BadgeManifest,
+  BadgeManifests,
   MediatorPools,
   TokenLists,
   src_default as default,

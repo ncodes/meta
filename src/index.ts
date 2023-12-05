@@ -1,6 +1,7 @@
 import { Abi } from "./abi";
 import {
   BadgeManifest,
+  BadgeManifests,
   ChainBadgeManifest,
   parseBadgeLocals,
 } from "./badge_manifest";
@@ -28,6 +29,7 @@ export default Chains;
 export {
   Abi,
   BadgeManifest,
+  BadgeManifests,
   ChainBadgeManifest,
   ChainInfo,
   ChainNames,
