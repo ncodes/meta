@@ -30,7 +30,7 @@ All environment variables allow a prefix (denoted as `{PREFIX}`) to be set to ma
 
 | Variable                      | Default Value |
 | ----------------------------- | ------------- |
-| ETHEREUM_API_URI              |               |
+| ETHEREUM_API_URL              |               |
 | ETHEREUM_RPC_URL              |               |
 | ETHEREUM_CORE_ADDRESS         |               |
 | ETHEREUM_TOKEN_ADDRESS        |               |
@@ -47,7 +47,7 @@ All environment variables allow a prefix (denoted as `{PREFIX}`) to be set to ma
 
 | Variable                      | Default Value |
 | ----------------------------- | ------------- |
-| POLYGON_API_URI               |               |
+| POLYGON_API_URL               |               |
 | POLYGON_RPC_URL               |               |
 | POLYGON_WRAPPED_TOKEN_ADDRESS |               |
 
@@ -55,7 +55,7 @@ All environment variables allow a prefix (denoted as `{PREFIX}`) to be set to ma
 
 | Variable                       | Default Value |
 | ------------------------------ | ------------- |
-| OPTIMISM_API_URI               |               |
+| OPTIMISM_API_URL               |               |
 | OPTIMISM_RPC_URL               |               |
 | OPTIMISM_WRAPPED_TOKEN_ADDRESS |               |
 
@@ -63,7 +63,7 @@ All environment variables allow a prefix (denoted as `{PREFIX}`) to be set to ma
 
 | Variable                      | Default Value |
 | ----------------------------- | ------------- |
-| BINANCE_API_URI               |               |
+| BINANCE_API_URL               |               |
 | BINANCE_RPC_URL               |               |
 | BINANCE_WRAPPED_TOKEN_ADDRESS |               |
 
@@ -71,7 +71,7 @@ All environment variables allow a prefix (denoted as `{PREFIX}`) to be set to ma
 
 | Variable                       | Default Value |
 | ------------------------------ | ------------- |
-| ARBITRUM_API_URI               |               |
+| ARBITRUM_API_URL               |               |
 | ARBITRUM_RPC_URL               |               |
 | ARBITRUM_WRAPPED_TOKEN_ADDRESS |               |
 
@@ -79,7 +79,7 @@ All environment variables allow a prefix (denoted as `{PREFIX}`) to be set to ma
 
 | Variable                      | Default Value                              |
 | ----------------------------- | ------------------------------------------ |
-| SEPOLIA_API_URI               |                                            |
+| SEPOLIA_API_URL               |                                            |
 | SEPOLIA_RPC_URL               |                                            |
 | SEPOLIA_WRAPPED_TOKEN_ADDRESS |                                            |
 | SEPOLIA_CORE_ADDRESS          | 0x70b34cae2ba32a4b777e491c717d5e837574bd65 |
@@ -95,7 +95,7 @@ All environment variables allow a prefix (denoted as `{PREFIX}`) to be set to ma
 
 | Variable                        | Default Value |
 | ------------------------------- | ------------- |
-| LOCALHOST_API_URI               |               |
+| LOCALHOST_API_URL               |               |
 | LOCALHOST_RPC_URL               |               |
 | LOCALHOST_WRAPPED_TOKEN_ADDRESS |               |
 | LOCALHOST_CORE_ADDRESS          |               |

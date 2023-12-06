@@ -945,4 +945,4 @@ declare function findTokenInLocalhost(address: string): TokenList.Token | undefi
  */
 declare function findTokenInSynthetic(address: string): TokenList.Token | undefined;
 
-export { Abi, type BadgeManifest, BadgeManifests, type ChainBadgeManifest, type ChainInfo, type ChainNames, type ContractInfo, type ContractNames, type Contracts, type MediatorPool, MediatorPools, type PaymentMethods, TokenLists, Chains as default, findTokenInLocalhost, findTokenInSynthetic, getChain, getChainByName, getChainID, getChainNames, getChains, getChainsID, getTokenInfo, isValidChain, parseBadgeLocals, paymentMethods };
+export { Abi, type BadgeManifest, BadgeManifests, type ChainBadgeManifest, type ChainInfo, type ChainNames, type ContractInfo, type ContractNames, type Contracts, type KnownMediatorPools, type MediatorPool, MediatorPools, type PaymentMethods, TokenLists, Chains as default, findTokenInLocalhost, findTokenInSynthetic, getChain, getChainByName, getChainID, getChainNames, getChains, getChainsID, getTokenInfo, isValidChain, parseBadgeLocals, paymentMethods };

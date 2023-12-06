@@ -14,7 +14,11 @@ import Chains, {
   getChainsID,
   isValidChain,
 } from "./chains";
-import { MediatorPool, MediatorPools } from "./mediator_pools";
+import {
+  KnownMediatorPools,
+  MediatorPool,
+  MediatorPools,
+} from "./mediator_pools";
 import { PaymentMethods, paymentMethods } from "./payment_methods";
 import {
   TokenLists,
@@ -36,6 +40,7 @@ export {
   ContractInfo,
   ContractNames,
   Contracts,
+  KnownMediatorPools,
   MediatorPool,
   MediatorPools,
   PaymentMethods,

@@ -37,9 +37,9 @@ const Chains: ChainInfo[] = [
     chain: mainnet,
     symbol: "ETH",
     apiUrl:
-      process.env.ETHEREUM_API_URI ??
-      process.env.NEXT_PUBLIC_ETHEREUM_API_URI ??
-      import.meta.env.VITE_ETHEREUM_API_URI,
+      process.env.ETHEREUM_API_URL ??
+      process.env.NEXT_PUBLIC_ETHEREUM_API_URL ??
+      import.meta.env.VITE_ETHEREUM_API_URL,
     rpcUrl:
       process.env.ETHEREUM_RPC_URL ??
       process.env.NEXT_PUBLIC_ETHEREUM_RPC_URL ??
@@ -122,9 +122,9 @@ const Chains: ChainInfo[] = [
     chain: polygon,
     symbol: "MATIC",
     apiUrl:
-      process.env.POLYGON_API_URI ??
-      process.env.NEXT_PUBLIC_POLYGON_API_URI ??
-      import.meta.env.VITE_POLYGON_API_URI,
+      process.env.POLYGON_API_URL ??
+      process.env.NEXT_PUBLIC_POLYGON_API_URL ??
+      import.meta.env.VITE_POLYGON_API_URL,
     rpcUrl:
       process.env.POLYGON_RPC_URL ??
       process.env.NEXT_PUBLIC_POLYGON_RPC_URL ??
@@ -152,9 +152,9 @@ const Chains: ChainInfo[] = [
     chain: optimism,
     symbol: "ETH",
     apiUrl:
-      process.env.OPTIMISM_API_URI ??
-      process.env.NEXT_PUBLIC_OPTIMISM_API_URI ??
-      import.meta.env.VITE_OPTIMISM_API_URI,
+      process.env.OPTIMISM_API_URL ??
+      process.env.NEXT_PUBLIC_OPTIMISM_API_URL ??
+      import.meta.env.VITE_OPTIMISM_API_URL,
     rpcUrl:
       process.env.OPTIMISM_RPC_URL ??
       process.env.NEXT_PUBLIC_OPTIMISM_RPC_URL ??
@@ -183,9 +183,9 @@ const Chains: ChainInfo[] = [
     chain: bsc,
     symbol: "BNB",
     apiUrl:
-      process.env.BINANCE_API_URI ??
-      process.env.NEXT_PUBLIC_BINANCE_API_URI ??
-      import.meta.env.VITE_BINANCE_API_URI,
+      process.env.BINANCE_API_URL ??
+      process.env.NEXT_PUBLIC_BINANCE_API_URL ??
+      import.meta.env.VITE_BINANCE_API_URL,
     rpcUrl:
       process.env.BINANCE_RPC_URL ??
       process.env.NEXT_PUBLIC_BINANCE_RPC_URL ??
@@ -213,9 +213,9 @@ const Chains: ChainInfo[] = [
     chain: arbitrum,
     symbol: "ETH",
     apiUrl:
-      process.env.ARBITRUM_API_URI ??
-      process.env.NEXT_PUBLIC_ARBITRUM_API_URI ??
-      import.meta.env.VITE_ARBITRUM_API_URI,
+      process.env.ARBITRUM_API_URL ??
+      process.env.NEXT_PUBLIC_ARBITRUM_API_URL ??
+      import.meta.env.VITE_ARBITRUM_API_URL,
     rpcUrl:
       process.env.ARBITRUM_RPC_URL ??
       process.env.NEXT_PUBLIC_ARBITRUM_RPC_URL ??
@@ -243,9 +243,9 @@ const Chains: ChainInfo[] = [
     chain: sepolia,
     symbol: "ETH",
     apiUrl:
-      process.env.SEPOLIA_API_URI ??
-      process.env.NEXT_PUBLIC_SEPOLIA_API_URI ??
-      import.meta.env.VITE_SEPOLIA_API_URI,
+      process.env.SEPOLIA_API_URL ??
+      process.env.NEXT_PUBLIC_SEPOLIA_API_URL ??
+      import.meta.env.VITE_SEPOLIA_API_URL,
     rpcUrl:
       process.env.SEPOLIA_RPC_URL ??
       process.env.NEXT_PUBLIC_SEPOLIA_RPC_URL ??
@@ -338,9 +338,9 @@ const Chains: ChainInfo[] = [
     chain: hardhat,
     symbol: "ETH",
     apiUrl:
-      process.env.LOCALHOST_API_URI ??
-      process.env.NEXT_PUBLIC_LOCALHOST_API_URI ??
-      import.meta.env.VITE_LOCALHOST_API_URI,
+      process.env.LOCALHOST_API_URL ??
+      process.env.NEXT_PUBLIC_LOCALHOST_API_URL ??
+      import.meta.env.VITE_LOCALHOST_API_URL,
     rpcUrl:
       process.env.LOCALHOST_RPC_URL ??
       process.env.NEXT_PUBLIC_LOCALHOST_RPC_URL ??
