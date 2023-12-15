@@ -1,6 +1,6 @@
 {
   "name": "@jointlabs/chains-info",
-  "version": "0.0.19",
+  "version": "0.0.20",
   "type": "module",
   "engines": {
     "node": ">=18.17.1"
@@ -12,11 +12,13 @@
   "exports": {
     ".": {
       "import": "./dist/index.js",
-      "require": "./dist/index.cjs"
+      "require": "./dist/index.cjs",
+      "types": "./dist/index.d.ts"
     },
     "./next": {
       "import": "./dist/nextjs/index.js",
-      "require": "./dist/index.cjs"
+      "require": "./dist/index.cjs",
+      "types": "./dist/nextjs/index.d.ts"
     }
   },
   "license": "MIT",
