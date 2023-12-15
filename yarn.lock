@@ -1025,10 +1025,10 @@ tsup@^8.0.1:
     sucrase "^3.20.3"
     tree-kill "^1.2.2"
 
-viem@^1.2.13:
-  version "1.19.9"
-  resolved "https://registry.npmjs.org/viem/-/viem-1.19.9.tgz"
-  integrity sha512-Sf9U2x4jU0S/FALqYypcspWOGene0NZyD470oUripNhE0Ta6uOE/OgE4toTDVfRxov8qw0JFinr/wPGxYE3+HQ==
+viem@^1.20.0:
+  version "1.20.0"
+  resolved "https://registry.yarnpkg.com/viem/-/viem-1.20.0.tgz#25cb019831f46aeecf2c8c5cdbad41e4f79b2e32"
+  integrity sha512-yPjV9pJr10xi28C/9LEvs5zdZNEMiru3Kz7nufghVYABJAfeSkoZQXb6b23n7MscS7c55JO5nmUI3xKkd9g6Yg==
   dependencies:
     "@adraffy/ens-normalize" "1.10.0"
     "@noble/curves" "1.2.0"
