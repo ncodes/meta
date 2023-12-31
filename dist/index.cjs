@@ -19567,7 +19567,7 @@ var tokens3 = [
   {
     asset: "0001",
     type: "ERC20",
-    address: "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512",
+    address: "0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0",
     name: "Joint LOCAL",
     symbol: "P2P",
     decimals: 18,
@@ -19577,7 +19577,7 @@ var tokens3 = [
   {
     asset: "0002",
     type: "ERC20",
-    address: "0x99bbA657f2BbC93c02D617f8bA121cB8Fc104Acf",
+    address: "0x0E801D84Fa97b50751Dbf25036d067dCf18858bF",
     name: "WETH LOCAL",
     symbol: "WETH",
     decimals: 18,
@@ -19587,7 +19587,7 @@ var tokens3 = [
   {
     asset: "0003",
     type: "ERC20",
-    address: "0x0E801D84Fa97b50751Dbf25036d067dCf18858bF",
+    address: "0x8f86403A4DE0BB5791fa46B8e795C547942fE4Cf",
     name: "UNI LOCAL",
     symbol: "UNI",
     decimals: 18,
@@ -19597,7 +19597,7 @@ var tokens3 = [
   {
     asset: "0004",
     type: "SYNTHETIC",
-    address: "0x8f86403A4DE0BB5791fa46B8e795C547942fE4Cf",
+    address: "0x9d4454B023096f34B160D6B654540c56A1F81688",
     name: "NGN LOCAL",
     symbol: "NGN",
     decimals: 18,
