@@ -1,52 +1,52 @@
 {
-  "name": "Joint Labs: Localhost",
-  "logoURI": "https://trustwallet.com/assets/images/favicon.png",
-  "timestamp": "2021-10-07T08:50:36.056Z",
-  "tokens": [
-    {
-      "asset": "0001",
-      "type": "ERC20",
-      "address": "0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0",
-      "name": "Joint LOCAL",
-      "symbol": "P2P",
-      "decimals": 18,
-      "logoURI": "https://storage.googleapis.com/joint-images/token-logos/p2p.svg",
-      "price": 0
-    },
-    {
-      "asset": "0002",
-      "type": "ERC20",
-      "address": "0x0E801D84Fa97b50751Dbf25036d067dCf18858bF",
-      "name": "WETH LOCAL",
-      "symbol": "WETH",
-      "decimals": 18,
-      "logoURI": "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2/logo.png",
-      "price": 0
-    },
-    {
-      "asset": "0003",
-      "type": "ERC20",
-      "address": "0x8f86403A4DE0BB5791fa46B8e795C547942fE4Cf",
-      "name": "UNI LOCAL",
-      "symbol": "UNI",
-      "decimals": 18,
-      "logoURI": "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x1f9840a85d5aF5bf1D1762F925BDADdC4201F984/logo.png",
-      "price": 0
-    },
-    {
-      "asset": "0004",
-      "type": "SYNTHETIC",
-      "address": "0x9d4454B023096f34B160D6B654540c56A1F81688",
-      "name": "NGN LOCAL",
-      "symbol": "NGN",
-      "decimals": 18,
-      "logoURI": "https://storage.googleapis.com/joint-images/country-flags/nigeria.svg",
-      "price": 0
-    }
-  ],
-  "version": {
-    "major": 6,
-    "minor": 0,
-    "patch": 0
-  }
+	"name": "Joint Labs: Localhost",
+	"logoURI": "https://trustwallet.com/assets/images/favicon.png",
+	"timestamp": "2021-10-07T08:50:36.056Z",
+	"tokens": [
+		{
+			"asset": "0001",
+			"type": "ERC20",
+			"address": "0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0",
+			"name": "Joint LOCAL",
+			"symbol": "P2P",
+			"decimals": 18,
+			"logoURI": "https://storage.googleapis.com/joint-images/token-logos/p2p.svg",
+			"price": 0
+		},
+		{
+			"asset": "0002",
+			"type": "ERC20",
+			"address": "0x9E545E3C0baAB3E08CdfD552C960A1050f373042",
+			"name": "WETH LOCAL",
+			"symbol": "WETH",
+			"decimals": 18,
+			"logoURI": "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2/logo.png",
+			"price": 0
+		},
+		{
+			"asset": "0003",
+			"type": "ERC20",
+			"address": "0xa82fF9aFd8f496c3d6ac40E2a0F282E47488CFc9",
+			"name": "UNI LOCAL",
+			"symbol": "UNI",
+			"decimals": 18,
+			"logoURI": "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x1f9840a85d5aF5bf1D1762F925BDADdC4201F984/logo.png",
+			"price": 0
+		},
+		{
+			"asset": "0004",
+			"type": "SYNTHETIC",
+			"address": "0x1613beB3B2C4f22Ee086B2b38C1476A3cE7f78E8",
+			"name": "NGN LOCAL",
+			"symbol": "NGN",
+			"decimals": 18,
+			"logoURI": "https://storage.googleapis.com/joint-images/country-flags/nigeria.svg",
+			"price": 0
+		}
+	],
+	"version": {
+		"major": 6,
+		"minor": 0,
+		"patch": 0
+	}
 }
