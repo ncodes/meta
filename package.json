@@ -1,11 +1,11 @@
 {
 	"name": "@jointlabs/chains-info",
-	"version": "0.0.25",
+	"version": "0.0.26",
 	"type": "module",
 	"engines": {
 		"node": ">=18.17.1"
 	},
-	"description": "Information about chains supported by Joint interface and supporting applications. ",
+	"description": "A library containing data on chains and assets supported on Joint applications",
 	"main": "./dist/index.cjs",
 	"module": "./dist/index.js",
 	"types": "./dist/index.d.ts",
