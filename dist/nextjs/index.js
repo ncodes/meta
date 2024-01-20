@@ -14619,15 +14619,7 @@ function parseBadgeLocals(badge, locals) {
 }
 
 // src/chains.ts
-import {
-  arbitrum,
-  bsc,
-  hardhat,
-  mainnet,
-  optimism,
-  polygon,
-  sepolia
-} from "viem/chains";
+import { arbitrum, bsc, hardhat, mainnet, optimism, polygon, sepolia } from "viem/chains";
 
 // src/icons/BSC.tsx
 import React from "react";
@@ -14980,7 +14972,7 @@ var Chains = [
     blockExplorer: "https://sepolia.etherscan.io",
     logoPath: IconEthereum,
     wrappedTokenInfo: new TokenInfo({
-      address: process.env.SEPOLIA_WRAPPED_TOKEN_ADDRESS ?? process.env.NEXT_PUBLIC_SEPOLIA_WRAPPED_TOKEN_ADDRESS ?? process.env.VITE_SEPOLIA_WRAPPED_TOKEN_ADDRESS,
+      address: process.env.SEPOLIA_WRAPPED_TOKEN_ADDRESS ?? process.env.NEXT_PUBLIC_SEPOLIA_WRAPPED_TOKEN_ADDRESS ?? process.env.VITE_SEPOLIA_WRAPPED_TOKEN_ADDRESS ?? "0xC0Bd590abDd9770985491aA034584091CAB9FcD1",
       name: "WETH",
       symbol: "WETH",
       decimals: 18,
@@ -14989,27 +14981,27 @@ var Chains = [
     }),
     contracts: {
       core: {
-        address: process.env.SEPOLIA_CORE_ADDRESS ?? process.env.NEXT_PUBLIC_SEPOLIA_CORE_ADDRESS ?? process.env.VITE_SEPOLIA_CORE_ADDRESS ?? "0x70b34cae2ba32a4b777e491c717d5e837574bd65",
+        address: process.env.SEPOLIA_CORE_ADDRESS ?? process.env.NEXT_PUBLIC_SEPOLIA_CORE_ADDRESS ?? process.env.VITE_SEPOLIA_CORE_ADDRESS ?? "0xAACA1a3B9756D3CAba6fFef058245dfE7037A537",
         abi: Core_default
       },
       token: {
-        address: process.env.SEPOLIA_TOKEN_ADDRESS ?? process.env.NEXT_PUBLIC_SEPOLIA_TOKEN_ADDRESS ?? process.env.VITE_SEPOLIA_TOKEN_ADDRESS ?? "0xd0dE9c8983C1e7071dC2cB826eb7b9F6D3ac60d2",
+        address: process.env.SEPOLIA_TOKEN_ADDRESS ?? process.env.NEXT_PUBLIC_SEPOLIA_TOKEN_ADDRESS ?? process.env.VITE_SEPOLIA_TOKEN_ADDRESS ?? "0xB556b3a796f5f104Bbaab840567844734e0490a0",
         abi: Token_default
       },
       badgeManager: {
-        address: process.env.SEPOLIA_BADGE_MGR_ADDRESS ?? process.env.NEXT_PUBLIC_SEPOLIA_BADGE_MGR_ADDRESS ?? process.env.VITE_SEPOLIA_BADGE_MGR_ADDRESS ?? "0x6cF0ec545403eC6792eF4F62cfcE2FE494bF1591",
+        address: process.env.SEPOLIA_BADGE_MGR_ADDRESS ?? process.env.NEXT_PUBLIC_SEPOLIA_BADGE_MGR_ADDRESS ?? process.env.VITE_SEPOLIA_BADGE_MGR_ADDRESS ?? "0x8cf4a9D2fB4da5453ED98963C5B53AD691cA05CD",
         abi: BadgeManager_default
       },
       marketCore: {
-        address: process.env.SEPOLIA_MARKET_CORE_ADDRESS ?? process.env.NEXT_PUBLIC_SEPOLIA_MARKET_CORE_ADDRESS ?? process.env.VITE_SEPOLIA_MARKET_CORE_ADDRESS ?? "0x588Dc811aF25Ea75fd5b7FEEeAB368ca63D6EcBE",
+        address: process.env.SEPOLIA_MARKET_CORE_ADDRESS ?? process.env.NEXT_PUBLIC_SEPOLIA_MARKET_CORE_ADDRESS ?? process.env.VITE_SEPOLIA_MARKET_CORE_ADDRESS ?? "0x6A803C1CEEB34aF59Ef278a235A6A4cbd21d2022",
         abi: MarketCore_default
       },
       disputeManager: {
-        address: process.env.SEPOLIA_DISPUTE_MGR_ADDRESS ?? process.env.NEXT_PUBLIC_SEPOLIA_DISPUTE_MGR_ADDRESS ?? process.env.VITE_SEPOLIA_DISPUTE_MGR_ADDRESS ?? "0xe3DC1f3D53c2b821e713073f02A0b358706B69a2",
+        address: process.env.SEPOLIA_DISPUTE_MGR_ADDRESS ?? process.env.NEXT_PUBLIC_SEPOLIA_DISPUTE_MGR_ADDRESS ?? process.env.VITE_SEPOLIA_DISPUTE_MGR_ADDRESS ?? "0x34DaFfAee3F646D58d538c578482FC607CEAB7F5",
         abi: DisputeManager_default
       },
       mediatorManager: {
-        address: process.env.SEPOLIA_MEDIATOR_MGR_ADDRESS ?? process.env.NEXT_PUBLIC_SEPOLIA_MEDIATOR_MGR_ADDRESS ?? process.env.VITE_SEPOLIA_MEDIATOR_MGR_ADDRESS ?? "0x0056905103f8F18fe18c04Ec9d256bF759C3Dd5D",
+        address: process.env.SEPOLIA_MEDIATOR_MGR_ADDRESS ?? process.env.NEXT_PUBLIC_SEPOLIA_MEDIATOR_MGR_ADDRESS ?? process.env.VITE_SEPOLIA_MEDIATOR_MGR_ADDRESS ?? "0x7774E1E2809695bb3Bd85F22809c6c94373112c9",
         abi: MediatorManager_default
       },
       energon: {
@@ -15017,7 +15009,7 @@ var Chains = [
         abi: Energon_default
       },
       nft: {
-        address: process.env.SEPOLIA_NFT_ADDRESS ?? process.env.NEXT_PUBLIC_SEPOLIA_NFT_ADDRESS ?? process.env.VITE_SEPOLIA_NFT_ADDRESS ?? "0x3b457DE90E5145CF4d6a9F2945d56e00A88D5Ab8",
+        address: process.env.SEPOLIA_NFT_ADDRESS ?? process.env.NEXT_PUBLIC_SEPOLIA_NFT_ADDRESS ?? process.env.VITE_SEPOLIA_NFT_ADDRESS ?? "0xF6E0Fdd5fA9CEd3F075BCC63B454D42C35b43d24",
         abi: NFT_default
       }
     }
@@ -15082,18 +15074,14 @@ function getChainsID(testnetOnly = false, ignoreTestnet = false, ignore = []) {
   if (testnetOnly) {
     supported = supported.filter((s) => s.testnet);
   }
-  return supported.filter(
-    (s) => !s.disabled && !ignore.includes(s.chainId) && (!ignoreTestnet || !s.testnet)
-  ).map((s) => s.chainId);
+  return supported.filter((s) => !s.disabled && !ignore.includes(s.chainId) && (!ignoreTestnet || !s.testnet)).map((s) => s.chainId);
 }
 function getChains(testnetOnly = false, ignoreTestnet = false, ignore = []) {
   let supported = Chains;
   if (testnetOnly) {
     supported = supported.filter((s) => s.testnet);
   }
-  return supported.filter(
-    (s) => !s.disabled && !ignore.includes(s.chainId) && (!ignoreTestnet || !s.testnet)
-  ).map((s) => s.chain);
+  return supported.filter((s) => !s.disabled && !ignore.includes(s.chainId) && (!ignoreTestnet || !s.testnet)).map((s) => s.chain);
 }
 function getChain(id) {
   if (!id)
@@ -19816,7 +19804,7 @@ var tokens6 = [
   {
     asset: "0001",
     type: "ERC20",
-    address: "0x4263541D13298963498ff1f83d992812Ef3d2E73",
+    address: "0xC0Bd590abDd9770985491aA034584091CAB9FcD1",
     name: "WETH",
     symbol: "WETH",
     decimals: 18,
@@ -19826,7 +19814,7 @@ var tokens6 = [
   {
     asset: "0002",
     type: "ERC20",
-    address: "0xd0dE9c8983C1e7071dC2cB826eb7b9F6D3ac60d2",
+    address: "0xB556b3a796f5f104Bbaab840567844734e0490a0",
     name: "Joint",
     symbol: "P2P",
     decimals: 18,
