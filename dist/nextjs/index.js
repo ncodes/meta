@@ -14876,6 +14876,10 @@ var Chains = [
       nft: {
         address: process.env.ETHEREUM_NFT_ADDRESS ?? process.env.NEXT_PUBLIC_ETHEREUM_NFT_ADDRESS ?? process.env.VITE_ETHEREUM_NFT_ADDRESS,
         abi: NFT_default
+      },
+      assetRegistry: {
+        address: process.env.ETHEREUM_ASSET_REG_ADDRESS ?? process.env.NEXT_PUBLIC_ETHEREUM_ASSET_REG_ADDRESS ?? process.env.VITE_ETHEREUM_ASSET_REG_ADDRESS,
+        abi: AssetRegistry_default
       }
     }
   },
@@ -15011,6 +15015,10 @@ var Chains = [
       nft: {
         address: process.env.SEPOLIA_NFT_ADDRESS ?? process.env.NEXT_PUBLIC_SEPOLIA_NFT_ADDRESS ?? process.env.VITE_SEPOLIA_NFT_ADDRESS ?? "0xF6E0Fdd5fA9CEd3F075BCC63B454D42C35b43d24",
         abi: NFT_default
+      },
+      assetRegistry: {
+        address: process.env.SEPOLIA_ASSET_REG_ADDRESS ?? process.env.NEXT_PUBLIC_SEPOLIA_ASSET_REG_ADDRESS ?? process.env.VITE_SEPOLIA_ASSET_REG_ADDRESS ?? "0x4B4eC83FAC2ce42a395b895336d7a952f7FE01c0",
+        abi: AssetRegistry_default
       }
     }
   },
@@ -15065,6 +15073,10 @@ var Chains = [
       nft: {
         address: process.env.LOCALHOST_NFT_ADDRESS ?? process.env.NEXT_PUBLIC_LOCALHOST_NFT_ADDRESS ?? process.env.VITE_LOCALHOST_NFT_ADDRESS,
         abi: NFT_default
+      },
+      assetRegistry: {
+        address: process.env.LOCALHOST_ASSET_REG_ADDRESS ?? process.env.NEXT_PUBLIC_LOCALHOST_ASSET_REG_ADDRESS ?? process.env.VITE_LOCALHOST_ASSET_REG_ADDRESS,
+        abi: AssetRegistry_default
       }
     }
   }
@@ -15108,6 +15120,101 @@ function isValidChain(chain) {
   return getChainByName(chain) !== void 0;
 }
 var chains_default = Chains;
+
+// src/contracts_params.ts
+var contractsParams = {
+  localhost: {
+    others: {
+      operatorBond: "120",
+      allocatorAddr: "0xA47FFd6c828EFB58c6B42F722ABA286cF87C19a0"
+    },
+    core: {
+      minTimeToPay: 1800,
+      orderGraceDur: 1800,
+      maxOpenOrders: 3,
+      maxOpenDisputes: 3,
+      transferToFeePoolInterval: 86400,
+      nftDiscountBP: 2500
+    },
+    token: {},
+    energon: {},
+    nft: {},
+    badgeManager: {},
+    marketCore: {
+      defaultDisputeDelayDur: 0
+    },
+    disputeManager: {
+      evidenceDur: 60,
+      predictDur: 120
+    },
+    mediatorManager: {
+      baseTicketPrice: "100000000000000000000",
+      ticketWindowDur: 86400,
+      ticketsPerWindow: 256,
+      ticketSupply: 6e4,
+      priceSupplyDeltaBP: 2e3,
+      minInactiveWindowBeforeReset: 7,
+      soldOutBP: 8e3,
+      ticketMatureDur: 86400,
+      ticketCancelDur: 604800,
+      ticketExpireDur: 172800,
+      reqPoolBond: "1000000000000000000000",
+      poolDraftReward: "10000000000000000000",
+      poolWinReward: "20000000000000000000",
+      poolNumDraftee: 1,
+      poolNoVoteSlashBP: 1e3,
+      poolLoseVoteSlashBP: 2e3
+    },
+    assetRegistry: {}
+  },
+  sepolia: {
+    others: {
+      operatorBond: "0",
+      allocatorAddr: "0xA47FFd6c828EFB58c6B42F722ABA286cF87C19a0"
+    },
+    core: {
+      minTimeToPay: 1800,
+      orderGraceDur: 1800,
+      maxOpenOrders: 3,
+      maxOpenDisputes: 3,
+      transferToFeePoolInterval: 86400,
+      nftDiscountBP: 2500
+    },
+    token: {},
+    energon: {},
+    nft: {},
+    badgeManager: {},
+    marketCore: {
+      defaultDisputeDelayDur: 0
+    },
+    disputeManager: {
+      evidenceDur: 1800,
+      predictDur: 3600
+    },
+    mediatorManager: {
+      baseTicketPrice: "100000000000000000000",
+      ticketWindowDur: 86400,
+      ticketsPerWindow: 256,
+      ticketSupply: 6e4,
+      priceSupplyDeltaBP: 2e3,
+      minInactiveWindowBeforeReset: 7,
+      soldOutBP: 8e3,
+      ticketMatureDur: 86400,
+      ticketCancelDur: 604800,
+      ticketExpireDur: 172800,
+      reqPoolBond: "1000000000000000000000",
+      poolDraftReward: "100000000000000000000",
+      poolWinReward: "200000000000000000000",
+      poolNumDraftee: 1,
+      poolNoVoteSlashBP: 1e3,
+      poolLoseVoteSlashBP: 2e3
+    },
+    assetRegistry: {}
+  }
+};
+function getContractsParams(network) {
+  return contractsParams[network];
+}
 
 // src/mediator_pools.ts
 var MediatorPools = {
@@ -19923,6 +20030,7 @@ export {
   BadgeManifests,
   MediatorPools,
   TokenLists,
+  contractsParams,
   src_default as default,
   findTokenInLocalhost,
   findTokenInSynthetic,
@@ -19932,6 +20040,7 @@ export {
   getChainNames,
   getChains,
   getChainsID,
+  getContractsParams,
   getTokenInfo,
   isValidChain,
   parseBadgeLocals,

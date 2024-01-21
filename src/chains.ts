@@ -1,5 +1,6 @@
 import { Chain } from 'viem/_types/types/chain';
 import { arbitrum, bsc, hardhat, mainnet, optimism, polygon, sepolia } from 'viem/chains';
+import AssetRegistryABI from './abi/AssetRegistry.json';
 import BadgeManagerABI from './abi/BadgeManager.json';
 import CoreABI from './abi/Core.json';
 import DisputeManagerABI from './abi/DisputeManager.json';
@@ -99,6 +100,13 @@ const Chains: ChainInfo[] = [
 					process.env.NEXT_PUBLIC_ETHEREUM_NFT_ADDRESS ??
 					import.meta.env.VITE_ETHEREUM_NFT_ADDRESS,
 				abi: NftABI,
+			},
+			assetRegistry: {
+				address:
+					process.env.ETHEREUM_ASSET_REG_ADDRESS ??
+					process.env.NEXT_PUBLIC_ETHEREUM_ASSET_REG_ADDRESS ??
+					import.meta.env.VITE_ETHEREUM_ASSET_REG_ADDRESS,
+				abi: AssetRegistryABI,
 			},
 		},
 	},
@@ -297,6 +305,14 @@ const Chains: ChainInfo[] = [
 					'0xF6E0Fdd5fA9CEd3F075BCC63B454D42C35b43d24',
 				abi: NftABI,
 			},
+			assetRegistry: {
+				address:
+					process.env.SEPOLIA_ASSET_REG_ADDRESS ??
+					process.env.NEXT_PUBLIC_SEPOLIA_ASSET_REG_ADDRESS ??
+					import.meta.env.VITE_SEPOLIA_ASSET_REG_ADDRESS ??
+					'0x4B4eC83FAC2ce42a395b895336d7a952f7FE01c0',
+				abi: AssetRegistryABI,
+			},
 		},
 	},
 	{
@@ -384,6 +400,13 @@ const Chains: ChainInfo[] = [
 					process.env.NEXT_PUBLIC_LOCALHOST_NFT_ADDRESS ??
 					import.meta.env.VITE_LOCALHOST_NFT_ADDRESS,
 				abi: NftABI,
+			},
+			assetRegistry: {
+				address:
+					process.env.LOCALHOST_ASSET_REG_ADDRESS ??
+					process.env.NEXT_PUBLIC_LOCALHOST_ASSET_REG_ADDRESS ??
+					import.meta.env.VITE_LOCALHOST_ASSET_REG_ADDRESS,
+				abi: AssetRegistryABI,
 			},
 		},
 	},

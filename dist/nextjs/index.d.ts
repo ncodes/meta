@@ -762,7 +762,58 @@ interface ContractInfo {
 declare type Contracts = {
     [key in ContractNames]: ContractInfo;
 };
-declare type ContractNames = "core" | "token" | "energon" | "nft" | "badgeManager" | "marketCore" | "disputeManager" | "mediatorManager";
+declare type ContractNames = 'core' | 'token' | 'energon' | 'nft' | 'badgeManager' | 'marketCore' | 'disputeManager' | 'mediatorManager' | 'assetRegistry';
+declare type ContractsParams = {
+    [key in ChainNames]?: {
+        core: CoreParams;
+        marketCore: MarketCoreParams;
+        mediatorManager: MediatorManagerParams;
+        disputeManager: disputeManagerParams;
+        others: OthersParams;
+        token: {};
+        energon: {};
+        nft: {};
+        badgeManager: {};
+        assetRegistry: {};
+    };
+};
+declare type CoreParams = {
+    minTimeToPay: number;
+    orderGraceDur: number;
+    maxOpenOrders: number;
+    maxOpenDisputes: number;
+    transferToFeePoolInterval: number;
+    nftDiscountBP: number;
+};
+declare type MarketCoreParams = {
+    defaultDisputeDelayDur: number;
+};
+declare type MediatorManagerParams = {
+    baseTicketPrice: string;
+    ticketWindowDur: number;
+    ticketsPerWindow: number;
+    ticketSupply: number;
+    priceSupplyDeltaBP: number;
+    minInactiveWindowBeforeReset: number;
+    soldOutBP: number;
+    ticketMatureDur: number;
+    ticketCancelDur: number;
+    ticketExpireDur: number;
+    reqPoolBond: string;
+    poolDraftReward: string;
+    poolWinReward: string;
+    poolNumDraftee: number;
+    poolNoVoteSlashBP: number;
+    poolLoseVoteSlashBP: number;
+};
+declare type disputeManagerParams = {
+    evidenceDur: number;
+    predictDur: number;
+};
+declare type OthersParams = {
+    operatorBond: string;
+    allocatorAddr: string;
+};
 
 /**
  * TokenInfo describes an ERC20-like token EVM chain
@@ -897,6 +948,23 @@ declare function getChainID(name: string): number;
  */
 declare function isValidChain(chain: string): boolean;
 
+declare const contractsParams: ContractsParams;
+/**
+ * Get contracts params for a given network
+ */
+declare function getContractsParams(network: ChainNames): {
+    core: CoreParams;
+    marketCore: MarketCoreParams;
+    mediatorManager: MediatorManagerParams;
+    disputeManager: disputeManagerParams;
+    others: OthersParams;
+    token: {};
+    energon: {};
+    nft: {};
+    badgeManager: {};
+    assetRegistry: {};
+} | undefined;
+
 declare type MediatorPool = {
     name: string;
     description: string;
@@ -945,4 +1013,4 @@ declare function findTokenInLocalhost(address: string): TokenList.Token | undefi
  */
 declare function findTokenInSynthetic(address: string): TokenList.Token | undefined;
 
-export { Abi, type BadgeManifest, BadgeManifests, type ChainBadgeManifest, type ChainInfo, type ChainNames, type ContractInfo, type ContractNames, type Contracts, type KnownMediatorPools, type MediatorPool, MediatorPools, type PaymentMethods, TokenLists, Chains as default, findTokenInLocalhost, findTokenInSynthetic, getChain, getChainByName, getChainID, getChainNames, getChains, getChainsID, getTokenInfo, isValidChain, parseBadgeLocals, paymentMethods };
+export { Abi, type BadgeManifest, BadgeManifests, type ChainBadgeManifest, type ChainInfo, type ChainNames, type ContractInfo, type ContractNames, type Contracts, type KnownMediatorPools, type MediatorPool, MediatorPools, type PaymentMethods, TokenLists, contractsParams, Chains as default, findTokenInLocalhost, findTokenInSynthetic, getChain, getChainByName, getChainID, getChainNames, getChains, getChainsID, getContractsParams, getTokenInfo, isValidChain, parseBadgeLocals, paymentMethods };
