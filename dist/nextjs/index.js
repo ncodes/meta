@@ -19963,7 +19963,7 @@ var tokens7 = [
     name: "NGN",
     symbol: "NGN",
     decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/polygon/assets/0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619/logo.png"
+    logoURI: "https://storage.googleapis.com/joint-images/country-flags/nigeria.svg"
   }
 ];
 var version7 = {
