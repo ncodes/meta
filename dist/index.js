@@ -14976,7 +14976,7 @@ var Chains = [
     blockExplorer: "https://sepolia.etherscan.io",
     logoPath: IconEthereum,
     wrappedTokenInfo: new TokenInfo({
-      address: import.meta.env.SEPOLIA_WRAPPED_TOKEN_ADDRESS ?? import.meta.env.NEXT_PUBLIC_SEPOLIA_WRAPPED_TOKEN_ADDRESS ?? import.meta.env.VITE_SEPOLIA_WRAPPED_TOKEN_ADDRESS ?? "0xC0Bd590abDd9770985491aA034584091CAB9FcD1",
+      address: import.meta.env.SEPOLIA_WRAPPED_TOKEN_ADDRESS ?? import.meta.env.NEXT_PUBLIC_SEPOLIA_WRAPPED_TOKEN_ADDRESS ?? import.meta.env.VITE_SEPOLIA_WRAPPED_TOKEN_ADDRESS ?? "0x4263541D13298963498ff1f83d992812Ef3d2E73",
       name: "WETH",
       symbol: "WETH",
       decimals: 18,
@@ -19911,7 +19911,7 @@ var tokens6 = [
   {
     asset: "0001",
     type: "ERC20",
-    address: "0xC0Bd590abDd9770985491aA034584091CAB9FcD1",
+    address: "0x4263541D13298963498ff1f83d992812Ef3d2E73",
     name: "WETH",
     symbol: "WETH",
     decimals: 18,

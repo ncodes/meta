@@ -233,7 +233,7 @@ const Chains: ChainInfo[] = [
 				process.env.SEPOLIA_WRAPPED_TOKEN_ADDRESS ??
 				process.env.NEXT_PUBLIC_SEPOLIA_WRAPPED_TOKEN_ADDRESS ??
 				import.meta.env.VITE_SEPOLIA_WRAPPED_TOKEN_ADDRESS ??
-				'0xC0Bd590abDd9770985491aA034584091CAB9FcD1',
+				'0x4263541D13298963498ff1f83d992812Ef3d2E73',
 			name: 'WETH',
 			symbol: 'WETH',
 			decimals: 18,
