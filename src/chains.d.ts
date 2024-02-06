@@ -1,4 +1,4 @@
-import { Chain } from 'viem/_types/types/chain';
+import { Chain } from 'viem';
 import { ChainInfo } from './types/chain';
 /**
  * Mapping of supported chains' information

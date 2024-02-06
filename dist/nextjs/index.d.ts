@@ -1,5 +1,4 @@
 import { Chain } from 'viem';
-import { Chain as Chain$1 } from 'viem/_types/types/chain';
 
 declare const Abi: {
     BadgeManager: ({
@@ -921,7 +920,7 @@ declare function getChainsID(testnetOnly?: boolean, ignoreTestnet?: boolean, ign
  * @param ignoreTestnet Indicate whether to ignore testnet chains
  * @param ignore - Optionally specify an ID to omit in the result
  */
-declare function getChains(testnetOnly?: boolean, ignoreTestnet?: boolean, ignore?: number[]): Chain$1[];
+declare function getChains(testnetOnly?: boolean, ignoreTestnet?: boolean, ignore?: number[]): Chain[];
 /**
  * Get a chain by its chain ID
  * @param id - The chain ID

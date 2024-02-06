@@ -1,5 +1,4 @@
-import { Chain } from 'viem/_types/types/chain';
-import { arbitrum, bsc, hardhat, mainnet, optimism, polygon, sepolia } from 'viem/chains';
+import { Chain, arbitrum, bsc, hardhat, mainnet, optimism, polygon, sepolia } from 'viem/chains';
 import AssetRegistryABI from './abi/AssetRegistry.json';
 import BadgeManagerABI from './abi/BadgeManager.json';
 import CoreABI from './abi/Core.json';
