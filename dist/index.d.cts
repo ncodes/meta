@@ -1,4 +1,5 @@
-import { Chain } from 'viem/_types/types/chain';
+import { Chain } from 'viem';
+import { Chain as Chain$1 } from 'viem/_types/types/chain';
 
 declare const Abi: {
     BadgeManager: ({
@@ -759,11 +760,11 @@ interface ContractInfo {
     address?: string;
     abi: any;
 }
-declare type Contracts = {
+type Contracts = {
     [key in ContractNames]: ContractInfo;
 };
-declare type ContractNames = 'core' | 'token' | 'energon' | 'nft' | 'badgeManager' | 'marketCore' | 'disputeManager' | 'mediatorManager' | 'assetRegistry';
-declare type ContractsParams = {
+type ContractNames = 'core' | 'token' | 'energon' | 'nft' | 'badgeManager' | 'marketCore' | 'disputeManager' | 'mediatorManager' | 'assetRegistry';
+type ContractsParams = {
     [key in ChainNames]?: {
         core: CoreParams;
         marketCore: MarketCoreParams;
@@ -777,7 +778,7 @@ declare type ContractsParams = {
         assetRegistry: {};
     };
 };
-declare type CoreParams = {
+type CoreParams = {
     minTimeToPay: number;
     orderGraceDur: number;
     maxOpenOrders: number;
@@ -785,10 +786,10 @@ declare type CoreParams = {
     transferToFeePoolInterval: number;
     nftDiscountBP: number;
 };
-declare type MarketCoreParams = {
+type MarketCoreParams = {
     defaultDisputeDelayDur: number;
 };
-declare type MediatorManagerParams = {
+type MediatorManagerParams = {
     baseTicketPrice: string;
     ticketWindowDur: number;
     ticketsPerWindow: number;
@@ -806,11 +807,11 @@ declare type MediatorManagerParams = {
     poolNoVoteSlashBP: number;
     poolLoseVoteSlashBP: number;
 };
-declare type disputeManagerParams = {
+type disputeManagerParams = {
     evidenceDur: number;
     predictDur: number;
 };
-declare type OthersParams = {
+type OthersParams = {
     operatorBond: string;
     allocatorAddr: string;
 };
@@ -860,7 +861,7 @@ declare namespace TokenList {
     export {  };
 }
 
-declare type ChainNames = "ethereum" | "polygon" | "binance" | "optimism" | "localhost" | "sepolia";
+type ChainNames = 'ethereum' | 'polygon' | 'binance' | 'optimism' | 'localhost' | 'sepolia';
 interface ChainInfo {
     displayName: string;
     altDisplayName?: string;
@@ -878,7 +879,7 @@ interface ChainInfo {
     contracts?: Contracts;
 }
 
-declare type BadgeManifest = {
+type BadgeManifest = {
     name: string;
     issuer: string;
     issuerAddress: string;
@@ -887,7 +888,7 @@ declare type BadgeManifest = {
     longDescriptions: string[];
     claimPageUrl: string;
 };
-declare type ChainBadgeManifest = {
+type ChainBadgeManifest = {
     [key in ChainNames]?: {
         [badge: string]: BadgeManifest;
     };
@@ -920,7 +921,7 @@ declare function getChainsID(testnetOnly?: boolean, ignoreTestnet?: boolean, ign
  * @param ignoreTestnet Indicate whether to ignore testnet chains
  * @param ignore - Optionally specify an ID to omit in the result
  */
-declare function getChains(testnetOnly?: boolean, ignoreTestnet?: boolean, ignore?: number[]): Chain[];
+declare function getChains(testnetOnly?: boolean, ignoreTestnet?: boolean, ignore?: number[]): Chain$1[];
 /**
  * Get a chain by its chain ID
  * @param id - The chain ID
@@ -965,7 +966,7 @@ declare function getContractsParams(network: ChainNames): {
     assetRegistry: {};
 } | undefined;
 
-declare type MediatorPool = {
+type MediatorPool = {
     name: string;
     description: string;
     id: number;
@@ -976,12 +977,12 @@ declare type MediatorPool = {
     loseVoteSlashBP: number;
     numDraftees: number;
 };
-declare type KnownMediatorPools = {
+type KnownMediatorPools = {
     [key in ChainNames]?: MediatorPool[];
 };
 declare const MediatorPools: KnownMediatorPools;
 
-declare type PaymentMethods = {
+type PaymentMethods = {
     [key in ChainNames]?: {
         badge: string;
         name: string;
@@ -992,7 +993,7 @@ declare type PaymentMethods = {
 };
 declare const paymentMethods: PaymentMethods;
 
-declare type TokenListNames = ChainNames | "synthetic";
+type TokenListNames = ChainNames | "synthetic";
 declare const TokenLists: {
     [key in TokenListNames]: TokenList.TokenData;
 };
