@@ -1,4 +1,4 @@
-import { Chain } from 'viem';
+import { Chain } from 'viem/chains';
 import { Contracts } from './contract';
 import TokenInfo from './token';
 
