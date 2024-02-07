@@ -15223,12 +15223,12 @@ var MediatorPools = {
       name: "General",
       description: "For mediators specializing in global crypto to cash swaps.",
       id: 0,
-      reqBond: "10000000000000000000",
+      reqBond: "1000000000000000000000",
       draftReward: "10000000000000000000",
-      winReward: "10000000000000000000",
+      winReward: "20000000000000000000",
       noVoteSlashBP: 1e3,
-      loseVoteSlashBP: 1e3,
-      numDraftees: 3
+      loseVoteSlashBP: 2e3,
+      numDraftees: 1
     }
   ],
   ethereum: [

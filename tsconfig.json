@@ -1,22 +1,23 @@
 {
-  "include": ["src", "import-meta-env.polyfill.ts", "global.d.ts"],
-  "exclude": ["node_modules"],
-  "types": ["react"],
-  "compilerOptions": {
-    "module": "esnext",
-    "lib": ["dom", "esnext"],
-    "importHelpers": true,
-    "declaration": true,
-    "sourceMap": true,
-    "rootDir": "./src",
-    "strict": true,
-    "resolveJsonModule": true,
-    "noImplicitReturns": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "moduleResolution": "node",
-    "jsx": "react",
-    "esModuleInterop": true,
-    "skipLibCheck": true
-  }
+	"include": ["src", "import-meta-env.polyfill.ts", "global.d.ts"],
+	"exclude": ["node_modules"],
+	"types": ["react"],
+	"compilerOptions": {
+		"module": "esnext",
+		"lib": ["dom", "esnext"],
+		"importHelpers": true,
+		"declaration": true,
+		"sourceMap": true,
+		"rootDir": "./src",
+    ou
+		"strict": true,
+		"resolveJsonModule": true,
+		"noImplicitReturns": true,
+		"noUnusedLocals": true,
+		"noUnusedParameters": true,
+		"moduleResolution": "node",
+		"jsx": "react",
+		"esModuleInterop": true,
+		"skipLibCheck": true
+	}
 }
