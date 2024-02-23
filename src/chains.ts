@@ -1,4 +1,4 @@
-import { Chain, arbitrum, bsc, hardhat, mainnet, optimism, polygon, sepolia } from 'viem/chains';
+import { Chain, arbitrum, arbitrumSepolia, bsc, hardhat, mainnet, optimism, polygon, sepolia } from 'viem/chains';
 import AssetRegistryABI from './abi/AssetRegistry.json';
 import BadgeManagerABI from './abi/BadgeManager.json';
 import CoreABI from './abi/Core.json';
@@ -165,7 +165,7 @@ const Chains: ChainInfo[] = [
 		disabled: true,
 		displayName: 'Binance Chain',
 		altDisplayName: 'BSC',
-		queryName: 'binance-chain',
+		queryName: 'binance',
 		chainId: bsc.id,
 		chain: bsc,
 		symbol: 'BNB',
@@ -213,6 +213,110 @@ const Chains: ChainInfo[] = [
 			logoURI:
 				'https://assets-cdn.trustwallet.com/blockchains/optimism/assets/0x4200000000000000000000000000000000000006/logo.png',
 		}),
+	},
+	{
+		displayName: 'Arbitrum Sepolia',
+		queryName: 'arbitrum-sepolia',
+		testnet: true,
+		chainId: arbitrumSepolia.id,
+		chain: arbitrumSepolia,
+		symbol: 'ETH',
+		apiUrl:
+			process.env.ARBITRUM_SEPOLIA_API_URL ??
+			process.env.NEXT_PUBLIC_ARBITRUM_SEPOLIA_API_URL ??
+			import.meta.env.VITE_ARBITRUM_SEPOLIA_API_URL,
+		rpcUrl:
+			process.env.ARBITRUM_SEPOLIA_RPC_URL ??
+			process.env.NEXT_PUBLIC_ARBITRUM_SEPOLIA_RPC_URL ??
+			import.meta.env.VITE_ARBITRUM_SEPOLIA_RPC_URL,
+		blockExplorer: 'https://sepolia.arbiscan.io',
+		logoPath: IconEthereum as any,
+		wrappedTokenInfo: new TokenInfo({
+			address:
+				process.env.ARBITRUM_SEPOLIA_WRAPPED_TOKEN_ADDRESS ??
+				process.env.NEXT_PUBLIC_ARBITRUM_SEPOLIA_WRAPPED_TOKEN_ADDRESS ??
+				import.meta.env.VITE_ARBITRUM_SEPOLIA_WRAPPED_TOKEN_ADDRESS ??
+				'0x980B62Da83eFf3D4576C647993b0c1D7faf17c73',
+			name: 'WETH',
+			symbol: 'WETH',
+			decimals: 18,
+			abi: WETHABI,
+			logoURI:
+				'https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2/logo.png',
+		}),
+		contracts: {
+			core: {
+				address:
+					process.env.ARBITRUM_SEPOLIA_CORE_ADDRESS ??
+					process.env.NEXT_PUBLIC_ARBITRUM_SEPOLIA_CORE_ADDRESS ??
+					import.meta.env.VITE_ARBITRUM_SEPOLIA_CORE_ADDRESS ??
+					'0xc79b36216F29C799aef1ea11F6E9bFEed097019D',
+				abi: CoreABI,
+			},
+			token: {
+				address:
+					process.env.ARBITRUM_SEPOLIA_TOKEN_ADDRESS ??
+					process.env.NEXT_PUBLIC_ARBITRUM_SEPOLIA_TOKEN_ADDRESS ??
+					import.meta.env.VITE_ARBITRUM_SEPOLIA_TOKEN_ADDRESS ??
+					'0x3A56baecFa7b4A967B8aDF35a0494e22Dd807A86',
+				abi: NativeTokenABI,
+			},
+			badgeManager: {
+				address:
+					process.env.ARBITRUM_SEPOLIA_BADGE_MGR_ADDRESS ??
+					process.env.NEXT_PUBLIC_ARBITRUM_SEPOLIA_BADGE_MGR_ADDRESS ??
+					import.meta.env.VITE_ARBITRUM_SEPOLIA_BADGE_MGR_ADDRESS ??
+					'0x9d7beF02CfFEb507D67C3706ABE6e280A845f82a',
+				abi: BadgeManagerABI,
+			},
+			marketCore: {
+				address:
+					process.env.ARBITRUM_SEPOLIA_MARKET_CORE_ADDRESS ??
+					process.env.NEXT_PUBLIC_ARBITRUM_SEPOLIA_MARKET_CORE_ADDRESS ??
+					import.meta.env.VITE_ARBITRUM_SEPOLIA_MARKET_CORE_ADDRESS ??
+					'0x7561bEC4a302568f4bf6027327bdd59aEc104412',
+				abi: MarketCoreABI,
+			},
+			disputeManager: {
+				address:
+					process.env.ARBITRUM_SEPOLIA_DISPUTE_MGR_ADDRESS ??
+					process.env.NEXT_PUBLIC_ARBITRUM_SEPOLIA_DISPUTE_MGR_ADDRESS ??
+					import.meta.env.VITE_ARBITRUM_SEPOLIA_DISPUTE_MGR_ADDRESS ??
+					'0xd168EeF9d683a1CBac60De600B8254F71429c844',
+				abi: DisputeManagerABI,
+			},
+			mediatorManager: {
+				address:
+					process.env.ARBITRUM_SEPOLIA_MEDIATOR_MGR_ADDRESS ??
+					process.env.NEXT_PUBLIC_ARBITRUM_SEPOLIA_MEDIATOR_MGR_ADDRESS ??
+					import.meta.env.VITE_ARBITRUM_SEPOLIA_MEDIATOR_MGR_ADDRESS ??
+					'0x24C1A0B6bD76E9D6b4D3Ec43dac3F6B4626d43d7',
+				abi: MediatorManagerABI,
+			},
+			energon: {
+				address:
+					process.env.ARBITRUM_SEPOLIA_ENERGON_ADDRESS ??
+					process.env.NEXT_PUBLIC_ARBITRUM_SEPOLIA_ENERGON_ADDRESS ??
+					import.meta.env.VITE_ARBITRUM_SEPOLIA_ENERGON_ADDRESS,
+				abi: EnergonABI,
+			},
+			nft: {
+				address:
+					process.env.ARBITRUM_SEPOLIA_NFT_ADDRESS ??
+					process.env.NEXT_PUBLIC_ARBITRUM_SEPOLIA_NFT_ADDRESS ??
+					import.meta.env.VITE_ARBITRUM_SEPOLIA_NFT_ADDRESS ??
+					'0x77e8489eED7D6718fFcBe3dEA0F776f00fcf513e',
+				abi: NftABI,
+			},
+			assetRegistry: {
+				address:
+					process.env.ARBITRUM_SEPOLIA_ASSET_REG_ADDRESS ??
+					process.env.NEXT_PUBLIC_ARBITRUM_SEPOLIA_ASSET_REG_ADDRESS ??
+					import.meta.env.VITE_ARBITRUM_SEPOLIA_ASSET_REG_ADDRESS ??
+					'0xdFa0520fafd554aA6d768B065f982D5a01365a4C',
+				abi: AssetRegistryABI,
+			},
+		},
 	},
 	{
 		displayName: 'Sepolia',

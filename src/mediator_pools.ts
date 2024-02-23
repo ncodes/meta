@@ -18,7 +18,7 @@ export const MediatorPools: KnownMediatorPools = {
 	localhost: [
 		{
 			name: 'General',
-			description: 'For mediators specializing in global crypto to cash swaps.',
+			description: 'For mediators specializing in global crypto to fiat swaps and vice versa.',
 			id: 0,
 			reqBond: '1000000000000000000000',
 			draftReward: '10000000000000000000',
@@ -31,7 +31,7 @@ export const MediatorPools: KnownMediatorPools = {
 	ethereum: [
 		{
 			name: 'General',
-			description: 'For mediators specializing in global crypto to cash swaps.',
+			description: 'For mediators specializing in global crypto to fiat swaps and vice versa.',
 			id: 0,
 			reqBond: '10000000000000000000',
 			draftReward: '10000000000000000000',
@@ -44,7 +44,20 @@ export const MediatorPools: KnownMediatorPools = {
 	sepolia: [
 		{
 			name: 'General',
-			description: 'For mediators specializing in global crypto to cash swaps.',
+			description: 'For mediators specializing in global crypto to fiat swaps and vice versa.',
+			id: 0,
+			reqBond: '1000000000000000000000',
+			draftReward: '100000000000000000000',
+			winReward: '200000000000000000000',
+			noVoteSlashBP: 1000,
+			loseVoteSlashBP: 2000,
+			numDraftees: 1,
+		},
+	],
+	'arbitrum-sepolia': [
+		{
+			name: 'General',
+			description: 'For mediators specializing in global crypto to fiat swaps and vice versa.',
 			id: 0,
 			reqBond: '1000000000000000000000',
 			draftReward: '100000000000000000000',
