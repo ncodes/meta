@@ -90,14 +90,16 @@ const Chains: ChainInfo[] = [
 				address:
 					process.env.ETHEREUM_ENERGON_ADDRESS ??
 					process.env.NEXT_PUBLIC_ETHEREUM_ENERGON_ADDRESS ??
-					import.meta.env.VITE_ETHEREUM_ENERGON_ADDRESS,
+					import.meta.env.VITE_ETHEREUM_ENERGON_ADDRESS ??
+					'0x7787D10F8F277bC509fb79c68BFC508d69dd41dC',
 				abi: EnergonABI,
 			},
 			nft: {
 				address:
 					process.env.ETHEREUM_NFT_ADDRESS ??
 					process.env.NEXT_PUBLIC_ETHEREUM_NFT_ADDRESS ??
-					import.meta.env.VITE_ETHEREUM_NFT_ADDRESS,
+					import.meta.env.VITE_ETHEREUM_NFT_ADDRESS ??
+					'0x07b7cdd77e18ac2b0f0a0b529f2ea86200c9ebda',
 				abi: NftABI,
 			},
 			assetRegistry: {
