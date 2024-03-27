@@ -15312,6 +15312,50 @@ var contractsParams = {
       poolLoseVoteSlashBP: 2e3
     },
     assetRegistry: {}
+  },
+  ethereum: {
+    others: {
+      operatorBond: "0",
+      allocatorAddr: ""
+    },
+    core: {
+      minTimeToPay: 0,
+      orderGraceDur: 0,
+      maxOpenOrders: 0,
+      maxOpenDisputes: 0,
+      transferToFeePoolInterval: 0,
+      nftDiscountBP: 0
+    },
+    token: {},
+    energon: {},
+    nft: {},
+    badgeManager: {},
+    marketCore: {
+      defaultDisputeDelayDur: 0
+    },
+    disputeManager: {
+      evidenceDur: 0,
+      predictDur: 0
+    },
+    mediatorManager: {
+      baseTicketPrice: "0",
+      ticketWindowDur: 0,
+      ticketsPerWindow: 0,
+      ticketSupply: 0,
+      priceSupplyDeltaBP: 0,
+      minInactiveWindowBeforeReset: 0,
+      soldOutBP: 0,
+      ticketMatureDur: 0,
+      ticketCancelDur: 0,
+      ticketExpireDur: 0,
+      reqPoolBond: "0",
+      poolDraftReward: "0",
+      poolWinReward: "0",
+      poolNumDraftee: 0,
+      poolNoVoteSlashBP: 0,
+      poolLoseVoteSlashBP: 0
+    },
+    assetRegistry: {}
   }
 };
 function getContractsParams(network) {
