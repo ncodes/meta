@@ -67,4 +67,17 @@ export const MediatorPools: KnownMediatorPools = {
 			numDraftees: 1,
 		},
 	],
+	arbitrum: [
+		{
+			name: 'General',
+			description: 'For mediators specializing in global crypto to fiat swaps and vice versa.',
+			id: 0,
+			reqBond: '1000000000000000000000',
+			draftReward: '100000000000000000000',
+			winReward: '200000000000000000000',
+			noVoteSlashBP: 1000,
+			loseVoteSlashBP: 2000,
+			numDraftees: 1,
+		},
+	],
 };

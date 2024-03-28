@@ -14956,13 +14956,51 @@ var Chains = [
     blockExplorer: "https://arbiscan.io",
     logoPath: IconArbitrum,
     wrappedTokenInfo: new TokenInfo({
-      address: process.env.ARBITRUM_WRAPPED_TOKEN_ADDRESS ?? process.env.NEXT_PUBLIC_ARBITRUM_WRAPPED_TOKEN_ADDRESS ?? process.env.VITE_ARBITRUM_WRAPPED_TOKEN_ADDRESS,
+      address: process.env.ARBITRUM_WRAPPED_TOKEN_ADDRESS ?? process.env.NEXT_PUBLIC_ARBITRUM_WRAPPED_TOKEN_ADDRESS ?? process.env.VITE_ARBITRUM_WRAPPED_TOKEN_ADDRESS ?? "0x82aF49447D8a07e3bd95BD0d56f35241523fBab1",
       name: "WETH",
       symbol: "WETH",
       decimals: 18,
       abi: WETH_default,
       logoURI: "https://assets-cdn.trustwallet.com/blockchains/optimism/assets/0x4200000000000000000000000000000000000006/logo.png"
-    })
+    }),
+    contracts: {
+      core: {
+        address: process.env.ARBITRUM_SEPOLIA_CORE_ADDRESS ?? process.env.NEXT_PUBLIC_ARBITRUM_SEPOLIA_CORE_ADDRESS ?? process.env.VITE_ARBITRUM_SEPOLIA_CORE_ADDRESS ?? "0x2c944d14B79A26E9D656D3f9Ee273B4916De73b8",
+        abi: Core_default
+      },
+      token: {
+        address: process.env.ARBITRUM_SEPOLIA_TOKEN_ADDRESS ?? process.env.NEXT_PUBLIC_ARBITRUM_SEPOLIA_TOKEN_ADDRESS ?? process.env.VITE_ARBITRUM_SEPOLIA_TOKEN_ADDRESS ?? "0xE7734EDDd701cDb40AF03d06d43F12cC7699A548",
+        abi: Token_default
+      },
+      badgeManager: {
+        address: process.env.ARBITRUM_SEPOLIA_BADGE_MGR_ADDRESS ?? process.env.NEXT_PUBLIC_ARBITRUM_SEPOLIA_BADGE_MGR_ADDRESS ?? process.env.VITE_ARBITRUM_SEPOLIA_BADGE_MGR_ADDRESS ?? "0x4af678028311A3d241Afd4Ac16588Ad167bc8829",
+        abi: BadgeManager_default
+      },
+      marketCore: {
+        address: process.env.ARBITRUM_SEPOLIA_MARKET_CORE_ADDRESS ?? process.env.NEXT_PUBLIC_ARBITRUM_SEPOLIA_MARKET_CORE_ADDRESS ?? process.env.VITE_ARBITRUM_SEPOLIA_MARKET_CORE_ADDRESS ?? "0xf0371C639986d20C7dE072ab0a700B3C2A51Ff60",
+        abi: MarketCore_default
+      },
+      disputeManager: {
+        address: process.env.ARBITRUM_SEPOLIA_DISPUTE_MGR_ADDRESS ?? process.env.NEXT_PUBLIC_ARBITRUM_SEPOLIA_DISPUTE_MGR_ADDRESS ?? process.env.VITE_ARBITRUM_SEPOLIA_DISPUTE_MGR_ADDRESS ?? "0x2fC197a9B4CFd9a059f1A0f216801351474F9910",
+        abi: DisputeManager_default
+      },
+      mediatorManager: {
+        address: process.env.ARBITRUM_SEPOLIA_MEDIATOR_MGR_ADDRESS ?? process.env.NEXT_PUBLIC_ARBITRUM_SEPOLIA_MEDIATOR_MGR_ADDRESS ?? process.env.VITE_ARBITRUM_SEPOLIA_MEDIATOR_MGR_ADDRESS ?? "0x689d76878bff3929B8f48166cA8E08C23Db23757",
+        abi: MediatorManager_default
+      },
+      energon: {
+        address: process.env.ARBITRUM_SEPOLIA_ENERGON_ADDRESS ?? process.env.NEXT_PUBLIC_ARBITRUM_SEPOLIA_ENERGON_ADDRESS ?? process.env.VITE_ARBITRUM_SEPOLIA_ENERGON_ADDRESS,
+        abi: Energon_default
+      },
+      nft: {
+        address: process.env.ARBITRUM_SEPOLIA_NFT_ADDRESS ?? process.env.NEXT_PUBLIC_ARBITRUM_SEPOLIA_NFT_ADDRESS ?? process.env.VITE_ARBITRUM_SEPOLIA_NFT_ADDRESS,
+        abi: NFT_default
+      },
+      assetRegistry: {
+        address: process.env.ARBITRUM_SEPOLIA_ASSET_REG_ADDRESS ?? process.env.NEXT_PUBLIC_ARBITRUM_SEPOLIA_ASSET_REG_ADDRESS ?? process.env.VITE_ARBITRUM_SEPOLIA_ASSET_REG_ADDRESS ?? "0xF0F67172D72102A372d602a0437AFb012b857cd9",
+        abi: AssetRegistry_default
+      }
+    }
   },
   {
     displayName: "Arbitrum Sepolia",
@@ -15269,6 +15307,50 @@ var contractsParams = {
     },
     assetRegistry: {}
   },
+  arbitrum: {
+    others: {
+      operatorBond: "0",
+      allocatorAddr: "0xA47FFd6c828EFB58c6B42F722ABA286cF87C19a0"
+    },
+    core: {
+      minTimeToPay: 1800,
+      orderGraceDur: 1800,
+      maxOpenOrders: 3,
+      maxOpenDisputes: 3,
+      transferToFeePoolInterval: 86400,
+      nftDiscountBP: 2500
+    },
+    token: {},
+    energon: {},
+    nft: {},
+    badgeManager: {},
+    marketCore: {
+      defaultDisputeDelayDur: 0
+    },
+    disputeManager: {
+      evidenceDur: 1800,
+      predictDur: 3600
+    },
+    mediatorManager: {
+      baseTicketPrice: "100000000000000000000",
+      ticketWindowDur: 86400,
+      ticketsPerWindow: 256,
+      ticketSupply: 6e4,
+      priceSupplyDeltaBP: 2e3,
+      minInactiveWindowBeforeReset: 7,
+      soldOutBP: 8e3,
+      ticketMatureDur: 86400,
+      ticketCancelDur: 604800,
+      ticketExpireDur: 172800,
+      reqPoolBond: "1000000000000000000000",
+      poolDraftReward: "100000000000000000000",
+      poolWinReward: "200000000000000000000",
+      poolNumDraftee: 1,
+      poolNoVoteSlashBP: 1e3,
+      poolLoseVoteSlashBP: 2e3
+    },
+    assetRegistry: {}
+  },
   "arbitrum-sepolia": {
     others: {
       operatorBond: "0",
@@ -15404,6 +15486,19 @@ var MediatorPools = {
     }
   ],
   "arbitrum-sepolia": [
+    {
+      name: "General",
+      description: "For mediators specializing in global crypto to fiat swaps and vice versa.",
+      id: 0,
+      reqBond: "1000000000000000000000",
+      draftReward: "100000000000000000000",
+      winReward: "200000000000000000000",
+      noVoteSlashBP: 1e3,
+      loseVoteSlashBP: 2e3,
+      numDraftees: 1
+    }
+  ],
+  arbitrum: [
     {
       name: "General",
       description: "For mediators specializing in global crypto to fiat swaps and vice versa.",
