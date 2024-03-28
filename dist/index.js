@@ -15679,18 +15679,39 @@ __export(arbitrum_exports, {
 var name2 = "Trust Wallet: Arbitrum";
 var logoURI2 = "https://trustwallet.com/assets/images/favicon.png";
 var timestamp2 = "2021-10-07T08:50:36.056Z";
-var tokens2 = [];
 var version2 = {
   major: 6,
   minor: 0,
   patch: 0
 };
+var tokens2 = [
+  {
+    asset: "0001",
+    type: "ERC20",
+    address: "0x82aF49447D8a07e3bd95BD0d56f35241523fBab1",
+    name: "WETH",
+    symbol: "WETH",
+    decimals: 18,
+    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2/logo.png",
+    price: 0
+  },
+  {
+    asset: "0002",
+    type: "ERC20",
+    address: "0xE7734EDDd701cDb40AF03d06d43F12cC7699A548",
+    name: "Joint",
+    symbol: "tP2P",
+    decimals: 18,
+    logoURI: "https://storage.googleapis.com/joint-images/token-logos/p2p.svg",
+    price: 0
+  }
+];
 var arbitrum_default = {
   name: name2,
   logoURI: logoURI2,
   timestamp: timestamp2,
-  tokens: tokens2,
-  version: version2
+  version: version2,
+  tokens: tokens2
 };
 
 // src/tokenlist/binance.json
