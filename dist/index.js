@@ -15005,6 +15005,7 @@ var Chains = [
     displayName: "Arbitrum Sepolia",
     queryName: "arbitrum-sepolia",
     testnet: true,
+    disabled: true,
     chainId: arbitrumSepolia.id,
     chain: arbitrumSepolia,
     symbol: "ETH",
