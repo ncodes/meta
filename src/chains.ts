@@ -218,71 +218,71 @@ const Chains: ChainInfo[] = [
 		contracts: {
 			core: {
 				address:
-					process.env.ARBITRUM_SEPOLIA_CORE_ADDRESS ??
-					process.env.NEXT_PUBLIC_ARBITRUM_SEPOLIA_CORE_ADDRESS ??
-					import.meta.env.VITE_ARBITRUM_SEPOLIA_CORE_ADDRESS ??
+					process.env.ARBITRUM_CORE_ADDRESS ??
+					process.env.NEXT_PUBLIC_ARBITRUM_CORE_ADDRESS ??
+					import.meta.env.VITE_ARBITRUM_CORE_ADDRESS ??
 					'0x2c944d14B79A26E9D656D3f9Ee273B4916De73b8',
 				abi: CoreABI,
 			},
 			token: {
 				address:
-					process.env.ARBITRUM_SEPOLIA_TOKEN_ADDRESS ??
-					process.env.NEXT_PUBLIC_ARBITRUM_SEPOLIA_TOKEN_ADDRESS ??
-					import.meta.env.VITE_ARBITRUM_SEPOLIA_TOKEN_ADDRESS ??
+					process.env.ARBITRUM_TOKEN_ADDRESS ??
+					process.env.NEXT_PUBLIC_ARBITRUM_TOKEN_ADDRESS ??
+					import.meta.env.VITE_ARBITRUM_TOKEN_ADDRESS ??
 					'0xE7734EDDd701cDb40AF03d06d43F12cC7699A548',
 				abi: NativeTokenABI,
 			},
 			badgeManager: {
 				address:
-					process.env.ARBITRUM_SEPOLIA_BADGE_MGR_ADDRESS ??
-					process.env.NEXT_PUBLIC_ARBITRUM_SEPOLIA_BADGE_MGR_ADDRESS ??
-					import.meta.env.VITE_ARBITRUM_SEPOLIA_BADGE_MGR_ADDRESS ??
+					process.env.ARBITRUM_BADGE_MGR_ADDRESS ??
+					process.env.NEXT_PUBLIC_ARBITRUM_BADGE_MGR_ADDRESS ??
+					import.meta.env.VITE_ARBITRUM_BADGE_MGR_ADDRESS ??
 					'0x4af678028311A3d241Afd4Ac16588Ad167bc8829',
 				abi: BadgeManagerABI,
 			},
 			marketCore: {
 				address:
-					process.env.ARBITRUM_SEPOLIA_MARKET_CORE_ADDRESS ??
-					process.env.NEXT_PUBLIC_ARBITRUM_SEPOLIA_MARKET_CORE_ADDRESS ??
-					import.meta.env.VITE_ARBITRUM_SEPOLIA_MARKET_CORE_ADDRESS ??
+					process.env.ARBITRUM_MARKET_CORE_ADDRESS ??
+					process.env.NEXT_PUBLIC_ARBITRUM_MARKET_CORE_ADDRESS ??
+					import.meta.env.VITE_ARBITRUM_MARKET_CORE_ADDRESS ??
 					'0xf0371C639986d20C7dE072ab0a700B3C2A51Ff60',
 				abi: MarketCoreABI,
 			},
 			disputeManager: {
 				address:
-					process.env.ARBITRUM_SEPOLIA_DISPUTE_MGR_ADDRESS ??
-					process.env.NEXT_PUBLIC_ARBITRUM_SEPOLIA_DISPUTE_MGR_ADDRESS ??
-					import.meta.env.VITE_ARBITRUM_SEPOLIA_DISPUTE_MGR_ADDRESS ??
+					process.env.ARBITRUM_DISPUTE_MGR_ADDRESS ??
+					process.env.NEXT_PUBLIC_ARBITRUM_DISPUTE_MGR_ADDRESS ??
+					import.meta.env.VITE_ARBITRUM_DISPUTE_MGR_ADDRESS ??
 					'0x2fC197a9B4CFd9a059f1A0f216801351474F9910',
 				abi: DisputeManagerABI,
 			},
 			mediatorManager: {
 				address:
-					process.env.ARBITRUM_SEPOLIA_MEDIATOR_MGR_ADDRESS ??
-					process.env.NEXT_PUBLIC_ARBITRUM_SEPOLIA_MEDIATOR_MGR_ADDRESS ??
-					import.meta.env.VITE_ARBITRUM_SEPOLIA_MEDIATOR_MGR_ADDRESS ??
+					process.env.ARBITRUM_MEDIATOR_MGR_ADDRESS ??
+					process.env.NEXT_PUBLIC_ARBITRUM_MEDIATOR_MGR_ADDRESS ??
+					import.meta.env.VITE_ARBITRUM_MEDIATOR_MGR_ADDRESS ??
 					'0x689d76878bff3929B8f48166cA8E08C23Db23757',
 				abi: MediatorManagerABI,
 			},
 			energon: {
 				address:
-					process.env.ARBITRUM_SEPOLIA_ENERGON_ADDRESS ??
-					process.env.NEXT_PUBLIC_ARBITRUM_SEPOLIA_ENERGON_ADDRESS ??
-					import.meta.env.VITE_ARBITRUM_SEPOLIA_ENERGON_ADDRESS,
+					process.env.ARBITRUM_ENERGON_ADDRESS ??
+					process.env.NEXT_PUBLIC_ARBITRUM_ENERGON_ADDRESS ??
+					import.meta.env.VITE_ARBITRUM_ENERGON_ADDRESS,
 				abi: EnergonABI,
 			},
 			nft: {
 				address:
-					process.env.ARBITRUM_SEPOLIA_NFT_ADDRESS ??
-					process.env.NEXT_PUBLIC_ARBITRUM_SEPOLIA_NFT_ADDRESS ??
-					import.meta.env.VITE_ARBITRUM_SEPOLIA_NFT_ADDRESS,
+					process.env.ARBITRUM_NFT_ADDRESS ??
+					process.env.NEXT_PUBLIC_ARBITRUM_NFT_ADDRESS ??
+					import.meta.env.VITE_ARBITRUM_NFT_ADDRESS,
 				abi: NftABI,
 			},
 			assetRegistry: {
 				address:
-					process.env.ARBITRUM_SEPOLIA_ASSET_REG_ADDRESS ??
-					process.env.NEXT_PUBLIC_ARBITRUM_SEPOLIA_ASSET_REG_ADDRESS ??
-					import.meta.env.VITE_ARBITRUM_SEPOLIA_ASSET_REG_ADDRESS ??
+					process.env.ARBITRUM_ASSET_REG_ADDRESS ??
+					process.env.NEXT_PUBLIC_ARBITRUM_ASSET_REG_ADDRESS ??
+					import.meta.env.VITE_ARBITRUM_ASSET_REG_ADDRESS ??
 					'0xF0F67172D72102A372d602a0437AFb012b857cd9',
 				abi: AssetRegistryABI,
 			},
