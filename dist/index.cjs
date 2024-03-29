@@ -14995,7 +14995,6 @@ var Chains = [
     })
   },
   {
-    disabled: true,
     displayName: "Arbitrum",
     queryName: "arbitrum",
     chainId: import_chains.arbitrum.id,

@@ -14945,7 +14945,6 @@ var Chains = [
     })
   },
   {
-    disabled: true,
     displayName: "Arbitrum",
     queryName: "arbitrum",
     chainId: arbitrum.id,

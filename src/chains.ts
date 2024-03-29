@@ -191,7 +191,6 @@ const Chains: ChainInfo[] = [
 		}),
 	},
 	{
-		disabled: true,
 		displayName: 'Arbitrum',
 		queryName: 'arbitrum',
 		chainId: arbitrum.id,
