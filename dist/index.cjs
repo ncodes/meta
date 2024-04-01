@@ -14656,6 +14656,34 @@ var BadgeManifests = {
         "See our [privacy policy](http://joint.exchange/legal/privacy-policy) to learn how we handle your data."
       ]
     }
+  },
+  arbitrum: {
+    "^kyc(/[a-zA-Z]{3})?$": {
+      name: "KYC",
+      issuer: "Joint Labs",
+      issuerAddress: "0x7D66e2a2Ad08e8708e92B2f01f36181502D2c964",
+      logoUrl: "https://storage.googleapis.com/joint-images/kyc-badge-icon.svg",
+      claimPageUrl: process.env.ARBITRUM_KYC_BADGE_MANIFEST_CLAIM_PAGE_URL ?? process.env.NEXT_PUBLIC_ARBITRUM_KYC_BADGE_MANIFEST_CLAIM_PAGE_URL ?? process.env.VITE_ARBITRUM_KYC_BADGE_MANIFEST_CLAIM_PAGE_URL ?? "https://kycbadge.joint.exchange/claim/kyc",
+      shortDescription: "Claim KYC Badge",
+      longDescriptions: [
+        "Complete the KYC verification process to claim a global or national KYC badge that will grant you access to a market or liquidity that require KYC.",
+        "See our [privacy policy](http://joint.exchange/legal/privacy-policy) to learn how we handle your data."
+      ]
+    }
+  },
+  ["arbitrum-sepolia"]: {
+    "^kyc(/[a-zA-Z]{3})?$": {
+      name: "KYC",
+      issuer: "Joint Labs",
+      issuerAddress: "0x7D66e2a2Ad08e8708e92B2f01f36181502D2c964",
+      logoUrl: "https://storage.googleapis.com/joint-images/kyc-badge-icon.svg",
+      claimPageUrl: process.env.ARBITRUM_SEPOLIA_KYC_BADGE_MANIFEST_CLAIM_PAGE_URL ?? process.env.NEXT_PUBLIC_ARBITRUM_SEPOLIA_KYC_BADGE_MANIFEST_CLAIM_PAGE_URL ?? process.env.VITE_ARBITRUM_SEPOLIA_KYC_BADGE_MANIFEST_CLAIM_PAGE_URL ?? "https://kycbadge.joint.exchange/claim/kyc",
+      shortDescription: "Claim KYC Badge",
+      longDescriptions: [
+        "Complete the KYC verification process to claim a global or national KYC badge that will grant you access to a market or liquidity that require KYC.",
+        "See our [privacy policy](http://joint.exchange/legal/privacy-policy) to learn how we handle your data."
+      ]
+    }
   }
 };
 function parseBadgeLocals(badge, locals) {
