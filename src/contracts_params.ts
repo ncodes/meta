@@ -53,6 +53,7 @@ export const contractsParams: ContractsParams = {
 			minerMatureDur: 86400,
 			minerCancelDur: 604800,
 		},
+		chainlink: {},
 	},
 	sepolia: {
 		others: {
@@ -105,6 +106,7 @@ export const contractsParams: ContractsParams = {
 			minerMatureDur: 86400,
 			minerCancelDur: 604800,
 		},
+		chainlink: {},
 	},
 	arbitrum: {
 		others: {
@@ -157,6 +159,7 @@ export const contractsParams: ContractsParams = {
 			minerMatureDur: 86400,
 			minerCancelDur: 604800,
 		},
+		chainlink: {},
 	},
 	'arbitrum-sepolia': {
 		others: {
@@ -209,6 +212,7 @@ export const contractsParams: ContractsParams = {
 			minerMatureDur: 86400,
 			minerCancelDur: 604800,
 		},
+		chainlink: {},
 	},
 	ethereum: {
 		others: {
@@ -261,6 +265,7 @@ export const contractsParams: ContractsParams = {
 			minerMatureDur: 86400,
 			minerCancelDur: 604800,
 		},
+		chainlink: {},
 	},
 };
 

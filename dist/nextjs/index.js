@@ -16001,7 +16001,8 @@ var contractsParams = {
       minerBond: "1000000000000000000000",
       minerMatureDur: 86400,
       minerCancelDur: 604800
-    }
+    },
+    chainlink: {}
   },
   sepolia: {
     others: {
@@ -16053,7 +16054,8 @@ var contractsParams = {
       minerBond: "1000000000000000000000",
       minerMatureDur: 86400,
       minerCancelDur: 604800
-    }
+    },
+    chainlink: {}
   },
   arbitrum: {
     others: {
@@ -16105,7 +16107,8 @@ var contractsParams = {
       minerBond: "1000000000000000000000",
       minerMatureDur: 86400,
       minerCancelDur: 604800
-    }
+    },
+    chainlink: {}
   },
   "arbitrum-sepolia": {
     others: {
@@ -16157,7 +16160,8 @@ var contractsParams = {
       minerBond: "1000000000000000000000",
       minerMatureDur: 86400,
       minerCancelDur: 604800
-    }
+    },
+    chainlink: {}
   },
   ethereum: {
     others: {
@@ -16209,7 +16213,8 @@ var contractsParams = {
       minerBond: "1000000000000000000000",
       minerMatureDur: 86400,
       minerCancelDur: 604800
-    }
+    },
+    chainlink: {}
   }
 };
 function getContractsParams(network) {
@@ -21138,11 +21143,15 @@ function findTokenInSynthetic(address) {
   });
 }
 
+// src/types/contract.ts
+var contract_exports = {};
+
 // src/index.ts
 var src_default = chains_default;
 export {
   Abi,
   BadgeManifests,
+  contract_exports as ContractParamTypes,
   MediatorPools,
   TokenLists,
   contractsParams,

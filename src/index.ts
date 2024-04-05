@@ -14,6 +14,7 @@ import { KnownMediatorPools, MediatorPool, MediatorPools } from './mediator_pool
 import { PaymentMethods, paymentMethods } from './payment_methods';
 import { TokenLists, findTokenInLocalhost, findTokenInSynthetic, getTokenInfo } from './tokens_list';
 import { ChainInfo, ChainNames } from './types/chain';
+import * as ContractParamTypes from './types/contract';
 import { ContractInfo, ContractNames, Contracts } from './types/contract';
 
 export default Chains;
@@ -26,6 +27,7 @@ export {
 	ChainNames,
 	ContractInfo,
 	ContractNames,
+	ContractParamTypes,
 	Contracts,
 	KnownMediatorPools,
 	MediatorPool,

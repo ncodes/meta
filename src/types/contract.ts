@@ -29,6 +29,7 @@ export type ContractsParams = {
 		disputeManager: DisputeManagerParams;
 		minerRegistry: MinerRegistryParams;
 		others: OthersParams;
+		chainlink: ChainLinkParams;
 		token: {};
 		energon: {};
 		nft: {};
@@ -38,52 +39,59 @@ export type ContractsParams = {
 };
 
 export type CoreParams = {
-	minTimeToPay: number;
-	orderGraceDur: number;
-	maxOpenOrders: number;
-	maxOpenDisputes: number;
-	transferToFeePoolInterval: number;
-	nftDiscountBP: number;
+	minTimeToPay?: number;
+	orderGraceDur?: number;
+	maxOpenOrders?: number;
+	maxOpenDisputes?: number;
+	transferToFeePoolInterval?: number;
+	nftDiscountBP?: number;
 };
 
 export type MarketCoreParams = {
-	defaultDisputeDelayDur: number;
+	defaultDisputeDelayDur?: number;
 };
 
 export type MediatorManagerParams = {
-	baseTicketPrice: string;
-	ticketWindowDur: number;
-	ticketsPerWindow: number;
-	ticketSupply: number;
-	priceSupplyDeltaBP: number;
-	minInactiveWindowBeforeReset: number;
-	soldOutBP: number;
-	ticketMatureDur: number;
-	ticketCancelDur: number;
-	ticketExpireDur: number;
-	ticketPauseDur: number;
-	reqPoolBond: string;
-	poolDraftReward: string;
-	poolWinReward: string;
-	poolNumDraftee: number;
-	poolNoVoteSlashBP: number;
-	poolLoseVoteSlashBP: number;
-	poolEvidenceDur: number;
-	poolPredictDur: number;
+	baseTicketPrice?: string;
+	ticketWindowDur?: number;
+	ticketsPerWindow?: number;
+	ticketSupply?: number;
+	priceSupplyDeltaBP?: number;
+	minInactiveWindowBeforeReset?: number;
+	soldOutBP?: number;
+	ticketMatureDur?: number;
+	ticketCancelDur?: number;
+	ticketExpireDur?: number;
+	ticketPauseDur?: number;
+	reqPoolBond?: string;
+	poolDraftReward?: string;
+	poolWinReward?: string;
+	poolNumDraftee?: number;
+	poolNoVoteSlashBP?: number;
+	poolLoseVoteSlashBP?: number;
+	poolEvidenceDur?: number;
+	poolPredictDur?: number;
 };
 
 export type DisputeManagerParams = {
-	evidenceDur: number;
-	predictDur: number;
+	evidenceDur?: number;
+	predictDur?: number;
 };
 
 export type OthersParams = {
-	operatorBond: string;
-	allocatorAddr: string;
+	operatorBond?: string;
+	allocatorAddr?: string;
+	safe?: string;
 };
 
 export type MinerRegistryParams = {
-	minerBond: string;
-	minerMatureDur: number;
-	minerCancelDur: number;
+	minerBond?: string;
+	minerMatureDur?: number;
+	minerCancelDur?: number;
+};
+
+export type ChainLinkParams = {
+	chainlinkKeyHash?: string;
+	chainlinkCoordinator?: string;
+	chainlinkSubId?: number;
 };

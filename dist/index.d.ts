@@ -771,6 +771,7 @@ type ContractsParams = {
         disputeManager: DisputeManagerParams;
         minerRegistry: MinerRegistryParams;
         others: OthersParams;
+        chainlink: ChainLinkParams;
         token: {};
         energon: {};
         nft: {};
@@ -779,50 +780,71 @@ type ContractsParams = {
     };
 };
 type CoreParams = {
-    minTimeToPay: number;
-    orderGraceDur: number;
-    maxOpenOrders: number;
-    maxOpenDisputes: number;
-    transferToFeePoolInterval: number;
-    nftDiscountBP: number;
+    minTimeToPay?: number;
+    orderGraceDur?: number;
+    maxOpenOrders?: number;
+    maxOpenDisputes?: number;
+    transferToFeePoolInterval?: number;
+    nftDiscountBP?: number;
 };
 type MarketCoreParams = {
-    defaultDisputeDelayDur: number;
+    defaultDisputeDelayDur?: number;
 };
 type MediatorManagerParams = {
-    baseTicketPrice: string;
-    ticketWindowDur: number;
-    ticketsPerWindow: number;
-    ticketSupply: number;
-    priceSupplyDeltaBP: number;
-    minInactiveWindowBeforeReset: number;
-    soldOutBP: number;
-    ticketMatureDur: number;
-    ticketCancelDur: number;
-    ticketExpireDur: number;
-    ticketPauseDur: number;
-    reqPoolBond: string;
-    poolDraftReward: string;
-    poolWinReward: string;
-    poolNumDraftee: number;
-    poolNoVoteSlashBP: number;
-    poolLoseVoteSlashBP: number;
-    poolEvidenceDur: number;
-    poolPredictDur: number;
+    baseTicketPrice?: string;
+    ticketWindowDur?: number;
+    ticketsPerWindow?: number;
+    ticketSupply?: number;
+    priceSupplyDeltaBP?: number;
+    minInactiveWindowBeforeReset?: number;
+    soldOutBP?: number;
+    ticketMatureDur?: number;
+    ticketCancelDur?: number;
+    ticketExpireDur?: number;
+    ticketPauseDur?: number;
+    reqPoolBond?: string;
+    poolDraftReward?: string;
+    poolWinReward?: string;
+    poolNumDraftee?: number;
+    poolNoVoteSlashBP?: number;
+    poolLoseVoteSlashBP?: number;
+    poolEvidenceDur?: number;
+    poolPredictDur?: number;
 };
 type DisputeManagerParams = {
-    evidenceDur: number;
-    predictDur: number;
+    evidenceDur?: number;
+    predictDur?: number;
 };
 type OthersParams = {
-    operatorBond: string;
-    allocatorAddr: string;
+    operatorBond?: string;
+    allocatorAddr?: string;
+    safe?: string;
 };
 type MinerRegistryParams = {
-    minerBond: string;
-    minerMatureDur: number;
-    minerCancelDur: number;
+    minerBond?: string;
+    minerMatureDur?: number;
+    minerCancelDur?: number;
 };
+type ChainLinkParams = {
+    chainlinkKeyHash?: string;
+    chainlinkCoordinator?: string;
+    chainlinkSubId?: number;
+};
+
+type contract_ChainLinkParams = ChainLinkParams;
+type contract_ContractInfo = ContractInfo;
+type contract_ContractNames = ContractNames;
+type contract_Contracts = Contracts;
+type contract_ContractsParams = ContractsParams;
+type contract_CoreParams = CoreParams;
+type contract_DisputeManagerParams = DisputeManagerParams;
+type contract_MarketCoreParams = MarketCoreParams;
+type contract_MediatorManagerParams = MediatorManagerParams;
+type contract_MinerRegistryParams = MinerRegistryParams;
+type contract_OthersParams = OthersParams;
+declare namespace contract {
+  export type { contract_ChainLinkParams as ChainLinkParams, contract_ContractInfo as ContractInfo, contract_ContractNames as ContractNames, contract_Contracts as Contracts, contract_ContractsParams as ContractsParams, contract_CoreParams as CoreParams, contract_DisputeManagerParams as DisputeManagerParams, contract_MarketCoreParams as MarketCoreParams, contract_MediatorManagerParams as MediatorManagerParams, contract_MinerRegistryParams as MinerRegistryParams, contract_OthersParams as OthersParams };
+}
 
 /**
  * TokenInfo describes an ERC20-like token EVM chain
@@ -968,6 +990,7 @@ declare function getContractsParams(network: ChainNames): {
     disputeManager: DisputeManagerParams;
     minerRegistry: MinerRegistryParams;
     others: OthersParams;
+    chainlink: ChainLinkParams;
     token: {};
     energon: {};
     nft: {};
@@ -1021,4 +1044,4 @@ declare function findTokenInLocalhost(address: string): TokenList.Token | undefi
  */
 declare function findTokenInSynthetic(address: string): TokenList.Token | undefined;
 
-export { Abi, type BadgeManifest, BadgeManifests, type ChainBadgeManifest, type ChainInfo, type ChainNames, type ContractInfo, type ContractNames, type Contracts, type KnownMediatorPools, type MediatorPool, MediatorPools, type PaymentMethods, TokenLists, contractsParams, Chains as default, findTokenInLocalhost, findTokenInSynthetic, getChain, getChainByName, getChainID, getChainNames, getChains, getChainsID, getContractsParams, getTokenInfo, isValidChain, parseBadgeLocals, paymentMethods };
+export { Abi, type BadgeManifest, BadgeManifests, type ChainBadgeManifest, type ChainInfo, type ChainNames, type ContractInfo, type ContractNames, contract as ContractParamTypes, type Contracts, type KnownMediatorPools, type MediatorPool, MediatorPools, type PaymentMethods, TokenLists, contractsParams, Chains as default, findTokenInLocalhost, findTokenInSynthetic, getChain, getChainByName, getChainID, getChainNames, getChains, getChainsID, getContractsParams, getTokenInfo, isValidChain, parseBadgeLocals, paymentMethods };
