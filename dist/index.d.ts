@@ -791,6 +791,7 @@ type MarketCoreParams = {
     defaultDisputeDelayDur?: number;
 };
 type MediatorManagerParams = {
+    ticketMaxPause?: number;
     baseTicketPrice?: string;
     ticketWindowDur?: number;
     ticketsPerWindow?: number;

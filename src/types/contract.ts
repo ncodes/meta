@@ -52,6 +52,7 @@ export type MarketCoreParams = {
 };
 
 export type MediatorManagerParams = {
+	ticketMaxPause?: number;
 	baseTicketPrice?: string;
 	ticketWindowDur?: number;
 	ticketsPerWindow?: number;

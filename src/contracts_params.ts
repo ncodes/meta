@@ -27,6 +27,7 @@ export const contractsParams: ContractsParams = {
 			predictDur: 120,
 		},
 		mediatorManager: {
+			ticketMaxPause: 3,
 			baseTicketPrice: '100000000000000000000',
 			ticketWindowDur: 86400,
 			ticketsPerWindow: 256,
