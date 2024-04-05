@@ -16036,12 +16036,15 @@ var contractsParams = {
       ticketMatureDur: 86400,
       ticketCancelDur: 604800,
       ticketExpireDur: 172800,
+      ticketPauseDur: 604800,
       reqPoolBond: "1000000000000000000000",
       poolDraftReward: "10000000000000000000",
       poolWinReward: "20000000000000000000",
       poolNumDraftee: 1,
       poolNoVoteSlashBP: 1e3,
-      poolLoseVoteSlashBP: 2e3
+      poolLoseVoteSlashBP: 2e3,
+      poolEvidenceDur: 86400,
+      poolPredictDur: 172800
     },
     assetRegistry: {},
     minerRegistry: {
@@ -16085,12 +16088,15 @@ var contractsParams = {
       ticketMatureDur: 86400,
       ticketCancelDur: 604800,
       ticketExpireDur: 172800,
+      ticketPauseDur: 604800,
       reqPoolBond: "1000000000000000000000",
       poolDraftReward: "100000000000000000000",
       poolWinReward: "200000000000000000000",
       poolNumDraftee: 1,
       poolNoVoteSlashBP: 1e3,
-      poolLoseVoteSlashBP: 2e3
+      poolLoseVoteSlashBP: 2e3,
+      poolEvidenceDur: 86400,
+      poolPredictDur: 172800
     },
     assetRegistry: {},
     minerRegistry: {
@@ -16134,12 +16140,15 @@ var contractsParams = {
       ticketMatureDur: 86400,
       ticketCancelDur: 604800,
       ticketExpireDur: 172800,
+      ticketPauseDur: 604800,
       reqPoolBond: "1000000000000000000000",
       poolDraftReward: "100000000000000000000",
       poolWinReward: "200000000000000000000",
       poolNumDraftee: 1,
       poolNoVoteSlashBP: 1e3,
-      poolLoseVoteSlashBP: 2e3
+      poolLoseVoteSlashBP: 2e3,
+      poolEvidenceDur: 86400,
+      poolPredictDur: 172800
     },
     assetRegistry: {},
     minerRegistry: {
@@ -16183,12 +16192,15 @@ var contractsParams = {
       ticketMatureDur: 86400,
       ticketCancelDur: 604800,
       ticketExpireDur: 172800,
+      ticketPauseDur: 604800,
       reqPoolBond: "1000000000000000000000",
       poolDraftReward: "100000000000000000000",
       poolWinReward: "200000000000000000000",
       poolNumDraftee: 1,
       poolNoVoteSlashBP: 1e3,
-      poolLoseVoteSlashBP: 2e3
+      poolLoseVoteSlashBP: 2e3,
+      poolEvidenceDur: 86400,
+      poolPredictDur: 172800
     },
     assetRegistry: {},
     minerRegistry: {
@@ -16232,12 +16244,15 @@ var contractsParams = {
       ticketMatureDur: 0,
       ticketCancelDur: 0,
       ticketExpireDur: 0,
+      ticketPauseDur: 0,
       reqPoolBond: "0",
       poolDraftReward: "0",
       poolWinReward: "0",
       poolNumDraftee: 0,
       poolNoVoteSlashBP: 0,
-      poolLoseVoteSlashBP: 0
+      poolLoseVoteSlashBP: 0,
+      poolEvidenceDur: 0,
+      poolPredictDur: 0
     },
     assetRegistry: {},
     minerRegistry: {

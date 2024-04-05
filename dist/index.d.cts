@@ -800,12 +800,15 @@ type MediatorManagerParams = {
     ticketMatureDur: number;
     ticketCancelDur: number;
     ticketExpireDur: number;
+    ticketPauseDur: number;
     reqPoolBond: string;
     poolDraftReward: string;
     poolWinReward: string;
     poolNumDraftee: number;
     poolNoVoteSlashBP: number;
     poolLoseVoteSlashBP: number;
+    poolEvidenceDur: number;
+    poolPredictDur: number;
 };
 type DisputeManagerParams = {
     evidenceDur: number;
