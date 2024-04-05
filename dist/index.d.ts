@@ -825,6 +825,10 @@ type MinerRegistryParams = {
     minerBond?: string;
     minerMatureDur?: number;
     minerCancelDur?: number;
+    draftReward?: string;
+    undraftReward?: string;
+    executeReward?: string;
+    cancelReward?: string;
 };
 type ChainLinkParams = {
     chainlinkKeyHash?: string;
