@@ -45,6 +45,11 @@ export const contractsParams: ContractsParams = {
 			poolLoseVoteSlashBP: 2000,
 		},
 		assetRegistry: {},
+		minerRegistry: {
+			minerBond: '1000000000000000000000',
+			minerMatureDur: 86400,
+			minerCancelDur: 604800,
+		},
 	},
 	sepolia: {
 		others: {
@@ -89,6 +94,11 @@ export const contractsParams: ContractsParams = {
 			poolLoseVoteSlashBP: 2000,
 		},
 		assetRegistry: {},
+		minerRegistry: {
+			minerBond: '1000000000000000000000',
+			minerMatureDur: 86400,
+			minerCancelDur: 604800,
+		},
 	},
 	arbitrum: {
 		others: {
@@ -133,6 +143,11 @@ export const contractsParams: ContractsParams = {
 			poolLoseVoteSlashBP: 2000,
 		},
 		assetRegistry: {},
+		minerRegistry: {
+			minerBond: '1000000000000000000000',
+			minerMatureDur: 86400,
+			minerCancelDur: 604800,
+		},
 	},
 	'arbitrum-sepolia': {
 		others: {
@@ -177,6 +192,11 @@ export const contractsParams: ContractsParams = {
 			poolLoseVoteSlashBP: 2000,
 		},
 		assetRegistry: {},
+		minerRegistry: {
+			minerBond: '1000000000000000000000',
+			minerMatureDur: 86400,
+			minerCancelDur: 604800,
+		},
 	},
 	ethereum: {
 		others: {
@@ -221,6 +241,11 @@ export const contractsParams: ContractsParams = {
 			poolLoseVoteSlashBP: 0,
 		},
 		assetRegistry: {},
+		minerRegistry: {
+			minerBond: '1000000000000000000000',
+			minerMatureDur: 86400,
+			minerCancelDur: 604800,
+		},
 	},
 };
 

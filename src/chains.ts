@@ -6,6 +6,7 @@ import DisputeManagerABI from './abi/DisputeManager.json';
 import EnergonABI from './abi/Energon.json';
 import MarketCoreABI from './abi/MarketCore.json';
 import MediatorManagerABI from './abi/MediatorManager.json';
+import MinerRegistryABI from './abi/MinerRegistry.json';
 import NftABI from './abi/NFT.json';
 import NativeTokenABI from './abi/Token.json';
 import WETHABI from './abi/WETH.json';
@@ -108,6 +109,14 @@ const Chains: ChainInfo[] = [
 					process.env.NEXT_PUBLIC_ETHEREUM_ASSET_REG_ADDRESS ??
 					import.meta.env.VITE_ETHEREUM_ASSET_REG_ADDRESS,
 				abi: AssetRegistryABI,
+			},
+			minerRegistry: {
+				address:
+					process.env.ETHEREUM_MINER_REG_ADDRESS ??
+					process.env.NEXT_PUBLIC_ETHEREUM_MINER_REG_ADDRESS ??
+					import.meta.env.VITE_ETHEREUM_MINER_REG_ADDRESS ??
+					'',
+				abi: MinerRegistryABI,
 			},
 		},
 	},
@@ -286,6 +295,14 @@ const Chains: ChainInfo[] = [
 					'0xF0F67172D72102A372d602a0437AFb012b857cd9',
 				abi: AssetRegistryABI,
 			},
+			minerRegistry: {
+				address:
+					process.env.ARBITRUM_MINER_REG_ADDRESS ??
+					process.env.NEXT_PUBLIC_ARBITRUM_MINER_REG_ADDRESS ??
+					import.meta.env.VITE_ARBITRUM_MINER_REG_ADDRESS ??
+					'',
+				abi: MinerRegistryABI,
+			},
 		},
 	},
 	{
@@ -391,6 +408,14 @@ const Chains: ChainInfo[] = [
 					'0xdFa0520fafd554aA6d768B065f982D5a01365a4C',
 				abi: AssetRegistryABI,
 			},
+			minerRegistry: {
+				address:
+					process.env.ARBITRUM_SEPOLIA_MINER_REG_ADDRESS ??
+					process.env.NEXT_PUBLIC_ARBITRUM_SEPOLIA_MINER_REG_ADDRESS ??
+					import.meta.env.VITE_ARBITRUM_SEPOLIA_MINER_REG_ADDRESS ??
+					'',
+				abi: MinerRegistryABI,
+			},
 		},
 	},
 	{
@@ -491,6 +516,14 @@ const Chains: ChainInfo[] = [
 					'0x4B4eC83FAC2ce42a395b895336d7a952f7FE01c0',
 				abi: AssetRegistryABI,
 			},
+			minerRegistry: {
+				address:
+					process.env.SEPOLIA_MINER_REG_ADDRESS ??
+					process.env.NEXT_PUBLIC_SEPOLIA_MINER_REG_ADDRESS ??
+					import.meta.env.VITE_SEPOLIA_MINER_REG_ADDRESS ??
+					'',
+				abi: MinerRegistryABI,
+			},
 		},
 	},
 	{
@@ -585,6 +618,13 @@ const Chains: ChainInfo[] = [
 					process.env.NEXT_PUBLIC_LOCALHOST_ASSET_REG_ADDRESS ??
 					import.meta.env.VITE_LOCALHOST_ASSET_REG_ADDRESS,
 				abi: AssetRegistryABI,
+			},
+			minerRegistry: {
+				address:
+					process.env.LOCALHOST_MINER_REG_ADDRESS ??
+					process.env.NEXT_PUBLIC_LOCALHOST_MINER_REG_ADDRESS ??
+					import.meta.env.VITE_LOCALHOST_MINER_REG_ADDRESS,
+				abi: MinerRegistryABI,
 			},
 		},
 	},

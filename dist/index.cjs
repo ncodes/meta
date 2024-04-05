@@ -14698,6 +14698,690 @@ function parseBadgeLocals(badge, locals) {
 // src/chains.ts
 var import_chains = require("viem/chains");
 
+// src/abi/MinerRegistry.json
+var MinerRegistry_default = [
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "_token",
+        type: "address"
+      },
+      {
+        internalType: "uint256",
+        name: "_minerBond",
+        type: "uint256"
+      },
+      {
+        internalType: "uint256",
+        name: "_matureDuration",
+        type: "uint256"
+      },
+      {
+        internalType: "uint256",
+        name: "_cancelDuration",
+        type: "uint256"
+      }
+    ],
+    stateMutability: "nonpayable",
+    type: "constructor"
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: true,
+        internalType: "address",
+        name: "miner",
+        type: "address"
+      },
+      {
+        indexed: false,
+        internalType: "enum MinerOperation",
+        name: "op",
+        type: "uint8"
+      },
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "amount",
+        type: "uint256"
+      }
+    ],
+    name: "AddedReward",
+    type: "event"
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: true,
+        internalType: "address",
+        name: "miner",
+        type: "address"
+      },
+      {
+        indexed: false,
+        internalType: "bool",
+        name: "blocked",
+        type: "bool"
+      }
+    ],
+    name: "Blocked",
+    type: "event"
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: true,
+        internalType: "address",
+        name: "miner",
+        type: "address"
+      },
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "cancelDuration",
+        type: "uint256"
+      }
+    ],
+    name: "Cancelled",
+    type: "event"
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: true,
+        internalType: "address",
+        name: "miner",
+        type: "address"
+      },
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "amount",
+        type: "uint256"
+      }
+    ],
+    name: "Drained",
+    type: "event"
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: true,
+        internalType: "address",
+        name: "previousOwner",
+        type: "address"
+      },
+      {
+        indexed: true,
+        internalType: "address",
+        name: "newOwner",
+        type: "address"
+      }
+    ],
+    name: "OwnershipTransferred",
+    type: "event"
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: true,
+        internalType: "address",
+        name: "miner",
+        type: "address"
+      },
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "bond",
+        type: "uint256"
+      }
+    ],
+    name: "Registered",
+    type: "event"
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: true,
+        internalType: "address",
+        name: "miner",
+        type: "address"
+      },
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "amount",
+        type: "uint256"
+      }
+    ],
+    name: "RewardWithdrawn",
+    type: "event"
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: true,
+        internalType: "address",
+        name: "miner",
+        type: "address"
+      },
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "amount",
+        type: "uint256"
+      }
+    ],
+    name: "Slashed",
+    type: "event"
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "matureDuration",
+        type: "uint256"
+      },
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "cancelDuration",
+        type: "uint256"
+      }
+    ],
+    name: "UpdatedDurations",
+    type: "event"
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "bond",
+        type: "uint256"
+      }
+    ],
+    name: "UpdatedMinerBond",
+    type: "event"
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: false,
+        internalType: "enum MinerOperation",
+        name: "op",
+        type: "uint8"
+      },
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "amount",
+        type: "uint256"
+      }
+    ],
+    name: "UpdatedOpReward",
+    type: "event"
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: false,
+        internalType: "enum MinerOperation[]",
+        name: "ops",
+        type: "uint8[]"
+      },
+      {
+        indexed: false,
+        internalType: "uint256[]",
+        name: "amounts",
+        type: "uint256[]"
+      }
+    ],
+    name: "UpdatedOpsReward",
+    type: "event"
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "amount",
+        type: "uint256"
+      }
+    ],
+    name: "WithdrawnBalance",
+    type: "event"
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: false,
+        internalType: "address",
+        name: "addr",
+        type: "address"
+      },
+      {
+        indexed: false,
+        internalType: "bool",
+        name: "added",
+        type: "bool"
+      }
+    ],
+    name: "WriterUpdated",
+    type: "event"
+  },
+  {
+    inputs: [
+      {
+        internalType: "enum MinerOperation",
+        name: "op",
+        type: "uint8"
+      },
+      {
+        internalType: "address",
+        name: "miner",
+        type: "address"
+      }
+    ],
+    name: "addReward",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function"
+  },
+  {
+    inputs: [],
+    name: "cancel",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function"
+  },
+  {
+    inputs: [],
+    name: "cancelDuration",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256"
+      }
+    ],
+    stateMutability: "view",
+    type: "function"
+  },
+  {
+    inputs: [],
+    name: "drain",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function"
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "addr",
+        type: "address"
+      }
+    ],
+    name: "isMiner",
+    outputs: [
+      {
+        internalType: "bool",
+        name: "",
+        type: "bool"
+      }
+    ],
+    stateMutability: "view",
+    type: "function"
+  },
+  {
+    inputs: [],
+    name: "matureDuration",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256"
+      }
+    ],
+    stateMutability: "view",
+    type: "function"
+  },
+  {
+    inputs: [],
+    name: "minerBond",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256"
+      }
+    ],
+    stateMutability: "view",
+    type: "function"
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "",
+        type: "address"
+      }
+    ],
+    name: "miners",
+    outputs: [
+      {
+        internalType: "bool",
+        name: "exists",
+        type: "bool"
+      },
+      {
+        internalType: "uint256",
+        name: "bond",
+        type: "uint256"
+      },
+      {
+        internalType: "uint256",
+        name: "matureAt",
+        type: "uint256"
+      },
+      {
+        internalType: "uint256",
+        name: "cancelAt",
+        type: "uint256"
+      },
+      {
+        internalType: "bool",
+        name: "blocked",
+        type: "bool"
+      }
+    ],
+    stateMutability: "view",
+    type: "function"
+  },
+  {
+    inputs: [
+      {
+        internalType: "enum MinerOperation",
+        name: "",
+        type: "uint8"
+      }
+    ],
+    name: "opRewards",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256"
+      }
+    ],
+    stateMutability: "view",
+    type: "function"
+  },
+  {
+    inputs: [],
+    name: "owner",
+    outputs: [
+      {
+        internalType: "address",
+        name: "",
+        type: "address"
+      }
+    ],
+    stateMutability: "view",
+    type: "function"
+  },
+  {
+    inputs: [],
+    name: "register",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function"
+  },
+  {
+    inputs: [],
+    name: "renounceOwnership",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function"
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "miner",
+        type: "address"
+      }
+    ],
+    name: "rewardBalanceOf",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256"
+      }
+    ],
+    stateMutability: "view",
+    type: "function"
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "",
+        type: "address"
+      }
+    ],
+    name: "rewards",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256"
+      }
+    ],
+    stateMutability: "view",
+    type: "function"
+  },
+  {
+    inputs: [
+      {
+        internalType: "uint256",
+        name: "_matureDuration",
+        type: "uint256"
+      },
+      {
+        internalType: "uint256",
+        name: "_cancelDuration",
+        type: "uint256"
+      }
+    ],
+    name: "setDurations",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function"
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "miner",
+        type: "address"
+      },
+      {
+        internalType: "uint256",
+        name: "amount",
+        type: "uint256"
+      }
+    ],
+    name: "slash",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function"
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "miner",
+        type: "address"
+      }
+    ],
+    name: "toggleBlock",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function"
+  },
+  {
+    inputs: [],
+    name: "token",
+    outputs: [
+      {
+        internalType: "address",
+        name: "",
+        type: "address"
+      }
+    ],
+    stateMutability: "view",
+    type: "function"
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "newOwner",
+        type: "address"
+      }
+    ],
+    name: "transferOwnership",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function"
+  },
+  {
+    inputs: [
+      {
+        internalType: "uint256",
+        name: "_minerBond",
+        type: "uint256"
+      }
+    ],
+    name: "updateMinerBond",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function"
+  },
+  {
+    inputs: [
+      {
+        internalType: "enum MinerOperation",
+        name: "op",
+        type: "uint8"
+      },
+      {
+        internalType: "uint256",
+        name: "amount",
+        type: "uint256"
+      }
+    ],
+    name: "updateOpReward",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function"
+  },
+  {
+    inputs: [
+      {
+        internalType: "enum MinerOperation[]",
+        name: "ops",
+        type: "uint8[]"
+      },
+      {
+        internalType: "uint256[]",
+        name: "amounts",
+        type: "uint256[]"
+      }
+    ],
+    name: "updateOpsReward",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function"
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "addr",
+        type: "address"
+      },
+      {
+        internalType: "bool",
+        name: "add",
+        type: "bool"
+      }
+    ],
+    name: "updateWriter",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function"
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "dest",
+        type: "address"
+      }
+    ],
+    name: "withdrawBalance",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function"
+  },
+  {
+    inputs: [],
+    name: "withdrawReward",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function"
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "",
+        type: "address"
+      }
+    ],
+    name: "writers",
+    outputs: [
+      {
+        internalType: "bool",
+        name: "",
+        type: "bool"
+      }
+    ],
+    stateMutability: "view",
+    type: "function"
+  }
+];
+
 // src/icons/BSC.tsx
 var import_react = __toESM(require("react"), 1);
 function IconBSC(props) {
@@ -14958,6 +15642,10 @@ var Chains = [
       assetRegistry: {
         address: process.env.ETHEREUM_ASSET_REG_ADDRESS ?? process.env.NEXT_PUBLIC_ETHEREUM_ASSET_REG_ADDRESS ?? process.env.VITE_ETHEREUM_ASSET_REG_ADDRESS,
         abi: AssetRegistry_default
+      },
+      minerRegistry: {
+        address: process.env.ETHEREUM_MINER_REG_ADDRESS ?? process.env.NEXT_PUBLIC_ETHEREUM_MINER_REG_ADDRESS ?? process.env.VITE_ETHEREUM_MINER_REG_ADDRESS ?? "",
+        abi: MinerRegistry_default
       }
     }
   },
@@ -15076,6 +15764,10 @@ var Chains = [
       assetRegistry: {
         address: process.env.ARBITRUM_ASSET_REG_ADDRESS ?? process.env.NEXT_PUBLIC_ARBITRUM_ASSET_REG_ADDRESS ?? process.env.VITE_ARBITRUM_ASSET_REG_ADDRESS ?? "0xF0F67172D72102A372d602a0437AFb012b857cd9",
         abi: AssetRegistry_default
+      },
+      minerRegistry: {
+        address: process.env.ARBITRUM_MINER_REG_ADDRESS ?? process.env.NEXT_PUBLIC_ARBITRUM_MINER_REG_ADDRESS ?? process.env.VITE_ARBITRUM_MINER_REG_ADDRESS ?? "",
+        abi: MinerRegistry_default
       }
     }
   },
@@ -15135,6 +15827,10 @@ var Chains = [
       assetRegistry: {
         address: process.env.ARBITRUM_SEPOLIA_ASSET_REG_ADDRESS ?? process.env.NEXT_PUBLIC_ARBITRUM_SEPOLIA_ASSET_REG_ADDRESS ?? process.env.VITE_ARBITRUM_SEPOLIA_ASSET_REG_ADDRESS ?? "0xdFa0520fafd554aA6d768B065f982D5a01365a4C",
         abi: AssetRegistry_default
+      },
+      minerRegistry: {
+        address: process.env.ARBITRUM_SEPOLIA_MINER_REG_ADDRESS ?? process.env.NEXT_PUBLIC_ARBITRUM_SEPOLIA_MINER_REG_ADDRESS ?? process.env.VITE_ARBITRUM_SEPOLIA_MINER_REG_ADDRESS ?? "",
+        abi: MinerRegistry_default
       }
     }
   },
@@ -15193,6 +15889,10 @@ var Chains = [
       assetRegistry: {
         address: process.env.SEPOLIA_ASSET_REG_ADDRESS ?? process.env.NEXT_PUBLIC_SEPOLIA_ASSET_REG_ADDRESS ?? process.env.VITE_SEPOLIA_ASSET_REG_ADDRESS ?? "0x4B4eC83FAC2ce42a395b895336d7a952f7FE01c0",
         abi: AssetRegistry_default
+      },
+      minerRegistry: {
+        address: process.env.SEPOLIA_MINER_REG_ADDRESS ?? process.env.NEXT_PUBLIC_SEPOLIA_MINER_REG_ADDRESS ?? process.env.VITE_SEPOLIA_MINER_REG_ADDRESS ?? "",
+        abi: MinerRegistry_default
       }
     }
   },
@@ -15251,6 +15951,10 @@ var Chains = [
       assetRegistry: {
         address: process.env.LOCALHOST_ASSET_REG_ADDRESS ?? process.env.NEXT_PUBLIC_LOCALHOST_ASSET_REG_ADDRESS ?? process.env.VITE_LOCALHOST_ASSET_REG_ADDRESS,
         abi: AssetRegistry_default
+      },
+      minerRegistry: {
+        address: process.env.LOCALHOST_MINER_REG_ADDRESS ?? process.env.NEXT_PUBLIC_LOCALHOST_MINER_REG_ADDRESS ?? process.env.VITE_LOCALHOST_MINER_REG_ADDRESS,
+        abi: MinerRegistry_default
       }
     }
   }
@@ -15339,7 +16043,12 @@ var contractsParams = {
       poolNoVoteSlashBP: 1e3,
       poolLoseVoteSlashBP: 2e3
     },
-    assetRegistry: {}
+    assetRegistry: {},
+    minerRegistry: {
+      minerBond: "1000000000000000000000",
+      minerMatureDur: 86400,
+      minerCancelDur: 604800
+    }
   },
   sepolia: {
     others: {
@@ -15383,7 +16092,12 @@ var contractsParams = {
       poolNoVoteSlashBP: 1e3,
       poolLoseVoteSlashBP: 2e3
     },
-    assetRegistry: {}
+    assetRegistry: {},
+    minerRegistry: {
+      minerBond: "1000000000000000000000",
+      minerMatureDur: 86400,
+      minerCancelDur: 604800
+    }
   },
   arbitrum: {
     others: {
@@ -15427,7 +16141,12 @@ var contractsParams = {
       poolNoVoteSlashBP: 1e3,
       poolLoseVoteSlashBP: 2e3
     },
-    assetRegistry: {}
+    assetRegistry: {},
+    minerRegistry: {
+      minerBond: "1000000000000000000000",
+      minerMatureDur: 86400,
+      minerCancelDur: 604800
+    }
   },
   "arbitrum-sepolia": {
     others: {
@@ -15471,7 +16190,12 @@ var contractsParams = {
       poolNoVoteSlashBP: 1e3,
       poolLoseVoteSlashBP: 2e3
     },
-    assetRegistry: {}
+    assetRegistry: {},
+    minerRegistry: {
+      minerBond: "1000000000000000000000",
+      minerMatureDur: 86400,
+      minerCancelDur: 604800
+    }
   },
   ethereum: {
     others: {
@@ -15515,7 +16239,12 @@ var contractsParams = {
       poolNoVoteSlashBP: 0,
       poolLoseVoteSlashBP: 0
     },
-    assetRegistry: {}
+    assetRegistry: {},
+    minerRegistry: {
+      minerBond: "1000000000000000000000",
+      minerMatureDur: 86400,
+      minerCancelDur: 604800
+    }
   }
 };
 function getContractsParams(network) {

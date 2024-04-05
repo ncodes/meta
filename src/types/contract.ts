@@ -18,14 +18,16 @@ export type ContractNames =
 	| 'marketCore'
 	| 'disputeManager'
 	| 'mediatorManager'
-	| 'assetRegistry';
+	| 'assetRegistry'
+	| 'minerRegistry';
 
 export type ContractsParams = {
 	[key in ChainNames]?: {
 		core: CoreParams;
 		marketCore: MarketCoreParams;
 		mediatorManager: MediatorManagerParams;
-		disputeManager: disputeManagerParams;
+		disputeManager: DisputeManagerParams;
+		minerRegistry: MinerRegistryParams;
 		others: OthersParams;
 		token: {};
 		energon: {};
@@ -67,7 +69,7 @@ export type MediatorManagerParams = {
 	poolLoseVoteSlashBP: number;
 };
 
-export type disputeManagerParams = {
+export type DisputeManagerParams = {
 	evidenceDur: number;
 	predictDur: number;
 };
@@ -75,4 +77,10 @@ export type disputeManagerParams = {
 export type OthersParams = {
 	operatorBond: string;
 	allocatorAddr: string;
+};
+
+export type MinerRegistryParams = {
+	minerBond: string;
+	minerMatureDur: number;
+	minerCancelDur: number;
 };

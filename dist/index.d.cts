@@ -762,13 +762,14 @@ interface ContractInfo {
 type Contracts = {
     [key in ContractNames]: ContractInfo;
 };
-type ContractNames = 'core' | 'token' | 'energon' | 'nft' | 'badgeManager' | 'marketCore' | 'disputeManager' | 'mediatorManager' | 'assetRegistry';
+type ContractNames = 'core' | 'token' | 'energon' | 'nft' | 'badgeManager' | 'marketCore' | 'disputeManager' | 'mediatorManager' | 'assetRegistry' | 'minerRegistry';
 type ContractsParams = {
     [key in ChainNames]?: {
         core: CoreParams;
         marketCore: MarketCoreParams;
         mediatorManager: MediatorManagerParams;
-        disputeManager: disputeManagerParams;
+        disputeManager: DisputeManagerParams;
+        minerRegistry: MinerRegistryParams;
         others: OthersParams;
         token: {};
         energon: {};
@@ -806,13 +807,18 @@ type MediatorManagerParams = {
     poolNoVoteSlashBP: number;
     poolLoseVoteSlashBP: number;
 };
-type disputeManagerParams = {
+type DisputeManagerParams = {
     evidenceDur: number;
     predictDur: number;
 };
 type OthersParams = {
     operatorBond: string;
     allocatorAddr: string;
+};
+type MinerRegistryParams = {
+    minerBond: string;
+    minerMatureDur: number;
+    minerCancelDur: number;
 };
 
 /**
@@ -956,7 +962,8 @@ declare function getContractsParams(network: ChainNames): {
     core: CoreParams;
     marketCore: MarketCoreParams;
     mediatorManager: MediatorManagerParams;
-    disputeManager: disputeManagerParams;
+    disputeManager: DisputeManagerParams;
+    minerRegistry: MinerRegistryParams;
     others: OthersParams;
     token: {};
     energon: {};
