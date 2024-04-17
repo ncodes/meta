@@ -8,7 +8,7 @@
 			"type": "ERC20",
 			"address": "0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0",
 			"name": "Joint LOCAL",
-			"symbol": "P2P",
+			"symbol": "JOIN",
 			"decimals": 18,
 			"logoURI": "https://storage.googleapis.com/joint-images/token-logos/p2p.svg",
 			"price": 0

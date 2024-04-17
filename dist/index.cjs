@@ -16476,7 +16476,7 @@ var tokens = [
     type: "ERC20",
     address: "0x3A56baecFa7b4A967B8aDF35a0494e22Dd807A86",
     name: "Joint",
-    symbol: "P2P",
+    symbol: "JOIN",
     decimals: 18,
     logoURI: "https://storage.googleapis.com/joint-images/token-logos/p2p.svg",
     price: 0
@@ -16529,7 +16529,7 @@ var tokens2 = [
     type: "ERC20",
     address: "0xE7734EDDd701cDb40AF03d06d43F12cC7699A548",
     name: "Joint",
-    symbol: "tP2P",
+    symbol: "tJOIN",
     decimals: 18,
     logoURI: "https://storage.googleapis.com/joint-images/token-logos/p2p.svg",
     price: 0
@@ -20803,7 +20803,7 @@ var tokens5 = [
     type: "ERC20",
     address: "0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0",
     name: "Joint LOCAL",
-    symbol: "P2P",
+    symbol: "JOIN",
     decimals: 18,
     logoURI: "https://storage.googleapis.com/joint-images/token-logos/p2p.svg",
     price: 0
@@ -21102,7 +21102,7 @@ var tokens8 = [
     type: "ERC20",
     address: "0xB556b3a796f5f104Bbaab840567844734e0490a0",
     name: "Joint",
-    symbol: "P2P",
+    symbol: "JOIN",
     decimals: 18,
     logoURI: "https://storage.googleapis.com/joint-images/token-logos/p2p.svg",
     price: 0
