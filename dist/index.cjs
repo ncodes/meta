@@ -84,12 +84,6 @@ var AssetRegistry_default = [
       },
       {
         indexed: false,
-        internalType: "uint256",
-        name: "amountPerRewardPoint",
-        type: "uint256"
-      },
-      {
-        indexed: false,
         internalType: "bool",
         name: "verified",
         type: "bool"
@@ -155,11 +149,6 @@ var AssetRegistry_default = [
         type: "uint256"
       },
       {
-        internalType: "uint256",
-        name: "amountPerRewardPoint",
-        type: "uint256"
-      },
-      {
         internalType: "bool",
         name: "verified",
         type: "bool"
@@ -203,11 +192,6 @@ var AssetRegistry_default = [
           {
             internalType: "uint256",
             name: "feeFixed",
-            type: "uint256"
-          },
-          {
-            internalType: "uint256",
-            name: "amountPerRewardPoint",
             type: "uint256"
           },
           {
@@ -293,11 +277,6 @@ var AssetRegistry_default = [
       {
         internalType: "uint256",
         name: "feeFixed",
-        type: "uint256"
-      },
-      {
-        internalType: "uint256",
-        name: "amountPerRewardPoint",
         type: "uint256"
       },
       {
@@ -1144,12 +1123,12 @@ var BadgeManager_default = [
       },
       {
         internalType: "string[]",
-        name: "metadataKeys",
+        name: "metaKeys",
         type: "string[]"
       },
       {
         internalType: "string[]",
-        name: "metadataValues",
+        name: "metaValues",
         type: "string[]"
       },
       {
@@ -1744,9 +1723,9 @@ var Core_default = [
       },
       {
         indexed: false,
-        internalType: "bool",
-        name: "released",
-        type: "bool"
+        internalType: "uint256",
+        name: "action",
+        type: "uint256"
       }
     ],
     name: "FinalizedByManagerSig",
@@ -2184,6 +2163,12 @@ var Core_default = [
       },
       {
         indexed: false,
+        internalType: "address",
+        name: "payer",
+        type: "address"
+      },
+      {
+        indexed: false,
         internalType: "uint256",
         name: "disputeDelayDur",
         type: "uint256"
@@ -2229,7 +2214,13 @@ var Core_default = [
       {
         indexed: false,
         internalType: "address",
-        name: "asset",
+        name: "owner",
+        type: "address"
+      },
+      {
+        indexed: false,
+        internalType: "address",
+        name: "token",
         type: "address"
       },
       {
@@ -2240,6 +2231,31 @@ var Core_default = [
       }
     ],
     name: "TransferInventorBalance",
+    type: "event"
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: false,
+        internalType: "address",
+        name: "owner",
+        type: "address"
+      },
+      {
+        indexed: false,
+        internalType: "address",
+        name: "token",
+        type: "address"
+      },
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "amount",
+        type: "uint256"
+      }
+    ],
+    name: "TransferOperatorBalance",
     type: "event"
   },
   {
@@ -2611,6 +2627,19 @@ var Core_default = [
       }
     ],
     name: "UpdatedMinTimeToPay",
+    type: "event"
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: false,
+        internalType: "address",
+        name: "addr",
+        type: "address"
+      }
+    ],
+    name: "UpdatedMinerRegistry",
     type: "event"
   },
   {
@@ -3013,12 +3042,12 @@ var Core_default = [
     inputs: [
       {
         internalType: "address",
-        name: "owner",
+        name: "_owner",
         type: "address"
       },
       {
         internalType: "address",
-        name: "asset",
+        name: "_asset",
         type: "address"
       }
     ],
@@ -3050,17 +3079,17 @@ var Core_default = [
     inputs: [
       {
         internalType: "address",
-        name: "mid",
+        name: "_mid",
         type: "address"
       },
       {
         internalType: "address",
-        name: "owner",
+        name: "_owner",
         type: "address"
       },
       {
         internalType: "uint256",
-        name: "lid",
+        name: "_lid",
         type: "uint256"
       }
     ],
@@ -3228,16 +3257,6 @@ var Core_default = [
               {
                 internalType: "uint256",
                 name: "disputeDelayDur",
-                type: "uint256"
-              },
-              {
-                internalType: "uint256",
-                name: "evidenceDur",
-                type: "uint256"
-              },
-              {
-                internalType: "uint256",
-                name: "predictDur",
                 type: "uint256"
               }
             ],
@@ -3575,17 +3594,17 @@ var Core_default = [
     inputs: [
       {
         internalType: "address",
-        name: "mid",
+        name: "_mid",
         type: "address"
       },
       {
         internalType: "address",
-        name: "owner",
+        name: "_owner",
         type: "address"
       },
       {
         internalType: "uint256",
-        name: "lid",
+        name: "_lid",
         type: "uint256"
       }
     ],
@@ -3679,6 +3698,29 @@ var Core_default = [
       }
     ],
     name: "markOrderAsPaid",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function"
+  },
+  {
+    inputs: [
+      {
+        internalType: "uint256",
+        name: "id",
+        type: "uint256"
+      },
+      {
+        internalType: "uint256",
+        name: "expireAt",
+        type: "uint256"
+      },
+      {
+        internalType: "bytes",
+        name: "signature",
+        type: "bytes"
+      }
+    ],
+    name: "markOrderAsPaidByManagerSig",
     outputs: [],
     stateMutability: "nonpayable",
     type: "function"
@@ -4069,6 +4111,19 @@ var Core_default = [
         type: "address"
       }
     ],
+    name: "setMinerRegistry",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function"
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "addr",
+        type: "address"
+      }
+    ],
     name: "setNFT",
     outputs: [],
     stateMutability: "nonpayable",
@@ -4358,6 +4413,11 @@ var Core_default = [
         internalType: "contract IOperator",
         name: "operatorMgr",
         type: "address"
+      },
+      {
+        internalType: "contract IMinerRegistry",
+        name: "minerReg",
+        type: "address"
       }
     ],
     stateMutability: "view",
@@ -4432,7 +4492,7 @@ var Core_default = [
     ],
     name: "swapQuoteForBase",
     outputs: [],
-    stateMutability: "nonpayable",
+    stateMutability: "payable",
     type: "function"
   },
   {
@@ -4542,34 +4602,34 @@ var Core_default = [
     ],
     name: "updateFungibleLiquidity",
     outputs: [],
-    stateMutability: "nonpayable",
+    stateMutability: "payable",
     type: "function"
   },
   {
     inputs: [
       {
         internalType: "address",
-        name: "marketId",
+        name: "_marketId",
         type: "address"
       },
       {
         internalType: "address",
-        name: "owner",
+        name: "_owner",
         type: "address"
       },
       {
         internalType: "uint256",
-        name: "lid",
+        name: "_lid",
         type: "uint256"
       },
       {
         internalType: "uint256",
-        name: "price",
+        name: "_price",
         type: "uint256"
       },
       {
         internalType: "uint256",
-        name: "expireAt",
+        name: "_expireAt",
         type: "uint256"
       }
     ],
@@ -5124,6 +5184,19 @@ var DisputeManager_default = [
     inputs: [
       {
         indexed: false,
+        internalType: "address",
+        name: "addr",
+        type: "address"
+      }
+    ],
+    name: "UpdatedMinerRegistry",
+    type: "event"
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: false,
         internalType: "uint256",
         name: "val",
         type: "uint256"
@@ -5137,31 +5210,18 @@ var DisputeManager_default = [
     inputs: [
       {
         indexed: false,
-        internalType: "uint256",
-        name: "val",
-        type: "uint256"
-      }
-    ],
-    name: "UpdatedSharedSlashPortion",
-    type: "event"
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: false,
         internalType: "address",
-        name: "claimer",
+        name: "dest",
         type: "address"
       },
       {
         indexed: false,
         internalType: "uint256",
-        name: "amount",
+        name: "amt",
         type: "uint256"
       }
     ],
-    name: "WithdrawnMediatorReward",
+    name: "WithdrawnBalance",
     type: "event"
   },
   {
@@ -5187,12 +5247,12 @@ var DisputeManager_default = [
     inputs: [
       {
         internalType: "uint256",
-        name: "orderId",
+        name: "_orderId",
         type: "uint256"
       },
       {
         internalType: "uint256",
-        name: "ticketIdx",
+        name: "_ticketIdx",
         type: "uint256"
       },
       {
@@ -5503,6 +5563,19 @@ var DisputeManager_default = [
   },
   {
     inputs: [],
+    name: "minerReg",
+    outputs: [
+      {
+        internalType: "contract IMinerRegistry",
+        name: "",
+        type: "address"
+      }
+    ],
+    stateMutability: "view",
+    type: "function"
+  },
+  {
+    inputs: [],
     name: "owner",
     outputs: [
       {
@@ -5582,17 +5655,17 @@ var DisputeManager_default = [
     inputs: [
       {
         internalType: "uint256",
-        name: "orderId",
+        name: "_orderId",
         type: "uint256"
       },
       {
         internalType: "uint256",
-        name: "ticketIdx",
+        name: "_ticketIdx",
         type: "uint256"
       },
       {
         internalType: "string",
-        name: "vote",
+        name: "_vote",
         type: "string"
       },
       {
@@ -5718,12 +5791,12 @@ var DisputeManager_default = [
   {
     inputs: [
       {
-        internalType: "uint256",
-        name: "val",
-        type: "uint256"
+        internalType: "address",
+        name: "addr",
+        type: "address"
       }
     ],
-    name: "setPredictDur",
+    name: "setMinerRegistry",
     outputs: [],
     stateMutability: "nonpayable",
     type: "function"
@@ -5736,22 +5809,9 @@ var DisputeManager_default = [
         type: "uint256"
       }
     ],
-    name: "setSharedSlashPortion",
+    name: "setPredictDur",
     outputs: [],
     stateMutability: "nonpayable",
-    type: "function"
-  },
-  {
-    inputs: [],
-    name: "sharedSlashPortionBP",
-    outputs: [
-      {
-        internalType: "uint256",
-        name: "",
-        type: "uint256"
-      }
-    ],
-    stateMutability: "view",
     type: "function"
   },
   {
@@ -5794,6 +5854,19 @@ var DisputeManager_default = [
       }
     ],
     name: "undraftMediator",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function"
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "dest",
+        type: "address"
+      }
+    ],
+    name: "withdrawBalance",
     outputs: [],
     stateMutability: "nonpayable",
     type: "function"
@@ -8644,6 +8717,19 @@ var MarketCore_default = [
         internalType: "address",
         name: "id",
         type: "address"
+      }
+    ],
+    name: "EnabledZeroOfferPrice",
+    type: "event"
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: true,
+        internalType: "address",
+        name: "id",
+        type: "address"
       },
       {
         indexed: false,
@@ -8876,21 +8962,9 @@ var MarketCore_default = [
         internalType: "uint256",
         name: "disputeDelayDur",
         type: "uint256"
-      },
-      {
-        indexed: false,
-        internalType: "uint256",
-        name: "evidenceDur",
-        type: "uint256"
-      },
-      {
-        indexed: false,
-        internalType: "uint256",
-        name: "predictDur",
-        type: "uint256"
       }
     ],
-    name: "UpdatedDisputeDurations",
+    name: "UpdatedDisputeDelayDuration",
     type: "event"
   },
   {
@@ -8945,6 +9019,32 @@ var MarketCore_default = [
         internalType: "address",
         name: "addr",
         type: "address"
+      }
+    ],
+    name: "UpdatedMediatorManager",
+    type: "event"
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: false,
+        internalType: "address",
+        name: "addr",
+        type: "address"
+      }
+    ],
+    name: "UpdatedNativeAssetAddr",
+    type: "event"
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: false,
+        internalType: "address",
+        name: "addr",
+        type: "address"
       },
       {
         indexed: false,
@@ -8954,19 +9054,6 @@ var MarketCore_default = [
       }
     ],
     name: "WriterUpdated",
-    type: "event"
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: true,
-        internalType: "address",
-        name: "id",
-        type: "address"
-      }
-    ],
-    name: "ZeroPriceEnabled",
     type: "event"
   },
   {
@@ -9104,16 +9191,6 @@ var MarketCore_default = [
                 internalType: "uint256",
                 name: "disputeDelayDur",
                 type: "uint256"
-              },
-              {
-                internalType: "uint256",
-                name: "evidenceDur",
-                type: "uint256"
-              },
-              {
-                internalType: "uint256",
-                name: "predictDur",
-                type: "uint256"
               }
             ],
             internalType: "struct Structs.MarketDur",
@@ -9195,6 +9272,19 @@ var MarketCore_default = [
         internalType: "struct Structs.Market",
         name: "",
         type: "tuple"
+      }
+    ],
+    stateMutability: "view",
+    type: "function"
+  },
+  {
+    inputs: [],
+    name: "getNativeAssetAddr",
+    outputs: [
+      {
+        internalType: "address",
+        name: "",
+        type: "address"
       }
     ],
     stateMutability: "view",
@@ -9350,16 +9440,6 @@ var MarketCore_default = [
             internalType: "uint256",
             name: "disputeDelayDur",
             type: "uint256"
-          },
-          {
-            internalType: "uint256",
-            name: "evidenceDur",
-            type: "uint256"
-          },
-          {
-            internalType: "uint256",
-            name: "predictDur",
-            type: "uint256"
           }
         ],
         internalType: "struct Structs.MarketDur",
@@ -9436,6 +9516,32 @@ var MarketCore_default = [
         internalType: "struct Structs.MarketPerms",
         name: "perms",
         type: "tuple"
+      }
+    ],
+    stateMutability: "view",
+    type: "function"
+  },
+  {
+    inputs: [],
+    name: "mediatorManager",
+    outputs: [
+      {
+        internalType: "contract IMediatorManager",
+        name: "",
+        type: "address"
+      }
+    ],
+    stateMutability: "view",
+    type: "function"
+  },
+  {
+    inputs: [],
+    name: "nativeAssetAddr",
+    outputs: [
+      {
+        internalType: "address",
+        name: "",
+        type: "address"
       }
     ],
     stateMutability: "view",
@@ -9733,21 +9839,11 @@ var MarketCore_default = [
       },
       {
         internalType: "uint256",
-        name: "disputeDelayDur",
-        type: "uint256"
-      },
-      {
-        internalType: "uint256",
-        name: "evidenceDur",
-        type: "uint256"
-      },
-      {
-        internalType: "uint256",
-        name: "predictDur",
+        name: "duration",
         type: "uint256"
       }
     ],
-    name: "setDisputeDurations",
+    name: "setDisputeDelayDuration",
     outputs: [],
     stateMutability: "nonpayable",
     type: "function"
@@ -9814,16 +9910,6 @@ var MarketCore_default = [
               {
                 internalType: "uint256",
                 name: "disputeDelayDur",
-                type: "uint256"
-              },
-              {
-                internalType: "uint256",
-                name: "evidenceDur",
-                type: "uint256"
-              },
-              {
-                internalType: "uint256",
-                name: "predictDur",
                 type: "uint256"
               }
             ],
@@ -9909,6 +9995,32 @@ var MarketCore_default = [
       }
     ],
     name: "setMarket",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function"
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "addr",
+        type: "address"
+      }
+    ],
+    name: "setMediatorManager",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function"
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "addr",
+        type: "address"
+      }
+    ],
+    name: "setNativeAssetAddr",
     outputs: [],
     stateMutability: "nonpayable",
     type: "function"
@@ -10063,6 +10175,11 @@ var MediatorManager_default = [
         internalType: "uint256",
         name: "_ticketExpireDur",
         type: "uint256"
+      },
+      {
+        internalType: "uint256",
+        name: "_ticketPauseDur",
+        type: "uint256"
       }
     ],
     stateMutability: "nonpayable",
@@ -10160,6 +10277,81 @@ var MediatorManager_default = [
     inputs: [
       {
         indexed: false,
+        internalType: "uint256",
+        name: "poolId",
+        type: "uint256"
+      },
+      {
+        indexed: false,
+        internalType: "address",
+        name: "addr",
+        type: "address"
+      },
+      {
+        indexed: false,
+        internalType: "bool",
+        name: "approved",
+        type: "bool"
+      }
+    ],
+    name: "PoolMarketApproval",
+    type: "event"
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "poolId",
+        type: "uint256"
+      },
+      {
+        indexed: false,
+        internalType: "address",
+        name: "addr",
+        type: "address"
+      },
+      {
+        indexed: false,
+        internalType: "bool",
+        name: "approved",
+        type: "bool"
+      }
+    ],
+    name: "PoolMediatorApproval",
+    type: "event"
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: false,
+        internalType: "address",
+        name: "owner",
+        type: "address"
+      },
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "id",
+        type: "uint256"
+      },
+      {
+        indexed: false,
+        internalType: "bool",
+        name: "blocked",
+        type: "bool"
+      }
+    ],
+    name: "TicketBlocked",
+    type: "event"
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: false,
         internalType: "address",
         name: "owner",
         type: "address"
@@ -10197,6 +10389,37 @@ var MediatorManager_default = [
       }
     ],
     name: "TicketDrained",
+    type: "event"
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: false,
+        internalType: "address",
+        name: "ticketOwner",
+        type: "address"
+      },
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "ticketId",
+        type: "uint256"
+      },
+      {
+        indexed: false,
+        internalType: "bool",
+        name: "paused",
+        type: "bool"
+      },
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "pauseDur",
+        type: "uint256"
+      }
+    ],
+    name: "TicketPaused",
     type: "event"
   },
   {
@@ -10296,6 +10519,31 @@ var MediatorManager_default = [
       },
       {
         indexed: false,
+        internalType: "uint256",
+        name: "amount",
+        type: "uint256"
+      }
+    ],
+    name: "TicketSlashedByOwner",
+    type: "event"
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: false,
+        internalType: "address",
+        name: "owner",
+        type: "address"
+      },
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "ticketId",
+        type: "uint256"
+      },
+      {
+        indexed: false,
         internalType: "bool",
         name: "slashed",
         type: "bool"
@@ -10341,6 +10589,19 @@ var MediatorManager_default = [
     inputs: [
       {
         indexed: false,
+        internalType: "uint256",
+        name: "maxPause",
+        type: "uint256"
+      }
+    ],
+    name: "UpdatedMaxPause",
+    type: "event"
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: false,
         internalType: "address",
         name: "val",
         type: "address"
@@ -10355,37 +10616,29 @@ var MediatorManager_default = [
       {
         indexed: false,
         internalType: "uint256",
-        name: "val",
+        name: "ticketCancelDur",
         type: "uint256"
-      }
-    ],
-    name: "UpdatedTicketCancelDuration",
-    type: "event"
-  },
-  {
-    anonymous: false,
-    inputs: [
+      },
       {
         indexed: false,
         internalType: "uint256",
-        name: "val",
+        name: "ticketMatureDur",
         type: "uint256"
-      }
-    ],
-    name: "UpdatedTicketExpireDuration",
-    type: "event"
-  },
-  {
-    anonymous: false,
-    inputs: [
+      },
       {
         indexed: false,
         internalType: "uint256",
-        name: "val",
+        name: "ticketExpireDur",
+        type: "uint256"
+      },
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "ticketPauseDur",
         type: "uint256"
       }
     ],
-    name: "UpdatedTicketMatureDuration",
+    name: "UpdatedTicketDurations",
     type: "event"
   },
   {
@@ -10481,6 +10734,30 @@ var MediatorManager_default = [
         internalType: "uint256",
         name: "numDraftees",
         type: "uint256"
+      },
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "evidenceDur",
+        type: "uint256"
+      },
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "predictDur",
+        type: "uint256"
+      },
+      {
+        indexed: false,
+        internalType: "bool",
+        name: "approvedMediatorOnly",
+        type: "bool"
+      },
+      {
+        indexed: false,
+        internalType: "bool",
+        name: "approvedMarketOnly",
+        type: "bool"
       }
     ],
     name: "UpdatedTicketPool",
@@ -10548,11 +10825,6 @@ var MediatorManager_default = [
       {
         components: [
           {
-            internalType: "address",
-            name: "owner",
-            type: "address"
-          },
-          {
             internalType: "uint256",
             name: "idx",
             type: "uint256"
@@ -10573,9 +10845,9 @@ var MediatorManager_default = [
             type: "uint256"
           },
           {
-            internalType: "uint256",
+            internalType: "int256",
             name: "poolIdx",
-            type: "uint256"
+            type: "int256"
           },
           {
             internalType: "uint256",
@@ -10588,14 +10860,46 @@ var MediatorManager_default = [
             type: "uint256"
           },
           {
-            internalType: "bool",
-            name: "drafted",
-            type: "bool"
+            internalType: "uint256",
+            name: "numPaused",
+            type: "uint256"
           },
           {
-            internalType: "bool",
-            name: "joined",
-            type: "bool"
+            internalType: "address",
+            name: "owner",
+            type: "address"
+          },
+          {
+            components: [
+              {
+                internalType: "bool",
+                name: "drafted",
+                type: "bool"
+              },
+              {
+                internalType: "bool",
+                name: "joined",
+                type: "bool"
+              },
+              {
+                internalType: "bool",
+                name: "blocked",
+                type: "bool"
+              },
+              {
+                internalType: "bool",
+                name: "slashed",
+                type: "bool"
+              },
+              {
+                internalType: "bool",
+                name: "paused",
+                type: "bool"
+              }
+            ],
+            internalType: "struct Structs.TicketStatus",
+            name: "status",
+            type: "tuple"
           }
         ],
         internalType: "struct Structs.Ticket",
@@ -10623,7 +10927,7 @@ var MediatorManager_default = [
     inputs: [
       {
         internalType: "address",
-        name: "owner",
+        name: "ticketOwner",
         type: "address"
       },
       {
@@ -10636,11 +10940,6 @@ var MediatorManager_default = [
     outputs: [
       {
         components: [
-          {
-            internalType: "address",
-            name: "owner",
-            type: "address"
-          },
           {
             internalType: "uint256",
             name: "idx",
@@ -10662,9 +10961,9 @@ var MediatorManager_default = [
             type: "uint256"
           },
           {
-            internalType: "uint256",
+            internalType: "int256",
             name: "poolIdx",
-            type: "uint256"
+            type: "int256"
           },
           {
             internalType: "uint256",
@@ -10677,14 +10976,46 @@ var MediatorManager_default = [
             type: "uint256"
           },
           {
-            internalType: "bool",
-            name: "drafted",
-            type: "bool"
+            internalType: "uint256",
+            name: "numPaused",
+            type: "uint256"
           },
           {
-            internalType: "bool",
-            name: "joined",
-            type: "bool"
+            internalType: "address",
+            name: "owner",
+            type: "address"
+          },
+          {
+            components: [
+              {
+                internalType: "bool",
+                name: "drafted",
+                type: "bool"
+              },
+              {
+                internalType: "bool",
+                name: "joined",
+                type: "bool"
+              },
+              {
+                internalType: "bool",
+                name: "blocked",
+                type: "bool"
+              },
+              {
+                internalType: "bool",
+                name: "slashed",
+                type: "bool"
+              },
+              {
+                internalType: "bool",
+                name: "paused",
+                type: "bool"
+              }
+            ],
+            internalType: "struct Structs.TicketStatus",
+            name: "status",
+            type: "tuple"
           }
         ],
         internalType: "struct Structs.Ticket",
@@ -10707,6 +11038,21 @@ var MediatorManager_default = [
     outputs: [
       {
         components: [
+          {
+            internalType: "bool",
+            name: "exists",
+            type: "bool"
+          },
+          {
+            internalType: "bool",
+            name: "approvedMediatorOnly",
+            type: "bool"
+          },
+          {
+            internalType: "bool",
+            name: "approvedMarketOnly",
+            type: "bool"
+          },
           {
             internalType: "uint256",
             name: "reqBond",
@@ -10736,6 +11082,16 @@ var MediatorManager_default = [
             internalType: "uint256",
             name: "numDraftees",
             type: "uint256"
+          },
+          {
+            internalType: "uint256",
+            name: "evidenceDur",
+            type: "uint256"
+          },
+          {
+            internalType: "uint256",
+            name: "predictDur",
+            type: "uint256"
           }
         ],
         internalType: "struct Structs.TicketPool",
@@ -10763,6 +11119,54 @@ var MediatorManager_default = [
     inputs: [
       {
         internalType: "uint256",
+        name: "poolId",
+        type: "uint256"
+      },
+      {
+        internalType: "address",
+        name: "marketAddr",
+        type: "address"
+      }
+    ],
+    name: "isApprovedMarket",
+    outputs: [
+      {
+        internalType: "bool",
+        name: "",
+        type: "bool"
+      }
+    ],
+    stateMutability: "view",
+    type: "function"
+  },
+  {
+    inputs: [
+      {
+        internalType: "uint256",
+        name: "poolId",
+        type: "uint256"
+      },
+      {
+        internalType: "address",
+        name: "addr",
+        type: "address"
+      }
+    ],
+    name: "isApprovedMediator",
+    outputs: [
+      {
+        internalType: "bool",
+        name: "",
+        type: "bool"
+      }
+    ],
+    stateMutability: "view",
+    type: "function"
+  },
+  {
+    inputs: [
+      {
+        internalType: "uint256",
         name: "ticketId",
         type: "uint256"
       }
@@ -10780,6 +11184,19 @@ var MediatorManager_default = [
         internalType: "contract IMarketCore",
         name: "",
         type: "address"
+      }
+    ],
+    stateMutability: "view",
+    type: "function"
+  },
+  {
+    inputs: [],
+    name: "maxPause",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256"
       }
     ],
     stateMutability: "view",
@@ -10828,6 +11245,30 @@ var MediatorManager_default = [
     inputs: [
       {
         internalType: "uint256",
+        name: "",
+        type: "uint256"
+      },
+      {
+        internalType: "address",
+        name: "",
+        type: "address"
+      }
+    ],
+    name: "poolApprovals",
+    outputs: [
+      {
+        internalType: "bool",
+        name: "",
+        type: "bool"
+      }
+    ],
+    stateMutability: "view",
+    type: "function"
+  },
+  {
+    inputs: [
+      {
+        internalType: "uint256",
         name: "poolId",
         type: "uint256"
       }
@@ -10838,6 +11279,49 @@ var MediatorManager_default = [
         internalType: "bool",
         name: "",
         type: "bool"
+      }
+    ],
+    stateMutability: "view",
+    type: "function"
+  },
+  {
+    inputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256"
+      },
+      {
+        internalType: "address",
+        name: "",
+        type: "address"
+      }
+    ],
+    name: "poolMarketApprovals",
+    outputs: [
+      {
+        internalType: "bool",
+        name: "",
+        type: "bool"
+      }
+    ],
+    stateMutability: "view",
+    type: "function"
+  },
+  {
+    inputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256"
+      }
+    ],
+    name: "poolOwners",
+    outputs: [
+      {
+        internalType: "address",
+        name: "",
+        type: "address"
       }
     ],
     stateMutability: "view",
@@ -10883,6 +11367,21 @@ var MediatorManager_default = [
     name: "pools",
     outputs: [
       {
+        internalType: "bool",
+        name: "exists",
+        type: "bool"
+      },
+      {
+        internalType: "bool",
+        name: "approvedMediatorOnly",
+        type: "bool"
+      },
+      {
+        internalType: "bool",
+        name: "approvedMarketOnly",
+        type: "bool"
+      },
+      {
         internalType: "uint256",
         name: "reqBond",
         type: "uint256"
@@ -10910,6 +11409,16 @@ var MediatorManager_default = [
       {
         internalType: "uint256",
         name: "numDraftees",
+        type: "uint256"
+      },
+      {
+        internalType: "uint256",
+        name: "evidenceDur",
+        type: "uint256"
+      },
+      {
+        internalType: "uint256",
+        name: "predictDur",
         type: "uint256"
       }
     ],
@@ -10991,6 +11500,19 @@ var MediatorManager_default = [
   {
     inputs: [
       {
+        internalType: "uint256",
+        name: "_maxPause",
+        type: "uint256"
+      }
+    ],
+    name: "setMaxPause",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function"
+  },
+  {
+    inputs: [
+      {
         internalType: "address",
         name: "provider",
         type: "address"
@@ -11005,24 +11527,26 @@ var MediatorManager_default = [
     inputs: [
       {
         internalType: "uint256",
-        name: "dur",
+        name: "_ticketCancelDur",
         type: "uint256"
-      }
-    ],
-    name: "setTicketCancelDuration",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function"
-  },
-  {
-    inputs: [
+      },
       {
         internalType: "uint256",
-        name: "dur",
+        name: "_ticketMatureDur",
+        type: "uint256"
+      },
+      {
+        internalType: "uint256",
+        name: "_ticketExpireDur",
+        type: "uint256"
+      },
+      {
+        internalType: "uint256",
+        name: "_ticketPauseDur",
         type: "uint256"
       }
     ],
-    name: "setTicketExpireDuration",
+    name: "setTicketDurations",
     outputs: [],
     stateMutability: "nonpayable",
     type: "function"
@@ -11073,12 +11597,22 @@ var MediatorManager_default = [
   {
     inputs: [
       {
+        internalType: "address",
+        name: "ticketOwner",
+        type: "address"
+      },
+      {
         internalType: "uint256",
-        name: "dur",
+        name: "ticketId",
+        type: "uint256"
+      },
+      {
+        internalType: "uint256",
+        name: "amount",
         type: "uint256"
       }
     ],
-    name: "setTicketMatureDuration",
+    name: "slash",
     outputs: [],
     stateMutability: "nonpayable",
     type: "function"
@@ -11137,6 +11671,19 @@ var MediatorManager_default = [
   },
   {
     inputs: [],
+    name: "ticketPauseDur",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256"
+      }
+    ],
+    stateMutability: "view",
+    type: "function"
+  },
+  {
+    inputs: [],
     name: "ticketSold",
     outputs: [
       {
@@ -11177,11 +11724,6 @@ var MediatorManager_default = [
     name: "tickets",
     outputs: [
       {
-        internalType: "address",
-        name: "owner",
-        type: "address"
-      },
-      {
         internalType: "uint256",
         name: "idx",
         type: "uint256"
@@ -11202,9 +11744,9 @@ var MediatorManager_default = [
         type: "uint256"
       },
       {
-        internalType: "uint256",
+        internalType: "int256",
         name: "poolIdx",
-        type: "uint256"
+        type: "int256"
       },
       {
         internalType: "uint256",
@@ -11217,14 +11759,46 @@ var MediatorManager_default = [
         type: "uint256"
       },
       {
-        internalType: "bool",
-        name: "drafted",
-        type: "bool"
+        internalType: "uint256",
+        name: "numPaused",
+        type: "uint256"
       },
       {
-        internalType: "bool",
-        name: "joined",
-        type: "bool"
+        internalType: "address",
+        name: "owner",
+        type: "address"
+      },
+      {
+        components: [
+          {
+            internalType: "bool",
+            name: "drafted",
+            type: "bool"
+          },
+          {
+            internalType: "bool",
+            name: "joined",
+            type: "bool"
+          },
+          {
+            internalType: "bool",
+            name: "blocked",
+            type: "bool"
+          },
+          {
+            internalType: "bool",
+            name: "slashed",
+            type: "bool"
+          },
+          {
+            internalType: "bool",
+            name: "paused",
+            type: "bool"
+          }
+        ],
+        internalType: "struct Structs.TicketStatus",
+        name: "status",
+        type: "tuple"
       }
     ],
     stateMutability: "view",
@@ -11241,6 +11815,73 @@ var MediatorManager_default = [
       }
     ],
     stateMutability: "view",
+    type: "function"
+  },
+  {
+    inputs: [
+      {
+        internalType: "uint256",
+        name: "poolId",
+        type: "uint256"
+      },
+      {
+        internalType: "address",
+        name: "marketAddr",
+        type: "address"
+      }
+    ],
+    name: "toggleApproveMarket",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function"
+  },
+  {
+    inputs: [
+      {
+        internalType: "uint256",
+        name: "poolId",
+        type: "uint256"
+      },
+      {
+        internalType: "address",
+        name: "addr",
+        type: "address"
+      }
+    ],
+    name: "toggleApproveMediator",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function"
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "ticketOwner",
+        type: "address"
+      },
+      {
+        internalType: "uint256",
+        name: "ticketId",
+        type: "uint256"
+      }
+    ],
+    name: "toggleBlock",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function"
+  },
+  {
+    inputs: [
+      {
+        internalType: "uint256",
+        name: "ticketId",
+        type: "uint256"
+      }
+    ],
+    name: "togglePause",
+    outputs: [],
+    stateMutability: "nonpayable",
     type: "function"
   },
   {
@@ -11339,6 +11980,26 @@ var MediatorManager_default = [
         internalType: "uint256",
         name: "numDraftees",
         type: "uint256"
+      },
+      {
+        internalType: "uint256",
+        name: "evidenceDur",
+        type: "uint256"
+      },
+      {
+        internalType: "uint256",
+        name: "predictDur",
+        type: "uint256"
+      },
+      {
+        internalType: "bool",
+        name: "approvedMediatorOnly",
+        type: "bool"
+      },
+      {
+        internalType: "bool",
+        name: "approvedMarketOnly",
+        type: "bool"
       }
     ],
     name: "updateTicketPool",
@@ -15731,43 +16392,43 @@ var Chains = [
     }),
     contracts: {
       core: {
-        address: process.env.ARBITRUM_CORE_ADDRESS ?? process.env.NEXT_PUBLIC_ARBITRUM_CORE_ADDRESS ?? process.env.VITE_ARBITRUM_CORE_ADDRESS ?? "0x2c944d14B79A26E9D656D3f9Ee273B4916De73b8",
+        address: process.env.ARBITRUM_CORE_ADDRESS ?? process.env.NEXT_PUBLIC_ARBITRUM_CORE_ADDRESS ?? process.env.VITE_ARBITRUM_CORE_ADDRESS ?? "0x3e50344B05e0f66351c21B5D3b9cAAF194cFC556",
         abi: Core_default
       },
       token: {
-        address: process.env.ARBITRUM_TOKEN_ADDRESS ?? process.env.NEXT_PUBLIC_ARBITRUM_TOKEN_ADDRESS ?? process.env.VITE_ARBITRUM_TOKEN_ADDRESS ?? "0xE7734EDDd701cDb40AF03d06d43F12cC7699A548",
+        address: process.env.ARBITRUM_TOKEN_ADDRESS ?? process.env.NEXT_PUBLIC_ARBITRUM_TOKEN_ADDRESS ?? process.env.VITE_ARBITRUM_TOKEN_ADDRESS ?? "0x5e5e85370808363Ee3D59e8a778ee15cf8A1E15a",
         abi: Token_default
       },
       badgeManager: {
-        address: process.env.ARBITRUM_BADGE_MGR_ADDRESS ?? process.env.NEXT_PUBLIC_ARBITRUM_BADGE_MGR_ADDRESS ?? process.env.VITE_ARBITRUM_BADGE_MGR_ADDRESS ?? "0x4af678028311A3d241Afd4Ac16588Ad167bc8829",
+        address: process.env.ARBITRUM_BADGE_MGR_ADDRESS ?? process.env.NEXT_PUBLIC_ARBITRUM_BADGE_MGR_ADDRESS ?? process.env.VITE_ARBITRUM_BADGE_MGR_ADDRESS ?? "0x99eCb581130fD43B420C6e12fEeB3A267f6BA03f",
         abi: BadgeManager_default
       },
       marketCore: {
-        address: process.env.ARBITRUM_MARKET_CORE_ADDRESS ?? process.env.NEXT_PUBLIC_ARBITRUM_MARKET_CORE_ADDRESS ?? process.env.VITE_ARBITRUM_MARKET_CORE_ADDRESS ?? "0xf0371C639986d20C7dE072ab0a700B3C2A51Ff60",
+        address: process.env.ARBITRUM_MARKET_CORE_ADDRESS ?? process.env.NEXT_PUBLIC_ARBITRUM_MARKET_CORE_ADDRESS ?? process.env.VITE_ARBITRUM_MARKET_CORE_ADDRESS ?? "0x640E94953cf32529705ce509748469C07300ca03",
         abi: MarketCore_default
       },
       disputeManager: {
-        address: process.env.ARBITRUM_DISPUTE_MGR_ADDRESS ?? process.env.NEXT_PUBLIC_ARBITRUM_DISPUTE_MGR_ADDRESS ?? process.env.VITE_ARBITRUM_DISPUTE_MGR_ADDRESS ?? "0x2fC197a9B4CFd9a059f1A0f216801351474F9910",
+        address: process.env.ARBITRUM_DISPUTE_MGR_ADDRESS ?? process.env.NEXT_PUBLIC_ARBITRUM_DISPUTE_MGR_ADDRESS ?? process.env.VITE_ARBITRUM_DISPUTE_MGR_ADDRESS ?? "0x1d045BFBC22e4c9Bf6c3955020CC7F93adfe3674",
         abi: DisputeManager_default
       },
       mediatorManager: {
-        address: process.env.ARBITRUM_MEDIATOR_MGR_ADDRESS ?? process.env.NEXT_PUBLIC_ARBITRUM_MEDIATOR_MGR_ADDRESS ?? process.env.VITE_ARBITRUM_MEDIATOR_MGR_ADDRESS ?? "0x689d76878bff3929B8f48166cA8E08C23Db23757",
+        address: process.env.ARBITRUM_MEDIATOR_MGR_ADDRESS ?? process.env.NEXT_PUBLIC_ARBITRUM_MEDIATOR_MGR_ADDRESS ?? process.env.VITE_ARBITRUM_MEDIATOR_MGR_ADDRESS ?? "0x1ebb49A430B5E0B60A885e54bCb27b3658afae55",
         abi: MediatorManager_default
       },
       energon: {
-        address: process.env.ARBITRUM_ENERGON_ADDRESS ?? process.env.NEXT_PUBLIC_ARBITRUM_ENERGON_ADDRESS ?? process.env.VITE_ARBITRUM_ENERGON_ADDRESS,
+        address: process.env.ARBITRUM_ENERGON_ADDRESS ?? process.env.NEXT_PUBLIC_ARBITRUM_ENERGON_ADDRESS ?? process.env.VITE_ARBITRUM_ENERGON_ADDRESS ?? "0x0000000000000000000000000000000000000000",
         abi: Energon_default
       },
       nft: {
-        address: process.env.ARBITRUM_NFT_ADDRESS ?? process.env.NEXT_PUBLIC_ARBITRUM_NFT_ADDRESS ?? process.env.VITE_ARBITRUM_NFT_ADDRESS,
+        address: process.env.ARBITRUM_NFT_ADDRESS ?? process.env.NEXT_PUBLIC_ARBITRUM_NFT_ADDRESS ?? process.env.VITE_ARBITRUM_NFT_ADDRESS ?? "0x0000000000000000000000000000000000000000",
         abi: NFT_default
       },
       assetRegistry: {
-        address: process.env.ARBITRUM_ASSET_REG_ADDRESS ?? process.env.NEXT_PUBLIC_ARBITRUM_ASSET_REG_ADDRESS ?? process.env.VITE_ARBITRUM_ASSET_REG_ADDRESS ?? "0xF0F67172D72102A372d602a0437AFb012b857cd9",
+        address: process.env.ARBITRUM_ASSET_REG_ADDRESS ?? process.env.NEXT_PUBLIC_ARBITRUM_ASSET_REG_ADDRESS ?? process.env.VITE_ARBITRUM_ASSET_REG_ADDRESS ?? "0x1D1099f0616D8615375a11848442D9959404C8c1",
         abi: AssetRegistry_default
       },
       minerRegistry: {
-        address: process.env.ARBITRUM_MINER_REG_ADDRESS ?? process.env.NEXT_PUBLIC_ARBITRUM_MINER_REG_ADDRESS ?? process.env.VITE_ARBITRUM_MINER_REG_ADDRESS ?? "",
+        address: process.env.ARBITRUM_MINER_REG_ADDRESS ?? process.env.NEXT_PUBLIC_ARBITRUM_MINER_REG_ADDRESS ?? process.env.VITE_ARBITRUM_MINER_REG_ADDRESS ?? "0x4fDEE423445866c9e626F5BAA116F8a080A21aC0",
         abi: MinerRegistry_default
       }
     }
@@ -16527,7 +17188,7 @@ var tokens2 = [
   {
     asset: "0002",
     type: "ERC20",
-    address: "0xE7734EDDd701cDb40AF03d06d43F12cC7699A548",
+    address: "0x5e5e85370808363Ee3D59e8a778ee15cf8A1E15a",
     name: "Joint",
     symbol: "tJOIN",
     decimals: 18,

@@ -230,7 +230,7 @@ const Chains: ChainInfo[] = [
 					process.env.ARBITRUM_CORE_ADDRESS ??
 					process.env.NEXT_PUBLIC_ARBITRUM_CORE_ADDRESS ??
 					import.meta.env.VITE_ARBITRUM_CORE_ADDRESS ??
-					'0x2c944d14B79A26E9D656D3f9Ee273B4916De73b8',
+					'0x3e50344B05e0f66351c21B5D3b9cAAF194cFC556',
 				abi: CoreABI,
 			},
 			token: {
@@ -238,7 +238,7 @@ const Chains: ChainInfo[] = [
 					process.env.ARBITRUM_TOKEN_ADDRESS ??
 					process.env.NEXT_PUBLIC_ARBITRUM_TOKEN_ADDRESS ??
 					import.meta.env.VITE_ARBITRUM_TOKEN_ADDRESS ??
-					'0xE7734EDDd701cDb40AF03d06d43F12cC7699A548',
+					'0x5e5e85370808363Ee3D59e8a778ee15cf8A1E15a',
 				abi: NativeTokenABI,
 			},
 			badgeManager: {
@@ -246,7 +246,7 @@ const Chains: ChainInfo[] = [
 					process.env.ARBITRUM_BADGE_MGR_ADDRESS ??
 					process.env.NEXT_PUBLIC_ARBITRUM_BADGE_MGR_ADDRESS ??
 					import.meta.env.VITE_ARBITRUM_BADGE_MGR_ADDRESS ??
-					'0x4af678028311A3d241Afd4Ac16588Ad167bc8829',
+					'0x99eCb581130fD43B420C6e12fEeB3A267f6BA03f',
 				abi: BadgeManagerABI,
 			},
 			marketCore: {
@@ -254,7 +254,7 @@ const Chains: ChainInfo[] = [
 					process.env.ARBITRUM_MARKET_CORE_ADDRESS ??
 					process.env.NEXT_PUBLIC_ARBITRUM_MARKET_CORE_ADDRESS ??
 					import.meta.env.VITE_ARBITRUM_MARKET_CORE_ADDRESS ??
-					'0xf0371C639986d20C7dE072ab0a700B3C2A51Ff60',
+					'0x640E94953cf32529705ce509748469C07300ca03',
 				abi: MarketCoreABI,
 			},
 			disputeManager: {
@@ -262,7 +262,7 @@ const Chains: ChainInfo[] = [
 					process.env.ARBITRUM_DISPUTE_MGR_ADDRESS ??
 					process.env.NEXT_PUBLIC_ARBITRUM_DISPUTE_MGR_ADDRESS ??
 					import.meta.env.VITE_ARBITRUM_DISPUTE_MGR_ADDRESS ??
-					'0x2fC197a9B4CFd9a059f1A0f216801351474F9910',
+					'0x1d045BFBC22e4c9Bf6c3955020CC7F93adfe3674',
 				abi: DisputeManagerABI,
 			},
 			mediatorManager: {
@@ -270,21 +270,23 @@ const Chains: ChainInfo[] = [
 					process.env.ARBITRUM_MEDIATOR_MGR_ADDRESS ??
 					process.env.NEXT_PUBLIC_ARBITRUM_MEDIATOR_MGR_ADDRESS ??
 					import.meta.env.VITE_ARBITRUM_MEDIATOR_MGR_ADDRESS ??
-					'0x689d76878bff3929B8f48166cA8E08C23Db23757',
+					'0x1ebb49A430B5E0B60A885e54bCb27b3658afae55',
 				abi: MediatorManagerABI,
 			},
 			energon: {
 				address:
 					process.env.ARBITRUM_ENERGON_ADDRESS ??
 					process.env.NEXT_PUBLIC_ARBITRUM_ENERGON_ADDRESS ??
-					import.meta.env.VITE_ARBITRUM_ENERGON_ADDRESS,
+					import.meta.env.VITE_ARBITRUM_ENERGON_ADDRESS ??
+					'0x0000000000000000000000000000000000000000',
 				abi: EnergonABI,
 			},
 			nft: {
 				address:
 					process.env.ARBITRUM_NFT_ADDRESS ??
 					process.env.NEXT_PUBLIC_ARBITRUM_NFT_ADDRESS ??
-					import.meta.env.VITE_ARBITRUM_NFT_ADDRESS,
+					import.meta.env.VITE_ARBITRUM_NFT_ADDRESS ??
+					'0x0000000000000000000000000000000000000000',
 				abi: NftABI,
 			},
 			assetRegistry: {
@@ -292,7 +294,7 @@ const Chains: ChainInfo[] = [
 					process.env.ARBITRUM_ASSET_REG_ADDRESS ??
 					process.env.NEXT_PUBLIC_ARBITRUM_ASSET_REG_ADDRESS ??
 					import.meta.env.VITE_ARBITRUM_ASSET_REG_ADDRESS ??
-					'0xF0F67172D72102A372d602a0437AFb012b857cd9',
+					'0x1D1099f0616D8615375a11848442D9959404C8c1',
 				abi: AssetRegistryABI,
 			},
 			minerRegistry: {
@@ -300,7 +302,7 @@ const Chains: ChainInfo[] = [
 					process.env.ARBITRUM_MINER_REG_ADDRESS ??
 					process.env.NEXT_PUBLIC_ARBITRUM_MINER_REG_ADDRESS ??
 					import.meta.env.VITE_ARBITRUM_MINER_REG_ADDRESS ??
-					'',
+					'0x4fDEE423445866c9e626F5BAA116F8a080A21aC0',
 				abi: MinerRegistryABI,
 			},
 		},

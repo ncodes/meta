@@ -21,7 +21,7 @@
 		{
 			"asset": "0002",
 			"type": "ERC20",
-			"address": "0xE7734EDDd701cDb40AF03d06d43F12cC7699A548",
+			"address": "0x5e5e85370808363Ee3D59e8a778ee15cf8A1E15a",
 			"name": "Joint",
 			"symbol": "tJOIN",
 			"decimals": 18,
