@@ -17194,6 +17194,46 @@ var tokens2 = [
     decimals: 18,
     logoURI: "https://storage.googleapis.com/joint-images/token-logos/p2p.svg",
     price: 0
+  },
+  {
+    asset: "0003",
+    type: "ERC20",
+    address: "0xda668F1c6B6329f19afc657fD9D8093E6187e3eF",
+    name: "BANDIT",
+    symbol: "BANDIT",
+    decimals: 18,
+    logoURI: "https://storage.googleapis.com/joint-images/token-logos/bandit-coin.svg",
+    price: 0
+  },
+  {
+    asset: "0004",
+    type: "ERC20",
+    address: "0xAa77e14277F727B3C5158A07DFf83019d063a131",
+    name: "DROID",
+    symbol: "DROID",
+    decimals: 18,
+    logoURI: "https://storage.googleapis.com/joint-images/token-logos/droid-coin.svg",
+    price: 0
+  },
+  {
+    asset: "0005",
+    type: "ERC20",
+    address: "0x9c2F13C5fCc4f956921CeA990356166D63B663f4",
+    name: "MULTIPLIER",
+    symbol: "MULTI",
+    decimals: 18,
+    logoURI: "https://storage.googleapis.com/joint-images/token-logos/multi-coin.svg",
+    price: 0
+  },
+  {
+    asset: "0006",
+    type: "ERC20",
+    address: "0x5Eb896c6de72f763D0F3D26ee7F63F575D466902",
+    name: "WARBOND",
+    symbol: "BOND",
+    decimals: 18,
+    logoURI: "https://storage.googleapis.com/joint-images/token-logos/bond-coin.svg",
+    price: 0
   }
 ];
 var arbitrum_default = {
