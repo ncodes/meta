@@ -67,6 +67,16 @@
 			"decimals": 18,
 			"logoURI": "https://storage.googleapis.com/joint-images/token-logos/bond-coin.svg",
 			"price": 0
+		},
+		{
+			"asset": "0007",
+			"type": "ERC20",
+			"address": "0xaf88d065e77c8cC2239327C5EDb3A432268e5831",
+			"name": "USDC",
+			"symbol": "USDC",
+			"decimals": 6,
+			"logoURI": "https://assets-cdn.trustwallet.com/blockchains/arbitrum/assets/0xaf88d065e77c8cC2239327C5EDb3A432268e5831/logo.png",
+			"price": 0
 		}
 	]
 }
