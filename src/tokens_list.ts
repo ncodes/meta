@@ -1,14 +1,14 @@
 import _ from 'lodash';
 import { isAddressEqual } from 'viem';
-import * as arbitrumSepolia from './tokenlist/arbitrum-sepolia.json';
-import * as arbitrum from './tokenlist/arbitrum.json';
-import * as binance from './tokenlist/binance.json';
-import * as ethereum from './tokenlist/ethereum.json';
-import * as localhost from './tokenlist/localhost.json';
-import * as optimism from './tokenlist/optimism.json';
-import * as polygon from './tokenlist/polygon.json';
-import * as sepolia from './tokenlist/sepolia.json';
-import * as synthetic from './tokenlist/synthetic.json';
+import arbitrumSepolia from './tokenlist/arbitrum-sepolia.json';
+import arbitrum from './tokenlist/arbitrum.json';
+import binance from './tokenlist/binance.json';
+import ethereum from './tokenlist/ethereum.json';
+import localhost from './tokenlist/localhost.json';
+import optimism from './tokenlist/optimism.json';
+import polygon from './tokenlist/polygon.json';
+import sepolia from './tokenlist/sepolia.json';
+import synthetic from './tokenlist/synthetic.json';
 import { ChainNames } from './types/chain';
 import { TokenList } from './types/token';
 

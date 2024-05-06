@@ -1,9 +1,3 @@
-var __defProp = Object.defineProperty;
-var __export = (target, all) => {
-  for (var name10 in all)
-    __defProp(target, name10, { get: all[name10], enumerable: true });
-};
-
 // src/abi/AssetRegistry.json
 var AssetRegistry_default = [
   {
@@ -16591,18 +16585,18 @@ function getChain(id) {
     return getChainByName(id);
   return Chains.find((s) => s.chainId === id);
 }
-function getChainByName(name10) {
-  return Chains.find((s) => s.queryName === name10);
+function getChainByName(name) {
+  return Chains.find((s) => s.queryName === name);
 }
 function getChainNames() {
   return Chains.map((chain) => {
     return chain.queryName;
   });
 }
-function getChainID(name10) {
-  const chain = getChainByName(name10);
+function getChainID(name) {
+  const chain = getChainByName(name);
   if (!chain)
-    throw new Error(`Chain ${name10} is not supported`);
+    throw new Error(`Chain ${name} is not supported`);
   return chain.chainId;
 }
 function isValidChain(chain) {
@@ -17058,4767 +17052,4641 @@ import _ from "lodash";
 import { isAddressEqual as isAddressEqual2 } from "viem";
 
 // src/tokenlist/arbitrum-sepolia.json
-var arbitrum_sepolia_exports = {};
-__export(arbitrum_sepolia_exports, {
-  default: () => arbitrum_sepolia_default,
-  logoURI: () => logoURI,
-  name: () => name,
-  timestamp: () => timestamp,
-  tokens: () => tokens,
-  version: () => version
-});
-var name = "Trust Wallet: Arbitrum Sepolia";
-var logoURI = "https://trustwallet.com/assets/images/favicon.png";
-var timestamp = "2021-10-07T08:50:36.056Z";
-var tokens = [
-  {
-    asset: "0001",
-    type: "ERC20",
-    address: "0x980B62Da83eFf3D4576C647993b0c1D7faf17c73",
-    name: "WETH",
-    symbol: "WETH",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2/logo.png",
-    price: 0
-  },
-  {
-    asset: "0002",
-    type: "ERC20",
-    address: "0x3A56baecFa7b4A967B8aDF35a0494e22Dd807A86",
-    name: "Joint",
-    symbol: "JOIN",
-    decimals: 18,
-    logoURI: "https://storage.googleapis.com/joint-images/token-logos/p2p.svg",
-    price: 0
-  }
-];
-var version = {
-  major: 6,
-  minor: 0,
-  patch: 0
-};
 var arbitrum_sepolia_default = {
-  name,
-  logoURI,
-  timestamp,
-  tokens,
-  version
+  name: "Trust Wallet: Arbitrum Sepolia",
+  logoURI: "https://trustwallet.com/assets/images/favicon.png",
+  timestamp: "2021-10-07T08:50:36.056Z",
+  tokens: [
+    {
+      asset: "0001",
+      type: "ERC20",
+      address: "0x980B62Da83eFf3D4576C647993b0c1D7faf17c73",
+      name: "WETH",
+      symbol: "WETH",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2/logo.png",
+      price: 0
+    },
+    {
+      asset: "0002",
+      type: "ERC20",
+      address: "0x3A56baecFa7b4A967B8aDF35a0494e22Dd807A86",
+      name: "Joint",
+      symbol: "JOIN",
+      decimals: 18,
+      logoURI: "https://storage.googleapis.com/joint-images/token-logos/p2p.svg",
+      price: 0
+    }
+  ],
+  version: {
+    major: 6,
+    minor: 0,
+    patch: 0
+  }
 };
 
 // src/tokenlist/arbitrum.json
-var arbitrum_exports = {};
-__export(arbitrum_exports, {
-  default: () => arbitrum_default,
-  logoURI: () => logoURI2,
-  name: () => name2,
-  timestamp: () => timestamp2,
-  tokens: () => tokens2,
-  version: () => version2
-});
-var name2 = "Trust Wallet: Arbitrum";
-var logoURI2 = "https://trustwallet.com/assets/images/favicon.png";
-var timestamp2 = "2021-10-07T08:50:36.056Z";
-var version2 = {
-  major: 6,
-  minor: 0,
-  patch: 0
-};
-var tokens2 = [
-  {
-    asset: "0001",
-    type: "ERC20",
-    address: "0x82aF49447D8a07e3bd95BD0d56f35241523fBab1",
-    name: "WETH",
-    symbol: "WETH",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2/logo.png",
-    price: 0
-  },
-  {
-    asset: "0002",
-    type: "ERC20",
-    address: "0x5e5e85370808363Ee3D59e8a778ee15cf8A1E15a",
-    name: "Joint",
-    symbol: "tJOIN",
-    decimals: 18,
-    logoURI: "https://storage.googleapis.com/joint-images/token-logos/p2p.svg",
-    price: 0
-  },
-  {
-    asset: "0003",
-    type: "ERC20",
-    address: "0xda668F1c6B6329f19afc657fD9D8093E6187e3eF",
-    name: "BANDIT",
-    symbol: "BANDIT",
-    decimals: 18,
-    logoURI: "https://storage.googleapis.com/joint-images/token-logos/bandit-coin.svg",
-    price: 0
-  },
-  {
-    asset: "0004",
-    type: "ERC20",
-    address: "0xAa77e14277F727B3C5158A07DFf83019d063a131",
-    name: "DROID",
-    symbol: "DROID",
-    decimals: 18,
-    logoURI: "https://storage.googleapis.com/joint-images/token-logos/droid-coin.svg",
-    price: 0
-  },
-  {
-    asset: "0005",
-    type: "ERC20",
-    address: "0x9c2F13C5fCc4f956921CeA990356166D63B663f4",
-    name: "MULTIPLIER",
-    symbol: "MULTI",
-    decimals: 18,
-    logoURI: "https://storage.googleapis.com/joint-images/token-logos/multi-coin.svg",
-    price: 0
-  },
-  {
-    asset: "0006",
-    type: "ERC20",
-    address: "0x5Eb896c6de72f763D0F3D26ee7F63F575D466902",
-    name: "WARBOND",
-    symbol: "BOND",
-    decimals: 18,
-    logoURI: "https://storage.googleapis.com/joint-images/token-logos/bond-coin.svg",
-    price: 0
-  }
-];
 var arbitrum_default = {
-  name: name2,
-  logoURI: logoURI2,
-  timestamp: timestamp2,
-  version: version2,
-  tokens: tokens2
+  name: "Trust Wallet: Arbitrum",
+  logoURI: "https://trustwallet.com/assets/images/favicon.png",
+  timestamp: "2021-10-07T08:50:36.056Z",
+  version: {
+    major: 6,
+    minor: 0,
+    patch: 0
+  },
+  tokens: [
+    {
+      asset: "0001",
+      type: "ERC20",
+      address: "0x82aF49447D8a07e3bd95BD0d56f35241523fBab1",
+      name: "WETH",
+      symbol: "WETH",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2/logo.png",
+      price: 0
+    },
+    {
+      asset: "0002",
+      type: "ERC20",
+      address: "0x5e5e85370808363Ee3D59e8a778ee15cf8A1E15a",
+      name: "Joint",
+      symbol: "tJOIN",
+      decimals: 18,
+      logoURI: "https://storage.googleapis.com/joint-images/token-logos/p2p.svg",
+      price: 0
+    },
+    {
+      asset: "0003",
+      type: "ERC20",
+      address: "0xda668F1c6B6329f19afc657fD9D8093E6187e3eF",
+      name: "BANDIT",
+      symbol: "BANDIT",
+      decimals: 18,
+      logoURI: "https://storage.googleapis.com/joint-images/token-logos/bandit-coin.svg",
+      price: 0
+    },
+    {
+      asset: "0004",
+      type: "ERC20",
+      address: "0xAa77e14277F727B3C5158A07DFf83019d063a131",
+      name: "DROID",
+      symbol: "DROID",
+      decimals: 18,
+      logoURI: "https://storage.googleapis.com/joint-images/token-logos/droid-coin.svg",
+      price: 0
+    },
+    {
+      asset: "0005",
+      type: "ERC20",
+      address: "0x9c2F13C5fCc4f956921CeA990356166D63B663f4",
+      name: "MULTIPLIER",
+      symbol: "MULTI",
+      decimals: 18,
+      logoURI: "https://storage.googleapis.com/joint-images/token-logos/multi-coin.svg",
+      price: 0
+    },
+    {
+      asset: "0006",
+      type: "ERC20",
+      address: "0x5Eb896c6de72f763D0F3D26ee7F63F575D466902",
+      name: "WARBOND",
+      symbol: "BOND",
+      decimals: 18,
+      logoURI: "https://storage.googleapis.com/joint-images/token-logos/bond-coin.svg",
+      price: 0
+    }
+  ]
 };
 
 // src/tokenlist/binance.json
-var binance_exports = {};
-__export(binance_exports, {
-  default: () => binance_default,
-  logoURI: () => logoURI3,
-  name: () => name3,
-  timestamp: () => timestamp3,
-  tokens: () => tokens3,
-  version: () => version3
-});
-var name3 = "Trust Wallet: Smart Chain";
-var logoURI3 = "https://trustwallet.com/assets/images/favicon.png";
-var timestamp3 = "2021-06-17T12:17:25.447Z";
-var tokens3 = [
-  {
-    chainId: 56,
-    asset: "c20000714_t0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c",
-    type: "BEP20",
-    address: "0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c",
-    name: "Wrapped BNB",
-    symbol: "WBNB",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c/logo.png"
-  },
-  {
-    chainId: 56,
-    asset: "c20000714_t0x0231f91e02DebD20345Ae8AB7D71A41f8E140cE7",
-    type: "BEP20",
-    address: "0x0231f91e02DebD20345Ae8AB7D71A41f8E140cE7",
-    name: "Jupiter",
-    symbol: "bwJUP",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x0231f91e02DebD20345Ae8AB7D71A41f8E140cE7/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c20000714_t0x0D8Ce2A99Bb6e3B7Db580eD848240e4a0F9aE153",
-    type: "BEP20",
-    address: "0x0D8Ce2A99Bb6e3B7Db580eD848240e4a0F9aE153",
-    name: "Binance-Peg Filecoin",
-    symbol: "FIL",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x0D8Ce2A99Bb6e3B7Db580eD848240e4a0F9aE153/logo.png",
-    pairs: []
-  },
-  {
-    chainId: 56,
-    asset: "c20000714_t0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82",
-    type: "BEP20",
-    address: "0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82",
-    name: "PancakeSwap Token",
-    symbol: "CAKE",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c20000714_t0x0Eb3a705fc54725037CC9e008bDede697f62F335",
-    type: "BEP20",
-    address: "0x0Eb3a705fc54725037CC9e008bDede697f62F335",
-    name: "Binance-Peg Cosmos Token",
-    symbol: "ATOM",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x0Eb3a705fc54725037CC9e008bDede697f62F335/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c20000714_t0x16939ef78684453bfDFb47825F8a5F714f12623a",
-    type: "BEP20",
-    address: "0x16939ef78684453bfDFb47825F8a5F714f12623a",
-    name: "Binance-Peg Tezos Token",
-    symbol: "XTZ",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x16939ef78684453bfDFb47825F8a5F714f12623a/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c20000714_t0x190b589cf9Fb8DDEabBFeae36a813FFb2A702454",
-    type: "BEP20",
-    address: "0x190b589cf9Fb8DDEabBFeae36a813FFb2A702454",
-    name: "bDollar",
-    symbol: "BDO",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x190b589cf9Fb8DDEabBFeae36a813FFb2A702454/logo.png",
-    pairs: []
-  },
-  {
-    chainId: 56,
-    asset: "c20000714_t0x1AF3F329e8BE154074D8769D1FFa4eE058B1DBc3",
-    type: "BEP20",
-    address: "0x1AF3F329e8BE154074D8769D1FFa4eE058B1DBc3",
-    name: "Binance-Peg Dai Token",
-    symbol: "DAI",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x1AF3F329e8BE154074D8769D1FFa4eE058B1DBc3/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c20000714_t0x1D2F0da169ceB9fC7B3144628dB156f3F6c60dBE",
-    type: "BEP20",
-    address: "0x1D2F0da169ceB9fC7B3144628dB156f3F6c60dBE",
-    name: "Binance-Peg XRP Token",
-    symbol: "XRP",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x1D2F0da169ceB9fC7B3144628dB156f3F6c60dBE/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c20000714_t0x2090c8295769791ab7A3CF1CC6e0AA19F35e441A",
-    type: "BEP20",
-    address: "0x2090c8295769791ab7A3CF1CC6e0AA19F35e441A",
-    name: "Fuel Token",
-    symbol: "Fuel",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x2090c8295769791ab7A3CF1CC6e0AA19F35e441A/logo.png",
-    pairs: []
-  },
-  {
-    chainId: 56,
-    asset: "c20000714_t0x2170Ed0880ac9A755fd29B2688956BD959F933F8",
-    type: "BEP20",
-    address: "0x2170Ed0880ac9A755fd29B2688956BD959F933F8",
-    name: "Binance-Peg Ethereum",
-    symbol: "ETH",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x2170Ed0880ac9A755fd29B2688956BD959F933F8/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c20000714_t0x23396cF899Ca06c4472205fC903bDB4de249D6fC",
-    type: "BEP20",
-    address: "0x23396cF899Ca06c4472205fC903bDB4de249D6fC",
-    name: "Wrapped UST Token",
-    symbol: "UST",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x23396cF899Ca06c4472205fC903bDB4de249D6fC/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c20000714_t0x233d91A0713155003fc4DcE0AFa871b508B3B715",
-    type: "BEP20",
-    address: "0x233d91A0713155003fc4DcE0AFa871b508B3B715",
-    name: "Ditto",
-    symbol: "DITTO",
-    decimals: 9,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x233d91A0713155003fc4DcE0AFa871b508B3B715/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c20000714_t0x37Ac4D6140e54304D77437A5c11924f61a2D976f",
-    type: "BEP20",
-    address: "0x37Ac4D6140e54304D77437A5c11924f61a2D976f",
-    name: "SparkPoint Fuel",
-    symbol: "SFUEL",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x37Ac4D6140e54304D77437A5c11924f61a2D976f/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c20000714_t0x3aabCf53A1930A42E18D938C019E83Ebee50a849",
-    type: "BEP20",
-    address: "0x3aabCf53A1930A42E18D938C019E83Ebee50a849",
-    name: "SPONGE",
-    symbol: "SPG",
-    decimals: 9,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x3aabCf53A1930A42E18D938C019E83Ebee50a849/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c20000714_t0x3EE2200Efb3400fAbB9AacF31297cBdD1d435D47",
-    type: "BEP20",
-    address: "0x3EE2200Efb3400fAbB9AacF31297cBdD1d435D47",
-    name: "Binance-Peg Cardano Token",
-    symbol: "ADA",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x3EE2200Efb3400fAbB9AacF31297cBdD1d435D47/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c20000714_t0x4197C6EF3879a08cD51e5560da5064B773aa1d29",
-    type: "BEP20",
-    address: "0x4197C6EF3879a08cD51e5560da5064B773aa1d29",
-    name: "ACryptoS",
-    symbol: "ACS",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x4197C6EF3879a08cD51e5560da5064B773aa1d29/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c20000714_t0x4338665CBB7B2485A8855A139b75D5e34AB0DB94",
-    type: "BEP20",
-    address: "0x4338665CBB7B2485A8855A139b75D5e34AB0DB94",
-    name: "Binance-Peg Litecoin Token",
-    symbol: "LTC",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x4338665CBB7B2485A8855A139b75D5e34AB0DB94/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c20000714_t0x44754455564474A89358B2C2265883DF993b12F0",
-    type: "BEP20",
-    address: "0x44754455564474A89358B2C2265883DF993b12F0",
-    name: "ZeroSwapToken",
-    symbol: "ZEE",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x44754455564474A89358B2C2265883DF993b12F0/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c20000714_t0x47BEAd2563dCBf3bF2c9407fEa4dC236fAbA485A",
-    type: "BEP20",
-    address: "0x47BEAd2563dCBf3bF2c9407fEa4dC236fAbA485A",
-    name: "Swipe",
-    symbol: "SXP",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x47BEAd2563dCBf3bF2c9407fEa4dC236fAbA485A/logo.png",
-    pairs: []
-  },
-  {
-    chainId: 56,
-    asset: "c20000714_t0x4B0F1812e5Df2A09796481Ff14017e6005508003",
-    type: "BEP20",
-    address: "0x4B0F1812e5Df2A09796481Ff14017e6005508003",
-    name: "Trust Wallet",
-    symbol: "TWT",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x4B0F1812e5Df2A09796481Ff14017e6005508003/logo.png",
-    pairs: []
-  },
-  {
-    chainId: 56,
-    asset: "c20000714_t0x4BD17003473389A42DAF6a0a729f6Fdb328BbBd7",
-    type: "BEP20",
-    address: "0x4BD17003473389A42DAF6a0a729f6Fdb328BbBd7",
-    name: "VAI Stablecoin",
-    symbol: "VAI",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x4BD17003473389A42DAF6a0a729f6Fdb328BbBd7/logo.png",
-    pairs: []
-  },
-  {
-    chainId: 56,
-    asset: "c20000714_t0x55d398326f99059fF775485246999027B3197955",
-    type: "BEP20",
-    address: "0x55d398326f99059fF775485246999027B3197955",
-    name: "Binance-Peg BSC-USD",
-    symbol: "USDT",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x55d398326f99059fF775485246999027B3197955/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c20000714_t0x56b6fB708fC5732DEC1Afc8D8556423A2EDcCbD6",
-    type: "BEP20",
-    address: "0x56b6fB708fC5732DEC1Afc8D8556423A2EDcCbD6",
-    name: "Binance-Peg EOS Token",
-    symbol: "EOS",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x56b6fB708fC5732DEC1Afc8D8556423A2EDcCbD6/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c20000714_t0x5Ac52EE5b2a633895292Ff6d8A89bB9190451587",
-    type: "BEP20",
-    address: "0x5Ac52EE5b2a633895292Ff6d8A89bB9190451587",
-    name: "BSCX",
-    symbol: "BSCX",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x5Ac52EE5b2a633895292Ff6d8A89bB9190451587/logo.png",
-    pairs: []
-  },
-  {
-    chainId: 56,
-    asset: "c20000714_t0x63870A18B6e42b01Ef1Ad8A2302ef50B7132054F",
-    type: "BEP20",
-    address: "0x63870A18B6e42b01Ef1Ad8A2302ef50B7132054F",
-    name: "BLinkToken",
-    symbol: "BLINK",
-    decimals: 6,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x63870A18B6e42b01Ef1Ad8A2302ef50B7132054F/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c20000714_t0x67ee3Cb086F8a16f34beE3ca72FAD36F7Db929e2",
-    type: "BEP20",
-    address: "0x67ee3Cb086F8a16f34beE3ca72FAD36F7Db929e2",
-    name: "DODO",
-    symbol: "DODO",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x67ee3Cb086F8a16f34beE3ca72FAD36F7Db929e2/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c20000714_t0x6c5FE6e99D2484db7E4BF34F365ABA42d0E4dC20",
-    type: "BEP20",
-    address: "0x6c5FE6e99D2484db7E4BF34F365ABA42d0E4dC20",
-    name: "Absorber",
-    symbol: "ABS",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x6c5FE6e99D2484db7E4BF34F365ABA42d0E4dC20/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c20000714_t0x7083609fCE4d1d8Dc0C979AAb8c869Ea2C873402",
-    type: "BEP20",
-    address: "0x7083609fCE4d1d8Dc0C979AAb8c869Ea2C873402",
-    name: "Binance-Peg Polkadot Token",
-    symbol: "DOT",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x7083609fCE4d1d8Dc0C979AAb8c869Ea2C873402/logo.png",
-    pairs: []
-  },
-  {
-    chainId: 56,
-    asset: "c20000714_t0x7130d2A12B9BCbFAe4f2634d864A1Ee1Ce3Ead9c",
-    type: "BEP20",
-    address: "0x7130d2A12B9BCbFAe4f2634d864A1Ee1Ce3Ead9c",
-    name: "Binance-Peg BTCB Token",
-    symbol: "BTCB",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x7130d2A12B9BCbFAe4f2634d864A1Ee1Ce3Ead9c/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c20000714_t0x728C5baC3C3e370E372Fc4671f9ef6916b814d8B",
-    type: "BEP20",
-    address: "0x728C5baC3C3e370E372Fc4671f9ef6916b814d8B",
-    name: "UNFI",
-    symbol: "UNFI",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x728C5baC3C3e370E372Fc4671f9ef6916b814d8B/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c20000714_t0x72fAa679E1008Ad8382959FF48E392042A8b06f7",
-    type: "BEP20",
-    address: "0x72fAa679E1008Ad8382959FF48E392042A8b06f7",
-    name: "AllianceBlock Token",
-    symbol: "bALBT",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x72fAa679E1008Ad8382959FF48E392042A8b06f7/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c20000714_t0x78650B139471520656b9E7aA7A5e9276814a38e9",
-    type: "BEP20",
-    address: "0x78650B139471520656b9E7aA7A5e9276814a38e9",
-    name: "StandardBTCHashrateToken",
-    symbol: "BTCST",
-    decimals: 17,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x78650B139471520656b9E7aA7A5e9276814a38e9/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c20000714_t0x790Be81C3cA0e53974bE2688cDb954732C9862e1",
-    type: "BEP20",
-    address: "0x790Be81C3cA0e53974bE2688cDb954732C9862e1",
-    name: "CafeSwap Token",
-    symbol: "BREW",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x790Be81C3cA0e53974bE2688cDb954732C9862e1/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c20000714_t0x7979F6C54ebA05E18Ded44C4F986F49a5De551c2",
-    type: "BEP20",
-    address: "0x7979F6C54ebA05E18Ded44C4F986F49a5De551c2",
-    name: "Kebab Token",
-    symbol: "KEBAB",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x7979F6C54ebA05E18Ded44C4F986F49a5De551c2/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c20000714_t0x7F70642d88cf1C4a3a7abb072B53B929b653edA5",
-    type: "BEP20",
-    address: "0x7F70642d88cf1C4a3a7abb072B53B929b653edA5",
-    name: "Binance-Peg YFII.finance Token",
-    symbol: "YFII",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x7F70642d88cf1C4a3a7abb072B53B929b653edA5/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c20000714_t0x81859801b01764D4f0Fa5E64729f5a6C3b91435b",
-    type: "BEP20",
-    address: "0x81859801b01764D4f0Fa5E64729f5a6C3b91435b",
-    name: "bearn.fi",
-    symbol: "BFI",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x81859801b01764D4f0Fa5E64729f5a6C3b91435b/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c20000714_t0x88f1A5ae2A3BF98AEAF342D26B30a79438c9142e",
-    type: "BEP20",
-    address: "0x88f1A5ae2A3BF98AEAF342D26B30a79438c9142e",
-    name: "Binance-Peg yearn.finance",
-    symbol: "YFI",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x88f1A5ae2A3BF98AEAF342D26B30a79438c9142e/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c20000714_t0x8fF795a6F4D97E7887C79beA79aba5cc76444aDf",
-    type: "BEP20",
-    address: "0x8fF795a6F4D97E7887C79beA79aba5cc76444aDf",
-    name: "Binance-Peg Bitcoin Cash Token",
-    symbol: "BCH",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x8fF795a6F4D97E7887C79beA79aba5cc76444aDf/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c20000714_t0x928e55daB735aa8260AF3cEDadA18B5f70C72f1b",
-    type: "BEP20",
-    address: "0x928e55daB735aa8260AF3cEDadA18B5f70C72f1b",
-    name: "Frontier Token",
-    symbol: "FRONT",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x928e55daB735aa8260AF3cEDadA18B5f70C72f1b/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c20000714_t0x948d2a81086A075b3130BAc19e4c6DEe1D2E3fE8",
-    type: "BEP20",
-    address: "0x948d2a81086A075b3130BAc19e4c6DEe1D2E3fE8",
-    name: "Helmet.insure Governance Token",
-    symbol: "Helmet",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x948d2a81086A075b3130BAc19e4c6DEe1D2E3fE8/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c20000714_t0x97a30C692eCe9C317235d48287d23d358170FC40",
-    type: "BEP20",
-    address: "0x97a30C692eCe9C317235d48287d23d358170FC40",
-    name: "CryptEx Token",
-    symbol: "CRX",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x97a30C692eCe9C317235d48287d23d358170FC40/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c20000714_t0xa184088a740c695E156F91f5cC086a06bb78b827",
-    type: "BEP20",
-    address: "0xa184088a740c695E156F91f5cC086a06bb78b827",
-    name: "AUTOv2",
-    symbol: "AUTO",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0xa184088a740c695E156F91f5cC086a06bb78b827/logo.png",
-    pairs: []
-  },
-  {
-    chainId: 56,
-    asset: "c20000714_t0xa1faa113cbE53436Df28FF0aEe54275c13B40975",
-    type: "BEP20",
-    address: "0xa1faa113cbE53436Df28FF0aEe54275c13B40975",
-    name: "Alpha Finance",
-    symbol: "ALPHA",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0xa1faa113cbE53436Df28FF0aEe54275c13B40975/logo.png",
-    pairs: []
-  },
-  {
-    chainId: 56,
-    asset: "c20000714_t0xa2B726B1145A4773F68593CF171187d8EBe4d495",
-    type: "BEP20",
-    address: "0xa2B726B1145A4773F68593CF171187d8EBe4d495",
-    name: "Injective Protocol",
-    symbol: "INJ",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0xa2B726B1145A4773F68593CF171187d8EBe4d495/logo.png",
-    pairs: []
-  },
-  {
-    chainId: 56,
-    asset: "c20000714_t0xA8c2B8eec3d368C0253ad3dae65a5F2BBB89c929",
-    type: "BEP20",
-    address: "0xA8c2B8eec3d368C0253ad3dae65a5F2BBB89c929",
-    name: "CertiK Token",
-    symbol: "CTK",
-    decimals: 6,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0xA8c2B8eec3d368C0253ad3dae65a5F2BBB89c929/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c20000714_t0xAD6cAEb32CD2c308980a548bD0Bc5AA4306c6c18",
-    type: "BEP20",
-    address: "0xAD6cAEb32CD2c308980a548bD0Bc5AA4306c6c18",
-    name: "Binance-Peg Band Protocol Token",
-    symbol: "BAND",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0xAD6cAEb32CD2c308980a548bD0Bc5AA4306c6c18/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c20000714_t0xb59490aB09A0f526Cc7305822aC65f2Ab12f9723",
-    type: "BEP20",
-    address: "0xb59490aB09A0f526Cc7305822aC65f2Ab12f9723",
-    name: "Litentry",
-    symbol: "LIT",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0xb59490aB09A0f526Cc7305822aC65f2Ab12f9723/logo.png",
-    pairs: []
-  },
-  {
-    chainId: 56,
-    asset: "c20000714_t0xBf5140A22578168FD562DCcF235E5D43A02ce9B1",
-    type: "BEP20",
-    address: "0xBf5140A22578168FD562DCcF235E5D43A02ce9B1",
-    name: "Binance-Peg Uniswap",
-    symbol: "UNI",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0xBf5140A22578168FD562DCcF235E5D43A02ce9B1/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c20000714_t0xbF7c81FFF98BbE61B40Ed186e4AfD6DDd01337fe",
-    type: "BEP20",
-    address: "0xbF7c81FFF98BbE61B40Ed186e4AfD6DDd01337fe",
-    name: "Binance-Peg Elrond",
-    symbol: "EGLD",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0xbF7c81FFF98BbE61B40Ed186e4AfD6DDd01337fe/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c20000714_t0xC7d8D35EBA58a0935ff2D5a33Df105DD9f071731",
-    type: "BEP20",
-    address: "0xC7d8D35EBA58a0935ff2D5a33Df105DD9f071731",
-    name: "Hedget",
-    symbol: "HGET",
-    decimals: 6,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0xC7d8D35EBA58a0935ff2D5a33Df105DD9f071731/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c20000714_t0xC7FB8c5eFE8564205eE5CbA4dE8eeA8a086a4bd2",
-    type: "BEP20",
-    address: "0xC7FB8c5eFE8564205eE5CbA4dE8eeA8a086a4bd2",
-    name: "PocketRocket",
-    symbol: "POCROC",
-    decimals: 9,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0xC7FB8c5eFE8564205eE5CbA4dE8eeA8a086a4bd2/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c20000714_t0xC9849E6fdB743d08fAeE3E34dd2D1bc69EA11a51",
-    type: "BEP20",
-    address: "0xC9849E6fdB743d08fAeE3E34dd2D1bc69EA11a51",
-    name: "Bunny Token",
-    symbol: "BUNNY",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0xC9849E6fdB743d08fAeE3E34dd2D1bc69EA11a51/logo.png",
-    pairs: []
-  },
-  {
-    chainId: 56,
-    asset: "c20000714_t0xCa3F508B8e4Dd382eE878A314789373D80A5190A",
-    type: "BEP20",
-    address: "0xCa3F508B8e4Dd382eE878A314789373D80A5190A",
-    name: "beefy.finance",
-    symbol: "BIFI",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0xCa3F508B8e4Dd382eE878A314789373D80A5190A/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c20000714_t0xcc2E12a9b5b75360c6FBf23B584c275D52cDdb0E",
-    type: "BEP20",
-    address: "0xcc2E12a9b5b75360c6FBf23B584c275D52cDdb0E",
-    name: "Crow Token",
-    symbol: "CROW",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0xcc2E12a9b5b75360c6FBf23B584c275D52cDdb0E/logo.png",
-    pairs: []
-  },
-  {
-    chainId: 56,
-    asset: "c20000714_t0xcF6BB5389c92Bdda8a3747Ddb454cB7a64626C63",
-    type: "BEP20",
-    address: "0xcF6BB5389c92Bdda8a3747Ddb454cB7a64626C63",
-    name: "Venus",
-    symbol: "XVS",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0xcF6BB5389c92Bdda8a3747Ddb454cB7a64626C63/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c20000714_t0xD41FDb03Ba84762dD66a0af1a6C8540FF1ba5dfb",
-    type: "BEP20",
-    address: "0xD41FDb03Ba84762dD66a0af1a6C8540FF1ba5dfb",
-    name: "SafePal Token",
-    symbol: "SFP",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0xD41FDb03Ba84762dD66a0af1a6C8540FF1ba5dfb/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c20000714_t0xE40255C5d7fa7ceEc5120408C78C787CECB4cfdb",
-    type: "BEP20",
-    address: "0xE40255C5d7fa7ceEc5120408C78C787CECB4cfdb",
-    name: "SWGb",
-    symbol: "SWGb",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0xE40255C5d7fa7ceEc5120408C78C787CECB4cfdb/logo.png",
-    pairs: []
-  },
-  {
-    chainId: 56,
-    asset: "c20000714_t0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56",
-    type: "BEP20",
-    address: "0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56",
-    name: "Binance-Peg BUSD",
-    symbol: "BUSD",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c20000714_t0x9798dF2f5d213a872c787bD03b2b91F54D0D04A1",
-    type: "BEP20",
-    address: "0x9798dF2f5d213a872c787bD03b2b91F54D0D04A1",
-    name: "TeraBlock Token",
-    symbol: "TBC",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x9798dF2f5d213a872c787bD03b2b91F54D0D04A1/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c20000714_t0xF21768cCBC73Ea5B6fd3C687208a7c2def2d966e",
-    type: "BEP20",
-    address: "0xF21768cCBC73Ea5B6fd3C687208a7c2def2d966e",
-    name: "Reef.finance",
-    symbol: "REEF",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0xF21768cCBC73Ea5B6fd3C687208a7c2def2d966e/logo.png",
-    pairs: []
-  },
-  {
-    chainId: 56,
-    asset: "c20000714_t0xf79037F6f6bE66832DE4E7516be52826BC3cBcc4",
-    type: "BEP20",
-    address: "0xf79037F6f6bE66832DE4E7516be52826BC3cBcc4",
-    name: "Hard Protocol",
-    symbol: "HARD",
-    decimals: 6,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0xf79037F6f6bE66832DE4E7516be52826BC3cBcc4/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c20000714_t0xF8A0BF9cF54Bb92F17374d9e9A321E6a111a51bD",
-    type: "BEP20",
-    address: "0xF8A0BF9cF54Bb92F17374d9e9A321E6a111a51bD",
-    name: "Binance-Peg ChainLink",
-    symbol: "LINK",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0xF8A0BF9cF54Bb92F17374d9e9A321E6a111a51bD/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c20000714_t0xF952Fc3ca7325Cc27D15885d37117676d25BfdA6",
-    type: "BEP20",
-    address: "0xF952Fc3ca7325Cc27D15885d37117676d25BfdA6",
-    name: "Goose Golden Egg",
-    symbol: "EGG",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0xF952Fc3ca7325Cc27D15885d37117676d25BfdA6/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c20000714_t0x016CF83732f1468150D87dCC5BdF67730B3934D3",
-    type: "BEP20",
-    address: "0x016CF83732f1468150D87dCC5BdF67730B3934D3",
-    name: "AirNFT Token",
-    symbol: "AIRT",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x016CF83732f1468150D87dCC5BdF67730B3934D3/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c20000714_t0x8C851d1a123Ff703BD1f9dabe631b69902Df5f97",
-    type: "BEP20",
-    address: "0x8C851d1a123Ff703BD1f9dabe631b69902Df5f97",
-    name: "BinaryX",
-    symbol: "BNX",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x8C851d1a123Ff703BD1f9dabe631b69902Df5f97/logo.png",
-    pairs: []
-  }
-];
-var version3 = {
-  major: 11,
-  minor: 0,
-  patch: 0
-};
 var binance_default = {
-  name: name3,
-  logoURI: logoURI3,
-  timestamp: timestamp3,
-  tokens: tokens3,
-  version: version3
+  name: "Trust Wallet: Smart Chain",
+  logoURI: "https://trustwallet.com/assets/images/favicon.png",
+  timestamp: "2021-06-17T12:17:25.447Z",
+  tokens: [
+    {
+      chainId: 56,
+      asset: "c20000714_t0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c",
+      type: "BEP20",
+      address: "0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c",
+      name: "Wrapped BNB",
+      symbol: "WBNB",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c/logo.png"
+    },
+    {
+      chainId: 56,
+      asset: "c20000714_t0x0231f91e02DebD20345Ae8AB7D71A41f8E140cE7",
+      type: "BEP20",
+      address: "0x0231f91e02DebD20345Ae8AB7D71A41f8E140cE7",
+      name: "Jupiter",
+      symbol: "bwJUP",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x0231f91e02DebD20345Ae8AB7D71A41f8E140cE7/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c20000714_t0x0D8Ce2A99Bb6e3B7Db580eD848240e4a0F9aE153",
+      type: "BEP20",
+      address: "0x0D8Ce2A99Bb6e3B7Db580eD848240e4a0F9aE153",
+      name: "Binance-Peg Filecoin",
+      symbol: "FIL",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x0D8Ce2A99Bb6e3B7Db580eD848240e4a0F9aE153/logo.png",
+      pairs: []
+    },
+    {
+      chainId: 56,
+      asset: "c20000714_t0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82",
+      type: "BEP20",
+      address: "0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82",
+      name: "PancakeSwap Token",
+      symbol: "CAKE",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c20000714_t0x0Eb3a705fc54725037CC9e008bDede697f62F335",
+      type: "BEP20",
+      address: "0x0Eb3a705fc54725037CC9e008bDede697f62F335",
+      name: "Binance-Peg Cosmos Token",
+      symbol: "ATOM",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x0Eb3a705fc54725037CC9e008bDede697f62F335/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c20000714_t0x16939ef78684453bfDFb47825F8a5F714f12623a",
+      type: "BEP20",
+      address: "0x16939ef78684453bfDFb47825F8a5F714f12623a",
+      name: "Binance-Peg Tezos Token",
+      symbol: "XTZ",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x16939ef78684453bfDFb47825F8a5F714f12623a/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c20000714_t0x190b589cf9Fb8DDEabBFeae36a813FFb2A702454",
+      type: "BEP20",
+      address: "0x190b589cf9Fb8DDEabBFeae36a813FFb2A702454",
+      name: "bDollar",
+      symbol: "BDO",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x190b589cf9Fb8DDEabBFeae36a813FFb2A702454/logo.png",
+      pairs: []
+    },
+    {
+      chainId: 56,
+      asset: "c20000714_t0x1AF3F329e8BE154074D8769D1FFa4eE058B1DBc3",
+      type: "BEP20",
+      address: "0x1AF3F329e8BE154074D8769D1FFa4eE058B1DBc3",
+      name: "Binance-Peg Dai Token",
+      symbol: "DAI",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x1AF3F329e8BE154074D8769D1FFa4eE058B1DBc3/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c20000714_t0x1D2F0da169ceB9fC7B3144628dB156f3F6c60dBE",
+      type: "BEP20",
+      address: "0x1D2F0da169ceB9fC7B3144628dB156f3F6c60dBE",
+      name: "Binance-Peg XRP Token",
+      symbol: "XRP",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x1D2F0da169ceB9fC7B3144628dB156f3F6c60dBE/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c20000714_t0x2090c8295769791ab7A3CF1CC6e0AA19F35e441A",
+      type: "BEP20",
+      address: "0x2090c8295769791ab7A3CF1CC6e0AA19F35e441A",
+      name: "Fuel Token",
+      symbol: "Fuel",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x2090c8295769791ab7A3CF1CC6e0AA19F35e441A/logo.png",
+      pairs: []
+    },
+    {
+      chainId: 56,
+      asset: "c20000714_t0x2170Ed0880ac9A755fd29B2688956BD959F933F8",
+      type: "BEP20",
+      address: "0x2170Ed0880ac9A755fd29B2688956BD959F933F8",
+      name: "Binance-Peg Ethereum",
+      symbol: "ETH",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x2170Ed0880ac9A755fd29B2688956BD959F933F8/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c20000714_t0x23396cF899Ca06c4472205fC903bDB4de249D6fC",
+      type: "BEP20",
+      address: "0x23396cF899Ca06c4472205fC903bDB4de249D6fC",
+      name: "Wrapped UST Token",
+      symbol: "UST",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x23396cF899Ca06c4472205fC903bDB4de249D6fC/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c20000714_t0x233d91A0713155003fc4DcE0AFa871b508B3B715",
+      type: "BEP20",
+      address: "0x233d91A0713155003fc4DcE0AFa871b508B3B715",
+      name: "Ditto",
+      symbol: "DITTO",
+      decimals: 9,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x233d91A0713155003fc4DcE0AFa871b508B3B715/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c20000714_t0x37Ac4D6140e54304D77437A5c11924f61a2D976f",
+      type: "BEP20",
+      address: "0x37Ac4D6140e54304D77437A5c11924f61a2D976f",
+      name: "SparkPoint Fuel",
+      symbol: "SFUEL",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x37Ac4D6140e54304D77437A5c11924f61a2D976f/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c20000714_t0x3aabCf53A1930A42E18D938C019E83Ebee50a849",
+      type: "BEP20",
+      address: "0x3aabCf53A1930A42E18D938C019E83Ebee50a849",
+      name: "SPONGE",
+      symbol: "SPG",
+      decimals: 9,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x3aabCf53A1930A42E18D938C019E83Ebee50a849/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c20000714_t0x3EE2200Efb3400fAbB9AacF31297cBdD1d435D47",
+      type: "BEP20",
+      address: "0x3EE2200Efb3400fAbB9AacF31297cBdD1d435D47",
+      name: "Binance-Peg Cardano Token",
+      symbol: "ADA",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x3EE2200Efb3400fAbB9AacF31297cBdD1d435D47/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c20000714_t0x4197C6EF3879a08cD51e5560da5064B773aa1d29",
+      type: "BEP20",
+      address: "0x4197C6EF3879a08cD51e5560da5064B773aa1d29",
+      name: "ACryptoS",
+      symbol: "ACS",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x4197C6EF3879a08cD51e5560da5064B773aa1d29/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c20000714_t0x4338665CBB7B2485A8855A139b75D5e34AB0DB94",
+      type: "BEP20",
+      address: "0x4338665CBB7B2485A8855A139b75D5e34AB0DB94",
+      name: "Binance-Peg Litecoin Token",
+      symbol: "LTC",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x4338665CBB7B2485A8855A139b75D5e34AB0DB94/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c20000714_t0x44754455564474A89358B2C2265883DF993b12F0",
+      type: "BEP20",
+      address: "0x44754455564474A89358B2C2265883DF993b12F0",
+      name: "ZeroSwapToken",
+      symbol: "ZEE",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x44754455564474A89358B2C2265883DF993b12F0/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c20000714_t0x47BEAd2563dCBf3bF2c9407fEa4dC236fAbA485A",
+      type: "BEP20",
+      address: "0x47BEAd2563dCBf3bF2c9407fEa4dC236fAbA485A",
+      name: "Swipe",
+      symbol: "SXP",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x47BEAd2563dCBf3bF2c9407fEa4dC236fAbA485A/logo.png",
+      pairs: []
+    },
+    {
+      chainId: 56,
+      asset: "c20000714_t0x4B0F1812e5Df2A09796481Ff14017e6005508003",
+      type: "BEP20",
+      address: "0x4B0F1812e5Df2A09796481Ff14017e6005508003",
+      name: "Trust Wallet",
+      symbol: "TWT",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x4B0F1812e5Df2A09796481Ff14017e6005508003/logo.png",
+      pairs: []
+    },
+    {
+      chainId: 56,
+      asset: "c20000714_t0x4BD17003473389A42DAF6a0a729f6Fdb328BbBd7",
+      type: "BEP20",
+      address: "0x4BD17003473389A42DAF6a0a729f6Fdb328BbBd7",
+      name: "VAI Stablecoin",
+      symbol: "VAI",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x4BD17003473389A42DAF6a0a729f6Fdb328BbBd7/logo.png",
+      pairs: []
+    },
+    {
+      chainId: 56,
+      asset: "c20000714_t0x55d398326f99059fF775485246999027B3197955",
+      type: "BEP20",
+      address: "0x55d398326f99059fF775485246999027B3197955",
+      name: "Binance-Peg BSC-USD",
+      symbol: "USDT",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x55d398326f99059fF775485246999027B3197955/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c20000714_t0x56b6fB708fC5732DEC1Afc8D8556423A2EDcCbD6",
+      type: "BEP20",
+      address: "0x56b6fB708fC5732DEC1Afc8D8556423A2EDcCbD6",
+      name: "Binance-Peg EOS Token",
+      symbol: "EOS",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x56b6fB708fC5732DEC1Afc8D8556423A2EDcCbD6/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c20000714_t0x5Ac52EE5b2a633895292Ff6d8A89bB9190451587",
+      type: "BEP20",
+      address: "0x5Ac52EE5b2a633895292Ff6d8A89bB9190451587",
+      name: "BSCX",
+      symbol: "BSCX",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x5Ac52EE5b2a633895292Ff6d8A89bB9190451587/logo.png",
+      pairs: []
+    },
+    {
+      chainId: 56,
+      asset: "c20000714_t0x63870A18B6e42b01Ef1Ad8A2302ef50B7132054F",
+      type: "BEP20",
+      address: "0x63870A18B6e42b01Ef1Ad8A2302ef50B7132054F",
+      name: "BLinkToken",
+      symbol: "BLINK",
+      decimals: 6,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x63870A18B6e42b01Ef1Ad8A2302ef50B7132054F/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c20000714_t0x67ee3Cb086F8a16f34beE3ca72FAD36F7Db929e2",
+      type: "BEP20",
+      address: "0x67ee3Cb086F8a16f34beE3ca72FAD36F7Db929e2",
+      name: "DODO",
+      symbol: "DODO",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x67ee3Cb086F8a16f34beE3ca72FAD36F7Db929e2/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c20000714_t0x6c5FE6e99D2484db7E4BF34F365ABA42d0E4dC20",
+      type: "BEP20",
+      address: "0x6c5FE6e99D2484db7E4BF34F365ABA42d0E4dC20",
+      name: "Absorber",
+      symbol: "ABS",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x6c5FE6e99D2484db7E4BF34F365ABA42d0E4dC20/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c20000714_t0x7083609fCE4d1d8Dc0C979AAb8c869Ea2C873402",
+      type: "BEP20",
+      address: "0x7083609fCE4d1d8Dc0C979AAb8c869Ea2C873402",
+      name: "Binance-Peg Polkadot Token",
+      symbol: "DOT",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x7083609fCE4d1d8Dc0C979AAb8c869Ea2C873402/logo.png",
+      pairs: []
+    },
+    {
+      chainId: 56,
+      asset: "c20000714_t0x7130d2A12B9BCbFAe4f2634d864A1Ee1Ce3Ead9c",
+      type: "BEP20",
+      address: "0x7130d2A12B9BCbFAe4f2634d864A1Ee1Ce3Ead9c",
+      name: "Binance-Peg BTCB Token",
+      symbol: "BTCB",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x7130d2A12B9BCbFAe4f2634d864A1Ee1Ce3Ead9c/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c20000714_t0x728C5baC3C3e370E372Fc4671f9ef6916b814d8B",
+      type: "BEP20",
+      address: "0x728C5baC3C3e370E372Fc4671f9ef6916b814d8B",
+      name: "UNFI",
+      symbol: "UNFI",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x728C5baC3C3e370E372Fc4671f9ef6916b814d8B/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c20000714_t0x72fAa679E1008Ad8382959FF48E392042A8b06f7",
+      type: "BEP20",
+      address: "0x72fAa679E1008Ad8382959FF48E392042A8b06f7",
+      name: "AllianceBlock Token",
+      symbol: "bALBT",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x72fAa679E1008Ad8382959FF48E392042A8b06f7/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c20000714_t0x78650B139471520656b9E7aA7A5e9276814a38e9",
+      type: "BEP20",
+      address: "0x78650B139471520656b9E7aA7A5e9276814a38e9",
+      name: "StandardBTCHashrateToken",
+      symbol: "BTCST",
+      decimals: 17,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x78650B139471520656b9E7aA7A5e9276814a38e9/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c20000714_t0x790Be81C3cA0e53974bE2688cDb954732C9862e1",
+      type: "BEP20",
+      address: "0x790Be81C3cA0e53974bE2688cDb954732C9862e1",
+      name: "CafeSwap Token",
+      symbol: "BREW",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x790Be81C3cA0e53974bE2688cDb954732C9862e1/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c20000714_t0x7979F6C54ebA05E18Ded44C4F986F49a5De551c2",
+      type: "BEP20",
+      address: "0x7979F6C54ebA05E18Ded44C4F986F49a5De551c2",
+      name: "Kebab Token",
+      symbol: "KEBAB",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x7979F6C54ebA05E18Ded44C4F986F49a5De551c2/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c20000714_t0x7F70642d88cf1C4a3a7abb072B53B929b653edA5",
+      type: "BEP20",
+      address: "0x7F70642d88cf1C4a3a7abb072B53B929b653edA5",
+      name: "Binance-Peg YFII.finance Token",
+      symbol: "YFII",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x7F70642d88cf1C4a3a7abb072B53B929b653edA5/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c20000714_t0x81859801b01764D4f0Fa5E64729f5a6C3b91435b",
+      type: "BEP20",
+      address: "0x81859801b01764D4f0Fa5E64729f5a6C3b91435b",
+      name: "bearn.fi",
+      symbol: "BFI",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x81859801b01764D4f0Fa5E64729f5a6C3b91435b/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c20000714_t0x88f1A5ae2A3BF98AEAF342D26B30a79438c9142e",
+      type: "BEP20",
+      address: "0x88f1A5ae2A3BF98AEAF342D26B30a79438c9142e",
+      name: "Binance-Peg yearn.finance",
+      symbol: "YFI",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x88f1A5ae2A3BF98AEAF342D26B30a79438c9142e/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c20000714_t0x8fF795a6F4D97E7887C79beA79aba5cc76444aDf",
+      type: "BEP20",
+      address: "0x8fF795a6F4D97E7887C79beA79aba5cc76444aDf",
+      name: "Binance-Peg Bitcoin Cash Token",
+      symbol: "BCH",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x8fF795a6F4D97E7887C79beA79aba5cc76444aDf/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c20000714_t0x928e55daB735aa8260AF3cEDadA18B5f70C72f1b",
+      type: "BEP20",
+      address: "0x928e55daB735aa8260AF3cEDadA18B5f70C72f1b",
+      name: "Frontier Token",
+      symbol: "FRONT",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x928e55daB735aa8260AF3cEDadA18B5f70C72f1b/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c20000714_t0x948d2a81086A075b3130BAc19e4c6DEe1D2E3fE8",
+      type: "BEP20",
+      address: "0x948d2a81086A075b3130BAc19e4c6DEe1D2E3fE8",
+      name: "Helmet.insure Governance Token",
+      symbol: "Helmet",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x948d2a81086A075b3130BAc19e4c6DEe1D2E3fE8/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c20000714_t0x97a30C692eCe9C317235d48287d23d358170FC40",
+      type: "BEP20",
+      address: "0x97a30C692eCe9C317235d48287d23d358170FC40",
+      name: "CryptEx Token",
+      symbol: "CRX",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x97a30C692eCe9C317235d48287d23d358170FC40/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c20000714_t0xa184088a740c695E156F91f5cC086a06bb78b827",
+      type: "BEP20",
+      address: "0xa184088a740c695E156F91f5cC086a06bb78b827",
+      name: "AUTOv2",
+      symbol: "AUTO",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0xa184088a740c695E156F91f5cC086a06bb78b827/logo.png",
+      pairs: []
+    },
+    {
+      chainId: 56,
+      asset: "c20000714_t0xa1faa113cbE53436Df28FF0aEe54275c13B40975",
+      type: "BEP20",
+      address: "0xa1faa113cbE53436Df28FF0aEe54275c13B40975",
+      name: "Alpha Finance",
+      symbol: "ALPHA",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0xa1faa113cbE53436Df28FF0aEe54275c13B40975/logo.png",
+      pairs: []
+    },
+    {
+      chainId: 56,
+      asset: "c20000714_t0xa2B726B1145A4773F68593CF171187d8EBe4d495",
+      type: "BEP20",
+      address: "0xa2B726B1145A4773F68593CF171187d8EBe4d495",
+      name: "Injective Protocol",
+      symbol: "INJ",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0xa2B726B1145A4773F68593CF171187d8EBe4d495/logo.png",
+      pairs: []
+    },
+    {
+      chainId: 56,
+      asset: "c20000714_t0xA8c2B8eec3d368C0253ad3dae65a5F2BBB89c929",
+      type: "BEP20",
+      address: "0xA8c2B8eec3d368C0253ad3dae65a5F2BBB89c929",
+      name: "CertiK Token",
+      symbol: "CTK",
+      decimals: 6,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0xA8c2B8eec3d368C0253ad3dae65a5F2BBB89c929/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c20000714_t0xAD6cAEb32CD2c308980a548bD0Bc5AA4306c6c18",
+      type: "BEP20",
+      address: "0xAD6cAEb32CD2c308980a548bD0Bc5AA4306c6c18",
+      name: "Binance-Peg Band Protocol Token",
+      symbol: "BAND",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0xAD6cAEb32CD2c308980a548bD0Bc5AA4306c6c18/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c20000714_t0xb59490aB09A0f526Cc7305822aC65f2Ab12f9723",
+      type: "BEP20",
+      address: "0xb59490aB09A0f526Cc7305822aC65f2Ab12f9723",
+      name: "Litentry",
+      symbol: "LIT",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0xb59490aB09A0f526Cc7305822aC65f2Ab12f9723/logo.png",
+      pairs: []
+    },
+    {
+      chainId: 56,
+      asset: "c20000714_t0xBf5140A22578168FD562DCcF235E5D43A02ce9B1",
+      type: "BEP20",
+      address: "0xBf5140A22578168FD562DCcF235E5D43A02ce9B1",
+      name: "Binance-Peg Uniswap",
+      symbol: "UNI",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0xBf5140A22578168FD562DCcF235E5D43A02ce9B1/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c20000714_t0xbF7c81FFF98BbE61B40Ed186e4AfD6DDd01337fe",
+      type: "BEP20",
+      address: "0xbF7c81FFF98BbE61B40Ed186e4AfD6DDd01337fe",
+      name: "Binance-Peg Elrond",
+      symbol: "EGLD",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0xbF7c81FFF98BbE61B40Ed186e4AfD6DDd01337fe/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c20000714_t0xC7d8D35EBA58a0935ff2D5a33Df105DD9f071731",
+      type: "BEP20",
+      address: "0xC7d8D35EBA58a0935ff2D5a33Df105DD9f071731",
+      name: "Hedget",
+      symbol: "HGET",
+      decimals: 6,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0xC7d8D35EBA58a0935ff2D5a33Df105DD9f071731/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c20000714_t0xC7FB8c5eFE8564205eE5CbA4dE8eeA8a086a4bd2",
+      type: "BEP20",
+      address: "0xC7FB8c5eFE8564205eE5CbA4dE8eeA8a086a4bd2",
+      name: "PocketRocket",
+      symbol: "POCROC",
+      decimals: 9,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0xC7FB8c5eFE8564205eE5CbA4dE8eeA8a086a4bd2/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c20000714_t0xC9849E6fdB743d08fAeE3E34dd2D1bc69EA11a51",
+      type: "BEP20",
+      address: "0xC9849E6fdB743d08fAeE3E34dd2D1bc69EA11a51",
+      name: "Bunny Token",
+      symbol: "BUNNY",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0xC9849E6fdB743d08fAeE3E34dd2D1bc69EA11a51/logo.png",
+      pairs: []
+    },
+    {
+      chainId: 56,
+      asset: "c20000714_t0xCa3F508B8e4Dd382eE878A314789373D80A5190A",
+      type: "BEP20",
+      address: "0xCa3F508B8e4Dd382eE878A314789373D80A5190A",
+      name: "beefy.finance",
+      symbol: "BIFI",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0xCa3F508B8e4Dd382eE878A314789373D80A5190A/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c20000714_t0xcc2E12a9b5b75360c6FBf23B584c275D52cDdb0E",
+      type: "BEP20",
+      address: "0xcc2E12a9b5b75360c6FBf23B584c275D52cDdb0E",
+      name: "Crow Token",
+      symbol: "CROW",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0xcc2E12a9b5b75360c6FBf23B584c275D52cDdb0E/logo.png",
+      pairs: []
+    },
+    {
+      chainId: 56,
+      asset: "c20000714_t0xcF6BB5389c92Bdda8a3747Ddb454cB7a64626C63",
+      type: "BEP20",
+      address: "0xcF6BB5389c92Bdda8a3747Ddb454cB7a64626C63",
+      name: "Venus",
+      symbol: "XVS",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0xcF6BB5389c92Bdda8a3747Ddb454cB7a64626C63/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c20000714_t0xD41FDb03Ba84762dD66a0af1a6C8540FF1ba5dfb",
+      type: "BEP20",
+      address: "0xD41FDb03Ba84762dD66a0af1a6C8540FF1ba5dfb",
+      name: "SafePal Token",
+      symbol: "SFP",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0xD41FDb03Ba84762dD66a0af1a6C8540FF1ba5dfb/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c20000714_t0xE40255C5d7fa7ceEc5120408C78C787CECB4cfdb",
+      type: "BEP20",
+      address: "0xE40255C5d7fa7ceEc5120408C78C787CECB4cfdb",
+      name: "SWGb",
+      symbol: "SWGb",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0xE40255C5d7fa7ceEc5120408C78C787CECB4cfdb/logo.png",
+      pairs: []
+    },
+    {
+      chainId: 56,
+      asset: "c20000714_t0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56",
+      type: "BEP20",
+      address: "0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56",
+      name: "Binance-Peg BUSD",
+      symbol: "BUSD",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c20000714_t0x9798dF2f5d213a872c787bD03b2b91F54D0D04A1",
+      type: "BEP20",
+      address: "0x9798dF2f5d213a872c787bD03b2b91F54D0D04A1",
+      name: "TeraBlock Token",
+      symbol: "TBC",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x9798dF2f5d213a872c787bD03b2b91F54D0D04A1/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c20000714_t0xF21768cCBC73Ea5B6fd3C687208a7c2def2d966e",
+      type: "BEP20",
+      address: "0xF21768cCBC73Ea5B6fd3C687208a7c2def2d966e",
+      name: "Reef.finance",
+      symbol: "REEF",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0xF21768cCBC73Ea5B6fd3C687208a7c2def2d966e/logo.png",
+      pairs: []
+    },
+    {
+      chainId: 56,
+      asset: "c20000714_t0xf79037F6f6bE66832DE4E7516be52826BC3cBcc4",
+      type: "BEP20",
+      address: "0xf79037F6f6bE66832DE4E7516be52826BC3cBcc4",
+      name: "Hard Protocol",
+      symbol: "HARD",
+      decimals: 6,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0xf79037F6f6bE66832DE4E7516be52826BC3cBcc4/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c20000714_t0xF8A0BF9cF54Bb92F17374d9e9A321E6a111a51bD",
+      type: "BEP20",
+      address: "0xF8A0BF9cF54Bb92F17374d9e9A321E6a111a51bD",
+      name: "Binance-Peg ChainLink",
+      symbol: "LINK",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0xF8A0BF9cF54Bb92F17374d9e9A321E6a111a51bD/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c20000714_t0xF952Fc3ca7325Cc27D15885d37117676d25BfdA6",
+      type: "BEP20",
+      address: "0xF952Fc3ca7325Cc27D15885d37117676d25BfdA6",
+      name: "Goose Golden Egg",
+      symbol: "EGG",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0xF952Fc3ca7325Cc27D15885d37117676d25BfdA6/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c20000714_t0x016CF83732f1468150D87dCC5BdF67730B3934D3",
+      type: "BEP20",
+      address: "0x016CF83732f1468150D87dCC5BdF67730B3934D3",
+      name: "AirNFT Token",
+      symbol: "AIRT",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x016CF83732f1468150D87dCC5BdF67730B3934D3/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c20000714_t0x8C851d1a123Ff703BD1f9dabe631b69902Df5f97",
+      type: "BEP20",
+      address: "0x8C851d1a123Ff703BD1f9dabe631b69902Df5f97",
+      name: "BinaryX",
+      symbol: "BNX",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x8C851d1a123Ff703BD1f9dabe631b69902Df5f97/logo.png",
+      pairs: []
+    }
+  ],
+  version: {
+    major: 11,
+    minor: 0,
+    patch: 0
+  }
 };
 
 // src/tokenlist/ethereum.json
-var ethereum_exports = {};
-__export(ethereum_exports, {
-  default: () => ethereum_default,
-  logoURI: () => logoURI4,
-  name: () => name4,
-  timestamp: () => timestamp4,
-  tokens: () => tokens4,
-  version: () => version4
-});
-var name4 = "Trust Wallet: Ethereum";
-var logoURI4 = "https://trustwallet.com/assets/images/favicon.png";
-var timestamp4 = "2021-11-09T22:30:24.689Z";
-var tokens4 = [
-  {
-    chainId: 1,
-    asset: "c60_t0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
-    type: "ERC20",
-    address: "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
-    name: "WETH",
-    symbol: "WETH",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2/logo.png",
-    pairs: [
-      {
-        base: "c60_t0x0000000000085d4780B73119b644AE5ecd22b376"
-      },
-      {
-        base: "c60_t0x0000000000095413afC295d19EDeb1Ad7B71c952"
-      },
-      {
-        base: "c60_t0x00c83aeCC790e8a4453e5dD3B0B4b3680501a7A7"
-      },
-      {
-        base: "c60_t0x0202Be363B8a4820f3F4DE7FaF5224fF05943AB1"
-      },
-      {
-        base: "c60_t0x0258F474786DdFd37ABCE6df6BBb1Dd5dfC4434a"
-      },
-      {
-        base: "c60_t0x03ab458634910AaD20eF5f1C8ee96F1D6ac54919"
-      },
-      {
-        base: "c60_t0x09a3EcAFa817268f77BE1283176B946C4ff2E608"
-      },
-      {
-        base: "c60_t0x0Ae055097C6d159879521C384F1D2123D1f195e6"
-      },
-      {
-        base: "c60_t0x0bc529c00C6401aEF6D220BE8C6Ea1667F6Ad93e"
-      },
-      {
-        base: "c60_t0x0c7D5ae016f806603CB1782bEa29AC69471CAb9c"
-      },
-      {
-        base: "c60_t0x0CDF9acd87E940837ff21BB40c9fd55F68bba059"
-      },
-      {
-        base: "c60_t0x0cEC1A9154Ff802e7934Fc916Ed7Ca50bDE6844e"
-      },
-      {
-        base: "c60_t0x0D8775F648430679A709E98d2b0Cb6250d2887EF"
-      },
-      {
-        base: "c60_t0x0f51bb10119727a7e5eA3538074fb341F56B09Ad"
-      },
-      {
-        base: "c60_t0x0F5D2fB29fb7d3CFeE444a200298f468908cC942"
-      },
-      {
-        base: "c60_t0x0f7F961648aE6Db43C75663aC7E5414Eb79b5704"
-      },
-      {
-        base: "c60_t0x0FD10b9899882a6f2fcb5c371E17e70FdEe00C38"
-      },
-      {
-        base: "c60_t0x0fF6ffcFDa92c53F615a4A75D982f399C989366b"
-      },
-      {
-        base: "c60_t0x10Be9a8dAe441d276a5027936c3aADEd2d82bC15"
-      },
-      {
-        base: "c60_t0x111111111117dC0aa78b770fA6A738034120C302"
-      },
-      {
-        base: "c60_t0x1337DEF16F9B486fAEd0293eb623Dc8395dFE46a"
-      },
-      {
-        base: "c60_t0x1337DEF18C680aF1f9f45cBcab6309562975b1dD"
-      },
-      {
-        base: "c60_t0x1494CA1F11D487c2bBe4543E90080AeBa4BA3C2b"
-      },
-      {
-        base: "c60_t0x15874d65e649880c2614e7a480cb7c9A55787FF6"
-      },
-      {
-        base: "c60_t0x1614F18Fc94f47967A3Fbe5FfcD46d4e7Da3D787"
-      },
-      {
-        base: "c60_t0x16980b3B4a3f9D89E33311B5aa8f80303E5ca4F8"
-      },
-      {
-        base: "c60_t0x18aAA7115705e8be94bfFEBDE57Af9BFc265B998"
-      },
-      {
-        base: "c60_t0x1b40183EFB4Dd766f11bDa7A7c3AD8982e998421"
-      },
-      {
-        base: "c60_t0x1cBb83EbcD552D5EBf8131eF8c9CD9d9BAB342bC"
-      },
-      {
-        base: "c60_t0x1cEB5cB57C4D4E2b2433641b95Dd330A33185A44"
-      },
-      {
-        base: "c60_t0x1f9840a85d5aF5bf1D1762F925BDADdC4201F984"
-      },
-      {
-        base: "c60_t0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599"
-      },
-      {
-        base: "c60_t0x226f7b842E0F0120b7E194D05432b3fd14773a9D"
-      },
-      {
-        base: "c60_t0x25e1474170c4c0aA64fa98123bdc8dB49D7802fa"
-      },
-      {
-        base: "c60_t0x26c8AFBBFE1EBaca03C2bB082E69D0476Bffe099"
-      },
-      {
-        base: "c60_t0x27C70Cd1946795B66be9d954418546998b546634"
-      },
-      {
-        base: "c60_t0x2b591e99afE9f32eAA6214f7B7629768c40Eeb39"
-      },
-      {
-        base: "c60_t0x3301Ee63Fb29F863f2333Bd4466acb46CD8323E6"
-      },
-      {
-        base: "c60_t0x3383c5a8969Dc413bfdDc9656Eb80A1408E4bA20"
-      },
-      {
-        base: "c60_t0x33D0568941C0C64ff7e0FB4fbA0B11BD37deEd9f"
-      },
-      {
-        base: "c60_t0x3845badAde8e6dFF049820680d1F14bD3903a5d0"
-      },
-      {
-        base: "c60_t0x38e4adB44ef08F22F5B5b76A8f0c2d0dCbE7DcA1"
-      },
-      {
-        base: "c60_t0x408e41876cCCDC0F92210600ef50372656052a38"
-      },
-      {
-        base: "c60_t0x40FD72257597aA14C7231A7B1aaa29Fce868F677"
-      },
-      {
-        base: "c60_t0x429881672B9AE42b8EbA0E26cD9C73711b891Ca5"
-      },
-      {
-        base: "c60_t0xcf0C122c6b73ff809C693DB761e7BaeBe62b6a2E"
-      },
-      {
-        base: "c60_t0x45804880De22913dAFE09f4980848ECE6EcbAf78"
-      },
-      {
-        base: "c60_t0x4691937a7508860F876c9c0a2a617E7d9E945D4B"
-      },
-      {
-        base: "c60_t0x4e352cF164E64ADCBad318C3a1e222E9EBa4Ce42"
-      },
-      {
-        base: "c60_t0x514910771AF9Ca656af840dff83E8264EcF986CA"
-      },
-      {
-        base: "c60_t0x5218E472cFCFE0b64A064F055B43b4cdC9EfD3A6"
-      },
-      {
-        base: "c60_t0x5228a22e72ccC52d415EcFd199F99D0665E7733b"
-      },
-      {
-        base: "c60_t0x584bC13c7D411c00c01A62e8019472dE68768430"
-      },
-      {
-        base: "c60_t0x5BEfBB272290dD5b8521D4a938f6c4757742c430"
-      },
-      {
-        base: "c60_t0x607F4C5BB672230e8672085532f7e901544a7375"
-      },
-      {
-        base: "c60_t0x62359Ed7505Efc61FF1D56fEF82158CcaffA23D7"
-      },
-      {
-        base: "c60_t0x6243d8CEA23066d098a15582d81a598b4e8391F4"
-      },
-      {
-        base: "c60_t0x63b4f3e3fa4e438698CE330e365E831F7cCD1eF4"
-      },
-      {
-        base: "c60_t0x66a0f676479Cee1d7373f3DC2e2952778BfF5bd6"
-      },
-      {
-        base: "c60_t0x67c597624B17b16fb77959217360B7cD18284253"
-      },
-      {
-        base: "c60_t0x6810e776880C02933D47DB1b9fc05908e5386b96"
-      },
-      {
-        base: "c60_t0x6B175474E89094C44Da98b954EedeAC495271d0F"
-      },
-      {
-        base: "c60_t0x6B3595068778DD592e39A122f4f5a5cF09C90fE2"
-      },
-      {
-        base: "c60_t0x70401dFD142A16dC7031c56E862Fc88Cb9537Ce0"
-      },
-      {
-        base: "c60_t0x71F85B2E46976bD21302B64329868fd15eb0D127"
-      },
-      {
-        base: "c60_t0x725C263e32c72dDC3A19bEa12C5a0479a81eE688"
-      },
-      {
-        base: "c60_t0x72e364F2ABdC788b7E918bc238B21f109Cd634D7"
-      },
-      {
-        base: "c60_t0x761D38e5ddf6ccf6Cf7c55759d5210750B5D60F3"
-      },
-      {
-        base: "c60_t0x7659CE147D0e714454073a5dd7003544234b6Aa0"
-      },
-      {
-        base: "c60_t0x77777FeDdddFfC19Ff86DB637967013e6C6A116C"
-      },
-      {
-        base: "c60_t0x7a2Bc711E19ba6aff6cE8246C546E8c4B4944DFD"
-      },
-      {
-        base: "c60_t0x7D1AfA7B718fb893dB30A3aBc0Cfc608AaCfeBB0"
-      },
-      {
-        base: "c60_t0x7dE91B204C1C737bcEe6F000AAA6569Cf7061cb7"
-      },
-      {
-        base: "c60_t0x7F3EDcdD180Dbe4819Bd98FeE8929b5cEdB3AdEB"
-      },
-      {
-        base: "c60_t0x7Fc66500c84A76Ad7e9c93437bFc5Ac33E2DDaE9"
-      },
-      {
-        base: "c60_t0x7FF4169a6B5122b664c51c95727d87750eC07c84"
-      },
-      {
-        base: "c60_t0x8207c1FfC5B6804F6024322CcF34F29c3541Ae26"
-      },
-      {
-        base: "c60_t0x83e6f1E41cdd28eAcEB20Cb649155049Fac3D5Aa"
-      },
-      {
-        base: "c60_t0x8400D94A5cb0fa0D041a3788e395285d61c9ee5e"
-      },
-      {
-        base: "c60_t0x84cA8bc7997272c7CfB4D0Cd3D55cd942B3c9419"
-      },
-      {
-        base: "c60_t0x853d955aCEf822Db058eb8505911ED77F175b99e"
-      },
-      {
-        base: "c60_t0x85Eee30c52B0b379b046Fb0F85F4f3Dc3009aFEC"
-      },
-      {
-        base: "c60_t0x88ACDd2a6425c3FaAE4Bc9650Fd7E27e0Bebb7aB"
-      },
-      {
-        base: "c60_t0x88EF27e69108B2633F8E1C184CC37940A075cC02"
-      },
-      {
-        base: "c60_t0x8a40c222996f9F3431f63Bf80244C36822060f12"
-      },
-      {
-        base: "c60_t0x8a854288a5976036A725879164Ca3e91d30c6A1B"
-      },
-      {
-        base: "c60_t0xCE3f08e664693ca792caCE4af1364D5e220827B2"
-      },
-      {
-        base: "c60_t0x8CE9137d39326AD0cD6491fb5CC0CbA0e089b6A9"
-      },
-      {
-        base: "c60_t0x8dAEBADE922dF735c38C80C7eBD708Af50815fAa"
-      },
-      {
-        base: "c60_t0x8f8221aFbB33998d8584A2B05749bA73c37a938a"
-      },
-      {
-        base: "c60_t0x9355372396e3F6daF13359B7b607a3374cc638e0"
-      },
-      {
-        base: "c60_t0x93ED3FBe21207Ec2E8f2d3c3de6e058Cb73Bc04d"
-      },
-      {
-        base: "c60_t0x954b890704693af242613edEf1B603825afcD708"
-      },
-      {
-        base: "c60_t0x956F47F50A910163D8BF957Cf5846D573E7f87CA"
-      },
-      {
-        base: "c60_t0x95a4492F028aa1fd432Ea71146b433E7B4446611"
-      },
-      {
-        base: "c60_t0x95aD61b0a150d79219dCF64E1E6Cc01f0B64C4cE"
-      },
-      {
-        base: "c60_t0x967da4048cD07aB37855c090aAF366e4ce1b9F48"
-      },
-      {
-        base: "c60_t0x990f341946A3fdB507aE7e52d17851B87168017c"
-      },
-      {
-        base: "c60_t0x9B02dD390a603Add5c07f9fd9175b7DABE8D63B7"
-      },
-      {
-        base: "c60_t0x9BE89D2a4cd102D8Fecc6BF9dA793be995C22541"
-      },
-      {
-        base: "c60_t0x9EA3b5b4EC044b70375236A281986106457b20EF"
-      },
-      {
-        base: "c60_t0x9Ed8e7C9604790F7Ec589F99b94361d8AAB64E5E"
-      },
-      {
-        base: "c60_t0x9f7229aF0c4b9740e207Ea283b9094983f78ba04"
-      },
-      {
-        base: "c60_t0x9f8F72aA9304c8B593d555F12eF6589cC3A579A2"
-      },
-      {
-        base: "c60_t0x9F9c8ec3534c3cE16F928381372BfbFBFb9F4D24"
-      },
-      {
-        base: "c60_t0xa0246c9032bC3A600820415aE600c6388619A14D"
-      },
-      {
-        base: "c60_t0xa0afAA285Ce85974c3C881256cB7F225e3A1178a"
-      },
-      {
-        base: "c60_t0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48"
-      },
-      {
-        base: "c60_t0xa117000000f279D81A1D3cc75430fAA017FA5A2e"
-      },
-      {
-        base: "c60_t0xa393473d64d2F9F026B60b6Df7859A689715d092"
-      },
-      {
-        base: "c60_t0xA4EED63db85311E22dF4473f87CcfC3DaDCFA3E3"
-      },
-      {
-        base: "c60_t0xa8c8CfB141A3bB59FEA1E2ea6B79b5ECBCD7b6ca"
-      },
-      {
-        base: "c60_t0xAa6E8127831c9DE45ae56bB1b0d4D4Da6e5665BD"
-      },
-      {
-        base: "c60_t0xaaAEBE6Fe48E54f431b0C390CfaF0b017d09D42d"
-      },
-      {
-        base: "c60_t0xAd4f86a25bbc20FfB751f2FAC312A0B4d8F88c64"
-      },
-      {
-        base: "c60_t0xaDB2437e6F65682B85F814fBc12FeC0508A7B1D0"
-      },
-      {
-        base: "c60_t0xaE697F994Fc5eBC000F8e22EbFfeE04612f98A0d"
-      },
-      {
-        base: "c60_t0x41A3Dba3D677E573636BA691a70ff2D606c29666"
-      },
-      {
-        base: "c60_t0xaf9f549774ecEDbD0966C52f250aCc548D3F36E5"
-      },
-      {
-        base: "c60_t0xB26631c6dda06aD89B93C71400D25692de89c068"
-      },
-      {
-        base: "c60_t0xB62132e35a6c13ee1EE0f84dC5d40bad8d815206"
-      },
-      {
-        base: "c60_t0xB6ff96B8A8d214544Ca0dBc9B33f7AD6503eFD32"
-      },
-      {
-        base: "c60_t0xb753428af26E81097e7fD17f40c88aaA3E04902c"
-      },
-      {
-        base: "c60_t0xB9d99C33eA2d86EC5eC6b8A4dD816EBBA64404AF"
-      },
-      {
-        base: "c60_t0xba100000625a3754423978a60c9317c58a424e3D"
-      },
-      {
-        base: "c60_t0xBa21Ef4c9f433Ede00badEFcC2754B8E74bd538A"
-      },
-      {
-        base: "c60_t0xBBc2AE13b23d715c30720F079fcd9B4a74093505"
-      },
-      {
-        base: "c60_t0xbC396689893D065F41bc2C6EcbeE5e0085233447"
-      },
-      {
-        base: "c60_t0xc00e94Cb662C3520282E6f5717214004A7f26888"
-      },
-      {
-        base: "c60_t0xC011a73ee8576Fb46F5E1c5751cA3B9Fe0af2a6F"
-      },
-      {
-        base: "c60_t0xC0bA369c8Db6eB3924965e5c4FD0b4C1B91e305F"
-      },
-      {
-        base: "c60_t0xC18360217D8F7Ab5e7c516566761Ea12Ce7F9D72"
-      },
-      {
-        base: "c60_t0xC4C2614E694cF534D407Ee49F8E44D125E4681c4"
-      },
-      {
-        base: "c60_t0xC52C326331E9Ce41F04484d3B5E5648158028804"
-      },
-      {
-        base: "c60_t0xCb5f72d37685C3D5aD0bB5F982443BC8FcdF570E"
-      },
-      {
-        base: "c60_t0xCbfef8fdd706cde6F208460f2Bf39Aa9c785F05D"
-      },
-      {
-        base: "c60_t0xCC4304A31d09258b0029eA7FE63d032f52e44EFe"
-      },
-      {
-        base: "c60_t0xD23Ac27148aF6A2f339BD82D0e3CFF380b5093de"
-      },
-      {
-        base: "c60_t0xd26114cd6EE289AccF82350c8d8487fedB8A0C07"
-      },
-      {
-        base: "c60_t0xd379700999F4805Ce80aa32DB46A94dF64561108"
-      },
-      {
-        base: "c60_t0xD46bA6D942050d489DBd938a2C909A5d5039A161"
-      },
-      {
-        base: "c60_t0xD533a949740bb3306d119CC777fa900bA034cd52"
-      },
-      {
-        base: "c60_t0xdAC17F958D2ee523a2206206994597C13D831ec7"
-      },
-      {
-        base: "c60_t0xDDB3422497E61e13543BeA06989C0789117555c5"
-      },
-      {
-        base: "c60_t0xE41d2489571d322189246DaFA5ebDe1F4699F498"
-      },
-      {
-        base: "c60_t0xE452E6Ea2dDeB012e20dB73bf5d3863A3Ac8d77a"
-      },
-      {
-        base: "c60_t0xe53EC727dbDEB9E2d5456c3be40cFF031AB40A55"
-      },
-      {
-        base: "c60_t0xE61fDAF474Fac07063f2234Fb9e60C1163Cfa850"
-      },
-      {
-        base: "c60_t0xE95A203B1a91a908F9B9CE46459d101078c2c3cb"
-      },
-      {
-        base: "c60_t0xEa319e87Cf06203DAe107Dd8E5672175e3Ee976c"
-      },
-      {
-        base: "c60_t0xEB4C2781e4ebA804CE9a9803C67d0893436bB27D"
-      },
-      {
-        base: "c60_t0xeEAA40B28A2d1b0B08f6f97bB1DD4B75316c6107"
-      },
-      {
-        base: "c60_t0xEec2bE5c91ae7f8a338e1e5f3b5DE49d07AfdC81"
-      },
-      {
-        base: "c60_t0xEEF9f339514298C6A857EfCfC1A762aF84438dEE"
-      },
-      {
-        base: "c60_t0xf1f955016EcbCd7321c7266BccFB96c68ea5E49b"
-      },
-      {
-        base: "c60_t0xf418588522d5dd018b425E472991E52EBBeEEEEE"
-      },
-      {
-        base: "c60_t0xf4CD3d3Fda8d7Fd6C5a500203e38640A70Bf9577"
-      },
-      {
-        base: "c60_t0xF629cBd94d3791C9250152BD8dfBDF380E2a3B9c"
-      },
-      {
-        base: "c60_t0xF938424F7210f31dF2Aee3011291b658f872e91e"
-      },
-      {
-        base: "c60_t0xF94b5C5651c888d928439aB6514B93944eEE6F48"
-      },
-      {
-        base: "c60_t0xfF20817765cB7f73d4bde2e66e067E58D11095C2"
-      },
-      {
-        base: "c60_t0xf4d2888d29D722226FafA5d9B24F9164c092421E"
-      },
-      {
-        base: "c60_t0x70e8dE73cE538DA2bEEd35d14187F6959a8ecA96"
-      },
-      {
-        base: "c60_t0xbAFDabaDcf19d0cFbbe0AB9C69CF050D86ff888C"
-      },
-      {
-        base: "c60_t0xB0c7a3Ba49C7a6EaBa6cD4a96C55a1391070Ac9A"
-      },
-      {
-        base: "c60_t0xCEBA2a8F6Ec221AEB5f3a7bcd15Cbc7e6a387bfb"
-      }
-    ]
-  },
-  {
-    chainId: 1,
-    asset: "c60_t0x0000000000085d4780B73119b644AE5ecd22b376",
-    type: "ERC20",
-    address: "0x0000000000085d4780B73119b644AE5ecd22b376",
-    name: "TrueUSD",
-    symbol: "TUSD",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x0000000000085d4780B73119b644AE5ecd22b376/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x0000000000095413afC295d19EDeb1Ad7B71c952",
-    type: "ERC20",
-    address: "0x0000000000095413afC295d19EDeb1Ad7B71c952",
-    name: "Tokenlon",
-    symbol: "LON",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x0000000000095413afC295d19EDeb1Ad7B71c952/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x00c83aeCC790e8a4453e5dD3B0B4b3680501a7A7",
-    type: "ERC20",
-    address: "0x00c83aeCC790e8a4453e5dD3B0B4b3680501a7A7",
-    name: "SKALE Network",
-    symbol: "SKL",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x00c83aeCC790e8a4453e5dD3B0B4b3680501a7A7/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x0202Be363B8a4820f3F4DE7FaF5224fF05943AB1",
-    type: "ERC20",
-    address: "0x0202Be363B8a4820f3F4DE7FaF5224fF05943AB1",
-    name: "UniLend",
-    symbol: "UFT",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x0202Be363B8a4820f3F4DE7FaF5224fF05943AB1/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x0258F474786DdFd37ABCE6df6BBb1Dd5dfC4434a",
-    type: "ERC20",
-    address: "0x0258F474786DdFd37ABCE6df6BBb1Dd5dfC4434a",
-    name: "Orion Protocol",
-    symbol: "ORN",
-    decimals: 8,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x0258F474786DdFd37ABCE6df6BBb1Dd5dfC4434a/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x03ab458634910AaD20eF5f1C8ee96F1D6ac54919",
-    type: "ERC20",
-    address: "0x03ab458634910AaD20eF5f1C8ee96F1D6ac54919",
-    name: "Rai Reflex Index",
-    symbol: "RAI",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x03ab458634910AaD20eF5f1C8ee96F1D6ac54919/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x0488401c3F535193Fa8Df029d9fFe615A06E74E6",
-    type: "ERC20",
-    address: "0x0488401c3F535193Fa8Df029d9fFe615A06E74E6",
-    name: "SparkPoint",
-    symbol: "SRK",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x0488401c3F535193Fa8Df029d9fFe615A06E74E6/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x04Fa0d235C4abf4BcF4787aF4CF447DE572eF828",
-    type: "ERC20",
-    address: "0x04Fa0d235C4abf4BcF4787aF4CF447DE572eF828",
-    name: "UMA",
-    symbol: "UMA",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x04Fa0d235C4abf4BcF4787aF4CF447DE572eF828/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x06A01a4d579479Dd5D884EBf61A31727A3d8D442",
-    type: "ERC20",
-    address: "0x06A01a4d579479Dd5D884EBf61A31727A3d8D442",
-    name: "SmartKey",
-    symbol: "Skey",
-    decimals: 8,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x06A01a4d579479Dd5D884EBf61A31727A3d8D442/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x07150e919B4De5fD6a63DE1F9384828396f25fDC",
-    type: "ERC20",
-    address: "0x07150e919B4De5fD6a63DE1F9384828396f25fDC",
-    name: "Base Protocol",
-    symbol: "BASE",
-    decimals: 9,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x07150e919B4De5fD6a63DE1F9384828396f25fDC/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x09a3EcAFa817268f77BE1283176B946C4ff2E608",
-    type: "ERC20",
-    address: "0x09a3EcAFa817268f77BE1283176B946C4ff2E608",
-    name: "Mirror Protocol",
-    symbol: "MIR",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x09a3EcAFa817268f77BE1283176B946C4ff2E608/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x09e64c2B61a5f1690Ee6fbeD9baf5D6990F8dFd0",
-    type: "ERC20",
-    address: "0x09e64c2B61a5f1690Ee6fbeD9baf5D6990F8dFd0",
-    name: "Growth DeFi",
-    symbol: "GRO",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x09e64c2B61a5f1690Ee6fbeD9baf5D6990F8dFd0/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x0a50C93c762fDD6E56D86215C24AaAD43aB629aa",
-    type: "ERC20",
-    address: "0x0a50C93c762fDD6E56D86215C24AaAD43aB629aa",
-    name: "LGO Token",
-    symbol: "LGO",
-    decimals: 8,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x0a50C93c762fDD6E56D86215C24AaAD43aB629aa/logo.png",
-    pairs: []
-  },
-  {
-    chainId: 1,
-    asset: "c60_t0x0Ae055097C6d159879521C384F1D2123D1f195e6",
-    type: "ERC20",
-    address: "0x0Ae055097C6d159879521C384F1D2123D1f195e6",
-    name: "xDai",
-    symbol: "STAKE",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x0Ae055097C6d159879521C384F1D2123D1f195e6/logo.png",
-    pairs: []
-  },
-  {
-    chainId: 1,
-    asset: "c60_t0x0bc529c00C6401aEF6D220BE8C6Ea1667F6Ad93e",
-    type: "ERC20",
-    address: "0x0bc529c00C6401aEF6D220BE8C6Ea1667F6Ad93e",
-    name: "yearn.finance",
-    symbol: "YFI",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x0bc529c00C6401aEF6D220BE8C6Ea1667F6Ad93e/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x0c7D5ae016f806603CB1782bEa29AC69471CAb9c",
-    type: "ERC20",
-    address: "0x0c7D5ae016f806603CB1782bEa29AC69471CAb9c",
-    name: "Bifrost",
-    symbol: "BFC",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x0c7D5ae016f806603CB1782bEa29AC69471CAb9c/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x0CDF9acd87E940837ff21BB40c9fd55F68bba059",
-    type: "ERC20",
-    address: "0x0CDF9acd87E940837ff21BB40c9fd55F68bba059",
-    name: "Public Mint",
-    symbol: "MINT",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x0CDF9acd87E940837ff21BB40c9fd55F68bba059/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x0cEC1A9154Ff802e7934Fc916Ed7Ca50bDE6844e",
-    type: "ERC20",
-    address: "0x0cEC1A9154Ff802e7934Fc916Ed7Ca50bDE6844e",
-    name: "PoolTogether",
-    symbol: "POOL",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x0cEC1A9154Ff802e7934Fc916Ed7Ca50bDE6844e/logo.png",
-    pairs: []
-  },
-  {
-    chainId: 1,
-    asset: "c60_t0x0D8775F648430679A709E98d2b0Cb6250d2887EF",
-    type: "ERC20",
-    address: "0x0D8775F648430679A709E98d2b0Cb6250d2887EF",
-    name: "Basic Attention Token",
-    symbol: "BAT",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x0D8775F648430679A709E98d2b0Cb6250d2887EF/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x0f51bb10119727a7e5eA3538074fb341F56B09Ad",
-    type: "ERC20",
-    address: "0x0f51bb10119727a7e5eA3538074fb341F56B09Ad",
-    name: "DAO Maker",
-    symbol: "DAO",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x0f51bb10119727a7e5eA3538074fb341F56B09Ad/logo.png",
-    pairs: []
-  },
-  {
-    chainId: 1,
-    asset: "c60_t0x0F5D2fB29fb7d3CFeE444a200298f468908cC942",
-    type: "ERC20",
-    address: "0x0F5D2fB29fb7d3CFeE444a200298f468908cC942",
-    name: "Decentraland",
-    symbol: "MANA",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x0F5D2fB29fb7d3CFeE444a200298f468908cC942/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x0f7F961648aE6Db43C75663aC7E5414Eb79b5704",
-    type: "ERC20",
-    address: "0x0f7F961648aE6Db43C75663aC7E5414Eb79b5704",
-    name: "Blockzero Labs",
-    symbol: "XIO",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x0f7F961648aE6Db43C75663aC7E5414Eb79b5704/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x0FD10b9899882a6f2fcb5c371E17e70FdEe00C38",
-    type: "ERC20",
-    address: "0x0FD10b9899882a6f2fcb5c371E17e70FdEe00C38",
-    name: "Pundi X",
-    symbol: "PUNDIX",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x0FD10b9899882a6f2fcb5c371E17e70FdEe00C38/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x0fF6ffcFDa92c53F615a4A75D982f399C989366b",
-    type: "ERC20",
-    address: "0x0fF6ffcFDa92c53F615a4A75D982f399C989366b",
-    name: "Unilayer",
-    symbol: "LAYER",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x0fF6ffcFDa92c53F615a4A75D982f399C989366b/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x10Be9a8dAe441d276a5027936c3aADEd2d82bC15",
-    type: "ERC20",
-    address: "0x10Be9a8dAe441d276a5027936c3aADEd2d82bC15",
-    name: "UniMex Network",
-    symbol: "UMX",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x10Be9a8dAe441d276a5027936c3aADEd2d82bC15/logo.png",
-    pairs: []
-  },
-  {
-    chainId: 1,
-    asset: "c60_t0x111111111117dC0aa78b770fA6A738034120C302",
-    type: "ERC20",
-    address: "0x111111111117dC0aa78b770fA6A738034120C302",
-    name: "1INCH Token",
-    symbol: "1INCH",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x111111111117dC0aa78b770fA6A738034120C302/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x1337DEF16F9B486fAEd0293eb623Dc8395dFE46a",
-    type: "ERC20",
-    address: "0x1337DEF16F9B486fAEd0293eb623Dc8395dFE46a",
-    name: "ARMOR",
-    symbol: "ARMOR",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x1337DEF16F9B486fAEd0293eb623Dc8395dFE46a/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x1337DEF18C680aF1f9f45cBcab6309562975b1dD",
-    type: "ERC20",
-    address: "0x1337DEF18C680aF1f9f45cBcab6309562975b1dD",
-    name: "Armor NXM",
-    symbol: "arNXM",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x1337DEF18C680aF1f9f45cBcab6309562975b1dD/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x1494CA1F11D487c2bBe4543E90080AeBa4BA3C2b",
-    type: "ERC20",
-    address: "0x1494CA1F11D487c2bBe4543E90080AeBa4BA3C2b",
-    name: "DeFi Pulse Index",
-    symbol: "DPI",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x1494CA1F11D487c2bBe4543E90080AeBa4BA3C2b/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x152687Bc4A7FCC89049cF119F9ac3e5aCF2eE7ef",
-    type: "ERC20",
-    address: "0x152687Bc4A7FCC89049cF119F9ac3e5aCF2eE7ef",
-    name: "DeltaHub Community",
-    symbol: "DHC",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x152687Bc4A7FCC89049cF119F9ac3e5aCF2eE7ef/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x15874d65e649880c2614e7a480cb7c9A55787FF6",
-    type: "ERC20",
-    address: "0x15874d65e649880c2614e7a480cb7c9A55787FF6",
-    name: "EthereumMax",
-    symbol: "eMax",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x15874d65e649880c2614e7a480cb7c9A55787FF6/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x1614F18Fc94f47967A3Fbe5FfcD46d4e7Da3D787",
-    type: "ERC20",
-    address: "0x1614F18Fc94f47967A3Fbe5FfcD46d4e7Da3D787",
-    name: "PAID Network",
-    symbol: "PAID",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x1614F18Fc94f47967A3Fbe5FfcD46d4e7Da3D787/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x16980b3B4a3f9D89E33311B5aa8f80303E5ca4F8",
-    type: "ERC20",
-    address: "0x16980b3B4a3f9D89E33311B5aa8f80303E5ca4F8",
-    name: "KIRA Network",
-    symbol: "KEX",
-    decimals: 6,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x16980b3B4a3f9D89E33311B5aa8f80303E5ca4F8/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x1796ae0b0fa4862485106a0de9b654eFE301D0b2",
-    type: "ERC20",
-    address: "0x1796ae0b0fa4862485106a0de9b654eFE301D0b2",
-    name: "Polychain Monsters",
-    symbol: "PMON",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x1796ae0b0fa4862485106a0de9b654eFE301D0b2/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x17aC188e09A7890a1844E5E65471fE8b0CcFadF3",
-    type: "ERC20",
-    address: "0x17aC188e09A7890a1844E5E65471fE8b0CcFadF3",
-    name: "Cryptocurrency Top 10 Tokens Index",
-    symbol: "CC10",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x17aC188e09A7890a1844E5E65471fE8b0CcFadF3/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x18aAA7115705e8be94bfFEBDE57Af9BFc265B998",
-    type: "ERC20",
-    address: "0x18aAA7115705e8be94bfFEBDE57Af9BFc265B998",
-    name: "Audius",
-    symbol: "AUDIO",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x18aAA7115705e8be94bfFEBDE57Af9BFc265B998/logo.png",
-    pairs: []
-  },
-  {
-    chainId: 1,
-    asset: "c60_t0x1985365e9f78359a9B6AD760e32412f4a445E862",
-    type: "ERC20",
-    address: "0x1985365e9f78359a9B6AD760e32412f4a445E862",
-    name: "Augur",
-    symbol: "REP",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x1985365e9f78359a9B6AD760e32412f4a445E862/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x1b40183EFB4Dd766f11bDa7A7c3AD8982e998421",
-    type: "ERC20",
-    address: "0x1b40183EFB4Dd766f11bDa7A7c3AD8982e998421",
-    name: "Vesper",
-    symbol: "VSP",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x1b40183EFB4Dd766f11bDa7A7c3AD8982e998421/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x1C9491865a1DE77C5b6e19d2E6a5F1D7a6F2b25F",
-    type: "ERC20",
-    address: "0x1C9491865a1DE77C5b6e19d2E6a5F1D7a6F2b25F",
-    name: "Antimatter.Finance Governance Token",
-    symbol: "MATTER",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x1C9491865a1DE77C5b6e19d2E6a5F1D7a6F2b25F/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x1C9922314ED1415c95b9FD453c3818fd41867d0B",
-    type: "ERC20",
-    address: "0x1C9922314ED1415c95b9FD453c3818fd41867d0B",
-    name: "TOWER",
-    symbol: "TOWER",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x1C9922314ED1415c95b9FD453c3818fd41867d0B/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x1cBb83EbcD552D5EBf8131eF8c9CD9d9BAB342bC",
-    type: "ERC20",
-    address: "0x1cBb83EbcD552D5EBf8131eF8c9CD9d9BAB342bC",
-    name: "Non-Fungible Yearn",
-    symbol: "NFY",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x1cBb83EbcD552D5EBf8131eF8c9CD9d9BAB342bC/logo.png",
-    pairs: []
-  },
-  {
-    chainId: 1,
-    asset: "c60_t0x1cEB5cB57C4D4E2b2433641b95Dd330A33185A44",
-    type: "ERC20",
-    address: "0x1cEB5cB57C4D4E2b2433641b95Dd330A33185A44",
-    name: "Keep3rV1",
-    symbol: "KP3R",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x1cEB5cB57C4D4E2b2433641b95Dd330A33185A44/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x1dD80016e3d4ae146Ee2EBB484e8edD92dacC4ce",
-    type: "ERC20",
-    address: "0x1dD80016e3d4ae146Ee2EBB484e8edD92dacC4ce",
-    name: "Lead Wallet",
-    symbol: "LEAD",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x1dD80016e3d4ae146Ee2EBB484e8edD92dacC4ce/logo.png",
-    pairs: []
-  },
-  {
-    chainId: 1,
-    asset: "c60_t0x1f9840a85d5aF5bf1D1762F925BDADdC4201F984",
-    type: "ERC20",
-    address: "0x1f9840a85d5aF5bf1D1762F925BDADdC4201F984",
-    name: "Uniswap",
-    symbol: "UNI",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x1f9840a85d5aF5bf1D1762F925BDADdC4201F984/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x1fE24F25b1Cf609B9c4e7E12D802e3640dFA5e43",
-    type: "ERC20",
-    address: "0x1fE24F25b1Cf609B9c4e7E12D802e3640dFA5e43",
-    name: "ChainGuardians Governance Token",
-    symbol: "CGG",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x1fE24F25b1Cf609B9c4e7E12D802e3640dFA5e43/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x21BfBDa47A0B4B5b1248c767Ee49F7caA9B23697",
-    type: "ERC20",
-    address: "0x21BfBDa47A0B4B5b1248c767Ee49F7caA9B23697",
-    name: "OVR",
-    symbol: "OVR",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x21BfBDa47A0B4B5b1248c767Ee49F7caA9B23697/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x221657776846890989a759BA2973e427DfF5C9bB",
-    type: "ERC20",
-    address: "0x221657776846890989a759BA2973e427DfF5C9bB",
-    name: "Reputation",
-    symbol: "REPv2",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x221657776846890989a759BA2973e427DfF5C9bB/logo.png",
-    pairs: []
-  },
-  {
-    chainId: 1,
-    asset: "c60_t0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599",
-    type: "ERC20",
-    address: "0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599",
-    name: "Wrapped Bitcoin",
-    symbol: "WBTC",
-    decimals: 8,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x226f7b842E0F0120b7E194D05432b3fd14773a9D",
-    type: "ERC20",
-    address: "0x226f7b842E0F0120b7E194D05432b3fd14773a9D",
-    name: "UNION Protocol Governance Token",
-    symbol: "UNN",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x226f7b842E0F0120b7E194D05432b3fd14773a9D/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x23B608675a2B2fB1890d3ABBd85c5775c51691d5",
-    type: "ERC20",
-    address: "0x23B608675a2B2fB1890d3ABBd85c5775c51691d5",
-    name: "Unisocks Edition 0",
-    symbol: "SOCKS",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x23B608675a2B2fB1890d3ABBd85c5775c51691d5/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x25e1474170c4c0aA64fa98123bdc8dB49D7802fa",
-    type: "ERC20",
-    address: "0x25e1474170c4c0aA64fa98123bdc8dB49D7802fa",
-    name: "Bidao",
-    symbol: "BID",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x25e1474170c4c0aA64fa98123bdc8dB49D7802fa/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x26c8AFBBFE1EBaca03C2bB082E69D0476Bffe099",
-    type: "ERC20",
-    address: "0x26c8AFBBFE1EBaca03C2bB082E69D0476Bffe099",
-    name: "Cellframe",
-    symbol: "CELL",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x26c8AFBBFE1EBaca03C2bB082E69D0476Bffe099/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x26E43759551333e57F073bb0772F50329A957b30",
-    type: "ERC20",
-    address: "0x26E43759551333e57F073bb0772F50329A957b30",
-    name: "DegenVC",
-    symbol: "DGVC",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x26E43759551333e57F073bb0772F50329A957b30/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x27C70Cd1946795B66be9d954418546998b546634",
-    type: "ERC20",
-    address: "0x27C70Cd1946795B66be9d954418546998b546634",
-    name: "DOGE KILLER",
-    symbol: "LEASH",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x27C70Cd1946795B66be9d954418546998b546634/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x29502fE4d233EF0b45C3647101Fa1252cE0634BD",
-    type: "ERC20",
-    address: "0x29502fE4d233EF0b45C3647101Fa1252cE0634BD",
-    name: "Froge Finance",
-    symbol: "FROGE",
-    decimals: 9,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x29502fE4d233EF0b45C3647101Fa1252cE0634BD/logo.png",
-    pairs: []
-  },
-  {
-    chainId: 1,
-    asset: "c60_t0x2b591e99afE9f32eAA6214f7B7629768c40Eeb39",
-    type: "ERC20",
-    address: "0x2b591e99afE9f32eAA6214f7B7629768c40Eeb39",
-    name: "HEX",
-    symbol: "HEX",
-    decimals: 8,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x2b591e99afE9f32eAA6214f7B7629768c40Eeb39/logo.png",
-    pairs: []
-  },
-  {
-    chainId: 1,
-    asset: "c60_t0x2ba592F78dB6436527729929AAf6c908497cB200",
-    type: "ERC20",
-    address: "0x2ba592F78dB6436527729929AAf6c908497cB200",
-    name: "Cream Finance",
-    symbol: "CREAM",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x2ba592F78dB6436527729929AAf6c908497cB200/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x2e1E15C44Ffe4Df6a0cb7371CD00d5028e571d14",
-    type: "ERC20",
-    address: "0x2e1E15C44Ffe4Df6a0cb7371CD00d5028e571d14",
-    name: "Mettalex",
-    symbol: "MTLX",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x2e1E15C44Ffe4Df6a0cb7371CD00d5028e571d14/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x2e2f3246b6c65CCc4239c9Ee556EC143a7E5DE2c",
-    type: "ERC20",
-    address: "0x2e2f3246b6c65CCc4239c9Ee556EC143a7E5DE2c",
-    name: "Yfi.mobi",
-    symbol: "YFIM",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x2e2f3246b6c65CCc4239c9Ee556EC143a7E5DE2c/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x2eDf094dB69d6Dcd487f1B3dB9febE2eeC0dd4c5",
-    type: "ERC20",
-    address: "0x2eDf094dB69d6Dcd487f1B3dB9febE2eeC0dd4c5",
-    name: "ZeroSwap",
-    symbol: "ZEE",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x2eDf094dB69d6Dcd487f1B3dB9febE2eeC0dd4c5/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x30f271C9E86D2B7d00a6376Cd96A1cFBD5F0b9b3",
-    type: "ERC20",
-    address: "0x30f271C9E86D2B7d00a6376Cd96A1cFBD5F0b9b3",
-    name: "Decentr",
-    symbol: "DEC",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x30f271C9E86D2B7d00a6376Cd96A1cFBD5F0b9b3/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x3155BA85D5F96b2d030a4966AF206230e46849cb",
-    type: "ERC20",
-    address: "0x3155BA85D5F96b2d030a4966AF206230e46849cb",
-    name: "THORChain ETH.RUNE",
-    symbol: "RUNE",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x3155BA85D5F96b2d030a4966AF206230e46849cb/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x3301Ee63Fb29F863f2333Bd4466acb46CD8323E6",
-    type: "ERC20",
-    address: "0x3301Ee63Fb29F863f2333Bd4466acb46CD8323E6",
-    name: "Akita Inu",
-    symbol: "AKITA",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x3301Ee63Fb29F863f2333Bd4466acb46CD8323E6/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x3383c5a8969Dc413bfdDc9656Eb80A1408E4bA20",
-    type: "ERC20",
-    address: "0x3383c5a8969Dc413bfdDc9656Eb80A1408E4bA20",
-    name: "Anatha",
-    symbol: "wANATHA",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x3383c5a8969Dc413bfdDc9656Eb80A1408E4bA20/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x33D0568941C0C64ff7e0FB4fbA0B11BD37deEd9f",
-    type: "ERC20",
-    address: "0x33D0568941C0C64ff7e0FB4fbA0B11BD37deEd9f",
-    name: "RAMP DEFI",
-    symbol: "RAMP",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x33D0568941C0C64ff7e0FB4fbA0B11BD37deEd9f/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x3593D125a4f7849a1B059E64F4517A86Dd60c95d",
-    type: "ERC20",
-    address: "0x3593D125a4f7849a1B059E64F4517A86Dd60c95d",
-    name: "MANTRA DAO",
-    symbol: "OM",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x3593D125a4f7849a1B059E64F4517A86Dd60c95d/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x362bc847A3a9637d3af6624EeC853618a43ed7D2",
-    type: "ERC20",
-    address: "0x362bc847A3a9637d3af6624EeC853618a43ed7D2",
-    name: "PARSIQ",
-    symbol: "PRQ",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x362bc847A3a9637d3af6624EeC853618a43ed7D2/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x3845badAde8e6dFF049820680d1F14bD3903a5d0",
-    type: "ERC20",
-    address: "0x3845badAde8e6dFF049820680d1F14bD3903a5d0",
-    name: "The Sandbox",
-    symbol: "SAND",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x3845badAde8e6dFF049820680d1F14bD3903a5d0/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x38e4adB44ef08F22F5B5b76A8f0c2d0dCbE7DcA1",
-    type: "ERC20",
-    address: "0x38e4adB44ef08F22F5B5b76A8f0c2d0dCbE7DcA1",
-    name: "Concentrated Voting Power",
-    symbol: "CVP",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x38e4adB44ef08F22F5B5b76A8f0c2d0dCbE7DcA1/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x3aFfCCa64c2A6f4e3B6Bd9c64CD2C969EFd1ECBe",
-    type: "ERC20",
-    address: "0x3aFfCCa64c2A6f4e3B6Bd9c64CD2C969EFd1ECBe",
-    name: "DSLA",
-    symbol: "DSLA",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x3aFfCCa64c2A6f4e3B6Bd9c64CD2C969EFd1ECBe/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x3D3D35bb9bEC23b06Ca00fe472b50E7A4c692C30",
-    type: "ERC20",
-    address: "0x3D3D35bb9bEC23b06Ca00fe472b50E7A4c692C30",
-    name: "Vidya",
-    symbol: "VIDYA",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x3D3D35bb9bEC23b06Ca00fe472b50E7A4c692C30/logo.png",
-    pairs: []
-  },
-  {
-    chainId: 1,
-    asset: "c60_t0x408e41876cCCDC0F92210600ef50372656052a38",
-    type: "ERC20",
-    address: "0x408e41876cCCDC0F92210600ef50372656052a38",
-    name: "Ren",
-    symbol: "REN",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x408e41876cCCDC0F92210600ef50372656052a38/logo.png",
-    pairs: []
-  },
-  {
-    chainId: 1,
-    asset: "c60_t0x40FD72257597aA14C7231A7B1aaa29Fce868F677",
-    type: "ERC20",
-    address: "0x40FD72257597aA14C7231A7B1aaa29Fce868F677",
-    name: "SORA",
-    symbol: "XOR",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x40FD72257597aA14C7231A7B1aaa29Fce868F677/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x419D0d8BdD9aF5e606Ae2232ed285Aff190E711b",
-    type: "ERC20",
-    address: "0x419D0d8BdD9aF5e606Ae2232ed285Aff190E711b",
-    name: "FunFair",
-    symbol: "FUN",
-    decimals: 8,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x419D0d8BdD9aF5e606Ae2232ed285Aff190E711b/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x41A3Dba3D677E573636BA691a70ff2D606c29666",
-    type: "ERC20",
-    address: "0x41A3Dba3D677E573636BA691a70ff2D606c29666",
-    name: "GoBlank",
-    symbol: "BLANK",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x41A3Dba3D677E573636BA691a70ff2D606c29666/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x429881672B9AE42b8EbA0E26cD9C73711b891Ca5",
-    type: "ERC20",
-    address: "0x429881672B9AE42b8EbA0E26cD9C73711b891Ca5",
-    name: "Pickle Finance",
-    symbol: "PICKLE",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x429881672B9AE42b8EbA0E26cD9C73711b891Ca5/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x431ad2ff6a9C365805eBaD47Ee021148d6f7DBe0",
-    type: "ERC20",
-    address: "0x431ad2ff6a9C365805eBaD47Ee021148d6f7DBe0",
-    name: "dForce",
-    symbol: "DF",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x431ad2ff6a9C365805eBaD47Ee021148d6f7DBe0/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0xcf0C122c6b73ff809C693DB761e7BaeBe62b6a2E",
-    type: "ERC20",
-    address: "0xcf0C122c6b73ff809C693DB761e7BaeBe62b6a2E",
-    name: "FLOKI",
-    symbol: "FLOKI",
-    decimals: 9,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xcf0C122c6b73ff809C693DB761e7BaeBe62b6a2E/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x4575f41308EC1483f3d399aa9a2826d74Da13Deb",
-    type: "ERC20",
-    address: "0x4575f41308EC1483f3d399aa9a2826d74Da13Deb",
-    name: "Orchid",
-    symbol: "OXT",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x4575f41308EC1483f3d399aa9a2826d74Da13Deb/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x45804880De22913dAFE09f4980848ECE6EcbAf78",
-    type: "ERC20",
-    address: "0x45804880De22913dAFE09f4980848ECE6EcbAf78",
-    name: "PAX Gold",
-    symbol: "PAXG",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x45804880De22913dAFE09f4980848ECE6EcbAf78/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x4691937a7508860F876c9c0a2a617E7d9E945D4B",
-    type: "ERC20",
-    address: "0x4691937a7508860F876c9c0a2a617E7d9E945D4B",
-    name: "WOO Network",
-    symbol: "WOO",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x4691937a7508860F876c9c0a2a617E7d9E945D4B/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x4a220E6096B25EADb88358cb44068A3248254675",
-    type: "ERC20",
-    address: "0x4a220E6096B25EADb88358cb44068A3248254675",
-    name: "Quant",
-    symbol: "QNT",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x4a220E6096B25EADb88358cb44068A3248254675/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x4B1E80cAC91e2216EEb63e29B957eB91Ae9C2Be8",
-    type: "ERC20",
-    address: "0x4B1E80cAC91e2216EEb63e29B957eB91Ae9C2Be8",
-    name: "Jupiter",
-    symbol: "JUP",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x4B1E80cAC91e2216EEb63e29B957eB91Ae9C2Be8/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x4c11249814f11b9346808179Cf06e71ac328c1b5",
-    type: "ERC20",
-    address: "0x4c11249814f11b9346808179Cf06e71ac328c1b5",
-    name: "Oraichain Token",
-    symbol: "ORAI",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x4c11249814f11b9346808179Cf06e71ac328c1b5/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x4C19596f5aAfF459fA38B0f7eD92F11AE6543784",
-    type: "ERC20",
-    address: "0x4C19596f5aAfF459fA38B0f7eD92F11AE6543784",
-    name: "TrueFi",
-    symbol: "TRU",
-    decimals: 8,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x4C19596f5aAfF459fA38B0f7eD92F11AE6543784/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x4e352cF164E64ADCBad318C3a1e222E9EBa4Ce42",
-    type: "ERC20",
-    address: "0x4e352cF164E64ADCBad318C3a1e222E9EBa4Ce42",
-    name: "MCDEX Token",
-    symbol: "MCB",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x4e352cF164E64ADCBad318C3a1e222E9EBa4Ce42/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x4fE83213D56308330EC302a8BD641f1d0113A4Cc",
-    type: "ERC20",
-    address: "0x4fE83213D56308330EC302a8BD641f1d0113A4Cc",
-    name: "NuCypher",
-    symbol: "NU",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x4fE83213D56308330EC302a8BD641f1d0113A4Cc/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x50DE6856358Cc35f3A9a57eAAA34BD4cB707d2cd",
-    type: "ERC20",
-    address: "0x50DE6856358Cc35f3A9a57eAAA34BD4cB707d2cd",
-    name: "Razor Network",
-    symbol: "RAZOR",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x50DE6856358Cc35f3A9a57eAAA34BD4cB707d2cd/logo.png",
-    pairs: []
-  },
-  {
-    chainId: 1,
-    asset: "c60_t0x514910771AF9Ca656af840dff83E8264EcF986CA",
-    type: "ERC20",
-    address: "0x514910771AF9Ca656af840dff83E8264EcF986CA",
-    name: "Chainlink",
-    symbol: "LINK",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x514910771AF9Ca656af840dff83E8264EcF986CA/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x5218E472cFCFE0b64A064F055B43b4cdC9EfD3A6",
-    type: "ERC20",
-    address: "0x5218E472cFCFE0b64A064F055B43b4cdC9EfD3A6",
-    name: "unFederalReserve",
-    symbol: "eRSDL",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x5218E472cFCFE0b64A064F055B43b4cdC9EfD3A6/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x5228a22e72ccC52d415EcFd199F99D0665E7733b",
-    type: "ERC20",
-    address: "0x5228a22e72ccC52d415EcFd199F99D0665E7733b",
-    name: "pTokens BTC",
-    symbol: "pBTC",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x5228a22e72ccC52d415EcFd199F99D0665E7733b/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x54C9EA2E9C9E8eD865Db4A4ce6711C2a0d5063Ba",
-    type: "ERC20",
-    address: "0x54C9EA2E9C9E8eD865Db4A4ce6711C2a0d5063Ba",
-    name: "BarterTrade",
-    symbol: "BART",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x54C9EA2E9C9E8eD865Db4A4ce6711C2a0d5063Ba/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x557B933a7C2c45672B610F8954A3deB39a51A8Ca",
-    type: "ERC20",
-    address: "0x557B933a7C2c45672B610F8954A3deB39a51A8Ca",
-    name: "REVV",
-    symbol: "REVV",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x557B933a7C2c45672B610F8954A3deB39a51A8Ca/logo.png",
-    pairs: []
-  },
-  {
-    chainId: 1,
-    asset: "c60_t0x57Ab1ec28D129707052df4dF418D58a2D46d5f51",
-    type: "ERC20",
-    address: "0x57Ab1ec28D129707052df4dF418D58a2D46d5f51",
-    name: "sUSD",
-    symbol: "sUSD",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x57Ab1ec28D129707052df4dF418D58a2D46d5f51/logo.png",
-    pairs: []
-  },
-  {
-    chainId: 1,
-    asset: "c60_t0x584bC13c7D411c00c01A62e8019472dE68768430",
-    type: "ERC20",
-    address: "0x584bC13c7D411c00c01A62e8019472dE68768430",
-    name: "Hegic",
-    symbol: "HEGIC",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x584bC13c7D411c00c01A62e8019472dE68768430/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x5a666c7d92E5fA7Edcb6390E4efD6d0CDd69cF37",
-    type: "ERC20",
-    address: "0x5a666c7d92E5fA7Edcb6390E4efD6d0CDd69cF37",
-    name: "UnMarshal",
-    symbol: "MARSH",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x5a666c7d92E5fA7Edcb6390E4efD6d0CDd69cF37/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x5BEfBB272290dD5b8521D4a938f6c4757742c430",
-    type: "ERC20",
-    address: "0x5BEfBB272290dD5b8521D4a938f6c4757742c430",
-    name: "Xfinance",
-    symbol: "XFI",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x5BEfBB272290dD5b8521D4a938f6c4757742c430/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x5cAf454Ba92e6F2c929DF14667Ee360eD9fD5b26",
-    type: "ERC20",
-    address: "0x5cAf454Ba92e6F2c929DF14667Ee360eD9fD5b26",
-    name: "Dev",
-    symbol: "DEV",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x5cAf454Ba92e6F2c929DF14667Ee360eD9fD5b26/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x5Dc02Ea99285E17656b8350722694c35154DB1E8",
-    type: "ERC20",
-    address: "0x5Dc02Ea99285E17656b8350722694c35154DB1E8",
-    name: "BOND",
-    symbol: "BOND",
-    decimals: 8,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x5Dc02Ea99285E17656b8350722694c35154DB1E8/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x5F64Ab1544D28732F0A24F4713c2C8ec0dA089f0",
-    type: "ERC20",
-    address: "0x5F64Ab1544D28732F0A24F4713c2C8ec0dA089f0",
-    name: "DEXTF Token",
-    symbol: "DEXTF",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x5F64Ab1544D28732F0A24F4713c2C8ec0dA089f0/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x5f98805A4E8be255a32880FDeC7F6728C6568bA0",
-    type: "ERC20",
-    address: "0x5f98805A4E8be255a32880FDeC7F6728C6568bA0",
-    name: "Liquity USD",
-    symbol: "LUSD",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x5f98805A4E8be255a32880FDeC7F6728C6568bA0/logo.png",
-    pairs: []
-  },
-  {
-    chainId: 1,
-    asset: "c60_t0x607F4C5BB672230e8672085532f7e901544a7375",
-    type: "ERC20",
-    address: "0x607F4C5BB672230e8672085532f7e901544a7375",
-    name: "iExec RLC",
-    symbol: "RLC",
-    decimals: 9,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x607F4C5BB672230e8672085532f7e901544a7375/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x6149C26Cd2f7b5CCdb32029aF817123F6E37Df5B",
-    type: "ERC20",
-    address: "0x6149C26Cd2f7b5CCdb32029aF817123F6E37Df5B",
-    name: "Launchpool",
-    symbol: "LPOOL",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x6149C26Cd2f7b5CCdb32029aF817123F6E37Df5B/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x62359Ed7505Efc61FF1D56fEF82158CcaffA23D7",
-    type: "ERC20",
-    address: "0x62359Ed7505Efc61FF1D56fEF82158CcaffA23D7",
-    name: "cVault.finance",
-    symbol: "CORE",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x62359Ed7505Efc61FF1D56fEF82158CcaffA23D7/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x6243d8CEA23066d098a15582d81a598b4e8391F4",
-    type: "ERC20",
-    address: "0x6243d8CEA23066d098a15582d81a598b4e8391F4",
-    name: "Reflexer Ungovernance Token",
-    symbol: "FLX",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x6243d8CEA23066d098a15582d81a598b4e8391F4/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x626E8036dEB333b408Be468F951bdB42433cBF18",
-    type: "ERC20",
-    address: "0x626E8036dEB333b408Be468F951bdB42433cBF18",
-    name: "AIOZ Network",
-    symbol: "AIOZ",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x626E8036dEB333b408Be468F951bdB42433cBF18/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x63b4f3e3fa4e438698CE330e365E831F7cCD1eF4",
-    type: "ERC20",
-    address: "0x63b4f3e3fa4e438698CE330e365E831F7cCD1eF4",
-    name: "CyberFi Token",
-    symbol: "CFi",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x63b4f3e3fa4e438698CE330e365E831F7cCD1eF4/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x66a0f676479Cee1d7373f3DC2e2952778BfF5bd6",
-    type: "ERC20",
-    address: "0x66a0f676479Cee1d7373f3DC2e2952778BfF5bd6",
-    name: "Wise Token",
-    symbol: "WISE",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x66a0f676479Cee1d7373f3DC2e2952778BfF5bd6/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x67B6D479c7bB412C54e03dCA8E1Bc6740ce6b99C",
-    type: "ERC20",
-    address: "0x67B6D479c7bB412C54e03dCA8E1Bc6740ce6b99C",
-    name: "Kylin",
-    symbol: "KYL",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x67B6D479c7bB412C54e03dCA8E1Bc6740ce6b99C/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x67c597624B17b16fb77959217360B7cD18284253",
-    type: "ERC20",
-    address: "0x67c597624B17b16fb77959217360B7cD18284253",
-    name: "Benchmark Protocol",
-    symbol: "MARK",
-    decimals: 9,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x67c597624B17b16fb77959217360B7cD18284253/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x6810e776880C02933D47DB1b9fc05908e5386b96",
-    type: "ERC20",
-    address: "0x6810e776880C02933D47DB1b9fc05908e5386b96",
-    name: "Gnosis",
-    symbol: "GNO",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x6810e776880C02933D47DB1b9fc05908e5386b96/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x69692D3345010a207b759a7D1af6fc7F38b35c5E",
-    type: "ERC20",
-    address: "0x69692D3345010a207b759a7D1af6fc7F38b35c5E",
-    name: "chads.vc",
-    symbol: "CHADS",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x69692D3345010a207b759a7D1af6fc7F38b35c5E/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x69A95185ee2a045CDC4bCd1b1Df10710395e4e23",
-    type: "ERC20",
-    address: "0x69A95185ee2a045CDC4bCd1b1Df10710395e4e23",
-    name: "Poolz Finance",
-    symbol: "POOLZ",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x69A95185ee2a045CDC4bCd1b1Df10710395e4e23/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x69af81e73A73B40adF4f3d4223Cd9b1ECE623074",
-    type: "ERC20",
-    address: "0x69af81e73A73B40adF4f3d4223Cd9b1ECE623074",
-    name: "Mask Network",
-    symbol: "MASK",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x69af81e73A73B40adF4f3d4223Cd9b1ECE623074/logo.png",
-    pairs: []
-  },
-  {
-    chainId: 1,
-    asset: "c60_t0x6B175474E89094C44Da98b954EedeAC495271d0F",
-    type: "ERC20",
-    address: "0x6B175474E89094C44Da98b954EedeAC495271d0F",
-    name: "Dai",
-    symbol: "DAI",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x6B175474E89094C44Da98b954EedeAC495271d0F/logo.png",
-    pairs: []
-  },
-  {
-    chainId: 1,
-    asset: "c60_t0x6B3595068778DD592e39A122f4f5a5cF09C90fE2",
-    type: "ERC20",
-    address: "0x6B3595068778DD592e39A122f4f5a5cF09C90fE2",
-    name: "SushiSwap",
-    symbol: "SUSHI",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x6B3595068778DD592e39A122f4f5a5cF09C90fE2/logo.png",
-    pairs: []
-  },
-  {
-    chainId: 1,
-    asset: "c60_t0x6BFf2fE249601ed0Db3a87424a2E923118BB0312",
-    type: "ERC20",
-    address: "0x6BFf2fE249601ed0Db3a87424a2E923118BB0312",
-    name: "Fyooz",
-    symbol: "FYZ",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x6BFf2fE249601ed0Db3a87424a2E923118BB0312/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x6c6EE5e31d828De241282B9606C8e98Ea48526E2",
-    type: "ERC20",
-    address: "0x6c6EE5e31d828De241282B9606C8e98Ea48526E2",
-    name: "Holo",
-    symbol: "HOT",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x6c6EE5e31d828De241282B9606C8e98Ea48526E2/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x6e0daDE58D2d89eBBe7aFc384e3E4f15b70b14D8",
-    type: "ERC20",
-    address: "0x6e0daDE58D2d89eBBe7aFc384e3E4f15b70b14D8",
-    name: "QuiverX",
-    symbol: "QRX",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x6e0daDE58D2d89eBBe7aFc384e3E4f15b70b14D8/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x6F87D756DAf0503d08Eb8993686c7Fc01Dc44fB1",
-    type: "ERC20",
-    address: "0x6F87D756DAf0503d08Eb8993686c7Fc01Dc44fB1",
-    name: "UniTrade",
-    symbol: "TRADE",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x6F87D756DAf0503d08Eb8993686c7Fc01Dc44fB1/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x6fC13EACE26590B80cCCAB1ba5d51890577D83B2",
-    type: "ERC20",
-    address: "0x6fC13EACE26590B80cCCAB1ba5d51890577D83B2",
-    name: "Umbrella Network",
-    symbol: "UMB",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x6fC13EACE26590B80cCCAB1ba5d51890577D83B2/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x70401dFD142A16dC7031c56E862Fc88Cb9537Ce0",
-    type: "ERC20",
-    address: "0x70401dFD142A16dC7031c56E862Fc88Cb9537Ce0",
-    name: "Bird.Money",
-    symbol: "BIRD",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x70401dFD142A16dC7031c56E862Fc88Cb9537Ce0/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x71F85B2E46976bD21302B64329868fd15eb0D127",
-    type: "ERC20",
-    address: "0x71F85B2E46976bD21302B64329868fd15eb0D127",
-    name: "Axion",
-    symbol: "AXN",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x71F85B2E46976bD21302B64329868fd15eb0D127/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x725C263e32c72dDC3A19bEa12C5a0479a81eE688",
-    type: "ERC20",
-    address: "0x725C263e32c72dDC3A19bEa12C5a0479a81eE688",
-    name: "Bridge Mutual",
-    symbol: "BMI",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x725C263e32c72dDC3A19bEa12C5a0479a81eE688/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x72630B1e3B42874bf335020Ba0249e3E9e47Bafc",
-    type: "ERC20",
-    address: "0x72630B1e3B42874bf335020Ba0249e3E9e47Bafc",
-    name: "Paypolitan Token",
-    symbol: "EPAN",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x72630B1e3B42874bf335020Ba0249e3E9e47Bafc/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x72e364F2ABdC788b7E918bc238B21f109Cd634D7",
-    type: "ERC20",
-    address: "0x72e364F2ABdC788b7E918bc238B21f109Cd634D7",
-    name: "Metaverse Index",
-    symbol: "MVI",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x72e364F2ABdC788b7E918bc238B21f109Cd634D7/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x72e9D9038cE484EE986FEa183f8d8Df93f9aDA13",
-    type: "ERC20",
-    address: "0x72e9D9038cE484EE986FEa183f8d8Df93f9aDA13",
-    name: "SmartCredit Token",
-    symbol: "SMARTCREDIT",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x72e9D9038cE484EE986FEa183f8d8Df93f9aDA13/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x761D38e5ddf6ccf6Cf7c55759d5210750B5D60F3",
-    type: "ERC20",
-    address: "0x761D38e5ddf6ccf6Cf7c55759d5210750B5D60F3",
-    name: "Dogelon",
-    symbol: "ELON",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x761D38e5ddf6ccf6Cf7c55759d5210750B5D60F3/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x7659CE147D0e714454073a5dd7003544234b6Aa0",
-    type: "ERC20",
-    address: "0x7659CE147D0e714454073a5dd7003544234b6Aa0",
-    name: "XCAD Network",
-    symbol: "XCAD",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x7659CE147D0e714454073a5dd7003544234b6Aa0/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x7671904eed7f10808B664fc30BB8693FD7237abF",
-    type: "ERC20",
-    address: "0x7671904eed7f10808B664fc30BB8693FD7237abF",
-    name: "Boolberry",
-    symbol: "BBR",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x7671904eed7f10808B664fc30BB8693FD7237abF/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x77777FeDdddFfC19Ff86DB637967013e6C6A116C",
-    type: "ERC20",
-    address: "0x77777FeDdddFfC19Ff86DB637967013e6C6A116C",
-    name: "Tornado Cash",
-    symbol: "TORN",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x77777FeDdddFfC19Ff86DB637967013e6C6A116C/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x7a2Bc711E19ba6aff6cE8246C546E8c4B4944DFD",
-    type: "ERC20",
-    address: "0x7a2Bc711E19ba6aff6cE8246C546E8c4B4944DFD",
-    name: "WAXE",
-    symbol: "WAXE",
-    decimals: 8,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x7a2Bc711E19ba6aff6cE8246C546E8c4B4944DFD/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x7b123f53421b1bF8533339BFBdc7C98aA94163db",
-    type: "ERC20",
-    address: "0x7b123f53421b1bF8533339BFBdc7C98aA94163db",
-    name: "DFOhub",
-    symbol: "buidl",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x7b123f53421b1bF8533339BFBdc7C98aA94163db/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x7D1AfA7B718fb893dB30A3aBc0Cfc608AaCfeBB0",
-    type: "ERC20",
-    address: "0x7D1AfA7B718fb893dB30A3aBc0Cfc608AaCfeBB0",
-    name: "Polygon",
-    symbol: "MATIC",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x7D1AfA7B718fb893dB30A3aBc0Cfc608AaCfeBB0/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x7dE91B204C1C737bcEe6F000AAA6569Cf7061cb7",
-    type: "ERC20",
-    address: "0x7dE91B204C1C737bcEe6F000AAA6569Cf7061cb7",
-    name: "Robonomics",
-    symbol: "XRT",
-    decimals: 9,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x7dE91B204C1C737bcEe6F000AAA6569Cf7061cb7/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x7F3EDcdD180Dbe4819Bd98FeE8929b5cEdB3AdEB",
-    type: "ERC20",
-    address: "0x7F3EDcdD180Dbe4819Bd98FeE8929b5cEdB3AdEB",
-    name: "xToken",
-    symbol: "XTK",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x7F3EDcdD180Dbe4819Bd98FeE8929b5cEdB3AdEB/logo.png",
-    pairs: []
-  },
-  {
-    chainId: 1,
-    asset: "c60_t0x7Fc66500c84A76Ad7e9c93437bFc5Ac33E2DDaE9",
-    type: "ERC20",
-    address: "0x7Fc66500c84A76Ad7e9c93437bFc5Ac33E2DDaE9",
-    name: "Aave",
-    symbol: "AAVE",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x7Fc66500c84A76Ad7e9c93437bFc5Ac33E2DDaE9/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x7FF4169a6B5122b664c51c95727d87750eC07c84",
-    type: "ERC20",
-    address: "0x7FF4169a6B5122b664c51c95727d87750eC07c84",
-    name: "Tenset",
-    symbol: "10SET",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x7FF4169a6B5122b664c51c95727d87750eC07c84/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x8207c1FfC5B6804F6024322CcF34F29c3541Ae26",
-    type: "ERC20",
-    address: "0x8207c1FfC5B6804F6024322CcF34F29c3541Ae26",
-    name: "Origin Protocol",
-    symbol: "OGN",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x8207c1FfC5B6804F6024322CcF34F29c3541Ae26/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x83e6f1E41cdd28eAcEB20Cb649155049Fac3D5Aa",
-    type: "ERC20",
-    address: "0x83e6f1E41cdd28eAcEB20Cb649155049Fac3D5Aa",
-    name: "Polkastarter",
-    symbol: "POLS",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x83e6f1E41cdd28eAcEB20Cb649155049Fac3D5Aa/logo.png",
-    pairs: []
-  },
-  {
-    chainId: 1,
-    asset: "c60_t0x8400D94A5cb0fa0D041a3788e395285d61c9ee5e",
-    type: "ERC20",
-    address: "0x8400D94A5cb0fa0D041a3788e395285d61c9ee5e",
-    name: "Unibright",
-    symbol: "UBT",
-    decimals: 8,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x8400D94A5cb0fa0D041a3788e395285d61c9ee5e/logo.png",
-    pairs: []
-  },
-  {
-    chainId: 1,
-    asset: "c60_t0x84cA8bc7997272c7CfB4D0Cd3D55cd942B3c9419",
-    type: "ERC20",
-    address: "0x84cA8bc7997272c7CfB4D0Cd3D55cd942B3c9419",
-    name: "DIA",
-    symbol: "DIA",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x84cA8bc7997272c7CfB4D0Cd3D55cd942B3c9419/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x853d955aCEf822Db058eb8505911ED77F175b99e",
-    type: "ERC20",
-    address: "0x853d955aCEf822Db058eb8505911ED77F175b99e",
-    name: "Frax",
-    symbol: "FRAX",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x853d955aCEf822Db058eb8505911ED77F175b99e/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x85Eee30c52B0b379b046Fb0F85F4f3Dc3009aFEC",
-    type: "ERC20",
-    address: "0x85Eee30c52B0b379b046Fb0F85F4f3Dc3009aFEC",
-    name: "KEEP Token",
-    symbol: "KEEP",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x85Eee30c52B0b379b046Fb0F85F4f3Dc3009aFEC/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x8888801aF4d980682e47f1A9036e589479e835C5",
-    type: "ERC20",
-    address: "0x8888801aF4d980682e47f1A9036e589479e835C5",
-    name: "88mph.app",
-    symbol: "MPH",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x8888801aF4d980682e47f1A9036e589479e835C5/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x88ACDd2a6425c3FaAE4Bc9650Fd7E27e0Bebb7aB",
-    type: "ERC20",
-    address: "0x88ACDd2a6425c3FaAE4Bc9650Fd7E27e0Bebb7aB",
-    name: "Alchemist",
-    symbol: "\u2697\uFE0F",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x88ACDd2a6425c3FaAE4Bc9650Fd7E27e0Bebb7aB/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x88EF27e69108B2633F8E1C184CC37940A075cC02",
-    type: "ERC20",
-    address: "0x88EF27e69108B2633F8E1C184CC37940A075cC02",
-    name: "Dego Finance",
-    symbol: "DEGO",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x88EF27e69108B2633F8E1C184CC37940A075cC02/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x89Ab32156e46F46D02ade3FEcbe5Fc4243B9AAeD",
-    type: "ERC20",
-    address: "0x89Ab32156e46F46D02ade3FEcbe5Fc4243B9AAeD",
-    name: "pNetwork",
-    symbol: "PNT",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x89Ab32156e46F46D02ade3FEcbe5Fc4243B9AAeD/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x8a40c222996f9F3431f63Bf80244C36822060f12",
-    type: "ERC20",
-    address: "0x8a40c222996f9F3431f63Bf80244C36822060f12",
-    name: "Finxflo",
-    symbol: "FXF",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x8a40c222996f9F3431f63Bf80244C36822060f12/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x8a854288a5976036A725879164Ca3e91d30c6A1B",
-    type: "ERC20",
-    address: "0x8a854288a5976036A725879164Ca3e91d30c6A1B",
-    name: "GET",
-    symbol: "GET",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x8a854288a5976036A725879164Ca3e91d30c6A1B/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0xCE3f08e664693ca792caCE4af1364D5e220827B2",
-    type: "ERC20",
-    address: "0xCE3f08e664693ca792caCE4af1364D5e220827B2",
-    name: "SAITAMA",
-    symbol: "SAITAMA",
-    decimals: 9,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xCE3f08e664693ca792caCE4af1364D5e220827B2/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x8B39B70E39Aa811b69365398e0aACe9bee238AEb",
-    type: "ERC20",
-    address: "0x8B39B70E39Aa811b69365398e0aACe9bee238AEb",
-    name: "PolkaFoundry",
-    symbol: "PKF",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x8B39B70E39Aa811b69365398e0aACe9bee238AEb/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x8c15Ef5b4B21951d50E53E4fbdA8298FFAD25057",
-    type: "ERC20",
-    address: "0x8c15Ef5b4B21951d50E53E4fbdA8298FFAD25057",
-    name: "Function X",
-    symbol: "FX",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x8c15Ef5b4B21951d50E53E4fbdA8298FFAD25057/logo.png",
-    pairs: []
-  },
-  {
-    chainId: 1,
-    asset: "c60_t0x8CE9137d39326AD0cD6491fb5CC0CbA0e089b6A9",
-    type: "ERC20",
-    address: "0x8CE9137d39326AD0cD6491fb5CC0CbA0e089b6A9",
-    name: "Swipe",
-    symbol: "SXP",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x8CE9137d39326AD0cD6491fb5CC0CbA0e089b6A9/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x8dAEBADE922dF735c38C80C7eBD708Af50815fAa",
-    type: "ERC20",
-    address: "0x8dAEBADE922dF735c38C80C7eBD708Af50815fAa",
-    name: "tBTC",
-    symbol: "TBTC",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x8dAEBADE922dF735c38C80C7eBD708Af50815fAa/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x5B7533812759B45C2B44C19e320ba2cD2681b542",
-    type: "ERC20",
-    address: "0x5B7533812759B45C2B44C19e320ba2cD2681b542",
-    name: "SingularityNET Token",
-    symbol: "AGIX",
-    decimals: 8,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x5B7533812759B45C2B44C19e320ba2cD2681b542/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x8f8221aFbB33998d8584A2B05749bA73c37a938a",
-    type: "ERC20",
-    address: "0x8f8221aFbB33998d8584A2B05749bA73c37a938a",
-    name: "Request Token",
-    symbol: "REQ",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x8f8221aFbB33998d8584A2B05749bA73c37a938a/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x9355372396e3F6daF13359B7b607a3374cc638e0",
-    type: "ERC20",
-    address: "0x9355372396e3F6daF13359B7b607a3374cc638e0",
-    name: "WHALE",
-    symbol: "WHALE",
-    decimals: 4,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x9355372396e3F6daF13359B7b607a3374cc638e0/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x93ED3FBe21207Ec2E8f2d3c3de6e058Cb73Bc04d",
-    type: "ERC20",
-    address: "0x93ED3FBe21207Ec2E8f2d3c3de6e058Cb73Bc04d",
-    name: "Pinakion",
-    symbol: "PNK",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x93ED3FBe21207Ec2E8f2d3c3de6e058Cb73Bc04d/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x9469D013805bFfB7D3DEBe5E7839237e535ec483",
-    type: "ERC20",
-    address: "0x9469D013805bFfB7D3DEBe5E7839237e535ec483",
-    name: "Evolution Land Global Token",
-    symbol: "RING",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x9469D013805bFfB7D3DEBe5E7839237e535ec483/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x954b890704693af242613edEf1B603825afcD708",
-    type: "ERC20",
-    address: "0x954b890704693af242613edEf1B603825afcD708",
-    name: "Cardstack",
-    symbol: "CARD",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x954b890704693af242613edEf1B603825afcD708/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x956F47F50A910163D8BF957Cf5846D573E7f87CA",
-    type: "ERC20",
-    address: "0x956F47F50A910163D8BF957Cf5846D573E7f87CA",
-    name: "Fei USD",
-    symbol: "FEI",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x956F47F50A910163D8BF957Cf5846D573E7f87CA/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x95a4492F028aa1fd432Ea71146b433E7B4446611",
-    type: "ERC20",
-    address: "0x95a4492F028aa1fd432Ea71146b433E7B4446611",
-    name: "APY.Finance",
-    symbol: "APY",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x95a4492F028aa1fd432Ea71146b433E7B4446611/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x95aD61b0a150d79219dCF64E1E6Cc01f0B64C4cE",
-    type: "ERC20",
-    address: "0x95aD61b0a150d79219dCF64E1E6Cc01f0B64C4cE",
-    name: "SHIBA INU",
-    symbol: "SHIB",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x95aD61b0a150d79219dCF64E1E6Cc01f0B64C4cE/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x961C8c0B1aaD0c0b10a51FeF6a867E3091BCef17",
-    type: "ERC20",
-    address: "0x961C8c0B1aaD0c0b10a51FeF6a867E3091BCef17",
-    name: "Dypius",
-    symbol: "DYP",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x961C8c0B1aaD0c0b10a51FeF6a867E3091BCef17/logo.png",
-    pairs: []
-  },
-  {
-    chainId: 1,
-    asset: "c60_t0x967da4048cD07aB37855c090aAF366e4ce1b9F48",
-    type: "ERC20",
-    address: "0x967da4048cD07aB37855c090aAF366e4ce1b9F48",
-    name: "Ocean Protocol",
-    symbol: "OCEAN",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x967da4048cD07aB37855c090aAF366e4ce1b9F48/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x990f341946A3fdB507aE7e52d17851B87168017c",
-    type: "ERC20",
-    address: "0x990f341946A3fdB507aE7e52d17851B87168017c",
-    name: "Strong",
-    symbol: "STRONG",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x990f341946A3fdB507aE7e52d17851B87168017c/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x9B02dD390a603Add5c07f9fd9175b7DABE8D63B7",
-    type: "ERC20",
-    address: "0x9B02dD390a603Add5c07f9fd9175b7DABE8D63B7",
-    name: "Shopping.io",
-    symbol: "SPI",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x9B02dD390a603Add5c07f9fd9175b7DABE8D63B7/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x9BE89D2a4cd102D8Fecc6BF9dA793be995C22541",
-    type: "ERC20",
-    address: "0x9BE89D2a4cd102D8Fecc6BF9dA793be995C22541",
-    name: "Binance Wrapped BTC",
-    symbol: "BBTC",
-    decimals: 8,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x9BE89D2a4cd102D8Fecc6BF9dA793be995C22541/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x9cEB84f92A0561fa3Cc4132aB9c0b76A59787544",
-    type: "ERC20",
-    address: "0x9cEB84f92A0561fa3Cc4132aB9c0b76A59787544",
-    name: "Doki Doki Finance",
-    symbol: "DOKI",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x9cEB84f92A0561fa3Cc4132aB9c0b76A59787544/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x9EA3b5b4EC044b70375236A281986106457b20EF",
-    type: "ERC20",
-    address: "0x9EA3b5b4EC044b70375236A281986106457b20EF",
-    name: "Delta Financial",
-    symbol: "DELTA",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x9EA3b5b4EC044b70375236A281986106457b20EF/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x9Ed8e7C9604790F7Ec589F99b94361d8AAB64E5E",
-    type: "ERC20",
-    address: "0x9Ed8e7C9604790F7Ec589F99b94361d8AAB64E5E",
-    name: "Unistake",
-    symbol: "UNISTAKE",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x9Ed8e7C9604790F7Ec589F99b94361d8AAB64E5E/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x9f7229aF0c4b9740e207Ea283b9094983f78ba04",
-    type: "ERC20",
-    address: "0x9f7229aF0c4b9740e207Ea283b9094983f78ba04",
-    name: "Tadpole",
-    symbol: "TAD",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x9f7229aF0c4b9740e207Ea283b9094983f78ba04/logo.png",
-    pairs: []
-  },
-  {
-    chainId: 1,
-    asset: "c60_t0x9f8F72aA9304c8B593d555F12eF6589cC3A579A2",
-    type: "ERC20",
-    address: "0x9f8F72aA9304c8B593d555F12eF6589cC3A579A2",
-    name: "Maker",
-    symbol: "MKR",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x9f8F72aA9304c8B593d555F12eF6589cC3A579A2/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x9F9c8ec3534c3cE16F928381372BfbFBFb9F4D24",
-    type: "ERC20",
-    address: "0x9F9c8ec3534c3cE16F928381372BfbFBFb9F4D24",
-    name: "GraphLinq",
-    symbol: "GLQ",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x9F9c8ec3534c3cE16F928381372BfbFBFb9F4D24/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0xa0246c9032bC3A600820415aE600c6388619A14D",
-    type: "ERC20",
-    address: "0xa0246c9032bC3A600820415aE600c6388619A14D",
-    name: "Harvest Finance",
-    symbol: "FARM",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xa0246c9032bC3A600820415aE600c6388619A14D/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0xa0afAA285Ce85974c3C881256cB7F225e3A1178a",
-    type: "ERC20",
-    address: "0xa0afAA285Ce85974c3C881256cB7F225e3A1178a",
-    name: "Wrapped CrescoFin",
-    symbol: "wCRES",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xa0afAA285Ce85974c3C881256cB7F225e3A1178a/logo.png",
-    pairs: []
-  },
-  {
-    chainId: 1,
-    asset: "c60_t0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
-    type: "ERC20",
-    address: "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
-    name: "USD Coin",
-    symbol: "USDC",
-    decimals: 6,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0xa117000000f279D81A1D3cc75430fAA017FA5A2e",
-    type: "ERC20",
-    address: "0xa117000000f279D81A1D3cc75430fAA017FA5A2e",
-    name: "Aragon",
-    symbol: "ANT",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xa117000000f279D81A1D3cc75430fAA017FA5A2e/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0xa1d6Df714F91DeBF4e0802A542E13067f31b8262",
-    type: "ERC20",
-    address: "0xa1d6Df714F91DeBF4e0802A542E13067f31b8262",
-    name: "RFOX",
-    symbol: "RFOX",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xa1d6Df714F91DeBF4e0802A542E13067f31b8262/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0xa393473d64d2F9F026B60b6Df7859A689715d092",
-    type: "ERC20",
-    address: "0xa393473d64d2F9F026B60b6Df7859A689715d092",
-    name: "Lattice Token",
-    symbol: "LTX",
-    decimals: 8,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xa393473d64d2F9F026B60b6Df7859A689715d092/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0xa3BeD4E1c75D00fa6f4E5E6922DB7261B5E9AcD2",
-    type: "ERC20",
-    address: "0xa3BeD4E1c75D00fa6f4E5E6922DB7261B5E9AcD2",
-    name: "Meta",
-    symbol: "MTA",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xa3BeD4E1c75D00fa6f4E5E6922DB7261B5E9AcD2/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0xA4EED63db85311E22dF4473f87CcfC3DaDCFA3E3",
-    type: "ERC20",
-    address: "0xA4EED63db85311E22dF4473f87CcfC3DaDCFA3E3",
-    name: "Rubic",
-    symbol: "RBC",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xA4EED63db85311E22dF4473f87CcfC3DaDCFA3E3/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0xA8b919680258d369114910511cc87595aec0be6D",
-    type: "ERC20",
-    address: "0xA8b919680258d369114910511cc87595aec0be6D",
-    name: "LUKSO",
-    symbol: "LYXe",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xA8b919680258d369114910511cc87595aec0be6D/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0xa8c8CfB141A3bB59FEA1E2ea6B79b5ECBCD7b6ca",
-    type: "ERC20",
-    address: "0xa8c8CfB141A3bB59FEA1E2ea6B79b5ECBCD7b6ca",
-    name: "Syntropy",
-    symbol: "NOIA",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xa8c8CfB141A3bB59FEA1E2ea6B79b5ECBCD7b6ca/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0xA91ac63D040dEB1b7A5E4d4134aD23eb0ba07e14",
-    type: "ERC20",
-    address: "0xA91ac63D040dEB1b7A5E4d4134aD23eb0ba07e14",
-    name: "Bella Protocol",
-    symbol: "BEL",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xA91ac63D040dEB1b7A5E4d4134aD23eb0ba07e14/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0xAa6E8127831c9DE45ae56bB1b0d4D4Da6e5665BD",
-    type: "ERC20",
-    address: "0xAa6E8127831c9DE45ae56bB1b0d4D4Da6e5665BD",
-    name: "ETH 2x Flexible Leverage Index",
-    symbol: "ETH2x-FLI",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xAa6E8127831c9DE45ae56bB1b0d4D4Da6e5665BD/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0xaA7a9CA87d3694B5755f213B5D04094b8d0F0A6F",
-    type: "ERC20",
-    address: "0xaA7a9CA87d3694B5755f213B5D04094b8d0F0A6F",
-    name: "Trace Token",
-    symbol: "TRAC",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xaA7a9CA87d3694B5755f213B5D04094b8d0F0A6F/logo.png",
-    pairs: []
-  },
-  {
-    chainId: 1,
-    asset: "c60_t0xaaAEBE6Fe48E54f431b0C390CfaF0b017d09D42d",
-    type: "ERC20",
-    address: "0xaaAEBE6Fe48E54f431b0C390CfaF0b017d09D42d",
-    name: "Celsius",
-    symbol: "CEL",
-    decimals: 4,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xaaAEBE6Fe48E54f431b0C390CfaF0b017d09D42d/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0xaAAf91D9b90dF800Df4F55c205fd6989c977E73a",
-    type: "ERC20",
-    address: "0xaAAf91D9b90dF800Df4F55c205fd6989c977E73a",
-    name: "Monolith TKN",
-    symbol: "TKN",
-    decimals: 8,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xaAAf91D9b90dF800Df4F55c205fd6989c977E73a/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0xaC0104Cca91D167873B8601d2e71EB3D4D8c33e0",
-    type: "ERC20",
-    address: "0xaC0104Cca91D167873B8601d2e71EB3D4D8c33e0",
-    name: "Crowns",
-    symbol: "CWS",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xaC0104Cca91D167873B8601d2e71EB3D4D8c33e0/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0xAd4f86a25bbc20FfB751f2FAC312A0B4d8F88c64",
-    type: "ERC20",
-    address: "0xAd4f86a25bbc20FfB751f2FAC312A0B4d8F88c64",
-    name: "OptionRoom Token",
-    symbol: "ROOM",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xAd4f86a25bbc20FfB751f2FAC312A0B4d8F88c64/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0xaDB2437e6F65682B85F814fBc12FeC0508A7B1D0",
-    type: "ERC20",
-    address: "0xaDB2437e6F65682B85F814fBc12FeC0508A7B1D0",
-    name: "UniCrypt",
-    symbol: "UNCX",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xaDB2437e6F65682B85F814fBc12FeC0508A7B1D0/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0xADE00C28244d5CE17D72E40330B1c318cD12B7c3",
-    type: "ERC20",
-    address: "0xADE00C28244d5CE17D72E40330B1c318cD12B7c3",
-    name: "Ambire AdEx",
-    symbol: "ADX",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xADE00C28244d5CE17D72E40330B1c318cD12B7c3/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0xAE1eaAE3F627AAca434127644371b67B18444051",
-    type: "ERC20",
-    address: "0xAE1eaAE3F627AAca434127644371b67B18444051",
-    name: "YOP",
-    symbol: "YOP",
-    decimals: 8,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xAE1eaAE3F627AAca434127644371b67B18444051/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0xaE697F994Fc5eBC000F8e22EbFfeE04612f98A0d",
-    type: "ERC20",
-    address: "0xaE697F994Fc5eBC000F8e22EbFfeE04612f98A0d",
-    name: "LGCY Network",
-    symbol: "LGCY",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xaE697F994Fc5eBC000F8e22EbFfeE04612f98A0d/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0xaf9f549774ecEDbD0966C52f250aCc548D3F36E5",
-    type: "ERC20",
-    address: "0xaf9f549774ecEDbD0966C52f250aCc548D3F36E5",
-    name: "Rio Fuel Token",
-    symbol: "RFuel",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xaf9f549774ecEDbD0966C52f250aCc548D3F36E5/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0xB1e9157c2Fdcc5a856C8DA8b2d89b6C32b3c1229",
-    type: "ERC20",
-    address: "0xB1e9157c2Fdcc5a856C8DA8b2d89b6C32b3c1229",
-    name: "Zenfuse",
-    symbol: "ZEFU",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xB1e9157c2Fdcc5a856C8DA8b2d89b6C32b3c1229/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0xB26631c6dda06aD89B93C71400D25692de89c068",
-    type: "ERC20",
-    address: "0xB26631c6dda06aD89B93C71400D25692de89c068",
-    name: "Minds",
-    symbol: "MINDS",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xB26631c6dda06aD89B93C71400D25692de89c068/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x745407c86DF8DB893011912d3aB28e68B62E49B0",
-    type: "ERC20",
-    address: "0x745407c86DF8DB893011912d3aB28e68B62E49B0",
-    name: "MahaDAO",
-    symbol: "MAHA",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x745407c86DF8DB893011912d3aB28e68B62E49B0/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0xB62132e35a6c13ee1EE0f84dC5d40bad8d815206",
-    type: "ERC20",
-    address: "0xB62132e35a6c13ee1EE0f84dC5d40bad8d815206",
-    name: "Nexo",
-    symbol: "NEXO",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xB62132e35a6c13ee1EE0f84dC5d40bad8d815206/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0xB6ff96B8A8d214544Ca0dBc9B33f7AD6503eFD32",
-    type: "ERC20",
-    address: "0xB6ff96B8A8d214544Ca0dBc9B33f7AD6503eFD32",
-    name: "SYNC",
-    symbol: "SYNC",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xB6ff96B8A8d214544Ca0dBc9B33f7AD6503eFD32/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0xb753428af26E81097e7fD17f40c88aaA3E04902c",
-    type: "ERC20",
-    address: "0xb753428af26E81097e7fD17f40c88aaA3E04902c",
-    name: "saffron.finance",
-    symbol: "SFI",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xb753428af26E81097e7fD17f40c88aaA3E04902c/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0xB987D48Ed8f2C468D52D6405624EADBa5e76d723",
-    type: "ERC20",
-    address: "0xB987D48Ed8f2C468D52D6405624EADBa5e76d723",
-    name: "Stabilize Token",
-    symbol: "STBZ",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xB987D48Ed8f2C468D52D6405624EADBa5e76d723/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0xB9d99C33eA2d86EC5eC6b8A4dD816EBBA64404AF",
-    type: "ERC20",
-    address: "0xB9d99C33eA2d86EC5eC6b8A4dD816EBBA64404AF",
-    name: "K21",
-    symbol: "K21",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xB9d99C33eA2d86EC5eC6b8A4dD816EBBA64404AF/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0xb9EF770B6A5e12E45983C5D80545258aA38F3B78",
-    type: "ERC20",
-    address: "0xb9EF770B6A5e12E45983C5D80545258aA38F3B78",
-    name: "0chain",
-    symbol: "ZCN",
-    decimals: 10,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xb9EF770B6A5e12E45983C5D80545258aA38F3B78/logo.png",
-    pairs: []
-  },
-  {
-    chainId: 1,
-    asset: "c60_t0xba100000625a3754423978a60c9317c58a424e3D",
-    type: "ERC20",
-    address: "0xba100000625a3754423978a60c9317c58a424e3D",
-    name: "Balancer",
-    symbol: "BAL",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xba100000625a3754423978a60c9317c58a424e3D/logo.png",
-    pairs: []
-  },
-  {
-    chainId: 1,
-    asset: "c60_t0xBA11D00c5f74255f56a5E366F4F77f5A186d7f55",
-    type: "ERC20",
-    address: "0xBA11D00c5f74255f56a5E366F4F77f5A186d7f55",
-    name: "Band Protocol",
-    symbol: "BAND",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xBA11D00c5f74255f56a5E366F4F77f5A186d7f55/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0xBa21Ef4c9f433Ede00badEFcC2754B8E74bd538A",
-    type: "ERC20",
-    address: "0xBa21Ef4c9f433Ede00badEFcC2754B8E74bd538A",
-    name: "Swapfolio",
-    symbol: "SWFL",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xBa21Ef4c9f433Ede00badEFcC2754B8E74bd538A/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0xBBbbCA6A901c926F240b89EacB641d8Aec7AEafD",
-    type: "ERC20",
-    address: "0xBBbbCA6A901c926F240b89EacB641d8Aec7AEafD",
-    name: "Loopring",
-    symbol: "LRC",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xBBbbCA6A901c926F240b89EacB641d8Aec7AEafD/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0xBBc2AE13b23d715c30720F079fcd9B4a74093505",
-    type: "ERC20",
-    address: "0xBBc2AE13b23d715c30720F079fcd9B4a74093505",
-    name: "Ethernity Chain",
-    symbol: "ERN",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xBBc2AE13b23d715c30720F079fcd9B4a74093505/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0xbC396689893D065F41bc2C6EcbeE5e0085233447",
-    type: "ERC20",
-    address: "0xbC396689893D065F41bc2C6EcbeE5e0085233447",
-    name: "Perpetual",
-    symbol: "PERP",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xbC396689893D065F41bc2C6EcbeE5e0085233447/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0xbEa98c05eEAe2f3bC8c3565Db7551Eb738c8CCAb",
-    type: "ERC20",
-    address: "0xbEa98c05eEAe2f3bC8c3565Db7551Eb738c8CCAb",
-    name: "GYSR",
-    symbol: "GYSR",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xbEa98c05eEAe2f3bC8c3565Db7551Eb738c8CCAb/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0xBF494F02EE3FdE1F20BEE6242bCe2d1ED0c15e47",
-    type: "ERC20",
-    address: "0xBF494F02EE3FdE1F20BEE6242bCe2d1ED0c15e47",
-    name: "World Token",
-    symbol: "WORLD",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xBF494F02EE3FdE1F20BEE6242bCe2d1ED0c15e47/logo.png",
-    pairs: []
-  },
-  {
-    chainId: 1,
-    asset: "c60_t0xc00e94Cb662C3520282E6f5717214004A7f26888",
-    type: "ERC20",
-    address: "0xc00e94Cb662C3520282E6f5717214004A7f26888",
-    name: "Compound",
-    symbol: "COMP",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xc00e94Cb662C3520282E6f5717214004A7f26888/logo.png",
-    pairs: []
-  },
-  {
-    chainId: 1,
-    asset: "c60_t0xC011a73ee8576Fb46F5E1c5751cA3B9Fe0af2a6F",
-    type: "ERC20",
-    address: "0xC011a73ee8576Fb46F5E1c5751cA3B9Fe0af2a6F",
-    name: "Synthetix",
-    symbol: "SNX",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xC011a73ee8576Fb46F5E1c5751cA3B9Fe0af2a6F/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0xC0bA369c8Db6eB3924965e5c4FD0b4C1B91e305F",
-    type: "ERC20",
-    address: "0xC0bA369c8Db6eB3924965e5c4FD0b4C1B91e305F",
-    name: "DLP Duck Token",
-    symbol: "DUCK",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xC0bA369c8Db6eB3924965e5c4FD0b4C1B91e305F/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0xC18360217D8F7Ab5e7c516566761Ea12Ce7F9D72",
-    type: "ERC20",
-    address: "0xC18360217D8F7Ab5e7c516566761Ea12Ce7F9D72",
-    name: "Ethereum Name Service",
-    symbol: "ENS",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xC18360217D8F7Ab5e7c516566761Ea12Ce7F9D72/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0xC4C2614E694cF534D407Ee49F8E44D125E4681c4",
-    type: "ERC20",
-    address: "0xC4C2614E694cF534D407Ee49F8E44D125E4681c4",
-    name: "Chain Games",
-    symbol: "CHAIN",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xC4C2614E694cF534D407Ee49F8E44D125E4681c4/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0xC52C326331E9Ce41F04484d3B5E5648158028804",
-    type: "ERC20",
-    address: "0xC52C326331E9Ce41F04484d3B5E5648158028804",
-    name: "ZEN Exchange Token",
-    symbol: "ZCX",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xC52C326331E9Ce41F04484d3B5E5648158028804/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0xC57d533c50bC22247d49a368880fb49a1caA39F7",
-    type: "ERC20",
-    address: "0xC57d533c50bC22247d49a368880fb49a1caA39F7",
-    name: "PowerTrade Fuel",
-    symbol: "PTF",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xC57d533c50bC22247d49a368880fb49a1caA39F7/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0xc719d010B63E5bbF2C0551872CD5316ED26AcD83",
-    type: "ERC20",
-    address: "0xc719d010B63E5bbF2C0551872CD5316ED26AcD83",
-    name: "Decentralized Insurance Protocol",
-    symbol: "DIP",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xc719d010B63E5bbF2C0551872CD5316ED26AcD83/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0xc7283b66Eb1EB5FB86327f08e1B5816b0720212B",
-    type: "ERC20",
-    address: "0xc7283b66Eb1EB5FB86327f08e1B5816b0720212B",
-    name: "Tribe",
-    symbol: "TRIBE",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xc7283b66Eb1EB5FB86327f08e1B5816b0720212B/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0xc834Fa996fA3BeC7aAD3693af486ae53D8aA8B50",
-    type: "ERC20",
-    address: "0xc834Fa996fA3BeC7aAD3693af486ae53D8aA8B50",
-    name: "Convergence",
-    symbol: "CONV",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xc834Fa996fA3BeC7aAD3693af486ae53D8aA8B50/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0xc944E90C64B2c07662A292be6244BDf05Cda44a7",
-    type: "ERC20",
-    address: "0xc944E90C64B2c07662A292be6244BDf05Cda44a7",
-    name: "The Graph",
-    symbol: "GRT",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xc944E90C64B2c07662A292be6244BDf05Cda44a7/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0xCb5f72d37685C3D5aD0bB5F982443BC8FcdF570E",
-    type: "ERC20",
-    address: "0xCb5f72d37685C3D5aD0bB5F982443BC8FcdF570E",
-    name: "Rootkit Finance",
-    symbol: "ROOT",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xCb5f72d37685C3D5aD0bB5F982443BC8FcdF570E/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0xCbfef8fdd706cde6F208460f2Bf39Aa9c785F05D",
-    type: "ERC20",
-    address: "0xCbfef8fdd706cde6F208460f2Bf39Aa9c785F05D",
-    name: "Kine Governance Token",
-    symbol: "KINE",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xCbfef8fdd706cde6F208460f2Bf39Aa9c785F05D/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0xCC4304A31d09258b0029eA7FE63d032f52e44EFe",
-    type: "ERC20",
-    address: "0xCC4304A31d09258b0029eA7FE63d032f52e44EFe",
-    name: "TrustSwap Token",
-    symbol: "SWAP",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xCC4304A31d09258b0029eA7FE63d032f52e44EFe/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0xCF3C8Be2e2C42331Da80EF210e9B1b307C03d36A",
-    type: "ERC20",
-    address: "0xCF3C8Be2e2C42331Da80EF210e9B1b307C03d36A",
-    name: "BEPRO Network",
-    symbol: "BEPRO",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xCF3C8Be2e2C42331Da80EF210e9B1b307C03d36A/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0xd084B83C305daFD76AE3E1b4E1F1fe2eCcCb3988",
-    type: "ERC20",
-    address: "0xd084B83C305daFD76AE3E1b4E1F1fe2eCcCb3988",
-    name: "Terra Virtua Kolect",
-    symbol: "TVK",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xd084B83C305daFD76AE3E1b4E1F1fe2eCcCb3988/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0xD23Ac27148aF6A2f339BD82D0e3CFF380b5093de",
-    type: "ERC20",
-    address: "0xD23Ac27148aF6A2f339BD82D0e3CFF380b5093de",
-    name: "SIREN",
-    symbol: "SI",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xD23Ac27148aF6A2f339BD82D0e3CFF380b5093de/logo.png",
-    pairs: []
-  },
-  {
-    chainId: 1,
-    asset: "c60_t0xd26114cd6EE289AccF82350c8d8487fedB8A0C07",
-    type: "ERC20",
-    address: "0xd26114cd6EE289AccF82350c8d8487fedB8A0C07",
-    name: "OMG Network",
-    symbol: "OMG",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xd26114cd6EE289AccF82350c8d8487fedB8A0C07/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0xd2877702675e6cEb975b4A1dFf9fb7BAF4C91ea9",
-    type: "ERC20",
-    address: "0xd2877702675e6cEb975b4A1dFf9fb7BAF4C91ea9",
-    name: "Terra",
-    symbol: "LUNA",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xd2877702675e6cEb975b4A1dFf9fb7BAF4C91ea9/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0xd379700999F4805Ce80aa32DB46A94dF64561108",
-    type: "ERC20",
-    address: "0xd379700999F4805Ce80aa32DB46A94dF64561108",
-    name: "Dextrust",
-    symbol: "DETS",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xd379700999F4805Ce80aa32DB46A94dF64561108/logo.png",
-    pairs: []
-  },
-  {
-    chainId: 1,
-    asset: "c60_t0xD46bA6D942050d489DBd938a2C909A5d5039A161",
-    type: "ERC20",
-    address: "0xD46bA6D942050d489DBd938a2C909A5d5039A161",
-    name: "Ampleforth",
-    symbol: "AMPL",
-    decimals: 9,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xD46bA6D942050d489DBd938a2C909A5d5039A161/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0xD478161C952357F05f0292B56012Cd8457F1cfbF",
-    type: "ERC20",
-    address: "0xD478161C952357F05f0292B56012Cd8457F1cfbF",
-    name: "Polkamarkets",
-    symbol: "POLK",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xD478161C952357F05f0292B56012Cd8457F1cfbF/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0xD533a949740bb3306d119CC777fa900bA034cd52",
-    type: "ERC20",
-    address: "0xD533a949740bb3306d119CC777fa900bA034cd52",
-    name: "Curve DAO Token",
-    symbol: "CRV",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xD533a949740bb3306d119CC777fa900bA034cd52/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0xD5525D397898e5502075Ea5E830d8914f6F0affe",
-    type: "ERC20",
-    address: "0xD5525D397898e5502075Ea5E830d8914f6F0affe",
-    name: "MEME",
-    symbol: "MEME",
-    decimals: 8,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xD5525D397898e5502075Ea5E830d8914f6F0affe/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0xD6c67B93a7b248dF608a653d82a100556144c5DA",
-    type: "ERC20",
-    address: "0xD6c67B93a7b248dF608a653d82a100556144c5DA",
-    name: "ExNetwork Token",
-    symbol: "EXNT",
-    decimals: 16,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xD6c67B93a7b248dF608a653d82a100556144c5DA/logo.png",
-    pairs: []
-  },
-  {
-    chainId: 1,
-    asset: "c60_t0xdAC17F958D2ee523a2206206994597C13D831ec7",
-    type: "ERC20",
-    address: "0xdAC17F958D2ee523a2206206994597C13D831ec7",
-    name: "Tether",
-    symbol: "USDT",
-    decimals: 6,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xdAC17F958D2ee523a2206206994597C13D831ec7/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0xdacD69347dE42baBfAEcD09dC88958378780FB62",
-    type: "ERC20",
-    address: "0xdacD69347dE42baBfAEcD09dC88958378780FB62",
-    name: "Atari Token",
-    symbol: "ATRI",
-    decimals: 0,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xdacD69347dE42baBfAEcD09dC88958378780FB62/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0xDcB01cc464238396E213a6fDd933E36796eAfF9f",
-    type: "ERC20",
-    address: "0xDcB01cc464238396E213a6fDd933E36796eAfF9f",
-    name: "Yield",
-    symbol: "YLD",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xDcB01cc464238396E213a6fDd933E36796eAfF9f/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0xDDB3422497E61e13543BeA06989C0789117555c5",
-    type: "ERC20",
-    address: "0xDDB3422497E61e13543BeA06989C0789117555c5",
-    name: "COTI",
-    symbol: "COTI",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xDDB3422497E61e13543BeA06989C0789117555c5/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0xE1c7E30C42C24582888C758984f6e382096786bd",
-    type: "ERC20",
-    address: "0xE1c7E30C42C24582888C758984f6e382096786bd",
-    name: "Curate",
-    symbol: "XCUR",
-    decimals: 8,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xE1c7E30C42C24582888C758984f6e382096786bd/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0xe28b3B32B6c345A34Ff64674606124Dd5Aceca30",
-    type: "ERC20",
-    address: "0xe28b3B32B6c345A34Ff64674606124Dd5Aceca30",
-    name: "Injective",
-    symbol: "INJ",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xe28b3B32B6c345A34Ff64674606124Dd5Aceca30/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0xe3818504c1B32bF1557b16C238B2E01Fd3149C17",
-    type: "ERC20",
-    address: "0xe3818504c1B32bF1557b16C238B2E01Fd3149C17",
-    name: "PILLAR",
-    symbol: "PLR",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xe3818504c1B32bF1557b16C238B2E01Fd3149C17/logo.png",
-    pairs: []
-  },
-  {
-    chainId: 1,
-    asset: "c60_t0xE41d2489571d322189246DaFA5ebDe1F4699F498",
-    type: "ERC20",
-    address: "0xE41d2489571d322189246DaFA5ebDe1F4699F498",
-    name: "0x",
-    symbol: "ZRX",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xE41d2489571d322189246DaFA5ebDe1F4699F498/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0xE452E6Ea2dDeB012e20dB73bf5d3863A3Ac8d77a",
-    type: "ERC20",
-    address: "0xE452E6Ea2dDeB012e20dB73bf5d3863A3Ac8d77a",
-    name: "WCELO",
-    symbol: "WCELO",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xE452E6Ea2dDeB012e20dB73bf5d3863A3Ac8d77a/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0xe53EC727dbDEB9E2d5456c3be40cFF031AB40A55",
-    type: "ERC20",
-    address: "0xe53EC727dbDEB9E2d5456c3be40cFF031AB40A55",
-    name: "SuperFarm",
-    symbol: "SUPER",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xe53EC727dbDEB9E2d5456c3be40cFF031AB40A55/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0xE5CAeF4Af8780E59Df925470b050Fb23C43CA68C",
-    type: "ERC20",
-    address: "0xE5CAeF4Af8780E59Df925470b050Fb23C43CA68C",
-    name: "Ferrum Network",
-    symbol: "FRM",
-    decimals: 6,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xE5CAeF4Af8780E59Df925470b050Fb23C43CA68C/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0xE61fDAF474Fac07063f2234Fb9e60C1163Cfa850",
-    type: "ERC20",
-    address: "0xE61fDAF474Fac07063f2234Fb9e60C1163Cfa850",
-    name: "COIN",
-    symbol: "COIN",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xE61fDAF474Fac07063f2234Fb9e60C1163Cfa850/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0xE95A203B1a91a908F9B9CE46459d101078c2c3cb",
-    type: "ERC20",
-    address: "0xE95A203B1a91a908F9B9CE46459d101078c2c3cb",
-    name: "ankrETH",
-    symbol: "aETHc",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xE95A203B1a91a908F9B9CE46459d101078c2c3cb/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0xEA1ea0972fa092dd463f2968F9bB51Cc4c981D71",
-    type: "ERC20",
-    address: "0xEA1ea0972fa092dd463f2968F9bB51Cc4c981D71",
-    name: "Modefi",
-    symbol: "MOD",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xEA1ea0972fa092dd463f2968F9bB51Cc4c981D71/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0xEa319e87Cf06203DAe107Dd8E5672175e3Ee976c",
-    type: "ERC20",
-    address: "0xEa319e87Cf06203DAe107Dd8E5672175e3Ee976c",
-    name: "SURF Finance",
-    symbol: "SURF",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xEa319e87Cf06203DAe107Dd8E5672175e3Ee976c/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0xEB4C2781e4ebA804CE9a9803C67d0893436bB27D",
-    type: "ERC20",
-    address: "0xEB4C2781e4ebA804CE9a9803C67d0893436bB27D",
-    name: "renBTC",
-    symbol: "renBTC",
-    decimals: 8,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xEB4C2781e4ebA804CE9a9803C67d0893436bB27D/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0xEBd9D99A3982d547C5Bb4DB7E3b1F9F14b67Eb83",
-    type: "ERC20",
-    address: "0xEBd9D99A3982d547C5Bb4DB7E3b1F9F14b67Eb83",
-    name: "Everest",
-    symbol: "ID",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xEBd9D99A3982d547C5Bb4DB7E3b1F9F14b67Eb83/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0xEd91879919B71bB6905f23af0A68d231EcF87b14",
-    type: "ERC20",
-    address: "0xEd91879919B71bB6905f23af0A68d231EcF87b14",
-    name: "DMM: Governance",
-    symbol: "DMG",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xEd91879919B71bB6905f23af0A68d231EcF87b14/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0xee573a945B01B788B9287CE062A0CFC15bE9fd86",
-    type: "ERC20",
-    address: "0xee573a945B01B788B9287CE062A0CFC15bE9fd86",
-    name: "Exeedme",
-    symbol: "XED",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xee573a945B01B788B9287CE062A0CFC15bE9fd86/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0xeEAA40B28A2d1b0B08f6f97bB1DD4B75316c6107",
-    type: "ERC20",
-    address: "0xeEAA40B28A2d1b0B08f6f97bB1DD4B75316c6107",
-    name: "GOVI",
-    symbol: "GOVI",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xeEAA40B28A2d1b0B08f6f97bB1DD4B75316c6107/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0xEec2bE5c91ae7f8a338e1e5f3b5DE49d07AfdC81",
-    type: "ERC20",
-    address: "0xEec2bE5c91ae7f8a338e1e5f3b5DE49d07AfdC81",
-    name: "Dopex Governance Token",
-    symbol: "DPX",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xEec2bE5c91ae7f8a338e1e5f3b5DE49d07AfdC81/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0xEEF9f339514298C6A857EfCfC1A762aF84438dEE",
-    type: "ERC20",
-    address: "0xEEF9f339514298C6A857EfCfC1A762aF84438dEE",
-    name: "Hermez Network Token",
-    symbol: "HEZ",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xEEF9f339514298C6A857EfCfC1A762aF84438dEE/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0xF063fE1aB7a291c5d06a86e14730b00BF24cB589",
-    type: "ERC20",
-    address: "0xF063fE1aB7a291c5d06a86e14730b00BF24cB589",
-    name: "DxSale Network",
-    symbol: "SALE",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xF063fE1aB7a291c5d06a86e14730b00BF24cB589/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0xf1f955016EcbCd7321c7266BccFB96c68ea5E49b",
-    type: "ERC20",
-    address: "0xf1f955016EcbCd7321c7266BccFB96c68ea5E49b",
-    name: "Rally",
-    symbol: "RLY",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xf1f955016EcbCd7321c7266BccFB96c68ea5E49b/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0xf21661D0D1d76d3ECb8e1B9F1c923DBfffAe4097",
-    type: "ERC20",
-    address: "0xf21661D0D1d76d3ECb8e1B9F1c923DBfffAe4097",
-    name: "Realio Network",
-    symbol: "RIO",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xf21661D0D1d76d3ECb8e1B9F1c923DBfffAe4097/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0xF411903cbC70a74d22900a5DE66A2dda66507255",
-    type: "ERC20",
-    address: "0xF411903cbC70a74d22900a5DE66A2dda66507255",
-    name: "Verasity",
-    symbol: "VRA",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xF411903cbC70a74d22900a5DE66A2dda66507255/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0xf418588522d5dd018b425E472991E52EBBeEEEEE",
-    type: "ERC20",
-    address: "0xf418588522d5dd018b425E472991E52EBBeEEEEE",
-    name: "PUSH",
-    symbol: "PUSH",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xf418588522d5dd018b425E472991E52EBBeEEEEE/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0xf4CD3d3Fda8d7Fd6C5a500203e38640A70Bf9577",
-    type: "ERC20",
-    address: "0xf4CD3d3Fda8d7Fd6C5a500203e38640A70Bf9577",
-    name: "YfDAI.finance",
-    symbol: "Yf-DAI",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xf4CD3d3Fda8d7Fd6C5a500203e38640A70Bf9577/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0xF4d861575ecC9493420A3f5a14F85B13f0b50EB3",
-    type: "ERC20",
-    address: "0xF4d861575ecC9493420A3f5a14F85B13f0b50EB3",
-    name: "Fractal",
-    symbol: "FCL",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xF4d861575ecC9493420A3f5a14F85B13f0b50EB3/logo.png",
-    pairs: []
-  },
-  {
-    chainId: 1,
-    asset: "c60_t0xF629cBd94d3791C9250152BD8dfBDF380E2a3B9c",
-    type: "ERC20",
-    address: "0xF629cBd94d3791C9250152BD8dfBDF380E2a3B9c",
-    name: "Enjin Coin",
-    symbol: "ENJ",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xF629cBd94d3791C9250152BD8dfBDF380E2a3B9c/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0xf6537FE0df7F0Cc0985Cf00792CC98249E73EFa0",
-    type: "ERC20",
-    address: "0xf6537FE0df7F0Cc0985Cf00792CC98249E73EFa0",
-    name: "GIVLY Coin",
-    symbol: "GIV",
-    decimals: 8,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xf6537FE0df7F0Cc0985Cf00792CC98249E73EFa0/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0xF938424F7210f31dF2Aee3011291b658f872e91e",
-    type: "ERC20",
-    address: "0xF938424F7210f31dF2Aee3011291b658f872e91e",
-    name: "Visor.Finance",
-    symbol: "VISR",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xF938424F7210f31dF2Aee3011291b658f872e91e/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0xF94b5C5651c888d928439aB6514B93944eEE6F48",
-    type: "ERC20",
-    address: "0xF94b5C5651c888d928439aB6514B93944eEE6F48",
-    name: "Yield",
-    symbol: "YLD",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xF94b5C5651c888d928439aB6514B93944eEE6F48/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0xfAd45E47083e4607302aa43c65fB3106F1cd7607",
-    type: "ERC20",
-    address: "0xfAd45E47083e4607302aa43c65fB3106F1cd7607",
-    name: "Hoge Finance",
-    symbol: "HOGE",
-    decimals: 9,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xfAd45E47083e4607302aa43c65fB3106F1cd7607/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0xFbEEa1C75E4c4465CB2FCCc9c6d6afe984558E20",
-    type: "ERC20",
-    address: "0xFbEEa1C75E4c4465CB2FCCc9c6d6afe984558E20",
-    name: "DuckDaoDime",
-    symbol: "DDIM",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xFbEEa1C75E4c4465CB2FCCc9c6d6afe984558E20/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0xfC98e825A2264D890F9a1e68ed50E1526abCcacD",
-    type: "ERC20",
-    address: "0xfC98e825A2264D890F9a1e68ed50E1526abCcacD",
-    name: "Moss Carbon Credit",
-    symbol: "MCO2",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xfC98e825A2264D890F9a1e68ed50E1526abCcacD/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0xFca59Cd816aB1eaD66534D82bc21E7515cE441CF",
-    type: "ERC20",
-    address: "0xFca59Cd816aB1eaD66534D82bc21E7515cE441CF",
-    name: "Rarible",
-    symbol: "RARI",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xFca59Cd816aB1eaD66534D82bc21E7515cE441CF/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0xFE3E6a25e6b192A42a44ecDDCd13796471735ACf",
-    type: "ERC20",
-    address: "0xFE3E6a25e6b192A42a44ecDDCd13796471735ACf",
-    name: "Reef",
-    symbol: "REEF",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xFE3E6a25e6b192A42a44ecDDCd13796471735ACf/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0xfF20817765cB7f73d4bde2e66e067E58D11095C2",
-    type: "ERC20",
-    address: "0xfF20817765cB7f73d4bde2e66e067E58D11095C2",
-    name: "Amp",
-    symbol: "AMP",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xfF20817765cB7f73d4bde2e66e067E58D11095C2/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0xfffffffFf15AbF397dA76f1dcc1A1604F45126DB",
-    type: "ERC20",
-    address: "0xfffffffFf15AbF397dA76f1dcc1A1604F45126DB",
-    name: "FalconSwap Token",
-    symbol: "FSW",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xfffffffFf15AbF397dA76f1dcc1A1604F45126DB/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x383518188C0C6d7730D91b2c03a03C837814a899",
-    type: "ERC20",
-    address: "0x383518188C0C6d7730D91b2c03a03C837814a899",
-    name: "OlympusDAO",
-    symbol: "OHM",
-    decimals: 9,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x383518188C0C6d7730D91b2c03a03C837814a899/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x767FE9EDC9E0dF98E07454847909b5E959D7ca0E",
-    type: "ERC20",
-    address: "0x767FE9EDC9E0dF98E07454847909b5E959D7ca0E",
-    name: "Illuvium",
-    symbol: "ILV",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x767FE9EDC9E0dF98E07454847909b5E959D7ca0E/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0xd1d2Eb1B1e90B638588728b4130137D262C87cae",
-    type: "ERC20",
-    address: "0xd1d2Eb1B1e90B638588728b4130137D262C87cae",
-    name: "Gala",
-    symbol: "GALA",
-    decimals: 8,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xd1d2Eb1B1e90B638588728b4130137D262C87cae/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x4e3FBD56CD56c3e72c1403e103b45Db9da5B9D2B",
-    type: "ERC20",
-    address: "0x4e3FBD56CD56c3e72c1403e103b45Db9da5B9D2B",
-    name: "Convex Token",
-    symbol: "CVX",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x4e3FBD56CD56c3e72c1403e103b45Db9da5B9D2B/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x090185f2135308BaD17527004364eBcC2D37e5F6",
-    type: "ERC20",
-    address: "0x090185f2135308BaD17527004364eBcC2D37e5F6",
-    name: "Spell Token",
-    symbol: "SPELL",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x090185f2135308BaD17527004364eBcC2D37e5F6/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x3b484b82567a09e2588A13D54D032153f0c0aEe0",
-    type: "ERC20",
-    address: "0x3b484b82567a09e2588A13D54D032153f0c0aEe0",
-    name: "OpenDAO",
-    symbol: "SOS",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x3b484b82567a09e2588A13D54D032153f0c0aEe0/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x6Bba316c48b49BD1eAc44573c5c871ff02958469",
-    type: "ERC20",
-    address: "0x6Bba316c48b49BD1eAc44573c5c871ff02958469",
-    name: "Gas DAO",
-    symbol: "GAS",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x6Bba316c48b49BD1eAc44573c5c871ff02958469/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x4Fabb145d64652a948d72533023f6E7A623C7C53",
-    type: "ERC20",
-    address: "0x4Fabb145d64652a948d72533023f6E7A623C7C53",
-    name: "Binance USD",
-    symbol: "BUSD",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x4Fabb145d64652a948d72533023f6E7A623C7C53/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x9E32b13ce7f2E80A01932B42553652E053D6ed8e",
-    type: "ERC20",
-    address: "0x9E32b13ce7f2E80A01932B42553652E053D6ed8e",
-    name: "MetisDAO",
-    symbol: "Metis",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x9E32b13ce7f2E80A01932B42553652E053D6ed8e/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0xf4d2888d29D722226FafA5d9B24F9164c092421E",
-    type: "ERC20",
-    address: "0xf4d2888d29D722226FafA5d9B24F9164c092421E",
-    name: "LooksRare",
-    symbol: "LOOKS",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xf4d2888d29D722226FafA5d9B24F9164c092421E/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x1E4EDE388cbc9F4b5c79681B7f94d36a11ABEBC9",
-    type: "ERC20",
-    address: "0x1E4EDE388cbc9F4b5c79681B7f94d36a11ABEBC9",
-    name: "X2Y2Token",
-    symbol: "X2Y2",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x1E4EDE388cbc9F4b5c79681B7f94d36a11ABEBC9/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x4d224452801ACEd8B2F0aebE155379bb5D594381",
-    type: "ERC20",
-    address: "0x4d224452801ACEd8B2F0aebE155379bb5D594381",
-    name: "ApeCoin (APE)",
-    symbol: "APE",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x4d224452801ACEd8B2F0aebE155379bb5D594381/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0xAf5191B0De278C7286d6C7CC6ab6BB8A73bA2Cd6",
-    type: "ERC20",
-    address: "0xAf5191B0De278C7286d6C7CC6ab6BB8A73bA2Cd6",
-    name: "StargateToken",
-    symbol: "STG",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xAf5191B0De278C7286d6C7CC6ab6BB8A73bA2Cd6/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0x70e8dE73cE538DA2bEEd35d14187F6959a8ecA96",
-    type: "ERC20",
-    address: "0x70e8dE73cE538DA2bEEd35d14187F6959a8ecA96",
-    name: "XSGD",
-    symbol: "XSGD",
-    decimals: 6,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x70e8dE73cE538DA2bEEd35d14187F6959a8ecA96/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0xbAFDabaDcf19d0cFbbe0AB9C69CF050D86ff888C",
-    type: "ERC20",
-    address: "0xbAFDabaDcf19d0cFbbe0AB9C69CF050D86ff888C",
-    name: "ZEDXION",
-    symbol: "ZEDXION",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xbAFDabaDcf19d0cFbbe0AB9C69CF050D86ff888C/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0xB0c7a3Ba49C7a6EaBa6cD4a96C55a1391070Ac9A",
-    type: "ERC20",
-    address: "0xB0c7a3Ba49C7a6EaBa6cD4a96C55a1391070Ac9A",
-    name: "MAGIC",
-    symbol: "MAGIC",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xB0c7a3Ba49C7a6EaBa6cD4a96C55a1391070Ac9A/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c60_t0xCEBA2a8F6Ec221AEB5f3a7bcd15Cbc7e6a387bfb",
-    type: "ERC20",
-    address: "0xCEBA2a8F6Ec221AEB5f3a7bcd15Cbc7e6a387bfb",
-    name: "Peter Pan",
-    symbol: "PAN",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xCEBA2a8F6Ec221AEB5f3a7bcd15Cbc7e6a387bfb/logo.png",
-    pairs: []
-  }
-];
-var version4 = {
-  major: 14,
-  minor: 0,
-  patch: 0
-};
 var ethereum_default = {
-  name: name4,
-  logoURI: logoURI4,
-  timestamp: timestamp4,
-  tokens: tokens4,
-  version: version4
+  name: "Trust Wallet: Ethereum",
+  logoURI: "https://trustwallet.com/assets/images/favicon.png",
+  timestamp: "2021-11-09T22:30:24.689Z",
+  tokens: [
+    {
+      chainId: 1,
+      asset: "c60_t0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      type: "ERC20",
+      address: "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      name: "WETH",
+      symbol: "WETH",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2/logo.png",
+      pairs: [
+        {
+          base: "c60_t0x0000000000085d4780B73119b644AE5ecd22b376"
+        },
+        {
+          base: "c60_t0x0000000000095413afC295d19EDeb1Ad7B71c952"
+        },
+        {
+          base: "c60_t0x00c83aeCC790e8a4453e5dD3B0B4b3680501a7A7"
+        },
+        {
+          base: "c60_t0x0202Be363B8a4820f3F4DE7FaF5224fF05943AB1"
+        },
+        {
+          base: "c60_t0x0258F474786DdFd37ABCE6df6BBb1Dd5dfC4434a"
+        },
+        {
+          base: "c60_t0x03ab458634910AaD20eF5f1C8ee96F1D6ac54919"
+        },
+        {
+          base: "c60_t0x09a3EcAFa817268f77BE1283176B946C4ff2E608"
+        },
+        {
+          base: "c60_t0x0Ae055097C6d159879521C384F1D2123D1f195e6"
+        },
+        {
+          base: "c60_t0x0bc529c00C6401aEF6D220BE8C6Ea1667F6Ad93e"
+        },
+        {
+          base: "c60_t0x0c7D5ae016f806603CB1782bEa29AC69471CAb9c"
+        },
+        {
+          base: "c60_t0x0CDF9acd87E940837ff21BB40c9fd55F68bba059"
+        },
+        {
+          base: "c60_t0x0cEC1A9154Ff802e7934Fc916Ed7Ca50bDE6844e"
+        },
+        {
+          base: "c60_t0x0D8775F648430679A709E98d2b0Cb6250d2887EF"
+        },
+        {
+          base: "c60_t0x0f51bb10119727a7e5eA3538074fb341F56B09Ad"
+        },
+        {
+          base: "c60_t0x0F5D2fB29fb7d3CFeE444a200298f468908cC942"
+        },
+        {
+          base: "c60_t0x0f7F961648aE6Db43C75663aC7E5414Eb79b5704"
+        },
+        {
+          base: "c60_t0x0FD10b9899882a6f2fcb5c371E17e70FdEe00C38"
+        },
+        {
+          base: "c60_t0x0fF6ffcFDa92c53F615a4A75D982f399C989366b"
+        },
+        {
+          base: "c60_t0x10Be9a8dAe441d276a5027936c3aADEd2d82bC15"
+        },
+        {
+          base: "c60_t0x111111111117dC0aa78b770fA6A738034120C302"
+        },
+        {
+          base: "c60_t0x1337DEF16F9B486fAEd0293eb623Dc8395dFE46a"
+        },
+        {
+          base: "c60_t0x1337DEF18C680aF1f9f45cBcab6309562975b1dD"
+        },
+        {
+          base: "c60_t0x1494CA1F11D487c2bBe4543E90080AeBa4BA3C2b"
+        },
+        {
+          base: "c60_t0x15874d65e649880c2614e7a480cb7c9A55787FF6"
+        },
+        {
+          base: "c60_t0x1614F18Fc94f47967A3Fbe5FfcD46d4e7Da3D787"
+        },
+        {
+          base: "c60_t0x16980b3B4a3f9D89E33311B5aa8f80303E5ca4F8"
+        },
+        {
+          base: "c60_t0x18aAA7115705e8be94bfFEBDE57Af9BFc265B998"
+        },
+        {
+          base: "c60_t0x1b40183EFB4Dd766f11bDa7A7c3AD8982e998421"
+        },
+        {
+          base: "c60_t0x1cBb83EbcD552D5EBf8131eF8c9CD9d9BAB342bC"
+        },
+        {
+          base: "c60_t0x1cEB5cB57C4D4E2b2433641b95Dd330A33185A44"
+        },
+        {
+          base: "c60_t0x1f9840a85d5aF5bf1D1762F925BDADdC4201F984"
+        },
+        {
+          base: "c60_t0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599"
+        },
+        {
+          base: "c60_t0x226f7b842E0F0120b7E194D05432b3fd14773a9D"
+        },
+        {
+          base: "c60_t0x25e1474170c4c0aA64fa98123bdc8dB49D7802fa"
+        },
+        {
+          base: "c60_t0x26c8AFBBFE1EBaca03C2bB082E69D0476Bffe099"
+        },
+        {
+          base: "c60_t0x27C70Cd1946795B66be9d954418546998b546634"
+        },
+        {
+          base: "c60_t0x2b591e99afE9f32eAA6214f7B7629768c40Eeb39"
+        },
+        {
+          base: "c60_t0x3301Ee63Fb29F863f2333Bd4466acb46CD8323E6"
+        },
+        {
+          base: "c60_t0x3383c5a8969Dc413bfdDc9656Eb80A1408E4bA20"
+        },
+        {
+          base: "c60_t0x33D0568941C0C64ff7e0FB4fbA0B11BD37deEd9f"
+        },
+        {
+          base: "c60_t0x3845badAde8e6dFF049820680d1F14bD3903a5d0"
+        },
+        {
+          base: "c60_t0x38e4adB44ef08F22F5B5b76A8f0c2d0dCbE7DcA1"
+        },
+        {
+          base: "c60_t0x408e41876cCCDC0F92210600ef50372656052a38"
+        },
+        {
+          base: "c60_t0x40FD72257597aA14C7231A7B1aaa29Fce868F677"
+        },
+        {
+          base: "c60_t0x429881672B9AE42b8EbA0E26cD9C73711b891Ca5"
+        },
+        {
+          base: "c60_t0xcf0C122c6b73ff809C693DB761e7BaeBe62b6a2E"
+        },
+        {
+          base: "c60_t0x45804880De22913dAFE09f4980848ECE6EcbAf78"
+        },
+        {
+          base: "c60_t0x4691937a7508860F876c9c0a2a617E7d9E945D4B"
+        },
+        {
+          base: "c60_t0x4e352cF164E64ADCBad318C3a1e222E9EBa4Ce42"
+        },
+        {
+          base: "c60_t0x514910771AF9Ca656af840dff83E8264EcF986CA"
+        },
+        {
+          base: "c60_t0x5218E472cFCFE0b64A064F055B43b4cdC9EfD3A6"
+        },
+        {
+          base: "c60_t0x5228a22e72ccC52d415EcFd199F99D0665E7733b"
+        },
+        {
+          base: "c60_t0x584bC13c7D411c00c01A62e8019472dE68768430"
+        },
+        {
+          base: "c60_t0x5BEfBB272290dD5b8521D4a938f6c4757742c430"
+        },
+        {
+          base: "c60_t0x607F4C5BB672230e8672085532f7e901544a7375"
+        },
+        {
+          base: "c60_t0x62359Ed7505Efc61FF1D56fEF82158CcaffA23D7"
+        },
+        {
+          base: "c60_t0x6243d8CEA23066d098a15582d81a598b4e8391F4"
+        },
+        {
+          base: "c60_t0x63b4f3e3fa4e438698CE330e365E831F7cCD1eF4"
+        },
+        {
+          base: "c60_t0x66a0f676479Cee1d7373f3DC2e2952778BfF5bd6"
+        },
+        {
+          base: "c60_t0x67c597624B17b16fb77959217360B7cD18284253"
+        },
+        {
+          base: "c60_t0x6810e776880C02933D47DB1b9fc05908e5386b96"
+        },
+        {
+          base: "c60_t0x6B175474E89094C44Da98b954EedeAC495271d0F"
+        },
+        {
+          base: "c60_t0x6B3595068778DD592e39A122f4f5a5cF09C90fE2"
+        },
+        {
+          base: "c60_t0x70401dFD142A16dC7031c56E862Fc88Cb9537Ce0"
+        },
+        {
+          base: "c60_t0x71F85B2E46976bD21302B64329868fd15eb0D127"
+        },
+        {
+          base: "c60_t0x725C263e32c72dDC3A19bEa12C5a0479a81eE688"
+        },
+        {
+          base: "c60_t0x72e364F2ABdC788b7E918bc238B21f109Cd634D7"
+        },
+        {
+          base: "c60_t0x761D38e5ddf6ccf6Cf7c55759d5210750B5D60F3"
+        },
+        {
+          base: "c60_t0x7659CE147D0e714454073a5dd7003544234b6Aa0"
+        },
+        {
+          base: "c60_t0x77777FeDdddFfC19Ff86DB637967013e6C6A116C"
+        },
+        {
+          base: "c60_t0x7a2Bc711E19ba6aff6cE8246C546E8c4B4944DFD"
+        },
+        {
+          base: "c60_t0x7D1AfA7B718fb893dB30A3aBc0Cfc608AaCfeBB0"
+        },
+        {
+          base: "c60_t0x7dE91B204C1C737bcEe6F000AAA6569Cf7061cb7"
+        },
+        {
+          base: "c60_t0x7F3EDcdD180Dbe4819Bd98FeE8929b5cEdB3AdEB"
+        },
+        {
+          base: "c60_t0x7Fc66500c84A76Ad7e9c93437bFc5Ac33E2DDaE9"
+        },
+        {
+          base: "c60_t0x7FF4169a6B5122b664c51c95727d87750eC07c84"
+        },
+        {
+          base: "c60_t0x8207c1FfC5B6804F6024322CcF34F29c3541Ae26"
+        },
+        {
+          base: "c60_t0x83e6f1E41cdd28eAcEB20Cb649155049Fac3D5Aa"
+        },
+        {
+          base: "c60_t0x8400D94A5cb0fa0D041a3788e395285d61c9ee5e"
+        },
+        {
+          base: "c60_t0x84cA8bc7997272c7CfB4D0Cd3D55cd942B3c9419"
+        },
+        {
+          base: "c60_t0x853d955aCEf822Db058eb8505911ED77F175b99e"
+        },
+        {
+          base: "c60_t0x85Eee30c52B0b379b046Fb0F85F4f3Dc3009aFEC"
+        },
+        {
+          base: "c60_t0x88ACDd2a6425c3FaAE4Bc9650Fd7E27e0Bebb7aB"
+        },
+        {
+          base: "c60_t0x88EF27e69108B2633F8E1C184CC37940A075cC02"
+        },
+        {
+          base: "c60_t0x8a40c222996f9F3431f63Bf80244C36822060f12"
+        },
+        {
+          base: "c60_t0x8a854288a5976036A725879164Ca3e91d30c6A1B"
+        },
+        {
+          base: "c60_t0xCE3f08e664693ca792caCE4af1364D5e220827B2"
+        },
+        {
+          base: "c60_t0x8CE9137d39326AD0cD6491fb5CC0CbA0e089b6A9"
+        },
+        {
+          base: "c60_t0x8dAEBADE922dF735c38C80C7eBD708Af50815fAa"
+        },
+        {
+          base: "c60_t0x8f8221aFbB33998d8584A2B05749bA73c37a938a"
+        },
+        {
+          base: "c60_t0x9355372396e3F6daF13359B7b607a3374cc638e0"
+        },
+        {
+          base: "c60_t0x93ED3FBe21207Ec2E8f2d3c3de6e058Cb73Bc04d"
+        },
+        {
+          base: "c60_t0x954b890704693af242613edEf1B603825afcD708"
+        },
+        {
+          base: "c60_t0x956F47F50A910163D8BF957Cf5846D573E7f87CA"
+        },
+        {
+          base: "c60_t0x95a4492F028aa1fd432Ea71146b433E7B4446611"
+        },
+        {
+          base: "c60_t0x95aD61b0a150d79219dCF64E1E6Cc01f0B64C4cE"
+        },
+        {
+          base: "c60_t0x967da4048cD07aB37855c090aAF366e4ce1b9F48"
+        },
+        {
+          base: "c60_t0x990f341946A3fdB507aE7e52d17851B87168017c"
+        },
+        {
+          base: "c60_t0x9B02dD390a603Add5c07f9fd9175b7DABE8D63B7"
+        },
+        {
+          base: "c60_t0x9BE89D2a4cd102D8Fecc6BF9dA793be995C22541"
+        },
+        {
+          base: "c60_t0x9EA3b5b4EC044b70375236A281986106457b20EF"
+        },
+        {
+          base: "c60_t0x9Ed8e7C9604790F7Ec589F99b94361d8AAB64E5E"
+        },
+        {
+          base: "c60_t0x9f7229aF0c4b9740e207Ea283b9094983f78ba04"
+        },
+        {
+          base: "c60_t0x9f8F72aA9304c8B593d555F12eF6589cC3A579A2"
+        },
+        {
+          base: "c60_t0x9F9c8ec3534c3cE16F928381372BfbFBFb9F4D24"
+        },
+        {
+          base: "c60_t0xa0246c9032bC3A600820415aE600c6388619A14D"
+        },
+        {
+          base: "c60_t0xa0afAA285Ce85974c3C881256cB7F225e3A1178a"
+        },
+        {
+          base: "c60_t0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48"
+        },
+        {
+          base: "c60_t0xa117000000f279D81A1D3cc75430fAA017FA5A2e"
+        },
+        {
+          base: "c60_t0xa393473d64d2F9F026B60b6Df7859A689715d092"
+        },
+        {
+          base: "c60_t0xA4EED63db85311E22dF4473f87CcfC3DaDCFA3E3"
+        },
+        {
+          base: "c60_t0xa8c8CfB141A3bB59FEA1E2ea6B79b5ECBCD7b6ca"
+        },
+        {
+          base: "c60_t0xAa6E8127831c9DE45ae56bB1b0d4D4Da6e5665BD"
+        },
+        {
+          base: "c60_t0xaaAEBE6Fe48E54f431b0C390CfaF0b017d09D42d"
+        },
+        {
+          base: "c60_t0xAd4f86a25bbc20FfB751f2FAC312A0B4d8F88c64"
+        },
+        {
+          base: "c60_t0xaDB2437e6F65682B85F814fBc12FeC0508A7B1D0"
+        },
+        {
+          base: "c60_t0xaE697F994Fc5eBC000F8e22EbFfeE04612f98A0d"
+        },
+        {
+          base: "c60_t0x41A3Dba3D677E573636BA691a70ff2D606c29666"
+        },
+        {
+          base: "c60_t0xaf9f549774ecEDbD0966C52f250aCc548D3F36E5"
+        },
+        {
+          base: "c60_t0xB26631c6dda06aD89B93C71400D25692de89c068"
+        },
+        {
+          base: "c60_t0xB62132e35a6c13ee1EE0f84dC5d40bad8d815206"
+        },
+        {
+          base: "c60_t0xB6ff96B8A8d214544Ca0dBc9B33f7AD6503eFD32"
+        },
+        {
+          base: "c60_t0xb753428af26E81097e7fD17f40c88aaA3E04902c"
+        },
+        {
+          base: "c60_t0xB9d99C33eA2d86EC5eC6b8A4dD816EBBA64404AF"
+        },
+        {
+          base: "c60_t0xba100000625a3754423978a60c9317c58a424e3D"
+        },
+        {
+          base: "c60_t0xBa21Ef4c9f433Ede00badEFcC2754B8E74bd538A"
+        },
+        {
+          base: "c60_t0xBBc2AE13b23d715c30720F079fcd9B4a74093505"
+        },
+        {
+          base: "c60_t0xbC396689893D065F41bc2C6EcbeE5e0085233447"
+        },
+        {
+          base: "c60_t0xc00e94Cb662C3520282E6f5717214004A7f26888"
+        },
+        {
+          base: "c60_t0xC011a73ee8576Fb46F5E1c5751cA3B9Fe0af2a6F"
+        },
+        {
+          base: "c60_t0xC0bA369c8Db6eB3924965e5c4FD0b4C1B91e305F"
+        },
+        {
+          base: "c60_t0xC18360217D8F7Ab5e7c516566761Ea12Ce7F9D72"
+        },
+        {
+          base: "c60_t0xC4C2614E694cF534D407Ee49F8E44D125E4681c4"
+        },
+        {
+          base: "c60_t0xC52C326331E9Ce41F04484d3B5E5648158028804"
+        },
+        {
+          base: "c60_t0xCb5f72d37685C3D5aD0bB5F982443BC8FcdF570E"
+        },
+        {
+          base: "c60_t0xCbfef8fdd706cde6F208460f2Bf39Aa9c785F05D"
+        },
+        {
+          base: "c60_t0xCC4304A31d09258b0029eA7FE63d032f52e44EFe"
+        },
+        {
+          base: "c60_t0xD23Ac27148aF6A2f339BD82D0e3CFF380b5093de"
+        },
+        {
+          base: "c60_t0xd26114cd6EE289AccF82350c8d8487fedB8A0C07"
+        },
+        {
+          base: "c60_t0xd379700999F4805Ce80aa32DB46A94dF64561108"
+        },
+        {
+          base: "c60_t0xD46bA6D942050d489DBd938a2C909A5d5039A161"
+        },
+        {
+          base: "c60_t0xD533a949740bb3306d119CC777fa900bA034cd52"
+        },
+        {
+          base: "c60_t0xdAC17F958D2ee523a2206206994597C13D831ec7"
+        },
+        {
+          base: "c60_t0xDDB3422497E61e13543BeA06989C0789117555c5"
+        },
+        {
+          base: "c60_t0xE41d2489571d322189246DaFA5ebDe1F4699F498"
+        },
+        {
+          base: "c60_t0xE452E6Ea2dDeB012e20dB73bf5d3863A3Ac8d77a"
+        },
+        {
+          base: "c60_t0xe53EC727dbDEB9E2d5456c3be40cFF031AB40A55"
+        },
+        {
+          base: "c60_t0xE61fDAF474Fac07063f2234Fb9e60C1163Cfa850"
+        },
+        {
+          base: "c60_t0xE95A203B1a91a908F9B9CE46459d101078c2c3cb"
+        },
+        {
+          base: "c60_t0xEa319e87Cf06203DAe107Dd8E5672175e3Ee976c"
+        },
+        {
+          base: "c60_t0xEB4C2781e4ebA804CE9a9803C67d0893436bB27D"
+        },
+        {
+          base: "c60_t0xeEAA40B28A2d1b0B08f6f97bB1DD4B75316c6107"
+        },
+        {
+          base: "c60_t0xEec2bE5c91ae7f8a338e1e5f3b5DE49d07AfdC81"
+        },
+        {
+          base: "c60_t0xEEF9f339514298C6A857EfCfC1A762aF84438dEE"
+        },
+        {
+          base: "c60_t0xf1f955016EcbCd7321c7266BccFB96c68ea5E49b"
+        },
+        {
+          base: "c60_t0xf418588522d5dd018b425E472991E52EBBeEEEEE"
+        },
+        {
+          base: "c60_t0xf4CD3d3Fda8d7Fd6C5a500203e38640A70Bf9577"
+        },
+        {
+          base: "c60_t0xF629cBd94d3791C9250152BD8dfBDF380E2a3B9c"
+        },
+        {
+          base: "c60_t0xF938424F7210f31dF2Aee3011291b658f872e91e"
+        },
+        {
+          base: "c60_t0xF94b5C5651c888d928439aB6514B93944eEE6F48"
+        },
+        {
+          base: "c60_t0xfF20817765cB7f73d4bde2e66e067E58D11095C2"
+        },
+        {
+          base: "c60_t0xf4d2888d29D722226FafA5d9B24F9164c092421E"
+        },
+        {
+          base: "c60_t0x70e8dE73cE538DA2bEEd35d14187F6959a8ecA96"
+        },
+        {
+          base: "c60_t0xbAFDabaDcf19d0cFbbe0AB9C69CF050D86ff888C"
+        },
+        {
+          base: "c60_t0xB0c7a3Ba49C7a6EaBa6cD4a96C55a1391070Ac9A"
+        },
+        {
+          base: "c60_t0xCEBA2a8F6Ec221AEB5f3a7bcd15Cbc7e6a387bfb"
+        }
+      ]
+    },
+    {
+      chainId: 1,
+      asset: "c60_t0x0000000000085d4780B73119b644AE5ecd22b376",
+      type: "ERC20",
+      address: "0x0000000000085d4780B73119b644AE5ecd22b376",
+      name: "TrueUSD",
+      symbol: "TUSD",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x0000000000085d4780B73119b644AE5ecd22b376/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x0000000000095413afC295d19EDeb1Ad7B71c952",
+      type: "ERC20",
+      address: "0x0000000000095413afC295d19EDeb1Ad7B71c952",
+      name: "Tokenlon",
+      symbol: "LON",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x0000000000095413afC295d19EDeb1Ad7B71c952/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x00c83aeCC790e8a4453e5dD3B0B4b3680501a7A7",
+      type: "ERC20",
+      address: "0x00c83aeCC790e8a4453e5dD3B0B4b3680501a7A7",
+      name: "SKALE Network",
+      symbol: "SKL",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x00c83aeCC790e8a4453e5dD3B0B4b3680501a7A7/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x0202Be363B8a4820f3F4DE7FaF5224fF05943AB1",
+      type: "ERC20",
+      address: "0x0202Be363B8a4820f3F4DE7FaF5224fF05943AB1",
+      name: "UniLend",
+      symbol: "UFT",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x0202Be363B8a4820f3F4DE7FaF5224fF05943AB1/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x0258F474786DdFd37ABCE6df6BBb1Dd5dfC4434a",
+      type: "ERC20",
+      address: "0x0258F474786DdFd37ABCE6df6BBb1Dd5dfC4434a",
+      name: "Orion Protocol",
+      symbol: "ORN",
+      decimals: 8,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x0258F474786DdFd37ABCE6df6BBb1Dd5dfC4434a/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x03ab458634910AaD20eF5f1C8ee96F1D6ac54919",
+      type: "ERC20",
+      address: "0x03ab458634910AaD20eF5f1C8ee96F1D6ac54919",
+      name: "Rai Reflex Index",
+      symbol: "RAI",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x03ab458634910AaD20eF5f1C8ee96F1D6ac54919/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x0488401c3F535193Fa8Df029d9fFe615A06E74E6",
+      type: "ERC20",
+      address: "0x0488401c3F535193Fa8Df029d9fFe615A06E74E6",
+      name: "SparkPoint",
+      symbol: "SRK",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x0488401c3F535193Fa8Df029d9fFe615A06E74E6/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x04Fa0d235C4abf4BcF4787aF4CF447DE572eF828",
+      type: "ERC20",
+      address: "0x04Fa0d235C4abf4BcF4787aF4CF447DE572eF828",
+      name: "UMA",
+      symbol: "UMA",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x04Fa0d235C4abf4BcF4787aF4CF447DE572eF828/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x06A01a4d579479Dd5D884EBf61A31727A3d8D442",
+      type: "ERC20",
+      address: "0x06A01a4d579479Dd5D884EBf61A31727A3d8D442",
+      name: "SmartKey",
+      symbol: "Skey",
+      decimals: 8,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x06A01a4d579479Dd5D884EBf61A31727A3d8D442/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x07150e919B4De5fD6a63DE1F9384828396f25fDC",
+      type: "ERC20",
+      address: "0x07150e919B4De5fD6a63DE1F9384828396f25fDC",
+      name: "Base Protocol",
+      symbol: "BASE",
+      decimals: 9,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x07150e919B4De5fD6a63DE1F9384828396f25fDC/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x09a3EcAFa817268f77BE1283176B946C4ff2E608",
+      type: "ERC20",
+      address: "0x09a3EcAFa817268f77BE1283176B946C4ff2E608",
+      name: "Mirror Protocol",
+      symbol: "MIR",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x09a3EcAFa817268f77BE1283176B946C4ff2E608/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x09e64c2B61a5f1690Ee6fbeD9baf5D6990F8dFd0",
+      type: "ERC20",
+      address: "0x09e64c2B61a5f1690Ee6fbeD9baf5D6990F8dFd0",
+      name: "Growth DeFi",
+      symbol: "GRO",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x09e64c2B61a5f1690Ee6fbeD9baf5D6990F8dFd0/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x0a50C93c762fDD6E56D86215C24AaAD43aB629aa",
+      type: "ERC20",
+      address: "0x0a50C93c762fDD6E56D86215C24AaAD43aB629aa",
+      name: "LGO Token",
+      symbol: "LGO",
+      decimals: 8,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x0a50C93c762fDD6E56D86215C24AaAD43aB629aa/logo.png",
+      pairs: []
+    },
+    {
+      chainId: 1,
+      asset: "c60_t0x0Ae055097C6d159879521C384F1D2123D1f195e6",
+      type: "ERC20",
+      address: "0x0Ae055097C6d159879521C384F1D2123D1f195e6",
+      name: "xDai",
+      symbol: "STAKE",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x0Ae055097C6d159879521C384F1D2123D1f195e6/logo.png",
+      pairs: []
+    },
+    {
+      chainId: 1,
+      asset: "c60_t0x0bc529c00C6401aEF6D220BE8C6Ea1667F6Ad93e",
+      type: "ERC20",
+      address: "0x0bc529c00C6401aEF6D220BE8C6Ea1667F6Ad93e",
+      name: "yearn.finance",
+      symbol: "YFI",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x0bc529c00C6401aEF6D220BE8C6Ea1667F6Ad93e/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x0c7D5ae016f806603CB1782bEa29AC69471CAb9c",
+      type: "ERC20",
+      address: "0x0c7D5ae016f806603CB1782bEa29AC69471CAb9c",
+      name: "Bifrost",
+      symbol: "BFC",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x0c7D5ae016f806603CB1782bEa29AC69471CAb9c/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x0CDF9acd87E940837ff21BB40c9fd55F68bba059",
+      type: "ERC20",
+      address: "0x0CDF9acd87E940837ff21BB40c9fd55F68bba059",
+      name: "Public Mint",
+      symbol: "MINT",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x0CDF9acd87E940837ff21BB40c9fd55F68bba059/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x0cEC1A9154Ff802e7934Fc916Ed7Ca50bDE6844e",
+      type: "ERC20",
+      address: "0x0cEC1A9154Ff802e7934Fc916Ed7Ca50bDE6844e",
+      name: "PoolTogether",
+      symbol: "POOL",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x0cEC1A9154Ff802e7934Fc916Ed7Ca50bDE6844e/logo.png",
+      pairs: []
+    },
+    {
+      chainId: 1,
+      asset: "c60_t0x0D8775F648430679A709E98d2b0Cb6250d2887EF",
+      type: "ERC20",
+      address: "0x0D8775F648430679A709E98d2b0Cb6250d2887EF",
+      name: "Basic Attention Token",
+      symbol: "BAT",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x0D8775F648430679A709E98d2b0Cb6250d2887EF/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x0f51bb10119727a7e5eA3538074fb341F56B09Ad",
+      type: "ERC20",
+      address: "0x0f51bb10119727a7e5eA3538074fb341F56B09Ad",
+      name: "DAO Maker",
+      symbol: "DAO",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x0f51bb10119727a7e5eA3538074fb341F56B09Ad/logo.png",
+      pairs: []
+    },
+    {
+      chainId: 1,
+      asset: "c60_t0x0F5D2fB29fb7d3CFeE444a200298f468908cC942",
+      type: "ERC20",
+      address: "0x0F5D2fB29fb7d3CFeE444a200298f468908cC942",
+      name: "Decentraland",
+      symbol: "MANA",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x0F5D2fB29fb7d3CFeE444a200298f468908cC942/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x0f7F961648aE6Db43C75663aC7E5414Eb79b5704",
+      type: "ERC20",
+      address: "0x0f7F961648aE6Db43C75663aC7E5414Eb79b5704",
+      name: "Blockzero Labs",
+      symbol: "XIO",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x0f7F961648aE6Db43C75663aC7E5414Eb79b5704/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x0FD10b9899882a6f2fcb5c371E17e70FdEe00C38",
+      type: "ERC20",
+      address: "0x0FD10b9899882a6f2fcb5c371E17e70FdEe00C38",
+      name: "Pundi X",
+      symbol: "PUNDIX",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x0FD10b9899882a6f2fcb5c371E17e70FdEe00C38/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x0fF6ffcFDa92c53F615a4A75D982f399C989366b",
+      type: "ERC20",
+      address: "0x0fF6ffcFDa92c53F615a4A75D982f399C989366b",
+      name: "Unilayer",
+      symbol: "LAYER",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x0fF6ffcFDa92c53F615a4A75D982f399C989366b/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x10Be9a8dAe441d276a5027936c3aADEd2d82bC15",
+      type: "ERC20",
+      address: "0x10Be9a8dAe441d276a5027936c3aADEd2d82bC15",
+      name: "UniMex Network",
+      symbol: "UMX",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x10Be9a8dAe441d276a5027936c3aADEd2d82bC15/logo.png",
+      pairs: []
+    },
+    {
+      chainId: 1,
+      asset: "c60_t0x111111111117dC0aa78b770fA6A738034120C302",
+      type: "ERC20",
+      address: "0x111111111117dC0aa78b770fA6A738034120C302",
+      name: "1INCH Token",
+      symbol: "1INCH",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x111111111117dC0aa78b770fA6A738034120C302/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x1337DEF16F9B486fAEd0293eb623Dc8395dFE46a",
+      type: "ERC20",
+      address: "0x1337DEF16F9B486fAEd0293eb623Dc8395dFE46a",
+      name: "ARMOR",
+      symbol: "ARMOR",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x1337DEF16F9B486fAEd0293eb623Dc8395dFE46a/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x1337DEF18C680aF1f9f45cBcab6309562975b1dD",
+      type: "ERC20",
+      address: "0x1337DEF18C680aF1f9f45cBcab6309562975b1dD",
+      name: "Armor NXM",
+      symbol: "arNXM",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x1337DEF18C680aF1f9f45cBcab6309562975b1dD/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x1494CA1F11D487c2bBe4543E90080AeBa4BA3C2b",
+      type: "ERC20",
+      address: "0x1494CA1F11D487c2bBe4543E90080AeBa4BA3C2b",
+      name: "DeFi Pulse Index",
+      symbol: "DPI",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x1494CA1F11D487c2bBe4543E90080AeBa4BA3C2b/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x152687Bc4A7FCC89049cF119F9ac3e5aCF2eE7ef",
+      type: "ERC20",
+      address: "0x152687Bc4A7FCC89049cF119F9ac3e5aCF2eE7ef",
+      name: "DeltaHub Community",
+      symbol: "DHC",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x152687Bc4A7FCC89049cF119F9ac3e5aCF2eE7ef/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x15874d65e649880c2614e7a480cb7c9A55787FF6",
+      type: "ERC20",
+      address: "0x15874d65e649880c2614e7a480cb7c9A55787FF6",
+      name: "EthereumMax",
+      symbol: "eMax",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x15874d65e649880c2614e7a480cb7c9A55787FF6/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x1614F18Fc94f47967A3Fbe5FfcD46d4e7Da3D787",
+      type: "ERC20",
+      address: "0x1614F18Fc94f47967A3Fbe5FfcD46d4e7Da3D787",
+      name: "PAID Network",
+      symbol: "PAID",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x1614F18Fc94f47967A3Fbe5FfcD46d4e7Da3D787/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x16980b3B4a3f9D89E33311B5aa8f80303E5ca4F8",
+      type: "ERC20",
+      address: "0x16980b3B4a3f9D89E33311B5aa8f80303E5ca4F8",
+      name: "KIRA Network",
+      symbol: "KEX",
+      decimals: 6,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x16980b3B4a3f9D89E33311B5aa8f80303E5ca4F8/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x1796ae0b0fa4862485106a0de9b654eFE301D0b2",
+      type: "ERC20",
+      address: "0x1796ae0b0fa4862485106a0de9b654eFE301D0b2",
+      name: "Polychain Monsters",
+      symbol: "PMON",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x1796ae0b0fa4862485106a0de9b654eFE301D0b2/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x17aC188e09A7890a1844E5E65471fE8b0CcFadF3",
+      type: "ERC20",
+      address: "0x17aC188e09A7890a1844E5E65471fE8b0CcFadF3",
+      name: "Cryptocurrency Top 10 Tokens Index",
+      symbol: "CC10",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x17aC188e09A7890a1844E5E65471fE8b0CcFadF3/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x18aAA7115705e8be94bfFEBDE57Af9BFc265B998",
+      type: "ERC20",
+      address: "0x18aAA7115705e8be94bfFEBDE57Af9BFc265B998",
+      name: "Audius",
+      symbol: "AUDIO",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x18aAA7115705e8be94bfFEBDE57Af9BFc265B998/logo.png",
+      pairs: []
+    },
+    {
+      chainId: 1,
+      asset: "c60_t0x1985365e9f78359a9B6AD760e32412f4a445E862",
+      type: "ERC20",
+      address: "0x1985365e9f78359a9B6AD760e32412f4a445E862",
+      name: "Augur",
+      symbol: "REP",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x1985365e9f78359a9B6AD760e32412f4a445E862/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x1b40183EFB4Dd766f11bDa7A7c3AD8982e998421",
+      type: "ERC20",
+      address: "0x1b40183EFB4Dd766f11bDa7A7c3AD8982e998421",
+      name: "Vesper",
+      symbol: "VSP",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x1b40183EFB4Dd766f11bDa7A7c3AD8982e998421/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x1C9491865a1DE77C5b6e19d2E6a5F1D7a6F2b25F",
+      type: "ERC20",
+      address: "0x1C9491865a1DE77C5b6e19d2E6a5F1D7a6F2b25F",
+      name: "Antimatter.Finance Governance Token",
+      symbol: "MATTER",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x1C9491865a1DE77C5b6e19d2E6a5F1D7a6F2b25F/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x1C9922314ED1415c95b9FD453c3818fd41867d0B",
+      type: "ERC20",
+      address: "0x1C9922314ED1415c95b9FD453c3818fd41867d0B",
+      name: "TOWER",
+      symbol: "TOWER",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x1C9922314ED1415c95b9FD453c3818fd41867d0B/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x1cBb83EbcD552D5EBf8131eF8c9CD9d9BAB342bC",
+      type: "ERC20",
+      address: "0x1cBb83EbcD552D5EBf8131eF8c9CD9d9BAB342bC",
+      name: "Non-Fungible Yearn",
+      symbol: "NFY",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x1cBb83EbcD552D5EBf8131eF8c9CD9d9BAB342bC/logo.png",
+      pairs: []
+    },
+    {
+      chainId: 1,
+      asset: "c60_t0x1cEB5cB57C4D4E2b2433641b95Dd330A33185A44",
+      type: "ERC20",
+      address: "0x1cEB5cB57C4D4E2b2433641b95Dd330A33185A44",
+      name: "Keep3rV1",
+      symbol: "KP3R",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x1cEB5cB57C4D4E2b2433641b95Dd330A33185A44/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x1dD80016e3d4ae146Ee2EBB484e8edD92dacC4ce",
+      type: "ERC20",
+      address: "0x1dD80016e3d4ae146Ee2EBB484e8edD92dacC4ce",
+      name: "Lead Wallet",
+      symbol: "LEAD",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x1dD80016e3d4ae146Ee2EBB484e8edD92dacC4ce/logo.png",
+      pairs: []
+    },
+    {
+      chainId: 1,
+      asset: "c60_t0x1f9840a85d5aF5bf1D1762F925BDADdC4201F984",
+      type: "ERC20",
+      address: "0x1f9840a85d5aF5bf1D1762F925BDADdC4201F984",
+      name: "Uniswap",
+      symbol: "UNI",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x1f9840a85d5aF5bf1D1762F925BDADdC4201F984/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x1fE24F25b1Cf609B9c4e7E12D802e3640dFA5e43",
+      type: "ERC20",
+      address: "0x1fE24F25b1Cf609B9c4e7E12D802e3640dFA5e43",
+      name: "ChainGuardians Governance Token",
+      symbol: "CGG",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x1fE24F25b1Cf609B9c4e7E12D802e3640dFA5e43/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x21BfBDa47A0B4B5b1248c767Ee49F7caA9B23697",
+      type: "ERC20",
+      address: "0x21BfBDa47A0B4B5b1248c767Ee49F7caA9B23697",
+      name: "OVR",
+      symbol: "OVR",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x21BfBDa47A0B4B5b1248c767Ee49F7caA9B23697/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x221657776846890989a759BA2973e427DfF5C9bB",
+      type: "ERC20",
+      address: "0x221657776846890989a759BA2973e427DfF5C9bB",
+      name: "Reputation",
+      symbol: "REPv2",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x221657776846890989a759BA2973e427DfF5C9bB/logo.png",
+      pairs: []
+    },
+    {
+      chainId: 1,
+      asset: "c60_t0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599",
+      type: "ERC20",
+      address: "0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599",
+      name: "Wrapped Bitcoin",
+      symbol: "WBTC",
+      decimals: 8,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x226f7b842E0F0120b7E194D05432b3fd14773a9D",
+      type: "ERC20",
+      address: "0x226f7b842E0F0120b7E194D05432b3fd14773a9D",
+      name: "UNION Protocol Governance Token",
+      symbol: "UNN",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x226f7b842E0F0120b7E194D05432b3fd14773a9D/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x23B608675a2B2fB1890d3ABBd85c5775c51691d5",
+      type: "ERC20",
+      address: "0x23B608675a2B2fB1890d3ABBd85c5775c51691d5",
+      name: "Unisocks Edition 0",
+      symbol: "SOCKS",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x23B608675a2B2fB1890d3ABBd85c5775c51691d5/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x25e1474170c4c0aA64fa98123bdc8dB49D7802fa",
+      type: "ERC20",
+      address: "0x25e1474170c4c0aA64fa98123bdc8dB49D7802fa",
+      name: "Bidao",
+      symbol: "BID",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x25e1474170c4c0aA64fa98123bdc8dB49D7802fa/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x26c8AFBBFE1EBaca03C2bB082E69D0476Bffe099",
+      type: "ERC20",
+      address: "0x26c8AFBBFE1EBaca03C2bB082E69D0476Bffe099",
+      name: "Cellframe",
+      symbol: "CELL",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x26c8AFBBFE1EBaca03C2bB082E69D0476Bffe099/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x26E43759551333e57F073bb0772F50329A957b30",
+      type: "ERC20",
+      address: "0x26E43759551333e57F073bb0772F50329A957b30",
+      name: "DegenVC",
+      symbol: "DGVC",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x26E43759551333e57F073bb0772F50329A957b30/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x27C70Cd1946795B66be9d954418546998b546634",
+      type: "ERC20",
+      address: "0x27C70Cd1946795B66be9d954418546998b546634",
+      name: "DOGE KILLER",
+      symbol: "LEASH",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x27C70Cd1946795B66be9d954418546998b546634/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x29502fE4d233EF0b45C3647101Fa1252cE0634BD",
+      type: "ERC20",
+      address: "0x29502fE4d233EF0b45C3647101Fa1252cE0634BD",
+      name: "Froge Finance",
+      symbol: "FROGE",
+      decimals: 9,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x29502fE4d233EF0b45C3647101Fa1252cE0634BD/logo.png",
+      pairs: []
+    },
+    {
+      chainId: 1,
+      asset: "c60_t0x2b591e99afE9f32eAA6214f7B7629768c40Eeb39",
+      type: "ERC20",
+      address: "0x2b591e99afE9f32eAA6214f7B7629768c40Eeb39",
+      name: "HEX",
+      symbol: "HEX",
+      decimals: 8,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x2b591e99afE9f32eAA6214f7B7629768c40Eeb39/logo.png",
+      pairs: []
+    },
+    {
+      chainId: 1,
+      asset: "c60_t0x2ba592F78dB6436527729929AAf6c908497cB200",
+      type: "ERC20",
+      address: "0x2ba592F78dB6436527729929AAf6c908497cB200",
+      name: "Cream Finance",
+      symbol: "CREAM",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x2ba592F78dB6436527729929AAf6c908497cB200/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x2e1E15C44Ffe4Df6a0cb7371CD00d5028e571d14",
+      type: "ERC20",
+      address: "0x2e1E15C44Ffe4Df6a0cb7371CD00d5028e571d14",
+      name: "Mettalex",
+      symbol: "MTLX",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x2e1E15C44Ffe4Df6a0cb7371CD00d5028e571d14/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x2e2f3246b6c65CCc4239c9Ee556EC143a7E5DE2c",
+      type: "ERC20",
+      address: "0x2e2f3246b6c65CCc4239c9Ee556EC143a7E5DE2c",
+      name: "Yfi.mobi",
+      symbol: "YFIM",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x2e2f3246b6c65CCc4239c9Ee556EC143a7E5DE2c/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x2eDf094dB69d6Dcd487f1B3dB9febE2eeC0dd4c5",
+      type: "ERC20",
+      address: "0x2eDf094dB69d6Dcd487f1B3dB9febE2eeC0dd4c5",
+      name: "ZeroSwap",
+      symbol: "ZEE",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x2eDf094dB69d6Dcd487f1B3dB9febE2eeC0dd4c5/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x30f271C9E86D2B7d00a6376Cd96A1cFBD5F0b9b3",
+      type: "ERC20",
+      address: "0x30f271C9E86D2B7d00a6376Cd96A1cFBD5F0b9b3",
+      name: "Decentr",
+      symbol: "DEC",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x30f271C9E86D2B7d00a6376Cd96A1cFBD5F0b9b3/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x3155BA85D5F96b2d030a4966AF206230e46849cb",
+      type: "ERC20",
+      address: "0x3155BA85D5F96b2d030a4966AF206230e46849cb",
+      name: "THORChain ETH.RUNE",
+      symbol: "RUNE",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x3155BA85D5F96b2d030a4966AF206230e46849cb/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x3301Ee63Fb29F863f2333Bd4466acb46CD8323E6",
+      type: "ERC20",
+      address: "0x3301Ee63Fb29F863f2333Bd4466acb46CD8323E6",
+      name: "Akita Inu",
+      symbol: "AKITA",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x3301Ee63Fb29F863f2333Bd4466acb46CD8323E6/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x3383c5a8969Dc413bfdDc9656Eb80A1408E4bA20",
+      type: "ERC20",
+      address: "0x3383c5a8969Dc413bfdDc9656Eb80A1408E4bA20",
+      name: "Anatha",
+      symbol: "wANATHA",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x3383c5a8969Dc413bfdDc9656Eb80A1408E4bA20/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x33D0568941C0C64ff7e0FB4fbA0B11BD37deEd9f",
+      type: "ERC20",
+      address: "0x33D0568941C0C64ff7e0FB4fbA0B11BD37deEd9f",
+      name: "RAMP DEFI",
+      symbol: "RAMP",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x33D0568941C0C64ff7e0FB4fbA0B11BD37deEd9f/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x3593D125a4f7849a1B059E64F4517A86Dd60c95d",
+      type: "ERC20",
+      address: "0x3593D125a4f7849a1B059E64F4517A86Dd60c95d",
+      name: "MANTRA DAO",
+      symbol: "OM",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x3593D125a4f7849a1B059E64F4517A86Dd60c95d/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x362bc847A3a9637d3af6624EeC853618a43ed7D2",
+      type: "ERC20",
+      address: "0x362bc847A3a9637d3af6624EeC853618a43ed7D2",
+      name: "PARSIQ",
+      symbol: "PRQ",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x362bc847A3a9637d3af6624EeC853618a43ed7D2/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x3845badAde8e6dFF049820680d1F14bD3903a5d0",
+      type: "ERC20",
+      address: "0x3845badAde8e6dFF049820680d1F14bD3903a5d0",
+      name: "The Sandbox",
+      symbol: "SAND",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x3845badAde8e6dFF049820680d1F14bD3903a5d0/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x38e4adB44ef08F22F5B5b76A8f0c2d0dCbE7DcA1",
+      type: "ERC20",
+      address: "0x38e4adB44ef08F22F5B5b76A8f0c2d0dCbE7DcA1",
+      name: "Concentrated Voting Power",
+      symbol: "CVP",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x38e4adB44ef08F22F5B5b76A8f0c2d0dCbE7DcA1/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x3aFfCCa64c2A6f4e3B6Bd9c64CD2C969EFd1ECBe",
+      type: "ERC20",
+      address: "0x3aFfCCa64c2A6f4e3B6Bd9c64CD2C969EFd1ECBe",
+      name: "DSLA",
+      symbol: "DSLA",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x3aFfCCa64c2A6f4e3B6Bd9c64CD2C969EFd1ECBe/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x3D3D35bb9bEC23b06Ca00fe472b50E7A4c692C30",
+      type: "ERC20",
+      address: "0x3D3D35bb9bEC23b06Ca00fe472b50E7A4c692C30",
+      name: "Vidya",
+      symbol: "VIDYA",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x3D3D35bb9bEC23b06Ca00fe472b50E7A4c692C30/logo.png",
+      pairs: []
+    },
+    {
+      chainId: 1,
+      asset: "c60_t0x408e41876cCCDC0F92210600ef50372656052a38",
+      type: "ERC20",
+      address: "0x408e41876cCCDC0F92210600ef50372656052a38",
+      name: "Ren",
+      symbol: "REN",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x408e41876cCCDC0F92210600ef50372656052a38/logo.png",
+      pairs: []
+    },
+    {
+      chainId: 1,
+      asset: "c60_t0x40FD72257597aA14C7231A7B1aaa29Fce868F677",
+      type: "ERC20",
+      address: "0x40FD72257597aA14C7231A7B1aaa29Fce868F677",
+      name: "SORA",
+      symbol: "XOR",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x40FD72257597aA14C7231A7B1aaa29Fce868F677/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x419D0d8BdD9aF5e606Ae2232ed285Aff190E711b",
+      type: "ERC20",
+      address: "0x419D0d8BdD9aF5e606Ae2232ed285Aff190E711b",
+      name: "FunFair",
+      symbol: "FUN",
+      decimals: 8,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x419D0d8BdD9aF5e606Ae2232ed285Aff190E711b/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x41A3Dba3D677E573636BA691a70ff2D606c29666",
+      type: "ERC20",
+      address: "0x41A3Dba3D677E573636BA691a70ff2D606c29666",
+      name: "GoBlank",
+      symbol: "BLANK",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x41A3Dba3D677E573636BA691a70ff2D606c29666/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x429881672B9AE42b8EbA0E26cD9C73711b891Ca5",
+      type: "ERC20",
+      address: "0x429881672B9AE42b8EbA0E26cD9C73711b891Ca5",
+      name: "Pickle Finance",
+      symbol: "PICKLE",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x429881672B9AE42b8EbA0E26cD9C73711b891Ca5/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x431ad2ff6a9C365805eBaD47Ee021148d6f7DBe0",
+      type: "ERC20",
+      address: "0x431ad2ff6a9C365805eBaD47Ee021148d6f7DBe0",
+      name: "dForce",
+      symbol: "DF",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x431ad2ff6a9C365805eBaD47Ee021148d6f7DBe0/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0xcf0C122c6b73ff809C693DB761e7BaeBe62b6a2E",
+      type: "ERC20",
+      address: "0xcf0C122c6b73ff809C693DB761e7BaeBe62b6a2E",
+      name: "FLOKI",
+      symbol: "FLOKI",
+      decimals: 9,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xcf0C122c6b73ff809C693DB761e7BaeBe62b6a2E/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x4575f41308EC1483f3d399aa9a2826d74Da13Deb",
+      type: "ERC20",
+      address: "0x4575f41308EC1483f3d399aa9a2826d74Da13Deb",
+      name: "Orchid",
+      symbol: "OXT",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x4575f41308EC1483f3d399aa9a2826d74Da13Deb/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x45804880De22913dAFE09f4980848ECE6EcbAf78",
+      type: "ERC20",
+      address: "0x45804880De22913dAFE09f4980848ECE6EcbAf78",
+      name: "PAX Gold",
+      symbol: "PAXG",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x45804880De22913dAFE09f4980848ECE6EcbAf78/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x4691937a7508860F876c9c0a2a617E7d9E945D4B",
+      type: "ERC20",
+      address: "0x4691937a7508860F876c9c0a2a617E7d9E945D4B",
+      name: "WOO Network",
+      symbol: "WOO",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x4691937a7508860F876c9c0a2a617E7d9E945D4B/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x4a220E6096B25EADb88358cb44068A3248254675",
+      type: "ERC20",
+      address: "0x4a220E6096B25EADb88358cb44068A3248254675",
+      name: "Quant",
+      symbol: "QNT",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x4a220E6096B25EADb88358cb44068A3248254675/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x4B1E80cAC91e2216EEb63e29B957eB91Ae9C2Be8",
+      type: "ERC20",
+      address: "0x4B1E80cAC91e2216EEb63e29B957eB91Ae9C2Be8",
+      name: "Jupiter",
+      symbol: "JUP",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x4B1E80cAC91e2216EEb63e29B957eB91Ae9C2Be8/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x4c11249814f11b9346808179Cf06e71ac328c1b5",
+      type: "ERC20",
+      address: "0x4c11249814f11b9346808179Cf06e71ac328c1b5",
+      name: "Oraichain Token",
+      symbol: "ORAI",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x4c11249814f11b9346808179Cf06e71ac328c1b5/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x4C19596f5aAfF459fA38B0f7eD92F11AE6543784",
+      type: "ERC20",
+      address: "0x4C19596f5aAfF459fA38B0f7eD92F11AE6543784",
+      name: "TrueFi",
+      symbol: "TRU",
+      decimals: 8,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x4C19596f5aAfF459fA38B0f7eD92F11AE6543784/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x4e352cF164E64ADCBad318C3a1e222E9EBa4Ce42",
+      type: "ERC20",
+      address: "0x4e352cF164E64ADCBad318C3a1e222E9EBa4Ce42",
+      name: "MCDEX Token",
+      symbol: "MCB",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x4e352cF164E64ADCBad318C3a1e222E9EBa4Ce42/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x4fE83213D56308330EC302a8BD641f1d0113A4Cc",
+      type: "ERC20",
+      address: "0x4fE83213D56308330EC302a8BD641f1d0113A4Cc",
+      name: "NuCypher",
+      symbol: "NU",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x4fE83213D56308330EC302a8BD641f1d0113A4Cc/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x50DE6856358Cc35f3A9a57eAAA34BD4cB707d2cd",
+      type: "ERC20",
+      address: "0x50DE6856358Cc35f3A9a57eAAA34BD4cB707d2cd",
+      name: "Razor Network",
+      symbol: "RAZOR",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x50DE6856358Cc35f3A9a57eAAA34BD4cB707d2cd/logo.png",
+      pairs: []
+    },
+    {
+      chainId: 1,
+      asset: "c60_t0x514910771AF9Ca656af840dff83E8264EcF986CA",
+      type: "ERC20",
+      address: "0x514910771AF9Ca656af840dff83E8264EcF986CA",
+      name: "Chainlink",
+      symbol: "LINK",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x514910771AF9Ca656af840dff83E8264EcF986CA/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x5218E472cFCFE0b64A064F055B43b4cdC9EfD3A6",
+      type: "ERC20",
+      address: "0x5218E472cFCFE0b64A064F055B43b4cdC9EfD3A6",
+      name: "unFederalReserve",
+      symbol: "eRSDL",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x5218E472cFCFE0b64A064F055B43b4cdC9EfD3A6/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x5228a22e72ccC52d415EcFd199F99D0665E7733b",
+      type: "ERC20",
+      address: "0x5228a22e72ccC52d415EcFd199F99D0665E7733b",
+      name: "pTokens BTC",
+      symbol: "pBTC",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x5228a22e72ccC52d415EcFd199F99D0665E7733b/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x54C9EA2E9C9E8eD865Db4A4ce6711C2a0d5063Ba",
+      type: "ERC20",
+      address: "0x54C9EA2E9C9E8eD865Db4A4ce6711C2a0d5063Ba",
+      name: "BarterTrade",
+      symbol: "BART",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x54C9EA2E9C9E8eD865Db4A4ce6711C2a0d5063Ba/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x557B933a7C2c45672B610F8954A3deB39a51A8Ca",
+      type: "ERC20",
+      address: "0x557B933a7C2c45672B610F8954A3deB39a51A8Ca",
+      name: "REVV",
+      symbol: "REVV",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x557B933a7C2c45672B610F8954A3deB39a51A8Ca/logo.png",
+      pairs: []
+    },
+    {
+      chainId: 1,
+      asset: "c60_t0x57Ab1ec28D129707052df4dF418D58a2D46d5f51",
+      type: "ERC20",
+      address: "0x57Ab1ec28D129707052df4dF418D58a2D46d5f51",
+      name: "sUSD",
+      symbol: "sUSD",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x57Ab1ec28D129707052df4dF418D58a2D46d5f51/logo.png",
+      pairs: []
+    },
+    {
+      chainId: 1,
+      asset: "c60_t0x584bC13c7D411c00c01A62e8019472dE68768430",
+      type: "ERC20",
+      address: "0x584bC13c7D411c00c01A62e8019472dE68768430",
+      name: "Hegic",
+      symbol: "HEGIC",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x584bC13c7D411c00c01A62e8019472dE68768430/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x5a666c7d92E5fA7Edcb6390E4efD6d0CDd69cF37",
+      type: "ERC20",
+      address: "0x5a666c7d92E5fA7Edcb6390E4efD6d0CDd69cF37",
+      name: "UnMarshal",
+      symbol: "MARSH",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x5a666c7d92E5fA7Edcb6390E4efD6d0CDd69cF37/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x5BEfBB272290dD5b8521D4a938f6c4757742c430",
+      type: "ERC20",
+      address: "0x5BEfBB272290dD5b8521D4a938f6c4757742c430",
+      name: "Xfinance",
+      symbol: "XFI",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x5BEfBB272290dD5b8521D4a938f6c4757742c430/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x5cAf454Ba92e6F2c929DF14667Ee360eD9fD5b26",
+      type: "ERC20",
+      address: "0x5cAf454Ba92e6F2c929DF14667Ee360eD9fD5b26",
+      name: "Dev",
+      symbol: "DEV",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x5cAf454Ba92e6F2c929DF14667Ee360eD9fD5b26/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x5Dc02Ea99285E17656b8350722694c35154DB1E8",
+      type: "ERC20",
+      address: "0x5Dc02Ea99285E17656b8350722694c35154DB1E8",
+      name: "BOND",
+      symbol: "BOND",
+      decimals: 8,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x5Dc02Ea99285E17656b8350722694c35154DB1E8/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x5F64Ab1544D28732F0A24F4713c2C8ec0dA089f0",
+      type: "ERC20",
+      address: "0x5F64Ab1544D28732F0A24F4713c2C8ec0dA089f0",
+      name: "DEXTF Token",
+      symbol: "DEXTF",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x5F64Ab1544D28732F0A24F4713c2C8ec0dA089f0/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x5f98805A4E8be255a32880FDeC7F6728C6568bA0",
+      type: "ERC20",
+      address: "0x5f98805A4E8be255a32880FDeC7F6728C6568bA0",
+      name: "Liquity USD",
+      symbol: "LUSD",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x5f98805A4E8be255a32880FDeC7F6728C6568bA0/logo.png",
+      pairs: []
+    },
+    {
+      chainId: 1,
+      asset: "c60_t0x607F4C5BB672230e8672085532f7e901544a7375",
+      type: "ERC20",
+      address: "0x607F4C5BB672230e8672085532f7e901544a7375",
+      name: "iExec RLC",
+      symbol: "RLC",
+      decimals: 9,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x607F4C5BB672230e8672085532f7e901544a7375/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x6149C26Cd2f7b5CCdb32029aF817123F6E37Df5B",
+      type: "ERC20",
+      address: "0x6149C26Cd2f7b5CCdb32029aF817123F6E37Df5B",
+      name: "Launchpool",
+      symbol: "LPOOL",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x6149C26Cd2f7b5CCdb32029aF817123F6E37Df5B/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x62359Ed7505Efc61FF1D56fEF82158CcaffA23D7",
+      type: "ERC20",
+      address: "0x62359Ed7505Efc61FF1D56fEF82158CcaffA23D7",
+      name: "cVault.finance",
+      symbol: "CORE",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x62359Ed7505Efc61FF1D56fEF82158CcaffA23D7/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x6243d8CEA23066d098a15582d81a598b4e8391F4",
+      type: "ERC20",
+      address: "0x6243d8CEA23066d098a15582d81a598b4e8391F4",
+      name: "Reflexer Ungovernance Token",
+      symbol: "FLX",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x6243d8CEA23066d098a15582d81a598b4e8391F4/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x626E8036dEB333b408Be468F951bdB42433cBF18",
+      type: "ERC20",
+      address: "0x626E8036dEB333b408Be468F951bdB42433cBF18",
+      name: "AIOZ Network",
+      symbol: "AIOZ",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x626E8036dEB333b408Be468F951bdB42433cBF18/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x63b4f3e3fa4e438698CE330e365E831F7cCD1eF4",
+      type: "ERC20",
+      address: "0x63b4f3e3fa4e438698CE330e365E831F7cCD1eF4",
+      name: "CyberFi Token",
+      symbol: "CFi",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x63b4f3e3fa4e438698CE330e365E831F7cCD1eF4/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x66a0f676479Cee1d7373f3DC2e2952778BfF5bd6",
+      type: "ERC20",
+      address: "0x66a0f676479Cee1d7373f3DC2e2952778BfF5bd6",
+      name: "Wise Token",
+      symbol: "WISE",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x66a0f676479Cee1d7373f3DC2e2952778BfF5bd6/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x67B6D479c7bB412C54e03dCA8E1Bc6740ce6b99C",
+      type: "ERC20",
+      address: "0x67B6D479c7bB412C54e03dCA8E1Bc6740ce6b99C",
+      name: "Kylin",
+      symbol: "KYL",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x67B6D479c7bB412C54e03dCA8E1Bc6740ce6b99C/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x67c597624B17b16fb77959217360B7cD18284253",
+      type: "ERC20",
+      address: "0x67c597624B17b16fb77959217360B7cD18284253",
+      name: "Benchmark Protocol",
+      symbol: "MARK",
+      decimals: 9,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x67c597624B17b16fb77959217360B7cD18284253/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x6810e776880C02933D47DB1b9fc05908e5386b96",
+      type: "ERC20",
+      address: "0x6810e776880C02933D47DB1b9fc05908e5386b96",
+      name: "Gnosis",
+      symbol: "GNO",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x6810e776880C02933D47DB1b9fc05908e5386b96/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x69692D3345010a207b759a7D1af6fc7F38b35c5E",
+      type: "ERC20",
+      address: "0x69692D3345010a207b759a7D1af6fc7F38b35c5E",
+      name: "chads.vc",
+      symbol: "CHADS",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x69692D3345010a207b759a7D1af6fc7F38b35c5E/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x69A95185ee2a045CDC4bCd1b1Df10710395e4e23",
+      type: "ERC20",
+      address: "0x69A95185ee2a045CDC4bCd1b1Df10710395e4e23",
+      name: "Poolz Finance",
+      symbol: "POOLZ",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x69A95185ee2a045CDC4bCd1b1Df10710395e4e23/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x69af81e73A73B40adF4f3d4223Cd9b1ECE623074",
+      type: "ERC20",
+      address: "0x69af81e73A73B40adF4f3d4223Cd9b1ECE623074",
+      name: "Mask Network",
+      symbol: "MASK",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x69af81e73A73B40adF4f3d4223Cd9b1ECE623074/logo.png",
+      pairs: []
+    },
+    {
+      chainId: 1,
+      asset: "c60_t0x6B175474E89094C44Da98b954EedeAC495271d0F",
+      type: "ERC20",
+      address: "0x6B175474E89094C44Da98b954EedeAC495271d0F",
+      name: "Dai",
+      symbol: "DAI",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x6B175474E89094C44Da98b954EedeAC495271d0F/logo.png",
+      pairs: []
+    },
+    {
+      chainId: 1,
+      asset: "c60_t0x6B3595068778DD592e39A122f4f5a5cF09C90fE2",
+      type: "ERC20",
+      address: "0x6B3595068778DD592e39A122f4f5a5cF09C90fE2",
+      name: "SushiSwap",
+      symbol: "SUSHI",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x6B3595068778DD592e39A122f4f5a5cF09C90fE2/logo.png",
+      pairs: []
+    },
+    {
+      chainId: 1,
+      asset: "c60_t0x6BFf2fE249601ed0Db3a87424a2E923118BB0312",
+      type: "ERC20",
+      address: "0x6BFf2fE249601ed0Db3a87424a2E923118BB0312",
+      name: "Fyooz",
+      symbol: "FYZ",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x6BFf2fE249601ed0Db3a87424a2E923118BB0312/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x6c6EE5e31d828De241282B9606C8e98Ea48526E2",
+      type: "ERC20",
+      address: "0x6c6EE5e31d828De241282B9606C8e98Ea48526E2",
+      name: "Holo",
+      symbol: "HOT",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x6c6EE5e31d828De241282B9606C8e98Ea48526E2/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x6e0daDE58D2d89eBBe7aFc384e3E4f15b70b14D8",
+      type: "ERC20",
+      address: "0x6e0daDE58D2d89eBBe7aFc384e3E4f15b70b14D8",
+      name: "QuiverX",
+      symbol: "QRX",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x6e0daDE58D2d89eBBe7aFc384e3E4f15b70b14D8/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x6F87D756DAf0503d08Eb8993686c7Fc01Dc44fB1",
+      type: "ERC20",
+      address: "0x6F87D756DAf0503d08Eb8993686c7Fc01Dc44fB1",
+      name: "UniTrade",
+      symbol: "TRADE",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x6F87D756DAf0503d08Eb8993686c7Fc01Dc44fB1/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x6fC13EACE26590B80cCCAB1ba5d51890577D83B2",
+      type: "ERC20",
+      address: "0x6fC13EACE26590B80cCCAB1ba5d51890577D83B2",
+      name: "Umbrella Network",
+      symbol: "UMB",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x6fC13EACE26590B80cCCAB1ba5d51890577D83B2/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x70401dFD142A16dC7031c56E862Fc88Cb9537Ce0",
+      type: "ERC20",
+      address: "0x70401dFD142A16dC7031c56E862Fc88Cb9537Ce0",
+      name: "Bird.Money",
+      symbol: "BIRD",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x70401dFD142A16dC7031c56E862Fc88Cb9537Ce0/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x71F85B2E46976bD21302B64329868fd15eb0D127",
+      type: "ERC20",
+      address: "0x71F85B2E46976bD21302B64329868fd15eb0D127",
+      name: "Axion",
+      symbol: "AXN",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x71F85B2E46976bD21302B64329868fd15eb0D127/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x725C263e32c72dDC3A19bEa12C5a0479a81eE688",
+      type: "ERC20",
+      address: "0x725C263e32c72dDC3A19bEa12C5a0479a81eE688",
+      name: "Bridge Mutual",
+      symbol: "BMI",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x725C263e32c72dDC3A19bEa12C5a0479a81eE688/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x72630B1e3B42874bf335020Ba0249e3E9e47Bafc",
+      type: "ERC20",
+      address: "0x72630B1e3B42874bf335020Ba0249e3E9e47Bafc",
+      name: "Paypolitan Token",
+      symbol: "EPAN",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x72630B1e3B42874bf335020Ba0249e3E9e47Bafc/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x72e364F2ABdC788b7E918bc238B21f109Cd634D7",
+      type: "ERC20",
+      address: "0x72e364F2ABdC788b7E918bc238B21f109Cd634D7",
+      name: "Metaverse Index",
+      symbol: "MVI",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x72e364F2ABdC788b7E918bc238B21f109Cd634D7/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x72e9D9038cE484EE986FEa183f8d8Df93f9aDA13",
+      type: "ERC20",
+      address: "0x72e9D9038cE484EE986FEa183f8d8Df93f9aDA13",
+      name: "SmartCredit Token",
+      symbol: "SMARTCREDIT",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x72e9D9038cE484EE986FEa183f8d8Df93f9aDA13/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x761D38e5ddf6ccf6Cf7c55759d5210750B5D60F3",
+      type: "ERC20",
+      address: "0x761D38e5ddf6ccf6Cf7c55759d5210750B5D60F3",
+      name: "Dogelon",
+      symbol: "ELON",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x761D38e5ddf6ccf6Cf7c55759d5210750B5D60F3/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x7659CE147D0e714454073a5dd7003544234b6Aa0",
+      type: "ERC20",
+      address: "0x7659CE147D0e714454073a5dd7003544234b6Aa0",
+      name: "XCAD Network",
+      symbol: "XCAD",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x7659CE147D0e714454073a5dd7003544234b6Aa0/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x7671904eed7f10808B664fc30BB8693FD7237abF",
+      type: "ERC20",
+      address: "0x7671904eed7f10808B664fc30BB8693FD7237abF",
+      name: "Boolberry",
+      symbol: "BBR",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x7671904eed7f10808B664fc30BB8693FD7237abF/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x77777FeDdddFfC19Ff86DB637967013e6C6A116C",
+      type: "ERC20",
+      address: "0x77777FeDdddFfC19Ff86DB637967013e6C6A116C",
+      name: "Tornado Cash",
+      symbol: "TORN",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x77777FeDdddFfC19Ff86DB637967013e6C6A116C/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x7a2Bc711E19ba6aff6cE8246C546E8c4B4944DFD",
+      type: "ERC20",
+      address: "0x7a2Bc711E19ba6aff6cE8246C546E8c4B4944DFD",
+      name: "WAXE",
+      symbol: "WAXE",
+      decimals: 8,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x7a2Bc711E19ba6aff6cE8246C546E8c4B4944DFD/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x7b123f53421b1bF8533339BFBdc7C98aA94163db",
+      type: "ERC20",
+      address: "0x7b123f53421b1bF8533339BFBdc7C98aA94163db",
+      name: "DFOhub",
+      symbol: "buidl",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x7b123f53421b1bF8533339BFBdc7C98aA94163db/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x7D1AfA7B718fb893dB30A3aBc0Cfc608AaCfeBB0",
+      type: "ERC20",
+      address: "0x7D1AfA7B718fb893dB30A3aBc0Cfc608AaCfeBB0",
+      name: "Polygon",
+      symbol: "MATIC",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x7D1AfA7B718fb893dB30A3aBc0Cfc608AaCfeBB0/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x7dE91B204C1C737bcEe6F000AAA6569Cf7061cb7",
+      type: "ERC20",
+      address: "0x7dE91B204C1C737bcEe6F000AAA6569Cf7061cb7",
+      name: "Robonomics",
+      symbol: "XRT",
+      decimals: 9,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x7dE91B204C1C737bcEe6F000AAA6569Cf7061cb7/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x7F3EDcdD180Dbe4819Bd98FeE8929b5cEdB3AdEB",
+      type: "ERC20",
+      address: "0x7F3EDcdD180Dbe4819Bd98FeE8929b5cEdB3AdEB",
+      name: "xToken",
+      symbol: "XTK",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x7F3EDcdD180Dbe4819Bd98FeE8929b5cEdB3AdEB/logo.png",
+      pairs: []
+    },
+    {
+      chainId: 1,
+      asset: "c60_t0x7Fc66500c84A76Ad7e9c93437bFc5Ac33E2DDaE9",
+      type: "ERC20",
+      address: "0x7Fc66500c84A76Ad7e9c93437bFc5Ac33E2DDaE9",
+      name: "Aave",
+      symbol: "AAVE",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x7Fc66500c84A76Ad7e9c93437bFc5Ac33E2DDaE9/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x7FF4169a6B5122b664c51c95727d87750eC07c84",
+      type: "ERC20",
+      address: "0x7FF4169a6B5122b664c51c95727d87750eC07c84",
+      name: "Tenset",
+      symbol: "10SET",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x7FF4169a6B5122b664c51c95727d87750eC07c84/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x8207c1FfC5B6804F6024322CcF34F29c3541Ae26",
+      type: "ERC20",
+      address: "0x8207c1FfC5B6804F6024322CcF34F29c3541Ae26",
+      name: "Origin Protocol",
+      symbol: "OGN",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x8207c1FfC5B6804F6024322CcF34F29c3541Ae26/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x83e6f1E41cdd28eAcEB20Cb649155049Fac3D5Aa",
+      type: "ERC20",
+      address: "0x83e6f1E41cdd28eAcEB20Cb649155049Fac3D5Aa",
+      name: "Polkastarter",
+      symbol: "POLS",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x83e6f1E41cdd28eAcEB20Cb649155049Fac3D5Aa/logo.png",
+      pairs: []
+    },
+    {
+      chainId: 1,
+      asset: "c60_t0x8400D94A5cb0fa0D041a3788e395285d61c9ee5e",
+      type: "ERC20",
+      address: "0x8400D94A5cb0fa0D041a3788e395285d61c9ee5e",
+      name: "Unibright",
+      symbol: "UBT",
+      decimals: 8,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x8400D94A5cb0fa0D041a3788e395285d61c9ee5e/logo.png",
+      pairs: []
+    },
+    {
+      chainId: 1,
+      asset: "c60_t0x84cA8bc7997272c7CfB4D0Cd3D55cd942B3c9419",
+      type: "ERC20",
+      address: "0x84cA8bc7997272c7CfB4D0Cd3D55cd942B3c9419",
+      name: "DIA",
+      symbol: "DIA",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x84cA8bc7997272c7CfB4D0Cd3D55cd942B3c9419/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x853d955aCEf822Db058eb8505911ED77F175b99e",
+      type: "ERC20",
+      address: "0x853d955aCEf822Db058eb8505911ED77F175b99e",
+      name: "Frax",
+      symbol: "FRAX",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x853d955aCEf822Db058eb8505911ED77F175b99e/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x85Eee30c52B0b379b046Fb0F85F4f3Dc3009aFEC",
+      type: "ERC20",
+      address: "0x85Eee30c52B0b379b046Fb0F85F4f3Dc3009aFEC",
+      name: "KEEP Token",
+      symbol: "KEEP",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x85Eee30c52B0b379b046Fb0F85F4f3Dc3009aFEC/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x8888801aF4d980682e47f1A9036e589479e835C5",
+      type: "ERC20",
+      address: "0x8888801aF4d980682e47f1A9036e589479e835C5",
+      name: "88mph.app",
+      symbol: "MPH",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x8888801aF4d980682e47f1A9036e589479e835C5/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x88ACDd2a6425c3FaAE4Bc9650Fd7E27e0Bebb7aB",
+      type: "ERC20",
+      address: "0x88ACDd2a6425c3FaAE4Bc9650Fd7E27e0Bebb7aB",
+      name: "Alchemist",
+      symbol: "\u2697\uFE0F",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x88ACDd2a6425c3FaAE4Bc9650Fd7E27e0Bebb7aB/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x88EF27e69108B2633F8E1C184CC37940A075cC02",
+      type: "ERC20",
+      address: "0x88EF27e69108B2633F8E1C184CC37940A075cC02",
+      name: "Dego Finance",
+      symbol: "DEGO",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x88EF27e69108B2633F8E1C184CC37940A075cC02/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x89Ab32156e46F46D02ade3FEcbe5Fc4243B9AAeD",
+      type: "ERC20",
+      address: "0x89Ab32156e46F46D02ade3FEcbe5Fc4243B9AAeD",
+      name: "pNetwork",
+      symbol: "PNT",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x89Ab32156e46F46D02ade3FEcbe5Fc4243B9AAeD/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x8a40c222996f9F3431f63Bf80244C36822060f12",
+      type: "ERC20",
+      address: "0x8a40c222996f9F3431f63Bf80244C36822060f12",
+      name: "Finxflo",
+      symbol: "FXF",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x8a40c222996f9F3431f63Bf80244C36822060f12/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x8a854288a5976036A725879164Ca3e91d30c6A1B",
+      type: "ERC20",
+      address: "0x8a854288a5976036A725879164Ca3e91d30c6A1B",
+      name: "GET",
+      symbol: "GET",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x8a854288a5976036A725879164Ca3e91d30c6A1B/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0xCE3f08e664693ca792caCE4af1364D5e220827B2",
+      type: "ERC20",
+      address: "0xCE3f08e664693ca792caCE4af1364D5e220827B2",
+      name: "SAITAMA",
+      symbol: "SAITAMA",
+      decimals: 9,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xCE3f08e664693ca792caCE4af1364D5e220827B2/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x8B39B70E39Aa811b69365398e0aACe9bee238AEb",
+      type: "ERC20",
+      address: "0x8B39B70E39Aa811b69365398e0aACe9bee238AEb",
+      name: "PolkaFoundry",
+      symbol: "PKF",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x8B39B70E39Aa811b69365398e0aACe9bee238AEb/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x8c15Ef5b4B21951d50E53E4fbdA8298FFAD25057",
+      type: "ERC20",
+      address: "0x8c15Ef5b4B21951d50E53E4fbdA8298FFAD25057",
+      name: "Function X",
+      symbol: "FX",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x8c15Ef5b4B21951d50E53E4fbdA8298FFAD25057/logo.png",
+      pairs: []
+    },
+    {
+      chainId: 1,
+      asset: "c60_t0x8CE9137d39326AD0cD6491fb5CC0CbA0e089b6A9",
+      type: "ERC20",
+      address: "0x8CE9137d39326AD0cD6491fb5CC0CbA0e089b6A9",
+      name: "Swipe",
+      symbol: "SXP",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x8CE9137d39326AD0cD6491fb5CC0CbA0e089b6A9/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x8dAEBADE922dF735c38C80C7eBD708Af50815fAa",
+      type: "ERC20",
+      address: "0x8dAEBADE922dF735c38C80C7eBD708Af50815fAa",
+      name: "tBTC",
+      symbol: "TBTC",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x8dAEBADE922dF735c38C80C7eBD708Af50815fAa/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x5B7533812759B45C2B44C19e320ba2cD2681b542",
+      type: "ERC20",
+      address: "0x5B7533812759B45C2B44C19e320ba2cD2681b542",
+      name: "SingularityNET Token",
+      symbol: "AGIX",
+      decimals: 8,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x5B7533812759B45C2B44C19e320ba2cD2681b542/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x8f8221aFbB33998d8584A2B05749bA73c37a938a",
+      type: "ERC20",
+      address: "0x8f8221aFbB33998d8584A2B05749bA73c37a938a",
+      name: "Request Token",
+      symbol: "REQ",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x8f8221aFbB33998d8584A2B05749bA73c37a938a/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x9355372396e3F6daF13359B7b607a3374cc638e0",
+      type: "ERC20",
+      address: "0x9355372396e3F6daF13359B7b607a3374cc638e0",
+      name: "WHALE",
+      symbol: "WHALE",
+      decimals: 4,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x9355372396e3F6daF13359B7b607a3374cc638e0/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x93ED3FBe21207Ec2E8f2d3c3de6e058Cb73Bc04d",
+      type: "ERC20",
+      address: "0x93ED3FBe21207Ec2E8f2d3c3de6e058Cb73Bc04d",
+      name: "Pinakion",
+      symbol: "PNK",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x93ED3FBe21207Ec2E8f2d3c3de6e058Cb73Bc04d/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x9469D013805bFfB7D3DEBe5E7839237e535ec483",
+      type: "ERC20",
+      address: "0x9469D013805bFfB7D3DEBe5E7839237e535ec483",
+      name: "Evolution Land Global Token",
+      symbol: "RING",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x9469D013805bFfB7D3DEBe5E7839237e535ec483/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x954b890704693af242613edEf1B603825afcD708",
+      type: "ERC20",
+      address: "0x954b890704693af242613edEf1B603825afcD708",
+      name: "Cardstack",
+      symbol: "CARD",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x954b890704693af242613edEf1B603825afcD708/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x956F47F50A910163D8BF957Cf5846D573E7f87CA",
+      type: "ERC20",
+      address: "0x956F47F50A910163D8BF957Cf5846D573E7f87CA",
+      name: "Fei USD",
+      symbol: "FEI",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x956F47F50A910163D8BF957Cf5846D573E7f87CA/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x95a4492F028aa1fd432Ea71146b433E7B4446611",
+      type: "ERC20",
+      address: "0x95a4492F028aa1fd432Ea71146b433E7B4446611",
+      name: "APY.Finance",
+      symbol: "APY",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x95a4492F028aa1fd432Ea71146b433E7B4446611/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x95aD61b0a150d79219dCF64E1E6Cc01f0B64C4cE",
+      type: "ERC20",
+      address: "0x95aD61b0a150d79219dCF64E1E6Cc01f0B64C4cE",
+      name: "SHIBA INU",
+      symbol: "SHIB",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x95aD61b0a150d79219dCF64E1E6Cc01f0B64C4cE/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x961C8c0B1aaD0c0b10a51FeF6a867E3091BCef17",
+      type: "ERC20",
+      address: "0x961C8c0B1aaD0c0b10a51FeF6a867E3091BCef17",
+      name: "Dypius",
+      symbol: "DYP",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x961C8c0B1aaD0c0b10a51FeF6a867E3091BCef17/logo.png",
+      pairs: []
+    },
+    {
+      chainId: 1,
+      asset: "c60_t0x967da4048cD07aB37855c090aAF366e4ce1b9F48",
+      type: "ERC20",
+      address: "0x967da4048cD07aB37855c090aAF366e4ce1b9F48",
+      name: "Ocean Protocol",
+      symbol: "OCEAN",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x967da4048cD07aB37855c090aAF366e4ce1b9F48/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x990f341946A3fdB507aE7e52d17851B87168017c",
+      type: "ERC20",
+      address: "0x990f341946A3fdB507aE7e52d17851B87168017c",
+      name: "Strong",
+      symbol: "STRONG",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x990f341946A3fdB507aE7e52d17851B87168017c/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x9B02dD390a603Add5c07f9fd9175b7DABE8D63B7",
+      type: "ERC20",
+      address: "0x9B02dD390a603Add5c07f9fd9175b7DABE8D63B7",
+      name: "Shopping.io",
+      symbol: "SPI",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x9B02dD390a603Add5c07f9fd9175b7DABE8D63B7/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x9BE89D2a4cd102D8Fecc6BF9dA793be995C22541",
+      type: "ERC20",
+      address: "0x9BE89D2a4cd102D8Fecc6BF9dA793be995C22541",
+      name: "Binance Wrapped BTC",
+      symbol: "BBTC",
+      decimals: 8,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x9BE89D2a4cd102D8Fecc6BF9dA793be995C22541/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x9cEB84f92A0561fa3Cc4132aB9c0b76A59787544",
+      type: "ERC20",
+      address: "0x9cEB84f92A0561fa3Cc4132aB9c0b76A59787544",
+      name: "Doki Doki Finance",
+      symbol: "DOKI",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x9cEB84f92A0561fa3Cc4132aB9c0b76A59787544/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x9EA3b5b4EC044b70375236A281986106457b20EF",
+      type: "ERC20",
+      address: "0x9EA3b5b4EC044b70375236A281986106457b20EF",
+      name: "Delta Financial",
+      symbol: "DELTA",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x9EA3b5b4EC044b70375236A281986106457b20EF/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x9Ed8e7C9604790F7Ec589F99b94361d8AAB64E5E",
+      type: "ERC20",
+      address: "0x9Ed8e7C9604790F7Ec589F99b94361d8AAB64E5E",
+      name: "Unistake",
+      symbol: "UNISTAKE",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x9Ed8e7C9604790F7Ec589F99b94361d8AAB64E5E/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x9f7229aF0c4b9740e207Ea283b9094983f78ba04",
+      type: "ERC20",
+      address: "0x9f7229aF0c4b9740e207Ea283b9094983f78ba04",
+      name: "Tadpole",
+      symbol: "TAD",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x9f7229aF0c4b9740e207Ea283b9094983f78ba04/logo.png",
+      pairs: []
+    },
+    {
+      chainId: 1,
+      asset: "c60_t0x9f8F72aA9304c8B593d555F12eF6589cC3A579A2",
+      type: "ERC20",
+      address: "0x9f8F72aA9304c8B593d555F12eF6589cC3A579A2",
+      name: "Maker",
+      symbol: "MKR",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x9f8F72aA9304c8B593d555F12eF6589cC3A579A2/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x9F9c8ec3534c3cE16F928381372BfbFBFb9F4D24",
+      type: "ERC20",
+      address: "0x9F9c8ec3534c3cE16F928381372BfbFBFb9F4D24",
+      name: "GraphLinq",
+      symbol: "GLQ",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x9F9c8ec3534c3cE16F928381372BfbFBFb9F4D24/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0xa0246c9032bC3A600820415aE600c6388619A14D",
+      type: "ERC20",
+      address: "0xa0246c9032bC3A600820415aE600c6388619A14D",
+      name: "Harvest Finance",
+      symbol: "FARM",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xa0246c9032bC3A600820415aE600c6388619A14D/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0xa0afAA285Ce85974c3C881256cB7F225e3A1178a",
+      type: "ERC20",
+      address: "0xa0afAA285Ce85974c3C881256cB7F225e3A1178a",
+      name: "Wrapped CrescoFin",
+      symbol: "wCRES",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xa0afAA285Ce85974c3C881256cB7F225e3A1178a/logo.png",
+      pairs: []
+    },
+    {
+      chainId: 1,
+      asset: "c60_t0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+      type: "ERC20",
+      address: "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+      name: "USD Coin",
+      symbol: "USDC",
+      decimals: 6,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0xa117000000f279D81A1D3cc75430fAA017FA5A2e",
+      type: "ERC20",
+      address: "0xa117000000f279D81A1D3cc75430fAA017FA5A2e",
+      name: "Aragon",
+      symbol: "ANT",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xa117000000f279D81A1D3cc75430fAA017FA5A2e/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0xa1d6Df714F91DeBF4e0802A542E13067f31b8262",
+      type: "ERC20",
+      address: "0xa1d6Df714F91DeBF4e0802A542E13067f31b8262",
+      name: "RFOX",
+      symbol: "RFOX",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xa1d6Df714F91DeBF4e0802A542E13067f31b8262/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0xa393473d64d2F9F026B60b6Df7859A689715d092",
+      type: "ERC20",
+      address: "0xa393473d64d2F9F026B60b6Df7859A689715d092",
+      name: "Lattice Token",
+      symbol: "LTX",
+      decimals: 8,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xa393473d64d2F9F026B60b6Df7859A689715d092/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0xa3BeD4E1c75D00fa6f4E5E6922DB7261B5E9AcD2",
+      type: "ERC20",
+      address: "0xa3BeD4E1c75D00fa6f4E5E6922DB7261B5E9AcD2",
+      name: "Meta",
+      symbol: "MTA",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xa3BeD4E1c75D00fa6f4E5E6922DB7261B5E9AcD2/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0xA4EED63db85311E22dF4473f87CcfC3DaDCFA3E3",
+      type: "ERC20",
+      address: "0xA4EED63db85311E22dF4473f87CcfC3DaDCFA3E3",
+      name: "Rubic",
+      symbol: "RBC",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xA4EED63db85311E22dF4473f87CcfC3DaDCFA3E3/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0xA8b919680258d369114910511cc87595aec0be6D",
+      type: "ERC20",
+      address: "0xA8b919680258d369114910511cc87595aec0be6D",
+      name: "LUKSO",
+      symbol: "LYXe",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xA8b919680258d369114910511cc87595aec0be6D/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0xa8c8CfB141A3bB59FEA1E2ea6B79b5ECBCD7b6ca",
+      type: "ERC20",
+      address: "0xa8c8CfB141A3bB59FEA1E2ea6B79b5ECBCD7b6ca",
+      name: "Syntropy",
+      symbol: "NOIA",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xa8c8CfB141A3bB59FEA1E2ea6B79b5ECBCD7b6ca/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0xA91ac63D040dEB1b7A5E4d4134aD23eb0ba07e14",
+      type: "ERC20",
+      address: "0xA91ac63D040dEB1b7A5E4d4134aD23eb0ba07e14",
+      name: "Bella Protocol",
+      symbol: "BEL",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xA91ac63D040dEB1b7A5E4d4134aD23eb0ba07e14/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0xAa6E8127831c9DE45ae56bB1b0d4D4Da6e5665BD",
+      type: "ERC20",
+      address: "0xAa6E8127831c9DE45ae56bB1b0d4D4Da6e5665BD",
+      name: "ETH 2x Flexible Leverage Index",
+      symbol: "ETH2x-FLI",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xAa6E8127831c9DE45ae56bB1b0d4D4Da6e5665BD/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0xaA7a9CA87d3694B5755f213B5D04094b8d0F0A6F",
+      type: "ERC20",
+      address: "0xaA7a9CA87d3694B5755f213B5D04094b8d0F0A6F",
+      name: "Trace Token",
+      symbol: "TRAC",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xaA7a9CA87d3694B5755f213B5D04094b8d0F0A6F/logo.png",
+      pairs: []
+    },
+    {
+      chainId: 1,
+      asset: "c60_t0xaaAEBE6Fe48E54f431b0C390CfaF0b017d09D42d",
+      type: "ERC20",
+      address: "0xaaAEBE6Fe48E54f431b0C390CfaF0b017d09D42d",
+      name: "Celsius",
+      symbol: "CEL",
+      decimals: 4,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xaaAEBE6Fe48E54f431b0C390CfaF0b017d09D42d/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0xaAAf91D9b90dF800Df4F55c205fd6989c977E73a",
+      type: "ERC20",
+      address: "0xaAAf91D9b90dF800Df4F55c205fd6989c977E73a",
+      name: "Monolith TKN",
+      symbol: "TKN",
+      decimals: 8,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xaAAf91D9b90dF800Df4F55c205fd6989c977E73a/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0xaC0104Cca91D167873B8601d2e71EB3D4D8c33e0",
+      type: "ERC20",
+      address: "0xaC0104Cca91D167873B8601d2e71EB3D4D8c33e0",
+      name: "Crowns",
+      symbol: "CWS",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xaC0104Cca91D167873B8601d2e71EB3D4D8c33e0/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0xAd4f86a25bbc20FfB751f2FAC312A0B4d8F88c64",
+      type: "ERC20",
+      address: "0xAd4f86a25bbc20FfB751f2FAC312A0B4d8F88c64",
+      name: "OptionRoom Token",
+      symbol: "ROOM",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xAd4f86a25bbc20FfB751f2FAC312A0B4d8F88c64/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0xaDB2437e6F65682B85F814fBc12FeC0508A7B1D0",
+      type: "ERC20",
+      address: "0xaDB2437e6F65682B85F814fBc12FeC0508A7B1D0",
+      name: "UniCrypt",
+      symbol: "UNCX",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xaDB2437e6F65682B85F814fBc12FeC0508A7B1D0/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0xADE00C28244d5CE17D72E40330B1c318cD12B7c3",
+      type: "ERC20",
+      address: "0xADE00C28244d5CE17D72E40330B1c318cD12B7c3",
+      name: "Ambire AdEx",
+      symbol: "ADX",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xADE00C28244d5CE17D72E40330B1c318cD12B7c3/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0xAE1eaAE3F627AAca434127644371b67B18444051",
+      type: "ERC20",
+      address: "0xAE1eaAE3F627AAca434127644371b67B18444051",
+      name: "YOP",
+      symbol: "YOP",
+      decimals: 8,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xAE1eaAE3F627AAca434127644371b67B18444051/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0xaE697F994Fc5eBC000F8e22EbFfeE04612f98A0d",
+      type: "ERC20",
+      address: "0xaE697F994Fc5eBC000F8e22EbFfeE04612f98A0d",
+      name: "LGCY Network",
+      symbol: "LGCY",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xaE697F994Fc5eBC000F8e22EbFfeE04612f98A0d/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0xaf9f549774ecEDbD0966C52f250aCc548D3F36E5",
+      type: "ERC20",
+      address: "0xaf9f549774ecEDbD0966C52f250aCc548D3F36E5",
+      name: "Rio Fuel Token",
+      symbol: "RFuel",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xaf9f549774ecEDbD0966C52f250aCc548D3F36E5/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0xB1e9157c2Fdcc5a856C8DA8b2d89b6C32b3c1229",
+      type: "ERC20",
+      address: "0xB1e9157c2Fdcc5a856C8DA8b2d89b6C32b3c1229",
+      name: "Zenfuse",
+      symbol: "ZEFU",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xB1e9157c2Fdcc5a856C8DA8b2d89b6C32b3c1229/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0xB26631c6dda06aD89B93C71400D25692de89c068",
+      type: "ERC20",
+      address: "0xB26631c6dda06aD89B93C71400D25692de89c068",
+      name: "Minds",
+      symbol: "MINDS",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xB26631c6dda06aD89B93C71400D25692de89c068/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x745407c86DF8DB893011912d3aB28e68B62E49B0",
+      type: "ERC20",
+      address: "0x745407c86DF8DB893011912d3aB28e68B62E49B0",
+      name: "MahaDAO",
+      symbol: "MAHA",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x745407c86DF8DB893011912d3aB28e68B62E49B0/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0xB62132e35a6c13ee1EE0f84dC5d40bad8d815206",
+      type: "ERC20",
+      address: "0xB62132e35a6c13ee1EE0f84dC5d40bad8d815206",
+      name: "Nexo",
+      symbol: "NEXO",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xB62132e35a6c13ee1EE0f84dC5d40bad8d815206/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0xB6ff96B8A8d214544Ca0dBc9B33f7AD6503eFD32",
+      type: "ERC20",
+      address: "0xB6ff96B8A8d214544Ca0dBc9B33f7AD6503eFD32",
+      name: "SYNC",
+      symbol: "SYNC",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xB6ff96B8A8d214544Ca0dBc9B33f7AD6503eFD32/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0xb753428af26E81097e7fD17f40c88aaA3E04902c",
+      type: "ERC20",
+      address: "0xb753428af26E81097e7fD17f40c88aaA3E04902c",
+      name: "saffron.finance",
+      symbol: "SFI",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xb753428af26E81097e7fD17f40c88aaA3E04902c/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0xB987D48Ed8f2C468D52D6405624EADBa5e76d723",
+      type: "ERC20",
+      address: "0xB987D48Ed8f2C468D52D6405624EADBa5e76d723",
+      name: "Stabilize Token",
+      symbol: "STBZ",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xB987D48Ed8f2C468D52D6405624EADBa5e76d723/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0xB9d99C33eA2d86EC5eC6b8A4dD816EBBA64404AF",
+      type: "ERC20",
+      address: "0xB9d99C33eA2d86EC5eC6b8A4dD816EBBA64404AF",
+      name: "K21",
+      symbol: "K21",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xB9d99C33eA2d86EC5eC6b8A4dD816EBBA64404AF/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0xb9EF770B6A5e12E45983C5D80545258aA38F3B78",
+      type: "ERC20",
+      address: "0xb9EF770B6A5e12E45983C5D80545258aA38F3B78",
+      name: "0chain",
+      symbol: "ZCN",
+      decimals: 10,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xb9EF770B6A5e12E45983C5D80545258aA38F3B78/logo.png",
+      pairs: []
+    },
+    {
+      chainId: 1,
+      asset: "c60_t0xba100000625a3754423978a60c9317c58a424e3D",
+      type: "ERC20",
+      address: "0xba100000625a3754423978a60c9317c58a424e3D",
+      name: "Balancer",
+      symbol: "BAL",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xba100000625a3754423978a60c9317c58a424e3D/logo.png",
+      pairs: []
+    },
+    {
+      chainId: 1,
+      asset: "c60_t0xBA11D00c5f74255f56a5E366F4F77f5A186d7f55",
+      type: "ERC20",
+      address: "0xBA11D00c5f74255f56a5E366F4F77f5A186d7f55",
+      name: "Band Protocol",
+      symbol: "BAND",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xBA11D00c5f74255f56a5E366F4F77f5A186d7f55/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0xBa21Ef4c9f433Ede00badEFcC2754B8E74bd538A",
+      type: "ERC20",
+      address: "0xBa21Ef4c9f433Ede00badEFcC2754B8E74bd538A",
+      name: "Swapfolio",
+      symbol: "SWFL",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xBa21Ef4c9f433Ede00badEFcC2754B8E74bd538A/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0xBBbbCA6A901c926F240b89EacB641d8Aec7AEafD",
+      type: "ERC20",
+      address: "0xBBbbCA6A901c926F240b89EacB641d8Aec7AEafD",
+      name: "Loopring",
+      symbol: "LRC",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xBBbbCA6A901c926F240b89EacB641d8Aec7AEafD/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0xBBc2AE13b23d715c30720F079fcd9B4a74093505",
+      type: "ERC20",
+      address: "0xBBc2AE13b23d715c30720F079fcd9B4a74093505",
+      name: "Ethernity Chain",
+      symbol: "ERN",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xBBc2AE13b23d715c30720F079fcd9B4a74093505/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0xbC396689893D065F41bc2C6EcbeE5e0085233447",
+      type: "ERC20",
+      address: "0xbC396689893D065F41bc2C6EcbeE5e0085233447",
+      name: "Perpetual",
+      symbol: "PERP",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xbC396689893D065F41bc2C6EcbeE5e0085233447/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0xbEa98c05eEAe2f3bC8c3565Db7551Eb738c8CCAb",
+      type: "ERC20",
+      address: "0xbEa98c05eEAe2f3bC8c3565Db7551Eb738c8CCAb",
+      name: "GYSR",
+      symbol: "GYSR",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xbEa98c05eEAe2f3bC8c3565Db7551Eb738c8CCAb/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0xBF494F02EE3FdE1F20BEE6242bCe2d1ED0c15e47",
+      type: "ERC20",
+      address: "0xBF494F02EE3FdE1F20BEE6242bCe2d1ED0c15e47",
+      name: "World Token",
+      symbol: "WORLD",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xBF494F02EE3FdE1F20BEE6242bCe2d1ED0c15e47/logo.png",
+      pairs: []
+    },
+    {
+      chainId: 1,
+      asset: "c60_t0xc00e94Cb662C3520282E6f5717214004A7f26888",
+      type: "ERC20",
+      address: "0xc00e94Cb662C3520282E6f5717214004A7f26888",
+      name: "Compound",
+      symbol: "COMP",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xc00e94Cb662C3520282E6f5717214004A7f26888/logo.png",
+      pairs: []
+    },
+    {
+      chainId: 1,
+      asset: "c60_t0xC011a73ee8576Fb46F5E1c5751cA3B9Fe0af2a6F",
+      type: "ERC20",
+      address: "0xC011a73ee8576Fb46F5E1c5751cA3B9Fe0af2a6F",
+      name: "Synthetix",
+      symbol: "SNX",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xC011a73ee8576Fb46F5E1c5751cA3B9Fe0af2a6F/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0xC0bA369c8Db6eB3924965e5c4FD0b4C1B91e305F",
+      type: "ERC20",
+      address: "0xC0bA369c8Db6eB3924965e5c4FD0b4C1B91e305F",
+      name: "DLP Duck Token",
+      symbol: "DUCK",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xC0bA369c8Db6eB3924965e5c4FD0b4C1B91e305F/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0xC18360217D8F7Ab5e7c516566761Ea12Ce7F9D72",
+      type: "ERC20",
+      address: "0xC18360217D8F7Ab5e7c516566761Ea12Ce7F9D72",
+      name: "Ethereum Name Service",
+      symbol: "ENS",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xC18360217D8F7Ab5e7c516566761Ea12Ce7F9D72/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0xC4C2614E694cF534D407Ee49F8E44D125E4681c4",
+      type: "ERC20",
+      address: "0xC4C2614E694cF534D407Ee49F8E44D125E4681c4",
+      name: "Chain Games",
+      symbol: "CHAIN",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xC4C2614E694cF534D407Ee49F8E44D125E4681c4/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0xC52C326331E9Ce41F04484d3B5E5648158028804",
+      type: "ERC20",
+      address: "0xC52C326331E9Ce41F04484d3B5E5648158028804",
+      name: "ZEN Exchange Token",
+      symbol: "ZCX",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xC52C326331E9Ce41F04484d3B5E5648158028804/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0xC57d533c50bC22247d49a368880fb49a1caA39F7",
+      type: "ERC20",
+      address: "0xC57d533c50bC22247d49a368880fb49a1caA39F7",
+      name: "PowerTrade Fuel",
+      symbol: "PTF",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xC57d533c50bC22247d49a368880fb49a1caA39F7/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0xc719d010B63E5bbF2C0551872CD5316ED26AcD83",
+      type: "ERC20",
+      address: "0xc719d010B63E5bbF2C0551872CD5316ED26AcD83",
+      name: "Decentralized Insurance Protocol",
+      symbol: "DIP",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xc719d010B63E5bbF2C0551872CD5316ED26AcD83/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0xc7283b66Eb1EB5FB86327f08e1B5816b0720212B",
+      type: "ERC20",
+      address: "0xc7283b66Eb1EB5FB86327f08e1B5816b0720212B",
+      name: "Tribe",
+      symbol: "TRIBE",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xc7283b66Eb1EB5FB86327f08e1B5816b0720212B/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0xc834Fa996fA3BeC7aAD3693af486ae53D8aA8B50",
+      type: "ERC20",
+      address: "0xc834Fa996fA3BeC7aAD3693af486ae53D8aA8B50",
+      name: "Convergence",
+      symbol: "CONV",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xc834Fa996fA3BeC7aAD3693af486ae53D8aA8B50/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0xc944E90C64B2c07662A292be6244BDf05Cda44a7",
+      type: "ERC20",
+      address: "0xc944E90C64B2c07662A292be6244BDf05Cda44a7",
+      name: "The Graph",
+      symbol: "GRT",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xc944E90C64B2c07662A292be6244BDf05Cda44a7/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0xCb5f72d37685C3D5aD0bB5F982443BC8FcdF570E",
+      type: "ERC20",
+      address: "0xCb5f72d37685C3D5aD0bB5F982443BC8FcdF570E",
+      name: "Rootkit Finance",
+      symbol: "ROOT",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xCb5f72d37685C3D5aD0bB5F982443BC8FcdF570E/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0xCbfef8fdd706cde6F208460f2Bf39Aa9c785F05D",
+      type: "ERC20",
+      address: "0xCbfef8fdd706cde6F208460f2Bf39Aa9c785F05D",
+      name: "Kine Governance Token",
+      symbol: "KINE",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xCbfef8fdd706cde6F208460f2Bf39Aa9c785F05D/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0xCC4304A31d09258b0029eA7FE63d032f52e44EFe",
+      type: "ERC20",
+      address: "0xCC4304A31d09258b0029eA7FE63d032f52e44EFe",
+      name: "TrustSwap Token",
+      symbol: "SWAP",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xCC4304A31d09258b0029eA7FE63d032f52e44EFe/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0xCF3C8Be2e2C42331Da80EF210e9B1b307C03d36A",
+      type: "ERC20",
+      address: "0xCF3C8Be2e2C42331Da80EF210e9B1b307C03d36A",
+      name: "BEPRO Network",
+      symbol: "BEPRO",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xCF3C8Be2e2C42331Da80EF210e9B1b307C03d36A/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0xd084B83C305daFD76AE3E1b4E1F1fe2eCcCb3988",
+      type: "ERC20",
+      address: "0xd084B83C305daFD76AE3E1b4E1F1fe2eCcCb3988",
+      name: "Terra Virtua Kolect",
+      symbol: "TVK",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xd084B83C305daFD76AE3E1b4E1F1fe2eCcCb3988/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0xD23Ac27148aF6A2f339BD82D0e3CFF380b5093de",
+      type: "ERC20",
+      address: "0xD23Ac27148aF6A2f339BD82D0e3CFF380b5093de",
+      name: "SIREN",
+      symbol: "SI",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xD23Ac27148aF6A2f339BD82D0e3CFF380b5093de/logo.png",
+      pairs: []
+    },
+    {
+      chainId: 1,
+      asset: "c60_t0xd26114cd6EE289AccF82350c8d8487fedB8A0C07",
+      type: "ERC20",
+      address: "0xd26114cd6EE289AccF82350c8d8487fedB8A0C07",
+      name: "OMG Network",
+      symbol: "OMG",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xd26114cd6EE289AccF82350c8d8487fedB8A0C07/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0xd2877702675e6cEb975b4A1dFf9fb7BAF4C91ea9",
+      type: "ERC20",
+      address: "0xd2877702675e6cEb975b4A1dFf9fb7BAF4C91ea9",
+      name: "Terra",
+      symbol: "LUNA",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xd2877702675e6cEb975b4A1dFf9fb7BAF4C91ea9/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0xd379700999F4805Ce80aa32DB46A94dF64561108",
+      type: "ERC20",
+      address: "0xd379700999F4805Ce80aa32DB46A94dF64561108",
+      name: "Dextrust",
+      symbol: "DETS",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xd379700999F4805Ce80aa32DB46A94dF64561108/logo.png",
+      pairs: []
+    },
+    {
+      chainId: 1,
+      asset: "c60_t0xD46bA6D942050d489DBd938a2C909A5d5039A161",
+      type: "ERC20",
+      address: "0xD46bA6D942050d489DBd938a2C909A5d5039A161",
+      name: "Ampleforth",
+      symbol: "AMPL",
+      decimals: 9,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xD46bA6D942050d489DBd938a2C909A5d5039A161/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0xD478161C952357F05f0292B56012Cd8457F1cfbF",
+      type: "ERC20",
+      address: "0xD478161C952357F05f0292B56012Cd8457F1cfbF",
+      name: "Polkamarkets",
+      symbol: "POLK",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xD478161C952357F05f0292B56012Cd8457F1cfbF/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0xD533a949740bb3306d119CC777fa900bA034cd52",
+      type: "ERC20",
+      address: "0xD533a949740bb3306d119CC777fa900bA034cd52",
+      name: "Curve DAO Token",
+      symbol: "CRV",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xD533a949740bb3306d119CC777fa900bA034cd52/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0xD5525D397898e5502075Ea5E830d8914f6F0affe",
+      type: "ERC20",
+      address: "0xD5525D397898e5502075Ea5E830d8914f6F0affe",
+      name: "MEME",
+      symbol: "MEME",
+      decimals: 8,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xD5525D397898e5502075Ea5E830d8914f6F0affe/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0xD6c67B93a7b248dF608a653d82a100556144c5DA",
+      type: "ERC20",
+      address: "0xD6c67B93a7b248dF608a653d82a100556144c5DA",
+      name: "ExNetwork Token",
+      symbol: "EXNT",
+      decimals: 16,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xD6c67B93a7b248dF608a653d82a100556144c5DA/logo.png",
+      pairs: []
+    },
+    {
+      chainId: 1,
+      asset: "c60_t0xdAC17F958D2ee523a2206206994597C13D831ec7",
+      type: "ERC20",
+      address: "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+      name: "Tether",
+      symbol: "USDT",
+      decimals: 6,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xdAC17F958D2ee523a2206206994597C13D831ec7/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0xdacD69347dE42baBfAEcD09dC88958378780FB62",
+      type: "ERC20",
+      address: "0xdacD69347dE42baBfAEcD09dC88958378780FB62",
+      name: "Atari Token",
+      symbol: "ATRI",
+      decimals: 0,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xdacD69347dE42baBfAEcD09dC88958378780FB62/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0xDcB01cc464238396E213a6fDd933E36796eAfF9f",
+      type: "ERC20",
+      address: "0xDcB01cc464238396E213a6fDd933E36796eAfF9f",
+      name: "Yield",
+      symbol: "YLD",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xDcB01cc464238396E213a6fDd933E36796eAfF9f/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0xDDB3422497E61e13543BeA06989C0789117555c5",
+      type: "ERC20",
+      address: "0xDDB3422497E61e13543BeA06989C0789117555c5",
+      name: "COTI",
+      symbol: "COTI",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xDDB3422497E61e13543BeA06989C0789117555c5/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0xE1c7E30C42C24582888C758984f6e382096786bd",
+      type: "ERC20",
+      address: "0xE1c7E30C42C24582888C758984f6e382096786bd",
+      name: "Curate",
+      symbol: "XCUR",
+      decimals: 8,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xE1c7E30C42C24582888C758984f6e382096786bd/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0xe28b3B32B6c345A34Ff64674606124Dd5Aceca30",
+      type: "ERC20",
+      address: "0xe28b3B32B6c345A34Ff64674606124Dd5Aceca30",
+      name: "Injective",
+      symbol: "INJ",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xe28b3B32B6c345A34Ff64674606124Dd5Aceca30/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0xe3818504c1B32bF1557b16C238B2E01Fd3149C17",
+      type: "ERC20",
+      address: "0xe3818504c1B32bF1557b16C238B2E01Fd3149C17",
+      name: "PILLAR",
+      symbol: "PLR",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xe3818504c1B32bF1557b16C238B2E01Fd3149C17/logo.png",
+      pairs: []
+    },
+    {
+      chainId: 1,
+      asset: "c60_t0xE41d2489571d322189246DaFA5ebDe1F4699F498",
+      type: "ERC20",
+      address: "0xE41d2489571d322189246DaFA5ebDe1F4699F498",
+      name: "0x",
+      symbol: "ZRX",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xE41d2489571d322189246DaFA5ebDe1F4699F498/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0xE452E6Ea2dDeB012e20dB73bf5d3863A3Ac8d77a",
+      type: "ERC20",
+      address: "0xE452E6Ea2dDeB012e20dB73bf5d3863A3Ac8d77a",
+      name: "WCELO",
+      symbol: "WCELO",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xE452E6Ea2dDeB012e20dB73bf5d3863A3Ac8d77a/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0xe53EC727dbDEB9E2d5456c3be40cFF031AB40A55",
+      type: "ERC20",
+      address: "0xe53EC727dbDEB9E2d5456c3be40cFF031AB40A55",
+      name: "SuperFarm",
+      symbol: "SUPER",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xe53EC727dbDEB9E2d5456c3be40cFF031AB40A55/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0xE5CAeF4Af8780E59Df925470b050Fb23C43CA68C",
+      type: "ERC20",
+      address: "0xE5CAeF4Af8780E59Df925470b050Fb23C43CA68C",
+      name: "Ferrum Network",
+      symbol: "FRM",
+      decimals: 6,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xE5CAeF4Af8780E59Df925470b050Fb23C43CA68C/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0xE61fDAF474Fac07063f2234Fb9e60C1163Cfa850",
+      type: "ERC20",
+      address: "0xE61fDAF474Fac07063f2234Fb9e60C1163Cfa850",
+      name: "COIN",
+      symbol: "COIN",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xE61fDAF474Fac07063f2234Fb9e60C1163Cfa850/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0xE95A203B1a91a908F9B9CE46459d101078c2c3cb",
+      type: "ERC20",
+      address: "0xE95A203B1a91a908F9B9CE46459d101078c2c3cb",
+      name: "ankrETH",
+      symbol: "aETHc",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xE95A203B1a91a908F9B9CE46459d101078c2c3cb/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0xEA1ea0972fa092dd463f2968F9bB51Cc4c981D71",
+      type: "ERC20",
+      address: "0xEA1ea0972fa092dd463f2968F9bB51Cc4c981D71",
+      name: "Modefi",
+      symbol: "MOD",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xEA1ea0972fa092dd463f2968F9bB51Cc4c981D71/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0xEa319e87Cf06203DAe107Dd8E5672175e3Ee976c",
+      type: "ERC20",
+      address: "0xEa319e87Cf06203DAe107Dd8E5672175e3Ee976c",
+      name: "SURF Finance",
+      symbol: "SURF",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xEa319e87Cf06203DAe107Dd8E5672175e3Ee976c/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0xEB4C2781e4ebA804CE9a9803C67d0893436bB27D",
+      type: "ERC20",
+      address: "0xEB4C2781e4ebA804CE9a9803C67d0893436bB27D",
+      name: "renBTC",
+      symbol: "renBTC",
+      decimals: 8,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xEB4C2781e4ebA804CE9a9803C67d0893436bB27D/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0xEBd9D99A3982d547C5Bb4DB7E3b1F9F14b67Eb83",
+      type: "ERC20",
+      address: "0xEBd9D99A3982d547C5Bb4DB7E3b1F9F14b67Eb83",
+      name: "Everest",
+      symbol: "ID",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xEBd9D99A3982d547C5Bb4DB7E3b1F9F14b67Eb83/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0xEd91879919B71bB6905f23af0A68d231EcF87b14",
+      type: "ERC20",
+      address: "0xEd91879919B71bB6905f23af0A68d231EcF87b14",
+      name: "DMM: Governance",
+      symbol: "DMG",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xEd91879919B71bB6905f23af0A68d231EcF87b14/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0xee573a945B01B788B9287CE062A0CFC15bE9fd86",
+      type: "ERC20",
+      address: "0xee573a945B01B788B9287CE062A0CFC15bE9fd86",
+      name: "Exeedme",
+      symbol: "XED",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xee573a945B01B788B9287CE062A0CFC15bE9fd86/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0xeEAA40B28A2d1b0B08f6f97bB1DD4B75316c6107",
+      type: "ERC20",
+      address: "0xeEAA40B28A2d1b0B08f6f97bB1DD4B75316c6107",
+      name: "GOVI",
+      symbol: "GOVI",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xeEAA40B28A2d1b0B08f6f97bB1DD4B75316c6107/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0xEec2bE5c91ae7f8a338e1e5f3b5DE49d07AfdC81",
+      type: "ERC20",
+      address: "0xEec2bE5c91ae7f8a338e1e5f3b5DE49d07AfdC81",
+      name: "Dopex Governance Token",
+      symbol: "DPX",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xEec2bE5c91ae7f8a338e1e5f3b5DE49d07AfdC81/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0xEEF9f339514298C6A857EfCfC1A762aF84438dEE",
+      type: "ERC20",
+      address: "0xEEF9f339514298C6A857EfCfC1A762aF84438dEE",
+      name: "Hermez Network Token",
+      symbol: "HEZ",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xEEF9f339514298C6A857EfCfC1A762aF84438dEE/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0xF063fE1aB7a291c5d06a86e14730b00BF24cB589",
+      type: "ERC20",
+      address: "0xF063fE1aB7a291c5d06a86e14730b00BF24cB589",
+      name: "DxSale Network",
+      symbol: "SALE",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xF063fE1aB7a291c5d06a86e14730b00BF24cB589/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0xf1f955016EcbCd7321c7266BccFB96c68ea5E49b",
+      type: "ERC20",
+      address: "0xf1f955016EcbCd7321c7266BccFB96c68ea5E49b",
+      name: "Rally",
+      symbol: "RLY",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xf1f955016EcbCd7321c7266BccFB96c68ea5E49b/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0xf21661D0D1d76d3ECb8e1B9F1c923DBfffAe4097",
+      type: "ERC20",
+      address: "0xf21661D0D1d76d3ECb8e1B9F1c923DBfffAe4097",
+      name: "Realio Network",
+      symbol: "RIO",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xf21661D0D1d76d3ECb8e1B9F1c923DBfffAe4097/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0xF411903cbC70a74d22900a5DE66A2dda66507255",
+      type: "ERC20",
+      address: "0xF411903cbC70a74d22900a5DE66A2dda66507255",
+      name: "Verasity",
+      symbol: "VRA",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xF411903cbC70a74d22900a5DE66A2dda66507255/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0xf418588522d5dd018b425E472991E52EBBeEEEEE",
+      type: "ERC20",
+      address: "0xf418588522d5dd018b425E472991E52EBBeEEEEE",
+      name: "PUSH",
+      symbol: "PUSH",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xf418588522d5dd018b425E472991E52EBBeEEEEE/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0xf4CD3d3Fda8d7Fd6C5a500203e38640A70Bf9577",
+      type: "ERC20",
+      address: "0xf4CD3d3Fda8d7Fd6C5a500203e38640A70Bf9577",
+      name: "YfDAI.finance",
+      symbol: "Yf-DAI",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xf4CD3d3Fda8d7Fd6C5a500203e38640A70Bf9577/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0xF4d861575ecC9493420A3f5a14F85B13f0b50EB3",
+      type: "ERC20",
+      address: "0xF4d861575ecC9493420A3f5a14F85B13f0b50EB3",
+      name: "Fractal",
+      symbol: "FCL",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xF4d861575ecC9493420A3f5a14F85B13f0b50EB3/logo.png",
+      pairs: []
+    },
+    {
+      chainId: 1,
+      asset: "c60_t0xF629cBd94d3791C9250152BD8dfBDF380E2a3B9c",
+      type: "ERC20",
+      address: "0xF629cBd94d3791C9250152BD8dfBDF380E2a3B9c",
+      name: "Enjin Coin",
+      symbol: "ENJ",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xF629cBd94d3791C9250152BD8dfBDF380E2a3B9c/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0xf6537FE0df7F0Cc0985Cf00792CC98249E73EFa0",
+      type: "ERC20",
+      address: "0xf6537FE0df7F0Cc0985Cf00792CC98249E73EFa0",
+      name: "GIVLY Coin",
+      symbol: "GIV",
+      decimals: 8,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xf6537FE0df7F0Cc0985Cf00792CC98249E73EFa0/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0xF938424F7210f31dF2Aee3011291b658f872e91e",
+      type: "ERC20",
+      address: "0xF938424F7210f31dF2Aee3011291b658f872e91e",
+      name: "Visor.Finance",
+      symbol: "VISR",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xF938424F7210f31dF2Aee3011291b658f872e91e/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0xF94b5C5651c888d928439aB6514B93944eEE6F48",
+      type: "ERC20",
+      address: "0xF94b5C5651c888d928439aB6514B93944eEE6F48",
+      name: "Yield",
+      symbol: "YLD",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xF94b5C5651c888d928439aB6514B93944eEE6F48/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0xfAd45E47083e4607302aa43c65fB3106F1cd7607",
+      type: "ERC20",
+      address: "0xfAd45E47083e4607302aa43c65fB3106F1cd7607",
+      name: "Hoge Finance",
+      symbol: "HOGE",
+      decimals: 9,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xfAd45E47083e4607302aa43c65fB3106F1cd7607/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0xFbEEa1C75E4c4465CB2FCCc9c6d6afe984558E20",
+      type: "ERC20",
+      address: "0xFbEEa1C75E4c4465CB2FCCc9c6d6afe984558E20",
+      name: "DuckDaoDime",
+      symbol: "DDIM",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xFbEEa1C75E4c4465CB2FCCc9c6d6afe984558E20/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0xfC98e825A2264D890F9a1e68ed50E1526abCcacD",
+      type: "ERC20",
+      address: "0xfC98e825A2264D890F9a1e68ed50E1526abCcacD",
+      name: "Moss Carbon Credit",
+      symbol: "MCO2",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xfC98e825A2264D890F9a1e68ed50E1526abCcacD/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0xFca59Cd816aB1eaD66534D82bc21E7515cE441CF",
+      type: "ERC20",
+      address: "0xFca59Cd816aB1eaD66534D82bc21E7515cE441CF",
+      name: "Rarible",
+      symbol: "RARI",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xFca59Cd816aB1eaD66534D82bc21E7515cE441CF/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0xFE3E6a25e6b192A42a44ecDDCd13796471735ACf",
+      type: "ERC20",
+      address: "0xFE3E6a25e6b192A42a44ecDDCd13796471735ACf",
+      name: "Reef",
+      symbol: "REEF",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xFE3E6a25e6b192A42a44ecDDCd13796471735ACf/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0xfF20817765cB7f73d4bde2e66e067E58D11095C2",
+      type: "ERC20",
+      address: "0xfF20817765cB7f73d4bde2e66e067E58D11095C2",
+      name: "Amp",
+      symbol: "AMP",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xfF20817765cB7f73d4bde2e66e067E58D11095C2/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0xfffffffFf15AbF397dA76f1dcc1A1604F45126DB",
+      type: "ERC20",
+      address: "0xfffffffFf15AbF397dA76f1dcc1A1604F45126DB",
+      name: "FalconSwap Token",
+      symbol: "FSW",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xfffffffFf15AbF397dA76f1dcc1A1604F45126DB/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x383518188C0C6d7730D91b2c03a03C837814a899",
+      type: "ERC20",
+      address: "0x383518188C0C6d7730D91b2c03a03C837814a899",
+      name: "OlympusDAO",
+      symbol: "OHM",
+      decimals: 9,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x383518188C0C6d7730D91b2c03a03C837814a899/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x767FE9EDC9E0dF98E07454847909b5E959D7ca0E",
+      type: "ERC20",
+      address: "0x767FE9EDC9E0dF98E07454847909b5E959D7ca0E",
+      name: "Illuvium",
+      symbol: "ILV",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x767FE9EDC9E0dF98E07454847909b5E959D7ca0E/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0xd1d2Eb1B1e90B638588728b4130137D262C87cae",
+      type: "ERC20",
+      address: "0xd1d2Eb1B1e90B638588728b4130137D262C87cae",
+      name: "Gala",
+      symbol: "GALA",
+      decimals: 8,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xd1d2Eb1B1e90B638588728b4130137D262C87cae/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x4e3FBD56CD56c3e72c1403e103b45Db9da5B9D2B",
+      type: "ERC20",
+      address: "0x4e3FBD56CD56c3e72c1403e103b45Db9da5B9D2B",
+      name: "Convex Token",
+      symbol: "CVX",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x4e3FBD56CD56c3e72c1403e103b45Db9da5B9D2B/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x090185f2135308BaD17527004364eBcC2D37e5F6",
+      type: "ERC20",
+      address: "0x090185f2135308BaD17527004364eBcC2D37e5F6",
+      name: "Spell Token",
+      symbol: "SPELL",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x090185f2135308BaD17527004364eBcC2D37e5F6/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x3b484b82567a09e2588A13D54D032153f0c0aEe0",
+      type: "ERC20",
+      address: "0x3b484b82567a09e2588A13D54D032153f0c0aEe0",
+      name: "OpenDAO",
+      symbol: "SOS",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x3b484b82567a09e2588A13D54D032153f0c0aEe0/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x6Bba316c48b49BD1eAc44573c5c871ff02958469",
+      type: "ERC20",
+      address: "0x6Bba316c48b49BD1eAc44573c5c871ff02958469",
+      name: "Gas DAO",
+      symbol: "GAS",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x6Bba316c48b49BD1eAc44573c5c871ff02958469/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x4Fabb145d64652a948d72533023f6E7A623C7C53",
+      type: "ERC20",
+      address: "0x4Fabb145d64652a948d72533023f6E7A623C7C53",
+      name: "Binance USD",
+      symbol: "BUSD",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x4Fabb145d64652a948d72533023f6E7A623C7C53/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x9E32b13ce7f2E80A01932B42553652E053D6ed8e",
+      type: "ERC20",
+      address: "0x9E32b13ce7f2E80A01932B42553652E053D6ed8e",
+      name: "MetisDAO",
+      symbol: "Metis",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x9E32b13ce7f2E80A01932B42553652E053D6ed8e/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0xf4d2888d29D722226FafA5d9B24F9164c092421E",
+      type: "ERC20",
+      address: "0xf4d2888d29D722226FafA5d9B24F9164c092421E",
+      name: "LooksRare",
+      symbol: "LOOKS",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xf4d2888d29D722226FafA5d9B24F9164c092421E/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x1E4EDE388cbc9F4b5c79681B7f94d36a11ABEBC9",
+      type: "ERC20",
+      address: "0x1E4EDE388cbc9F4b5c79681B7f94d36a11ABEBC9",
+      name: "X2Y2Token",
+      symbol: "X2Y2",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x1E4EDE388cbc9F4b5c79681B7f94d36a11ABEBC9/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x4d224452801ACEd8B2F0aebE155379bb5D594381",
+      type: "ERC20",
+      address: "0x4d224452801ACEd8B2F0aebE155379bb5D594381",
+      name: "ApeCoin (APE)",
+      symbol: "APE",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x4d224452801ACEd8B2F0aebE155379bb5D594381/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0xAf5191B0De278C7286d6C7CC6ab6BB8A73bA2Cd6",
+      type: "ERC20",
+      address: "0xAf5191B0De278C7286d6C7CC6ab6BB8A73bA2Cd6",
+      name: "StargateToken",
+      symbol: "STG",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xAf5191B0De278C7286d6C7CC6ab6BB8A73bA2Cd6/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0x70e8dE73cE538DA2bEEd35d14187F6959a8ecA96",
+      type: "ERC20",
+      address: "0x70e8dE73cE538DA2bEEd35d14187F6959a8ecA96",
+      name: "XSGD",
+      symbol: "XSGD",
+      decimals: 6,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x70e8dE73cE538DA2bEEd35d14187F6959a8ecA96/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0xbAFDabaDcf19d0cFbbe0AB9C69CF050D86ff888C",
+      type: "ERC20",
+      address: "0xbAFDabaDcf19d0cFbbe0AB9C69CF050D86ff888C",
+      name: "ZEDXION",
+      symbol: "ZEDXION",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xbAFDabaDcf19d0cFbbe0AB9C69CF050D86ff888C/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0xB0c7a3Ba49C7a6EaBa6cD4a96C55a1391070Ac9A",
+      type: "ERC20",
+      address: "0xB0c7a3Ba49C7a6EaBa6cD4a96C55a1391070Ac9A",
+      name: "MAGIC",
+      symbol: "MAGIC",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xB0c7a3Ba49C7a6EaBa6cD4a96C55a1391070Ac9A/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c60_t0xCEBA2a8F6Ec221AEB5f3a7bcd15Cbc7e6a387bfb",
+      type: "ERC20",
+      address: "0xCEBA2a8F6Ec221AEB5f3a7bcd15Cbc7e6a387bfb",
+      name: "Peter Pan",
+      symbol: "PAN",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xCEBA2a8F6Ec221AEB5f3a7bcd15Cbc7e6a387bfb/logo.png",
+      pairs: []
+    }
+  ],
+  version: {
+    major: 14,
+    minor: 0,
+    patch: 0
+  }
 };
 
 // src/tokenlist/localhost.json
-var localhost_exports = {};
-__export(localhost_exports, {
-  default: () => localhost_default,
-  logoURI: () => logoURI5,
-  name: () => name5,
-  timestamp: () => timestamp5,
-  tokens: () => tokens5,
-  version: () => version5
-});
-var name5 = "Joint Labs: Localhost";
-var logoURI5 = "https://trustwallet.com/assets/images/favicon.png";
-var timestamp5 = "2021-10-07T08:50:36.056Z";
-var tokens5 = [
-  {
-    asset: "0001",
-    type: "ERC20",
-    address: "0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0",
-    name: "Joint LOCAL",
-    symbol: "JOIN",
-    decimals: 18,
-    logoURI: "https://storage.googleapis.com/joint-images/token-logos/p2p.svg",
-    price: 0
-  },
-  {
-    asset: "0002",
-    type: "ERC20",
-    address: "0x0E801D84Fa97b50751Dbf25036d067dCf18858bF",
-    name: "WETH LOCAL",
-    symbol: "WETH",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2/logo.png",
-    price: 0
-  },
-  {
-    asset: "0003",
-    type: "ERC20",
-    address: "0x8f86403A4DE0BB5791fa46B8e795C547942fE4Cf",
-    name: "UNI LOCAL",
-    symbol: "UNI",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x1f9840a85d5aF5bf1D1762F925BDADdC4201F984/logo.png",
-    price: 0
-  },
-  {
-    asset: "0004",
-    type: "SYNTHETIC",
-    address: "0x9d4454B023096f34B160D6B654540c56A1F81688",
-    name: "NGN LOCAL",
-    symbol: "NGN",
-    decimals: 18,
-    logoURI: "https://storage.googleapis.com/joint-images/country-flags/nigeria.svg",
-    price: 0
-  }
-];
-var version5 = {
-  major: 6,
-  minor: 0,
-  patch: 0
-};
 var localhost_default = {
-  name: name5,
-  logoURI: logoURI5,
-  timestamp: timestamp5,
-  tokens: tokens5,
-  version: version5
+  name: "Joint Labs: Localhost",
+  logoURI: "https://trustwallet.com/assets/images/favicon.png",
+  timestamp: "2021-10-07T08:50:36.056Z",
+  tokens: [
+    {
+      asset: "0001",
+      type: "ERC20",
+      address: "0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0",
+      name: "Joint LOCAL",
+      symbol: "JOIN",
+      decimals: 18,
+      logoURI: "https://storage.googleapis.com/joint-images/token-logos/p2p.svg",
+      price: 0
+    },
+    {
+      asset: "0002",
+      type: "ERC20",
+      address: "0x0E801D84Fa97b50751Dbf25036d067dCf18858bF",
+      name: "WETH LOCAL",
+      symbol: "WETH",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2/logo.png",
+      price: 0
+    },
+    {
+      asset: "0003",
+      type: "ERC20",
+      address: "0x8f86403A4DE0BB5791fa46B8e795C547942fE4Cf",
+      name: "UNI LOCAL",
+      symbol: "UNI",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x1f9840a85d5aF5bf1D1762F925BDADdC4201F984/logo.png",
+      price: 0
+    },
+    {
+      asset: "0004",
+      type: "SYNTHETIC",
+      address: "0x9d4454B023096f34B160D6B654540c56A1F81688",
+      name: "NGN LOCAL",
+      symbol: "NGN",
+      decimals: 18,
+      logoURI: "https://storage.googleapis.com/joint-images/country-flags/nigeria.svg",
+      price: 0
+    }
+  ],
+  version: {
+    major: 6,
+    minor: 0,
+    patch: 0
+  }
 };
 
 // src/tokenlist/optimism.json
-var optimism_exports = {};
-__export(optimism_exports, {
-  default: () => optimism_default,
-  logoURI: () => logoURI6,
-  name: () => name6,
-  timestamp: () => timestamp6,
-  tokens: () => tokens6,
-  version: () => version6
-});
-var name6 = "Trust Wallet: Optimism Ethereum";
-var logoURI6 = "https://trustwallet.com/assets/images/favicon.png";
-var timestamp6 = "2022-01-30T13:55:46.031276";
-var tokens6 = [
-  {
-    asset: "c10000070_t0x350a791Bfc2C21F9Ed5d10980Dad2e2638ffa7f6",
-    type: "OPTIMISM",
-    address: "0x350a791Bfc2C21F9Ed5d10980Dad2e2638ffa7f6",
-    name: "ChainLink",
-    symbol: "LINK",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/optimism/assets/0x350a791Bfc2C21F9Ed5d10980Dad2e2638ffa7f6/logo.png"
-  },
-  {
-    asset: "c10000070_t0x4200000000000000000000000000000000000006",
-    type: "OPTIMISM",
-    address: "0x4200000000000000000000000000000000000006",
-    name: "Wrapped Ether",
-    symbol: "WETH",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/optimism/assets/0x4200000000000000000000000000000000000006/logo.png"
-  },
-  {
-    asset: "c10000070_t0x5029C236320b8f15eF0a657054B84d90bfBEDED3",
-    type: "OPTIMISM",
-    address: "0x5029C236320b8f15eF0a657054B84d90bfBEDED3",
-    name: "BitANT",
-    symbol: "BitANT",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/optimism/assets/0x5029C236320b8f15eF0a657054B84d90bfBEDED3/logo.png"
-  },
-  {
-    asset: "c10000070_t0x50c5725949A6F0c72E6C4a641F24049A917DB0Cb",
-    type: "OPTIMISM",
-    address: "0x50c5725949A6F0c72E6C4a641F24049A917DB0Cb",
-    name: "Lyra Finance",
-    symbol: "LYRA",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/optimism/assets/0x50c5725949A6F0c72E6C4a641F24049A917DB0Cb/logo.png"
-  },
-  {
-    asset: "c10000070_t0x61BAADcF22d2565B0F471b291C475db5555e0b76",
-    type: "OPTIMISM",
-    address: "0x61BAADcF22d2565B0F471b291C475db5555e0b76",
-    name: "Aelin Token",
-    symbol: "AELIN",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/optimism/assets/0x61BAADcF22d2565B0F471b291C475db5555e0b76/logo.png"
-  },
-  {
-    asset: "c10000070_t0x9Bcef72be871e61ED4fBbc7630889beE758eb81D",
-    type: "OPTIMISM",
-    address: "0x9Bcef72be871e61ED4fBbc7630889beE758eb81D",
-    name: "Rocket Pool ETH",
-    symbol: "rETH",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/optimism/assets/0x9Bcef72be871e61ED4fBbc7630889beE758eb81D/logo.png"
-  },
-  {
-    asset: "c10000070_t0x9e1028F5F1D5eDE59748FFceE5532509976840E0",
-    type: "OPTIMISM",
-    address: "0x9e1028F5F1D5eDE59748FFceE5532509976840E0",
-    name: "Perpetual",
-    symbol: "PERP",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/optimism/assets/0x9e1028F5F1D5eDE59748FFceE5532509976840E0/logo.png"
-  },
-  {
-    asset: "c10000070_t0xF98dCd95217E15E05d8638da4c91125E59590B07",
-    type: "OPTIMISM",
-    address: "0xF98dCd95217E15E05d8638da4c91125E59590B07",
-    name: "Kromatika",
-    symbol: "KROM",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/optimism/assets/0xF98dCd95217E15E05d8638da4c91125E59590B07/logo.png"
-  },
-  {
-    asset: "c10000070_t0xffD27b572246f35c992EfB28DD8cB730b93Ed301",
-    type: "OPTIMISM",
-    address: "0xffD27b572246f35c992EfB28DD8cB730b93Ed301",
-    name: "Rubicon",
-    symbol: "Rubicon",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/optimism/assets/0xffD27b572246f35c992EfB28DD8cB730b93Ed301/logo.png"
-  }
-];
-var version6 = {
-  major: 10,
-  minor: 0,
-  patch: 0
-};
 var optimism_default = {
-  name: name6,
-  logoURI: logoURI6,
-  timestamp: timestamp6,
-  tokens: tokens6,
-  version: version6
+  name: "Trust Wallet: Optimism Ethereum",
+  logoURI: "https://trustwallet.com/assets/images/favicon.png",
+  timestamp: "2022-01-30T13:55:46.031276",
+  tokens: [
+    {
+      asset: "c10000070_t0x350a791Bfc2C21F9Ed5d10980Dad2e2638ffa7f6",
+      type: "OPTIMISM",
+      address: "0x350a791Bfc2C21F9Ed5d10980Dad2e2638ffa7f6",
+      name: "ChainLink",
+      symbol: "LINK",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/optimism/assets/0x350a791Bfc2C21F9Ed5d10980Dad2e2638ffa7f6/logo.png"
+    },
+    {
+      asset: "c10000070_t0x4200000000000000000000000000000000000006",
+      type: "OPTIMISM",
+      address: "0x4200000000000000000000000000000000000006",
+      name: "Wrapped Ether",
+      symbol: "WETH",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/optimism/assets/0x4200000000000000000000000000000000000006/logo.png"
+    },
+    {
+      asset: "c10000070_t0x5029C236320b8f15eF0a657054B84d90bfBEDED3",
+      type: "OPTIMISM",
+      address: "0x5029C236320b8f15eF0a657054B84d90bfBEDED3",
+      name: "BitANT",
+      symbol: "BitANT",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/optimism/assets/0x5029C236320b8f15eF0a657054B84d90bfBEDED3/logo.png"
+    },
+    {
+      asset: "c10000070_t0x50c5725949A6F0c72E6C4a641F24049A917DB0Cb",
+      type: "OPTIMISM",
+      address: "0x50c5725949A6F0c72E6C4a641F24049A917DB0Cb",
+      name: "Lyra Finance",
+      symbol: "LYRA",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/optimism/assets/0x50c5725949A6F0c72E6C4a641F24049A917DB0Cb/logo.png"
+    },
+    {
+      asset: "c10000070_t0x61BAADcF22d2565B0F471b291C475db5555e0b76",
+      type: "OPTIMISM",
+      address: "0x61BAADcF22d2565B0F471b291C475db5555e0b76",
+      name: "Aelin Token",
+      symbol: "AELIN",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/optimism/assets/0x61BAADcF22d2565B0F471b291C475db5555e0b76/logo.png"
+    },
+    {
+      asset: "c10000070_t0x9Bcef72be871e61ED4fBbc7630889beE758eb81D",
+      type: "OPTIMISM",
+      address: "0x9Bcef72be871e61ED4fBbc7630889beE758eb81D",
+      name: "Rocket Pool ETH",
+      symbol: "rETH",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/optimism/assets/0x9Bcef72be871e61ED4fBbc7630889beE758eb81D/logo.png"
+    },
+    {
+      asset: "c10000070_t0x9e1028F5F1D5eDE59748FFceE5532509976840E0",
+      type: "OPTIMISM",
+      address: "0x9e1028F5F1D5eDE59748FFceE5532509976840E0",
+      name: "Perpetual",
+      symbol: "PERP",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/optimism/assets/0x9e1028F5F1D5eDE59748FFceE5532509976840E0/logo.png"
+    },
+    {
+      asset: "c10000070_t0xF98dCd95217E15E05d8638da4c91125E59590B07",
+      type: "OPTIMISM",
+      address: "0xF98dCd95217E15E05d8638da4c91125E59590B07",
+      name: "Kromatika",
+      symbol: "KROM",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/optimism/assets/0xF98dCd95217E15E05d8638da4c91125E59590B07/logo.png"
+    },
+    {
+      asset: "c10000070_t0xffD27b572246f35c992EfB28DD8cB730b93Ed301",
+      type: "OPTIMISM",
+      address: "0xffD27b572246f35c992EfB28DD8cB730b93Ed301",
+      name: "Rubicon",
+      symbol: "Rubicon",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/optimism/assets/0xffD27b572246f35c992EfB28DD8cB730b93Ed301/logo.png"
+    }
+  ],
+  version: {
+    major: 10,
+    minor: 0,
+    patch: 0
+  }
 };
 
 // src/tokenlist/polygon.json
-var polygon_exports = {};
-__export(polygon_exports, {
-  default: () => polygon_default,
-  logoURI: () => logoURI7,
-  name: () => name7,
-  timestamp: () => timestamp7,
-  tokens: () => tokens7,
-  version: () => version7
-});
-var name7 = "Trust Wallet: Polygon";
-var logoURI7 = "https://trustwallet.com/assets/images/favicon.png";
-var timestamp7 = "2021-10-07T08:50:36.056Z";
-var tokens7 = [
-  {
-    asset: "c966_t0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
-    type: "POLYGON",
-    address: "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
-    name: "Wrapped Ether",
-    symbol: "WETH",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/polygon/assets/0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619/logo.png"
-  },
-  {
-    asset: "",
-    type: "POLYGON",
-    address: "0x1BFD67037B42Cf73acF2047067bd4F2C47D9BfD6",
-    name: "(PoS) Wrapped BTC",
-    symbol: "WBTC",
-    decimals: 8,
-    logoURI: "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/bitcoin/info/logo.png"
-  },
-  {
-    asset: "c966_t0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270",
-    type: "POLYGON",
-    address: "0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270",
-    name: "Wrapped MATIC",
-    symbol: "WMATIC",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/polygon/assets/0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270/logo.png"
-  },
-  {
-    asset: "c966_t0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174",
-    type: "POLYGON",
-    address: "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174",
-    name: "USD Coin (PoS)",
-    symbol: "USDC",
-    decimals: 6,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/polygon/assets/0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174/logo.png"
-  },
-  {
-    asset: "c966_t0xc2132D05D31c914a87C6611C10748AEb04B58e8F",
-    type: "POLYGON",
-    address: "0xc2132D05D31c914a87C6611C10748AEb04B58e8F",
-    name: "(PoS) Tether USD",
-    symbol: "USDT",
-    decimals: 6,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/polygon/assets/0xc2132D05D31c914a87C6611C10748AEb04B58e8F/logo.png"
-  },
-  {
-    asset: "c966_t0x8f3Cf7ad23Cd3CaDbD9735AFf958023239c6A063",
-    type: "POLYGON",
-    address: "0x8f3Cf7ad23Cd3CaDbD9735AFf958023239c6A063",
-    name: "(PoS) Dai Stablecoin",
-    symbol: "DAI",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/polygon/assets/0x8f3Cf7ad23Cd3CaDbD9735AFf958023239c6A063/logo.png"
-  },
-  {
-    asset: "c966_t0x53E0bca35eC356BD5ddDFebbD1Fc0fD03FaBad39",
-    type: "POLYGON",
-    address: "0x53E0bca35eC356BD5ddDFebbD1Fc0fD03FaBad39",
-    name: "ChainLink Token",
-    symbol: "LINK",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/polygon/assets/0x53E0bca35eC356BD5ddDFebbD1Fc0fD03FaBad39/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c966_t0x831753DD7087CaC61aB5644b308642cc1c33Dc13",
-    type: "POLYGON",
-    address: "0x831753DD7087CaC61aB5644b308642cc1c33Dc13",
-    name: "QuickSwap",
-    symbol: "QUICK",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/polygon/assets/0x831753DD7087CaC61aB5644b308642cc1c33Dc13/logo.png",
-    pairs: []
-  },
-  {
-    asset: "c966_t0xD6DF932A45C0f255f85145f286eA0b292B21C90B",
-    type: "POLYGON",
-    address: "0xD6DF932A45C0f255f85145f286eA0b292B21C90B",
-    name: "Aave (PoS)",
-    symbol: "AAVE",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/polygon/assets/0xD6DF932A45C0f255f85145f286eA0b292B21C90B/logo.png",
-    pairs: []
-  }
-];
-var version7 = {
-  major: 6,
-  minor: 0,
-  patch: 0
-};
 var polygon_default = {
-  name: name7,
-  logoURI: logoURI7,
-  timestamp: timestamp7,
-  tokens: tokens7,
-  version: version7
+  name: "Trust Wallet: Polygon",
+  logoURI: "https://trustwallet.com/assets/images/favicon.png",
+  timestamp: "2021-10-07T08:50:36.056Z",
+  tokens: [
+    {
+      asset: "c966_t0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
+      type: "POLYGON",
+      address: "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
+      name: "Wrapped Ether",
+      symbol: "WETH",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/polygon/assets/0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619/logo.png"
+    },
+    {
+      asset: "",
+      type: "POLYGON",
+      address: "0x1BFD67037B42Cf73acF2047067bd4F2C47D9BfD6",
+      name: "(PoS) Wrapped BTC",
+      symbol: "WBTC",
+      decimals: 8,
+      logoURI: "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/bitcoin/info/logo.png"
+    },
+    {
+      asset: "c966_t0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270",
+      type: "POLYGON",
+      address: "0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270",
+      name: "Wrapped MATIC",
+      symbol: "WMATIC",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/polygon/assets/0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270/logo.png"
+    },
+    {
+      asset: "c966_t0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174",
+      type: "POLYGON",
+      address: "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174",
+      name: "USD Coin (PoS)",
+      symbol: "USDC",
+      decimals: 6,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/polygon/assets/0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174/logo.png"
+    },
+    {
+      asset: "c966_t0xc2132D05D31c914a87C6611C10748AEb04B58e8F",
+      type: "POLYGON",
+      address: "0xc2132D05D31c914a87C6611C10748AEb04B58e8F",
+      name: "(PoS) Tether USD",
+      symbol: "USDT",
+      decimals: 6,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/polygon/assets/0xc2132D05D31c914a87C6611C10748AEb04B58e8F/logo.png"
+    },
+    {
+      asset: "c966_t0x8f3Cf7ad23Cd3CaDbD9735AFf958023239c6A063",
+      type: "POLYGON",
+      address: "0x8f3Cf7ad23Cd3CaDbD9735AFf958023239c6A063",
+      name: "(PoS) Dai Stablecoin",
+      symbol: "DAI",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/polygon/assets/0x8f3Cf7ad23Cd3CaDbD9735AFf958023239c6A063/logo.png"
+    },
+    {
+      asset: "c966_t0x53E0bca35eC356BD5ddDFebbD1Fc0fD03FaBad39",
+      type: "POLYGON",
+      address: "0x53E0bca35eC356BD5ddDFebbD1Fc0fD03FaBad39",
+      name: "ChainLink Token",
+      symbol: "LINK",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/polygon/assets/0x53E0bca35eC356BD5ddDFebbD1Fc0fD03FaBad39/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c966_t0x831753DD7087CaC61aB5644b308642cc1c33Dc13",
+      type: "POLYGON",
+      address: "0x831753DD7087CaC61aB5644b308642cc1c33Dc13",
+      name: "QuickSwap",
+      symbol: "QUICK",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/polygon/assets/0x831753DD7087CaC61aB5644b308642cc1c33Dc13/logo.png",
+      pairs: []
+    },
+    {
+      asset: "c966_t0xD6DF932A45C0f255f85145f286eA0b292B21C90B",
+      type: "POLYGON",
+      address: "0xD6DF932A45C0f255f85145f286eA0b292B21C90B",
+      name: "Aave (PoS)",
+      symbol: "AAVE",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/polygon/assets/0xD6DF932A45C0f255f85145f286eA0b292B21C90B/logo.png",
+      pairs: []
+    }
+  ],
+  version: {
+    major: 6,
+    minor: 0,
+    patch: 0
+  }
 };
 
 // src/tokenlist/sepolia.json
-var sepolia_exports = {};
-__export(sepolia_exports, {
-  default: () => sepolia_default,
-  logoURI: () => logoURI8,
-  name: () => name8,
-  timestamp: () => timestamp8,
-  tokens: () => tokens8,
-  version: () => version8
-});
-var name8 = "Trust Wallet: Sepolia";
-var logoURI8 = "https://trustwallet.com/assets/images/favicon.png";
-var timestamp8 = "2021-10-07T08:50:36.056Z";
-var tokens8 = [
-  {
-    asset: "0001",
-    type: "ERC20",
-    address: "0x4263541D13298963498ff1f83d992812Ef3d2E73",
-    name: "WETH",
-    symbol: "WETH",
-    decimals: 18,
-    logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2/logo.png",
-    price: 0
-  },
-  {
-    asset: "0002",
-    type: "ERC20",
-    address: "0xB556b3a796f5f104Bbaab840567844734e0490a0",
-    name: "Joint",
-    symbol: "JOIN",
-    decimals: 18,
-    logoURI: "https://storage.googleapis.com/joint-images/token-logos/p2p.svg",
-    price: 0
-  }
-];
-var version8 = {
-  major: 6,
-  minor: 0,
-  patch: 0
-};
 var sepolia_default = {
-  name: name8,
-  logoURI: logoURI8,
-  timestamp: timestamp8,
-  tokens: tokens8,
-  version: version8
+  name: "Trust Wallet: Sepolia",
+  logoURI: "https://trustwallet.com/assets/images/favicon.png",
+  timestamp: "2021-10-07T08:50:36.056Z",
+  tokens: [
+    {
+      asset: "0001",
+      type: "ERC20",
+      address: "0x4263541D13298963498ff1f83d992812Ef3d2E73",
+      name: "WETH",
+      symbol: "WETH",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2/logo.png",
+      price: 0
+    },
+    {
+      asset: "0002",
+      type: "ERC20",
+      address: "0xB556b3a796f5f104Bbaab840567844734e0490a0",
+      name: "Joint",
+      symbol: "JOIN",
+      decimals: 18,
+      logoURI: "https://storage.googleapis.com/joint-images/token-logos/p2p.svg",
+      price: 0
+    }
+  ],
+  version: {
+    major: 6,
+    minor: 0,
+    patch: 0
+  }
 };
 
 // src/tokenlist/synthetic.json
-var synthetic_exports = {};
-__export(synthetic_exports, {
-  default: () => synthetic_default,
-  logoURI: () => logoURI9,
-  name: () => name9,
-  timestamp: () => timestamp9,
-  tokens: () => tokens9,
-  version: () => version9
-});
-var name9 = "Joint Protocol: Synthetic";
-var logoURI9 = "";
-var timestamp9 = "2021-10-07T08:50:36.056Z";
-var tokens9 = [
-  {
-    asset: "",
-    type: "SYNTHETIC",
-    address: "0xEb0149A3eD6ba901Db396b674dF84c8b75fba568",
-    name: "NGN",
-    symbol: "NGN",
-    decimals: 18,
-    logoURI: "https://storage.googleapis.com/joint-images/country-flags/nigeria.svg"
-  }
-];
-var version9 = {
-  major: 1,
-  minor: 0,
-  patch: 0
-};
 var synthetic_default = {
-  name: name9,
-  logoURI: logoURI9,
-  timestamp: timestamp9,
-  tokens: tokens9,
-  version: version9
+  name: "Joint Protocol: Synthetic",
+  logoURI: "",
+  timestamp: "2021-10-07T08:50:36.056Z",
+  tokens: [
+    {
+      asset: "",
+      type: "SYNTHETIC",
+      address: "0xEb0149A3eD6ba901Db396b674dF84c8b75fba568",
+      name: "NGN",
+      symbol: "NGN",
+      decimals: 18,
+      logoURI: "https://storage.googleapis.com/joint-images/country-flags/nigeria.svg"
+    }
+  ],
+  version: {
+    major: 1,
+    minor: 0,
+    patch: 0
+  }
 };
 
 // src/tokens_list.ts
 var TokenLists = {
-  ethereum: ethereum_exports,
-  polygon: polygon_exports,
-  binance: binance_exports,
-  optimism: optimism_exports,
-  synthetic: synthetic_exports,
-  localhost: localhost_exports,
-  sepolia: sepolia_exports,
-  "arbitrum-sepolia": arbitrum_sepolia_exports,
-  arbitrum: arbitrum_exports
+  ethereum: ethereum_default,
+  polygon: polygon_default,
+  binance: binance_default,
+  optimism: optimism_default,
+  synthetic: synthetic_default,
+  localhost: localhost_default,
+  sepolia: sepolia_default,
+  "arbitrum-sepolia": arbitrum_sepolia_default,
+  arbitrum: arbitrum_default
 };
 function getTokenInfo(network, address) {
   const netList = TokenLists[network];
