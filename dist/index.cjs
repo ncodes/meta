@@ -17170,7 +17170,7 @@ var arbitrum_default = {
       name: "Joint",
       symbol: "tJOIN",
       decimals: 18,
-      logoURI: "https://storage.googleapis.com/joint-images/token-logos/p2p.svg",
+      logoURI: "https://files.joint.exchange/images/join.svg",
       price: 0
     },
     {
@@ -17180,7 +17180,7 @@ var arbitrum_default = {
       name: "BANDIT",
       symbol: "BANDIT",
       decimals: 18,
-      logoURI: "https://storage.googleapis.com/joint-images/token-logos/bandit-coin.svg",
+      logoURI: "https://files.joint.exchange/images/bandit.svg",
       price: 0
     },
     {
@@ -17190,7 +17190,7 @@ var arbitrum_default = {
       name: "DROID",
       symbol: "DROID",
       decimals: 18,
-      logoURI: "https://storage.googleapis.com/joint-images/token-logos/droid-coin.svg",
+      logoURI: "https://files.joint.exchange/images/droid.svg",
       price: 0
     },
     {
@@ -17200,7 +17200,7 @@ var arbitrum_default = {
       name: "MULTIPLIER",
       symbol: "MULTI",
       decimals: 18,
-      logoURI: "https://storage.googleapis.com/joint-images/token-logos/multi-coin.svg",
+      logoURI: "https://files.joint.exchange/images/multi.svg",
       price: 0
     },
     {
@@ -17210,7 +17210,7 @@ var arbitrum_default = {
       name: "WARBOND",
       symbol: "BOND",
       decimals: 18,
-      logoURI: "https://storage.googleapis.com/joint-images/token-logos/bond-coin.svg",
+      logoURI: "https://files.joint.exchange/images/bond.svg",
       price: 0
     },
     {
