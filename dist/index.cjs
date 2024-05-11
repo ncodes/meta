@@ -17131,7 +17131,7 @@ var arbitrum_sepolia_default = {
       name: "Joint",
       symbol: "JOIN",
       decimals: 18,
-      logoURI: "https://storage.googleapis.com/joint-images/token-logos/p2p.svg",
+      logoURI: "https://files.joint.exchange/images/join.svg",
       price: 0
     }
   ],
@@ -21452,7 +21452,7 @@ var localhost_default = {
       name: "Joint LOCAL",
       symbol: "JOIN",
       decimals: 18,
-      logoURI: "https://storage.googleapis.com/joint-images/token-logos/p2p.svg",
+      logoURI: "https://files.joint.exchange/images/join.svg",
       price: 0
     },
     {
@@ -21482,7 +21482,7 @@ var localhost_default = {
       name: "NGN LOCAL",
       symbol: "NGN",
       decimals: 18,
-      logoURI: "https://storage.googleapis.com/joint-images/country-flags/nigeria.svg",
+      logoURI: "https://files.joint.exchange/images/nigeria.svg",
       price: 0
     }
   ],
@@ -21709,7 +21709,7 @@ var sepolia_default = {
       name: "Joint",
       symbol: "JOIN",
       decimals: 18,
-      logoURI: "https://storage.googleapis.com/joint-images/token-logos/p2p.svg",
+      logoURI: "https://files.joint.exchange/images/join.svg",
       price: 0
     }
   ],
@@ -21733,7 +21733,7 @@ var synthetic_default = {
       name: "NGN",
       symbol: "NGN",
       decimals: 18,
-      logoURI: "https://storage.googleapis.com/joint-images/country-flags/nigeria.svg"
+      logoURI: "https://files.joint.exchange/images/nigeria.svg"
     }
   ],
   version: {

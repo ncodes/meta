@@ -20,7 +20,7 @@
 			"name": "Joint",
 			"symbol": "JOIN",
 			"decimals": 18,
-			"logoURI": "https://storage.googleapis.com/joint-images/token-logos/p2p.svg",
+			"logoURI": "https://files.joint.exchange/images/join.svg",
 			"price": 0
 		}
 	],
