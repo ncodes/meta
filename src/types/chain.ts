@@ -5,7 +5,6 @@ import TokenInfo from './token';
 export type ChainNames =
 	| 'ethereum'
 	| 'polygon'
-	| 'binance'
 	| 'optimism'
 	| 'localhost'
 	| 'sepolia'
@@ -29,3 +28,4 @@ export interface ChainInfo {
 	wrappedTokenInfo: TokenInfo;
 	contracts?: Contracts;
 }
+

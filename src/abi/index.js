@@ -29,5 +29,6 @@ export var Abi = {
     FeePool: FeePoolAbi,
     LPPool: LPPoolAbi,
     TokenPool: TokenPoolAbi,
+
 };
 //# sourceMappingURL=index.js.map

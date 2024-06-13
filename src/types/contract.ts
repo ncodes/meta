@@ -5,9 +5,10 @@ export interface ContractInfo {
 	abi: any;
 }
 
-export type Contracts = {
+export type Contracts = Partial<{
 	[key in ContractNames]: ContractInfo;
-};
+}>;
+
 
 export type ContractNames =
 	| 'core'
@@ -19,7 +20,12 @@ export type ContractNames =
 	| 'disputeManager'
 	| 'mediatorManager'
 	| 'assetRegistry'
-	| 'minerRegistry';
+	| 'minerRegistry'
+	| 'uniswapV2Router'
+	| 'uniswapV2Router2'
+	| 'uniswapV3Router'
+	| 'uniswapV3Router02'
+	| 'uniswapV3UniversalRouter';
 
 export type ContractsParams = {
 	[key in ChainNames]?: {

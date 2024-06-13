@@ -759,10 +759,10 @@ interface ContractInfo {
     address?: string;
     abi: any;
 }
-type Contracts = {
+type Contracts = Partial<{
     [key in ContractNames]: ContractInfo;
-};
-type ContractNames = 'core' | 'token' | 'energon' | 'nft' | 'badgeManager' | 'marketCore' | 'disputeManager' | 'mediatorManager' | 'assetRegistry' | 'minerRegistry';
+}>;
+type ContractNames = 'core' | 'token' | 'energon' | 'nft' | 'badgeManager' | 'marketCore' | 'disputeManager' | 'mediatorManager' | 'assetRegistry' | 'minerRegistry' | 'uniswapV2Router' | 'uniswapV2Router2' | 'uniswapV3Router' | 'uniswapV3Router02' | 'uniswapV3UniversalRouter';
 type ContractsParams = {
     [key in ChainNames]?: {
         core: CoreParams;
@@ -896,7 +896,7 @@ declare namespace TokenList {
     export {  };
 }
 
-type ChainNames = 'ethereum' | 'polygon' | 'binance' | 'optimism' | 'localhost' | 'sepolia' | 'arbitrum-sepolia' | 'arbitrum' | 'binance';
+type ChainNames = 'ethereum' | 'polygon' | 'optimism' | 'localhost' | 'sepolia' | 'arbitrum-sepolia' | 'arbitrum' | 'binance';
 interface ChainInfo {
     displayName: string;
     altDisplayName?: string;

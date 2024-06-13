@@ -13,6 +13,11 @@ import NftAbi from "./NFT.json";
 import NativeTokenAbi from "./Token.json";
 import TokenPoolAbi from "./TokenPool.json";
 import WETHAbi from "./WETH.json";
+import UniswapV2Router from "./UniswapV2Router.json";
+import UniswapV2Router2 from "./UniswapV2Router2.json";
+import UniswapV3Router from "./UniswapV3Router.json";
+import UniswapV3Router2 from "./UniswapV3Router2.json";
+import UniswapV3RouterUniversal from "./UniswapV3RouterUniversal.json";
 
 export const Abi = {
   BadgeManager: BadgeManagerAbi,
@@ -30,4 +35,9 @@ export const Abi = {
   FeePool: FeePoolAbi,
   LPPool: LPPoolAbi,
   TokenPool: TokenPoolAbi,
+  UniswapV2Router: UniswapV2Router,
+  UniswapV2Router2: UniswapV2Router2,
+  UniswapV3Router: UniswapV3Router,
+  UniswapV3Router2: UniswapV3Router2,
+  UniswapV3RouterUniversal: UniswapV3RouterUniversal,
 };

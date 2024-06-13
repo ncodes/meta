@@ -17,6 +17,7 @@ import IconOptimism from './icons/IconOptimism';
 import IconPolygon from './icons/IconPolygon';
 import { ChainInfo } from './types/chain';
 import TokenInfo from './types/token';
+import {Abi} from "./abi/index";
 
 /**
  * Mapping of supported chains' information
@@ -118,6 +119,26 @@ const Chains: ChainInfo[] = [
 					'',
 				abi: MinerRegistryABI,
 			},
+			uniswapV2Router: {
+				address: '0xf164fC0Ec4E93095b804a4795bBe1e041497b92a',
+				abi: Abi.UniswapV2Router,
+			},
+			uniswapV2Router2: {
+				address: '0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D',
+				abi: Abi.UniswapV2Router2,
+			},
+			uniswapV3Router: {
+				address: '0xE592427A0AEce92De3Edee1F18E0157C05861564',
+				abi: Abi.UniswapV3Router,
+			},
+			uniswapV3Router02: {
+				address: '0x68b3465833fb72A70ecDF485E0e4C7bD8665Fc45',
+				abi: Abi.UniswapV3Router2,
+			},
+			uniswapV3UniversalRouter: {
+				address: '0x3fC91A3afd70395Cd496C647d5a6CC9D4B2b7FAD',
+				abi: Abi.UniswapV3RouterUniversal,
+			}
 		},
 	},
 	{

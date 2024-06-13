@@ -13,7 +13,6 @@ import { ChainNames } from './types/chain';
 import { TokenList } from './types/token';
 
 type TokenListNames = ChainNames | 'synthetic';
-// { [key in TokenListNames]: TokenList.TokenData }
 export const TokenLists: Record<TokenListNames, TokenList.TokenData> = {
 	ethereum,
 	polygon,

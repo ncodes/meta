@@ -1,4 +1,4 @@
-import { ChainNames } from './types/chain';
+import {ChainNames} from './types/chain';
 
 export type BadgeManifest = {
 	name: string;
@@ -99,8 +99,7 @@ export const BadgeManifests: ChainBadgeManifest = {
  * @returns
  */
 export function parseBadgeLocals(badge: BadgeManifest, locals: { [key: string]: string }): BadgeManifest {
-	const badgeAsStr = JSON.stringify(badge);
-	let str = badgeAsStr;
+	let str = JSON.stringify(badge);
 	for (const key in locals) {
 		str = str.replace(new RegExp(`{${key}}`, 'g'), locals[key]);
 	}
