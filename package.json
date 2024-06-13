@@ -1,6 +1,6 @@
 {
 	"name": "@jointlabs/chains-info",
-	"version": "0.0.56",
+	"version": "0.0.57",
 	"type": "module",
 	"engines": {
 		"node": ">=18.17.1"
@@ -23,21 +23,25 @@
 	},
 	"license": "MIT",
 	"scripts": {
-		"build": "rimraf dist && tsup && yarn build-cjs && yarn build-nextjs",
+		"build": "rimraf dist && yarn typechain && tsup && yarn build-cjs && yarn build-nextjs",
 		"build-cjs": "tsup --config=tsup.config.cjs.ts",
-		"build-nextjs": "tsup --config=tsup.config.nextjs.ts"
+		"build-nextjs": "tsup --config=tsup.config.nextjs.ts",
+		"typechain": "typechain --target ethers-v6 --out-dir src/typechain src/abi/*.json"
 	},
 	"dependencies": {
+		"@typechain/ethers-v6": "^0.5.1",
 		"lodash": "^4.17.21",
 		"react": "^18.2.0",
 		"viem": "^2.7.6"
 	},
 	"devDependencies": {
 		"@types/react": "^18.2.39",
+		"ethers": "^6.13.0",
 		"prettier": "^3.1.0",
 		"replace-in-file": "^7.0.2",
 		"rifraf": "^2.0.3",
 		"tsup": "^8.0.1",
+		"typechain": "^8.3.2",
 		"typescript": "^5.3.3"
 	},
 	"peerDependencies": {

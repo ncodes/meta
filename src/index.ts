@@ -16,10 +16,12 @@ import { TokenLists, findTokenInLocalhost, findTokenInSynthetic, getTokenInfo } 
 import { ChainInfo, ChainNames } from './types/chain';
 import * as ContractParamTypes from './types/contract';
 import { ContractInfo, ContractNames, Contracts } from './types/contract';
+import * as AbiTypes from './typechain/index'
 
 export default Chains;
 export {
 	Abi,
+	AbiTypes,
 	BadgeManifest,
 	BadgeManifests,
 	ChainBadgeManifest,

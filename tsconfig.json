@@ -13,7 +13,7 @@
 		"strict": true,
 		"resolveJsonModule": true,
 		"noImplicitReturns": true,
-		"noUnusedLocals": true,
+		"noUnusedLocals": false,
 		"noUnusedParameters": true,
 		"moduleResolution": "node",
 		"jsx": "react",
