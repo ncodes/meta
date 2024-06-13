@@ -2168,7 +2168,7 @@ declare namespace ProtocolFeeUpdatedEvent {
     type Log = TypedEventLog<Event>;
     type LogDescription = TypedLogDescription<Event>;
 }
-declare namespace SwapEvent {
+declare namespace SwapEvent$5 {
     type InputTuple = [
         mid: AddressLike,
         provider: AddressLike,
@@ -3515,7 +3515,7 @@ interface Core extends BaseContract {
     getEvent(key: "OwnershipTransferred"): TypedContractEvent<OwnershipTransferredEvent$a.InputTuple, OwnershipTransferredEvent$a.OutputTuple, OwnershipTransferredEvent$a.OutputObject>;
     getEvent(key: "ProtocolFeeSplitUpdated"): TypedContractEvent<ProtocolFeeSplitUpdatedEvent.InputTuple, ProtocolFeeSplitUpdatedEvent.OutputTuple, ProtocolFeeSplitUpdatedEvent.OutputObject>;
     getEvent(key: "ProtocolFeeUpdated"): TypedContractEvent<ProtocolFeeUpdatedEvent.InputTuple, ProtocolFeeUpdatedEvent.OutputTuple, ProtocolFeeUpdatedEvent.OutputObject>;
-    getEvent(key: "Swap"): TypedContractEvent<SwapEvent.InputTuple, SwapEvent.OutputTuple, SwapEvent.OutputObject>;
+    getEvent(key: "Swap"): TypedContractEvent<SwapEvent$5.InputTuple, SwapEvent$5.OutputTuple, SwapEvent$5.OutputObject>;
     getEvent(key: "SwapOrder"): TypedContractEvent<SwapOrderEvent.InputTuple, SwapOrderEvent.OutputTuple, SwapOrderEvent.OutputObject>;
     getEvent(key: "SwapOrderPaid"): TypedContractEvent<SwapOrderPaidEvent.InputTuple, SwapOrderPaidEvent.OutputTuple, SwapOrderPaidEvent.OutputObject>;
     getEvent(key: "TogglePause"): TypedContractEvent<TogglePauseEvent.InputTuple, TogglePauseEvent.OutputTuple, TogglePauseEvent.OutputObject>;
@@ -3569,8 +3569,8 @@ interface Core extends BaseContract {
         ProtocolFeeSplitUpdated: TypedContractEvent<ProtocolFeeSplitUpdatedEvent.InputTuple, ProtocolFeeSplitUpdatedEvent.OutputTuple, ProtocolFeeSplitUpdatedEvent.OutputObject>;
         "ProtocolFeeUpdated(uint256,uint256,uint256,uint256,uint256,uint256)": TypedContractEvent<ProtocolFeeUpdatedEvent.InputTuple, ProtocolFeeUpdatedEvent.OutputTuple, ProtocolFeeUpdatedEvent.OutputObject>;
         ProtocolFeeUpdated: TypedContractEvent<ProtocolFeeUpdatedEvent.InputTuple, ProtocolFeeUpdatedEvent.OutputTuple, ProtocolFeeUpdatedEvent.OutputObject>;
-        "Swap(address,address,address,address,address,uint256[6],bool,uint256[],uint256[])": TypedContractEvent<SwapEvent.InputTuple, SwapEvent.OutputTuple, SwapEvent.OutputObject>;
-        Swap: TypedContractEvent<SwapEvent.InputTuple, SwapEvent.OutputTuple, SwapEvent.OutputObject>;
+        "Swap(address,address,address,address,address,uint256[6],bool,uint256[],uint256[])": TypedContractEvent<SwapEvent$5.InputTuple, SwapEvent$5.OutputTuple, SwapEvent$5.OutputObject>;
+        Swap: TypedContractEvent<SwapEvent$5.InputTuple, SwapEvent$5.OutputTuple, SwapEvent$5.OutputObject>;
         "SwapOrder(address,address,address,address,uint256[7],uint256[],uint256[])": TypedContractEvent<SwapOrderEvent.InputTuple, SwapOrderEvent.OutputTuple, SwapOrderEvent.OutputObject>;
         SwapOrder: TypedContractEvent<SwapOrderEvent.InputTuple, SwapOrderEvent.OutputTuple, SwapOrderEvent.OutputObject>;
         "SwapOrderPaid(uint256,address,uint256)": TypedContractEvent<SwapOrderPaidEvent.InputTuple, SwapOrderPaidEvent.OutputTuple, SwapOrderPaidEvent.OutputObject>;
@@ -10172,6 +10172,7 @@ interface TokenPool extends BaseContract {
 
 interface UniswapV2RouterInterface extends Interface {
     getFunction(nameOrSignature: "WETH" | "addLiquidity" | "addLiquidityETH" | "factory" | "getAmountIn" | "getAmountOut" | "getAmountsIn" | "getAmountsOut" | "quote" | "removeLiquidity" | "removeLiquidityETH" | "removeLiquidityETHWithPermit" | "removeLiquidityWithPermit" | "swapETHForExactTokens" | "swapExactETHForTokens" | "swapExactTokensForETH" | "swapExactTokensForTokens" | "swapTokensForExactETH" | "swapTokensForExactTokens"): FunctionFragment;
+    getEvent(nameOrSignatureOrTopic: "Swap"): EventFragment;
     encodeFunctionData(functionFragment: "WETH", values?: undefined): string;
     encodeFunctionData(functionFragment: "addLiquidity", values: [
         AddressLike,
@@ -10288,6 +10289,36 @@ interface UniswapV2RouterInterface extends Interface {
     decodeFunctionResult(functionFragment: "swapExactTokensForTokens", data: BytesLike): Result;
     decodeFunctionResult(functionFragment: "swapTokensForExactETH", data: BytesLike): Result;
     decodeFunctionResult(functionFragment: "swapTokensForExactTokens", data: BytesLike): Result;
+}
+declare namespace SwapEvent$4 {
+    type InputTuple = [
+        sender: AddressLike,
+        amount0In: BigNumberish,
+        amount1In: BigNumberish,
+        amount0Out: BigNumberish,
+        amount1Out: BigNumberish,
+        to: AddressLike
+    ];
+    type OutputTuple = [
+        sender: string,
+        amount0In: bigint,
+        amount1In: bigint,
+        amount0Out: bigint,
+        amount1Out: bigint,
+        to: string
+    ];
+    interface OutputObject {
+        sender: string;
+        amount0In: bigint;
+        amount1In: bigint;
+        amount0Out: bigint;
+        amount1Out: bigint;
+        to: string;
+    }
+    type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>;
+    type Filter = TypedDeferredTopicFilter<Event>;
+    type Log = TypedEventLog<Event>;
+    type LogDescription = TypedLogDescription<Event>;
 }
 interface UniswapV2Router extends BaseContract {
     connect(runner?: ContractRunner | null): UniswapV2Router;
@@ -10677,11 +10708,16 @@ interface UniswapV2Router extends BaseContract {
     ], [
         bigint[]
     ], "nonpayable">;
-    filters: {};
+    getEvent(key: "Swap"): TypedContractEvent<SwapEvent$4.InputTuple, SwapEvent$4.OutputTuple, SwapEvent$4.OutputObject>;
+    filters: {
+        "Swap(address,uint256,uint256,uint256,uint256,address)": TypedContractEvent<SwapEvent$4.InputTuple, SwapEvent$4.OutputTuple, SwapEvent$4.OutputObject>;
+        Swap: TypedContractEvent<SwapEvent$4.InputTuple, SwapEvent$4.OutputTuple, SwapEvent$4.OutputObject>;
+    };
 }
 
 interface UniswapV2Router2Interface extends Interface {
     getFunction(nameOrSignature: "WETH" | "addLiquidity" | "addLiquidityETH" | "factory" | "getAmountIn" | "getAmountOut" | "getAmountsIn" | "getAmountsOut" | "quote" | "removeLiquidity" | "removeLiquidityETH" | "removeLiquidityETHSupportingFeeOnTransferTokens" | "removeLiquidityETHWithPermit" | "removeLiquidityETHWithPermitSupportingFeeOnTransferTokens" | "removeLiquidityWithPermit" | "swapETHForExactTokens" | "swapExactETHForTokens" | "swapExactETHForTokensSupportingFeeOnTransferTokens" | "swapExactTokensForETH" | "swapExactTokensForETHSupportingFeeOnTransferTokens" | "swapExactTokensForTokens" | "swapExactTokensForTokensSupportingFeeOnTransferTokens" | "swapTokensForExactETH" | "swapTokensForExactTokens"): FunctionFragment;
+    getEvent(nameOrSignatureOrTopic: "Swap"): EventFragment;
     encodeFunctionData(functionFragment: "WETH", values?: undefined): string;
     encodeFunctionData(functionFragment: "addLiquidity", values: [
         AddressLike,
@@ -10838,6 +10874,36 @@ interface UniswapV2Router2Interface extends Interface {
     decodeFunctionResult(functionFragment: "swapExactTokensForTokensSupportingFeeOnTransferTokens", data: BytesLike): Result;
     decodeFunctionResult(functionFragment: "swapTokensForExactETH", data: BytesLike): Result;
     decodeFunctionResult(functionFragment: "swapTokensForExactTokens", data: BytesLike): Result;
+}
+declare namespace SwapEvent$3 {
+    type InputTuple = [
+        sender: AddressLike,
+        amount0In: BigNumberish,
+        amount1In: BigNumberish,
+        amount0Out: BigNumberish,
+        amount1Out: BigNumberish,
+        to: AddressLike
+    ];
+    type OutputTuple = [
+        sender: string,
+        amount0In: bigint,
+        amount1In: bigint,
+        amount0Out: bigint,
+        amount1Out: bigint,
+        to: string
+    ];
+    interface OutputObject {
+        sender: string;
+        amount0In: bigint;
+        amount1In: bigint;
+        amount0Out: bigint;
+        amount1Out: bigint;
+        to: string;
+    }
+    type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>;
+    type Filter = TypedDeferredTopicFilter<Event>;
+    type Log = TypedEventLog<Event>;
+    type LogDescription = TypedLogDescription<Event>;
 }
 interface UniswapV2Router2 extends BaseContract {
     connect(runner?: ContractRunner | null): UniswapV2Router2;
@@ -11327,7 +11393,11 @@ interface UniswapV2Router2 extends BaseContract {
     ], [
         bigint[]
     ], "nonpayable">;
-    filters: {};
+    getEvent(key: "Swap"): TypedContractEvent<SwapEvent$3.InputTuple, SwapEvent$3.OutputTuple, SwapEvent$3.OutputObject>;
+    filters: {
+        "Swap(address,uint256,uint256,uint256,uint256,address)": TypedContractEvent<SwapEvent$3.InputTuple, SwapEvent$3.OutputTuple, SwapEvent$3.OutputObject>;
+        Swap: TypedContractEvent<SwapEvent$3.InputTuple, SwapEvent$3.OutputTuple, SwapEvent$3.OutputObject>;
+    };
 }
 
 declare namespace ISwapRouter {
@@ -11432,6 +11502,7 @@ declare namespace ISwapRouter {
 }
 interface UniswapV3RouterInterface extends Interface {
     getFunction(nameOrSignature: "WETH9" | "exactInput" | "exactInputSingle" | "exactOutput" | "exactOutputSingle" | "factory" | "multicall" | "refundETH" | "selfPermit" | "selfPermitAllowed" | "selfPermitAllowedIfNecessary" | "selfPermitIfNecessary" | "sweepToken" | "sweepTokenWithFee" | "uniswapV3SwapCallback" | "unwrapWETH9" | "unwrapWETH9WithFee"): FunctionFragment;
+    getEvent(nameOrSignatureOrTopic: "Swap"): EventFragment;
     encodeFunctionData(functionFragment: "WETH9", values?: undefined): string;
     encodeFunctionData(functionFragment: "exactInput", values: [ISwapRouter.ExactInputParamsStruct]): string;
     encodeFunctionData(functionFragment: "exactInputSingle", values: [ISwapRouter.ExactInputSingleParamsStruct]): string;
@@ -11494,6 +11565,36 @@ interface UniswapV3RouterInterface extends Interface {
     decodeFunctionResult(functionFragment: "uniswapV3SwapCallback", data: BytesLike): Result;
     decodeFunctionResult(functionFragment: "unwrapWETH9", data: BytesLike): Result;
     decodeFunctionResult(functionFragment: "unwrapWETH9WithFee", data: BytesLike): Result;
+}
+declare namespace SwapEvent$2 {
+    type InputTuple = [
+        sender: AddressLike,
+        amount0In: BigNumberish,
+        amount1In: BigNumberish,
+        amount0Out: BigNumberish,
+        amount1Out: BigNumberish,
+        to: AddressLike
+    ];
+    type OutputTuple = [
+        sender: string,
+        amount0In: bigint,
+        amount1In: bigint,
+        amount0Out: bigint,
+        amount1Out: bigint,
+        to: string
+    ];
+    interface OutputObject {
+        sender: string;
+        amount0In: bigint;
+        amount1In: bigint;
+        amount0Out: bigint;
+        amount1Out: bigint;
+        to: string;
+    }
+    type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>;
+    type Filter = TypedDeferredTopicFilter<Event>;
+    type Log = TypedEventLog<Event>;
+    type LogDescription = TypedLogDescription<Event>;
 }
 interface UniswapV3Router extends BaseContract {
     connect(runner?: ContractRunner | null): UniswapV3Router;
@@ -11711,7 +11812,11 @@ interface UniswapV3Router extends BaseContract {
     ], [
         void
     ], "payable">;
-    filters: {};
+    getEvent(key: "Swap"): TypedContractEvent<SwapEvent$2.InputTuple, SwapEvent$2.OutputTuple, SwapEvent$2.OutputObject>;
+    filters: {
+        "Swap(address,uint256,uint256,uint256,uint256,address)": TypedContractEvent<SwapEvent$2.InputTuple, SwapEvent$2.OutputTuple, SwapEvent$2.OutputObject>;
+        Swap: TypedContractEvent<SwapEvent$2.InputTuple, SwapEvent$2.OutputTuple, SwapEvent$2.OutputObject>;
+    };
 }
 
 declare namespace IV3SwapRouter {
@@ -11855,6 +11960,7 @@ declare namespace IApproveAndCall {
 }
 interface UniswapV3Router2Interface extends Interface {
     getFunction(nameOrSignature: "WETH9" | "approveMax" | "approveMaxMinusOne" | "approveZeroThenMax" | "approveZeroThenMaxMinusOne" | "callPositionManager" | "checkOracleSlippage(bytes[],uint128[],uint24,uint32)" | "checkOracleSlippage(bytes,uint24,uint32)" | "exactInput" | "exactInputSingle" | "exactOutput" | "exactOutputSingle" | "factory" | "factoryV2" | "getApprovalType" | "increaseLiquidity" | "mint" | "multicall(bytes32,bytes[])" | "multicall(uint256,bytes[])" | "multicall(bytes[])" | "positionManager" | "pull" | "refundETH" | "selfPermit" | "selfPermitAllowed" | "selfPermitAllowedIfNecessary" | "selfPermitIfNecessary" | "swapExactTokensForTokens" | "swapTokensForExactTokens" | "sweepToken(address,uint256,address)" | "sweepToken(address,uint256)" | "sweepTokenWithFee(address,uint256,uint256,address)" | "sweepTokenWithFee(address,uint256,address,uint256,address)" | "uniswapV3SwapCallback" | "unwrapWETH9(uint256,address)" | "unwrapWETH9(uint256)" | "unwrapWETH9WithFee(uint256,address,uint256,address)" | "unwrapWETH9WithFee(uint256,uint256,address)" | "wrapETH"): FunctionFragment;
+    getEvent(nameOrSignatureOrTopic: "Swap"): EventFragment;
     encodeFunctionData(functionFragment: "WETH9", values?: undefined): string;
     encodeFunctionData(functionFragment: "approveMax", values: [AddressLike]): string;
     encodeFunctionData(functionFragment: "approveMaxMinusOne", values: [AddressLike]): string;
@@ -11961,6 +12067,36 @@ interface UniswapV3Router2Interface extends Interface {
     decodeFunctionResult(functionFragment: "unwrapWETH9WithFee(uint256,address,uint256,address)", data: BytesLike): Result;
     decodeFunctionResult(functionFragment: "unwrapWETH9WithFee(uint256,uint256,address)", data: BytesLike): Result;
     decodeFunctionResult(functionFragment: "wrapETH", data: BytesLike): Result;
+}
+declare namespace SwapEvent$1 {
+    type InputTuple = [
+        sender: AddressLike,
+        amount0In: BigNumberish,
+        amount1In: BigNumberish,
+        amount0Out: BigNumberish,
+        amount1Out: BigNumberish,
+        to: AddressLike
+    ];
+    type OutputTuple = [
+        sender: string,
+        amount0In: bigint,
+        amount1In: bigint,
+        amount0Out: bigint,
+        amount1Out: bigint,
+        to: string
+    ];
+    interface OutputObject {
+        sender: string;
+        amount0In: bigint;
+        amount1In: bigint;
+        amount0Out: bigint;
+        amount1Out: bigint;
+        to: string;
+    }
+    type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>;
+    type Filter = TypedDeferredTopicFilter<Event>;
+    type Log = TypedEventLog<Event>;
+    type LogDescription = TypedLogDescription<Event>;
 }
 interface UniswapV3Router2 extends BaseContract {
     connect(runner?: ContractRunner | null): UniswapV3Router2;
@@ -12392,12 +12528,16 @@ interface UniswapV3Router2 extends BaseContract {
         void
     ], "payable">;
     getFunction(nameOrSignature: "wrapETH"): TypedContractMethod<[value: BigNumberish], [void], "payable">;
-    filters: {};
+    getEvent(key: "Swap"): TypedContractEvent<SwapEvent$1.InputTuple, SwapEvent$1.OutputTuple, SwapEvent$1.OutputObject>;
+    filters: {
+        "Swap(address,uint256,uint256,uint256,uint256,address)": TypedContractEvent<SwapEvent$1.InputTuple, SwapEvent$1.OutputTuple, SwapEvent$1.OutputObject>;
+        Swap: TypedContractEvent<SwapEvent$1.InputTuple, SwapEvent$1.OutputTuple, SwapEvent$1.OutputObject>;
+    };
 }
 
 interface UniswapV3RouterUniversalInterface extends Interface {
     getFunction(nameOrSignature: "collectRewards" | "execute(bytes,bytes[])" | "execute(bytes,bytes[],uint256)" | "onERC1155BatchReceived" | "onERC1155Received" | "onERC721Received" | "supportsInterface" | "uniswapV3SwapCallback"): FunctionFragment;
-    getEvent(nameOrSignatureOrTopic: "RewardsSent"): EventFragment;
+    getEvent(nameOrSignatureOrTopic: "RewardsSent" | "Swap"): EventFragment;
     encodeFunctionData(functionFragment: "collectRewards", values: [BytesLike]): string;
     encodeFunctionData(functionFragment: "execute(bytes,bytes[])", values: [BytesLike, BytesLike[]]): string;
     encodeFunctionData(functionFragment: "execute(bytes,bytes[],uint256)", values: [BytesLike, BytesLike[], BigNumberish]): string;
@@ -12426,6 +12566,36 @@ declare namespace RewardsSentEvent {
     type OutputTuple = [amount: bigint];
     interface OutputObject {
         amount: bigint;
+    }
+    type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>;
+    type Filter = TypedDeferredTopicFilter<Event>;
+    type Log = TypedEventLog<Event>;
+    type LogDescription = TypedLogDescription<Event>;
+}
+declare namespace SwapEvent {
+    type InputTuple = [
+        sender: AddressLike,
+        amount0In: BigNumberish,
+        amount1In: BigNumberish,
+        amount0Out: BigNumberish,
+        amount1Out: BigNumberish,
+        to: AddressLike
+    ];
+    type OutputTuple = [
+        sender: string,
+        amount0In: bigint,
+        amount1In: bigint,
+        amount0Out: bigint,
+        amount1Out: bigint,
+        to: string
+    ];
+    interface OutputObject {
+        sender: string;
+        amount0In: bigint;
+        amount1In: bigint;
+        amount0Out: bigint;
+        amount1Out: bigint;
+        to: string;
     }
     type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>;
     type Filter = TypedDeferredTopicFilter<Event>;
@@ -12551,9 +12721,12 @@ interface UniswapV3RouterUniversal extends BaseContract {
         void
     ], "nonpayable">;
     getEvent(key: "RewardsSent"): TypedContractEvent<RewardsSentEvent.InputTuple, RewardsSentEvent.OutputTuple, RewardsSentEvent.OutputObject>;
+    getEvent(key: "Swap"): TypedContractEvent<SwapEvent.InputTuple, SwapEvent.OutputTuple, SwapEvent.OutputObject>;
     filters: {
         "RewardsSent(uint256)": TypedContractEvent<RewardsSentEvent.InputTuple, RewardsSentEvent.OutputTuple, RewardsSentEvent.OutputObject>;
         RewardsSent: TypedContractEvent<RewardsSentEvent.InputTuple, RewardsSentEvent.OutputTuple, RewardsSentEvent.OutputObject>;
+        "Swap(address,uint256,uint256,uint256,uint256,address)": TypedContractEvent<SwapEvent.InputTuple, SwapEvent.OutputTuple, SwapEvent.OutputObject>;
+        Swap: TypedContractEvent<SwapEvent.InputTuple, SwapEvent.OutputTuple, SwapEvent.OutputObject>;
     };
 }
 
@@ -25506,6 +25679,41 @@ declare class UniswapV2Router__factory {
     }, {
         readonly stateMutability: "payable";
         readonly type: "receive";
+    }, {
+        readonly anonymous: false;
+        readonly inputs: readonly [{
+            readonly indexed: true;
+            readonly internalType: "address";
+            readonly name: "sender";
+            readonly type: "address";
+        }, {
+            readonly indexed: false;
+            readonly internalType: "uint256";
+            readonly name: "amount0In";
+            readonly type: "uint256";
+        }, {
+            readonly indexed: false;
+            readonly internalType: "uint256";
+            readonly name: "amount1In";
+            readonly type: "uint256";
+        }, {
+            readonly indexed: false;
+            readonly internalType: "uint256";
+            readonly name: "amount0Out";
+            readonly type: "uint256";
+        }, {
+            readonly indexed: false;
+            readonly internalType: "uint256";
+            readonly name: "amount1Out";
+            readonly type: "uint256";
+        }, {
+            readonly indexed: true;
+            readonly internalType: "address";
+            readonly name: "to";
+            readonly type: "address";
+        }];
+        readonly name: "Swap";
+        readonly type: "event";
     }];
     static createInterface(): UniswapV2RouterInterface;
     static connect(address: string, runner?: ContractRunner | null): UniswapV2Router;
@@ -26248,6 +26456,41 @@ declare class UniswapV2Router2__factory {
         }];
         readonly stateMutability: "nonpayable";
         readonly type: "function";
+    }, {
+        readonly anonymous: false;
+        readonly inputs: readonly [{
+            readonly indexed: true;
+            readonly internalType: "address";
+            readonly name: "sender";
+            readonly type: "address";
+        }, {
+            readonly indexed: false;
+            readonly internalType: "uint256";
+            readonly name: "amount0In";
+            readonly type: "uint256";
+        }, {
+            readonly indexed: false;
+            readonly internalType: "uint256";
+            readonly name: "amount1In";
+            readonly type: "uint256";
+        }, {
+            readonly indexed: false;
+            readonly internalType: "uint256";
+            readonly name: "amount0Out";
+            readonly type: "uint256";
+        }, {
+            readonly indexed: false;
+            readonly internalType: "uint256";
+            readonly name: "amount1Out";
+            readonly type: "uint256";
+        }, {
+            readonly indexed: true;
+            readonly internalType: "address";
+            readonly name: "to";
+            readonly type: "address";
+        }];
+        readonly name: "Swap";
+        readonly type: "event";
     }];
     static createInterface(): UniswapV2Router2Interface;
     static connect(address: string, runner?: ContractRunner | null): UniswapV2Router2;
@@ -26691,6 +26934,41 @@ declare class UniswapV3Router__factory {
     }, {
         readonly stateMutability: "payable";
         readonly type: "receive";
+    }, {
+        readonly anonymous: false;
+        readonly inputs: readonly [{
+            readonly indexed: true;
+            readonly internalType: "address";
+            readonly name: "sender";
+            readonly type: "address";
+        }, {
+            readonly indexed: false;
+            readonly internalType: "uint256";
+            readonly name: "amount0In";
+            readonly type: "uint256";
+        }, {
+            readonly indexed: false;
+            readonly internalType: "uint256";
+            readonly name: "amount1In";
+            readonly type: "uint256";
+        }, {
+            readonly indexed: false;
+            readonly internalType: "uint256";
+            readonly name: "amount0Out";
+            readonly type: "uint256";
+        }, {
+            readonly indexed: false;
+            readonly internalType: "uint256";
+            readonly name: "amount1Out";
+            readonly type: "uint256";
+        }, {
+            readonly indexed: true;
+            readonly internalType: "address";
+            readonly name: "to";
+            readonly type: "address";
+        }];
+        readonly name: "Swap";
+        readonly type: "event";
     }];
     static createInterface(): UniswapV3RouterInterface;
     static connect(address: string, runner?: ContractRunner | null): UniswapV3Router;
@@ -27516,6 +27794,41 @@ declare class UniswapV3Router2__factory {
     }, {
         readonly stateMutability: "payable";
         readonly type: "receive";
+    }, {
+        readonly anonymous: false;
+        readonly inputs: readonly [{
+            readonly indexed: true;
+            readonly internalType: "address";
+            readonly name: "sender";
+            readonly type: "address";
+        }, {
+            readonly indexed: false;
+            readonly internalType: "uint256";
+            readonly name: "amount0In";
+            readonly type: "uint256";
+        }, {
+            readonly indexed: false;
+            readonly internalType: "uint256";
+            readonly name: "amount1In";
+            readonly type: "uint256";
+        }, {
+            readonly indexed: false;
+            readonly internalType: "uint256";
+            readonly name: "amount0Out";
+            readonly type: "uint256";
+        }, {
+            readonly indexed: false;
+            readonly internalType: "uint256";
+            readonly name: "amount1Out";
+            readonly type: "uint256";
+        }, {
+            readonly indexed: true;
+            readonly internalType: "address";
+            readonly name: "to";
+            readonly type: "address";
+        }];
+        readonly name: "Swap";
+        readonly type: "event";
     }];
     static createInterface(): UniswapV3Router2Interface;
     static connect(address: string, runner?: ContractRunner | null): UniswapV3Router2;
@@ -27908,6 +28221,41 @@ declare class UniswapV3RouterUniversal__factory {
     }, {
         readonly stateMutability: "payable";
         readonly type: "receive";
+    }, {
+        readonly anonymous: false;
+        readonly inputs: readonly [{
+            readonly indexed: true;
+            readonly internalType: "address";
+            readonly name: "sender";
+            readonly type: "address";
+        }, {
+            readonly indexed: false;
+            readonly internalType: "uint256";
+            readonly name: "amount0In";
+            readonly type: "uint256";
+        }, {
+            readonly indexed: false;
+            readonly internalType: "uint256";
+            readonly name: "amount1In";
+            readonly type: "uint256";
+        }, {
+            readonly indexed: false;
+            readonly internalType: "uint256";
+            readonly name: "amount0Out";
+            readonly type: "uint256";
+        }, {
+            readonly indexed: false;
+            readonly internalType: "uint256";
+            readonly name: "amount1Out";
+            readonly type: "uint256";
+        }, {
+            readonly indexed: true;
+            readonly internalType: "address";
+            readonly name: "to";
+            readonly type: "address";
+        }];
+        readonly name: "Swap";
+        readonly type: "event";
     }];
     static createInterface(): UniswapV3RouterUniversalInterface;
     static connect(address: string, runner?: ContractRunner | null): UniswapV3RouterUniversal;

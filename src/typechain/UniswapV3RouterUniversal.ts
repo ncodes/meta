@@ -103,7 +103,7 @@ export interface UniswapV3RouterUniversalInterface extends Interface {
       | "uniswapV3SwapCallback"
   ): FunctionFragment;
 
-  getEvent(nameOrSignatureOrTopic: "RewardsSent"): EventFragment;
+  getEvent(nameOrSignatureOrTopic: "RewardsSent" | "Swap"): EventFragment;
 
   encodeFunctionData(
     functionFragment: "collectRewards",
@@ -183,6 +183,37 @@ export namespace RewardsSentEvent {
   export type OutputTuple = [amount: bigint];
   export interface OutputObject {
     amount: bigint;
+  }
+  export type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>;
+  export type Filter = TypedDeferredTopicFilter<Event>;
+  export type Log = TypedEventLog<Event>;
+  export type LogDescription = TypedLogDescription<Event>;
+}
+
+export namespace SwapEvent {
+  export type InputTuple = [
+    sender: AddressLike,
+    amount0In: BigNumberish,
+    amount1In: BigNumberish,
+    amount0Out: BigNumberish,
+    amount1Out: BigNumberish,
+    to: AddressLike
+  ];
+  export type OutputTuple = [
+    sender: string,
+    amount0In: bigint,
+    amount1In: bigint,
+    amount0Out: bigint,
+    amount1Out: bigint,
+    to: string
+  ];
+  export interface OutputObject {
+    sender: string;
+    amount0In: bigint;
+    amount1In: bigint;
+    amount0Out: bigint;
+    amount1Out: bigint;
+    to: string;
   }
   export type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>;
   export type Filter = TypedDeferredTopicFilter<Event>;
@@ -365,6 +396,13 @@ export interface UniswapV3RouterUniversal extends BaseContract {
     RewardsSentEvent.OutputTuple,
     RewardsSentEvent.OutputObject
   >;
+  getEvent(
+    key: "Swap"
+  ): TypedContractEvent<
+    SwapEvent.InputTuple,
+    SwapEvent.OutputTuple,
+    SwapEvent.OutputObject
+  >;
 
   filters: {
     "RewardsSent(uint256)": TypedContractEvent<
@@ -376,6 +414,17 @@ export interface UniswapV3RouterUniversal extends BaseContract {
       RewardsSentEvent.InputTuple,
       RewardsSentEvent.OutputTuple,
       RewardsSentEvent.OutputObject
+    >;
+
+    "Swap(address,uint256,uint256,uint256,uint256,address)": TypedContractEvent<
+      SwapEvent.InputTuple,
+      SwapEvent.OutputTuple,
+      SwapEvent.OutputObject
+    >;
+    Swap: TypedContractEvent<
+      SwapEvent.InputTuple,
+      SwapEvent.OutputTuple,
+      SwapEvent.OutputObject
     >;
   };
 }
