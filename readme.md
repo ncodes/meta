@@ -5,13 +5,13 @@ This repository includes information about the chains and payment methods suppor
 # Usage
 
 ```
-import chains,{getChainByName} from '@jointlabs/chains-info'
+import chains,{getChainByName} from '@jointlabs/meta'
 ```
 
 # Usage with NextJS
 
 ```
-import chains,{getChainByName} from '@jointlabs/chains-info/next'
+import chains,{getChainByName} from '@jointlabs/meta/next'
 ```
 
 Add `/next` to the import path to use the NextJS version of the library. This version will use `process.env` to set the chain information but still outputs an ESM module.
@@ -110,25 +110,6 @@ All environment variables allow a prefix (denoted as `{PREFIX}`) to be set to ma
 ### Tokens Lists
 
 `src/token_list.ts` includes the token list for each chain. It is used by the indexer to determine which tokens to index. It is also used by the Joint Interface to display the tokens supported by each chain.
-
-### Payment Methods
-
-`src/payment_methods.ts` contains all the payment methods supported. It includes the full badge name, region and logo.
-
-### Mediator Pools
-
-`src/mediator_pools.ts` contains the mediator pools supported by the Joint Interface. It is used to display the pools available for each chain, allowing ticket purchasers to select the pool they want to join after purchasing a ticket.
-
-### Badge Manifest
-
-`src/badge_manifest.ts` contains the information about badges that can be claimed on a Joint Interface.
-
-#### Environment Variables
-
-| Variable                                    | Default Value                             |
-| ------------------------------------------- | ----------------------------------------- |
-| LOCALHOST_KYC_BADGE_MANIFEST_CLAIM_PAGE_URL | http://localhost:3002/claim/kyc           |
-| SEPOLIA_KYC_BADGE_MANIFEST_CLAIM_API_URL    | https://kycbadge.joint.exchange/claim/kyc |
 
 ### ABI
 
