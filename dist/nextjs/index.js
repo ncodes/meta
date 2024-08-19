@@ -20176,7 +20176,7 @@ function IconBase(props) {
         id: "path-hs3laz6i_5-1"
       }
     )),
-    /* @__PURE__ */ React2.createElement("g", { id: "Page-1", stroke: "none", "stroke-width": "1", fill: "none", "fill-rule": "evenodd" }, /* @__PURE__ */ React2.createElement("g", { id: "base-logo-in-blue" }, /* @__PURE__ */ React2.createElement("mask", { id: "mask-hs3laz6i_5-2", fill: "white" }, /* @__PURE__ */ React2.createElement("use", { xlinkHref: "#path-hs3laz6i_5-1" })), /* @__PURE__ */ React2.createElement("g", { id: "SVGID_1_" }), /* @__PURE__ */ React2.createElement("g", { id: "Group", mask: "url(#mask-hs3laz6i_5-2)" }, /* @__PURE__ */ React2.createElement("g", { transform: "translate(-20.9877, -20.9877)" }, /* @__PURE__ */ React2.createElement(
+    /* @__PURE__ */ React2.createElement("g", { id: "Page-1", stroke: "none", strokeWidth: "1", fill: "none", fillRule: "evenodd" }, /* @__PURE__ */ React2.createElement("g", { id: "base-logo-in-blue" }, /* @__PURE__ */ React2.createElement("mask", { id: "mask-hs3laz6i_5-2", fill: "white" }, /* @__PURE__ */ React2.createElement("use", { xlinkHref: "#path-hs3laz6i_5-1" })), /* @__PURE__ */ React2.createElement("g", { id: "SVGID_1_" }), /* @__PURE__ */ React2.createElement("g", { id: "Group", mask: "url(#mask-hs3laz6i_5-2)" }, /* @__PURE__ */ React2.createElement("g", { transform: "translate(-20.9877, -20.9877)" }, /* @__PURE__ */ React2.createElement(
       "polygon",
       {
         id: "Path",
@@ -21978,15 +21978,13 @@ function IconBlast(props) {
   return /* @__PURE__ */ React3.createElement(
     "svg",
     {
-      width: "215px",
       ...props,
-      height: "215px",
       viewBox: "0 0 215 215",
       version: "1.1",
       xmlns: "http://www.w3.org/2000/svg",
       xmlnsXlink: "http://www.w3.org/1999/xlink"
     },
-    /* @__PURE__ */ React3.createElement("g", { id: "Page-1", stroke: "none", "stroke-width": "1", fill: "none", "fill-rule": "evenodd" }, /* @__PURE__ */ React3.createElement(
+    /* @__PURE__ */ React3.createElement("g", { id: "Page-1", stroke: "none", strokeWidth: "1", fill: "none", fillRule: "evenodd" }, /* @__PURE__ */ React3.createElement(
       "image",
       {
         id: "Bitmap",

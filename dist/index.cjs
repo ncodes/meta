@@ -20216,7 +20216,7 @@ function IconBase(props) {
         id: "path-hs3laz6i_5-1"
       }
     )),
-    /* @__PURE__ */ import_react2.default.createElement("g", { id: "Page-1", stroke: "none", "stroke-width": "1", fill: "none", "fill-rule": "evenodd" }, /* @__PURE__ */ import_react2.default.createElement("g", { id: "base-logo-in-blue" }, /* @__PURE__ */ import_react2.default.createElement("mask", { id: "mask-hs3laz6i_5-2", fill: "white" }, /* @__PURE__ */ import_react2.default.createElement("use", { xlinkHref: "#path-hs3laz6i_5-1" })), /* @__PURE__ */ import_react2.default.createElement("g", { id: "SVGID_1_" }), /* @__PURE__ */ import_react2.default.createElement("g", { id: "Group", mask: "url(#mask-hs3laz6i_5-2)" }, /* @__PURE__ */ import_react2.default.createElement("g", { transform: "translate(-20.9877, -20.9877)" }, /* @__PURE__ */ import_react2.default.createElement(
+    /* @__PURE__ */ import_react2.default.createElement("g", { id: "Page-1", stroke: "none", strokeWidth: "1", fill: "none", fillRule: "evenodd" }, /* @__PURE__ */ import_react2.default.createElement("g", { id: "base-logo-in-blue" }, /* @__PURE__ */ import_react2.default.createElement("mask", { id: "mask-hs3laz6i_5-2", fill: "white" }, /* @__PURE__ */ import_react2.default.createElement("use", { xlinkHref: "#path-hs3laz6i_5-1" })), /* @__PURE__ */ import_react2.default.createElement("g", { id: "SVGID_1_" }), /* @__PURE__ */ import_react2.default.createElement("g", { id: "Group", mask: "url(#mask-hs3laz6i_5-2)" }, /* @__PURE__ */ import_react2.default.createElement("g", { transform: "translate(-20.9877, -20.9877)" }, /* @__PURE__ */ import_react2.default.createElement(
       "polygon",
       {
         id: "Path",
@@ -22018,15 +22018,13 @@ function IconBlast(props) {
   return /* @__PURE__ */ import_react3.default.createElement(
     "svg",
     {
-      width: "215px",
       ...props,
-      height: "215px",
       viewBox: "0 0 215 215",
       version: "1.1",
       xmlns: "http://www.w3.org/2000/svg",
       xmlnsXlink: "http://www.w3.org/1999/xlink"
     },
-    /* @__PURE__ */ import_react3.default.createElement("g", { id: "Page-1", stroke: "none", "stroke-width": "1", fill: "none", "fill-rule": "evenodd" }, /* @__PURE__ */ import_react3.default.createElement(
+    /* @__PURE__ */ import_react3.default.createElement("g", { id: "Page-1", stroke: "none", strokeWidth: "1", fill: "none", fillRule: "evenodd" }, /* @__PURE__ */ import_react3.default.createElement(
       "image",
       {
         id: "Bitmap",

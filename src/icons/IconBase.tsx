@@ -17,7 +17,7 @@ export default function IconBase(props: React.SVGProps<SVGSVGElement>) {
 					id='path-hs3laz6i_5-1'
 				></path>
 			</defs>
-			<g id='Page-1' stroke='none' stroke-width='1' fill='none' fill-rule='evenodd'>
+			<g id='Page-1' stroke='none' strokeWidth='1' fill='none' fillRule='evenodd'>
 				<g id='base-logo-in-blue'>
 					<mask id='mask-hs3laz6i_5-2' fill='white'>
 						<use xlinkHref='#path-hs3laz6i_5-1'></use>

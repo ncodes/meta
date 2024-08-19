@@ -3,15 +3,13 @@ import React from 'react';
 export default function IconBlast(props: React.SVGProps<SVGSVGElement>) {
 	return (
 		<svg
-			width='215px'
 			{...props}
-			height='215px'
 			viewBox='0 0 215 215'
 			version='1.1'
 			xmlns='http://www.w3.org/2000/svg'
 			xmlnsXlink='http://www.w3.org/1999/xlink'
 		>
-			<g id='Page-1' stroke='none' stroke-width='1' fill='none' fill-rule='evenodd'>
+			<g id='Page-1' stroke='none' strokeWidth='1' fill='none' fillRule='evenodd'>
 				<image
 					id='Bitmap'
 					x='0'
