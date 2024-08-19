@@ -2,7 +2,9 @@ import _ from 'lodash';
 import { isAddressEqual } from 'viem';
 import arbitrumSepolia from './tokenlist/arbitrum-sepolia.json';
 import arbitrum from './tokenlist/arbitrum.json';
+import base from './tokenlist/base.json';
 import binance from './tokenlist/binance.json';
+import blast from './tokenlist/blast.json';
 import ethereum from './tokenlist/ethereum.json';
 import localhost from './tokenlist/localhost.json';
 import optimism from './tokenlist/optimism.json';
@@ -23,6 +25,8 @@ export const TokenLists: Record<TokenListNames, TokenList.TokenData> = {
 	sepolia,
 	'arbitrum-sepolia': arbitrumSepolia,
 	arbitrum,
+	base,
+	blast,
 };
 
 /**

@@ -19386,7 +19386,18 @@ function parseBadgeLocals(badge, locals) {
 }
 
 // src/chains.ts
-import { arbitrum, arbitrumSepolia, bsc, hardhat, mainnet, optimism, polygon, sepolia } from "viem/chains";
+import {
+  arbitrum,
+  arbitrumSepolia,
+  base,
+  blast,
+  bsc,
+  hardhat,
+  mainnet,
+  optimism,
+  polygon,
+  sepolia
+} from "viem/chains";
 
 // src/abi/MinerRegistry.json
 var MinerRegistry_default = [
@@ -20072,68 +20083,10 @@ var MinerRegistry_default = [
   }
 ];
 
-// src/icons/BSC.tsx
-import React from "react";
-function IconBSC(props) {
-  return /* @__PURE__ */ React.createElement(
-    "svg",
-    {
-      version: "1.1",
-      viewBox: "0 0 58.0 58.0",
-      xmlns: "http://www.w3.org/2000/svg",
-      ...props
-    },
-    /* @__PURE__ */ React.createElement("defs", null, /* @__PURE__ */ React.createElement("clipPath", { id: "i0" }, /* @__PURE__ */ React.createElement("path", { d: "M28.8662791,0 C44.8086848,0 57.7325581,12.9244128 57.7325581,28.8674839 C57.7325581,44.8105551 44.8086848,57.7349679 28.8662791,57.7349679 C12.9238734,57.7349679 0,44.8105551 0,28.8674839 C0,12.9244128 12.9238734,0 28.8662791,0 Z" })), /* @__PURE__ */ React.createElement("clipPath", { id: "i1" }, /* @__PURE__ */ React.createElement("path", { d: "M20.21419,0 L24.7710768,4.55108087 L12.3855384,16.9371363 L0.0059959037,4.55707702 L4.55888545,0.00399743598 L12.3855384,7.82897837 L20.21419,0 Z" })), /* @__PURE__ */ React.createElement("clipPath", { id: "i2" }, /* @__PURE__ */ React.createElement("path", { d: "M12.3795425,0 L24.7610837,12.3840567 L20.2081941,16.9371363 L12.3795425,9.10815789 L4.55288955,16.9331388 L0,12.3800592 L12.3795425,0 Z" })), /* @__PURE__ */ React.createElement("clipPath", { id: "i3" }, /* @__PURE__ */ React.createElement("path", { d: "M6.43980761,0 L6.43967322,6.43967322 L0,6.43980761 L0.000134392956,0.000134392956 L6.43980761,0 Z" })), /* @__PURE__ */ React.createElement("clipPath", { id: "i4" }, /* @__PURE__ */ React.createElement("path", { d: "M6.43980761,0 L6.43967322,6.43962589 L0,6.43976028 L0.000134391969,0.000134392956 L6.43980761,0 Z" })), /* @__PURE__ */ React.createElement("clipPath", { id: "i5" }, /* @__PURE__ */ React.createElement("path", { d: "M4.62084312,0 L9.24168624,4.621036 L4.62284176,9.24407071 L0.0059959037,4.62703215 L0.0059959037,4.61503984 L4.62084312,0 Z" }))),
-    /* @__PURE__ */ React.createElement("g", { transform: "translate(0.10465116279101494 0.07413893753709999)" }, /* @__PURE__ */ React.createElement("g", { clipPath: "url(#i0)" }, /* @__PURE__ */ React.createElement(
-      "polygon",
-      {
-        points: "0,0 57.7325581,0 57.7325581,57.7349679 0,57.7349679 0,0",
-        stroke: "none",
-        fill: "#050911"
-      }
-    )), /* @__PURE__ */ React.createElement("g", { transform: "translate(8.71758710950905 8.718407877430764)" }, /* @__PURE__ */ React.createElement("g", { transform: "translate(7.763153540584426 0.0)" }, /* @__PURE__ */ React.createElement("g", { transform: "translate(0.0 23.36101588065313)" }, /* @__PURE__ */ React.createElement("g", { clipPath: "url(#i1)" }, /* @__PURE__ */ React.createElement(
-      "polygon",
-      {
-        points: "0,0 24.7710768,0 24.7710768,16.9371363 0,16.9371363 0,0",
-        stroke: "none",
-        fill: "#ECA300"
-      }
-    ))), /* @__PURE__ */ React.createElement("g", { transform: "translate(0.005995903704853589 0.0)" }, /* @__PURE__ */ React.createElement("g", { clipPath: "url(#i2)" }, /* @__PURE__ */ React.createElement(
-      "polygon",
-      {
-        points: "0,0 24.7610837,0 24.7610837,16.9371363 0,16.9371363 0,0",
-        stroke: "none",
-        fill: "#ECA300"
-      }
-    )))), /* @__PURE__ */ React.createElement("g", { transform: "translate(0.0 15.526041355314188)" }, /* @__PURE__ */ React.createElement("g", { transform: "translate(31.189697151016702 4.625826522838987) rotate(-44.99999999999999)" }, /* @__PURE__ */ React.createElement("g", { clipPath: "url(#i3)" }, /* @__PURE__ */ React.createElement(
-      "polygon",
-      {
-        points: "-1.13686838e-13,0 6.43980761,0 6.43980761,6.43980761 -1.13686838e-13,6.43980761 -1.13686838e-13,0",
-        stroke: "none",
-        fill: "#ECA300"
-      }
-    ))), /* @__PURE__ */ React.createElement("g", { transform: "translate(-2.717825964282383e-13 4.623387086831677) rotate(-44.99999999999999)" }, /* @__PURE__ */ React.createElement("g", { clipPath: "url(#i4)" }, /* @__PURE__ */ React.createElement(
-      "polygon",
-      {
-        points: "-3.41060513e-13,0 6.43980761,0 6.43980761,6.43976028 -3.41060513e-13,6.43976028 -3.41060513e-13,0",
-        stroke: "none",
-        fill: "#ECA300"
-      }
-    ))), /* @__PURE__ */ React.createElement("g", { transform: "translate(15.52784883837921 0.0)" }, /* @__PURE__ */ React.createElement("g", { clipPath: "url(#i5)" }, /* @__PURE__ */ React.createElement(
-      "polygon",
-      {
-        points: "0,0 9.24568351,0 9.24568351,9.24407071 0,9.24407071 0,0",
-        stroke: "none",
-        fill: "#ECA300"
-      }
-    ))))))
-  );
-}
-
 // src/icons/IconArbitrum.tsx
-import React2 from "react";
+import React from "react";
 function IconArbitrum(props) {
-  return /* @__PURE__ */ React2.createElement(
+  return /* @__PURE__ */ React.createElement(
     "svg",
     {
       id: "b",
@@ -20142,7 +20095,7 @@ function IconArbitrum(props) {
       viewBox: "0 0 1226.88 1226.88",
       ...props
     },
-    /* @__PURE__ */ React2.createElement("defs", null, /* @__PURE__ */ React2.createElement("style", null, `
+    /* @__PURE__ */ React.createElement("defs", null, /* @__PURE__ */ React.createElement("style", null, `
           .d {fill: #fff;}
 
           .e {
@@ -20156,43 +20109,43 @@ function IconArbitrum(props) {
           .g {
           fill: #12aaff;
         }`)),
-    /* @__PURE__ */ React2.createElement("g", { id: "c", "data-name": "Layer 3" }, /* @__PURE__ */ React2.createElement("g", null, /* @__PURE__ */ React2.createElement("circle", { className: "f", cx: "613.44", cy: "613.44", r: "613.44" }), /* @__PURE__ */ React2.createElement("g", null, /* @__PURE__ */ React2.createElement(
+    /* @__PURE__ */ React.createElement("g", { id: "c", "data-name": "Layer 3" }, /* @__PURE__ */ React.createElement("g", null, /* @__PURE__ */ React.createElement("circle", { className: "f", cx: "613.44", cy: "613.44", r: "613.44" }), /* @__PURE__ */ React.createElement("g", null, /* @__PURE__ */ React.createElement(
       "path",
       {
         className: "f",
         d: "m162.91,397.79v431.21c0,27.53,14.71,52.99,38.54,66.71l373.44,215.65c23.83,13.72,53.17,13.72,77,0l373.44-215.65c23.83-13.72,38.54-39.18,38.54-66.71v-431.21c0-27.53-14.71-52.99-38.54-66.71l-373.44-215.65c-23.83-13.72-53.17-13.72-77,0l-373.53,215.65c-23.83,13.72-38.45,39.18-38.45,66.71Z"
       }
-    ), /* @__PURE__ */ React2.createElement("g", null, /* @__PURE__ */ React2.createElement(
+    ), /* @__PURE__ */ React.createElement("g", null, /* @__PURE__ */ React.createElement(
       "path",
       {
         className: "g",
         d: "m694.86,697.03l-53.26,146.05c-1.44,4.06-1.44,8.49,0,12.55l91.62,251.3,105.97-61.2-127.19-348.7c-2.89-8.03-14.26-8.03-17.15,0Z"
       }
-    ), /* @__PURE__ */ React2.createElement(
+    ), /* @__PURE__ */ React.createElement(
       "path",
       {
         className: "g",
         d: "m801.65,451.41c-2.89-8.03-14.26-8.03-17.15,0l-53.26,146.05c-1.44,4.06-1.44,8.49,0,12.55l150.11,411.44,105.97-61.2-185.68-508.84Z"
       }
-    )), /* @__PURE__ */ React2.createElement(
+    )), /* @__PURE__ */ React.createElement(
       "path",
       {
         className: "e",
         d: "m613.35,131.59c2.62,0,5.24.72,7.58,1.99l404.13,233.34c4.69,2.71,7.58,7.76,7.58,13.09v466.59c0,5.42-2.89,10.38-7.58,13.09l-404.13,233.34c-2.26,1.35-4.96,1.99-7.58,1.99s-5.24-.72-7.58-1.99l-404.13-233.16c-4.69-2.71-7.58-7.76-7.58-13.09v-466.68c0-5.42,2.89-10.38,7.58-13.09l404.13-233.34c2.35-1.35,4.96-2.08,7.58-2.08m0-68.15c-14.35,0-28.8,3.7-41.7,11.19l-404.04,233.25c-25.82,14.89-41.7,42.43-41.7,72.21v466.59c0,29.79,15.89,57.32,41.7,72.21l404.13,233.34c12.91,7.4,27.26,11.19,41.7,11.19s28.8-3.7,41.7-11.19l404.13-233.34c25.82-14.89,41.7-42.43,41.7-72.21v-466.59c0-29.79-15.89-57.32-41.7-72.21l-404.22-233.25c-12.91-7.49-27.35-11.19-41.7-11.19h0Z"
       }
-    ), /* @__PURE__ */ React2.createElement(
+    ), /* @__PURE__ */ React.createElement(
       "polygon",
       {
         className: "f",
         points: "346.07 1021.99 383.26 920.17 458.09 982.36 388.13 1046.27 346.07 1021.99"
       }
-    ), /* @__PURE__ */ React2.createElement("g", null, /* @__PURE__ */ React2.createElement(
+    ), /* @__PURE__ */ React.createElement("g", null, /* @__PURE__ */ React.createElement(
       "path",
       {
         className: "d",
         d: "m579.32,346.7h-102.45c-7.67,0-14.53,4.78-17.15,12.01l-219.62,602.08,105.97,61.2,241.83-663.01c2.26-5.96-2.17-12.28-8.58-12.28Z"
       }
-    ), /* @__PURE__ */ React2.createElement(
+    ), /* @__PURE__ */ React.createElement(
       "path",
       {
         className: "d",
@@ -20202,22 +20155,1925 @@ function IconArbitrum(props) {
   );
 }
 
-// src/icons/IconEthereum.tsx
+// src/icons/IconBase.tsx
+import React2 from "react";
+function IconBase(props) {
+  return /* @__PURE__ */ React2.createElement(
+    "svg",
+    {
+      width: "100px",
+      height: "100px",
+      viewBox: "0 0 100 100",
+      ...props,
+      version: "1.1",
+      xmlns: "http://www.w3.org/2000/svg",
+      xmlnsXlink: "http://www.w3.org/1999/xlink"
+    },
+    /* @__PURE__ */ React2.createElement("defs", null, /* @__PURE__ */ React2.createElement(
+      "path",
+      {
+        d: "M50,100 C22.384,100 0,77.616 0,50 C0,22.384 22.384,0 50,0 C77.616,0 100,22.384 100,50 C100,77.616 77.616,100 50,100 Z",
+        id: "path-hs3laz6i_5-1"
+      }
+    )),
+    /* @__PURE__ */ React2.createElement("g", { id: "Page-1", stroke: "none", "stroke-width": "1", fill: "none", "fill-rule": "evenodd" }, /* @__PURE__ */ React2.createElement("g", { id: "base-logo-in-blue" }, /* @__PURE__ */ React2.createElement("mask", { id: "mask-hs3laz6i_5-2", fill: "white" }, /* @__PURE__ */ React2.createElement("use", { xlinkHref: "#path-hs3laz6i_5-1" })), /* @__PURE__ */ React2.createElement("g", { id: "SVGID_1_" }), /* @__PURE__ */ React2.createElement("g", { id: "Group", mask: "url(#mask-hs3laz6i_5-2)" }, /* @__PURE__ */ React2.createElement("g", { transform: "translate(-20.9877, -20.9877)" }, /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "Path",
+        fill: "#FEFEFF",
+        points: "70.9876543 70.9876543 0 70.5500042 0.0642422211 67.940164"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_1",
+        fill: "#FDFEFF",
+        points: "70.9876543 70.9876543 0.0521968046 68.3737989 0.160605553 66.1975937"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_2",
+        fill: "#FCFDFF",
+        points: "70.9876543 70.9876543 0.13651472 66.6352438 0.297120273 64.4630537"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_3",
+        fill: "#FBFCFF",
+        points: "70.9876543 70.9876543 0.264999162 64.8966887 0.477801519 62.7285138"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_4",
+        fill: "#FAFCFF",
+        points: "70.9876543 70.9876543 0.437650131 63.1621488 0.702649293 61.0020041"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_5",
+        fill: "#F9FBFF",
+        points: "70.9876543 70.9876543 0.650452489 61.4356391 0.967648455 59.2795095"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_6",
+        fill: "#F8FAFF",
+        points: "70.9876543 70.9876543 0.907421373 59.7091294 1.27681414 57.5650452"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_7",
+        fill: "#F7FAFF",
+        points: "70.9876543 70.9876543 1.20454165 57.9946651 1.62613122 55.8586113"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_8",
+        fill: "#F6F9FF",
+        points: "70.9876543 70.9876543 1.54181331 56.2882311 2.01961483 54.1602075"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_9",
+        fill: "#F5F8FF",
+        points: "70.9876543 70.9876543 1.92325149 54.5858122 2.45324982 52.4738492"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_10",
+        fill: "#F4F8FF",
+        points: "70.9876543 70.9876543 2.34885621 52.8954388 2.9270362 50.7955212"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_11",
+        fill: "#F3F7FF",
+        points: "70.9876543 70.9876543 2.81059717 51.2171108 3.44498911 49.1332537"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_12",
+        fill: "#F2F6FF",
+        points: "70.9876543 70.9876543 3.31650466 49.5508282 4.0030934 47.4830317"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_13",
+        fill: "#F1F6FF",
+        points: "70.9876543 70.9876543 3.86256354 47.896591 4.59733395 45.844855"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_14",
+        fill: "#F0F5FF",
+        points: "70.9876543 70.9876543 4.45278895 46.2543992 5.23574102 44.222739"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_15",
+        fill: "#EFF4FF",
+        points: "70.9876543 70.9876543 5.07915061 44.628268 5.91028434 42.6166834"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_16",
+        fill: "#EEF3FF",
+        points: "70.9876543 70.9876543 5.74566365 43.0181973 6.62899419 41.0307036"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_17",
+        fill: "#EDF3FF",
+        points: "70.9876543 70.9876543 6.45232808 41.4282023 7.38384029 39.4607843"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_18",
+        fill: "#ECF2FF",
+        points: "70.9876543 70.9876543 7.19512876 39.8542679 8.17482264 37.9069256"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_19",
+        fill: "#EBF1FF",
+        points: "70.9876543 70.9876543 7.97808083 38.2963941 9.00595637 36.3771577"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_20",
+        fill: "#EAF1FF",
+        points: "70.9876543 70.9876543 8.80118429 36.762611 9.87322636 34.8634504"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_21",
+        fill: "#E9F0FF",
+        points: "70.9876543 70.9876543 9.660424 35.2448886 10.7806477 33.377849"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_22",
+        fill: "#E8EFFF",
+        points: "70.9876543 70.9876543 10.5558 33.7512569 11.7201902 31.9083082"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_23",
+        fill: "#E7EFFF",
+        points: "70.9876543 70.9876543 11.4873122 32.277701 12.6998841 30.4668734"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_24",
+        fill: "#E6EEFF",
+        points: "70.9876543 70.9876543 12.4549606 30.8282359 13.7076839 29.0495294"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_25",
+        fill: "#E5EDFF",
+        points: "70.9876543 70.9876543 13.4587453 29.4068767 14.7556352 27.6562762"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_26",
+        fill: "#E4EDFF",
+        points: "70.9876543 70.9876543 14.4946511 28.0055933 15.8357075 26.2871138"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_27",
+        fill: "#E3ECFF",
+        points: "70.9876543 70.9876543 15.5666932 26.6324158 16.947901 24.9500726"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_28",
+        fill: "#E2EBFF",
+        points: "70.9876543 70.9876543 16.6748715 25.2873443 18.0962307 23.6371222"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_29",
+        fill: "#E1EBFF",
+        points: "70.9876543 70.9876543 17.8111558 23.9663636 19.2726663 22.3522778"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_30",
+        fill: "#E0EAFF",
+        points: "70.9876543 70.9876543 18.9795612 22.6775041 20.4812231 21.0995545"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_31",
+        fill: "#DFE9FF",
+        points: "70.9876543 70.9876543 20.1800877 21.4167505 21.721901 19.8749372"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_32",
+        fill: "#DEE9FF",
+        points: "70.9876543 70.9876543 21.4167505 20.1800877 22.9906849 18.6824409"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_33",
+        fill: "#DDE8FF",
+        points: "70.9876543 70.9876543 22.6775041 18.9795612 24.2915899 17.5180507"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_34",
+        fill: "#DCE7FF",
+        points: "70.9876543 70.9876543 23.9663636 17.8111558 25.6165857 16.3897967"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_35",
+        fill: "#DBE7FF",
+        points: "70.9876543 70.9876543 25.2873443 16.6748715 26.9696874 15.2936638"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_36",
+        fill: "#DAE6FF",
+        points: "70.9876543 70.9876543 26.6324158 15.5666932 28.3508952 14.229652"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_37",
+        fill: "#D9E5FF",
+        points: "70.9876543 70.9876543 28.0055933 14.4946511 29.7561938 13.1977613"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_38",
+        fill: "#D8E5FF",
+        points: "70.9876543 70.9876543 29.4068767 13.4587453 31.1855832 12.206022"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_39",
+        fill: "#D7E4FF",
+        points: "70.9876543 70.9876543 30.8282359 12.4549606 32.6390635 11.2464038"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_40",
+        fill: "#D6E3FF",
+        points: "70.9876543 70.9876543 32.277701 11.4873122 34.1206497 10.3229219"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_41",
+        fill: "#D5E3FF",
+        points: "70.9876543 70.9876543 33.7512569 10.5558 35.6182965 9.43557622"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_42",
+        fill: "#D4E2FF",
+        points: "70.9876543 70.9876543 35.2448886 9.660424 37.1400341 8.58838193"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_43",
+        fill: "#D3E1FF",
+        points: "70.9876543 70.9876543 36.762611 8.80118429 38.6818474 7.77330875"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_44",
+        fill: "#D2E0FF",
+        points: "70.9876543 70.9876543 38.2963941 7.97808083 40.2437364 7.0024021"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_45",
+        fill: "#D1E0FF",
+        points: "70.9876543 70.9876543 39.8542679 7.19512876 41.8216859 6.2676317"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_46",
+        fill: "#D0DFFF",
+        points: "70.9876543 70.9876543 41.4282023 6.45232808 43.4197112 5.56899754"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_47",
+        fill: "#CFDEFF",
+        points: "70.9876543 70.9876543 43.0181973 5.74566365 45.033797 4.91051478"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_48",
+        fill: "#CEDEFF",
+        points: "70.9876543 70.9876543 44.628268 5.07915061 46.6639434 4.29619854"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_49",
+        fill: "#CDDDFF",
+        points: "70.9876543 70.9876543 46.2543992 4.45278895 48.3061351 3.71801855"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_50",
+        fill: "#CCDCFF",
+        points: "70.9876543 70.9876543 47.896591 3.86256354 49.9643875 3.18400508"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_51",
+        fill: "#CBDCFF",
+        points: "70.9876543 70.9876543 49.5508282 3.31650466 51.6346852 2.68612787"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_52",
+        fill: "#CADBFF",
+        points: "70.9876543 70.9876543 51.2171108 2.81059717 53.3170284 2.23241718"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_53",
+        fill: "#C9DAFF",
+        points: "70.9876543 70.9876543 52.8954388 2.34885621 55.0074018 1.81885789"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_54",
+        fill: "#C8DAFF",
+        points: "70.9876543 70.9876543 54.5858122 1.92325149 56.7098207 1.44946511"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_55",
+        fill: "#C7D9FF",
+        points: "70.9876543 70.9876543 56.2882311 1.54181331 58.4202698 1.12022373"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_56",
+        fill: "#C6D8FF",
+        points: "70.9876543 70.9876543 57.9946651 1.20454165 60.1387492 0.831133736"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_57",
+        fill: "#C5D8FF",
+        points: "70.9876543 70.9876543 59.7091294 0.907421373 61.8652589 0.586210268"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_58",
+        fill: "#C4D7FF",
+        points: "70.9876543 70.9876543 61.4356391 0.650452489 63.5957838 0.385453327"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_59",
+        fill: "#C3D6FF",
+        points: "70.9876543 70.9876543 63.1621488 0.437650131 65.3303237 0.224847774"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_60",
+        fill: "#C2D6FF",
+        points: "70.9876543 70.9876543 64.8966887 0.264999162 67.0688788 0.104393609"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_61",
+        fill: "#C1D5FF",
+        points: "70.9876543 70.9876543 66.6352438 0.13651472 68.8114491 0.0321211106"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_62",
+        fill: "#C0D4FF",
+        points: "70.9876543 70.9876543 68.3737989 0.0521968046 70.5500042 0"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_63",
+        fill: "#BFD4FF",
+        points: "70.9876543 70.9876543 70.1163692 0.00803027764 72.2925744 0.00803027764"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_64",
+        fill: "#BED3FF",
+        points: "70.9876543 70.9876543 71.8589394 0.00803027764 74.0351447 0.0642422211"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_65",
+        fill: "#BDD2FF",
+        points: "70.9876543 70.9876543 73.6015097 0.0521968046 75.7736998 0.160605553"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_66",
+        fill: "#BCD2FF",
+        points: "70.9876543 70.9876543 75.3400648 0.13651472 77.5122549 0.297120273"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_67",
+        fill: "#BBD1FF",
+        points: "70.9876543 70.9876543 77.0786199 0.264999162 79.2467949 0.477801519"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_68",
+        fill: "#BAD0FF",
+        points: "70.9876543 70.9876543 78.8091447 0.437650131 80.9733046 0.702649293"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_69",
+        fill: "#B9D0FF",
+        points: "70.9876543 70.9876543 80.5396696 0.650452489 82.6957991 0.967648455"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_70",
+        fill: "#B8CFFF",
+        points: "70.9876543 70.9876543 82.2621641 0.907421373 84.4102634 1.27681414"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_71",
+        fill: "#B7CEFF",
+        points: "70.9876543 70.9876543 83.9806435 1.20454165 86.1166974 1.62613122"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_72",
+        fill: "#B6CDFF",
+        points: "70.9876543 70.9876543 85.6870775 1.54181331 87.8151011 2.01961483"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_73",
+        fill: "#B5CDFF",
+        points: "70.9876543 70.9876543 87.3894964 1.92325149 89.5014594 2.45324982"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_74",
+        fill: "#B4CCFF",
+        points: "70.9876543 70.9876543 89.0798698 2.34885621 91.1757723 2.9270362"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_75",
+        fill: "#B3CBFF",
+        points: "70.9876543 70.9876543 90.7581979 2.81059717 92.8420549 3.44498911"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_76",
+        fill: "#B2CBFF",
+        points: "70.9876543 70.9876543 92.4244805 3.31650466 94.492277 4.0030934"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_77",
+        fill: "#B1CAFF",
+        points: "70.9876543 70.9876543 94.0787177 3.86256354 96.1304536 4.59733395"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_78",
+        fill: "#B0C9FF",
+        points: "70.9876543 70.9876543 95.7209094 4.45278895 97.7525697 5.23574102"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_79",
+        fill: "#AFC9FF",
+        points: "70.9876543 70.9876543 97.3430255 5.07915061 99.3586252 5.91028434"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_80",
+        fill: "#AEC8FF",
+        points: "70.9876543 70.9876543 98.9530962 5.74566365 100.944605 6.62899419"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_81",
+        fill: "#ADC7FF",
+        points: "70.9876543 70.9876543 100.547106 6.45232808 102.514524 7.38384029"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_82",
+        fill: "#ACC7FF",
+        points: "70.9876543 70.9876543 102.121041 7.19512876 104.068383 8.17482264"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_83",
+        fill: "#ABC6FF",
+        points: "70.9876543 70.9876543 103.678915 7.97808083 105.598151 9.00595637"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_84",
+        fill: "#AAC5FF",
+        points: "70.9876543 70.9876543 105.212698 8.80118429 107.111858 9.87322636"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_85",
+        fill: "#A9C5FF",
+        points: "70.9876543 70.9876543 106.73042 9.660424 108.59746 10.7806477"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_86",
+        fill: "#A8C4FF",
+        points: "70.9876543 70.9876543 108.224052 10.5558 110.062985 11.7201902"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_87",
+        fill: "#A7C3FF",
+        points: "70.9876543 70.9876543 109.697608 11.4873122 111.508435 12.6998841"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_88",
+        fill: "#A6C3FF",
+        points: "70.9876543 70.9876543 111.147073 12.4549606 112.925779 13.7076839"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_89",
+        fill: "#A5C2FF",
+        points: "70.9876543 70.9876543 112.568432 13.4587453 114.319032 14.7556352"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_90",
+        fill: "#A4C1FF",
+        points: "70.9876543 70.9876543 113.969715 14.4946511 115.68418 15.8357075"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_91",
+        fill: "#A3C1FF",
+        points: "70.9876543 70.9876543 115.342893 15.5666932 117.025236 16.947901"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_92",
+        fill: "#A2C0FF",
+        points: "70.9876543 70.9876543 116.687964 16.6748715 118.338186 18.0962307"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_93",
+        fill: "#A1BFFF",
+        points: "70.9876543 70.9876543 118.008945 17.8111558 119.623031 19.2726663"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_94",
+        fill: "#A0BFFF",
+        points: "70.9876543 70.9876543 119.297805 18.9795612 120.875754 20.4812231"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_95",
+        fill: "#9FBEFF",
+        points: "70.9876543 70.9876543 120.558558 20.1800877 122.100371 21.721901"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_96",
+        fill: "#9EBDFF",
+        points: "70.9876543 70.9876543 121.791206 21.4167505 123.292868 22.9906849"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_97",
+        fill: "#9DBDFF",
+        points: "70.9876543 70.9876543 122.995747 22.6775041 124.457258 24.2915899"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_98",
+        fill: "#9CBCFF",
+        points: "70.9876543 70.9876543 124.164153 23.9663636 125.585512 25.6165857"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_99",
+        fill: "#9BBBFF",
+        points: "70.9876543 70.9876543 125.300437 25.2873443 126.681645 26.9696874"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_100",
+        fill: "#9ABAFF",
+        points: "70.9876543 70.9876543 126.408615 26.6324158 127.745657 28.3508952"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_101",
+        fill: "#99BAFF",
+        points: "70.9876543 70.9876543 127.480658 28.0055933 128.777547 29.7561938"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_102",
+        fill: "#98B9FF",
+        points: "70.9876543 70.9876543 128.516563 29.4068767 129.769287 31.1855832"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_103",
+        fill: "#97B8FF",
+        points: "70.9876543 70.9876543 129.520348 30.8282359 130.728905 32.6390635"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_104",
+        fill: "#96B8FF",
+        points: "70.9876543 70.9876543 130.487996 32.277701 131.652387 34.1206497"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_105",
+        fill: "#95B7FF",
+        points: "70.9876543 70.9876543 131.419509 33.7512569 132.539732 35.6182965"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_106",
+        fill: "#94B6FF",
+        points: "70.9876543 70.9876543 132.314885 35.2448886 133.386927 37.1400341"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_107",
+        fill: "#93B6FF",
+        points: "70.9876543 70.9876543 133.174124 36.762611 134.197985 38.6818474"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_108",
+        fill: "#92B5FF",
+        points: "70.9876543 70.9876543 133.993213 38.2963941 134.972907 40.2437364"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_109",
+        fill: "#91B4FF",
+        points: "70.9876543 70.9876543 134.78018 39.8542679 135.707677 41.8216859"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_110",
+        fill: "#90B4FF",
+        points: "70.9876543 70.9876543 135.522981 41.4282023 136.406311 43.4197112"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_111",
+        fill: "#8FB3FF",
+        points: "70.9876543 70.9876543 136.229645 43.0181973 137.060779 45.033797"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_112",
+        fill: "#8EB2FF",
+        points: "70.9876543 70.9876543 136.896158 44.628268 137.67911 46.6639434"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_113",
+        fill: "#8DB2FF",
+        points: "70.9876543 70.9876543 137.52252 46.2543992 138.25729 48.3061351"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_114",
+        fill: "#8CB1FF",
+        points: "70.9876543 70.9876543 138.10873 47.896591 138.791304 49.9643875"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_115",
+        fill: "#8BB0FF",
+        points: "70.9876543 70.9876543 138.654789 49.5508282 139.289181 51.6346852"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_116",
+        fill: "#8AB0FF",
+        points: "70.9876543 70.9876543 139.160696 51.2171108 139.742891 53.3170284"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_117",
+        fill: "#89AFFF",
+        points: "70.9876543 70.9876543 139.626452 52.8954388 140.156451 55.0074018"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_118",
+        fill: "#88AEFF",
+        points: "70.9876543 70.9876543 140.052057 54.5858122 140.525844 56.7098207"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_119",
+        fill: "#87AEFF",
+        points: "70.9876543 70.9876543 140.42948 56.2882311 140.855085 58.4202698"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_120",
+        fill: "#86ADFF",
+        points: "70.9876543 70.9876543 140.770767 57.9946651 141.144175 60.1387492"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_121",
+        fill: "#85ACFF",
+        points: "70.9876543 70.9876543 141.067887 59.7091294 141.389098 61.8652589"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_122",
+        fill: "#84ACFF",
+        points: "70.9876543 70.9876543 141.324856 61.4356391 141.589855 63.5957838"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_123",
+        fill: "#83ABFF",
+        points: "70.9876543 70.9876543 141.537659 63.1621488 141.750461 65.3303237"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_124",
+        fill: "#82AAFF",
+        points: "70.9876543 70.9876543 141.710309 64.8966887 141.870915 67.0688788"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_125",
+        fill: "#81AAFF",
+        points: "70.9876543 70.9876543 141.838794 66.6352438 141.943188 68.8114491"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_126",
+        fill: "#80A9FF",
+        points: "70.9876543 70.9876543 141.923112 68.3737989 141.975309 70.5500042"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_127",
+        fill: "#7FA8FF",
+        points: "70.9876543 70.9876543 141.963263 70.1163692 141.963263 72.2925744"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_128",
+        fill: "#7EA7FF",
+        points: "70.9876543 70.9876543 141.963263 71.8589394 141.911066 74.0351447"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_129",
+        fill: "#7DA7FF",
+        points: "70.9876543 70.9876543 141.923112 73.6015097 141.814703 75.7736998"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_130",
+        fill: "#7CA6FF",
+        points: "70.9876543 70.9876543 141.838794 75.3400648 141.678188 77.5122549"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_131",
+        fill: "#7BA5FF",
+        points: "70.9876543 70.9876543 141.710309 77.0786199 141.497507 79.2467949"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_132",
+        fill: "#7AA5FF",
+        points: "70.9876543 70.9876543 141.537659 78.8091447 141.272659 80.9733046"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_133",
+        fill: "#79A4FF",
+        points: "70.9876543 70.9876543 141.324856 80.5396696 141.003645 82.6957991"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_134",
+        fill: "#78A3FF",
+        points: "70.9876543 70.9876543 141.067887 82.2621641 140.698494 84.4102634"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_135",
+        fill: "#77A3FF",
+        points: "70.9876543 70.9876543 140.770767 83.9806435 140.345162 86.1166974"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_136",
+        fill: "#76A2FF",
+        points: "70.9876543 70.9876543 140.42948 85.6870775 139.955694 87.8151011"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_137",
+        fill: "#75A1FF",
+        points: "70.9876543 70.9876543 140.052057 87.3894964 139.522059 89.5014594"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_138",
+        fill: "#74A1FF",
+        points: "70.9876543 70.9876543 139.626452 89.0798698 139.048272 91.1757723"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_139",
+        fill: "#73A0FF",
+        points: "70.9876543 70.9876543 139.160696 90.7581979 138.53032 92.8420549"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_140",
+        fill: "#729FFF",
+        points: "70.9876543 70.9876543 138.654789 92.4244805 137.972215 94.492277"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_141",
+        fill: "#719FFF",
+        points: "70.9876543 70.9876543 138.10873 94.0787177 137.377975 96.1304536"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_142",
+        fill: "#709EFF",
+        points: "70.9876543 70.9876543 137.52252 95.7209094 136.739568 97.7525697"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_143",
+        fill: "#6F9DFF",
+        points: "70.9876543 70.9876543 136.896158 97.3430255 136.061009 99.3586252"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_144",
+        fill: "#6E9DFF",
+        points: "70.9876543 70.9876543 136.229645 98.9530962 135.346314 100.944605"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_145",
+        fill: "#6D9CFF",
+        points: "70.9876543 70.9876543 135.522981 100.547106 134.591468 102.514524"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_146",
+        fill: "#6C9BFF",
+        points: "70.9876543 70.9876543 134.78018 102.121041 133.800486 104.068383"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_147",
+        fill: "#6B9BFF",
+        points: "70.9876543 70.9876543 133.993213 103.678915 132.969352 105.598151"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_148",
+        fill: "#6A9AFF",
+        points: "70.9876543 70.9876543 133.174124 105.212698 132.102082 107.111858"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_149",
+        fill: "#6999FF",
+        points: "70.9876543 70.9876543 132.314885 106.73042 131.194661 108.59746"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_150",
+        fill: "#6899FF",
+        points: "70.9876543 70.9876543 131.419509 108.224052 130.255118 110.062985"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_151",
+        fill: "#6798FF",
+        points: "70.9876543 70.9876543 130.487996 109.697608 129.275425 111.508435"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_152",
+        fill: "#6697FF",
+        points: "70.9876543 70.9876543 129.520348 111.147073 128.267625 112.925779"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_153",
+        fill: "#6597FF",
+        points: "70.9876543 70.9876543 128.516563 112.568432 127.219673 114.319032"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_154",
+        fill: "#6496FF",
+        points: "70.9876543 70.9876543 127.480658 113.969715 126.139601 115.68418"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_155",
+        fill: "#6395FF",
+        points: "70.9876543 70.9876543 126.408615 115.342893 125.027408 117.025236"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_156",
+        fill: "#6294FF",
+        points: "70.9876543 70.9876543 125.300437 116.687964 123.879078 118.338186"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_157",
+        fill: "#6194FF",
+        points: "70.9876543 70.9876543 124.164153 118.008945 122.702642 119.623031"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_158",
+        fill: "#6093FF",
+        points: "70.9876543 70.9876543 122.995747 119.297805 121.494086 120.875754"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_159",
+        fill: "#5F92FF",
+        points: "70.9876543 70.9876543 121.791206 120.558558 120.253408 122.100371"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_160",
+        fill: "#5E92FF",
+        points: "70.9876543 70.9876543 120.558558 121.791206 118.984624 123.292868"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_161",
+        fill: "#5D91FF",
+        points: "70.9876543 70.9876543 119.297805 122.995747 117.683719 124.457258"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_162",
+        fill: "#5C90FF",
+        points: "70.9876543 70.9876543 118.008945 124.164153 116.358723 125.585512"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_163",
+        fill: "#5B90FF",
+        points: "70.9876543 70.9876543 116.687964 125.300437 115.005621 126.681645"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_164",
+        fill: "#5A8FFF",
+        points: "70.9876543 70.9876543 115.342893 126.408615 113.624413 127.745657"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_165",
+        fill: "#598EFF",
+        points: "70.9876543 70.9876543 113.969715 127.480658 112.219115 128.777547"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_166",
+        fill: "#588EFF",
+        points: "70.9876543 70.9876543 112.568432 128.516563 110.789725 129.769287"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_167",
+        fill: "#578DFF",
+        points: "70.9876543 70.9876543 111.147073 129.520348 109.33223 130.728905"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_168",
+        fill: "#568CFF",
+        points: "70.9876543 70.9876543 109.697608 130.487996 107.854659 131.652387"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_169",
+        fill: "#558CFF",
+        points: "70.9876543 70.9876543 108.224052 131.419509 106.357012 132.539732"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_170",
+        fill: "#548BFF",
+        points: "70.9876543 70.9876543 106.73042 132.314885 104.835275 133.386927"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_171",
+        fill: "#538AFF",
+        points: "70.9876543 70.9876543 105.212698 133.174124 103.293461 134.197985"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_172",
+        fill: "#528AFF",
+        points: "70.9876543 70.9876543 103.678915 133.993213 101.731572 134.972907"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_173",
+        fill: "#5189FF",
+        points: "70.9876543 70.9876543 102.121041 134.78018 100.153623 135.707677"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_174",
+        fill: "#5088FF",
+        points: "70.9876543 70.9876543 100.547106 135.522981 98.5555975 136.406311"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_175",
+        fill: "#4F88FF",
+        points: "70.9876543 70.9876543 98.9530962 136.229645 96.9415116 137.060779"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_176",
+        fill: "#4E87FF",
+        points: "70.9876543 70.9876543 97.3430255 136.896158 95.3113653 137.67911"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_177",
+        fill: "#4D86FF",
+        points: "70.9876543 70.9876543 95.7209094 137.52252 93.6691735 138.25729"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_178",
+        fill: "#4C86FF",
+        points: "70.9876543 70.9876543 94.0787177 138.10873 92.0109212 138.791304"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_179",
+        fill: "#4B85FF",
+        points: "70.9876543 70.9876543 92.4244805 138.654789 90.3406234 139.289181"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_180",
+        fill: "#4A84FF",
+        points: "70.9876543 70.9876543 90.7581979 139.160696 88.6582803 139.742891"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_181",
+        fill: "#4984FF",
+        points: "70.9876543 70.9876543 89.0798698 139.626452 86.9638917 140.156451"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_182",
+        fill: "#4883FF",
+        points: "70.9876543 70.9876543 87.3894964 140.052057 85.265488 140.525844"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_183",
+        fill: "#4782FF",
+        points: "70.9876543 70.9876543 85.6870775 140.42948 83.5510237 140.855085"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_184",
+        fill: "#4681FF",
+        points: "70.9876543 70.9876543 83.9806435 140.770767 81.8365594 141.144175"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_185",
+        fill: "#4581FF",
+        points: "70.9876543 70.9876543 82.2621641 141.067887 80.1100497 141.389098"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_186",
+        fill: "#4480FF",
+        points: "70.9876543 70.9876543 80.5396696 141.324856 78.3795249 141.589855"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_187",
+        fill: "#437FFF",
+        points: "70.9876543 70.9876543 78.8091447 141.537659 76.6449849 141.750461"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_188",
+        fill: "#427FFF",
+        points: "70.9876543 70.9876543 77.0786199 141.710309 74.9064298 141.870915"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_189",
+        fill: "#417EFF",
+        points: "70.9876543 70.9876543 75.3400648 141.838794 73.1638596 141.943188"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_190",
+        fill: "#407DFF",
+        points: "70.9876543 70.9876543 73.6015097 141.923112 71.4212893 141.975309"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_191",
+        fill: "#3F7DFF",
+        points: "70.9876543 70.9876543 71.8589394 141.963263 69.6787191 141.963263"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_192",
+        fill: "#3E7CFF",
+        points: "70.9876543 70.9876543 70.1163692 141.963263 67.940164 141.911066"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_193",
+        fill: "#3D7BFF",
+        points: "70.9876543 70.9876543 68.3737989 141.923112 66.1975937 141.814703"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_194",
+        fill: "#3C7BFF",
+        points: "70.9876543 70.9876543 66.6352438 141.838794 64.4630537 141.678188"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_195",
+        fill: "#3B7AFF",
+        points: "70.9876543 70.9876543 64.8966887 141.710309 62.7285138 141.497507"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_196",
+        fill: "#3A79FF",
+        points: "70.9876543 70.9876543 63.1621488 141.537659 61.0020041 141.272659"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_197",
+        fill: "#3979FF",
+        points: "70.9876543 70.9876543 61.4356391 141.324856 59.2795095 141.003645"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_198",
+        fill: "#3878FF",
+        points: "70.9876543 70.9876543 59.7091294 141.067887 57.5650452 140.698494"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_199",
+        fill: "#3777FF",
+        points: "70.9876543 70.9876543 57.9946651 140.770767 55.8586113 140.345162"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_200",
+        fill: "#3677FF",
+        points: "70.9876543 70.9876543 56.2882311 140.42948 54.1602075 139.955694"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_201",
+        fill: "#3576FF",
+        points: "70.9876543 70.9876543 54.5858122 140.052057 52.4738492 139.522059"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_202",
+        fill: "#3475FF",
+        points: "70.9876543 70.9876543 52.8954388 139.626452 50.7955212 139.048272"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_203",
+        fill: "#3375FF",
+        points: "70.9876543 70.9876543 51.2171108 139.160696 49.1332537 138.53032"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_204",
+        fill: "#3274FF",
+        points: "70.9876543 70.9876543 49.5508282 138.654789 47.4830317 137.972215"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_205",
+        fill: "#3173FF",
+        points: "70.9876543 70.9876543 47.896591 138.10873 45.844855 137.377975"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_206",
+        fill: "#3073FF",
+        points: "70.9876543 70.9876543 46.2543992 137.52252 44.222739 136.739568"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_207",
+        fill: "#2F72FF",
+        points: "70.9876543 70.9876543 44.628268 136.896158 42.6166834 136.061009"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_208",
+        fill: "#2E71FF",
+        points: "70.9876543 70.9876543 43.0181973 136.229645 41.0307036 135.346314"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_209",
+        fill: "#2D71FF",
+        points: "70.9876543 70.9876543 41.4282023 135.522981 39.4607843 134.591468"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_210",
+        fill: "#2C70FF",
+        points: "70.9876543 70.9876543 39.8542679 134.78018 37.9069256 133.800486"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_211",
+        fill: "#2B6FFF",
+        points: "70.9876543 70.9876543 38.2963941 133.993213 36.3771577 132.969352"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_212",
+        fill: "#2A6EFF",
+        points: "70.9876543 70.9876543 36.762611 133.174124 34.8634504 132.102082"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_213",
+        fill: "#296EFF",
+        points: "70.9876543 70.9876543 35.2448886 132.314885 33.377849 131.194661"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_214",
+        fill: "#286DFF",
+        points: "70.9876543 70.9876543 33.7512569 131.419509 31.9083082 130.255118"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_215",
+        fill: "#276CFF",
+        points: "70.9876543 70.9876543 32.277701 130.487996 30.4668734 129.275425"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_216",
+        fill: "#266CFF",
+        points: "70.9876543 70.9876543 30.8282359 129.520348 29.0495294 128.267625"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_217",
+        fill: "#256BFF",
+        points: "70.9876543 70.9876543 29.4068767 128.516563 27.6562762 127.219673"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_218",
+        fill: "#246AFF",
+        points: "70.9876543 70.9876543 28.0055933 127.480658 26.2871138 126.139601"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_219",
+        fill: "#236AFF",
+        points: "70.9876543 70.9876543 26.6324158 126.408615 24.9500726 125.027408"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_220",
+        fill: "#2269FF",
+        points: "70.9876543 70.9876543 25.2873443 125.300437 23.6371222 123.879078"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_221",
+        fill: "#2168FF",
+        points: "70.9876543 70.9876543 23.9663636 124.164153 22.3522778 122.702642"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_222",
+        fill: "#2068FF",
+        points: "70.9876543 70.9876543 22.6775041 122.995747 21.0995545 121.494086"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_223",
+        fill: "#1F67FF",
+        points: "70.9876543 70.9876543 21.4167505 121.791206 19.8749372 120.253408"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_224",
+        fill: "#1E66FF",
+        points: "70.9876543 70.9876543 20.1800877 120.558558 18.6824409 118.984624"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_225",
+        fill: "#1D66FF",
+        points: "70.9876543 70.9876543 18.9795612 119.297805 17.5180507 117.683719"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_226",
+        fill: "#1C65FF",
+        points: "70.9876543 70.9876543 17.8111558 118.008945 16.3897967 116.358723"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_227",
+        fill: "#1B64FF",
+        points: "70.9876543 70.9876543 16.6748715 116.687964 15.2936638 115.005621"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_228",
+        fill: "#1A64FF",
+        points: "70.9876543 70.9876543 15.5666932 115.342893 14.229652 113.624413"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_229",
+        fill: "#1963FF",
+        points: "70.9876543 70.9876543 14.4946511 113.969715 13.1977613 112.219115"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_230",
+        fill: "#1862FF",
+        points: "70.9876543 70.9876543 13.4587453 112.568432 12.206022 110.789725"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_231",
+        fill: "#1762FF",
+        points: "70.9876543 70.9876543 12.4549606 111.147073 11.2464038 109.33223"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_232",
+        fill: "#1661FF",
+        points: "70.9876543 70.9876543 11.4873122 109.697608 10.3229219 107.854659"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_233",
+        fill: "#1560FF",
+        points: "70.9876543 70.9876543 10.5558 108.224052 9.43557622 106.357012"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_234",
+        fill: "#1460FF",
+        points: "70.9876543 70.9876543 9.660424 106.73042 8.58838193 104.835275"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_235",
+        fill: "#135FFF",
+        points: "70.9876543 70.9876543 8.80118429 105.212698 7.77330875 103.293461"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_236",
+        fill: "#125EFF",
+        points: "70.9876543 70.9876543 7.97808083 103.678915 7.0024021 101.731572"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_237",
+        fill: "#115EFF",
+        points: "70.9876543 70.9876543 7.19512876 102.121041 6.2676317 100.153623"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_238",
+        fill: "#105DFF",
+        points: "70.9876543 70.9876543 6.45232808 100.547106 5.56899754 98.5555975"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_239",
+        fill: "#0F5CFF",
+        points: "70.9876543 70.9876543 5.74566365 98.9530962 4.91051478 96.9415116"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_240",
+        fill: "#0E5BFF",
+        points: "70.9876543 70.9876543 5.07915061 97.3430255 4.29619854 95.3113653"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_241",
+        fill: "#0D5BFF",
+        points: "70.9876543 70.9876543 4.45278895 95.7209094 3.71801855 93.6691735"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_242",
+        fill: "#0C5AFF",
+        points: "70.9876543 70.9876543 3.86256354 94.0787177 3.18400508 92.0109212"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_243",
+        fill: "#0B59FF",
+        points: "70.9876543 70.9876543 3.31650466 92.4244805 2.68612787 90.3406234"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_244",
+        fill: "#0A59FF",
+        points: "70.9876543 70.9876543 2.81059717 90.7581979 2.23241718 88.6582803"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_245",
+        fill: "#0958FF",
+        points: "70.9876543 70.9876543 2.34885621 89.0798698 1.81885789 86.9638917"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_246",
+        fill: "#0857FF",
+        points: "70.9876543 70.9876543 1.92325149 87.3894964 1.44946511 85.265488"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_247",
+        fill: "#0757FF",
+        points: "70.9876543 70.9876543 1.54181331 85.6870775 1.12022373 83.5510237"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_248",
+        fill: "#0656FF",
+        points: "70.9876543 70.9876543 1.20454165 83.9806435 0.831133736 81.8365594"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_249",
+        fill: "#0555FF",
+        points: "70.9876543 70.9876543 0.907421373 82.2621641 0.586210268 80.1100497"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_250",
+        fill: "#0455FF",
+        points: "70.9876543 70.9876543 0.650452489 80.5396696 0.385453327 78.3795249"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_251",
+        fill: "#0354FF",
+        points: "70.9876543 70.9876543 0.437650131 78.8091447 0.224847774 76.6449849"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_252",
+        fill: "#0253FF",
+        points: "70.9876543 70.9876543 0.264999162 77.0786199 0.104393609 74.9064298"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_253",
+        fill: "#0153FF",
+        points: "70.9876543 70.9876543 0.13651472 75.3400648 0.0321211106 73.1638596"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_254",
+        fill: "#0052FF",
+        points: "70.9876543 70.9876543 0.0521968046 73.6015097 0 71.4212893"
+      }
+    ), /* @__PURE__ */ React2.createElement(
+      "polygon",
+      {
+        id: "_255",
+        fill: "#FFFFFF",
+        points: "70.9876543 70.9876543 0.00803027764 71.8589394 0.00803027764 70.1163692"
+      }
+    )))))
+  );
+}
+
+// src/icons/IconBlast.tsx
 import React3 from "react";
+function IconBlast(props) {
+  return /* @__PURE__ */ React3.createElement(
+    "svg",
+    {
+      width: "215px",
+      ...props,
+      height: "215px",
+      viewBox: "0 0 215 215",
+      version: "1.1",
+      xmlns: "http://www.w3.org/2000/svg",
+      xmlnsXlink: "http://www.w3.org/1999/xlink"
+    },
+    /* @__PURE__ */ React3.createElement("g", { id: "Page-1", stroke: "none", "stroke-width": "1", fill: "none", "fill-rule": "evenodd" }, /* @__PURE__ */ React3.createElement(
+      "image",
+      {
+        id: "Bitmap",
+        x: "0",
+        y: "0",
+        width: "215",
+        height: "215",
+        xlinkHref: "data:image/png;base64,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wkXZiqa9QiaAUN7FiXKGT2fG8OX0VFeOmqh6UCoQV3I6sPWJmAC91hNp2hzQa6UvE9/LuqJ6PeJqFi56qeLiTDev1Uo/7vemY2EGSmBIAlxvPUkMD9z+sPQlRHUpolrMdqRF1eNSqri2WkL1Wz34sW45Se6zLYrpi11RXcW2hDld8VArVVw84qnp/PG0jb4lxRI+xRy8g1n48wXE9HN6qqslqr6ovD4U1j+H7rec7bTC04yEYvmxfSdD8PciqiUSVSwxUzlFQAREQAREQAREQAREQAREQAREQAREQAREQAREQAREQAREQAREQAREQAREQAREQAREQAREQAREQAREQAREQAREQAREQAREQAREQAREQAREQAREQAREQAREQAREQAREQAREQAREQAREQAREQAREQAREQAREQAREQAREQAREQAREQAREQAREQAREQAREQAREQAREQAREQAREQAREQAREQAREQAREQAREQAREQAREQAREQAREQAREQAREQAREQAREQAREQAREQAREQAREQAREQAREQAREQAREQAREQAREQAREQAREYJQJ/A92DAbm0u9HWgAAAABJRU5ErkJggg=="
+      }
+    ))
+  );
+}
+
+// src/icons/IconBSC.tsx
+import React4 from "react";
+function IconBSC(props) {
+  return /* @__PURE__ */ React4.createElement(
+    "svg",
+    {
+      version: "1.1",
+      viewBox: "0 0 58.0 58.0",
+      xmlns: "http://www.w3.org/2000/svg",
+      ...props
+    },
+    /* @__PURE__ */ React4.createElement("defs", null, /* @__PURE__ */ React4.createElement("clipPath", { id: "i0" }, /* @__PURE__ */ React4.createElement("path", { d: "M28.8662791,0 C44.8086848,0 57.7325581,12.9244128 57.7325581,28.8674839 C57.7325581,44.8105551 44.8086848,57.7349679 28.8662791,57.7349679 C12.9238734,57.7349679 0,44.8105551 0,28.8674839 C0,12.9244128 12.9238734,0 28.8662791,0 Z" })), /* @__PURE__ */ React4.createElement("clipPath", { id: "i1" }, /* @__PURE__ */ React4.createElement("path", { d: "M20.21419,0 L24.7710768,4.55108087 L12.3855384,16.9371363 L0.0059959037,4.55707702 L4.55888545,0.00399743598 L12.3855384,7.82897837 L20.21419,0 Z" })), /* @__PURE__ */ React4.createElement("clipPath", { id: "i2" }, /* @__PURE__ */ React4.createElement("path", { d: "M12.3795425,0 L24.7610837,12.3840567 L20.2081941,16.9371363 L12.3795425,9.10815789 L4.55288955,16.9331388 L0,12.3800592 L12.3795425,0 Z" })), /* @__PURE__ */ React4.createElement("clipPath", { id: "i3" }, /* @__PURE__ */ React4.createElement("path", { d: "M6.43980761,0 L6.43967322,6.43967322 L0,6.43980761 L0.000134392956,0.000134392956 L6.43980761,0 Z" })), /* @__PURE__ */ React4.createElement("clipPath", { id: "i4" }, /* @__PURE__ */ React4.createElement("path", { d: "M6.43980761,0 L6.43967322,6.43962589 L0,6.43976028 L0.000134391969,0.000134392956 L6.43980761,0 Z" })), /* @__PURE__ */ React4.createElement("clipPath", { id: "i5" }, /* @__PURE__ */ React4.createElement("path", { d: "M4.62084312,0 L9.24168624,4.621036 L4.62284176,9.24407071 L0.0059959037,4.62703215 L0.0059959037,4.61503984 L4.62084312,0 Z" }))),
+    /* @__PURE__ */ React4.createElement("g", { transform: "translate(0.10465116279101494 0.07413893753709999)" }, /* @__PURE__ */ React4.createElement("g", { clipPath: "url(#i0)" }, /* @__PURE__ */ React4.createElement(
+      "polygon",
+      {
+        points: "0,0 57.7325581,0 57.7325581,57.7349679 0,57.7349679 0,0",
+        stroke: "none",
+        fill: "#050911"
+      }
+    )), /* @__PURE__ */ React4.createElement("g", { transform: "translate(8.71758710950905 8.718407877430764)" }, /* @__PURE__ */ React4.createElement("g", { transform: "translate(7.763153540584426 0.0)" }, /* @__PURE__ */ React4.createElement("g", { transform: "translate(0.0 23.36101588065313)" }, /* @__PURE__ */ React4.createElement("g", { clipPath: "url(#i1)" }, /* @__PURE__ */ React4.createElement(
+      "polygon",
+      {
+        points: "0,0 24.7710768,0 24.7710768,16.9371363 0,16.9371363 0,0",
+        stroke: "none",
+        fill: "#ECA300"
+      }
+    ))), /* @__PURE__ */ React4.createElement("g", { transform: "translate(0.005995903704853589 0.0)" }, /* @__PURE__ */ React4.createElement("g", { clipPath: "url(#i2)" }, /* @__PURE__ */ React4.createElement(
+      "polygon",
+      {
+        points: "0,0 24.7610837,0 24.7610837,16.9371363 0,16.9371363 0,0",
+        stroke: "none",
+        fill: "#ECA300"
+      }
+    )))), /* @__PURE__ */ React4.createElement("g", { transform: "translate(0.0 15.526041355314188)" }, /* @__PURE__ */ React4.createElement("g", { transform: "translate(31.189697151016702 4.625826522838987) rotate(-44.99999999999999)" }, /* @__PURE__ */ React4.createElement("g", { clipPath: "url(#i3)" }, /* @__PURE__ */ React4.createElement(
+      "polygon",
+      {
+        points: "-1.13686838e-13,0 6.43980761,0 6.43980761,6.43980761 -1.13686838e-13,6.43980761 -1.13686838e-13,0",
+        stroke: "none",
+        fill: "#ECA300"
+      }
+    ))), /* @__PURE__ */ React4.createElement("g", { transform: "translate(-2.717825964282383e-13 4.623387086831677) rotate(-44.99999999999999)" }, /* @__PURE__ */ React4.createElement("g", { clipPath: "url(#i4)" }, /* @__PURE__ */ React4.createElement(
+      "polygon",
+      {
+        points: "-3.41060513e-13,0 6.43980761,0 6.43980761,6.43976028 -3.41060513e-13,6.43976028 -3.41060513e-13,0",
+        stroke: "none",
+        fill: "#ECA300"
+      }
+    ))), /* @__PURE__ */ React4.createElement("g", { transform: "translate(15.52784883837921 0.0)" }, /* @__PURE__ */ React4.createElement("g", { clipPath: "url(#i5)" }, /* @__PURE__ */ React4.createElement(
+      "polygon",
+      {
+        points: "0,0 9.24568351,0 9.24568351,9.24407071 0,9.24407071 0,0",
+        stroke: "none",
+        fill: "#ECA300"
+      }
+    ))))))
+  );
+}
+
+// src/icons/IconEthereum.tsx
+import React5 from "react";
 function IconEthereum(props) {
-  return /* @__PURE__ */ React3.createElement("svg", { xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 32 32", ...props }, /* @__PURE__ */ React3.createElement("g", { fill: "none", fillRule: "evenodd" }, /* @__PURE__ */ React3.createElement("circle", { cx: "16", cy: "16", r: "16", fill: "#627EEA" }), /* @__PURE__ */ React3.createElement("g", { fill: "#FFF", fillRule: "nonzero" }, /* @__PURE__ */ React3.createElement("path", { fillOpacity: ".602", d: "M16.498 4v8.87l7.497 3.35z" }), /* @__PURE__ */ React3.createElement("path", { d: "M16.498 4L9 16.22l7.498-3.35z" }), /* @__PURE__ */ React3.createElement("path", { fillOpacity: ".602", d: "M16.498 21.968v6.027L24 17.616z" }), /* @__PURE__ */ React3.createElement("path", { d: "M16.498 27.995v-6.028L9 17.616z" }), /* @__PURE__ */ React3.createElement("path", { fillOpacity: ".2", d: "M16.498 20.573l7.497-4.353-7.497-3.348z" }), /* @__PURE__ */ React3.createElement("path", { fillOpacity: ".602", d: "M9 16.22l7.498 4.353v-7.701z" }))));
+  return /* @__PURE__ */ React5.createElement("svg", { xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 32 32", ...props }, /* @__PURE__ */ React5.createElement("g", { fill: "none", fillRule: "evenodd" }, /* @__PURE__ */ React5.createElement("circle", { cx: "16", cy: "16", r: "16", fill: "#627EEA" }), /* @__PURE__ */ React5.createElement("g", { fill: "#FFF", fillRule: "nonzero" }, /* @__PURE__ */ React5.createElement("path", { fillOpacity: ".602", d: "M16.498 4v8.87l7.497 3.35z" }), /* @__PURE__ */ React5.createElement("path", { d: "M16.498 4L9 16.22l7.498-3.35z" }), /* @__PURE__ */ React5.createElement("path", { fillOpacity: ".602", d: "M16.498 21.968v6.027L24 17.616z" }), /* @__PURE__ */ React5.createElement("path", { d: "M16.498 27.995v-6.028L9 17.616z" }), /* @__PURE__ */ React5.createElement("path", { fillOpacity: ".2", d: "M16.498 20.573l7.497-4.353-7.497-3.348z" }), /* @__PURE__ */ React5.createElement("path", { fillOpacity: ".602", d: "M9 16.22l7.498 4.353v-7.701z" }))));
 }
 
 // src/icons/IconOptimism.tsx
-import React4 from "react";
+import React6 from "react";
 function IconOptimism(props) {
-  return /* @__PURE__ */ React4.createElement("svg", { viewBox: "0 0 500 500", xmlns: "http://www.w3.org/2000/svg", ...props }, /* @__PURE__ */ React4.createElement("circle", { cx: "250", cy: "250", r: "250", fill: "#FF0420" }), /* @__PURE__ */ React4.createElement(
+  return /* @__PURE__ */ React6.createElement("svg", { viewBox: "0 0 500 500", xmlns: "http://www.w3.org/2000/svg", ...props }, /* @__PURE__ */ React6.createElement("circle", { cx: "250", cy: "250", r: "250", fill: "#FF0420" }), /* @__PURE__ */ React6.createElement(
     "path",
     {
       d: "M177.133 316.446C162.247 316.446 150.051 312.943 140.544 305.938C131.162 298.808 126.471 288.676 126.471 275.541C126.471 272.789 126.784 269.411 127.409 265.408C129.036 256.402 131.35 245.581 134.352 232.947C142.858 198.547 164.812 181.347 200.213 181.347C209.845 181.347 218.476 182.973 226.107 186.225C233.738 189.352 239.742 194.106 244.12 200.486C248.498 206.74 250.688 214.246 250.688 223.002C250.688 225.629 250.375 228.944 249.749 232.947C247.873 244.08 245.621 254.901 242.994 265.408C238.616 282.546 231.048 295.368 220.29 303.874C209.532 312.255 195.147 316.446 177.133 316.446ZM179.76 289.426C186.766 289.426 192.707 287.362 197.586 283.234C202.59 279.106 206.155 272.789 208.281 264.283C211.158 252.524 213.348 242.266 214.849 233.51C215.349 230.883 215.599 228.194 215.599 225.441C215.599 214.058 209.657 208.366 197.774 208.366C190.768 208.366 184.764 210.43 179.76 214.558C174.882 218.687 171.379 225.004 169.253 233.51C167.001 241.891 164.749 252.149 162.498 264.283C161.997 266.784 161.747 269.411 161.747 272.163C161.747 283.672 167.752 289.426 179.76 289.426Z",
       fill: "white"
     }
-  ), /* @__PURE__ */ React4.createElement(
+  ), /* @__PURE__ */ React6.createElement(
     "path",
     {
       d: "M259.303 314.57C257.927 314.57 256.863 314.132 256.113 313.256C255.487 312.255 255.3 311.13 255.55 309.879L281.444 187.914C281.694 186.538 282.382 185.412 283.508 184.536C284.634 183.661 285.822 183.223 287.073 183.223H336.985C350.87 183.223 362.003 186.1 370.384 191.854C378.891 197.609 383.144 205.927 383.144 216.81C383.144 219.937 382.769 223.19 382.018 226.567C378.891 240.953 372.574 251.586 363.067 258.466C353.685 265.346 340.8 268.786 324.413 268.786H299.082L290.451 309.879C290.2 311.255 289.512 312.38 288.387 313.256C287.261 314.132 286.072 314.57 284.822 314.57H259.303ZM325.727 242.892C330.98 242.892 335.546 241.453 339.424 238.576C343.427 235.699 346.054 231.571 347.305 226.192C347.68 224.065 347.868 222.189 347.868 220.563C347.868 216.935 346.805 214.183 344.678 212.307C342.551 210.305 338.924 209.305 333.795 209.305H311.278L304.148 242.892H325.727Z",
@@ -20227,9 +22083,9 @@ function IconOptimism(props) {
 }
 
 // src/icons/IconPolygon.tsx
-import React5 from "react";
+import React7 from "react";
 function IconPolygon(props) {
-  return /* @__PURE__ */ React5.createElement(
+  return /* @__PURE__ */ React7.createElement(
     "svg",
     {
       id: "Layer_1",
@@ -20238,7 +22094,7 @@ function IconPolygon(props) {
       viewBox: "0 0 507.91 446.91",
       ...props
     },
-    /* @__PURE__ */ React5.createElement(
+    /* @__PURE__ */ React7.createElement(
       "path",
       {
         className: "cls-1",
@@ -20277,7 +22133,7 @@ var TokenInfo = class {
 // src/chains.ts
 var Chains = [
   {
-    disabled: true,
+    // disabled: true,
     displayName: "Ethereum",
     queryName: "ethereum",
     chainId: mainnet.id,
@@ -20293,7 +22149,7 @@ var Chains = [
       symbol: "WETH",
       abi: WETH_default,
       decimals: 18,
-      logoURI: "https://assets-cdn.trustwallet.com/blockchains/optimism/assets/0x4200000000000000000000000000000000000006/logo.png"
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2/logo.png"
     }),
     contracts: {
       core: {
@@ -20359,7 +22215,6 @@ var Chains = [
     }
   },
   {
-    disabled: true,
     displayName: "Polygon",
     queryName: "polygon",
     chainId: polygon.id,
@@ -20379,7 +22234,6 @@ var Chains = [
     })
   },
   {
-    disabled: true,
     displayName: "Optimism",
     queryName: "optimism",
     chainId: optimism.id,
@@ -20399,8 +22253,7 @@ var Chains = [
     })
   },
   {
-    disabled: true,
-    displayName: "Binance Chain",
+    displayName: "BNB Chain",
     altDisplayName: "BSC",
     queryName: "binance",
     chainId: bsc.id,
@@ -20420,7 +22273,47 @@ var Chains = [
     })
   },
   {
-    displayName: "Arbitrum",
+    displayName: "Base",
+    altDisplayName: "Base",
+    queryName: "base",
+    chainId: base.id,
+    chain: base,
+    symbol: "ETH",
+    apiUrl: process.env.BASE_API_URL ?? process.env.NEXT_PUBLIC_BASE_API_URL ?? process.env.VITE_BASE_API_URL,
+    rpcUrl: process.env.BASE_RPC_URL ?? process.env.NEXT_PUBLIC_BASE_RPC_URL ?? process.env.VITE_BASE_RPC_URL,
+    blockExplorer: "https://basescan.org/",
+    logoPath: IconBase,
+    wrappedTokenInfo: new TokenInfo({
+      address: process.env.BASE_WRAPPED_TOKEN_ADDRESS ?? process.env.NEXT_PUBLIC_BASE_WRAPPED_TOKEN_ADDRESS ?? process.env.VITE_BASE_WRAPPED_TOKEN_ADDRESS ?? "0x4200000000000000000000000000000000000006",
+      name: "WETH",
+      symbol: "ETH",
+      decimals: 18,
+      abi: WETH_default,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2/logo.png"
+    })
+  },
+  {
+    displayName: "Blast",
+    altDisplayName: "Blast",
+    queryName: "blast",
+    chainId: blast.id,
+    chain: blast,
+    symbol: "ETH",
+    apiUrl: process.env.BLAST_API_URL ?? process.env.NEXT_PUBLIC_BLAST_API_URL ?? process.env.VITE_BLAST_API_URL,
+    rpcUrl: process.env.BLAST_RPC_URL ?? process.env.NEXT_PUBLIC_BLAST_RPC_URL ?? process.env.VITE_BLAST_RPC_URL,
+    blockExplorer: "https://blastscan.io/",
+    logoPath: IconBlast,
+    wrappedTokenInfo: new TokenInfo({
+      address: process.env.BLAST_WRAPPED_TOKEN_ADDRESS ?? process.env.NEXT_PUBLIC_BLAST_WRAPPED_TOKEN_ADDRESS ?? process.env.VITE_BLAST_WRAPPED_TOKEN_ADDRESS ?? "0x4300000000000000000000000000000000000004",
+      name: "WETH",
+      symbol: "ETH",
+      decimals: 18,
+      abi: WETH_default,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2/logo.png"
+    })
+  },
+  {
+    displayName: "Arbitrum One",
     queryName: "arbitrum",
     chainId: arbitrum.id,
     chain: arbitrum,
@@ -20435,7 +22328,7 @@ var Chains = [
       symbol: "WETH",
       decimals: 18,
       abi: WETH_default,
-      logoURI: "https://assets-cdn.trustwallet.com/blockchains/optimism/assets/0x4200000000000000000000000000000000000006/logo.png"
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2/logo.png"
     }),
     contracts: {
       core: {
@@ -21273,6 +23166,30 @@ var arbitrum_default = {
   ]
 };
 
+// src/tokenlist/base.json
+var base_default = {
+  name: "Trust Wallet: Base",
+  logoURI: "https://trustwallet.com/assets/images/favicon.png",
+  timestamp: "2021-10-07T08:50:36.056Z",
+  tokens: [
+    {
+      asset: "0001",
+      type: "ERC20",
+      address: "0x4200000000000000000000000000000000000006",
+      name: "WETH",
+      symbol: "WETH",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2/logo.png",
+      price: 0
+    }
+  ],
+  version: {
+    major: 6,
+    minor: 0,
+    patch: 0
+  }
+};
+
 // src/tokenlist/binance.json
 var binance_default = {
   name: "Trust Wallet: Smart Chain",
@@ -21959,6 +23876,30 @@ var binance_default = {
   ],
   version: {
     major: 11,
+    minor: 0,
+    patch: 0
+  }
+};
+
+// src/tokenlist/blast.json
+var blast_default = {
+  name: "Trust Wallet: Blast",
+  logoURI: "https://trustwallet.com/assets/images/favicon.png",
+  timestamp: "2021-10-07T08:50:36.056Z",
+  tokens: [
+    {
+      asset: "0001",
+      type: "ERC20",
+      address: "0x4300000000000000000000000000000000000004",
+      name: "WETH",
+      symbol: "WETH",
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2/logo.png",
+      price: 0
+    }
+  ],
+  version: {
+    major: 6,
     minor: 0,
     patch: 0
   }
@@ -25800,7 +27741,9 @@ var TokenLists = {
   localhost: localhost_default,
   sepolia: sepolia_default,
   "arbitrum-sepolia": arbitrum_sepolia_default,
-  arbitrum: arbitrum_default
+  arbitrum: arbitrum_default,
+  base: base_default,
+  blast: blast_default
 };
 function getTokenInfo(network, address) {
   const netList = TokenLists[network];
@@ -26894,7 +28837,7 @@ var Reader = class _Reader {
   }
 };
 
-// node_modules/@noble/hashes/esm/_assert.js
+// node_modules/ethers/node_modules/@noble/hashes/esm/_assert.js
 function number(n2) {
   if (!Number.isSafeInteger(n2) || n2 < 0)
     throw new Error(`Wrong positive integer: ${n2}`);
@@ -26919,7 +28862,7 @@ function output(out, instance) {
   }
 }
 
-// node_modules/@noble/hashes/esm/_u64.js
+// node_modules/ethers/node_modules/@noble/hashes/esm/_u64.js
 var U32_MASK64 = /* @__PURE__ */ BigInt(2 ** 32 - 1);
 var _32n = /* @__PURE__ */ BigInt(32);
 function fromBig(n2, le = false) {
@@ -26941,7 +28884,7 @@ var rotlSL = (h, l, s) => l << s | h >>> 32 - s;
 var rotlBH = (h, l, s) => l << s - 32 | h >>> 64 - s;
 var rotlBL = (h, l, s) => h << s - 32 | l >>> 64 - s;
 
-// node_modules/@noble/hashes/esm/utils.js
+// node_modules/ethers/node_modules/@noble/hashes/esm/utils.js
 var u8a = (a) => a instanceof Uint8Array;
 var u32 = (arr) => new Uint32Array(arr.buffer, arr.byteOffset, Math.floor(arr.byteLength / 4));
 var isLE = new Uint8Array(new Uint32Array([287454020]).buffer)[0] === 68;
@@ -26983,7 +28926,7 @@ function wrapXOFConstructorWithOpts(hashCons) {
   return hashC;
 }
 
-// node_modules/@noble/hashes/esm/sha3.js
+// node_modules/ethers/node_modules/@noble/hashes/esm/sha3.js
 var [SHA3_PI, SHA3_ROTL, _SHA3_IOTA] = [[], [], []];
 var _0n = /* @__PURE__ */ BigInt(0);
 var _1n = /* @__PURE__ */ BigInt(1);

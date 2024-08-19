@@ -1,0 +1,22 @@
+{
+	"name": "Trust Wallet: Base",
+	"logoURI": "https://trustwallet.com/assets/images/favicon.png",
+	"timestamp": "2021-10-07T08:50:36.056Z",
+	"tokens": [
+		{
+			"asset": "0001",
+			"type": "ERC20",
+			"address": "0x4200000000000000000000000000000000000006",
+			"name": "WETH",
+			"symbol": "WETH",
+			"decimals": 18,
+			"logoURI": "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2/logo.png",
+			"price": 0
+		}
+	],
+	"version": {
+		"major": 6,
+		"minor": 0,
+		"patch": 0
+	}
+}

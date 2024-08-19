@@ -166,7 +166,7 @@ declare namespace TokenList {
     export {  };
 }
 
-type ChainNames = 'ethereum' | 'polygon' | 'optimism' | 'localhost' | 'sepolia' | 'arbitrum-sepolia' | 'arbitrum' | 'binance';
+type ChainNames = 'ethereum' | 'polygon' | 'optimism' | 'localhost' | 'sepolia' | 'arbitrum-sepolia' | 'arbitrum' | 'binance' | 'base' | 'blast';
 interface ChainInfo {
     displayName: string;
     altDisplayName?: string;

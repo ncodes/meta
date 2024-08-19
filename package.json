@@ -1,6 +1,6 @@
 {
-	"name": "@jointlabs/chains-info",
-	"version": "0.0.60",
+	"name": "@jointlabs/meta",
+	"version": "0.0.1",
 	"type": "module",
 	"engines": {
 		"node": ">=18.17.1"
@@ -32,7 +32,7 @@
 		"@typechain/ethers-v6": "^0.5.1",
 		"lodash": "^4.17.21",
 		"react": "^18.2.0",
-		"viem": "^2.7.6"
+		"viem": "^2.19.7"
 	},
 	"devDependencies": {
 		"@types/react": "^18.2.39",

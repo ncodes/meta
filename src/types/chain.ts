@@ -10,7 +10,9 @@ export type ChainNames =
 	| 'sepolia'
 	| 'arbitrum-sepolia'
 	| 'arbitrum'
-	| 'binance';
+	| 'binance'
+	| 'base'
+	| 'blast';
 
 export interface ChainInfo {
 	displayName: string; // The primary name of the chain
@@ -28,4 +30,3 @@ export interface ChainInfo {
 	wrappedTokenInfo: TokenInfo;
 	contracts?: Contracts;
 }
-

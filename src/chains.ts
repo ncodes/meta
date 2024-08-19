@@ -1,30 +1,44 @@
-import { Chain, arbitrum, arbitrumSepolia, bsc, hardhat, mainnet, optimism, polygon, sepolia } from 'viem/chains';
+import {
+	Chain,
+	arbitrum,
+	arbitrumSepolia,
+	base,
+	blast,
+	bsc,
+	hardhat,
+	mainnet,
+	optimism,
+	polygon,
+	sepolia,
+} from 'viem/chains';
 import AssetRegistryABI from './abi/AssetRegistry.json';
 import BadgeManagerABI from './abi/BadgeManager.json';
 import CoreABI from './abi/Core.json';
 import DisputeManagerABI from './abi/DisputeManager.json';
 import EnergonABI from './abi/Energon.json';
+import { Abi } from './abi/index';
 import MarketCoreABI from './abi/MarketCore.json';
 import MediatorManagerABI from './abi/MediatorManager.json';
 import MinerRegistryABI from './abi/MinerRegistry.json';
 import NftABI from './abi/NFT.json';
 import NativeTokenABI from './abi/Token.json';
 import WETHABI from './abi/WETH.json';
-import IconBSC from './icons/BSC';
 import IconArbitrum from './icons/IconArbitrum';
+import IconBase from './icons/IconBase';
+import IconBlast from './icons/IconBlast';
+import IconBSC from './icons/IconBSC';
 import IconEthereum from './icons/IconEthereum';
 import IconOptimism from './icons/IconOptimism';
 import IconPolygon from './icons/IconPolygon';
 import { ChainInfo } from './types/chain';
 import TokenInfo from './types/token';
-import {Abi} from "./abi/index";
 
 /**
  * Mapping of supported chains' information
  */
 const Chains: ChainInfo[] = [
 	{
-		disabled: true,
+		// disabled: true,
 		displayName: 'Ethereum',
 		queryName: 'ethereum',
 		chainId: mainnet.id,
@@ -43,7 +57,7 @@ const Chains: ChainInfo[] = [
 			abi: WETHABI,
 			decimals: 18,
 			logoURI:
-				'https://assets-cdn.trustwallet.com/blockchains/optimism/assets/0x4200000000000000000000000000000000000006/logo.png',
+				'https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2/logo.png',
 		}),
 		contracts: {
 			core: {
@@ -138,11 +152,10 @@ const Chains: ChainInfo[] = [
 			uniswapV3UniversalRouter: {
 				address: '0x3fC91A3afd70395Cd496C647d5a6CC9D4B2b7FAD',
 				abi: Abi.UniswapV3RouterUniversal,
-			}
+			},
 		},
 	},
 	{
-		disabled: true,
 		displayName: 'Polygon',
 		queryName: 'polygon',
 		chainId: polygon.id,
@@ -168,7 +181,6 @@ const Chains: ChainInfo[] = [
 		}),
 	},
 	{
-		disabled: true,
 		displayName: 'Optimism',
 		queryName: 'optimism',
 		chainId: optimism.id,
@@ -194,8 +206,7 @@ const Chains: ChainInfo[] = [
 		}),
 	},
 	{
-		disabled: true,
-		displayName: 'Binance Chain',
+		displayName: 'BNB Chain',
 		altDisplayName: 'BSC',
 		queryName: 'binance',
 		chainId: bsc.id,
@@ -221,7 +232,57 @@ const Chains: ChainInfo[] = [
 		}),
 	},
 	{
-		displayName: 'Arbitrum',
+		displayName: 'Base',
+		altDisplayName: 'Base',
+		queryName: 'base',
+		chainId: base.id,
+		chain: base,
+		symbol: 'ETH',
+		apiUrl: process.env.BASE_API_URL ?? process.env.NEXT_PUBLIC_BASE_API_URL ?? import.meta.env.VITE_BASE_API_URL,
+		rpcUrl: process.env.BASE_RPC_URL ?? process.env.NEXT_PUBLIC_BASE_RPC_URL ?? import.meta.env.VITE_BASE_RPC_URL,
+		blockExplorer: 'https://basescan.org/',
+		logoPath: IconBase as any,
+		wrappedTokenInfo: new TokenInfo({
+			address:
+				process.env.BASE_WRAPPED_TOKEN_ADDRESS ??
+				process.env.NEXT_PUBLIC_BASE_WRAPPED_TOKEN_ADDRESS ??
+				import.meta.env.VITE_BASE_WRAPPED_TOKEN_ADDRESS ??
+				'0x4200000000000000000000000000000000000006',
+			name: 'WETH',
+			symbol: 'ETH',
+			decimals: 18,
+			abi: WETHABI,
+			logoURI:
+				'https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2/logo.png',
+		}),
+	},
+	{
+		displayName: 'Blast',
+		altDisplayName: 'Blast',
+		queryName: 'blast',
+		chainId: blast.id,
+		chain: blast,
+		symbol: 'ETH',
+		apiUrl: process.env.BLAST_API_URL ?? process.env.NEXT_PUBLIC_BLAST_API_URL ?? import.meta.env.VITE_BLAST_API_URL,
+		rpcUrl: process.env.BLAST_RPC_URL ?? process.env.NEXT_PUBLIC_BLAST_RPC_URL ?? import.meta.env.VITE_BLAST_RPC_URL,
+		blockExplorer: 'https://blastscan.io/',
+		logoPath: IconBlast as any,
+		wrappedTokenInfo: new TokenInfo({
+			address:
+				process.env.BLAST_WRAPPED_TOKEN_ADDRESS ??
+				process.env.NEXT_PUBLIC_BLAST_WRAPPED_TOKEN_ADDRESS ??
+				import.meta.env.VITE_BLAST_WRAPPED_TOKEN_ADDRESS ??
+				'0x4300000000000000000000000000000000000004',
+			name: 'WETH',
+			symbol: 'ETH',
+			decimals: 18,
+			abi: WETHABI,
+			logoURI:
+				'https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2/logo.png',
+		}),
+	},
+	{
+		displayName: 'Arbitrum One',
 		queryName: 'arbitrum',
 		chainId: arbitrum.id,
 		chain: arbitrum,
@@ -243,7 +304,7 @@ const Chains: ChainInfo[] = [
 			decimals: 18,
 			abi: WETHABI,
 			logoURI:
-				'https://assets-cdn.trustwallet.com/blockchains/optimism/assets/0x4200000000000000000000000000000000000006/logo.png',
+				'https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2/logo.png',
 		}),
 		contracts: {
 			core: {
