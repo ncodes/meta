@@ -1,50 +1,52 @@
 {
-	"name": "@jointlabs/meta",
-	"version": "0.0.1",
-	"type": "module",
-	"engines": {
-		"node": ">=18.17.1"
-	},
-	"description": "A comprehensive library containing data on chains and assets supported on Joint applications",
-	"main": "./dist/index.cjs",
-	"module": "./dist/index.js",
-	"types": "./dist/index.d.ts",
-	"exports": {
-		".": {
-			"import": "./dist/index.js",
-			"require": "./dist/index.cjs",
-			"types": "./dist/index.d.ts"
-		},
-		"./next": {
-			"import": "./dist/nextjs/index.js",
-			"require": "./dist/index.cjs",
-			"types": "./dist/nextjs/index.d.ts"
-		}
-	},
-	"license": "MIT",
-	"scripts": {
-		"build": "rimraf dist && yarn typechain && tsup && yarn build-cjs && yarn build-nextjs",
-		"build-cjs": "tsup --config=tsup.config.cjs.ts",
-		"build-nextjs": "tsup --config=tsup.config.nextjs.ts",
-		"typechain": "typechain --target ethers-v6 --out-dir src/typechain src/abi/*.json"
-	},
-	"dependencies": {
-		"@typechain/ethers-v6": "^0.5.1",
-		"lodash": "^4.17.21",
-		"react": "^18.2.0",
-		"viem": "^2.19.7"
-	},
-	"devDependencies": {
-		"@types/react": "^18.2.39",
-		"ethers": "^6.13.0",
-		"prettier": "^3.1.0",
-		"replace-in-file": "^7.0.2",
-		"rifraf": "^2.0.3",
-		"tsup": "^8.0.1",
-		"typechain": "^8.3.2",
-		"typescript": "^5.3.3"
-	},
-	"peerDependencies": {
-		"viem": "^2.7.6"
-	}
+  "name": "@jointlabs/meta",
+  "version": "0.0.1",
+  "type": "module",
+  "engines": {
+    "node": ">=18.17.1"
+  },
+  "private": false,
+  "description": "A comprehensive library containing data on chains and assets supported on Joint applications",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs",
+      "types": "./dist/index.d.ts"
+    },
+    "./next": {
+      "import": "./dist/nextjs/index.js",
+      "require": "./dist/index.cjs",
+      "types": "./dist/nextjs/index.d.ts"
+    }
+  },
+  "license": "MIT",
+  "scripts": {
+    "build": "rimraf dist && yarn typechain && tsup && yarn build-cjs && yarn build-nextjs",
+    "build-cjs": "tsup --config=tsup.config.cjs.ts",
+    "build-nextjs": "tsup --config=tsup.config.nextjs.ts",
+    "typechain": "typechain --target ethers-v6 --out-dir src/typechain src/abi/*.json"
+  },
+  "dependencies": {
+    "@typechain/ethers-v6": "^0.5.1",
+    "lodash": "^4.17.21",
+    "react": "^18.2.0",
+    "viem": "^2.19.7"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.39",
+    "ethers": "^6.13.0",
+    "prettier": "^3.1.0",
+    "replace-in-file": "^7.0.2",
+    "rifraf": "^2.0.3",
+    "tsup": "^8.0.1",
+    "typechain": "^8.3.2",
+    "typescript": "^5.3.3"
+  },
+  "peerDependencies": {
+    "viem": "^2.7.6"
+  },
+  "author": ""
 }
