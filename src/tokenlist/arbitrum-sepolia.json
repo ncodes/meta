@@ -4,6 +4,18 @@
 	"timestamp": "2021-10-07T08:50:36.056Z",
 	"tokens": [
 		{
+			"asset": "0000",
+			"chainId": 1,
+			"type": "ERC20",
+			"address": "0x980B62Da83eFf3D4576C647993b0c1D7faf17c73",
+			"name": "ETH",
+			"symbol": "ETH",
+			"native": true,
+			"decimals": 18,
+			"logoURI": "https://files.joint.exchange/images/eth.svg",
+			"price": 0
+		},
+		{
 			"asset": "0001",
 			"type": "ERC20",
 			"address": "0x980B62Da83eFf3D4576C647993b0c1D7faf17c73",

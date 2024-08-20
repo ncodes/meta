@@ -4,6 +4,16 @@
   "timestamp": "2021-10-07T08:50:36.056Z",
   "tokens": [
     {
+			"asset": "0000",
+			"type": "POLYGON",
+			"address": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
+			"name": "MATIC",
+			"symbol": "MATIC",
+			"native": true,
+			"decimals": 18,
+			"logoURI": "https://files.joint.exchange/images/matic.svg"
+		},
+    {
       "asset": "c966_t0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
       "type": "POLYGON",
       "address": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",

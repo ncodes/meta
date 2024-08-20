@@ -23053,6 +23053,18 @@ var arbitrum_sepolia_default = {
   timestamp: "2021-10-07T08:50:36.056Z",
   tokens: [
     {
+      asset: "0000",
+      chainId: 1,
+      type: "ERC20",
+      address: "0x980B62Da83eFf3D4576C647993b0c1D7faf17c73",
+      name: "ETH",
+      symbol: "ETH",
+      native: true,
+      decimals: 18,
+      logoURI: "https://files.joint.exchange/images/eth.svg",
+      price: 0
+    },
+    {
       asset: "0001",
       type: "ERC20",
       address: "0x980B62Da83eFf3D4576C647993b0c1D7faf17c73",
@@ -23091,6 +23103,18 @@ var arbitrum_default = {
     patch: 0
   },
   tokens: [
+    {
+      asset: "0000",
+      chainId: 1,
+      type: "ERC20",
+      address: "0x82aF49447D8a07e3bd95BD0d56f35241523fBab1",
+      name: "ETH",
+      symbol: "ETH",
+      native: true,
+      decimals: 18,
+      logoURI: "https://files.joint.exchange/images/eth.svg",
+      price: 0
+    },
     {
       asset: "0001",
       type: "ERC20",
@@ -23171,6 +23195,18 @@ var base_default = {
   timestamp: "2021-10-07T08:50:36.056Z",
   tokens: [
     {
+      asset: "0000",
+      chainId: 1,
+      type: "ERC20",
+      address: "0x4200000000000000000000000000000000000006",
+      name: "ETH",
+      symbol: "ETH",
+      native: true,
+      decimals: 18,
+      logoURI: "https://files.joint.exchange/images/eth.svg",
+      price: 0
+    },
+    {
       asset: "0001",
       type: "ERC20",
       address: "0x4200000000000000000000000000000000000006",
@@ -23195,6 +23231,18 @@ var binance_default = {
   timestamp: "2021-06-17T12:17:25.447Z",
   tokens: [
     {
+      asset: "0000",
+      chainId: 56,
+      type: "BEP20",
+      address: "0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c",
+      name: "BNB",
+      symbol: "BNB",
+      native: true,
+      decimals: 18,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c/logo.png",
+      price: 0
+    },
+    {
       chainId: 56,
       asset: "c20000714_t0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c",
       type: "BEP20",
@@ -23202,7 +23250,8 @@ var binance_default = {
       name: "Wrapped BNB",
       symbol: "WBNB",
       decimals: 18,
-      logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c/logo.png"
+      logoURI: "https://files.joint.exchange/images/wbnb.svg",
+      price: 0
     },
     {
       chainId: 56,
@@ -23213,7 +23262,8 @@ var binance_default = {
       symbol: "bwJUP",
       decimals: 18,
       logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x0231f91e02DebD20345Ae8AB7D71A41f8E140cE7/logo.png",
-      pairs: []
+      pairs: [],
+      price: 0
     },
     {
       asset: "c20000714_t0x0D8Ce2A99Bb6e3B7Db580eD848240e4a0F9aE153",
@@ -23223,7 +23273,8 @@ var binance_default = {
       symbol: "FIL",
       decimals: 18,
       logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x0D8Ce2A99Bb6e3B7Db580eD848240e4a0F9aE153/logo.png",
-      pairs: []
+      pairs: [],
+      price: 0
     },
     {
       chainId: 56,
@@ -23234,7 +23285,8 @@ var binance_default = {
       symbol: "CAKE",
       decimals: 18,
       logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82/logo.png",
-      pairs: []
+      pairs: [],
+      price: 0
     },
     {
       asset: "c20000714_t0x0Eb3a705fc54725037CC9e008bDede697f62F335",
@@ -23244,7 +23296,8 @@ var binance_default = {
       symbol: "ATOM",
       decimals: 18,
       logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x0Eb3a705fc54725037CC9e008bDede697f62F335/logo.png",
-      pairs: []
+      pairs: [],
+      price: 0
     },
     {
       asset: "c20000714_t0x16939ef78684453bfDFb47825F8a5F714f12623a",
@@ -23254,7 +23307,8 @@ var binance_default = {
       symbol: "XTZ",
       decimals: 18,
       logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x16939ef78684453bfDFb47825F8a5F714f12623a/logo.png",
-      pairs: []
+      pairs: [],
+      price: 0
     },
     {
       asset: "c20000714_t0x190b589cf9Fb8DDEabBFeae36a813FFb2A702454",
@@ -23264,7 +23318,8 @@ var binance_default = {
       symbol: "BDO",
       decimals: 18,
       logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x190b589cf9Fb8DDEabBFeae36a813FFb2A702454/logo.png",
-      pairs: []
+      pairs: [],
+      price: 0
     },
     {
       chainId: 56,
@@ -23275,7 +23330,8 @@ var binance_default = {
       symbol: "DAI",
       decimals: 18,
       logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x1AF3F329e8BE154074D8769D1FFa4eE058B1DBc3/logo.png",
-      pairs: []
+      pairs: [],
+      price: 0
     },
     {
       asset: "c20000714_t0x1D2F0da169ceB9fC7B3144628dB156f3F6c60dBE",
@@ -23285,7 +23341,8 @@ var binance_default = {
       symbol: "XRP",
       decimals: 18,
       logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x1D2F0da169ceB9fC7B3144628dB156f3F6c60dBE/logo.png",
-      pairs: []
+      pairs: [],
+      price: 0
     },
     {
       asset: "c20000714_t0x2090c8295769791ab7A3CF1CC6e0AA19F35e441A",
@@ -23295,7 +23352,8 @@ var binance_default = {
       symbol: "Fuel",
       decimals: 18,
       logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x2090c8295769791ab7A3CF1CC6e0AA19F35e441A/logo.png",
-      pairs: []
+      pairs: [],
+      price: 0
     },
     {
       chainId: 56,
@@ -23306,7 +23364,8 @@ var binance_default = {
       symbol: "ETH",
       decimals: 18,
       logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x2170Ed0880ac9A755fd29B2688956BD959F933F8/logo.png",
-      pairs: []
+      pairs: [],
+      price: 0
     },
     {
       asset: "c20000714_t0x23396cF899Ca06c4472205fC903bDB4de249D6fC",
@@ -23316,7 +23375,8 @@ var binance_default = {
       symbol: "UST",
       decimals: 18,
       logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x23396cF899Ca06c4472205fC903bDB4de249D6fC/logo.png",
-      pairs: []
+      pairs: [],
+      price: 0
     },
     {
       asset: "c20000714_t0x233d91A0713155003fc4DcE0AFa871b508B3B715",
@@ -23326,7 +23386,8 @@ var binance_default = {
       symbol: "DITTO",
       decimals: 9,
       logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x233d91A0713155003fc4DcE0AFa871b508B3B715/logo.png",
-      pairs: []
+      pairs: [],
+      price: 0
     },
     {
       asset: "c20000714_t0x37Ac4D6140e54304D77437A5c11924f61a2D976f",
@@ -23336,7 +23397,8 @@ var binance_default = {
       symbol: "SFUEL",
       decimals: 18,
       logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x37Ac4D6140e54304D77437A5c11924f61a2D976f/logo.png",
-      pairs: []
+      pairs: [],
+      price: 0
     },
     {
       asset: "c20000714_t0x3aabCf53A1930A42E18D938C019E83Ebee50a849",
@@ -23346,7 +23408,8 @@ var binance_default = {
       symbol: "SPG",
       decimals: 9,
       logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x3aabCf53A1930A42E18D938C019E83Ebee50a849/logo.png",
-      pairs: []
+      pairs: [],
+      price: 0
     },
     {
       asset: "c20000714_t0x3EE2200Efb3400fAbB9AacF31297cBdD1d435D47",
@@ -23356,7 +23419,8 @@ var binance_default = {
       symbol: "ADA",
       decimals: 18,
       logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x3EE2200Efb3400fAbB9AacF31297cBdD1d435D47/logo.png",
-      pairs: []
+      pairs: [],
+      price: 0
     },
     {
       asset: "c20000714_t0x4197C6EF3879a08cD51e5560da5064B773aa1d29",
@@ -23366,7 +23430,8 @@ var binance_default = {
       symbol: "ACS",
       decimals: 18,
       logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x4197C6EF3879a08cD51e5560da5064B773aa1d29/logo.png",
-      pairs: []
+      pairs: [],
+      price: 0
     },
     {
       asset: "c20000714_t0x4338665CBB7B2485A8855A139b75D5e34AB0DB94",
@@ -23376,7 +23441,8 @@ var binance_default = {
       symbol: "LTC",
       decimals: 18,
       logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x4338665CBB7B2485A8855A139b75D5e34AB0DB94/logo.png",
-      pairs: []
+      pairs: [],
+      price: 0
     },
     {
       asset: "c20000714_t0x44754455564474A89358B2C2265883DF993b12F0",
@@ -23386,7 +23452,8 @@ var binance_default = {
       symbol: "ZEE",
       decimals: 18,
       logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x44754455564474A89358B2C2265883DF993b12F0/logo.png",
-      pairs: []
+      pairs: [],
+      price: 0
     },
     {
       asset: "c20000714_t0x47BEAd2563dCBf3bF2c9407fEa4dC236fAbA485A",
@@ -23396,7 +23463,8 @@ var binance_default = {
       symbol: "SXP",
       decimals: 18,
       logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x47BEAd2563dCBf3bF2c9407fEa4dC236fAbA485A/logo.png",
-      pairs: []
+      pairs: [],
+      price: 0
     },
     {
       chainId: 56,
@@ -23407,7 +23475,8 @@ var binance_default = {
       symbol: "TWT",
       decimals: 18,
       logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x4B0F1812e5Df2A09796481Ff14017e6005508003/logo.png",
-      pairs: []
+      pairs: [],
+      price: 0
     },
     {
       chainId: 56,
@@ -23418,7 +23487,8 @@ var binance_default = {
       symbol: "VAI",
       decimals: 18,
       logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x4BD17003473389A42DAF6a0a729f6Fdb328BbBd7/logo.png",
-      pairs: []
+      pairs: [],
+      price: 0
     },
     {
       chainId: 56,
@@ -23429,7 +23499,8 @@ var binance_default = {
       symbol: "USDT",
       decimals: 18,
       logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x55d398326f99059fF775485246999027B3197955/logo.png",
-      pairs: []
+      pairs: [],
+      price: 0
     },
     {
       asset: "c20000714_t0x56b6fB708fC5732DEC1Afc8D8556423A2EDcCbD6",
@@ -23439,7 +23510,8 @@ var binance_default = {
       symbol: "EOS",
       decimals: 18,
       logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x56b6fB708fC5732DEC1Afc8D8556423A2EDcCbD6/logo.png",
-      pairs: []
+      pairs: [],
+      price: 0
     },
     {
       asset: "c20000714_t0x5Ac52EE5b2a633895292Ff6d8A89bB9190451587",
@@ -23449,7 +23521,8 @@ var binance_default = {
       symbol: "BSCX",
       decimals: 18,
       logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x5Ac52EE5b2a633895292Ff6d8A89bB9190451587/logo.png",
-      pairs: []
+      pairs: [],
+      price: 0
     },
     {
       chainId: 56,
@@ -23460,7 +23533,8 @@ var binance_default = {
       symbol: "BLINK",
       decimals: 6,
       logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x63870A18B6e42b01Ef1Ad8A2302ef50B7132054F/logo.png",
-      pairs: []
+      pairs: [],
+      price: 0
     },
     {
       asset: "c20000714_t0x67ee3Cb086F8a16f34beE3ca72FAD36F7Db929e2",
@@ -23470,7 +23544,8 @@ var binance_default = {
       symbol: "DODO",
       decimals: 18,
       logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x67ee3Cb086F8a16f34beE3ca72FAD36F7Db929e2/logo.png",
-      pairs: []
+      pairs: [],
+      price: 0
     },
     {
       asset: "c20000714_t0x6c5FE6e99D2484db7E4BF34F365ABA42d0E4dC20",
@@ -23480,7 +23555,8 @@ var binance_default = {
       symbol: "ABS",
       decimals: 18,
       logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x6c5FE6e99D2484db7E4BF34F365ABA42d0E4dC20/logo.png",
-      pairs: []
+      pairs: [],
+      price: 0
     },
     {
       asset: "c20000714_t0x7083609fCE4d1d8Dc0C979AAb8c869Ea2C873402",
@@ -23490,7 +23566,8 @@ var binance_default = {
       symbol: "DOT",
       decimals: 18,
       logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x7083609fCE4d1d8Dc0C979AAb8c869Ea2C873402/logo.png",
-      pairs: []
+      pairs: [],
+      price: 0
     },
     {
       chainId: 56,
@@ -23501,7 +23578,8 @@ var binance_default = {
       symbol: "BTCB",
       decimals: 18,
       logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x7130d2A12B9BCbFAe4f2634d864A1Ee1Ce3Ead9c/logo.png",
-      pairs: []
+      pairs: [],
+      price: 0
     },
     {
       asset: "c20000714_t0x728C5baC3C3e370E372Fc4671f9ef6916b814d8B",
@@ -23511,7 +23589,8 @@ var binance_default = {
       symbol: "UNFI",
       decimals: 18,
       logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x728C5baC3C3e370E372Fc4671f9ef6916b814d8B/logo.png",
-      pairs: []
+      pairs: [],
+      price: 0
     },
     {
       asset: "c20000714_t0x72fAa679E1008Ad8382959FF48E392042A8b06f7",
@@ -23521,7 +23600,8 @@ var binance_default = {
       symbol: "bALBT",
       decimals: 18,
       logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x72fAa679E1008Ad8382959FF48E392042A8b06f7/logo.png",
-      pairs: []
+      pairs: [],
+      price: 0
     },
     {
       asset: "c20000714_t0x78650B139471520656b9E7aA7A5e9276814a38e9",
@@ -23531,7 +23611,8 @@ var binance_default = {
       symbol: "BTCST",
       decimals: 17,
       logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x78650B139471520656b9E7aA7A5e9276814a38e9/logo.png",
-      pairs: []
+      pairs: [],
+      price: 0
     },
     {
       asset: "c20000714_t0x790Be81C3cA0e53974bE2688cDb954732C9862e1",
@@ -23541,7 +23622,8 @@ var binance_default = {
       symbol: "BREW",
       decimals: 18,
       logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x790Be81C3cA0e53974bE2688cDb954732C9862e1/logo.png",
-      pairs: []
+      pairs: [],
+      price: 0
     },
     {
       asset: "c20000714_t0x7979F6C54ebA05E18Ded44C4F986F49a5De551c2",
@@ -23551,7 +23633,8 @@ var binance_default = {
       symbol: "KEBAB",
       decimals: 18,
       logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x7979F6C54ebA05E18Ded44C4F986F49a5De551c2/logo.png",
-      pairs: []
+      pairs: [],
+      price: 0
     },
     {
       asset: "c20000714_t0x7F70642d88cf1C4a3a7abb072B53B929b653edA5",
@@ -23561,7 +23644,8 @@ var binance_default = {
       symbol: "YFII",
       decimals: 18,
       logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x7F70642d88cf1C4a3a7abb072B53B929b653edA5/logo.png",
-      pairs: []
+      pairs: [],
+      price: 0
     },
     {
       asset: "c20000714_t0x81859801b01764D4f0Fa5E64729f5a6C3b91435b",
@@ -23571,7 +23655,8 @@ var binance_default = {
       symbol: "BFI",
       decimals: 18,
       logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x81859801b01764D4f0Fa5E64729f5a6C3b91435b/logo.png",
-      pairs: []
+      pairs: [],
+      price: 0
     },
     {
       asset: "c20000714_t0x88f1A5ae2A3BF98AEAF342D26B30a79438c9142e",
@@ -23581,7 +23666,8 @@ var binance_default = {
       symbol: "YFI",
       decimals: 18,
       logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x88f1A5ae2A3BF98AEAF342D26B30a79438c9142e/logo.png",
-      pairs: []
+      pairs: [],
+      price: 0
     },
     {
       asset: "c20000714_t0x8fF795a6F4D97E7887C79beA79aba5cc76444aDf",
@@ -23591,7 +23677,8 @@ var binance_default = {
       symbol: "BCH",
       decimals: 18,
       logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x8fF795a6F4D97E7887C79beA79aba5cc76444aDf/logo.png",
-      pairs: []
+      pairs: [],
+      price: 0
     },
     {
       asset: "c20000714_t0x928e55daB735aa8260AF3cEDadA18B5f70C72f1b",
@@ -23601,7 +23688,8 @@ var binance_default = {
       symbol: "FRONT",
       decimals: 18,
       logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x928e55daB735aa8260AF3cEDadA18B5f70C72f1b/logo.png",
-      pairs: []
+      pairs: [],
+      price: 0
     },
     {
       asset: "c20000714_t0x948d2a81086A075b3130BAc19e4c6DEe1D2E3fE8",
@@ -23611,7 +23699,8 @@ var binance_default = {
       symbol: "Helmet",
       decimals: 18,
       logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x948d2a81086A075b3130BAc19e4c6DEe1D2E3fE8/logo.png",
-      pairs: []
+      pairs: [],
+      price: 0
     },
     {
       asset: "c20000714_t0x97a30C692eCe9C317235d48287d23d358170FC40",
@@ -23621,7 +23710,8 @@ var binance_default = {
       symbol: "CRX",
       decimals: 18,
       logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x97a30C692eCe9C317235d48287d23d358170FC40/logo.png",
-      pairs: []
+      pairs: [],
+      price: 0
     },
     {
       asset: "c20000714_t0xa184088a740c695E156F91f5cC086a06bb78b827",
@@ -23631,7 +23721,8 @@ var binance_default = {
       symbol: "AUTO",
       decimals: 18,
       logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0xa184088a740c695E156F91f5cC086a06bb78b827/logo.png",
-      pairs: []
+      pairs: [],
+      price: 0
     },
     {
       chainId: 56,
@@ -23642,7 +23733,8 @@ var binance_default = {
       symbol: "ALPHA",
       decimals: 18,
       logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0xa1faa113cbE53436Df28FF0aEe54275c13B40975/logo.png",
-      pairs: []
+      pairs: [],
+      price: 0
     },
     {
       chainId: 56,
@@ -23653,7 +23745,8 @@ var binance_default = {
       symbol: "INJ",
       decimals: 18,
       logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0xa2B726B1145A4773F68593CF171187d8EBe4d495/logo.png",
-      pairs: []
+      pairs: [],
+      price: 0
     },
     {
       chainId: 56,
@@ -23664,7 +23757,8 @@ var binance_default = {
       symbol: "CTK",
       decimals: 6,
       logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0xA8c2B8eec3d368C0253ad3dae65a5F2BBB89c929/logo.png",
-      pairs: []
+      pairs: [],
+      price: 0
     },
     {
       asset: "c20000714_t0xAD6cAEb32CD2c308980a548bD0Bc5AA4306c6c18",
@@ -23674,7 +23768,8 @@ var binance_default = {
       symbol: "BAND",
       decimals: 18,
       logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0xAD6cAEb32CD2c308980a548bD0Bc5AA4306c6c18/logo.png",
-      pairs: []
+      pairs: [],
+      price: 0
     },
     {
       asset: "c20000714_t0xb59490aB09A0f526Cc7305822aC65f2Ab12f9723",
@@ -23684,7 +23779,8 @@ var binance_default = {
       symbol: "LIT",
       decimals: 18,
       logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0xb59490aB09A0f526Cc7305822aC65f2Ab12f9723/logo.png",
-      pairs: []
+      pairs: [],
+      price: 0
     },
     {
       chainId: 56,
@@ -23695,7 +23791,8 @@ var binance_default = {
       symbol: "UNI",
       decimals: 18,
       logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0xBf5140A22578168FD562DCcF235E5D43A02ce9B1/logo.png",
-      pairs: []
+      pairs: [],
+      price: 0
     },
     {
       asset: "c20000714_t0xbF7c81FFF98BbE61B40Ed186e4AfD6DDd01337fe",
@@ -23705,7 +23802,8 @@ var binance_default = {
       symbol: "EGLD",
       decimals: 18,
       logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0xbF7c81FFF98BbE61B40Ed186e4AfD6DDd01337fe/logo.png",
-      pairs: []
+      pairs: [],
+      price: 0
     },
     {
       asset: "c20000714_t0xC7d8D35EBA58a0935ff2D5a33Df105DD9f071731",
@@ -23715,7 +23813,8 @@ var binance_default = {
       symbol: "HGET",
       decimals: 6,
       logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0xC7d8D35EBA58a0935ff2D5a33Df105DD9f071731/logo.png",
-      pairs: []
+      pairs: [],
+      price: 0
     },
     {
       asset: "c20000714_t0xC7FB8c5eFE8564205eE5CbA4dE8eeA8a086a4bd2",
@@ -23725,7 +23824,8 @@ var binance_default = {
       symbol: "POCROC",
       decimals: 9,
       logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0xC7FB8c5eFE8564205eE5CbA4dE8eeA8a086a4bd2/logo.png",
-      pairs: []
+      pairs: [],
+      price: 0
     },
     {
       asset: "c20000714_t0xC9849E6fdB743d08fAeE3E34dd2D1bc69EA11a51",
@@ -23735,7 +23835,8 @@ var binance_default = {
       symbol: "BUNNY",
       decimals: 18,
       logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0xC9849E6fdB743d08fAeE3E34dd2D1bc69EA11a51/logo.png",
-      pairs: []
+      pairs: [],
+      price: 0
     },
     {
       chainId: 56,
@@ -23746,7 +23847,8 @@ var binance_default = {
       symbol: "BIFI",
       decimals: 18,
       logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0xCa3F508B8e4Dd382eE878A314789373D80A5190A/logo.png",
-      pairs: []
+      pairs: [],
+      price: 0
     },
     {
       asset: "c20000714_t0xcc2E12a9b5b75360c6FBf23B584c275D52cDdb0E",
@@ -23756,7 +23858,8 @@ var binance_default = {
       symbol: "CROW",
       decimals: 18,
       logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0xcc2E12a9b5b75360c6FBf23B584c275D52cDdb0E/logo.png",
-      pairs: []
+      pairs: [],
+      price: 0
     },
     {
       chainId: 56,
@@ -23767,7 +23870,8 @@ var binance_default = {
       symbol: "XVS",
       decimals: 18,
       logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0xcF6BB5389c92Bdda8a3747Ddb454cB7a64626C63/logo.png",
-      pairs: []
+      pairs: [],
+      price: 0
     },
     {
       asset: "c20000714_t0xD41FDb03Ba84762dD66a0af1a6C8540FF1ba5dfb",
@@ -23777,7 +23881,8 @@ var binance_default = {
       symbol: "SFP",
       decimals: 18,
       logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0xD41FDb03Ba84762dD66a0af1a6C8540FF1ba5dfb/logo.png",
-      pairs: []
+      pairs: [],
+      price: 0
     },
     {
       asset: "c20000714_t0xE40255C5d7fa7ceEc5120408C78C787CECB4cfdb",
@@ -23787,7 +23892,8 @@ var binance_default = {
       symbol: "SWGb",
       decimals: 18,
       logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0xE40255C5d7fa7ceEc5120408C78C787CECB4cfdb/logo.png",
-      pairs: []
+      pairs: [],
+      price: 0
     },
     {
       chainId: 56,
@@ -23798,7 +23904,8 @@ var binance_default = {
       symbol: "BUSD",
       decimals: 18,
       logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56/logo.png",
-      pairs: []
+      pairs: [],
+      price: 0
     },
     {
       asset: "c20000714_t0x9798dF2f5d213a872c787bD03b2b91F54D0D04A1",
@@ -23808,7 +23915,8 @@ var binance_default = {
       symbol: "TBC",
       decimals: 18,
       logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x9798dF2f5d213a872c787bD03b2b91F54D0D04A1/logo.png",
-      pairs: []
+      pairs: [],
+      price: 0
     },
     {
       asset: "c20000714_t0xF21768cCBC73Ea5B6fd3C687208a7c2def2d966e",
@@ -23818,7 +23926,8 @@ var binance_default = {
       symbol: "REEF",
       decimals: 18,
       logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0xF21768cCBC73Ea5B6fd3C687208a7c2def2d966e/logo.png",
-      pairs: []
+      pairs: [],
+      price: 0
     },
     {
       chainId: 56,
@@ -23829,7 +23938,8 @@ var binance_default = {
       symbol: "HARD",
       decimals: 6,
       logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0xf79037F6f6bE66832DE4E7516be52826BC3cBcc4/logo.png",
-      pairs: []
+      pairs: [],
+      price: 0
     },
     {
       asset: "c20000714_t0xF8A0BF9cF54Bb92F17374d9e9A321E6a111a51bD",
@@ -23839,7 +23949,8 @@ var binance_default = {
       symbol: "LINK",
       decimals: 18,
       logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0xF8A0BF9cF54Bb92F17374d9e9A321E6a111a51bD/logo.png",
-      pairs: []
+      pairs: [],
+      price: 0
     },
     {
       asset: "c20000714_t0xF952Fc3ca7325Cc27D15885d37117676d25BfdA6",
@@ -23849,7 +23960,8 @@ var binance_default = {
       symbol: "EGG",
       decimals: 18,
       logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0xF952Fc3ca7325Cc27D15885d37117676d25BfdA6/logo.png",
-      pairs: []
+      pairs: [],
+      price: 0
     },
     {
       asset: "c20000714_t0x016CF83732f1468150D87dCC5BdF67730B3934D3",
@@ -23859,7 +23971,8 @@ var binance_default = {
       symbol: "AIRT",
       decimals: 18,
       logoURI: "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x016CF83732f1468150D87dCC5BdF67730B3934D3/logo.png",
-      pairs: []
+      pairs: [],
+      price: 0
     },
     {
       asset: "c20000714_t0x8C851d1a123Ff703BD1f9dabe631b69902Df5f97",
@@ -23886,6 +23999,17 @@ var blast_default = {
   timestamp: "2021-10-07T08:50:36.056Z",
   tokens: [
     {
+      asset: "0000",
+      type: "ERC20",
+      address: "0x4300000000000000000000000000000000000004",
+      name: "ETH",
+      symbol: "ETH",
+      native: true,
+      decimals: 18,
+      logoURI: "https://files.joint.exchange/images/eth.svg",
+      price: 0
+    },
+    {
       asset: "0001",
       type: "ERC20",
       address: "0x4300000000000000000000000000000000000004",
@@ -23909,6 +24033,17 @@ var ethereum_default = {
   logoURI: "https://trustwallet.com/assets/images/favicon.png",
   timestamp: "2021-11-09T22:30:24.689Z",
   tokens: [
+    {
+      chainId: 1,
+      asset: "c60_t0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      type: "ERC20",
+      address: "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      name: "ETH",
+      symbol: "ETH",
+      native: true,
+      decimals: 18,
+      logoURI: "https://files.joint.exchange/images/eth.svg"
+    },
     {
       chainId: 1,
       asset: "c60_t0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
@@ -27432,6 +27567,17 @@ var localhost_default = {
   timestamp: "2021-10-07T08:50:36.056Z",
   tokens: [
     {
+      asset: "0000",
+      type: "ERC20",
+      address: "0x0E801D84Fa97b50751Dbf25036d067dCf18858bF",
+      name: "ETH",
+      symbol: "ETH",
+      native: true,
+      decimals: 18,
+      logoURI: "https://files.joint.exchange/images/eth.svg",
+      price: 0
+    },
+    {
       asset: "0001",
       type: "ERC20",
       address: "0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0",
@@ -27485,6 +27631,16 @@ var optimism_default = {
   logoURI: "https://trustwallet.com/assets/images/favicon.png",
   timestamp: "2022-01-30T13:55:46.031276",
   tokens: [
+    {
+      asset: "0000",
+      type: "OPTIMISM",
+      address: "0x4200000000000000000000000000000000000006",
+      name: "ETH",
+      symbol: "ETH",
+      native: true,
+      decimals: 18,
+      logoURI: "https://files.joint.exchange/images/eth.svg"
+    },
     {
       asset: "c10000070_t0x350a791Bfc2C21F9Ed5d10980Dad2e2638ffa7f6",
       type: "OPTIMISM",
@@ -27580,6 +27736,16 @@ var polygon_default = {
   logoURI: "https://trustwallet.com/assets/images/favicon.png",
   timestamp: "2021-10-07T08:50:36.056Z",
   tokens: [
+    {
+      asset: "0000",
+      type: "POLYGON",
+      address: "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
+      name: "MATIC",
+      symbol: "MATIC",
+      native: true,
+      decimals: 18,
+      logoURI: "https://files.joint.exchange/images/matic.svg"
+    },
     {
       asset: "c966_t0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
       type: "POLYGON",
@@ -27678,6 +27844,17 @@ var sepolia_default = {
   logoURI: "https://trustwallet.com/assets/images/favicon.png",
   timestamp: "2021-10-07T08:50:36.056Z",
   tokens: [
+    {
+      asset: "0000",
+      type: "ERC20",
+      address: "0x4263541D13298963498ff1f83d992812Ef3d2E73",
+      name: "ETH",
+      symbol: "ETH",
+      native: true,
+      decimals: 18,
+      logoURI: "https://files.joint.exchange/images/eth.svg",
+      price: 0
+    },
     {
       asset: "0001",
       type: "ERC20",
