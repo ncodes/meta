@@ -5,7 +5,7 @@
 	"tokens": [
 		{
 			"asset": "0000",
-			"type": "OPTIMISM",
+			"type": "NATIVE",
 			"address": "0x4200000000000000000000000000000000000006",
 			"name": "ETH",
 			"symbol": "ETH",

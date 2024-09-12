@@ -12,6 +12,11 @@ interface Abi {
     NativeToken: any;
     WETHAbi: any;
     AssetRegistry: any;
+    ProviderRegistry: any;
+    PayRouter: any;
+    MarketManager: any;
+    MinerRegistry: any;
+    Router: any;
     ERC20: any;
     ERC721: any;
     FeePool: any;
@@ -32,7 +37,7 @@ interface ContractInfo {
 type Contracts = Partial<{
     [key in ContractNames]: ContractInfo;
 }>;
-type ContractNames = 'core' | 'token' | 'energon' | 'nft' | 'badgeManager' | 'marketCore' | 'disputeManager' | 'mediatorManager' | 'assetRegistry' | 'minerRegistry' | 'uniswapV2Router' | 'uniswapV2Router2' | 'uniswapV3Router' | 'uniswapV3Router02' | 'uniswapV3UniversalRouter';
+type ContractNames = 'core' | 'token' | 'energon' | 'nft' | 'badgeManager' | 'marketCore' | 'disputeManager' | 'mediatorManager' | 'assetRegistry' | 'minerRegistry' | 'providerRegistry' | 'router' | 'payRouter' | 'marketManager' | 'uniswapV2Router' | 'uniswapV2Router2' | 'uniswapV3Router' | 'uniswapV3Router02' | 'uniswapV3UniversalRouter';
 type ContractsParams = {
     [key in ChainNames]?: {
         core: CoreParams;
@@ -42,6 +47,8 @@ type ContractsParams = {
         minerRegistry: MinerRegistryParams;
         others: OthersParams;
         chainlink: ChainLinkParams;
+        payRouter: PayRouterParams;
+        marketManager: {};
         token: {};
         energon: {};
         nft: {};
@@ -55,7 +62,9 @@ type CoreParams = {
     maxOpenOrders?: number;
     maxOpenDisputes?: number;
     transferToFeePoolInterval?: number;
-    nftDiscountBP?: number;
+};
+type PayRouterParams = {
+    payRouterProtocolFeeBp?: number;
 };
 type MarketCoreParams = {
     defaultDisputeDelayDur?: number;
@@ -90,6 +99,7 @@ type OthersParams = {
     operatorBond?: string;
     allocatorAddr?: string;
     safe?: string;
+    nativeAssetAddr?: string;
 };
 type MinerRegistryParams = {
     minerBond?: string;
@@ -117,8 +127,9 @@ type contract_MarketCoreParams = MarketCoreParams;
 type contract_MediatorManagerParams = MediatorManagerParams;
 type contract_MinerRegistryParams = MinerRegistryParams;
 type contract_OthersParams = OthersParams;
+type contract_PayRouterParams = PayRouterParams;
 declare namespace contract {
-  export type { contract_ChainLinkParams as ChainLinkParams, contract_ContractInfo as ContractInfo, contract_ContractNames as ContractNames, contract_Contracts as Contracts, contract_ContractsParams as ContractsParams, contract_CoreParams as CoreParams, contract_DisputeManagerParams as DisputeManagerParams, contract_MarketCoreParams as MarketCoreParams, contract_MediatorManagerParams as MediatorManagerParams, contract_MinerRegistryParams as MinerRegistryParams, contract_OthersParams as OthersParams };
+  export type { contract_ChainLinkParams as ChainLinkParams, contract_ContractInfo as ContractInfo, contract_ContractNames as ContractNames, contract_Contracts as Contracts, contract_ContractsParams as ContractsParams, contract_CoreParams as CoreParams, contract_DisputeManagerParams as DisputeManagerParams, contract_MarketCoreParams as MarketCoreParams, contract_MediatorManagerParams as MediatorManagerParams, contract_MinerRegistryParams as MinerRegistryParams, contract_OthersParams as OthersParams, contract_PayRouterParams as PayRouterParams };
 }
 
 /**
@@ -148,13 +159,14 @@ declare namespace TokenList {
     }
     export interface Token {
         asset?: string;
-        type?: string | "ERC20" | "SYNTHETIC";
+        type?: string | 'ERC20' | 'SYNTHETIC';
         address?: string;
         name?: string;
         symbol?: string;
         decimals?: number;
         logoURI?: string;
         disabled?: boolean;
+        native?: boolean;
         price?: number;
         isSynthetic?: boolean;
     }
@@ -266,6 +278,8 @@ declare function getContractsParams(network: ChainNames): {
     minerRegistry: MinerRegistryParams;
     others: OthersParams;
     chainlink: ChainLinkParams;
+    payRouter: PayRouterParams;
+    marketManager: {};
     token: {};
     energon: {};
     nft: {};
@@ -449,7 +463,7 @@ declare namespace AssetRegistryUpdatedEvent {
     type Log = TypedEventLog<Event>;
     type LogDescription = TypedLogDescription<Event>;
 }
-declare namespace OwnershipTransferredEvent$c {
+declare namespace OwnershipTransferredEvent$g {
     type InputTuple = [previousOwner: AddressLike, newOwner: AddressLike];
     type OutputTuple = [previousOwner: string, newOwner: string];
     interface OutputObject {
@@ -624,12 +638,12 @@ interface AssetRegistry extends BaseContract {
     ], "view">;
     getFunction(nameOrSignature: "transferOwnership"): TypedContractMethod<[newOwner: AddressLike], [void], "nonpayable">;
     getEvent(key: "AssetRegistryUpdated"): TypedContractEvent<AssetRegistryUpdatedEvent.InputTuple, AssetRegistryUpdatedEvent.OutputTuple, AssetRegistryUpdatedEvent.OutputObject>;
-    getEvent(key: "OwnershipTransferred"): TypedContractEvent<OwnershipTransferredEvent$c.InputTuple, OwnershipTransferredEvent$c.OutputTuple, OwnershipTransferredEvent$c.OutputObject>;
+    getEvent(key: "OwnershipTransferred"): TypedContractEvent<OwnershipTransferredEvent$g.InputTuple, OwnershipTransferredEvent$g.OutputTuple, OwnershipTransferredEvent$g.OutputObject>;
     filters: {
         "AssetRegistryUpdated(address,uint256,uint256,uint256,bool,bool,bool)": TypedContractEvent<AssetRegistryUpdatedEvent.InputTuple, AssetRegistryUpdatedEvent.OutputTuple, AssetRegistryUpdatedEvent.OutputObject>;
         AssetRegistryUpdated: TypedContractEvent<AssetRegistryUpdatedEvent.InputTuple, AssetRegistryUpdatedEvent.OutputTuple, AssetRegistryUpdatedEvent.OutputObject>;
-        "OwnershipTransferred(address,address)": TypedContractEvent<OwnershipTransferredEvent$c.InputTuple, OwnershipTransferredEvent$c.OutputTuple, OwnershipTransferredEvent$c.OutputObject>;
-        OwnershipTransferred: TypedContractEvent<OwnershipTransferredEvent$c.InputTuple, OwnershipTransferredEvent$c.OutputTuple, OwnershipTransferredEvent$c.OutputObject>;
+        "OwnershipTransferred(address,address)": TypedContractEvent<OwnershipTransferredEvent$g.InputTuple, OwnershipTransferredEvent$g.OutputTuple, OwnershipTransferredEvent$g.OutputObject>;
+        OwnershipTransferred: TypedContractEvent<OwnershipTransferredEvent$g.InputTuple, OwnershipTransferredEvent$g.OutputTuple, OwnershipTransferredEvent$g.OutputObject>;
     };
 }
 
@@ -876,7 +890,7 @@ declare namespace GranteeBadgeMetaUpdatedEvent {
     type Log = TypedEventLog<Event>;
     type LogDescription = TypedLogDescription<Event>;
 }
-declare namespace OwnershipTransferredEvent$b {
+declare namespace OwnershipTransferredEvent$f {
     type InputTuple = [previousOwner: AddressLike, newOwner: AddressLike];
     type OutputTuple = [previousOwner: string, newOwner: string];
     interface OutputObject {
@@ -1384,7 +1398,7 @@ interface BadgeManager extends BaseContract {
     getEvent(key: "BadgeOwnershipTransferred"): TypedContractEvent<BadgeOwnershipTransferredEvent.InputTuple, BadgeOwnershipTransferredEvent.OutputTuple, BadgeOwnershipTransferredEvent.OutputObject>;
     getEvent(key: "GrantedBadge"): TypedContractEvent<GrantedBadgeEvent.InputTuple, GrantedBadgeEvent.OutputTuple, GrantedBadgeEvent.OutputObject>;
     getEvent(key: "GranteeBadgeMetaUpdated"): TypedContractEvent<GranteeBadgeMetaUpdatedEvent.InputTuple, GranteeBadgeMetaUpdatedEvent.OutputTuple, GranteeBadgeMetaUpdatedEvent.OutputObject>;
-    getEvent(key: "OwnershipTransferred"): TypedContractEvent<OwnershipTransferredEvent$b.InputTuple, OwnershipTransferredEvent$b.OutputTuple, OwnershipTransferredEvent$b.OutputObject>;
+    getEvent(key: "OwnershipTransferred"): TypedContractEvent<OwnershipTransferredEvent$f.InputTuple, OwnershipTransferredEvent$f.OutputTuple, OwnershipTransferredEvent$f.OutputObject>;
     getEvent(key: "PathRegistered"): TypedContractEvent<PathRegisteredEvent.InputTuple, PathRegisteredEvent.OutputTuple, PathRegisteredEvent.OutputObject>;
     getEvent(key: "RemovedCoIssuer"): TypedContractEvent<RemovedCoIssuerEvent.InputTuple, RemovedCoIssuerEvent.OutputTuple, RemovedCoIssuerEvent.OutputObject>;
     getEvent(key: "ReplacedIssuer"): TypedContractEvent<ReplacedIssuerEvent.InputTuple, ReplacedIssuerEvent.OutputTuple, ReplacedIssuerEvent.OutputObject>;
@@ -1402,8 +1416,8 @@ interface BadgeManager extends BaseContract {
         GrantedBadge: TypedContractEvent<GrantedBadgeEvent.InputTuple, GrantedBadgeEvent.OutputTuple, GrantedBadgeEvent.OutputObject>;
         "GranteeBadgeMetaUpdated(address,address,string,string,string,string)": TypedContractEvent<GranteeBadgeMetaUpdatedEvent.InputTuple, GranteeBadgeMetaUpdatedEvent.OutputTuple, GranteeBadgeMetaUpdatedEvent.OutputObject>;
         GranteeBadgeMetaUpdated: TypedContractEvent<GranteeBadgeMetaUpdatedEvent.InputTuple, GranteeBadgeMetaUpdatedEvent.OutputTuple, GranteeBadgeMetaUpdatedEvent.OutputObject>;
-        "OwnershipTransferred(address,address)": TypedContractEvent<OwnershipTransferredEvent$b.InputTuple, OwnershipTransferredEvent$b.OutputTuple, OwnershipTransferredEvent$b.OutputObject>;
-        OwnershipTransferred: TypedContractEvent<OwnershipTransferredEvent$b.InputTuple, OwnershipTransferredEvent$b.OutputTuple, OwnershipTransferredEvent$b.OutputObject>;
+        "OwnershipTransferred(address,address)": TypedContractEvent<OwnershipTransferredEvent$f.InputTuple, OwnershipTransferredEvent$f.OutputTuple, OwnershipTransferredEvent$f.OutputObject>;
+        OwnershipTransferred: TypedContractEvent<OwnershipTransferredEvent$f.InputTuple, OwnershipTransferredEvent$f.OutputTuple, OwnershipTransferredEvent$f.OutputObject>;
         "PathRegistered(address,string,string,string[],string[])": TypedContractEvent<PathRegisteredEvent.InputTuple, PathRegisteredEvent.OutputTuple, PathRegisteredEvent.OutputObject>;
         PathRegistered: TypedContractEvent<PathRegisteredEvent.InputTuple, PathRegisteredEvent.OutputTuple, PathRegisteredEvent.OutputObject>;
         "RemovedCoIssuer(address,address,string)": TypedContractEvent<RemovedCoIssuerEvent.InputTuple, RemovedCoIssuerEvent.OutputTuple, RemovedCoIssuerEvent.OutputObject>;
@@ -1415,13 +1429,191 @@ interface BadgeManager extends BaseContract {
     };
 }
 
-declare namespace Structs$2 {
+declare namespace StructsLib$1 {
+    type CreateOfferParamsStruct = {
+        marketId: AddressLike;
+        provider: AddressLike;
+        recipient: AddressLike;
+        lid: BigNumberish;
+        amount: BigNumberish;
+        price: BigNumberish;
+        ids: BigNumberish[];
+        deadline: BigNumberish;
+        operator: BigNumberish;
+    };
+    type CreateOfferParamsStructOutput = [
+        marketId: string,
+        provider: string,
+        recipient: string,
+        lid: bigint,
+        amount: bigint,
+        price: bigint,
+        ids: bigint[],
+        deadline: bigint,
+        operator: bigint
+    ] & {
+        marketId: string;
+        provider: string;
+        recipient: string;
+        lid: bigint;
+        amount: bigint;
+        price: bigint;
+        ids: bigint[];
+        deadline: bigint;
+        operator: bigint;
+    };
+    type IntSlotStateStruct = {
+        instantSwapFeeBp: BigNumberish;
+        synthSwapFeeBp: BigNumberish;
+        stableSwapFeeBp: BigNumberish;
+        instantNFTSwapFeeBp: BigNumberish;
+        fixedSynthSwapFee: BigNumberish;
+        fixedNFTSwapFee: BigNumberish;
+        maxOpenOrders: BigNumberish;
+        maxOpenDisputes: BigNumberish;
+    };
+    type IntSlotStateStructOutput = [
+        instantSwapFeeBp: bigint,
+        synthSwapFeeBp: bigint,
+        stableSwapFeeBp: bigint,
+        instantNFTSwapFeeBp: bigint,
+        fixedSynthSwapFee: bigint,
+        fixedNFTSwapFee: bigint,
+        maxOpenOrders: bigint,
+        maxOpenDisputes: bigint
+    ] & {
+        instantSwapFeeBp: bigint;
+        synthSwapFeeBp: bigint;
+        stableSwapFeeBp: bigint;
+        instantNFTSwapFeeBp: bigint;
+        fixedSynthSwapFee: bigint;
+        fixedNFTSwapFee: bigint;
+        maxOpenOrders: bigint;
+        maxOpenDisputes: bigint;
+    };
+    type UintSlotState2Struct = {
+        ammEthPoolFee: BigNumberish;
+    };
+    type UintSlotState2StructOutput = [ammEthPoolFee: bigint] & {
+        ammEthPoolFee: bigint;
+    };
+    type SwapQuoteForBaseParamsStruct = {
+        marketId: AddressLike;
+        provider: AddressLike;
+        recipient: AddressLike;
+        lid: BigNumberish;
+        amount: BigNumberish;
+        maxPrice: BigNumberish;
+        ids: BigNumberish[];
+        expireAt: BigNumberish;
+        operator: BigNumberish;
+        marketMgrData: BytesLike;
+    };
+    type SwapQuoteForBaseParamsStructOutput = [
+        marketId: string,
+        provider: string,
+        recipient: string,
+        lid: bigint,
+        amount: bigint,
+        maxPrice: bigint,
+        ids: bigint[],
+        expireAt: bigint,
+        operator: bigint,
+        marketMgrData: string
+    ] & {
+        marketId: string;
+        provider: string;
+        recipient: string;
+        lid: bigint;
+        amount: bigint;
+        maxPrice: bigint;
+        ids: bigint[];
+        expireAt: bigint;
+        operator: bigint;
+        marketMgrData: string;
+    };
+    type UpdateFungibleLiquidityParamsStruct = {
+        marketId: AddressLike;
+        target: AddressLike;
+        lid: BigNumberish;
+        amount: BigNumberish;
+        price: BigNumberish;
+        timeToPay: BigNumberish;
+        expireAt: BigNumberish;
+        wantOrIds: BigNumberish[];
+        wantAndIds: BigNumberish[];
+        deduct: boolean;
+        pause: boolean;
+    };
+    type UpdateFungibleLiquidityParamsStructOutput = [
+        marketId: string,
+        target: string,
+        lid: bigint,
+        amount: bigint,
+        price: bigint,
+        timeToPay: bigint,
+        expireAt: bigint,
+        wantOrIds: bigint[],
+        wantAndIds: bigint[],
+        deduct: boolean,
+        pause: boolean
+    ] & {
+        marketId: string;
+        target: string;
+        lid: bigint;
+        amount: bigint;
+        price: bigint;
+        timeToPay: bigint;
+        expireAt: bigint;
+        wantOrIds: bigint[];
+        wantAndIds: bigint[];
+        deduct: boolean;
+        pause: boolean;
+    };
+    type UpdateNonFungibleLiquidityParamsStruct = {
+        marketId: AddressLike;
+        target: AddressLike;
+        lid: BigNumberish;
+        price: BigNumberish;
+        timeToPay: BigNumberish;
+        expireAt: BigNumberish;
+        ids: BigNumberish[];
+        wantOrIds: BigNumberish[];
+        wantAndIds: BigNumberish[];
+        deduct: boolean;
+        pause: boolean;
+    };
+    type UpdateNonFungibleLiquidityParamsStructOutput = [
+        marketId: string,
+        target: string,
+        lid: bigint,
+        price: bigint,
+        timeToPay: bigint,
+        expireAt: bigint,
+        ids: bigint[],
+        wantOrIds: bigint[],
+        wantAndIds: bigint[],
+        deduct: boolean,
+        pause: boolean
+    ] & {
+        marketId: string;
+        target: string;
+        lid: bigint;
+        price: bigint;
+        timeToPay: bigint;
+        expireAt: bigint;
+        ids: bigint[];
+        wantOrIds: bigint[];
+        wantAndIds: bigint[];
+        deduct: boolean;
+        pause: boolean;
+    };
+}
+declare namespace Structs$3 {
     type LiquidityStruct = {
         ids: BigNumberish[];
         amount: BigNumberish;
         price: BigNumberish;
-        minSwap: BigNumberish;
-        maxSwap: BigNumberish;
         timeToPay: BigNumberish;
         openOrders: BigNumberish;
         openDisputes: BigNumberish;
@@ -1438,8 +1630,6 @@ declare namespace Structs$2 {
         ids: bigint[],
         amount: bigint,
         price: bigint,
-        minSwap: bigint,
-        maxSwap: bigint,
         timeToPay: bigint,
         openOrders: bigint,
         openDisputes: bigint,
@@ -1455,8 +1645,6 @@ declare namespace Structs$2 {
         ids: bigint[];
         amount: bigint;
         price: bigint;
-        minSwap: bigint;
-        maxSwap: bigint;
         timeToPay: bigint;
         openOrders: bigint;
         openDisputes: bigint;
@@ -1507,12 +1695,12 @@ declare namespace Structs$2 {
         numLiquidity: BigNumberish;
         commission: BigNumberish;
         poolId: BigNumberish;
-        dur: Structs$2.MarketDurStruct;
+        dur: Structs$3.MarketDurStruct;
         creator: AddressLike;
         manager: AddressLike;
-        base: Structs$2.AssetStruct;
-        quote: Structs$2.AssetStruct;
-        perms: Structs$2.MarketPermsStruct;
+        base: Structs$3.AssetStruct;
+        quote: Structs$3.AssetStruct;
+        perms: Structs$3.MarketPermsStruct;
     };
     type MarketStructOutput = [
         createdAt: bigint,
@@ -1521,12 +1709,12 @@ declare namespace Structs$2 {
         numLiquidity: bigint,
         commission: bigint,
         poolId: bigint,
-        dur: Structs$2.MarketDurStructOutput,
+        dur: Structs$3.MarketDurStructOutput,
         creator: string,
         manager: string,
-        base: Structs$2.AssetStructOutput,
-        quote: Structs$2.AssetStructOutput,
-        perms: Structs$2.MarketPermsStructOutput
+        base: Structs$3.AssetStructOutput,
+        quote: Structs$3.AssetStructOutput,
+        perms: Structs$3.MarketPermsStructOutput
     ] & {
         createdAt: bigint;
         numOrders: bigint;
@@ -1534,12 +1722,12 @@ declare namespace Structs$2 {
         numLiquidity: bigint;
         commission: bigint;
         poolId: bigint;
-        dur: Structs$2.MarketDurStructOutput;
+        dur: Structs$3.MarketDurStructOutput;
         creator: string;
         manager: string;
-        base: Structs$2.AssetStructOutput;
-        quote: Structs$2.AssetStructOutput;
-        perms: Structs$2.MarketPermsStructOutput;
+        base: Structs$3.AssetStructOutput;
+        quote: Structs$3.AssetStructOutput;
+        perms: Structs$3.MarketPermsStructOutput;
     };
     type OfferStruct = {
         creator: AddressLike;
@@ -1657,51 +1845,9 @@ declare namespace Structs$2 {
         cancelled: boolean;
     };
 }
-declare namespace StructsLib {
-    type IntSlotStateStruct = {
-        instantSwapFeeBp: BigNumberish;
-        synthSwapFeeBp: BigNumberish;
-        stableSwapFeeBp: BigNumberish;
-        instantNFTSwapFeeBp: BigNumberish;
-        fixedSynthSwapFee: BigNumberish;
-        fixedNFTSwapFee: BigNumberish;
-        maxOpenOrders: BigNumberish;
-        maxOpenDisputes: BigNumberish;
-    };
-    type IntSlotStateStructOutput = [
-        instantSwapFeeBp: bigint,
-        synthSwapFeeBp: bigint,
-        stableSwapFeeBp: bigint,
-        instantNFTSwapFeeBp: bigint,
-        fixedSynthSwapFee: bigint,
-        fixedNFTSwapFee: bigint,
-        maxOpenOrders: bigint,
-        maxOpenDisputes: bigint
-    ] & {
-        instantSwapFeeBp: bigint;
-        synthSwapFeeBp: bigint;
-        stableSwapFeeBp: bigint;
-        instantNFTSwapFeeBp: bigint;
-        fixedSynthSwapFee: bigint;
-        fixedNFTSwapFee: bigint;
-        maxOpenOrders: bigint;
-        maxOpenDisputes: bigint;
-    };
-    type UintSlotState2Struct = {
-        nftDiscountBp: BigNumberish;
-        ammEthPoolFee: BigNumberish;
-    };
-    type UintSlotState2StructOutput = [
-        nftDiscountBp: bigint,
-        ammEthPoolFee: bigint
-    ] & {
-        nftDiscountBp: bigint;
-        ammEthPoolFee: bigint;
-    };
-}
 interface CoreInterface extends Interface {
-    getFunction(nameOrSignature: "acceptOffer" | "canCreateDispute" | "cancelOffer" | "cancelOrder" | "cancelOrderByDispute" | "cancelOrderByManagerSig" | "computeSwapFee" | "configureFeePool" | "createOffer" | "executeOffer" | "feeBalanceOf" | "getFeeBPs" | "getLiquidity" | "getLiquidityManager" | "getMarket" | "getOffer" | "getOrder" | "getReqSwapBadges" | "hasLiquidity" | "hasOrder" | "inventorBalanceOf" | "isVerified" | "markAsDisputed" | "markOrderAsPaid" | "markOrderAsPaidByManagerSig" | "onERC1155BatchReceived" | "onERC1155Received" | "operatorBalanceOf" | "owner" | "releaseOrder" | "releaseOrderByDispute" | "releaseOrderByManagerSig" | "renounceOwnership" | "setAmmInfo" | "setAmmPoolInfo" | "setAssetRegistry" | "setBadgeMgr" | "setDiscountForNFTHolder" | "setDisputeManager" | "setFeePool" | "setFeePurse" | "setInventor" | "setLiquidityManager" | "setMarketCore" | "setMaxOpenDisputes" | "setMaxOpenOrders" | "setMinTimeToPay" | "setMinerRegistry" | "setNFT" | "setOperator" | "setOrderGraceDur" | "setProtoFee" | "setProtoFeeSplit" | "setSwapBadgeForLiquidity" | "shareablesBalanceOf" | "state" | "state2" | "supportsInterface" | "swapQuoteForBase" | "togglePause" | "transferOwnership" | "transferToFeePool" | "unacceptOffer" | "updateFungibleLiquidity" | "updateLiquidityPrice" | "updateNonFungibleLiquidity" | "updateOffer" | "updateOpenDisputesCount" | "withdrawFeeBalance" | "withdrawInventorBalance" | "withdrawOperatorBalance"): FunctionFragment;
-    getEvent(nameOrSignatureOrTopic: "FinalizedByManagerSig" | "NFTDiscountUpdated" | "NewOffer" | "OfferAccepted" | "OfferCancelled" | "OfferExecuted" | "OfferUnaccepted" | "OfferUpdated" | "OrderCancelled" | "OwnershipTransferred" | "ProtocolFeeSplitUpdated" | "ProtocolFeeUpdated" | "Swap" | "SwapOrder" | "SwapOrderPaid" | "TogglePause" | "TransferInventorBalance" | "TransferOperatorBalance" | "TransferredToFeePool" | "UpdatedAMMInfo" | "UpdatedAMMPoolInfo" | "UpdatedAssetRegistry" | "UpdatedBadge" | "UpdatedDisputeManager" | "UpdatedFeePool" | "UpdatedFeePoolConfig" | "UpdatedFeePurse" | "UpdatedFungibleLiquidity" | "UpdatedInventor" | "UpdatedLiquidityManager" | "UpdatedLiquiditySwapBadges" | "UpdatedMarketCore" | "UpdatedMaxOpenDisputes" | "UpdatedMaxOpenOrders" | "UpdatedMinTimeToPay" | "UpdatedMinerRegistry" | "UpdatedNFT" | "UpdatedNonFungibleLiquidity" | "UpdatedOperator" | "UpdatedOrderGraceDur" | "UpdatedPrice"): EventFragment;
+    getFunction(nameOrSignature: "acceptOffer" | "canCreateDispute" | "cancelOffer" | "cancelOrder" | "cancelOrderByDispute" | "cancelOrderByManagerSig" | "computeSwapFee" | "configureFeePool" | "createOffer" | "executeOffer" | "feeBalanceOf" | "getFeeBPs" | "getLiquidity" | "getLiquidityManager" | "getMarket" | "getOffer" | "getOrder" | "getReqSwapBadges" | "hasLiquidity" | "hasOrder" | "inventorBalanceOf" | "isVerified" | "markAsDisputed" | "markOrderAsPaid" | "markOrderAsPaidByManagerSig" | "onERC1155BatchReceived" | "onERC1155Received" | "operatorBalanceOf" | "owner" | "releaseOrder" | "releaseOrderByDispute" | "releaseOrderByManagerSig" | "renounceOwnership" | "setAmmInfo" | "setAmmPoolInfo" | "setAssetRegistry" | "setBadgeMgr" | "setDisputeManager" | "setFeePool" | "setFeePurse" | "setInventor" | "setLiquidityManager" | "setMarketCore" | "setMaxOpenDisputes" | "setMaxOpenOrders" | "setMinTimeToPay" | "setMinerRegistry" | "setOperator" | "setOrderGraceDur" | "setProtoFee" | "setProtoFeeSplit" | "setProviderRegistry" | "setSwapBadgeForLiquidity" | "shareablesBalanceOf" | "state" | "state2" | "supportsInterface" | "swapQuoteForBase" | "togglePause" | "transferOwnership" | "transferToFeePool" | "unacceptOffer" | "updateFungibleLiquidity" | "updateLiquidityPrice" | "updateNonFungibleLiquidity" | "updateOffer" | "updateOpenDisputesCount" | "withdrawFeeBalance" | "withdrawInventorBalance" | "withdrawOperatorBalance"): FunctionFragment;
+    getEvent(nameOrSignatureOrTopic: "FinalizedByManagerSig" | "NewOffer" | "OfferAccepted" | "OfferCancelled" | "OfferExecuted" | "OfferUnaccepted" | "OfferUpdated" | "OrderCancelled" | "OwnershipTransferred" | "ProtocolFeeSplitUpdated" | "ProtocolFeeUpdated" | "Swap" | "SwapOrder" | "SwapOrderPaid" | "TogglePause" | "TransferInventorBalance" | "TransferOperatorBalance" | "TransferredToFeePool" | "UpdatedAMMInfo" | "UpdatedAMMPoolInfo" | "UpdatedAssetRegistry" | "UpdatedBadge" | "UpdatedDisputeManager" | "UpdatedFeePool" | "UpdatedFeePoolConfig" | "UpdatedFeePurse" | "UpdatedFungibleLiquidity" | "UpdatedInventor" | "UpdatedLiquidityManager" | "UpdatedLiquiditySwapBadges" | "UpdatedMarketCore" | "UpdatedMaxOpenDisputes" | "UpdatedMaxOpenOrders" | "UpdatedMinTimeToPay" | "UpdatedMinerRegistry" | "UpdatedNonFungibleLiquidity" | "UpdatedOperator" | "UpdatedOrderGraceDur" | "UpdatedPrice" | "UpdatedProviderRegistry"): EventFragment;
     encodeFunctionData(functionFragment: "acceptOffer", values: [BigNumberish, BigNumberish]): string;
     encodeFunctionData(functionFragment: "canCreateDispute", values: [BigNumberish, AddressLike]): string;
     encodeFunctionData(functionFragment: "cancelOffer", values: [BigNumberish]): string;
@@ -1717,17 +1863,7 @@ interface CoreInterface extends Interface {
         BigNumberish
     ]): string;
     encodeFunctionData(functionFragment: "configureFeePool", values: [BigNumberish]): string;
-    encodeFunctionData(functionFragment: "createOffer", values: [
-        AddressLike,
-        AddressLike,
-        AddressLike,
-        BigNumberish,
-        BigNumberish,
-        BigNumberish,
-        BigNumberish[],
-        BigNumberish,
-        BigNumberish
-    ]): string;
+    encodeFunctionData(functionFragment: "createOffer", values: [StructsLib$1.CreateOfferParamsStruct]): string;
     encodeFunctionData(functionFragment: "executeOffer", values: [BigNumberish, BigNumberish]): string;
     encodeFunctionData(functionFragment: "feeBalanceOf", values: [AddressLike, AddressLike]): string;
     encodeFunctionData(functionFragment: "getFeeBPs", values?: undefined): string;
@@ -1762,7 +1898,6 @@ interface CoreInterface extends Interface {
     encodeFunctionData(functionFragment: "setAmmPoolInfo", values: [AddressLike, AddressLike, BigNumberish]): string;
     encodeFunctionData(functionFragment: "setAssetRegistry", values: [AddressLike]): string;
     encodeFunctionData(functionFragment: "setBadgeMgr", values: [AddressLike]): string;
-    encodeFunctionData(functionFragment: "setDiscountForNFTHolder", values: [BigNumberish]): string;
     encodeFunctionData(functionFragment: "setDisputeManager", values: [AddressLike]): string;
     encodeFunctionData(functionFragment: "setFeePool", values: [AddressLike]): string;
     encodeFunctionData(functionFragment: "setFeePurse", values: [AddressLike]): string;
@@ -1773,7 +1908,6 @@ interface CoreInterface extends Interface {
     encodeFunctionData(functionFragment: "setMaxOpenOrders", values: [BigNumberish]): string;
     encodeFunctionData(functionFragment: "setMinTimeToPay", values: [BigNumberish]): string;
     encodeFunctionData(functionFragment: "setMinerRegistry", values: [AddressLike]): string;
-    encodeFunctionData(functionFragment: "setNFT", values: [AddressLike]): string;
     encodeFunctionData(functionFragment: "setOperator", values: [AddressLike]): string;
     encodeFunctionData(functionFragment: "setOrderGraceDur", values: [BigNumberish]): string;
     encodeFunctionData(functionFragment: "setProtoFee", values: [
@@ -1785,61 +1919,20 @@ interface CoreInterface extends Interface {
         BigNumberish
     ]): string;
     encodeFunctionData(functionFragment: "setProtoFeeSplit", values: [BigNumberish, BigNumberish, BigNumberish]): string;
+    encodeFunctionData(functionFragment: "setProviderRegistry", values: [AddressLike]): string;
     encodeFunctionData(functionFragment: "setSwapBadgeForLiquidity", values: [AddressLike, BigNumberish, [string, string][]]): string;
     encodeFunctionData(functionFragment: "shareablesBalanceOf", values: [AddressLike]): string;
     encodeFunctionData(functionFragment: "state", values?: undefined): string;
     encodeFunctionData(functionFragment: "state2", values?: undefined): string;
     encodeFunctionData(functionFragment: "supportsInterface", values: [BytesLike]): string;
-    encodeFunctionData(functionFragment: "swapQuoteForBase", values: [
-        AddressLike,
-        AddressLike,
-        AddressLike,
-        BigNumberish,
-        BigNumberish,
-        BigNumberish,
-        BigNumberish[],
-        BigNumberish,
-        BigNumberish
-    ]): string;
+    encodeFunctionData(functionFragment: "swapQuoteForBase", values: [StructsLib$1.SwapQuoteForBaseParamsStruct]): string;
     encodeFunctionData(functionFragment: "togglePause", values: [AddressLike, BigNumberish, BigNumberish]): string;
     encodeFunctionData(functionFragment: "transferOwnership", values: [AddressLike]): string;
     encodeFunctionData(functionFragment: "transferToFeePool", values: [AddressLike]): string;
     encodeFunctionData(functionFragment: "unacceptOffer", values: [BigNumberish]): string;
-    encodeFunctionData(functionFragment: "updateFungibleLiquidity", values: [
-        AddressLike,
-        BigNumberish,
-        boolean,
-        AddressLike,
-        [
-            BigNumberish,
-            BigNumberish
-        ],
-        BigNumberish[],
-        BigNumberish[],
-        [
-            BigNumberish,
-            BigNumberish,
-            BigNumberish,
-            BigNumberish,
-            BigNumberish
-        ]
-    ]): string;
+    encodeFunctionData(functionFragment: "updateFungibleLiquidity", values: [StructsLib$1.UpdateFungibleLiquidityParamsStruct]): string;
     encodeFunctionData(functionFragment: "updateLiquidityPrice", values: [AddressLike, AddressLike, BigNumberish, BigNumberish, BigNumberish]): string;
-    encodeFunctionData(functionFragment: "updateNonFungibleLiquidity", values: [
-        AddressLike,
-        BigNumberish,
-        boolean,
-        AddressLike,
-        BigNumberish[],
-        BigNumberish,
-        BigNumberish[],
-        BigNumberish[],
-        [
-            BigNumberish,
-            BigNumberish,
-            BigNumberish
-        ]
-    ]): string;
+    encodeFunctionData(functionFragment: "updateNonFungibleLiquidity", values: [StructsLib$1.UpdateNonFungibleLiquidityParamsStruct]): string;
     encodeFunctionData(functionFragment: "updateOffer", values: [
         BigNumberish,
         BigNumberish,
@@ -1888,7 +1981,6 @@ interface CoreInterface extends Interface {
     decodeFunctionResult(functionFragment: "setAmmPoolInfo", data: BytesLike): Result;
     decodeFunctionResult(functionFragment: "setAssetRegistry", data: BytesLike): Result;
     decodeFunctionResult(functionFragment: "setBadgeMgr", data: BytesLike): Result;
-    decodeFunctionResult(functionFragment: "setDiscountForNFTHolder", data: BytesLike): Result;
     decodeFunctionResult(functionFragment: "setDisputeManager", data: BytesLike): Result;
     decodeFunctionResult(functionFragment: "setFeePool", data: BytesLike): Result;
     decodeFunctionResult(functionFragment: "setFeePurse", data: BytesLike): Result;
@@ -1899,11 +1991,11 @@ interface CoreInterface extends Interface {
     decodeFunctionResult(functionFragment: "setMaxOpenOrders", data: BytesLike): Result;
     decodeFunctionResult(functionFragment: "setMinTimeToPay", data: BytesLike): Result;
     decodeFunctionResult(functionFragment: "setMinerRegistry", data: BytesLike): Result;
-    decodeFunctionResult(functionFragment: "setNFT", data: BytesLike): Result;
     decodeFunctionResult(functionFragment: "setOperator", data: BytesLike): Result;
     decodeFunctionResult(functionFragment: "setOrderGraceDur", data: BytesLike): Result;
     decodeFunctionResult(functionFragment: "setProtoFee", data: BytesLike): Result;
     decodeFunctionResult(functionFragment: "setProtoFeeSplit", data: BytesLike): Result;
+    decodeFunctionResult(functionFragment: "setProviderRegistry", data: BytesLike): Result;
     decodeFunctionResult(functionFragment: "setSwapBadgeForLiquidity", data: BytesLike): Result;
     decodeFunctionResult(functionFragment: "shareablesBalanceOf", data: BytesLike): Result;
     decodeFunctionResult(functionFragment: "state", data: BytesLike): Result;
@@ -1941,17 +2033,6 @@ declare namespace FinalizedByManagerSigEvent {
         finalizer: string;
         orderId: bigint;
         action: bigint;
-    }
-    type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>;
-    type Filter = TypedDeferredTopicFilter<Event>;
-    type Log = TypedEventLog<Event>;
-    type LogDescription = TypedLogDescription<Event>;
-}
-declare namespace NFTDiscountUpdatedEvent {
-    type InputTuple = [bp: BigNumberish];
-    type OutputTuple = [bp: bigint];
-    interface OutputObject {
-        bp: bigint;
     }
     type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>;
     type Filter = TypedDeferredTopicFilter<Event>;
@@ -2105,7 +2186,7 @@ declare namespace OrderCancelledEvent {
     type Log = TypedEventLog<Event>;
     type LogDescription = TypedLogDescription<Event>;
 }
-declare namespace OwnershipTransferredEvent$a {
+declare namespace OwnershipTransferredEvent$e {
     type InputTuple = [previousOwner: AddressLike, newOwner: AddressLike];
     type OutputTuple = [previousOwner: string, newOwner: string];
     interface OutputObject {
@@ -2459,8 +2540,6 @@ declare namespace UpdatedFungibleLiquidityEvent {
         price: BigNumberish,
         wantOrIds: BigNumberish[],
         wantAndIds: BigNumberish[],
-        minSwap: BigNumberish,
-        maxSwap: BigNumberish,
         timeToPay: BigNumberish
     ];
     type OutputTuple = [
@@ -2474,8 +2553,6 @@ declare namespace UpdatedFungibleLiquidityEvent {
         price: bigint,
         wantOrIds: bigint[],
         wantAndIds: bigint[],
-        minSwap: bigint,
-        maxSwap: bigint,
         timeToPay: bigint
     ];
     interface OutputObject {
@@ -2489,8 +2566,6 @@ declare namespace UpdatedFungibleLiquidityEvent {
         price: bigint;
         wantOrIds: bigint[];
         wantAndIds: bigint[];
-        minSwap: bigint;
-        maxSwap: bigint;
         timeToPay: bigint;
     }
     type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>;
@@ -2612,17 +2687,6 @@ declare namespace UpdatedMinerRegistryEvent$1 {
     type Log = TypedEventLog<Event>;
     type LogDescription = TypedLogDescription<Event>;
 }
-declare namespace UpdatedNFTEvent$1 {
-    type InputTuple = [addr: AddressLike];
-    type OutputTuple = [addr: string];
-    interface OutputObject {
-        addr: string;
-    }
-    type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>;
-    type Filter = TypedDeferredTopicFilter<Event>;
-    type Log = TypedEventLog<Event>;
-    type LogDescription = TypedLogDescription<Event>;
-}
 declare namespace UpdatedNonFungibleLiquidityEvent {
     type InputTuple = [
         provider: AddressLike,
@@ -2717,6 +2781,17 @@ declare namespace UpdatedPriceEvent {
     type Log = TypedEventLog<Event>;
     type LogDescription = TypedLogDescription<Event>;
 }
+declare namespace UpdatedProviderRegistryEvent {
+    type InputTuple = [addr: AddressLike];
+    type OutputTuple = [addr: string];
+    interface OutputObject {
+        addr: string;
+    }
+    type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>;
+    type Filter = TypedDeferredTopicFilter<Event>;
+    type Log = TypedEventLog<Event>;
+    type LogDescription = TypedLogDescription<Event>;
+}
 interface Core extends BaseContract {
     connect(runner?: ContractRunner | null): Core;
     waitForDeployment(): Promise<this>;
@@ -2776,15 +2851,7 @@ interface Core extends BaseContract {
         void
     ], "nonpayable">;
     createOffer: TypedContractMethod<[
-        marketId: AddressLike,
-        provider: AddressLike,
-        recipient: AddressLike,
-        lid: BigNumberish,
-        amount: BigNumberish,
-        price: BigNumberish,
-        ids: BigNumberish[],
-        deadline: BigNumberish,
-        operator: BigNumberish
+        params: StructsLib$1.CreateOfferParamsStruct
     ], [
         void
     ], "nonpayable">;
@@ -2806,7 +2873,7 @@ interface Core extends BaseContract {
         _owner: AddressLike,
         _lid: BigNumberish
     ], [
-        Structs$2.LiquidityStructOutput
+        Structs$3.LiquidityStructOutput
     ], "view">;
     getLiquidityManager: TypedContractMethod<[
         marketId: AddressLike,
@@ -2817,17 +2884,17 @@ interface Core extends BaseContract {
     getMarket: TypedContractMethod<[
         id: AddressLike
     ], [
-        Structs$2.MarketStructOutput
+        Structs$3.MarketStructOutput
     ], "view">;
     getOffer: TypedContractMethod<[
         id: BigNumberish
     ], [
-        Structs$2.OfferStructOutput
+        Structs$3.OfferStructOutput
     ], "view">;
     getOrder: TypedContractMethod<[
         id: BigNumberish
     ], [
-        Structs$2.OrderStructOutput
+        Structs$3.OrderStructOutput
     ], "view">;
     getReqSwapBadges: TypedContractMethod<[
         marketId: AddressLike,
@@ -2922,11 +2989,6 @@ interface Core extends BaseContract {
         void
     ], "nonpayable">;
     setBadgeMgr: TypedContractMethod<[val: AddressLike], [void], "nonpayable">;
-    setDiscountForNFTHolder: TypedContractMethod<[
-        bp: BigNumberish
-    ], [
-        void
-    ], "nonpayable">;
     setDisputeManager: TypedContractMethod<[
         addr: AddressLike
     ], [
@@ -2962,7 +3024,6 @@ interface Core extends BaseContract {
     ], [
         void
     ], "nonpayable">;
-    setNFT: TypedContractMethod<[addr: AddressLike], [void], "nonpayable">;
     setOperator: TypedContractMethod<[addr: AddressLike], [void], "nonpayable">;
     setOrderGraceDur: TypedContractMethod<[
         val: BigNumberish
@@ -2986,6 +3047,11 @@ interface Core extends BaseContract {
     ], [
         void
     ], "nonpayable">;
+    setProviderRegistry: TypedContractMethod<[
+        addr: AddressLike
+    ], [
+        void
+    ], "nonpayable">;
     setSwapBadgeForLiquidity: TypedContractMethod<[
         marketId: AddressLike,
         lid: BigNumberish,
@@ -3001,7 +3067,7 @@ interface Core extends BaseContract {
     state: TypedContractMethod<[
     ], [
         [
-            StructsLib.IntSlotStateStructOutput,
+            StructsLib$1.IntSlotStateStructOutput,
             bigint,
             bigint,
             bigint,
@@ -3009,7 +3075,7 @@ interface Core extends BaseContract {
             string,
             string
         ] & {
-            ints: StructsLib.IntSlotStateStructOutput;
+            ints: StructsLib$1.IntSlotStateStructOutput;
             minTimeToPay: bigint;
             orderGraceDur: bigint;
             numOrders: bigint;
@@ -3021,7 +3087,7 @@ interface Core extends BaseContract {
     state2: TypedContractMethod<[
     ], [
         [
-            StructsLib.UintSlotState2StructOutput,
+            StructsLib$1.UintSlotState2StructOutput,
             string,
             string,
             string,
@@ -3034,10 +3100,10 @@ interface Core extends BaseContract {
             string,
             string
         ] & {
-            ints: StructsLib.UintSlotState2StructOutput;
+            ints: StructsLib$1.UintSlotState2StructOutput;
             disputeManager: string;
-            nft: string;
             ammEth: string;
+            provReg: string;
             assetReg: string;
             token: string;
             marketCore: string;
@@ -3054,15 +3120,7 @@ interface Core extends BaseContract {
         boolean
     ], "view">;
     swapQuoteForBase: TypedContractMethod<[
-        marketId: AddressLike,
-        provider: AddressLike,
-        recipient: AddressLike,
-        lid: BigNumberish,
-        amount: BigNumberish,
-        maxPrice: BigNumberish,
-        ids: BigNumberish[],
-        txDeadline: BigNumberish,
-        operator: BigNumberish
+        params: StructsLib$1.SwapQuoteForBaseParamsStruct
     ], [
         void
     ], "payable">;
@@ -3089,20 +3147,7 @@ interface Core extends BaseContract {
         void
     ], "nonpayable">;
     updateFungibleLiquidity: TypedContractMethod<[
-        marketId: AddressLike,
-        lid: BigNumberish,
-        deduct: boolean,
-        target: AddressLike,
-        amountAndPrice: [BigNumberish, BigNumberish],
-        wantOrIds: BigNumberish[],
-        wantAndIds: BigNumberish[],
-        limits: [
-            BigNumberish,
-            BigNumberish,
-            BigNumberish,
-            BigNumberish,
-            BigNumberish
-        ]
+        params: StructsLib$1.UpdateFungibleLiquidityParamsStruct
     ], [
         void
     ], "payable">;
@@ -3116,15 +3161,7 @@ interface Core extends BaseContract {
         void
     ], "nonpayable">;
     updateNonFungibleLiquidity: TypedContractMethod<[
-        marketId: AddressLike,
-        lid: BigNumberish,
-        deduct: boolean,
-        target: AddressLike,
-        ids: BigNumberish[],
-        price: BigNumberish,
-        wantOrIds: BigNumberish[],
-        wantAndIds: BigNumberish[],
-        limits: [BigNumberish, BigNumberish, BigNumberish]
+        params: StructsLib$1.UpdateNonFungibleLiquidityParamsStruct
     ], [
         void
     ], "nonpayable">;
@@ -3195,15 +3232,7 @@ interface Core extends BaseContract {
     ], "view">;
     getFunction(nameOrSignature: "configureFeePool"): TypedContractMethod<[interval: BigNumberish], [void], "nonpayable">;
     getFunction(nameOrSignature: "createOffer"): TypedContractMethod<[
-        marketId: AddressLike,
-        provider: AddressLike,
-        recipient: AddressLike,
-        lid: BigNumberish,
-        amount: BigNumberish,
-        price: BigNumberish,
-        ids: BigNumberish[],
-        deadline: BigNumberish,
-        operator: BigNumberish
+        params: StructsLib$1.CreateOfferParamsStruct
     ], [
         void
     ], "nonpayable">;
@@ -3225,7 +3254,7 @@ interface Core extends BaseContract {
         _owner: AddressLike,
         _lid: BigNumberish
     ], [
-        Structs$2.LiquidityStructOutput
+        Structs$3.LiquidityStructOutput
     ], "view">;
     getFunction(nameOrSignature: "getLiquidityManager"): TypedContractMethod<[
         marketId: AddressLike,
@@ -3236,17 +3265,17 @@ interface Core extends BaseContract {
     getFunction(nameOrSignature: "getMarket"): TypedContractMethod<[
         id: AddressLike
     ], [
-        Structs$2.MarketStructOutput
+        Structs$3.MarketStructOutput
     ], "view">;
     getFunction(nameOrSignature: "getOffer"): TypedContractMethod<[
         id: BigNumberish
     ], [
-        Structs$2.OfferStructOutput
+        Structs$3.OfferStructOutput
     ], "view">;
     getFunction(nameOrSignature: "getOrder"): TypedContractMethod<[
         id: BigNumberish
     ], [
-        Structs$2.OrderStructOutput
+        Structs$3.OrderStructOutput
     ], "view">;
     getFunction(nameOrSignature: "getReqSwapBadges"): TypedContractMethod<[
         marketId: AddressLike,
@@ -3325,7 +3354,6 @@ interface Core extends BaseContract {
     ], "nonpayable">;
     getFunction(nameOrSignature: "setAssetRegistry"): TypedContractMethod<[addr: AddressLike], [void], "nonpayable">;
     getFunction(nameOrSignature: "setBadgeMgr"): TypedContractMethod<[val: AddressLike], [void], "nonpayable">;
-    getFunction(nameOrSignature: "setDiscountForNFTHolder"): TypedContractMethod<[bp: BigNumberish], [void], "nonpayable">;
     getFunction(nameOrSignature: "setDisputeManager"): TypedContractMethod<[addr: AddressLike], [void], "nonpayable">;
     getFunction(nameOrSignature: "setFeePool"): TypedContractMethod<[addr: AddressLike], [void], "nonpayable">;
     getFunction(nameOrSignature: "setFeePurse"): TypedContractMethod<[val: AddressLike], [void], "nonpayable">;
@@ -3341,7 +3369,6 @@ interface Core extends BaseContract {
     getFunction(nameOrSignature: "setMaxOpenOrders"): TypedContractMethod<[val: BigNumberish], [void], "nonpayable">;
     getFunction(nameOrSignature: "setMinTimeToPay"): TypedContractMethod<[val: BigNumberish], [void], "nonpayable">;
     getFunction(nameOrSignature: "setMinerRegistry"): TypedContractMethod<[addr: AddressLike], [void], "nonpayable">;
-    getFunction(nameOrSignature: "setNFT"): TypedContractMethod<[addr: AddressLike], [void], "nonpayable">;
     getFunction(nameOrSignature: "setOperator"): TypedContractMethod<[addr: AddressLike], [void], "nonpayable">;
     getFunction(nameOrSignature: "setOrderGraceDur"): TypedContractMethod<[val: BigNumberish], [void], "nonpayable">;
     getFunction(nameOrSignature: "setProtoFee"): TypedContractMethod<[
@@ -3361,6 +3388,7 @@ interface Core extends BaseContract {
     ], [
         void
     ], "nonpayable">;
+    getFunction(nameOrSignature: "setProviderRegistry"): TypedContractMethod<[addr: AddressLike], [void], "nonpayable">;
     getFunction(nameOrSignature: "setSwapBadgeForLiquidity"): TypedContractMethod<[
         marketId: AddressLike,
         lid: BigNumberish,
@@ -3372,7 +3400,7 @@ interface Core extends BaseContract {
     getFunction(nameOrSignature: "state"): TypedContractMethod<[
     ], [
         [
-            StructsLib.IntSlotStateStructOutput,
+            StructsLib$1.IntSlotStateStructOutput,
             bigint,
             bigint,
             bigint,
@@ -3380,7 +3408,7 @@ interface Core extends BaseContract {
             string,
             string
         ] & {
-            ints: StructsLib.IntSlotStateStructOutput;
+            ints: StructsLib$1.IntSlotStateStructOutput;
             minTimeToPay: bigint;
             orderGraceDur: bigint;
             numOrders: bigint;
@@ -3392,7 +3420,7 @@ interface Core extends BaseContract {
     getFunction(nameOrSignature: "state2"): TypedContractMethod<[
     ], [
         [
-            StructsLib.UintSlotState2StructOutput,
+            StructsLib$1.UintSlotState2StructOutput,
             string,
             string,
             string,
@@ -3405,10 +3433,10 @@ interface Core extends BaseContract {
             string,
             string
         ] & {
-            ints: StructsLib.UintSlotState2StructOutput;
+            ints: StructsLib$1.UintSlotState2StructOutput;
             disputeManager: string;
-            nft: string;
             ammEth: string;
+            provReg: string;
             assetReg: string;
             token: string;
             marketCore: string;
@@ -3421,15 +3449,7 @@ interface Core extends BaseContract {
     ], "view">;
     getFunction(nameOrSignature: "supportsInterface"): TypedContractMethod<[interfaceId: BytesLike], [boolean], "view">;
     getFunction(nameOrSignature: "swapQuoteForBase"): TypedContractMethod<[
-        marketId: AddressLike,
-        provider: AddressLike,
-        recipient: AddressLike,
-        lid: BigNumberish,
-        amount: BigNumberish,
-        maxPrice: BigNumberish,
-        ids: BigNumberish[],
-        txDeadline: BigNumberish,
-        operator: BigNumberish
+        params: StructsLib$1.SwapQuoteForBaseParamsStruct
     ], [
         void
     ], "payable">;
@@ -3444,20 +3464,7 @@ interface Core extends BaseContract {
     getFunction(nameOrSignature: "transferToFeePool"): TypedContractMethod<[_token: AddressLike], [void], "nonpayable">;
     getFunction(nameOrSignature: "unacceptOffer"): TypedContractMethod<[offerId: BigNumberish], [void], "nonpayable">;
     getFunction(nameOrSignature: "updateFungibleLiquidity"): TypedContractMethod<[
-        marketId: AddressLike,
-        lid: BigNumberish,
-        deduct: boolean,
-        target: AddressLike,
-        amountAndPrice: [BigNumberish, BigNumberish],
-        wantOrIds: BigNumberish[],
-        wantAndIds: BigNumberish[],
-        limits: [
-            BigNumberish,
-            BigNumberish,
-            BigNumberish,
-            BigNumberish,
-            BigNumberish
-        ]
+        params: StructsLib$1.UpdateFungibleLiquidityParamsStruct
     ], [
         void
     ], "payable">;
@@ -3471,15 +3478,7 @@ interface Core extends BaseContract {
         void
     ], "nonpayable">;
     getFunction(nameOrSignature: "updateNonFungibleLiquidity"): TypedContractMethod<[
-        marketId: AddressLike,
-        lid: BigNumberish,
-        deduct: boolean,
-        target: AddressLike,
-        ids: BigNumberish[],
-        price: BigNumberish,
-        wantOrIds: BigNumberish[],
-        wantAndIds: BigNumberish[],
-        limits: [BigNumberish, BigNumberish, BigNumberish]
+        params: StructsLib$1.UpdateNonFungibleLiquidityParamsStruct
     ], [
         void
     ], "nonpayable">;
@@ -3504,7 +3503,6 @@ interface Core extends BaseContract {
     getFunction(nameOrSignature: "withdrawInventorBalance"): TypedContractMethod<[asset: AddressLike], [void], "nonpayable">;
     getFunction(nameOrSignature: "withdrawOperatorBalance"): TypedContractMethod<[_token: AddressLike], [void], "nonpayable">;
     getEvent(key: "FinalizedByManagerSig"): TypedContractEvent<FinalizedByManagerSigEvent.InputTuple, FinalizedByManagerSigEvent.OutputTuple, FinalizedByManagerSigEvent.OutputObject>;
-    getEvent(key: "NFTDiscountUpdated"): TypedContractEvent<NFTDiscountUpdatedEvent.InputTuple, NFTDiscountUpdatedEvent.OutputTuple, NFTDiscountUpdatedEvent.OutputObject>;
     getEvent(key: "NewOffer"): TypedContractEvent<NewOfferEvent.InputTuple, NewOfferEvent.OutputTuple, NewOfferEvent.OutputObject>;
     getEvent(key: "OfferAccepted"): TypedContractEvent<OfferAcceptedEvent.InputTuple, OfferAcceptedEvent.OutputTuple, OfferAcceptedEvent.OutputObject>;
     getEvent(key: "OfferCancelled"): TypedContractEvent<OfferCancelledEvent.InputTuple, OfferCancelledEvent.OutputTuple, OfferCancelledEvent.OutputObject>;
@@ -3512,7 +3510,7 @@ interface Core extends BaseContract {
     getEvent(key: "OfferUnaccepted"): TypedContractEvent<OfferUnacceptedEvent.InputTuple, OfferUnacceptedEvent.OutputTuple, OfferUnacceptedEvent.OutputObject>;
     getEvent(key: "OfferUpdated"): TypedContractEvent<OfferUpdatedEvent.InputTuple, OfferUpdatedEvent.OutputTuple, OfferUpdatedEvent.OutputObject>;
     getEvent(key: "OrderCancelled"): TypedContractEvent<OrderCancelledEvent.InputTuple, OrderCancelledEvent.OutputTuple, OrderCancelledEvent.OutputObject>;
-    getEvent(key: "OwnershipTransferred"): TypedContractEvent<OwnershipTransferredEvent$a.InputTuple, OwnershipTransferredEvent$a.OutputTuple, OwnershipTransferredEvent$a.OutputObject>;
+    getEvent(key: "OwnershipTransferred"): TypedContractEvent<OwnershipTransferredEvent$e.InputTuple, OwnershipTransferredEvent$e.OutputTuple, OwnershipTransferredEvent$e.OutputObject>;
     getEvent(key: "ProtocolFeeSplitUpdated"): TypedContractEvent<ProtocolFeeSplitUpdatedEvent.InputTuple, ProtocolFeeSplitUpdatedEvent.OutputTuple, ProtocolFeeSplitUpdatedEvent.OutputObject>;
     getEvent(key: "ProtocolFeeUpdated"): TypedContractEvent<ProtocolFeeUpdatedEvent.InputTuple, ProtocolFeeUpdatedEvent.OutputTuple, ProtocolFeeUpdatedEvent.OutputObject>;
     getEvent(key: "Swap"): TypedContractEvent<SwapEvent$5.InputTuple, SwapEvent$5.OutputTuple, SwapEvent$5.OutputObject>;
@@ -3539,16 +3537,14 @@ interface Core extends BaseContract {
     getEvent(key: "UpdatedMaxOpenOrders"): TypedContractEvent<UpdatedMaxOpenOrdersEvent.InputTuple, UpdatedMaxOpenOrdersEvent.OutputTuple, UpdatedMaxOpenOrdersEvent.OutputObject>;
     getEvent(key: "UpdatedMinTimeToPay"): TypedContractEvent<UpdatedMinTimeToPayEvent.InputTuple, UpdatedMinTimeToPayEvent.OutputTuple, UpdatedMinTimeToPayEvent.OutputObject>;
     getEvent(key: "UpdatedMinerRegistry"): TypedContractEvent<UpdatedMinerRegistryEvent$1.InputTuple, UpdatedMinerRegistryEvent$1.OutputTuple, UpdatedMinerRegistryEvent$1.OutputObject>;
-    getEvent(key: "UpdatedNFT"): TypedContractEvent<UpdatedNFTEvent$1.InputTuple, UpdatedNFTEvent$1.OutputTuple, UpdatedNFTEvent$1.OutputObject>;
     getEvent(key: "UpdatedNonFungibleLiquidity"): TypedContractEvent<UpdatedNonFungibleLiquidityEvent.InputTuple, UpdatedNonFungibleLiquidityEvent.OutputTuple, UpdatedNonFungibleLiquidityEvent.OutputObject>;
     getEvent(key: "UpdatedOperator"): TypedContractEvent<UpdatedOperatorEvent.InputTuple, UpdatedOperatorEvent.OutputTuple, UpdatedOperatorEvent.OutputObject>;
     getEvent(key: "UpdatedOrderGraceDur"): TypedContractEvent<UpdatedOrderGraceDurEvent.InputTuple, UpdatedOrderGraceDurEvent.OutputTuple, UpdatedOrderGraceDurEvent.OutputObject>;
     getEvent(key: "UpdatedPrice"): TypedContractEvent<UpdatedPriceEvent.InputTuple, UpdatedPriceEvent.OutputTuple, UpdatedPriceEvent.OutputObject>;
+    getEvent(key: "UpdatedProviderRegistry"): TypedContractEvent<UpdatedProviderRegistryEvent.InputTuple, UpdatedProviderRegistryEvent.OutputTuple, UpdatedProviderRegistryEvent.OutputObject>;
     filters: {
         "FinalizedByManagerSig(address,address,uint256,uint256)": TypedContractEvent<FinalizedByManagerSigEvent.InputTuple, FinalizedByManagerSigEvent.OutputTuple, FinalizedByManagerSigEvent.OutputObject>;
         FinalizedByManagerSig: TypedContractEvent<FinalizedByManagerSigEvent.InputTuple, FinalizedByManagerSigEvent.OutputTuple, FinalizedByManagerSigEvent.OutputObject>;
-        "NFTDiscountUpdated(uint256)": TypedContractEvent<NFTDiscountUpdatedEvent.InputTuple, NFTDiscountUpdatedEvent.OutputTuple, NFTDiscountUpdatedEvent.OutputObject>;
-        NFTDiscountUpdated: TypedContractEvent<NFTDiscountUpdatedEvent.InputTuple, NFTDiscountUpdatedEvent.OutputTuple, NFTDiscountUpdatedEvent.OutputObject>;
         "NewOffer(address,address,uint256,address,uint256,uint256,uint256,uint256[],uint256)": TypedContractEvent<NewOfferEvent.InputTuple, NewOfferEvent.OutputTuple, NewOfferEvent.OutputObject>;
         NewOffer: TypedContractEvent<NewOfferEvent.InputTuple, NewOfferEvent.OutputTuple, NewOfferEvent.OutputObject>;
         "OfferAccepted(uint256,address,uint256)": TypedContractEvent<OfferAcceptedEvent.InputTuple, OfferAcceptedEvent.OutputTuple, OfferAcceptedEvent.OutputObject>;
@@ -3563,8 +3559,8 @@ interface Core extends BaseContract {
         OfferUpdated: TypedContractEvent<OfferUpdatedEvent.InputTuple, OfferUpdatedEvent.OutputTuple, OfferUpdatedEvent.OutputObject>;
         "OrderCancelled(uint256,address,bool)": TypedContractEvent<OrderCancelledEvent.InputTuple, OrderCancelledEvent.OutputTuple, OrderCancelledEvent.OutputObject>;
         OrderCancelled: TypedContractEvent<OrderCancelledEvent.InputTuple, OrderCancelledEvent.OutputTuple, OrderCancelledEvent.OutputObject>;
-        "OwnershipTransferred(address,address)": TypedContractEvent<OwnershipTransferredEvent$a.InputTuple, OwnershipTransferredEvent$a.OutputTuple, OwnershipTransferredEvent$a.OutputObject>;
-        OwnershipTransferred: TypedContractEvent<OwnershipTransferredEvent$a.InputTuple, OwnershipTransferredEvent$a.OutputTuple, OwnershipTransferredEvent$a.OutputObject>;
+        "OwnershipTransferred(address,address)": TypedContractEvent<OwnershipTransferredEvent$e.InputTuple, OwnershipTransferredEvent$e.OutputTuple, OwnershipTransferredEvent$e.OutputObject>;
+        OwnershipTransferred: TypedContractEvent<OwnershipTransferredEvent$e.InputTuple, OwnershipTransferredEvent$e.OutputTuple, OwnershipTransferredEvent$e.OutputObject>;
         "ProtocolFeeSplitUpdated(uint256,uint256,uint256)": TypedContractEvent<ProtocolFeeSplitUpdatedEvent.InputTuple, ProtocolFeeSplitUpdatedEvent.OutputTuple, ProtocolFeeSplitUpdatedEvent.OutputObject>;
         ProtocolFeeSplitUpdated: TypedContractEvent<ProtocolFeeSplitUpdatedEvent.InputTuple, ProtocolFeeSplitUpdatedEvent.OutputTuple, ProtocolFeeSplitUpdatedEvent.OutputObject>;
         "ProtocolFeeUpdated(uint256,uint256,uint256,uint256,uint256,uint256)": TypedContractEvent<ProtocolFeeUpdatedEvent.InputTuple, ProtocolFeeUpdatedEvent.OutputTuple, ProtocolFeeUpdatedEvent.OutputObject>;
@@ -3599,7 +3595,7 @@ interface Core extends BaseContract {
         UpdatedFeePoolConfig: TypedContractEvent<UpdatedFeePoolConfigEvent.InputTuple, UpdatedFeePoolConfigEvent.OutputTuple, UpdatedFeePoolConfigEvent.OutputObject>;
         "UpdatedFeePurse(address)": TypedContractEvent<UpdatedFeePurseEvent.InputTuple, UpdatedFeePurseEvent.OutputTuple, UpdatedFeePurseEvent.OutputObject>;
         UpdatedFeePurse: TypedContractEvent<UpdatedFeePurseEvent.InputTuple, UpdatedFeePurseEvent.OutputTuple, UpdatedFeePurseEvent.OutputObject>;
-        "UpdatedFungibleLiquidity(address,address,address,bool,bool,uint256,uint256,uint256,uint256[],uint256[],uint256,uint256,uint256)": TypedContractEvent<UpdatedFungibleLiquidityEvent.InputTuple, UpdatedFungibleLiquidityEvent.OutputTuple, UpdatedFungibleLiquidityEvent.OutputObject>;
+        "UpdatedFungibleLiquidity(address,address,address,bool,bool,uint256,uint256,uint256,uint256[],uint256[],uint256)": TypedContractEvent<UpdatedFungibleLiquidityEvent.InputTuple, UpdatedFungibleLiquidityEvent.OutputTuple, UpdatedFungibleLiquidityEvent.OutputObject>;
         UpdatedFungibleLiquidity: TypedContractEvent<UpdatedFungibleLiquidityEvent.InputTuple, UpdatedFungibleLiquidityEvent.OutputTuple, UpdatedFungibleLiquidityEvent.OutputObject>;
         "UpdatedInventor(address)": TypedContractEvent<UpdatedInventorEvent.InputTuple, UpdatedInventorEvent.OutputTuple, UpdatedInventorEvent.OutputObject>;
         UpdatedInventor: TypedContractEvent<UpdatedInventorEvent.InputTuple, UpdatedInventorEvent.OutputTuple, UpdatedInventorEvent.OutputObject>;
@@ -3617,8 +3613,6 @@ interface Core extends BaseContract {
         UpdatedMinTimeToPay: TypedContractEvent<UpdatedMinTimeToPayEvent.InputTuple, UpdatedMinTimeToPayEvent.OutputTuple, UpdatedMinTimeToPayEvent.OutputObject>;
         "UpdatedMinerRegistry(address)": TypedContractEvent<UpdatedMinerRegistryEvent$1.InputTuple, UpdatedMinerRegistryEvent$1.OutputTuple, UpdatedMinerRegistryEvent$1.OutputObject>;
         UpdatedMinerRegistry: TypedContractEvent<UpdatedMinerRegistryEvent$1.InputTuple, UpdatedMinerRegistryEvent$1.OutputTuple, UpdatedMinerRegistryEvent$1.OutputObject>;
-        "UpdatedNFT(address)": TypedContractEvent<UpdatedNFTEvent$1.InputTuple, UpdatedNFTEvent$1.OutputTuple, UpdatedNFTEvent$1.OutputObject>;
-        UpdatedNFT: TypedContractEvent<UpdatedNFTEvent$1.InputTuple, UpdatedNFTEvent$1.OutputTuple, UpdatedNFTEvent$1.OutputObject>;
         "UpdatedNonFungibleLiquidity(address,address,address,bool,bool,uint256,uint256[],uint256,uint256[],uint256[],uint256)": TypedContractEvent<UpdatedNonFungibleLiquidityEvent.InputTuple, UpdatedNonFungibleLiquidityEvent.OutputTuple, UpdatedNonFungibleLiquidityEvent.OutputObject>;
         UpdatedNonFungibleLiquidity: TypedContractEvent<UpdatedNonFungibleLiquidityEvent.InputTuple, UpdatedNonFungibleLiquidityEvent.OutputTuple, UpdatedNonFungibleLiquidityEvent.OutputObject>;
         "UpdatedOperator(address)": TypedContractEvent<UpdatedOperatorEvent.InputTuple, UpdatedOperatorEvent.OutputTuple, UpdatedOperatorEvent.OutputObject>;
@@ -3627,6 +3621,8 @@ interface Core extends BaseContract {
         UpdatedOrderGraceDur: TypedContractEvent<UpdatedOrderGraceDurEvent.InputTuple, UpdatedOrderGraceDurEvent.OutputTuple, UpdatedOrderGraceDurEvent.OutputObject>;
         "UpdatedPrice(address,address,address,uint256,uint256)": TypedContractEvent<UpdatedPriceEvent.InputTuple, UpdatedPriceEvent.OutputTuple, UpdatedPriceEvent.OutputObject>;
         UpdatedPrice: TypedContractEvent<UpdatedPriceEvent.InputTuple, UpdatedPriceEvent.OutputTuple, UpdatedPriceEvent.OutputObject>;
+        "UpdatedProviderRegistry(address)": TypedContractEvent<UpdatedProviderRegistryEvent.InputTuple, UpdatedProviderRegistryEvent.OutputTuple, UpdatedProviderRegistryEvent.OutputObject>;
+        UpdatedProviderRegistry: TypedContractEvent<UpdatedProviderRegistryEvent.InputTuple, UpdatedProviderRegistryEvent.OutputTuple, UpdatedProviderRegistryEvent.OutputObject>;
     };
 }
 
@@ -3871,7 +3867,7 @@ declare namespace DraftedMediatorEvent {
     type Log = TypedEventLog<Event>;
     type LogDescription = TypedLogDescription<Event>;
 }
-declare namespace OwnershipTransferredEvent$9 {
+declare namespace OwnershipTransferredEvent$d {
     type InputTuple = [previousOwner: AddressLike, newOwner: AddressLike];
     type OutputTuple = [previousOwner: string, newOwner: string];
     interface OutputObject {
@@ -3937,7 +3933,7 @@ declare namespace UndraftedEvent$1 {
     type Log = TypedEventLog<Event>;
     type LogDescription = TypedLogDescription<Event>;
 }
-declare namespace UpdatedCoreEvent {
+declare namespace UpdatedCoreEvent$1 {
     type InputTuple = [addr: AddressLike];
     type OutputTuple = [addr: string];
     interface OutputObject {
@@ -4290,10 +4286,10 @@ interface DisputeManager extends BaseContract {
     getEvent(key: "DisputeCreated"): TypedContractEvent<DisputeCreatedEvent.InputTuple, DisputeCreatedEvent.OutputTuple, DisputeCreatedEvent.OutputObject>;
     getEvent(key: "Drafted"): TypedContractEvent<DraftedEvent$1.InputTuple, DraftedEvent$1.OutputTuple, DraftedEvent$1.OutputObject>;
     getEvent(key: "DraftedMediator"): TypedContractEvent<DraftedMediatorEvent.InputTuple, DraftedMediatorEvent.OutputTuple, DraftedMediatorEvent.OutputObject>;
-    getEvent(key: "OwnershipTransferred"): TypedContractEvent<OwnershipTransferredEvent$9.InputTuple, OwnershipTransferredEvent$9.OutputTuple, OwnershipTransferredEvent$9.OutputObject>;
+    getEvent(key: "OwnershipTransferred"): TypedContractEvent<OwnershipTransferredEvent$d.InputTuple, OwnershipTransferredEvent$d.OutputTuple, OwnershipTransferredEvent$d.OutputObject>;
     getEvent(key: "Revealed"): TypedContractEvent<RevealedEvent.InputTuple, RevealedEvent.OutputTuple, RevealedEvent.OutputObject>;
     getEvent(key: "Undrafted"): TypedContractEvent<UndraftedEvent$1.InputTuple, UndraftedEvent$1.OutputTuple, UndraftedEvent$1.OutputObject>;
-    getEvent(key: "UpdatedCore"): TypedContractEvent<UpdatedCoreEvent.InputTuple, UpdatedCoreEvent.OutputTuple, UpdatedCoreEvent.OutputObject>;
+    getEvent(key: "UpdatedCore"): TypedContractEvent<UpdatedCoreEvent$1.InputTuple, UpdatedCoreEvent$1.OutputTuple, UpdatedCoreEvent$1.OutputObject>;
     getEvent(key: "UpdatedEvidenceDur"): TypedContractEvent<UpdatedEvidenceDurEvent.InputTuple, UpdatedEvidenceDurEvent.OutputTuple, UpdatedEvidenceDurEvent.OutputObject>;
     getEvent(key: "UpdatedMarketCore"): TypedContractEvent<UpdatedMarketCoreEvent$1.InputTuple, UpdatedMarketCoreEvent$1.OutputTuple, UpdatedMarketCoreEvent$1.OutputObject>;
     getEvent(key: "UpdatedMediatorManager"): TypedContractEvent<UpdatedMediatorManagerEvent$1.InputTuple, UpdatedMediatorManagerEvent$1.OutputTuple, UpdatedMediatorManagerEvent$1.OutputObject>;
@@ -4312,14 +4308,14 @@ interface DisputeManager extends BaseContract {
         Drafted: TypedContractEvent<DraftedEvent$1.InputTuple, DraftedEvent$1.OutputTuple, DraftedEvent$1.OutputObject>;
         "DraftedMediator(address,uint256,uint256,uint256,address,address)": TypedContractEvent<DraftedMediatorEvent.InputTuple, DraftedMediatorEvent.OutputTuple, DraftedMediatorEvent.OutputObject>;
         DraftedMediator: TypedContractEvent<DraftedMediatorEvent.InputTuple, DraftedMediatorEvent.OutputTuple, DraftedMediatorEvent.OutputObject>;
-        "OwnershipTransferred(address,address)": TypedContractEvent<OwnershipTransferredEvent$9.InputTuple, OwnershipTransferredEvent$9.OutputTuple, OwnershipTransferredEvent$9.OutputObject>;
-        OwnershipTransferred: TypedContractEvent<OwnershipTransferredEvent$9.InputTuple, OwnershipTransferredEvent$9.OutputTuple, OwnershipTransferredEvent$9.OutputObject>;
+        "OwnershipTransferred(address,address)": TypedContractEvent<OwnershipTransferredEvent$d.InputTuple, OwnershipTransferredEvent$d.OutputTuple, OwnershipTransferredEvent$d.OutputObject>;
+        OwnershipTransferred: TypedContractEvent<OwnershipTransferredEvent$d.InputTuple, OwnershipTransferredEvent$d.OutputTuple, OwnershipTransferredEvent$d.OutputObject>;
         "Revealed(address,uint256,uint256,address,uint256,bytes1)": TypedContractEvent<RevealedEvent.InputTuple, RevealedEvent.OutputTuple, RevealedEvent.OutputObject>;
         Revealed: TypedContractEvent<RevealedEvent.InputTuple, RevealedEvent.OutputTuple, RevealedEvent.OutputObject>;
         "Undrafted(address,uint256,bool,address)": TypedContractEvent<UndraftedEvent$1.InputTuple, UndraftedEvent$1.OutputTuple, UndraftedEvent$1.OutputObject>;
         Undrafted: TypedContractEvent<UndraftedEvent$1.InputTuple, UndraftedEvent$1.OutputTuple, UndraftedEvent$1.OutputObject>;
-        "UpdatedCore(address)": TypedContractEvent<UpdatedCoreEvent.InputTuple, UpdatedCoreEvent.OutputTuple, UpdatedCoreEvent.OutputObject>;
-        UpdatedCore: TypedContractEvent<UpdatedCoreEvent.InputTuple, UpdatedCoreEvent.OutputTuple, UpdatedCoreEvent.OutputObject>;
+        "UpdatedCore(address)": TypedContractEvent<UpdatedCoreEvent$1.InputTuple, UpdatedCoreEvent$1.OutputTuple, UpdatedCoreEvent$1.OutputObject>;
+        UpdatedCore: TypedContractEvent<UpdatedCoreEvent$1.InputTuple, UpdatedCoreEvent$1.OutputTuple, UpdatedCoreEvent$1.OutputObject>;
         "UpdatedEvidenceDur(uint256)": TypedContractEvent<UpdatedEvidenceDurEvent.InputTuple, UpdatedEvidenceDurEvent.OutputTuple, UpdatedEvidenceDurEvent.OutputObject>;
         UpdatedEvidenceDur: TypedContractEvent<UpdatedEvidenceDurEvent.InputTuple, UpdatedEvidenceDurEvent.OutputTuple, UpdatedEvidenceDurEvent.OutputObject>;
         "UpdatedMarketCore(address)": TypedContractEvent<UpdatedMarketCoreEvent$1.InputTuple, UpdatedMarketCoreEvent$1.OutputTuple, UpdatedMarketCoreEvent$1.OutputObject>;
@@ -4859,7 +4855,7 @@ declare namespace MintedEvent$1 {
     type Log = TypedEventLog<Event>;
     type LogDescription = TypedLogDescription<Event>;
 }
-declare namespace OwnershipTransferredEvent$8 {
+declare namespace OwnershipTransferredEvent$c {
     type InputTuple = [previousOwner: AddressLike, newOwner: AddressLike];
     type OutputTuple = [previousOwner: string, newOwner: string];
     interface OutputObject {
@@ -5104,7 +5100,7 @@ interface Energon extends BaseContract {
     getEvent(key: "Approval"): TypedContractEvent<ApprovalEvent$3.InputTuple, ApprovalEvent$3.OutputTuple, ApprovalEvent$3.OutputObject>;
     getEvent(key: "Claimed"): TypedContractEvent<ClaimedEvent.InputTuple, ClaimedEvent.OutputTuple, ClaimedEvent.OutputObject>;
     getEvent(key: "Minted"): TypedContractEvent<MintedEvent$1.InputTuple, MintedEvent$1.OutputTuple, MintedEvent$1.OutputObject>;
-    getEvent(key: "OwnershipTransferred"): TypedContractEvent<OwnershipTransferredEvent$8.InputTuple, OwnershipTransferredEvent$8.OutputTuple, OwnershipTransferredEvent$8.OutputObject>;
+    getEvent(key: "OwnershipTransferred"): TypedContractEvent<OwnershipTransferredEvent$c.InputTuple, OwnershipTransferredEvent$c.OutputTuple, OwnershipTransferredEvent$c.OutputObject>;
     getEvent(key: "RemovedMinter"): TypedContractEvent<RemovedMinterEvent$1.InputTuple, RemovedMinterEvent$1.OutputTuple, RemovedMinterEvent$1.OutputObject>;
     getEvent(key: "Transfer"): TypedContractEvent<TransferEvent$3.InputTuple, TransferEvent$3.OutputTuple, TransferEvent$3.OutputObject>;
     getEvent(key: "UpdatedAllocator"): TypedContractEvent<UpdatedAllocatorEvent.InputTuple, UpdatedAllocatorEvent.OutputTuple, UpdatedAllocatorEvent.OutputObject>;
@@ -5121,8 +5117,8 @@ interface Energon extends BaseContract {
         Claimed: TypedContractEvent<ClaimedEvent.InputTuple, ClaimedEvent.OutputTuple, ClaimedEvent.OutputObject>;
         "Minted(address,uint256)": TypedContractEvent<MintedEvent$1.InputTuple, MintedEvent$1.OutputTuple, MintedEvent$1.OutputObject>;
         Minted: TypedContractEvent<MintedEvent$1.InputTuple, MintedEvent$1.OutputTuple, MintedEvent$1.OutputObject>;
-        "OwnershipTransferred(address,address)": TypedContractEvent<OwnershipTransferredEvent$8.InputTuple, OwnershipTransferredEvent$8.OutputTuple, OwnershipTransferredEvent$8.OutputObject>;
-        OwnershipTransferred: TypedContractEvent<OwnershipTransferredEvent$8.InputTuple, OwnershipTransferredEvent$8.OutputTuple, OwnershipTransferredEvent$8.OutputObject>;
+        "OwnershipTransferred(address,address)": TypedContractEvent<OwnershipTransferredEvent$c.InputTuple, OwnershipTransferredEvent$c.OutputTuple, OwnershipTransferredEvent$c.OutputObject>;
+        OwnershipTransferred: TypedContractEvent<OwnershipTransferredEvent$c.InputTuple, OwnershipTransferredEvent$c.OutputTuple, OwnershipTransferredEvent$c.OutputObject>;
         "RemovedMinter(address)": TypedContractEvent<RemovedMinterEvent$1.InputTuple, RemovedMinterEvent$1.OutputTuple, RemovedMinterEvent$1.OutputObject>;
         RemovedMinter: TypedContractEvent<RemovedMinterEvent$1.InputTuple, RemovedMinterEvent$1.OutputTuple, RemovedMinterEvent$1.OutputObject>;
         "Transfer(address,address,uint256)": TypedContractEvent<TransferEvent$3.InputTuple, TransferEvent$3.OutputTuple, TransferEvent$3.OutputObject>;
@@ -5216,7 +5212,7 @@ interface FeePoolInterface extends Interface {
     decodeFunctionResult(functionFragment: "withdrawNFTReward", data: BytesLike): Result;
     decodeFunctionResult(functionFragment: "withdrawReward", data: BytesLike): Result;
 }
-declare namespace OwnershipTransferredEvent$7 {
+declare namespace OwnershipTransferredEvent$b {
     type InputTuple = [previousOwner: AddressLike, newOwner: AddressLike];
     type OutputTuple = [previousOwner: string, newOwner: string];
     interface OutputObject {
@@ -5632,7 +5628,7 @@ interface FeePool extends BaseContract {
     ], [
         void
     ], "nonpayable">;
-    getEvent(key: "OwnershipTransferred"): TypedContractEvent<OwnershipTransferredEvent$7.InputTuple, OwnershipTransferredEvent$7.OutputTuple, OwnershipTransferredEvent$7.OutputObject>;
+    getEvent(key: "OwnershipTransferred"): TypedContractEvent<OwnershipTransferredEvent$b.InputTuple, OwnershipTransferredEvent$b.OutputTuple, OwnershipTransferredEvent$b.OutputObject>;
     getEvent(key: "Recovered"): TypedContractEvent<RecoveredEvent$2.InputTuple, RecoveredEvent$2.OutputTuple, RecoveredEvent$2.OutputObject>;
     getEvent(key: "RewardAdded"): TypedContractEvent<RewardAddedEvent$2.InputTuple, RewardAddedEvent$2.OutputTuple, RewardAddedEvent$2.OutputObject>;
     getEvent(key: "RewardNFTWithdrawn"): TypedContractEvent<RewardNFTWithdrawnEvent.InputTuple, RewardNFTWithdrawnEvent.OutputTuple, RewardNFTWithdrawnEvent.OutputObject>;
@@ -5645,8 +5641,8 @@ interface FeePool extends BaseContract {
     getEvent(key: "UpdatedRewardDuration"): TypedContractEvent<UpdatedRewardDurationEvent.InputTuple, UpdatedRewardDurationEvent.OutputTuple, UpdatedRewardDurationEvent.OutputObject>;
     getEvent(key: "UpdatedTokenPool"): TypedContractEvent<UpdatedTokenPoolEvent.InputTuple, UpdatedTokenPoolEvent.OutputTuple, UpdatedTokenPoolEvent.OutputObject>;
     filters: {
-        "OwnershipTransferred(address,address)": TypedContractEvent<OwnershipTransferredEvent$7.InputTuple, OwnershipTransferredEvent$7.OutputTuple, OwnershipTransferredEvent$7.OutputObject>;
-        OwnershipTransferred: TypedContractEvent<OwnershipTransferredEvent$7.InputTuple, OwnershipTransferredEvent$7.OutputTuple, OwnershipTransferredEvent$7.OutputObject>;
+        "OwnershipTransferred(address,address)": TypedContractEvent<OwnershipTransferredEvent$b.InputTuple, OwnershipTransferredEvent$b.OutputTuple, OwnershipTransferredEvent$b.OutputObject>;
+        OwnershipTransferred: TypedContractEvent<OwnershipTransferredEvent$b.InputTuple, OwnershipTransferredEvent$b.OutputTuple, OwnershipTransferredEvent$b.OutputObject>;
         "Recovered(address,uint256)": TypedContractEvent<RecoveredEvent$2.InputTuple, RecoveredEvent$2.OutputTuple, RecoveredEvent$2.OutputObject>;
         Recovered: TypedContractEvent<RecoveredEvent$2.InputTuple, RecoveredEvent$2.OutputTuple, RecoveredEvent$2.OutputObject>;
         "RewardAdded(address,uint256)": TypedContractEvent<RewardAddedEvent$2.InputTuple, RewardAddedEvent$2.OutputTuple, RewardAddedEvent$2.OutputObject>;
@@ -5742,7 +5738,7 @@ declare namespace LockedEvent {
     type Log = TypedEventLog<Event>;
     type LogDescription = TypedLogDescription<Event>;
 }
-declare namespace OwnershipTransferredEvent$6 {
+declare namespace OwnershipTransferredEvent$a {
     type InputTuple = [previousOwner: AddressLike, newOwner: AddressLike];
     type OutputTuple = [previousOwner: string, newOwner: string];
     interface OutputObject {
@@ -5924,7 +5920,7 @@ interface LPPool extends BaseContract {
     getFunction(nameOrSignature: "userRewardPerTokenPaid"): TypedContractMethod<[arg0: AddressLike], [bigint], "view">;
     getFunction(nameOrSignature: "withdrawReward"): TypedContractMethod<[_amount: BigNumberish], [void], "nonpayable">;
     getEvent(key: "Locked"): TypedContractEvent<LockedEvent.InputTuple, LockedEvent.OutputTuple, LockedEvent.OutputObject>;
-    getEvent(key: "OwnershipTransferred"): TypedContractEvent<OwnershipTransferredEvent$6.InputTuple, OwnershipTransferredEvent$6.OutputTuple, OwnershipTransferredEvent$6.OutputObject>;
+    getEvent(key: "OwnershipTransferred"): TypedContractEvent<OwnershipTransferredEvent$a.InputTuple, OwnershipTransferredEvent$a.OutputTuple, OwnershipTransferredEvent$a.OutputObject>;
     getEvent(key: "Paused"): TypedContractEvent<PausedEvent$1.InputTuple, PausedEvent$1.OutputTuple, PausedEvent$1.OutputObject>;
     getEvent(key: "Recovered"): TypedContractEvent<RecoveredEvent$1.InputTuple, RecoveredEvent$1.OutputTuple, RecoveredEvent$1.OutputObject>;
     getEvent(key: "RewardAdded"): TypedContractEvent<RewardAddedEvent$1.InputTuple, RewardAddedEvent$1.OutputTuple, RewardAddedEvent$1.OutputObject>;
@@ -5934,8 +5930,8 @@ interface LPPool extends BaseContract {
     filters: {
         "Locked(address,uint256)": TypedContractEvent<LockedEvent.InputTuple, LockedEvent.OutputTuple, LockedEvent.OutputObject>;
         Locked: TypedContractEvent<LockedEvent.InputTuple, LockedEvent.OutputTuple, LockedEvent.OutputObject>;
-        "OwnershipTransferred(address,address)": TypedContractEvent<OwnershipTransferredEvent$6.InputTuple, OwnershipTransferredEvent$6.OutputTuple, OwnershipTransferredEvent$6.OutputObject>;
-        OwnershipTransferred: TypedContractEvent<OwnershipTransferredEvent$6.InputTuple, OwnershipTransferredEvent$6.OutputTuple, OwnershipTransferredEvent$6.OutputObject>;
+        "OwnershipTransferred(address,address)": TypedContractEvent<OwnershipTransferredEvent$a.InputTuple, OwnershipTransferredEvent$a.OutputTuple, OwnershipTransferredEvent$a.OutputObject>;
+        OwnershipTransferred: TypedContractEvent<OwnershipTransferredEvent$a.InputTuple, OwnershipTransferredEvent$a.OutputTuple, OwnershipTransferredEvent$a.OutputObject>;
         "Paused(address)": TypedContractEvent<PausedEvent$1.InputTuple, PausedEvent$1.OutputTuple, PausedEvent$1.OutputObject>;
         Paused: TypedContractEvent<PausedEvent$1.InputTuple, PausedEvent$1.OutputTuple, PausedEvent$1.OutputObject>;
         "Recovered(address,uint256)": TypedContractEvent<RecoveredEvent$1.InputTuple, RecoveredEvent$1.OutputTuple, RecoveredEvent$1.OutputObject>;
@@ -5951,7 +5947,7 @@ interface LPPool extends BaseContract {
     };
 }
 
-declare namespace Structs$1 {
+declare namespace Structs$2 {
     type MarketDurStruct = {
         disputeDelayDur: BigNumberish;
     };
@@ -5990,12 +5986,12 @@ declare namespace Structs$1 {
         numLiquidity: BigNumberish;
         commission: BigNumberish;
         poolId: BigNumberish;
-        dur: Structs$1.MarketDurStruct;
+        dur: Structs$2.MarketDurStruct;
         creator: AddressLike;
         manager: AddressLike;
-        base: Structs$1.AssetStruct;
-        quote: Structs$1.AssetStruct;
-        perms: Structs$1.MarketPermsStruct;
+        base: Structs$2.AssetStruct;
+        quote: Structs$2.AssetStruct;
+        perms: Structs$2.MarketPermsStruct;
     };
     type MarketStructOutput = [
         createdAt: bigint,
@@ -6004,12 +6000,12 @@ declare namespace Structs$1 {
         numLiquidity: bigint,
         commission: bigint,
         poolId: bigint,
-        dur: Structs$1.MarketDurStructOutput,
+        dur: Structs$2.MarketDurStructOutput,
         creator: string,
         manager: string,
-        base: Structs$1.AssetStructOutput,
-        quote: Structs$1.AssetStructOutput,
-        perms: Structs$1.MarketPermsStructOutput
+        base: Structs$2.AssetStructOutput,
+        quote: Structs$2.AssetStructOutput,
+        perms: Structs$2.MarketPermsStructOutput
     ] & {
         createdAt: bigint;
         numOrders: bigint;
@@ -6017,12 +6013,12 @@ declare namespace Structs$1 {
         numLiquidity: bigint;
         commission: bigint;
         poolId: bigint;
-        dur: Structs$1.MarketDurStructOutput;
+        dur: Structs$2.MarketDurStructOutput;
         creator: string;
         manager: string;
-        base: Structs$1.AssetStructOutput;
-        quote: Structs$1.AssetStructOutput;
-        perms: Structs$1.MarketPermsStructOutput;
+        base: Structs$2.AssetStructOutput;
+        quote: Structs$2.AssetStructOutput;
+        perms: Structs$2.MarketPermsStructOutput;
     };
 }
 interface MarketCoreInterface extends Interface {
@@ -6068,7 +6064,7 @@ interface MarketCoreInterface extends Interface {
     encodeFunctionData(functionFragment: "setDefaultDisputeDelayDuration", values: [BigNumberish]): string;
     encodeFunctionData(functionFragment: "setDisputeDelayDuration", values: [AddressLike, BigNumberish]): string;
     encodeFunctionData(functionFragment: "setManager", values: [AddressLike, AddressLike]): string;
-    encodeFunctionData(functionFragment: "setMarket", values: [AddressLike, Structs$1.MarketStruct]): string;
+    encodeFunctionData(functionFragment: "setMarket", values: [AddressLike, Structs$2.MarketStruct]): string;
     encodeFunctionData(functionFragment: "setMediatorManager", values: [AddressLike]): string;
     encodeFunctionData(functionFragment: "setNativeAssetAddr", values: [AddressLike]): string;
     encodeFunctionData(functionFragment: "setRequiredBadges", values: [AddressLike, [string, string][], [string, string][]]): string;
@@ -6206,7 +6202,7 @@ declare namespace OfferOnlyEnabledEvent {
     type Log = TypedEventLog<Event>;
     type LogDescription = TypedLogDescription<Event>;
 }
-declare namespace OwnershipTransferredEvent$5 {
+declare namespace OwnershipTransferredEvent$9 {
     type InputTuple = [previousOwner: AddressLike, newOwner: AddressLike];
     type OutputTuple = [previousOwner: string, newOwner: string];
     interface OutputObject {
@@ -6372,7 +6368,7 @@ declare namespace UpdatedNativeAssetAddrEvent {
     type Log = TypedEventLog<Event>;
     type LogDescription = TypedLogDescription<Event>;
 }
-declare namespace WriterUpdatedEvent$1 {
+declare namespace WriterUpdatedEvent$2 {
     type InputTuple = [addr: AddressLike, added: boolean];
     type OutputTuple = [addr: string, added: boolean];
     interface OutputObject {
@@ -6419,7 +6415,7 @@ interface MarketCore extends BaseContract {
     getMarket: TypedContractMethod<[
         id: AddressLike
     ], [
-        Structs$1.MarketStructOutput
+        Structs$2.MarketStructOutput
     ], "view">;
     getNativeAssetAddr: TypedContractMethod<[], [string], "view">;
     getReqBadges: TypedContractMethod<[
@@ -6451,12 +6447,12 @@ interface MarketCore extends BaseContract {
             bigint,
             bigint,
             bigint,
-            Structs$1.MarketDurStructOutput,
+            Structs$2.MarketDurStructOutput,
             string,
             string,
-            Structs$1.AssetStructOutput,
-            Structs$1.AssetStructOutput,
-            Structs$1.MarketPermsStructOutput
+            Structs$2.AssetStructOutput,
+            Structs$2.AssetStructOutput,
+            Structs$2.MarketPermsStructOutput
         ] & {
             createdAt: bigint;
             numOrders: bigint;
@@ -6464,12 +6460,12 @@ interface MarketCore extends BaseContract {
             numLiquidity: bigint;
             commission: bigint;
             poolId: bigint;
-            dur: Structs$1.MarketDurStructOutput;
+            dur: Structs$2.MarketDurStructOutput;
             creator: string;
             manager: string;
-            base: Structs$1.AssetStructOutput;
-            quote: Structs$1.AssetStructOutput;
-            perms: Structs$1.MarketPermsStructOutput;
+            base: Structs$2.AssetStructOutput;
+            quote: Structs$2.AssetStructOutput;
+            perms: Structs$2.MarketPermsStructOutput;
         }
     ], "view">;
     mediatorManager: TypedContractMethod<[], [string], "view">;
@@ -6561,7 +6557,7 @@ interface MarketCore extends BaseContract {
     ], "nonpayable">;
     setMarket: TypedContractMethod<[
         id: AddressLike,
-        upd: Structs$1.MarketStruct
+        upd: Structs$2.MarketStruct
     ], [
         void
     ], "nonpayable">;
@@ -6625,7 +6621,7 @@ interface MarketCore extends BaseContract {
     getFunction(nameOrSignature: "getMarket"): TypedContractMethod<[
         id: AddressLike
     ], [
-        Structs$1.MarketStructOutput
+        Structs$2.MarketStructOutput
     ], "view">;
     getFunction(nameOrSignature: "getNativeAssetAddr"): TypedContractMethod<[], [string], "view">;
     getFunction(nameOrSignature: "getReqBadges"): TypedContractMethod<[
@@ -6657,12 +6653,12 @@ interface MarketCore extends BaseContract {
             bigint,
             bigint,
             bigint,
-            Structs$1.MarketDurStructOutput,
+            Structs$2.MarketDurStructOutput,
             string,
             string,
-            Structs$1.AssetStructOutput,
-            Structs$1.AssetStructOutput,
-            Structs$1.MarketPermsStructOutput
+            Structs$2.AssetStructOutput,
+            Structs$2.AssetStructOutput,
+            Structs$2.MarketPermsStructOutput
         ] & {
             createdAt: bigint;
             numOrders: bigint;
@@ -6670,12 +6666,12 @@ interface MarketCore extends BaseContract {
             numLiquidity: bigint;
             commission: bigint;
             poolId: bigint;
-            dur: Structs$1.MarketDurStructOutput;
+            dur: Structs$2.MarketDurStructOutput;
             creator: string;
             manager: string;
-            base: Structs$1.AssetStructOutput;
-            quote: Structs$1.AssetStructOutput;
-            perms: Structs$1.MarketPermsStructOutput;
+            base: Structs$2.AssetStructOutput;
+            quote: Structs$2.AssetStructOutput;
+            perms: Structs$2.MarketPermsStructOutput;
         }
     ], "view">;
     getFunction(nameOrSignature: "mediatorManager"): TypedContractMethod<[], [string], "view">;
@@ -6759,7 +6755,7 @@ interface MarketCore extends BaseContract {
     ], "nonpayable">;
     getFunction(nameOrSignature: "setMarket"): TypedContractMethod<[
         id: AddressLike,
-        upd: Structs$1.MarketStruct
+        upd: Structs$2.MarketStruct
     ], [
         void
     ], "nonpayable">;
@@ -6797,7 +6793,7 @@ interface MarketCore extends BaseContract {
     getEvent(key: "EnabledZeroOfferPrice"): TypedContractEvent<EnabledZeroOfferPriceEvent.InputTuple, EnabledZeroOfferPriceEvent.OutputTuple, EnabledZeroOfferPriceEvent.OutputObject>;
     getEvent(key: "NewMarket"): TypedContractEvent<NewMarketEvent.InputTuple, NewMarketEvent.OutputTuple, NewMarketEvent.OutputObject>;
     getEvent(key: "OfferOnlyEnabled"): TypedContractEvent<OfferOnlyEnabledEvent.InputTuple, OfferOnlyEnabledEvent.OutputTuple, OfferOnlyEnabledEvent.OutputObject>;
-    getEvent(key: "OwnershipTransferred"): TypedContractEvent<OwnershipTransferredEvent$5.InputTuple, OwnershipTransferredEvent$5.OutputTuple, OwnershipTransferredEvent$5.OutputObject>;
+    getEvent(key: "OwnershipTransferred"): TypedContractEvent<OwnershipTransferredEvent$9.InputTuple, OwnershipTransferredEvent$9.OutputTuple, OwnershipTransferredEvent$9.OutputObject>;
     getEvent(key: "RenouncedMarket"): TypedContractEvent<RenouncedMarketEvent.InputTuple, RenouncedMarketEvent.OutputTuple, RenouncedMarketEvent.OutputObject>;
     getEvent(key: "RevokedPut"): TypedContractEvent<RevokedPutEvent.InputTuple, RevokedPutEvent.OutputTuple, RevokedPutEvent.OutputObject>;
     getEvent(key: "RevokedSwap"): TypedContractEvent<RevokedSwapEvent.InputTuple, RevokedSwapEvent.OutputTuple, RevokedSwapEvent.OutputObject>;
@@ -6810,7 +6806,7 @@ interface MarketCore extends BaseContract {
     getEvent(key: "UpdatedMarketManager"): TypedContractEvent<UpdatedMarketManagerEvent.InputTuple, UpdatedMarketManagerEvent.OutputTuple, UpdatedMarketManagerEvent.OutputObject>;
     getEvent(key: "UpdatedMediatorManager"): TypedContractEvent<UpdatedMediatorManagerEvent.InputTuple, UpdatedMediatorManagerEvent.OutputTuple, UpdatedMediatorManagerEvent.OutputObject>;
     getEvent(key: "UpdatedNativeAssetAddr"): TypedContractEvent<UpdatedNativeAssetAddrEvent.InputTuple, UpdatedNativeAssetAddrEvent.OutputTuple, UpdatedNativeAssetAddrEvent.OutputObject>;
-    getEvent(key: "WriterUpdated"): TypedContractEvent<WriterUpdatedEvent$1.InputTuple, WriterUpdatedEvent$1.OutputTuple, WriterUpdatedEvent$1.OutputObject>;
+    getEvent(key: "WriterUpdated"): TypedContractEvent<WriterUpdatedEvent$2.InputTuple, WriterUpdatedEvent$2.OutputTuple, WriterUpdatedEvent$2.OutputObject>;
     filters: {
         "AllowedPut(address,address)": TypedContractEvent<AllowedPutEvent.InputTuple, AllowedPutEvent.OutputTuple, AllowedPutEvent.OutputObject>;
         AllowedPut: TypedContractEvent<AllowedPutEvent.InputTuple, AllowedPutEvent.OutputTuple, AllowedPutEvent.OutputObject>;
@@ -6822,8 +6818,8 @@ interface MarketCore extends BaseContract {
         NewMarket: TypedContractEvent<NewMarketEvent.InputTuple, NewMarketEvent.OutputTuple, NewMarketEvent.OutputObject>;
         "OfferOnlyEnabled(address)": TypedContractEvent<OfferOnlyEnabledEvent.InputTuple, OfferOnlyEnabledEvent.OutputTuple, OfferOnlyEnabledEvent.OutputObject>;
         OfferOnlyEnabled: TypedContractEvent<OfferOnlyEnabledEvent.InputTuple, OfferOnlyEnabledEvent.OutputTuple, OfferOnlyEnabledEvent.OutputObject>;
-        "OwnershipTransferred(address,address)": TypedContractEvent<OwnershipTransferredEvent$5.InputTuple, OwnershipTransferredEvent$5.OutputTuple, OwnershipTransferredEvent$5.OutputObject>;
-        OwnershipTransferred: TypedContractEvent<OwnershipTransferredEvent$5.InputTuple, OwnershipTransferredEvent$5.OutputTuple, OwnershipTransferredEvent$5.OutputObject>;
+        "OwnershipTransferred(address,address)": TypedContractEvent<OwnershipTransferredEvent$9.InputTuple, OwnershipTransferredEvent$9.OutputTuple, OwnershipTransferredEvent$9.OutputObject>;
+        OwnershipTransferred: TypedContractEvent<OwnershipTransferredEvent$9.InputTuple, OwnershipTransferredEvent$9.OutputTuple, OwnershipTransferredEvent$9.OutputObject>;
         "RenouncedMarket(address,address)": TypedContractEvent<RenouncedMarketEvent.InputTuple, RenouncedMarketEvent.OutputTuple, RenouncedMarketEvent.OutputObject>;
         RenouncedMarket: TypedContractEvent<RenouncedMarketEvent.InputTuple, RenouncedMarketEvent.OutputTuple, RenouncedMarketEvent.OutputObject>;
         "RevokedPut(address,address)": TypedContractEvent<RevokedPutEvent.InputTuple, RevokedPutEvent.OutputTuple, RevokedPutEvent.OutputObject>;
@@ -6848,12 +6844,374 @@ interface MarketCore extends BaseContract {
         UpdatedMediatorManager: TypedContractEvent<UpdatedMediatorManagerEvent.InputTuple, UpdatedMediatorManagerEvent.OutputTuple, UpdatedMediatorManagerEvent.OutputObject>;
         "UpdatedNativeAssetAddr(address)": TypedContractEvent<UpdatedNativeAssetAddrEvent.InputTuple, UpdatedNativeAssetAddrEvent.OutputTuple, UpdatedNativeAssetAddrEvent.OutputObject>;
         UpdatedNativeAssetAddr: TypedContractEvent<UpdatedNativeAssetAddrEvent.InputTuple, UpdatedNativeAssetAddrEvent.OutputTuple, UpdatedNativeAssetAddrEvent.OutputObject>;
-        "WriterUpdated(address,bool)": TypedContractEvent<WriterUpdatedEvent$1.InputTuple, WriterUpdatedEvent$1.OutputTuple, WriterUpdatedEvent$1.OutputObject>;
-        WriterUpdated: TypedContractEvent<WriterUpdatedEvent$1.InputTuple, WriterUpdatedEvent$1.OutputTuple, WriterUpdatedEvent$1.OutputObject>;
+        "WriterUpdated(address,bool)": TypedContractEvent<WriterUpdatedEvent$2.InputTuple, WriterUpdatedEvent$2.OutputTuple, WriterUpdatedEvent$2.OutputObject>;
+        WriterUpdated: TypedContractEvent<WriterUpdatedEvent$2.InputTuple, WriterUpdatedEvent$2.OutputTuple, WriterUpdatedEvent$2.OutputObject>;
     };
 }
 
-declare namespace Structs {
+declare namespace StructsLib {
+    type SwapQuoteForBaseParamsStruct = {
+        marketId: AddressLike;
+        provider: AddressLike;
+        recipient: AddressLike;
+        lid: BigNumberish;
+        amount: BigNumberish;
+        maxPrice: BigNumberish;
+        ids: BigNumberish[];
+        expireAt: BigNumberish;
+        operator: BigNumberish;
+        marketMgrData: BytesLike;
+    };
+    type SwapQuoteForBaseParamsStructOutput = [
+        marketId: string,
+        provider: string,
+        recipient: string,
+        lid: bigint,
+        amount: bigint,
+        maxPrice: bigint,
+        ids: bigint[],
+        expireAt: bigint,
+        operator: bigint,
+        marketMgrData: string
+    ] & {
+        marketId: string;
+        provider: string;
+        recipient: string;
+        lid: bigint;
+        amount: bigint;
+        maxPrice: bigint;
+        ids: bigint[];
+        expireAt: bigint;
+        operator: bigint;
+        marketMgrData: string;
+    };
+}
+interface MarketManagerInterface extends Interface {
+    getFunction(nameOrSignature: "addDelegate" | "afterSwap" | "beforeSwap" | "core" | "delegates" | "onCancel" | "onPaid" | "onRelease" | "owner" | "payRouter" | "removeDelegate" | "renounceOwnership" | "requestInfo" | "setCore" | "setPayRouter" | "setRequesterFeeBp" | "setRequesterValueLockDuration" | "supportsInterface" | "transferOwnership" | "transferRequestBond" | "transferRequestSource" | "withdrawRequesterFee"): FunctionFragment;
+    getEvent(nameOrSignatureOrTopic: "CoreUpdated" | "OwnershipTransferred" | "PayRouterUpdated" | "TransferredRequestBond" | "TransferredRequestSource" | "UpdatedDelegate"): EventFragment;
+    encodeFunctionData(functionFragment: "addDelegate", values: [AddressLike]): string;
+    encodeFunctionData(functionFragment: "afterSwap", values: [StructsLib.SwapQuoteForBaseParamsStruct, BigNumberish]): string;
+    encodeFunctionData(functionFragment: "beforeSwap", values: [StructsLib.SwapQuoteForBaseParamsStruct]): string;
+    encodeFunctionData(functionFragment: "core", values?: undefined): string;
+    encodeFunctionData(functionFragment: "delegates", values: [AddressLike]): string;
+    encodeFunctionData(functionFragment: "onCancel", values: [BigNumberish]): string;
+    encodeFunctionData(functionFragment: "onPaid", values: [BigNumberish]): string;
+    encodeFunctionData(functionFragment: "onRelease", values: [BigNumberish]): string;
+    encodeFunctionData(functionFragment: "owner", values?: undefined): string;
+    encodeFunctionData(functionFragment: "payRouter", values?: undefined): string;
+    encodeFunctionData(functionFragment: "removeDelegate", values: [AddressLike]): string;
+    encodeFunctionData(functionFragment: "renounceOwnership", values?: undefined): string;
+    encodeFunctionData(functionFragment: "requestInfo", values: [BigNumberish]): string;
+    encodeFunctionData(functionFragment: "setCore", values: [AddressLike]): string;
+    encodeFunctionData(functionFragment: "setPayRouter", values: [AddressLike]): string;
+    encodeFunctionData(functionFragment: "setRequesterFeeBp", values: [BigNumberish]): string;
+    encodeFunctionData(functionFragment: "setRequesterValueLockDuration", values: [BigNumberish]): string;
+    encodeFunctionData(functionFragment: "supportsInterface", values: [BytesLike]): string;
+    encodeFunctionData(functionFragment: "transferOwnership", values: [AddressLike]): string;
+    encodeFunctionData(functionFragment: "transferRequestBond", values: [BigNumberish, BigNumberish, BigNumberish, AddressLike]): string;
+    encodeFunctionData(functionFragment: "transferRequestSource", values: [BigNumberish, BigNumberish, AddressLike]): string;
+    encodeFunctionData(functionFragment: "withdrawRequesterFee", values: [AddressLike]): string;
+    decodeFunctionResult(functionFragment: "addDelegate", data: BytesLike): Result;
+    decodeFunctionResult(functionFragment: "afterSwap", data: BytesLike): Result;
+    decodeFunctionResult(functionFragment: "beforeSwap", data: BytesLike): Result;
+    decodeFunctionResult(functionFragment: "core", data: BytesLike): Result;
+    decodeFunctionResult(functionFragment: "delegates", data: BytesLike): Result;
+    decodeFunctionResult(functionFragment: "onCancel", data: BytesLike): Result;
+    decodeFunctionResult(functionFragment: "onPaid", data: BytesLike): Result;
+    decodeFunctionResult(functionFragment: "onRelease", data: BytesLike): Result;
+    decodeFunctionResult(functionFragment: "owner", data: BytesLike): Result;
+    decodeFunctionResult(functionFragment: "payRouter", data: BytesLike): Result;
+    decodeFunctionResult(functionFragment: "removeDelegate", data: BytesLike): Result;
+    decodeFunctionResult(functionFragment: "renounceOwnership", data: BytesLike): Result;
+    decodeFunctionResult(functionFragment: "requestInfo", data: BytesLike): Result;
+    decodeFunctionResult(functionFragment: "setCore", data: BytesLike): Result;
+    decodeFunctionResult(functionFragment: "setPayRouter", data: BytesLike): Result;
+    decodeFunctionResult(functionFragment: "setRequesterFeeBp", data: BytesLike): Result;
+    decodeFunctionResult(functionFragment: "setRequesterValueLockDuration", data: BytesLike): Result;
+    decodeFunctionResult(functionFragment: "supportsInterface", data: BytesLike): Result;
+    decodeFunctionResult(functionFragment: "transferOwnership", data: BytesLike): Result;
+    decodeFunctionResult(functionFragment: "transferRequestBond", data: BytesLike): Result;
+    decodeFunctionResult(functionFragment: "transferRequestSource", data: BytesLike): Result;
+    decodeFunctionResult(functionFragment: "withdrawRequesterFee", data: BytesLike): Result;
+}
+declare namespace CoreUpdatedEvent {
+    type InputTuple = [core: AddressLike];
+    type OutputTuple = [core: string];
+    interface OutputObject {
+        core: string;
+    }
+    type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>;
+    type Filter = TypedDeferredTopicFilter<Event>;
+    type Log = TypedEventLog<Event>;
+    type LogDescription = TypedLogDescription<Event>;
+}
+declare namespace OwnershipTransferredEvent$8 {
+    type InputTuple = [previousOwner: AddressLike, newOwner: AddressLike];
+    type OutputTuple = [previousOwner: string, newOwner: string];
+    interface OutputObject {
+        previousOwner: string;
+        newOwner: string;
+    }
+    type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>;
+    type Filter = TypedDeferredTopicFilter<Event>;
+    type Log = TypedEventLog<Event>;
+    type LogDescription = TypedLogDescription<Event>;
+}
+declare namespace PayRouterUpdatedEvent {
+    type InputTuple = [payRouter: AddressLike];
+    type OutputTuple = [payRouter: string];
+    interface OutputObject {
+        payRouter: string;
+    }
+    type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>;
+    type Filter = TypedDeferredTopicFilter<Event>;
+    type Log = TypedEventLog<Event>;
+    type LogDescription = TypedLogDescription<Event>;
+}
+declare namespace TransferredRequestBondEvent {
+    type InputTuple = [
+        sender: AddressLike,
+        requestId: BigNumberish,
+        routeId: BigNumberish,
+        amount: BigNumberish,
+        to: AddressLike
+    ];
+    type OutputTuple = [
+        sender: string,
+        requestId: bigint,
+        routeId: bigint,
+        amount: bigint,
+        to: string
+    ];
+    interface OutputObject {
+        sender: string;
+        requestId: bigint;
+        routeId: bigint;
+        amount: bigint;
+        to: string;
+    }
+    type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>;
+    type Filter = TypedDeferredTopicFilter<Event>;
+    type Log = TypedEventLog<Event>;
+    type LogDescription = TypedLogDescription<Event>;
+}
+declare namespace TransferredRequestSourceEvent {
+    type InputTuple = [
+        sender: AddressLike,
+        requestId: BigNumberish,
+        amount: BigNumberish,
+        to: AddressLike
+    ];
+    type OutputTuple = [
+        sender: string,
+        requestId: bigint,
+        amount: bigint,
+        to: string
+    ];
+    interface OutputObject {
+        sender: string;
+        requestId: bigint;
+        amount: bigint;
+        to: string;
+    }
+    type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>;
+    type Filter = TypedDeferredTopicFilter<Event>;
+    type Log = TypedEventLog<Event>;
+    type LogDescription = TypedLogDescription<Event>;
+}
+declare namespace UpdatedDelegateEvent {
+    type InputTuple = [delegate: AddressLike, isDelegate: boolean];
+    type OutputTuple = [delegate: string, isDelegate: boolean];
+    interface OutputObject {
+        delegate: string;
+        isDelegate: boolean;
+    }
+    type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>;
+    type Filter = TypedDeferredTopicFilter<Event>;
+    type Log = TypedEventLog<Event>;
+    type LogDescription = TypedLogDescription<Event>;
+}
+interface MarketManager extends BaseContract {
+    connect(runner?: ContractRunner | null): MarketManager;
+    waitForDeployment(): Promise<this>;
+    interface: MarketManagerInterface;
+    queryFilter<TCEvent extends TypedContractEvent>(event: TCEvent, fromBlockOrBlockhash?: string | number | undefined, toBlock?: string | number | undefined): Promise<Array<TypedEventLog<TCEvent>>>;
+    queryFilter<TCEvent extends TypedContractEvent>(filter: TypedDeferredTopicFilter<TCEvent>, fromBlockOrBlockhash?: string | number | undefined, toBlock?: string | number | undefined): Promise<Array<TypedEventLog<TCEvent>>>;
+    on<TCEvent extends TypedContractEvent>(event: TCEvent, listener: TypedListener<TCEvent>): Promise<this>;
+    on<TCEvent extends TypedContractEvent>(filter: TypedDeferredTopicFilter<TCEvent>, listener: TypedListener<TCEvent>): Promise<this>;
+    once<TCEvent extends TypedContractEvent>(event: TCEvent, listener: TypedListener<TCEvent>): Promise<this>;
+    once<TCEvent extends TypedContractEvent>(filter: TypedDeferredTopicFilter<TCEvent>, listener: TypedListener<TCEvent>): Promise<this>;
+    listeners<TCEvent extends TypedContractEvent>(event: TCEvent): Promise<Array<TypedListener<TCEvent>>>;
+    listeners(eventName?: string): Promise<Array<Listener>>;
+    removeAllListeners<TCEvent extends TypedContractEvent>(event?: TCEvent): Promise<this>;
+    addDelegate: TypedContractMethod<[
+        delegate: AddressLike
+    ], [
+        void
+    ], "nonpayable">;
+    afterSwap: TypedContractMethod<[
+        params: StructsLib.SwapQuoteForBaseParamsStruct,
+        orderId: BigNumberish
+    ], [
+        void
+    ], "nonpayable">;
+    beforeSwap: TypedContractMethod<[
+        params: StructsLib.SwapQuoteForBaseParamsStruct
+    ], [
+        void
+    ], "nonpayable">;
+    core: TypedContractMethod<[], [string], "view">;
+    delegates: TypedContractMethod<[arg0: AddressLike], [boolean], "view">;
+    onCancel: TypedContractMethod<[orderId: BigNumberish], [void], "nonpayable">;
+    onPaid: TypedContractMethod<[orderId: BigNumberish], [void], "nonpayable">;
+    onRelease: TypedContractMethod<[orderId: BigNumberish], [void], "nonpayable">;
+    owner: TypedContractMethod<[], [string], "view">;
+    payRouter: TypedContractMethod<[], [string], "view">;
+    removeDelegate: TypedContractMethod<[
+        delegate: AddressLike
+    ], [
+        void
+    ], "nonpayable">;
+    renounceOwnership: TypedContractMethod<[], [void], "nonpayable">;
+    requestInfo: TypedContractMethod<[
+        arg0: BigNumberish
+    ], [
+        [
+            boolean,
+            bigint,
+            bigint
+        ] & {
+            exists: boolean;
+            requestId: bigint;
+            orderId: bigint;
+        }
+    ], "view">;
+    setCore: TypedContractMethod<[_core: AddressLike], [void], "nonpayable">;
+    setPayRouter: TypedContractMethod<[
+        _payRouter: AddressLike
+    ], [
+        void
+    ], "nonpayable">;
+    setRequesterFeeBp: TypedContractMethod<[
+        feeBp: BigNumberish
+    ], [
+        void
+    ], "nonpayable">;
+    setRequesterValueLockDuration: TypedContractMethod<[
+        duration: BigNumberish
+    ], [
+        void
+    ], "nonpayable">;
+    supportsInterface: TypedContractMethod<[
+        interfaceId: BytesLike
+    ], [
+        boolean
+    ], "view">;
+    transferOwnership: TypedContractMethod<[
+        newOwner: AddressLike
+    ], [
+        void
+    ], "nonpayable">;
+    transferRequestBond: TypedContractMethod<[
+        requestId: BigNumberish,
+        routeId: BigNumberish,
+        amount: BigNumberish,
+        to: AddressLike
+    ], [
+        void
+    ], "nonpayable">;
+    transferRequestSource: TypedContractMethod<[
+        requestId: BigNumberish,
+        amount: BigNumberish,
+        to: AddressLike
+    ], [
+        void
+    ], "nonpayable">;
+    withdrawRequesterFee: TypedContractMethod<[
+        beneficiary: AddressLike
+    ], [
+        void
+    ], "nonpayable">;
+    getFunction<T extends ContractMethod = ContractMethod>(key: string | FunctionFragment): T;
+    getFunction(nameOrSignature: "addDelegate"): TypedContractMethod<[delegate: AddressLike], [void], "nonpayable">;
+    getFunction(nameOrSignature: "afterSwap"): TypedContractMethod<[
+        params: StructsLib.SwapQuoteForBaseParamsStruct,
+        orderId: BigNumberish
+    ], [
+        void
+    ], "nonpayable">;
+    getFunction(nameOrSignature: "beforeSwap"): TypedContractMethod<[
+        params: StructsLib.SwapQuoteForBaseParamsStruct
+    ], [
+        void
+    ], "nonpayable">;
+    getFunction(nameOrSignature: "core"): TypedContractMethod<[], [string], "view">;
+    getFunction(nameOrSignature: "delegates"): TypedContractMethod<[arg0: AddressLike], [boolean], "view">;
+    getFunction(nameOrSignature: "onCancel"): TypedContractMethod<[orderId: BigNumberish], [void], "nonpayable">;
+    getFunction(nameOrSignature: "onPaid"): TypedContractMethod<[orderId: BigNumberish], [void], "nonpayable">;
+    getFunction(nameOrSignature: "onRelease"): TypedContractMethod<[orderId: BigNumberish], [void], "nonpayable">;
+    getFunction(nameOrSignature: "owner"): TypedContractMethod<[], [string], "view">;
+    getFunction(nameOrSignature: "payRouter"): TypedContractMethod<[], [string], "view">;
+    getFunction(nameOrSignature: "removeDelegate"): TypedContractMethod<[delegate: AddressLike], [void], "nonpayable">;
+    getFunction(nameOrSignature: "renounceOwnership"): TypedContractMethod<[], [void], "nonpayable">;
+    getFunction(nameOrSignature: "requestInfo"): TypedContractMethod<[
+        arg0: BigNumberish
+    ], [
+        [
+            boolean,
+            bigint,
+            bigint
+        ] & {
+            exists: boolean;
+            requestId: bigint;
+            orderId: bigint;
+        }
+    ], "view">;
+    getFunction(nameOrSignature: "setCore"): TypedContractMethod<[_core: AddressLike], [void], "nonpayable">;
+    getFunction(nameOrSignature: "setPayRouter"): TypedContractMethod<[_payRouter: AddressLike], [void], "nonpayable">;
+    getFunction(nameOrSignature: "setRequesterFeeBp"): TypedContractMethod<[feeBp: BigNumberish], [void], "nonpayable">;
+    getFunction(nameOrSignature: "setRequesterValueLockDuration"): TypedContractMethod<[duration: BigNumberish], [void], "nonpayable">;
+    getFunction(nameOrSignature: "supportsInterface"): TypedContractMethod<[interfaceId: BytesLike], [boolean], "view">;
+    getFunction(nameOrSignature: "transferOwnership"): TypedContractMethod<[newOwner: AddressLike], [void], "nonpayable">;
+    getFunction(nameOrSignature: "transferRequestBond"): TypedContractMethod<[
+        requestId: BigNumberish,
+        routeId: BigNumberish,
+        amount: BigNumberish,
+        to: AddressLike
+    ], [
+        void
+    ], "nonpayable">;
+    getFunction(nameOrSignature: "transferRequestSource"): TypedContractMethod<[
+        requestId: BigNumberish,
+        amount: BigNumberish,
+        to: AddressLike
+    ], [
+        void
+    ], "nonpayable">;
+    getFunction(nameOrSignature: "withdrawRequesterFee"): TypedContractMethod<[beneficiary: AddressLike], [void], "nonpayable">;
+    getEvent(key: "CoreUpdated"): TypedContractEvent<CoreUpdatedEvent.InputTuple, CoreUpdatedEvent.OutputTuple, CoreUpdatedEvent.OutputObject>;
+    getEvent(key: "OwnershipTransferred"): TypedContractEvent<OwnershipTransferredEvent$8.InputTuple, OwnershipTransferredEvent$8.OutputTuple, OwnershipTransferredEvent$8.OutputObject>;
+    getEvent(key: "PayRouterUpdated"): TypedContractEvent<PayRouterUpdatedEvent.InputTuple, PayRouterUpdatedEvent.OutputTuple, PayRouterUpdatedEvent.OutputObject>;
+    getEvent(key: "TransferredRequestBond"): TypedContractEvent<TransferredRequestBondEvent.InputTuple, TransferredRequestBondEvent.OutputTuple, TransferredRequestBondEvent.OutputObject>;
+    getEvent(key: "TransferredRequestSource"): TypedContractEvent<TransferredRequestSourceEvent.InputTuple, TransferredRequestSourceEvent.OutputTuple, TransferredRequestSourceEvent.OutputObject>;
+    getEvent(key: "UpdatedDelegate"): TypedContractEvent<UpdatedDelegateEvent.InputTuple, UpdatedDelegateEvent.OutputTuple, UpdatedDelegateEvent.OutputObject>;
+    filters: {
+        "CoreUpdated(address)": TypedContractEvent<CoreUpdatedEvent.InputTuple, CoreUpdatedEvent.OutputTuple, CoreUpdatedEvent.OutputObject>;
+        CoreUpdated: TypedContractEvent<CoreUpdatedEvent.InputTuple, CoreUpdatedEvent.OutputTuple, CoreUpdatedEvent.OutputObject>;
+        "OwnershipTransferred(address,address)": TypedContractEvent<OwnershipTransferredEvent$8.InputTuple, OwnershipTransferredEvent$8.OutputTuple, OwnershipTransferredEvent$8.OutputObject>;
+        OwnershipTransferred: TypedContractEvent<OwnershipTransferredEvent$8.InputTuple, OwnershipTransferredEvent$8.OutputTuple, OwnershipTransferredEvent$8.OutputObject>;
+        "PayRouterUpdated(address)": TypedContractEvent<PayRouterUpdatedEvent.InputTuple, PayRouterUpdatedEvent.OutputTuple, PayRouterUpdatedEvent.OutputObject>;
+        PayRouterUpdated: TypedContractEvent<PayRouterUpdatedEvent.InputTuple, PayRouterUpdatedEvent.OutputTuple, PayRouterUpdatedEvent.OutputObject>;
+        "TransferredRequestBond(address,uint256,uint256,uint256,address)": TypedContractEvent<TransferredRequestBondEvent.InputTuple, TransferredRequestBondEvent.OutputTuple, TransferredRequestBondEvent.OutputObject>;
+        TransferredRequestBond: TypedContractEvent<TransferredRequestBondEvent.InputTuple, TransferredRequestBondEvent.OutputTuple, TransferredRequestBondEvent.OutputObject>;
+        "TransferredRequestSource(address,uint256,uint256,address)": TypedContractEvent<TransferredRequestSourceEvent.InputTuple, TransferredRequestSourceEvent.OutputTuple, TransferredRequestSourceEvent.OutputObject>;
+        TransferredRequestSource: TypedContractEvent<TransferredRequestSourceEvent.InputTuple, TransferredRequestSourceEvent.OutputTuple, TransferredRequestSourceEvent.OutputObject>;
+        "UpdatedDelegate(address,bool)": TypedContractEvent<UpdatedDelegateEvent.InputTuple, UpdatedDelegateEvent.OutputTuple, UpdatedDelegateEvent.OutputObject>;
+        UpdatedDelegate: TypedContractEvent<UpdatedDelegateEvent.InputTuple, UpdatedDelegateEvent.OutputTuple, UpdatedDelegateEvent.OutputObject>;
+    };
+}
+
+declare namespace Structs$1 {
     type TicketStatusStruct = {
         drafted: boolean;
         joined: boolean;
@@ -6884,7 +7242,7 @@ declare namespace Structs {
         joinBy: BigNumberish;
         numPaused: BigNumberish;
         owner: AddressLike;
-        status: Structs.TicketStatusStruct;
+        status: Structs$1.TicketStatusStruct;
     };
     type TicketStructOutput = [
         idx: bigint,
@@ -6896,7 +7254,7 @@ declare namespace Structs {
         joinBy: bigint,
         numPaused: bigint,
         owner: string,
-        status: Structs.TicketStatusStructOutput
+        status: Structs$1.TicketStatusStructOutput
     ] & {
         idx: bigint;
         poolId: bigint;
@@ -6907,7 +7265,7 @@ declare namespace Structs {
         joinBy: bigint;
         numPaused: bigint;
         owner: string;
-        status: Structs.TicketStatusStructOutput;
+        status: Structs$1.TicketStatusStructOutput;
     };
     type TicketPoolStruct = {
         exists: boolean;
@@ -7123,7 +7481,7 @@ declare namespace JoinedPoolEvent {
     type Log = TypedEventLog<Event>;
     type LogDescription = TypedLogDescription<Event>;
 }
-declare namespace OwnershipTransferredEvent$4 {
+declare namespace OwnershipTransferredEvent$7 {
     type InputTuple = [previousOwner: AddressLike, newOwner: AddressLike];
     type OutputTuple = [previousOwner: string, newOwner: string];
     interface OutputObject {
@@ -7504,19 +7862,19 @@ interface MediatorManager extends BaseContract {
         orderID: BigNumberish,
         disputeID: BigNumberish
     ], [
-        Structs.TicketStructOutput
+        Structs$1.TicketStructOutput
     ], "nonpayable">;
     drainTicket: TypedContractMethod<[id: BigNumberish], [void], "nonpayable">;
     getTicket: TypedContractMethod<[
         ticketOwner: AddressLike,
         id: BigNumberish
     ], [
-        Structs.TicketStructOutput
+        Structs$1.TicketStructOutput
     ], "view">;
     getTicketPool: TypedContractMethod<[
         poolId: BigNumberish
     ], [
-        Structs.TicketPoolStructOutput
+        Structs$1.TicketPoolStructOutput
     ], "view">;
     getTicketPrice: TypedContractMethod<[], [bigint], "view">;
     isApprovedMarket: TypedContractMethod<[
@@ -7664,7 +8022,7 @@ interface MediatorManager extends BaseContract {
             bigint,
             bigint,
             string,
-            Structs.TicketStatusStructOutput
+            Structs$1.TicketStatusStructOutput
         ] & {
             idx: bigint;
             poolId: bigint;
@@ -7675,7 +8033,7 @@ interface MediatorManager extends BaseContract {
             joinBy: bigint;
             numPaused: bigint;
             owner: string;
-            status: Structs.TicketStatusStructOutput;
+            status: Structs$1.TicketStatusStructOutput;
         }
     ], "view">;
     ticketsPerWindow: TypedContractMethod<[], [bigint], "view">;
@@ -7756,19 +8114,19 @@ interface MediatorManager extends BaseContract {
         orderID: BigNumberish,
         disputeID: BigNumberish
     ], [
-        Structs.TicketStructOutput
+        Structs$1.TicketStructOutput
     ], "nonpayable">;
     getFunction(nameOrSignature: "drainTicket"): TypedContractMethod<[id: BigNumberish], [void], "nonpayable">;
     getFunction(nameOrSignature: "getTicket"): TypedContractMethod<[
         ticketOwner: AddressLike,
         id: BigNumberish
     ], [
-        Structs.TicketStructOutput
+        Structs$1.TicketStructOutput
     ], "view">;
     getFunction(nameOrSignature: "getTicketPool"): TypedContractMethod<[
         poolId: BigNumberish
     ], [
-        Structs.TicketPoolStructOutput
+        Structs$1.TicketPoolStructOutput
     ], "view">;
     getFunction(nameOrSignature: "getTicketPrice"): TypedContractMethod<[], [bigint], "view">;
     getFunction(nameOrSignature: "isApprovedMarket"): TypedContractMethod<[
@@ -7896,7 +8254,7 @@ interface MediatorManager extends BaseContract {
             bigint,
             bigint,
             string,
-            Structs.TicketStatusStructOutput
+            Structs$1.TicketStatusStructOutput
         ] & {
             idx: bigint;
             poolId: bigint;
@@ -7907,7 +8265,7 @@ interface MediatorManager extends BaseContract {
             joinBy: bigint;
             numPaused: bigint;
             owner: string;
-            status: Structs.TicketStatusStructOutput;
+            status: Structs$1.TicketStatusStructOutput;
         }
     ], "view">;
     getFunction(nameOrSignature: "ticketsPerWindow"): TypedContractMethod<[], [bigint], "view">;
@@ -7973,7 +8331,7 @@ interface MediatorManager extends BaseContract {
     ], "view">;
     getEvent(key: "Drafted"): TypedContractEvent<DraftedEvent.InputTuple, DraftedEvent.OutputTuple, DraftedEvent.OutputObject>;
     getEvent(key: "JoinedPool"): TypedContractEvent<JoinedPoolEvent.InputTuple, JoinedPoolEvent.OutputTuple, JoinedPoolEvent.OutputObject>;
-    getEvent(key: "OwnershipTransferred"): TypedContractEvent<OwnershipTransferredEvent$4.InputTuple, OwnershipTransferredEvent$4.OutputTuple, OwnershipTransferredEvent$4.OutputObject>;
+    getEvent(key: "OwnershipTransferred"): TypedContractEvent<OwnershipTransferredEvent$7.InputTuple, OwnershipTransferredEvent$7.OutputTuple, OwnershipTransferredEvent$7.OutputObject>;
     getEvent(key: "PoolMarketApproval"): TypedContractEvent<PoolMarketApprovalEvent.InputTuple, PoolMarketApprovalEvent.OutputTuple, PoolMarketApprovalEvent.OutputObject>;
     getEvent(key: "PoolMediatorApproval"): TypedContractEvent<PoolMediatorApprovalEvent.InputTuple, PoolMediatorApprovalEvent.OutputTuple, PoolMediatorApprovalEvent.OutputObject>;
     getEvent(key: "TicketBlocked"): TypedContractEvent<TicketBlockedEvent.InputTuple, TicketBlockedEvent.OutputTuple, TicketBlockedEvent.OutputObject>;
@@ -7996,8 +8354,8 @@ interface MediatorManager extends BaseContract {
         Drafted: TypedContractEvent<DraftedEvent.InputTuple, DraftedEvent.OutputTuple, DraftedEvent.OutputObject>;
         "JoinedPool(address,uint256,uint256)": TypedContractEvent<JoinedPoolEvent.InputTuple, JoinedPoolEvent.OutputTuple, JoinedPoolEvent.OutputObject>;
         JoinedPool: TypedContractEvent<JoinedPoolEvent.InputTuple, JoinedPoolEvent.OutputTuple, JoinedPoolEvent.OutputObject>;
-        "OwnershipTransferred(address,address)": TypedContractEvent<OwnershipTransferredEvent$4.InputTuple, OwnershipTransferredEvent$4.OutputTuple, OwnershipTransferredEvent$4.OutputObject>;
-        OwnershipTransferred: TypedContractEvent<OwnershipTransferredEvent$4.InputTuple, OwnershipTransferredEvent$4.OutputTuple, OwnershipTransferredEvent$4.OutputObject>;
+        "OwnershipTransferred(address,address)": TypedContractEvent<OwnershipTransferredEvent$7.InputTuple, OwnershipTransferredEvent$7.OutputTuple, OwnershipTransferredEvent$7.OutputObject>;
+        OwnershipTransferred: TypedContractEvent<OwnershipTransferredEvent$7.InputTuple, OwnershipTransferredEvent$7.OutputTuple, OwnershipTransferredEvent$7.OutputObject>;
         "PoolMarketApproval(uint256,address,bool)": TypedContractEvent<PoolMarketApprovalEvent.InputTuple, PoolMarketApprovalEvent.OutputTuple, PoolMarketApprovalEvent.OutputObject>;
         PoolMarketApproval: TypedContractEvent<PoolMarketApprovalEvent.InputTuple, PoolMarketApprovalEvent.OutputTuple, PoolMarketApprovalEvent.OutputObject>;
         "PoolMediatorApproval(uint256,address,bool)": TypedContractEvent<PoolMediatorApprovalEvent.InputTuple, PoolMediatorApprovalEvent.OutputTuple, PoolMediatorApprovalEvent.OutputObject>;
@@ -8144,7 +8502,7 @@ declare namespace DrainedEvent {
     type Log = TypedEventLog<Event>;
     type LogDescription = TypedLogDescription<Event>;
 }
-declare namespace OwnershipTransferredEvent$3 {
+declare namespace OwnershipTransferredEvent$6 {
     type InputTuple = [previousOwner: AddressLike, newOwner: AddressLike];
     type OutputTuple = [previousOwner: string, newOwner: string];
     interface OutputObject {
@@ -8253,7 +8611,7 @@ declare namespace WithdrawnBalanceEvent {
     type Log = TypedEventLog<Event>;
     type LogDescription = TypedLogDescription<Event>;
 }
-declare namespace WriterUpdatedEvent {
+declare namespace WriterUpdatedEvent$1 {
     type InputTuple = [addr: AddressLike, added: boolean];
     type OutputTuple = [addr: string, added: boolean];
     interface OutputObject {
@@ -8439,7 +8797,7 @@ interface MinerRegistry extends BaseContract {
     getEvent(key: "Blocked"): TypedContractEvent<BlockedEvent.InputTuple, BlockedEvent.OutputTuple, BlockedEvent.OutputObject>;
     getEvent(key: "Cancelled"): TypedContractEvent<CancelledEvent.InputTuple, CancelledEvent.OutputTuple, CancelledEvent.OutputObject>;
     getEvent(key: "Drained"): TypedContractEvent<DrainedEvent.InputTuple, DrainedEvent.OutputTuple, DrainedEvent.OutputObject>;
-    getEvent(key: "OwnershipTransferred"): TypedContractEvent<OwnershipTransferredEvent$3.InputTuple, OwnershipTransferredEvent$3.OutputTuple, OwnershipTransferredEvent$3.OutputObject>;
+    getEvent(key: "OwnershipTransferred"): TypedContractEvent<OwnershipTransferredEvent$6.InputTuple, OwnershipTransferredEvent$6.OutputTuple, OwnershipTransferredEvent$6.OutputObject>;
     getEvent(key: "Registered"): TypedContractEvent<RegisteredEvent.InputTuple, RegisteredEvent.OutputTuple, RegisteredEvent.OutputObject>;
     getEvent(key: "RewardWithdrawn"): TypedContractEvent<RewardWithdrawnEvent$1.InputTuple, RewardWithdrawnEvent$1.OutputTuple, RewardWithdrawnEvent$1.OutputObject>;
     getEvent(key: "Slashed"): TypedContractEvent<SlashedEvent.InputTuple, SlashedEvent.OutputTuple, SlashedEvent.OutputObject>;
@@ -8448,7 +8806,7 @@ interface MinerRegistry extends BaseContract {
     getEvent(key: "UpdatedOpReward"): TypedContractEvent<UpdatedOpRewardEvent.InputTuple, UpdatedOpRewardEvent.OutputTuple, UpdatedOpRewardEvent.OutputObject>;
     getEvent(key: "UpdatedOpsReward"): TypedContractEvent<UpdatedOpsRewardEvent.InputTuple, UpdatedOpsRewardEvent.OutputTuple, UpdatedOpsRewardEvent.OutputObject>;
     getEvent(key: "WithdrawnBalance"): TypedContractEvent<WithdrawnBalanceEvent.InputTuple, WithdrawnBalanceEvent.OutputTuple, WithdrawnBalanceEvent.OutputObject>;
-    getEvent(key: "WriterUpdated"): TypedContractEvent<WriterUpdatedEvent.InputTuple, WriterUpdatedEvent.OutputTuple, WriterUpdatedEvent.OutputObject>;
+    getEvent(key: "WriterUpdated"): TypedContractEvent<WriterUpdatedEvent$1.InputTuple, WriterUpdatedEvent$1.OutputTuple, WriterUpdatedEvent$1.OutputObject>;
     filters: {
         "AddedReward(address,uint8,uint256)": TypedContractEvent<AddedRewardEvent.InputTuple, AddedRewardEvent.OutputTuple, AddedRewardEvent.OutputObject>;
         AddedReward: TypedContractEvent<AddedRewardEvent.InputTuple, AddedRewardEvent.OutputTuple, AddedRewardEvent.OutputObject>;
@@ -8458,8 +8816,8 @@ interface MinerRegistry extends BaseContract {
         Cancelled: TypedContractEvent<CancelledEvent.InputTuple, CancelledEvent.OutputTuple, CancelledEvent.OutputObject>;
         "Drained(address,uint256)": TypedContractEvent<DrainedEvent.InputTuple, DrainedEvent.OutputTuple, DrainedEvent.OutputObject>;
         Drained: TypedContractEvent<DrainedEvent.InputTuple, DrainedEvent.OutputTuple, DrainedEvent.OutputObject>;
-        "OwnershipTransferred(address,address)": TypedContractEvent<OwnershipTransferredEvent$3.InputTuple, OwnershipTransferredEvent$3.OutputTuple, OwnershipTransferredEvent$3.OutputObject>;
-        OwnershipTransferred: TypedContractEvent<OwnershipTransferredEvent$3.InputTuple, OwnershipTransferredEvent$3.OutputTuple, OwnershipTransferredEvent$3.OutputObject>;
+        "OwnershipTransferred(address,address)": TypedContractEvent<OwnershipTransferredEvent$6.InputTuple, OwnershipTransferredEvent$6.OutputTuple, OwnershipTransferredEvent$6.OutputObject>;
+        OwnershipTransferred: TypedContractEvent<OwnershipTransferredEvent$6.InputTuple, OwnershipTransferredEvent$6.OutputTuple, OwnershipTransferredEvent$6.OutputObject>;
         "Registered(address,uint256)": TypedContractEvent<RegisteredEvent.InputTuple, RegisteredEvent.OutputTuple, RegisteredEvent.OutputObject>;
         Registered: TypedContractEvent<RegisteredEvent.InputTuple, RegisteredEvent.OutputTuple, RegisteredEvent.OutputObject>;
         "RewardWithdrawn(address,uint256)": TypedContractEvent<RewardWithdrawnEvent$1.InputTuple, RewardWithdrawnEvent$1.OutputTuple, RewardWithdrawnEvent$1.OutputObject>;
@@ -8476,8 +8834,8 @@ interface MinerRegistry extends BaseContract {
         UpdatedOpsReward: TypedContractEvent<UpdatedOpsRewardEvent.InputTuple, UpdatedOpsRewardEvent.OutputTuple, UpdatedOpsRewardEvent.OutputObject>;
         "WithdrawnBalance(uint256)": TypedContractEvent<WithdrawnBalanceEvent.InputTuple, WithdrawnBalanceEvent.OutputTuple, WithdrawnBalanceEvent.OutputObject>;
         WithdrawnBalance: TypedContractEvent<WithdrawnBalanceEvent.InputTuple, WithdrawnBalanceEvent.OutputTuple, WithdrawnBalanceEvent.OutputObject>;
-        "WriterUpdated(address,bool)": TypedContractEvent<WriterUpdatedEvent.InputTuple, WriterUpdatedEvent.OutputTuple, WriterUpdatedEvent.OutputObject>;
-        WriterUpdated: TypedContractEvent<WriterUpdatedEvent.InputTuple, WriterUpdatedEvent.OutputTuple, WriterUpdatedEvent.OutputObject>;
+        "WriterUpdated(address,bool)": TypedContractEvent<WriterUpdatedEvent$1.InputTuple, WriterUpdatedEvent$1.OutputTuple, WriterUpdatedEvent$1.OutputObject>;
+        WriterUpdated: TypedContractEvent<WriterUpdatedEvent$1.InputTuple, WriterUpdatedEvent$1.OutputTuple, WriterUpdatedEvent$1.OutputObject>;
     };
 }
 
@@ -8827,7 +9185,7 @@ declare namespace EnergonUpdatedEvent {
     type Log = TypedEventLog<Event>;
     type LogDescription = TypedLogDescription<Event>;
 }
-declare namespace OwnershipTransferredEvent$2 {
+declare namespace OwnershipTransferredEvent$5 {
     type InputTuple = [previousOwner: AddressLike, newOwner: AddressLike];
     type OutputTuple = [previousOwner: string, newOwner: string];
     interface OutputObject {
@@ -9387,7 +9745,7 @@ interface NFT extends BaseContract {
     getEvent(key: "BurnedEnergon"): TypedContractEvent<BurnedEnergonEvent.InputTuple, BurnedEnergonEvent.OutputTuple, BurnedEnergonEvent.OutputObject>;
     getEvent(key: "DepositedEnergon"): TypedContractEvent<DepositedEnergonEvent.InputTuple, DepositedEnergonEvent.OutputTuple, DepositedEnergonEvent.OutputObject>;
     getEvent(key: "EnergonUpdated"): TypedContractEvent<EnergonUpdatedEvent.InputTuple, EnergonUpdatedEvent.OutputTuple, EnergonUpdatedEvent.OutputObject>;
-    getEvent(key: "OwnershipTransferred"): TypedContractEvent<OwnershipTransferredEvent$2.InputTuple, OwnershipTransferredEvent$2.OutputTuple, OwnershipTransferredEvent$2.OutputObject>;
+    getEvent(key: "OwnershipTransferred"): TypedContractEvent<OwnershipTransferredEvent$5.InputTuple, OwnershipTransferredEvent$5.OutputTuple, OwnershipTransferredEvent$5.OutputObject>;
     getEvent(key: "TokenUpdated"): TypedContractEvent<TokenUpdatedEvent.InputTuple, TokenUpdatedEvent.OutputTuple, TokenUpdatedEvent.OutputObject>;
     getEvent(key: "Transfer"): TypedContractEvent<TransferEvent$2.InputTuple, TransferEvent$2.OutputTuple, TransferEvent$2.OutputObject>;
     getEvent(key: "UpdatedBaseExtension"): TypedContractEvent<UpdatedBaseExtensionEvent.InputTuple, UpdatedBaseExtensionEvent.OutputTuple, UpdatedBaseExtensionEvent.OutputObject>;
@@ -9423,8 +9781,8 @@ interface NFT extends BaseContract {
         DepositedEnergon: TypedContractEvent<DepositedEnergonEvent.InputTuple, DepositedEnergonEvent.OutputTuple, DepositedEnergonEvent.OutputObject>;
         "EnergonUpdated(address)": TypedContractEvent<EnergonUpdatedEvent.InputTuple, EnergonUpdatedEvent.OutputTuple, EnergonUpdatedEvent.OutputObject>;
         EnergonUpdated: TypedContractEvent<EnergonUpdatedEvent.InputTuple, EnergonUpdatedEvent.OutputTuple, EnergonUpdatedEvent.OutputObject>;
-        "OwnershipTransferred(address,address)": TypedContractEvent<OwnershipTransferredEvent$2.InputTuple, OwnershipTransferredEvent$2.OutputTuple, OwnershipTransferredEvent$2.OutputObject>;
-        OwnershipTransferred: TypedContractEvent<OwnershipTransferredEvent$2.InputTuple, OwnershipTransferredEvent$2.OutputTuple, OwnershipTransferredEvent$2.OutputObject>;
+        "OwnershipTransferred(address,address)": TypedContractEvent<OwnershipTransferredEvent$5.InputTuple, OwnershipTransferredEvent$5.OutputTuple, OwnershipTransferredEvent$5.OutputObject>;
+        OwnershipTransferred: TypedContractEvent<OwnershipTransferredEvent$5.InputTuple, OwnershipTransferredEvent$5.OutputTuple, OwnershipTransferredEvent$5.OutputObject>;
         "TokenUpdated(address)": TypedContractEvent<TokenUpdatedEvent.InputTuple, TokenUpdatedEvent.OutputTuple, TokenUpdatedEvent.OutputObject>;
         TokenUpdated: TypedContractEvent<TokenUpdatedEvent.InputTuple, TokenUpdatedEvent.OutputTuple, TokenUpdatedEvent.OutputObject>;
         "Transfer(address,address,uint256)": TypedContractEvent<TransferEvent$2.InputTuple, TransferEvent$2.OutputTuple, TransferEvent$2.OutputObject>;
@@ -9445,6 +9803,1217 @@ interface NFT extends BaseContract {
         Withdrawal: TypedContractEvent<WithdrawalEvent$1.InputTuple, WithdrawalEvent$1.OutputTuple, WithdrawalEvent$1.OutputObject>;
         "WithdrawnEnergon(address,uint256,uint256)": TypedContractEvent<WithdrawnEnergonEvent.InputTuple, WithdrawnEnergonEvent.OutputTuple, WithdrawnEnergonEvent.OutputObject>;
         WithdrawnEnergon: TypedContractEvent<WithdrawnEnergonEvent.InputTuple, WithdrawnEnergonEvent.OutputTuple, WithdrawnEnergonEvent.OutputObject>;
+    };
+}
+
+type RouteStruct$1 = {
+    owner: AddressLike;
+    source: BigNumberish;
+    sourceToken: AddressLike;
+    sourceOrgId: BigNumberish;
+    destOrgId: BigNumberish;
+    bond: BigNumberish;
+    requesters: AddressLike[];
+};
+type RequestStructOutput = [
+    creator: string,
+    sourceToken: string,
+    routeIds: bigint[],
+    bonds: bigint[],
+    sourceAmt: bigint,
+    sourceAmtLeft: bigint,
+    requesterFeeBp: bigint,
+    protocolFeeBp: bigint,
+    valueLockDuration: bigint,
+    valueUnlockAt: bigint,
+    numRoutersPaid: bigint,
+    paid: boolean[],
+    closed: boolean,
+    cancelled: boolean,
+    orgSrcPaid: boolean
+] & {
+    creator: string;
+    sourceToken: string;
+    routeIds: bigint[];
+    bonds: bigint[];
+    sourceAmt: bigint;
+    sourceAmtLeft: bigint;
+    requesterFeeBp: bigint;
+    protocolFeeBp: bigint;
+    valueLockDuration: bigint;
+    valueUnlockAt: bigint;
+    numRoutersPaid: bigint;
+    paid: boolean[];
+    closed: boolean;
+    cancelled: boolean;
+    orgSrcPaid: boolean;
+};
+interface PayRouterInterface extends Interface {
+    getFunction(nameOrSignature: "approveRequester" | "approvedRouteRequesters" | "bondToken" | "cancelRequest" | "closeRequest" | "createOrg" | "createRequest" | "createRoute" | "depositBond" | "feeBalanceOf" | "getRequest" | "isRequesterApproved" | "markOrgSourceAsPaid" | "markRequestAsPaid" | "numOrgs" | "numRequests" | "numRoutes" | "orgs" | "owner" | "protocolFeeBalance" | "protocolFeeBp" | "renounceOwnership" | "requesterValueLockDuration" | "requestersBalance" | "requestersFeeBp" | "requests" | "routes" | "setBondToken" | "setProtocolFeeBp" | "setRequesterFeeBp" | "setRequesterValueLockDuration" | "transferOwnership" | "transferRequestBond" | "transferRequestSource" | "unapproveRequester" | "withdrawBond" | "withdrawProtocolFee" | "withdrawRequesterFee"): FunctionFragment;
+    getEvent(nameOrSignatureOrTopic: "ApprovedRequester" | "BondReturned" | "BondTransferred" | "DepositedBond" | "OrgCreated" | "OrgSourcePaid" | "OwnershipTransferred" | "ProtocolFeeWithdrawn" | "RequestCancelled" | "RequestClosed" | "RequestCreated" | "RequestPaid" | "RequesterFeeWithdrawn" | "RouteCreated" | "SourceReturned" | "SourceTransferred" | "UnapprovedRequester" | "UpdatedBondToken" | "UpdatedProtocolFeeBp" | "UpdatedRequesterFeeBp" | "UpdatedValueLockDuration" | "WithdrawnBond"): EventFragment;
+    encodeFunctionData(functionFragment: "approveRequester", values: [BigNumberish, AddressLike]): string;
+    encodeFunctionData(functionFragment: "approvedRouteRequesters", values: [BigNumberish, AddressLike]): string;
+    encodeFunctionData(functionFragment: "bondToken", values?: undefined): string;
+    encodeFunctionData(functionFragment: "cancelRequest", values: [BigNumberish]): string;
+    encodeFunctionData(functionFragment: "closeRequest", values: [BigNumberish]): string;
+    encodeFunctionData(functionFragment: "createOrg", values: [string]): string;
+    encodeFunctionData(functionFragment: "createRequest", values: [BigNumberish[], BigNumberish[], BigNumberish]): string;
+    encodeFunctionData(functionFragment: "createRoute", values: [RouteStruct$1]): string;
+    encodeFunctionData(functionFragment: "depositBond", values: [BigNumberish, BigNumberish]): string;
+    encodeFunctionData(functionFragment: "feeBalanceOf", values: [AddressLike]): string;
+    encodeFunctionData(functionFragment: "getRequest", values: [BigNumberish]): string;
+    encodeFunctionData(functionFragment: "isRequesterApproved", values: [BigNumberish, AddressLike]): string;
+    encodeFunctionData(functionFragment: "markOrgSourceAsPaid", values: [BigNumberish]): string;
+    encodeFunctionData(functionFragment: "markRequestAsPaid", values: [BigNumberish]): string;
+    encodeFunctionData(functionFragment: "numOrgs", values?: undefined): string;
+    encodeFunctionData(functionFragment: "numRequests", values?: undefined): string;
+    encodeFunctionData(functionFragment: "numRoutes", values?: undefined): string;
+    encodeFunctionData(functionFragment: "orgs", values: [BigNumberish]): string;
+    encodeFunctionData(functionFragment: "owner", values?: undefined): string;
+    encodeFunctionData(functionFragment: "protocolFeeBalance", values?: undefined): string;
+    encodeFunctionData(functionFragment: "protocolFeeBp", values?: undefined): string;
+    encodeFunctionData(functionFragment: "renounceOwnership", values?: undefined): string;
+    encodeFunctionData(functionFragment: "requesterValueLockDuration", values: [AddressLike]): string;
+    encodeFunctionData(functionFragment: "requestersBalance", values: [AddressLike]): string;
+    encodeFunctionData(functionFragment: "requestersFeeBp", values: [AddressLike]): string;
+    encodeFunctionData(functionFragment: "requests", values: [BigNumberish]): string;
+    encodeFunctionData(functionFragment: "routes", values: [BigNumberish]): string;
+    encodeFunctionData(functionFragment: "setBondToken", values: [AddressLike]): string;
+    encodeFunctionData(functionFragment: "setProtocolFeeBp", values: [BigNumberish]): string;
+    encodeFunctionData(functionFragment: "setRequesterFeeBp", values: [BigNumberish]): string;
+    encodeFunctionData(functionFragment: "setRequesterValueLockDuration", values: [BigNumberish]): string;
+    encodeFunctionData(functionFragment: "transferOwnership", values: [AddressLike]): string;
+    encodeFunctionData(functionFragment: "transferRequestBond", values: [BigNumberish, BigNumberish, BigNumberish, AddressLike]): string;
+    encodeFunctionData(functionFragment: "transferRequestSource", values: [BigNumberish, BigNumberish, AddressLike]): string;
+    encodeFunctionData(functionFragment: "unapproveRequester", values: [BigNumberish, AddressLike]): string;
+    encodeFunctionData(functionFragment: "withdrawBond", values: [BigNumberish, BigNumberish]): string;
+    encodeFunctionData(functionFragment: "withdrawProtocolFee", values: [AddressLike]): string;
+    encodeFunctionData(functionFragment: "withdrawRequesterFee", values: [AddressLike]): string;
+    decodeFunctionResult(functionFragment: "approveRequester", data: BytesLike): Result;
+    decodeFunctionResult(functionFragment: "approvedRouteRequesters", data: BytesLike): Result;
+    decodeFunctionResult(functionFragment: "bondToken", data: BytesLike): Result;
+    decodeFunctionResult(functionFragment: "cancelRequest", data: BytesLike): Result;
+    decodeFunctionResult(functionFragment: "closeRequest", data: BytesLike): Result;
+    decodeFunctionResult(functionFragment: "createOrg", data: BytesLike): Result;
+    decodeFunctionResult(functionFragment: "createRequest", data: BytesLike): Result;
+    decodeFunctionResult(functionFragment: "createRoute", data: BytesLike): Result;
+    decodeFunctionResult(functionFragment: "depositBond", data: BytesLike): Result;
+    decodeFunctionResult(functionFragment: "feeBalanceOf", data: BytesLike): Result;
+    decodeFunctionResult(functionFragment: "getRequest", data: BytesLike): Result;
+    decodeFunctionResult(functionFragment: "isRequesterApproved", data: BytesLike): Result;
+    decodeFunctionResult(functionFragment: "markOrgSourceAsPaid", data: BytesLike): Result;
+    decodeFunctionResult(functionFragment: "markRequestAsPaid", data: BytesLike): Result;
+    decodeFunctionResult(functionFragment: "numOrgs", data: BytesLike): Result;
+    decodeFunctionResult(functionFragment: "numRequests", data: BytesLike): Result;
+    decodeFunctionResult(functionFragment: "numRoutes", data: BytesLike): Result;
+    decodeFunctionResult(functionFragment: "orgs", data: BytesLike): Result;
+    decodeFunctionResult(functionFragment: "owner", data: BytesLike): Result;
+    decodeFunctionResult(functionFragment: "protocolFeeBalance", data: BytesLike): Result;
+    decodeFunctionResult(functionFragment: "protocolFeeBp", data: BytesLike): Result;
+    decodeFunctionResult(functionFragment: "renounceOwnership", data: BytesLike): Result;
+    decodeFunctionResult(functionFragment: "requesterValueLockDuration", data: BytesLike): Result;
+    decodeFunctionResult(functionFragment: "requestersBalance", data: BytesLike): Result;
+    decodeFunctionResult(functionFragment: "requestersFeeBp", data: BytesLike): Result;
+    decodeFunctionResult(functionFragment: "requests", data: BytesLike): Result;
+    decodeFunctionResult(functionFragment: "routes", data: BytesLike): Result;
+    decodeFunctionResult(functionFragment: "setBondToken", data: BytesLike): Result;
+    decodeFunctionResult(functionFragment: "setProtocolFeeBp", data: BytesLike): Result;
+    decodeFunctionResult(functionFragment: "setRequesterFeeBp", data: BytesLike): Result;
+    decodeFunctionResult(functionFragment: "setRequesterValueLockDuration", data: BytesLike): Result;
+    decodeFunctionResult(functionFragment: "transferOwnership", data: BytesLike): Result;
+    decodeFunctionResult(functionFragment: "transferRequestBond", data: BytesLike): Result;
+    decodeFunctionResult(functionFragment: "transferRequestSource", data: BytesLike): Result;
+    decodeFunctionResult(functionFragment: "unapproveRequester", data: BytesLike): Result;
+    decodeFunctionResult(functionFragment: "withdrawBond", data: BytesLike): Result;
+    decodeFunctionResult(functionFragment: "withdrawProtocolFee", data: BytesLike): Result;
+    decodeFunctionResult(functionFragment: "withdrawRequesterFee", data: BytesLike): Result;
+}
+declare namespace ApprovedRequesterEvent {
+    type InputTuple = [routeId: BigNumberish, requester: AddressLike];
+    type OutputTuple = [routeId: bigint, requester: string];
+    interface OutputObject {
+        routeId: bigint;
+        requester: string;
+    }
+    type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>;
+    type Filter = TypedDeferredTopicFilter<Event>;
+    type Log = TypedEventLog<Event>;
+    type LogDescription = TypedLogDescription<Event>;
+}
+declare namespace BondReturnedEvent {
+    type InputTuple = [
+        router: AddressLike,
+        routeId: BigNumberish,
+        bond: BigNumberish
+    ];
+    type OutputTuple = [router: string, routeId: bigint, bond: bigint];
+    interface OutputObject {
+        router: string;
+        routeId: bigint;
+        bond: bigint;
+    }
+    type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>;
+    type Filter = TypedDeferredTopicFilter<Event>;
+    type Log = TypedEventLog<Event>;
+    type LogDescription = TypedLogDescription<Event>;
+}
+declare namespace BondTransferredEvent {
+    type InputTuple = [
+        requestId: BigNumberish,
+        routeId: BigNumberish,
+        amount: BigNumberish,
+        to: AddressLike
+    ];
+    type OutputTuple = [
+        requestId: bigint,
+        routeId: bigint,
+        amount: bigint,
+        to: string
+    ];
+    interface OutputObject {
+        requestId: bigint;
+        routeId: bigint;
+        amount: bigint;
+        to: string;
+    }
+    type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>;
+    type Filter = TypedDeferredTopicFilter<Event>;
+    type Log = TypedEventLog<Event>;
+    type LogDescription = TypedLogDescription<Event>;
+}
+declare namespace DepositedBondEvent {
+    type InputTuple = [
+        depositor: AddressLike,
+        routeId: BigNumberish,
+        amount: BigNumberish
+    ];
+    type OutputTuple = [
+        depositor: string,
+        routeId: bigint,
+        amount: bigint
+    ];
+    interface OutputObject {
+        depositor: string;
+        routeId: bigint;
+        amount: bigint;
+    }
+    type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>;
+    type Filter = TypedDeferredTopicFilter<Event>;
+    type Log = TypedEventLog<Event>;
+    type LogDescription = TypedLogDescription<Event>;
+}
+declare namespace OrgCreatedEvent {
+    type InputTuple = [
+        creator: AddressLike,
+        name: string,
+        orgId: BigNumberish
+    ];
+    type OutputTuple = [creator: string, name: string, orgId: bigint];
+    interface OutputObject {
+        creator: string;
+        name: string;
+        orgId: bigint;
+    }
+    type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>;
+    type Filter = TypedDeferredTopicFilter<Event>;
+    type Log = TypedEventLog<Event>;
+    type LogDescription = TypedLogDescription<Event>;
+}
+declare namespace OrgSourcePaidEvent {
+    type InputTuple = [requestId: BigNumberish];
+    type OutputTuple = [requestId: bigint];
+    interface OutputObject {
+        requestId: bigint;
+    }
+    type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>;
+    type Filter = TypedDeferredTopicFilter<Event>;
+    type Log = TypedEventLog<Event>;
+    type LogDescription = TypedLogDescription<Event>;
+}
+declare namespace OwnershipTransferredEvent$4 {
+    type InputTuple = [previousOwner: AddressLike, newOwner: AddressLike];
+    type OutputTuple = [previousOwner: string, newOwner: string];
+    interface OutputObject {
+        previousOwner: string;
+        newOwner: string;
+    }
+    type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>;
+    type Filter = TypedDeferredTopicFilter<Event>;
+    type Log = TypedEventLog<Event>;
+    type LogDescription = TypedLogDescription<Event>;
+}
+declare namespace ProtocolFeeWithdrawnEvent {
+    type InputTuple = [beneficiary: AddressLike, amount: BigNumberish];
+    type OutputTuple = [beneficiary: string, amount: bigint];
+    interface OutputObject {
+        beneficiary: string;
+        amount: bigint;
+    }
+    type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>;
+    type Filter = TypedDeferredTopicFilter<Event>;
+    type Log = TypedEventLog<Event>;
+    type LogDescription = TypedLogDescription<Event>;
+}
+declare namespace RequestCancelledEvent {
+    type InputTuple = [requestId: BigNumberish];
+    type OutputTuple = [requestId: bigint];
+    interface OutputObject {
+        requestId: bigint;
+    }
+    type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>;
+    type Filter = TypedDeferredTopicFilter<Event>;
+    type Log = TypedEventLog<Event>;
+    type LogDescription = TypedLogDescription<Event>;
+}
+declare namespace RequestClosedEvent {
+    type InputTuple = [requestId: BigNumberish];
+    type OutputTuple = [requestId: bigint];
+    interface OutputObject {
+        requestId: bigint;
+    }
+    type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>;
+    type Filter = TypedDeferredTopicFilter<Event>;
+    type Log = TypedEventLog<Event>;
+    type LogDescription = TypedLogDescription<Event>;
+}
+declare namespace RequestCreatedEvent {
+    type InputTuple = [
+        creator: AddressLike,
+        requestId: BigNumberish,
+        routeIds: BigNumberish[],
+        bonds: BigNumberish[],
+        sourceAmt: BigNumberish
+    ];
+    type OutputTuple = [
+        creator: string,
+        requestId: bigint,
+        routeIds: bigint[],
+        bonds: bigint[],
+        sourceAmt: bigint
+    ];
+    interface OutputObject {
+        creator: string;
+        requestId: bigint;
+        routeIds: bigint[];
+        bonds: bigint[];
+        sourceAmt: bigint;
+    }
+    type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>;
+    type Filter = TypedDeferredTopicFilter<Event>;
+    type Log = TypedEventLog<Event>;
+    type LogDescription = TypedLogDescription<Event>;
+}
+declare namespace RequestPaidEvent {
+    type InputTuple = [
+        router: AddressLike,
+        requestId: BigNumberish,
+        routeId: BigNumberish,
+        bond: BigNumberish
+    ];
+    type OutputTuple = [
+        router: string,
+        requestId: bigint,
+        routeId: bigint,
+        bond: bigint
+    ];
+    interface OutputObject {
+        router: string;
+        requestId: bigint;
+        routeId: bigint;
+        bond: bigint;
+    }
+    type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>;
+    type Filter = TypedDeferredTopicFilter<Event>;
+    type Log = TypedEventLog<Event>;
+    type LogDescription = TypedLogDescription<Event>;
+}
+declare namespace RequesterFeeWithdrawnEvent {
+    type InputTuple = [
+        requester: AddressLike,
+        beneficiary: AddressLike,
+        amount: BigNumberish
+    ];
+    type OutputTuple = [
+        requester: string,
+        beneficiary: string,
+        amount: bigint
+    ];
+    interface OutputObject {
+        requester: string;
+        beneficiary: string;
+        amount: bigint;
+    }
+    type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>;
+    type Filter = TypedDeferredTopicFilter<Event>;
+    type Log = TypedEventLog<Event>;
+    type LogDescription = TypedLogDescription<Event>;
+}
+declare namespace RouteCreatedEvent {
+    type InputTuple = [
+        routeId: BigNumberish,
+        owner: AddressLike,
+        source: BigNumberish,
+        sourceToken: AddressLike,
+        sourceOrgId: BigNumberish,
+        destOrgId: BigNumberish,
+        bond: BigNumberish
+    ];
+    type OutputTuple = [
+        routeId: bigint,
+        owner: string,
+        source: bigint,
+        sourceToken: string,
+        sourceOrgId: bigint,
+        destOrgId: bigint,
+        bond: bigint
+    ];
+    interface OutputObject {
+        routeId: bigint;
+        owner: string;
+        source: bigint;
+        sourceToken: string;
+        sourceOrgId: bigint;
+        destOrgId: bigint;
+        bond: bigint;
+    }
+    type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>;
+    type Filter = TypedDeferredTopicFilter<Event>;
+    type Log = TypedEventLog<Event>;
+    type LogDescription = TypedLogDescription<Event>;
+}
+declare namespace SourceReturnedEvent {
+    type InputTuple = [
+        router: AddressLike,
+        routeId: BigNumberish,
+        amount: BigNumberish
+    ];
+    type OutputTuple = [router: string, routeId: bigint, amount: bigint];
+    interface OutputObject {
+        router: string;
+        routeId: bigint;
+        amount: bigint;
+    }
+    type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>;
+    type Filter = TypedDeferredTopicFilter<Event>;
+    type Log = TypedEventLog<Event>;
+    type LogDescription = TypedLogDescription<Event>;
+}
+declare namespace SourceTransferredEvent {
+    type InputTuple = [
+        requestId: BigNumberish,
+        amount: BigNumberish,
+        to: AddressLike
+    ];
+    type OutputTuple = [requestId: bigint, amount: bigint, to: string];
+    interface OutputObject {
+        requestId: bigint;
+        amount: bigint;
+        to: string;
+    }
+    type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>;
+    type Filter = TypedDeferredTopicFilter<Event>;
+    type Log = TypedEventLog<Event>;
+    type LogDescription = TypedLogDescription<Event>;
+}
+declare namespace UnapprovedRequesterEvent {
+    type InputTuple = [routeId: BigNumberish, requester: AddressLike];
+    type OutputTuple = [routeId: bigint, requester: string];
+    interface OutputObject {
+        routeId: bigint;
+        requester: string;
+    }
+    type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>;
+    type Filter = TypedDeferredTopicFilter<Event>;
+    type Log = TypedEventLog<Event>;
+    type LogDescription = TypedLogDescription<Event>;
+}
+declare namespace UpdatedBondTokenEvent {
+    type InputTuple = [bondToken: AddressLike];
+    type OutputTuple = [bondToken: string];
+    interface OutputObject {
+        bondToken: string;
+    }
+    type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>;
+    type Filter = TypedDeferredTopicFilter<Event>;
+    type Log = TypedEventLog<Event>;
+    type LogDescription = TypedLogDescription<Event>;
+}
+declare namespace UpdatedProtocolFeeBpEvent {
+    type InputTuple = [protocolFeeBp: BigNumberish];
+    type OutputTuple = [protocolFeeBp: bigint];
+    interface OutputObject {
+        protocolFeeBp: bigint;
+    }
+    type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>;
+    type Filter = TypedDeferredTopicFilter<Event>;
+    type Log = TypedEventLog<Event>;
+    type LogDescription = TypedLogDescription<Event>;
+}
+declare namespace UpdatedRequesterFeeBpEvent {
+    type InputTuple = [requester: AddressLike, feeBp: BigNumberish];
+    type OutputTuple = [requester: string, feeBp: bigint];
+    interface OutputObject {
+        requester: string;
+        feeBp: bigint;
+    }
+    type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>;
+    type Filter = TypedDeferredTopicFilter<Event>;
+    type Log = TypedEventLog<Event>;
+    type LogDescription = TypedLogDescription<Event>;
+}
+declare namespace UpdatedValueLockDurationEvent {
+    type InputTuple = [requester: AddressLike, duration: BigNumberish];
+    type OutputTuple = [requester: string, duration: bigint];
+    interface OutputObject {
+        requester: string;
+        duration: bigint;
+    }
+    type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>;
+    type Filter = TypedDeferredTopicFilter<Event>;
+    type Log = TypedEventLog<Event>;
+    type LogDescription = TypedLogDescription<Event>;
+}
+declare namespace WithdrawnBondEvent {
+    type InputTuple = [
+        withdrawer: AddressLike,
+        routeId: BigNumberish,
+        amount: BigNumberish
+    ];
+    type OutputTuple = [
+        withdrawer: string,
+        routeId: bigint,
+        amount: bigint
+    ];
+    interface OutputObject {
+        withdrawer: string;
+        routeId: bigint;
+        amount: bigint;
+    }
+    type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>;
+    type Filter = TypedDeferredTopicFilter<Event>;
+    type Log = TypedEventLog<Event>;
+    type LogDescription = TypedLogDescription<Event>;
+}
+interface PayRouter extends BaseContract {
+    connect(runner?: ContractRunner | null): PayRouter;
+    waitForDeployment(): Promise<this>;
+    interface: PayRouterInterface;
+    queryFilter<TCEvent extends TypedContractEvent>(event: TCEvent, fromBlockOrBlockhash?: string | number | undefined, toBlock?: string | number | undefined): Promise<Array<TypedEventLog<TCEvent>>>;
+    queryFilter<TCEvent extends TypedContractEvent>(filter: TypedDeferredTopicFilter<TCEvent>, fromBlockOrBlockhash?: string | number | undefined, toBlock?: string | number | undefined): Promise<Array<TypedEventLog<TCEvent>>>;
+    on<TCEvent extends TypedContractEvent>(event: TCEvent, listener: TypedListener<TCEvent>): Promise<this>;
+    on<TCEvent extends TypedContractEvent>(filter: TypedDeferredTopicFilter<TCEvent>, listener: TypedListener<TCEvent>): Promise<this>;
+    once<TCEvent extends TypedContractEvent>(event: TCEvent, listener: TypedListener<TCEvent>): Promise<this>;
+    once<TCEvent extends TypedContractEvent>(filter: TypedDeferredTopicFilter<TCEvent>, listener: TypedListener<TCEvent>): Promise<this>;
+    listeners<TCEvent extends TypedContractEvent>(event: TCEvent): Promise<Array<TypedListener<TCEvent>>>;
+    listeners(eventName?: string): Promise<Array<Listener>>;
+    removeAllListeners<TCEvent extends TypedContractEvent>(event?: TCEvent): Promise<this>;
+    approveRequester: TypedContractMethod<[
+        routeId: BigNumberish,
+        requester: AddressLike
+    ], [
+        void
+    ], "nonpayable">;
+    approvedRouteRequesters: TypedContractMethod<[
+        arg0: BigNumberish,
+        arg1: AddressLike
+    ], [
+        boolean
+    ], "view">;
+    bondToken: TypedContractMethod<[], [string], "view">;
+    cancelRequest: TypedContractMethod<[
+        requestId: BigNumberish
+    ], [
+        void
+    ], "nonpayable">;
+    closeRequest: TypedContractMethod<[
+        requestId: BigNumberish
+    ], [
+        void
+    ], "nonpayable">;
+    createOrg: TypedContractMethod<[name: string], [void], "nonpayable">;
+    createRequest: TypedContractMethod<[
+        _routeIds: BigNumberish[],
+        _bonds: BigNumberish[],
+        _sourceAmt: BigNumberish
+    ], [
+        void
+    ], "payable">;
+    createRoute: TypedContractMethod<[route: RouteStruct$1], [void], "nonpayable">;
+    depositBond: TypedContractMethod<[
+        routeId: BigNumberish,
+        amount: BigNumberish
+    ], [
+        void
+    ], "nonpayable">;
+    feeBalanceOf: TypedContractMethod<[requester: AddressLike], [bigint], "view">;
+    getRequest: TypedContractMethod<[
+        requestId: BigNumberish
+    ], [
+        RequestStructOutput
+    ], "view">;
+    isRequesterApproved: TypedContractMethod<[
+        routeId: BigNumberish,
+        requester: AddressLike
+    ], [
+        boolean
+    ], "view">;
+    markOrgSourceAsPaid: TypedContractMethod<[
+        requestId: BigNumberish
+    ], [
+        void
+    ], "nonpayable">;
+    markRequestAsPaid: TypedContractMethod<[
+        requestId: BigNumberish
+    ], [
+        void
+    ], "nonpayable">;
+    numOrgs: TypedContractMethod<[], [bigint], "view">;
+    numRequests: TypedContractMethod<[], [bigint], "view">;
+    numRoutes: TypedContractMethod<[], [bigint], "view">;
+    orgs: TypedContractMethod<[
+        arg0: BigNumberish
+    ], [
+        [string, string] & {
+            creator: string;
+            name: string;
+        }
+    ], "view">;
+    owner: TypedContractMethod<[], [string], "view">;
+    protocolFeeBalance: TypedContractMethod<[], [bigint], "view">;
+    protocolFeeBp: TypedContractMethod<[], [bigint], "view">;
+    renounceOwnership: TypedContractMethod<[], [void], "nonpayable">;
+    requesterValueLockDuration: TypedContractMethod<[
+        arg0: AddressLike
+    ], [
+        bigint
+    ], "view">;
+    requestersBalance: TypedContractMethod<[arg0: AddressLike], [bigint], "view">;
+    requestersFeeBp: TypedContractMethod<[arg0: AddressLike], [bigint], "view">;
+    requests: TypedContractMethod<[
+        arg0: BigNumberish
+    ], [
+        [
+            string,
+            string,
+            bigint,
+            bigint,
+            bigint,
+            bigint,
+            bigint,
+            bigint,
+            bigint,
+            boolean,
+            boolean,
+            boolean
+        ] & {
+            creator: string;
+            sourceToken: string;
+            sourceAmt: bigint;
+            sourceAmtLeft: bigint;
+            requesterFeeBp: bigint;
+            protocolFeeBp: bigint;
+            valueLockDuration: bigint;
+            valueUnlockAt: bigint;
+            numRoutersPaid: bigint;
+            closed: boolean;
+            cancelled: boolean;
+            orgSrcPaid: boolean;
+        }
+    ], "view">;
+    routes: TypedContractMethod<[
+        arg0: BigNumberish
+    ], [
+        [
+            string,
+            bigint,
+            string,
+            bigint,
+            bigint,
+            bigint
+        ] & {
+            owner: string;
+            source: bigint;
+            sourceToken: string;
+            sourceOrgId: bigint;
+            destOrgId: bigint;
+            bond: bigint;
+        }
+    ], "view">;
+    setBondToken: TypedContractMethod<[
+        _bondToken: AddressLike
+    ], [
+        void
+    ], "nonpayable">;
+    setProtocolFeeBp: TypedContractMethod<[
+        _protocolFeeBp: BigNumberish
+    ], [
+        void
+    ], "nonpayable">;
+    setRequesterFeeBp: TypedContractMethod<[
+        feeBp: BigNumberish
+    ], [
+        void
+    ], "nonpayable">;
+    setRequesterValueLockDuration: TypedContractMethod<[
+        duration: BigNumberish
+    ], [
+        void
+    ], "nonpayable">;
+    transferOwnership: TypedContractMethod<[
+        newOwner: AddressLike
+    ], [
+        void
+    ], "nonpayable">;
+    transferRequestBond: TypedContractMethod<[
+        requestId: BigNumberish,
+        routeId: BigNumberish,
+        amount: BigNumberish,
+        to: AddressLike
+    ], [
+        void
+    ], "nonpayable">;
+    transferRequestSource: TypedContractMethod<[
+        requestId: BigNumberish,
+        amount: BigNumberish,
+        to: AddressLike
+    ], [
+        void
+    ], "nonpayable">;
+    unapproveRequester: TypedContractMethod<[
+        routeId: BigNumberish,
+        requester: AddressLike
+    ], [
+        void
+    ], "nonpayable">;
+    withdrawBond: TypedContractMethod<[
+        routeId: BigNumberish,
+        amount: BigNumberish
+    ], [
+        void
+    ], "nonpayable">;
+    withdrawProtocolFee: TypedContractMethod<[
+        beneficiary: AddressLike
+    ], [
+        void
+    ], "nonpayable">;
+    withdrawRequesterFee: TypedContractMethod<[
+        beneficiary: AddressLike
+    ], [
+        void
+    ], "nonpayable">;
+    getFunction<T extends ContractMethod = ContractMethod>(key: string | FunctionFragment): T;
+    getFunction(nameOrSignature: "approveRequester"): TypedContractMethod<[
+        routeId: BigNumberish,
+        requester: AddressLike
+    ], [
+        void
+    ], "nonpayable">;
+    getFunction(nameOrSignature: "approvedRouteRequesters"): TypedContractMethod<[
+        arg0: BigNumberish,
+        arg1: AddressLike
+    ], [
+        boolean
+    ], "view">;
+    getFunction(nameOrSignature: "bondToken"): TypedContractMethod<[], [string], "view">;
+    getFunction(nameOrSignature: "cancelRequest"): TypedContractMethod<[requestId: BigNumberish], [void], "nonpayable">;
+    getFunction(nameOrSignature: "closeRequest"): TypedContractMethod<[requestId: BigNumberish], [void], "nonpayable">;
+    getFunction(nameOrSignature: "createOrg"): TypedContractMethod<[name: string], [void], "nonpayable">;
+    getFunction(nameOrSignature: "createRequest"): TypedContractMethod<[
+        _routeIds: BigNumberish[],
+        _bonds: BigNumberish[],
+        _sourceAmt: BigNumberish
+    ], [
+        void
+    ], "payable">;
+    getFunction(nameOrSignature: "createRoute"): TypedContractMethod<[route: RouteStruct$1], [void], "nonpayable">;
+    getFunction(nameOrSignature: "depositBond"): TypedContractMethod<[
+        routeId: BigNumberish,
+        amount: BigNumberish
+    ], [
+        void
+    ], "nonpayable">;
+    getFunction(nameOrSignature: "feeBalanceOf"): TypedContractMethod<[requester: AddressLike], [bigint], "view">;
+    getFunction(nameOrSignature: "getRequest"): TypedContractMethod<[
+        requestId: BigNumberish
+    ], [
+        RequestStructOutput
+    ], "view">;
+    getFunction(nameOrSignature: "isRequesterApproved"): TypedContractMethod<[
+        routeId: BigNumberish,
+        requester: AddressLike
+    ], [
+        boolean
+    ], "view">;
+    getFunction(nameOrSignature: "markOrgSourceAsPaid"): TypedContractMethod<[requestId: BigNumberish], [void], "nonpayable">;
+    getFunction(nameOrSignature: "markRequestAsPaid"): TypedContractMethod<[requestId: BigNumberish], [void], "nonpayable">;
+    getFunction(nameOrSignature: "numOrgs"): TypedContractMethod<[], [bigint], "view">;
+    getFunction(nameOrSignature: "numRequests"): TypedContractMethod<[], [bigint], "view">;
+    getFunction(nameOrSignature: "numRoutes"): TypedContractMethod<[], [bigint], "view">;
+    getFunction(nameOrSignature: "orgs"): TypedContractMethod<[
+        arg0: BigNumberish
+    ], [
+        [string, string] & {
+            creator: string;
+            name: string;
+        }
+    ], "view">;
+    getFunction(nameOrSignature: "owner"): TypedContractMethod<[], [string], "view">;
+    getFunction(nameOrSignature: "protocolFeeBalance"): TypedContractMethod<[], [bigint], "view">;
+    getFunction(nameOrSignature: "protocolFeeBp"): TypedContractMethod<[], [bigint], "view">;
+    getFunction(nameOrSignature: "renounceOwnership"): TypedContractMethod<[], [void], "nonpayable">;
+    getFunction(nameOrSignature: "requesterValueLockDuration"): TypedContractMethod<[arg0: AddressLike], [bigint], "view">;
+    getFunction(nameOrSignature: "requestersBalance"): TypedContractMethod<[arg0: AddressLike], [bigint], "view">;
+    getFunction(nameOrSignature: "requestersFeeBp"): TypedContractMethod<[arg0: AddressLike], [bigint], "view">;
+    getFunction(nameOrSignature: "requests"): TypedContractMethod<[
+        arg0: BigNumberish
+    ], [
+        [
+            string,
+            string,
+            bigint,
+            bigint,
+            bigint,
+            bigint,
+            bigint,
+            bigint,
+            bigint,
+            boolean,
+            boolean,
+            boolean
+        ] & {
+            creator: string;
+            sourceToken: string;
+            sourceAmt: bigint;
+            sourceAmtLeft: bigint;
+            requesterFeeBp: bigint;
+            protocolFeeBp: bigint;
+            valueLockDuration: bigint;
+            valueUnlockAt: bigint;
+            numRoutersPaid: bigint;
+            closed: boolean;
+            cancelled: boolean;
+            orgSrcPaid: boolean;
+        }
+    ], "view">;
+    getFunction(nameOrSignature: "routes"): TypedContractMethod<[
+        arg0: BigNumberish
+    ], [
+        [
+            string,
+            bigint,
+            string,
+            bigint,
+            bigint,
+            bigint
+        ] & {
+            owner: string;
+            source: bigint;
+            sourceToken: string;
+            sourceOrgId: bigint;
+            destOrgId: bigint;
+            bond: bigint;
+        }
+    ], "view">;
+    getFunction(nameOrSignature: "setBondToken"): TypedContractMethod<[_bondToken: AddressLike], [void], "nonpayable">;
+    getFunction(nameOrSignature: "setProtocolFeeBp"): TypedContractMethod<[_protocolFeeBp: BigNumberish], [void], "nonpayable">;
+    getFunction(nameOrSignature: "setRequesterFeeBp"): TypedContractMethod<[feeBp: BigNumberish], [void], "nonpayable">;
+    getFunction(nameOrSignature: "setRequesterValueLockDuration"): TypedContractMethod<[duration: BigNumberish], [void], "nonpayable">;
+    getFunction(nameOrSignature: "transferOwnership"): TypedContractMethod<[newOwner: AddressLike], [void], "nonpayable">;
+    getFunction(nameOrSignature: "transferRequestBond"): TypedContractMethod<[
+        requestId: BigNumberish,
+        routeId: BigNumberish,
+        amount: BigNumberish,
+        to: AddressLike
+    ], [
+        void
+    ], "nonpayable">;
+    getFunction(nameOrSignature: "transferRequestSource"): TypedContractMethod<[
+        requestId: BigNumberish,
+        amount: BigNumberish,
+        to: AddressLike
+    ], [
+        void
+    ], "nonpayable">;
+    getFunction(nameOrSignature: "unapproveRequester"): TypedContractMethod<[
+        routeId: BigNumberish,
+        requester: AddressLike
+    ], [
+        void
+    ], "nonpayable">;
+    getFunction(nameOrSignature: "withdrawBond"): TypedContractMethod<[
+        routeId: BigNumberish,
+        amount: BigNumberish
+    ], [
+        void
+    ], "nonpayable">;
+    getFunction(nameOrSignature: "withdrawProtocolFee"): TypedContractMethod<[beneficiary: AddressLike], [void], "nonpayable">;
+    getFunction(nameOrSignature: "withdrawRequesterFee"): TypedContractMethod<[beneficiary: AddressLike], [void], "nonpayable">;
+    getEvent(key: "ApprovedRequester"): TypedContractEvent<ApprovedRequesterEvent.InputTuple, ApprovedRequesterEvent.OutputTuple, ApprovedRequesterEvent.OutputObject>;
+    getEvent(key: "BondReturned"): TypedContractEvent<BondReturnedEvent.InputTuple, BondReturnedEvent.OutputTuple, BondReturnedEvent.OutputObject>;
+    getEvent(key: "BondTransferred"): TypedContractEvent<BondTransferredEvent.InputTuple, BondTransferredEvent.OutputTuple, BondTransferredEvent.OutputObject>;
+    getEvent(key: "DepositedBond"): TypedContractEvent<DepositedBondEvent.InputTuple, DepositedBondEvent.OutputTuple, DepositedBondEvent.OutputObject>;
+    getEvent(key: "OrgCreated"): TypedContractEvent<OrgCreatedEvent.InputTuple, OrgCreatedEvent.OutputTuple, OrgCreatedEvent.OutputObject>;
+    getEvent(key: "OrgSourcePaid"): TypedContractEvent<OrgSourcePaidEvent.InputTuple, OrgSourcePaidEvent.OutputTuple, OrgSourcePaidEvent.OutputObject>;
+    getEvent(key: "OwnershipTransferred"): TypedContractEvent<OwnershipTransferredEvent$4.InputTuple, OwnershipTransferredEvent$4.OutputTuple, OwnershipTransferredEvent$4.OutputObject>;
+    getEvent(key: "ProtocolFeeWithdrawn"): TypedContractEvent<ProtocolFeeWithdrawnEvent.InputTuple, ProtocolFeeWithdrawnEvent.OutputTuple, ProtocolFeeWithdrawnEvent.OutputObject>;
+    getEvent(key: "RequestCancelled"): TypedContractEvent<RequestCancelledEvent.InputTuple, RequestCancelledEvent.OutputTuple, RequestCancelledEvent.OutputObject>;
+    getEvent(key: "RequestClosed"): TypedContractEvent<RequestClosedEvent.InputTuple, RequestClosedEvent.OutputTuple, RequestClosedEvent.OutputObject>;
+    getEvent(key: "RequestCreated"): TypedContractEvent<RequestCreatedEvent.InputTuple, RequestCreatedEvent.OutputTuple, RequestCreatedEvent.OutputObject>;
+    getEvent(key: "RequestPaid"): TypedContractEvent<RequestPaidEvent.InputTuple, RequestPaidEvent.OutputTuple, RequestPaidEvent.OutputObject>;
+    getEvent(key: "RequesterFeeWithdrawn"): TypedContractEvent<RequesterFeeWithdrawnEvent.InputTuple, RequesterFeeWithdrawnEvent.OutputTuple, RequesterFeeWithdrawnEvent.OutputObject>;
+    getEvent(key: "RouteCreated"): TypedContractEvent<RouteCreatedEvent.InputTuple, RouteCreatedEvent.OutputTuple, RouteCreatedEvent.OutputObject>;
+    getEvent(key: "SourceReturned"): TypedContractEvent<SourceReturnedEvent.InputTuple, SourceReturnedEvent.OutputTuple, SourceReturnedEvent.OutputObject>;
+    getEvent(key: "SourceTransferred"): TypedContractEvent<SourceTransferredEvent.InputTuple, SourceTransferredEvent.OutputTuple, SourceTransferredEvent.OutputObject>;
+    getEvent(key: "UnapprovedRequester"): TypedContractEvent<UnapprovedRequesterEvent.InputTuple, UnapprovedRequesterEvent.OutputTuple, UnapprovedRequesterEvent.OutputObject>;
+    getEvent(key: "UpdatedBondToken"): TypedContractEvent<UpdatedBondTokenEvent.InputTuple, UpdatedBondTokenEvent.OutputTuple, UpdatedBondTokenEvent.OutputObject>;
+    getEvent(key: "UpdatedProtocolFeeBp"): TypedContractEvent<UpdatedProtocolFeeBpEvent.InputTuple, UpdatedProtocolFeeBpEvent.OutputTuple, UpdatedProtocolFeeBpEvent.OutputObject>;
+    getEvent(key: "UpdatedRequesterFeeBp"): TypedContractEvent<UpdatedRequesterFeeBpEvent.InputTuple, UpdatedRequesterFeeBpEvent.OutputTuple, UpdatedRequesterFeeBpEvent.OutputObject>;
+    getEvent(key: "UpdatedValueLockDuration"): TypedContractEvent<UpdatedValueLockDurationEvent.InputTuple, UpdatedValueLockDurationEvent.OutputTuple, UpdatedValueLockDurationEvent.OutputObject>;
+    getEvent(key: "WithdrawnBond"): TypedContractEvent<WithdrawnBondEvent.InputTuple, WithdrawnBondEvent.OutputTuple, WithdrawnBondEvent.OutputObject>;
+    filters: {
+        "ApprovedRequester(uint256,address)": TypedContractEvent<ApprovedRequesterEvent.InputTuple, ApprovedRequesterEvent.OutputTuple, ApprovedRequesterEvent.OutputObject>;
+        ApprovedRequester: TypedContractEvent<ApprovedRequesterEvent.InputTuple, ApprovedRequesterEvent.OutputTuple, ApprovedRequesterEvent.OutputObject>;
+        "BondReturned(address,uint256,uint256)": TypedContractEvent<BondReturnedEvent.InputTuple, BondReturnedEvent.OutputTuple, BondReturnedEvent.OutputObject>;
+        BondReturned: TypedContractEvent<BondReturnedEvent.InputTuple, BondReturnedEvent.OutputTuple, BondReturnedEvent.OutputObject>;
+        "BondTransferred(uint256,uint256,uint256,address)": TypedContractEvent<BondTransferredEvent.InputTuple, BondTransferredEvent.OutputTuple, BondTransferredEvent.OutputObject>;
+        BondTransferred: TypedContractEvent<BondTransferredEvent.InputTuple, BondTransferredEvent.OutputTuple, BondTransferredEvent.OutputObject>;
+        "DepositedBond(address,uint256,uint256)": TypedContractEvent<DepositedBondEvent.InputTuple, DepositedBondEvent.OutputTuple, DepositedBondEvent.OutputObject>;
+        DepositedBond: TypedContractEvent<DepositedBondEvent.InputTuple, DepositedBondEvent.OutputTuple, DepositedBondEvent.OutputObject>;
+        "OrgCreated(address,string,uint256)": TypedContractEvent<OrgCreatedEvent.InputTuple, OrgCreatedEvent.OutputTuple, OrgCreatedEvent.OutputObject>;
+        OrgCreated: TypedContractEvent<OrgCreatedEvent.InputTuple, OrgCreatedEvent.OutputTuple, OrgCreatedEvent.OutputObject>;
+        "OrgSourcePaid(uint256)": TypedContractEvent<OrgSourcePaidEvent.InputTuple, OrgSourcePaidEvent.OutputTuple, OrgSourcePaidEvent.OutputObject>;
+        OrgSourcePaid: TypedContractEvent<OrgSourcePaidEvent.InputTuple, OrgSourcePaidEvent.OutputTuple, OrgSourcePaidEvent.OutputObject>;
+        "OwnershipTransferred(address,address)": TypedContractEvent<OwnershipTransferredEvent$4.InputTuple, OwnershipTransferredEvent$4.OutputTuple, OwnershipTransferredEvent$4.OutputObject>;
+        OwnershipTransferred: TypedContractEvent<OwnershipTransferredEvent$4.InputTuple, OwnershipTransferredEvent$4.OutputTuple, OwnershipTransferredEvent$4.OutputObject>;
+        "ProtocolFeeWithdrawn(address,uint256)": TypedContractEvent<ProtocolFeeWithdrawnEvent.InputTuple, ProtocolFeeWithdrawnEvent.OutputTuple, ProtocolFeeWithdrawnEvent.OutputObject>;
+        ProtocolFeeWithdrawn: TypedContractEvent<ProtocolFeeWithdrawnEvent.InputTuple, ProtocolFeeWithdrawnEvent.OutputTuple, ProtocolFeeWithdrawnEvent.OutputObject>;
+        "RequestCancelled(uint256)": TypedContractEvent<RequestCancelledEvent.InputTuple, RequestCancelledEvent.OutputTuple, RequestCancelledEvent.OutputObject>;
+        RequestCancelled: TypedContractEvent<RequestCancelledEvent.InputTuple, RequestCancelledEvent.OutputTuple, RequestCancelledEvent.OutputObject>;
+        "RequestClosed(uint256)": TypedContractEvent<RequestClosedEvent.InputTuple, RequestClosedEvent.OutputTuple, RequestClosedEvent.OutputObject>;
+        RequestClosed: TypedContractEvent<RequestClosedEvent.InputTuple, RequestClosedEvent.OutputTuple, RequestClosedEvent.OutputObject>;
+        "RequestCreated(address,uint256,uint256[],uint256[],uint256)": TypedContractEvent<RequestCreatedEvent.InputTuple, RequestCreatedEvent.OutputTuple, RequestCreatedEvent.OutputObject>;
+        RequestCreated: TypedContractEvent<RequestCreatedEvent.InputTuple, RequestCreatedEvent.OutputTuple, RequestCreatedEvent.OutputObject>;
+        "RequestPaid(address,uint256,uint256,uint256)": TypedContractEvent<RequestPaidEvent.InputTuple, RequestPaidEvent.OutputTuple, RequestPaidEvent.OutputObject>;
+        RequestPaid: TypedContractEvent<RequestPaidEvent.InputTuple, RequestPaidEvent.OutputTuple, RequestPaidEvent.OutputObject>;
+        "RequesterFeeWithdrawn(address,address,uint256)": TypedContractEvent<RequesterFeeWithdrawnEvent.InputTuple, RequesterFeeWithdrawnEvent.OutputTuple, RequesterFeeWithdrawnEvent.OutputObject>;
+        RequesterFeeWithdrawn: TypedContractEvent<RequesterFeeWithdrawnEvent.InputTuple, RequesterFeeWithdrawnEvent.OutputTuple, RequesterFeeWithdrawnEvent.OutputObject>;
+        "RouteCreated(uint256,address,uint8,address,uint256,uint256,uint256)": TypedContractEvent<RouteCreatedEvent.InputTuple, RouteCreatedEvent.OutputTuple, RouteCreatedEvent.OutputObject>;
+        RouteCreated: TypedContractEvent<RouteCreatedEvent.InputTuple, RouteCreatedEvent.OutputTuple, RouteCreatedEvent.OutputObject>;
+        "SourceReturned(address,uint256,uint256)": TypedContractEvent<SourceReturnedEvent.InputTuple, SourceReturnedEvent.OutputTuple, SourceReturnedEvent.OutputObject>;
+        SourceReturned: TypedContractEvent<SourceReturnedEvent.InputTuple, SourceReturnedEvent.OutputTuple, SourceReturnedEvent.OutputObject>;
+        "SourceTransferred(uint256,uint256,address)": TypedContractEvent<SourceTransferredEvent.InputTuple, SourceTransferredEvent.OutputTuple, SourceTransferredEvent.OutputObject>;
+        SourceTransferred: TypedContractEvent<SourceTransferredEvent.InputTuple, SourceTransferredEvent.OutputTuple, SourceTransferredEvent.OutputObject>;
+        "UnapprovedRequester(uint256,address)": TypedContractEvent<UnapprovedRequesterEvent.InputTuple, UnapprovedRequesterEvent.OutputTuple, UnapprovedRequesterEvent.OutputObject>;
+        UnapprovedRequester: TypedContractEvent<UnapprovedRequesterEvent.InputTuple, UnapprovedRequesterEvent.OutputTuple, UnapprovedRequesterEvent.OutputObject>;
+        "UpdatedBondToken(address)": TypedContractEvent<UpdatedBondTokenEvent.InputTuple, UpdatedBondTokenEvent.OutputTuple, UpdatedBondTokenEvent.OutputObject>;
+        UpdatedBondToken: TypedContractEvent<UpdatedBondTokenEvent.InputTuple, UpdatedBondTokenEvent.OutputTuple, UpdatedBondTokenEvent.OutputObject>;
+        "UpdatedProtocolFeeBp(uint256)": TypedContractEvent<UpdatedProtocolFeeBpEvent.InputTuple, UpdatedProtocolFeeBpEvent.OutputTuple, UpdatedProtocolFeeBpEvent.OutputObject>;
+        UpdatedProtocolFeeBp: TypedContractEvent<UpdatedProtocolFeeBpEvent.InputTuple, UpdatedProtocolFeeBpEvent.OutputTuple, UpdatedProtocolFeeBpEvent.OutputObject>;
+        "UpdatedRequesterFeeBp(address,uint256)": TypedContractEvent<UpdatedRequesterFeeBpEvent.InputTuple, UpdatedRequesterFeeBpEvent.OutputTuple, UpdatedRequesterFeeBpEvent.OutputObject>;
+        UpdatedRequesterFeeBp: TypedContractEvent<UpdatedRequesterFeeBpEvent.InputTuple, UpdatedRequesterFeeBpEvent.OutputTuple, UpdatedRequesterFeeBpEvent.OutputObject>;
+        "UpdatedValueLockDuration(address,uint256)": TypedContractEvent<UpdatedValueLockDurationEvent.InputTuple, UpdatedValueLockDurationEvent.OutputTuple, UpdatedValueLockDurationEvent.OutputObject>;
+        UpdatedValueLockDuration: TypedContractEvent<UpdatedValueLockDurationEvent.InputTuple, UpdatedValueLockDurationEvent.OutputTuple, UpdatedValueLockDurationEvent.OutputObject>;
+        "WithdrawnBond(address,uint256,uint256)": TypedContractEvent<WithdrawnBondEvent.InputTuple, WithdrawnBondEvent.OutputTuple, WithdrawnBondEvent.OutputObject>;
+        WithdrawnBond: TypedContractEvent<WithdrawnBondEvent.InputTuple, WithdrawnBondEvent.OutputTuple, WithdrawnBondEvent.OutputObject>;
+    };
+}
+
+interface ProviderRegistryInterface extends Interface {
+    getFunction(nameOrSignature: "get" | "getByAddr" | "nextId" | "owner" | "providerIdx" | "providers" | "register" | "renounceOwnership" | "transferOwnership" | "updateWriter" | "writers"): FunctionFragment;
+    getEvent(nameOrSignatureOrTopic: "OwnershipTransferred" | "ProviderRegistered" | "WriterUpdated"): EventFragment;
+    encodeFunctionData(functionFragment: "get", values: [BigNumberish]): string;
+    encodeFunctionData(functionFragment: "getByAddr", values: [AddressLike]): string;
+    encodeFunctionData(functionFragment: "nextId", values?: undefined): string;
+    encodeFunctionData(functionFragment: "owner", values?: undefined): string;
+    encodeFunctionData(functionFragment: "providerIdx", values: [AddressLike]): string;
+    encodeFunctionData(functionFragment: "providers", values: [BigNumberish]): string;
+    encodeFunctionData(functionFragment: "register", values: [AddressLike]): string;
+    encodeFunctionData(functionFragment: "renounceOwnership", values?: undefined): string;
+    encodeFunctionData(functionFragment: "transferOwnership", values: [AddressLike]): string;
+    encodeFunctionData(functionFragment: "updateWriter", values: [AddressLike, boolean]): string;
+    encodeFunctionData(functionFragment: "writers", values: [AddressLike]): string;
+    decodeFunctionResult(functionFragment: "get", data: BytesLike): Result;
+    decodeFunctionResult(functionFragment: "getByAddr", data: BytesLike): Result;
+    decodeFunctionResult(functionFragment: "nextId", data: BytesLike): Result;
+    decodeFunctionResult(functionFragment: "owner", data: BytesLike): Result;
+    decodeFunctionResult(functionFragment: "providerIdx", data: BytesLike): Result;
+    decodeFunctionResult(functionFragment: "providers", data: BytesLike): Result;
+    decodeFunctionResult(functionFragment: "register", data: BytesLike): Result;
+    decodeFunctionResult(functionFragment: "renounceOwnership", data: BytesLike): Result;
+    decodeFunctionResult(functionFragment: "transferOwnership", data: BytesLike): Result;
+    decodeFunctionResult(functionFragment: "updateWriter", data: BytesLike): Result;
+    decodeFunctionResult(functionFragment: "writers", data: BytesLike): Result;
+}
+declare namespace OwnershipTransferredEvent$3 {
+    type InputTuple = [previousOwner: AddressLike, newOwner: AddressLike];
+    type OutputTuple = [previousOwner: string, newOwner: string];
+    interface OutputObject {
+        previousOwner: string;
+        newOwner: string;
+    }
+    type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>;
+    type Filter = TypedDeferredTopicFilter<Event>;
+    type Log = TypedEventLog<Event>;
+    type LogDescription = TypedLogDescription<Event>;
+}
+declare namespace ProviderRegisteredEvent {
+    type InputTuple = [provider: AddressLike, idx: BigNumberish];
+    type OutputTuple = [provider: string, idx: bigint];
+    interface OutputObject {
+        provider: string;
+        idx: bigint;
+    }
+    type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>;
+    type Filter = TypedDeferredTopicFilter<Event>;
+    type Log = TypedEventLog<Event>;
+    type LogDescription = TypedLogDescription<Event>;
+}
+declare namespace WriterUpdatedEvent {
+    type InputTuple = [addr: AddressLike, added: boolean];
+    type OutputTuple = [addr: string, added: boolean];
+    interface OutputObject {
+        addr: string;
+        added: boolean;
+    }
+    type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>;
+    type Filter = TypedDeferredTopicFilter<Event>;
+    type Log = TypedEventLog<Event>;
+    type LogDescription = TypedLogDescription<Event>;
+}
+interface ProviderRegistry extends BaseContract {
+    connect(runner?: ContractRunner | null): ProviderRegistry;
+    waitForDeployment(): Promise<this>;
+    interface: ProviderRegistryInterface;
+    queryFilter<TCEvent extends TypedContractEvent>(event: TCEvent, fromBlockOrBlockhash?: string | number | undefined, toBlock?: string | number | undefined): Promise<Array<TypedEventLog<TCEvent>>>;
+    queryFilter<TCEvent extends TypedContractEvent>(filter: TypedDeferredTopicFilter<TCEvent>, fromBlockOrBlockhash?: string | number | undefined, toBlock?: string | number | undefined): Promise<Array<TypedEventLog<TCEvent>>>;
+    on<TCEvent extends TypedContractEvent>(event: TCEvent, listener: TypedListener<TCEvent>): Promise<this>;
+    on<TCEvent extends TypedContractEvent>(filter: TypedDeferredTopicFilter<TCEvent>, listener: TypedListener<TCEvent>): Promise<this>;
+    once<TCEvent extends TypedContractEvent>(event: TCEvent, listener: TypedListener<TCEvent>): Promise<this>;
+    once<TCEvent extends TypedContractEvent>(filter: TypedDeferredTopicFilter<TCEvent>, listener: TypedListener<TCEvent>): Promise<this>;
+    listeners<TCEvent extends TypedContractEvent>(event: TCEvent): Promise<Array<TypedListener<TCEvent>>>;
+    listeners(eventName?: string): Promise<Array<Listener>>;
+    removeAllListeners<TCEvent extends TypedContractEvent>(event?: TCEvent): Promise<this>;
+    get: TypedContractMethod<[id: BigNumberish], [string], "view">;
+    getByAddr: TypedContractMethod<[addr: AddressLike], [bigint], "view">;
+    nextId: TypedContractMethod<[], [bigint], "view">;
+    owner: TypedContractMethod<[], [string], "view">;
+    providerIdx: TypedContractMethod<[arg0: AddressLike], [bigint], "view">;
+    providers: TypedContractMethod<[arg0: BigNumberish], [string], "view">;
+    register: TypedContractMethod<[addr: AddressLike], [void], "nonpayable">;
+    renounceOwnership: TypedContractMethod<[], [void], "nonpayable">;
+    transferOwnership: TypedContractMethod<[
+        newOwner: AddressLike
+    ], [
+        void
+    ], "nonpayable">;
+    updateWriter: TypedContractMethod<[
+        addr: AddressLike,
+        add: boolean
+    ], [
+        void
+    ], "nonpayable">;
+    writers: TypedContractMethod<[arg0: AddressLike], [boolean], "view">;
+    getFunction<T extends ContractMethod = ContractMethod>(key: string | FunctionFragment): T;
+    getFunction(nameOrSignature: "get"): TypedContractMethod<[id: BigNumberish], [string], "view">;
+    getFunction(nameOrSignature: "getByAddr"): TypedContractMethod<[addr: AddressLike], [bigint], "view">;
+    getFunction(nameOrSignature: "nextId"): TypedContractMethod<[], [bigint], "view">;
+    getFunction(nameOrSignature: "owner"): TypedContractMethod<[], [string], "view">;
+    getFunction(nameOrSignature: "providerIdx"): TypedContractMethod<[arg0: AddressLike], [bigint], "view">;
+    getFunction(nameOrSignature: "providers"): TypedContractMethod<[arg0: BigNumberish], [string], "view">;
+    getFunction(nameOrSignature: "register"): TypedContractMethod<[addr: AddressLike], [void], "nonpayable">;
+    getFunction(nameOrSignature: "renounceOwnership"): TypedContractMethod<[], [void], "nonpayable">;
+    getFunction(nameOrSignature: "transferOwnership"): TypedContractMethod<[newOwner: AddressLike], [void], "nonpayable">;
+    getFunction(nameOrSignature: "updateWriter"): TypedContractMethod<[
+        addr: AddressLike,
+        add: boolean
+    ], [
+        void
+    ], "nonpayable">;
+    getFunction(nameOrSignature: "writers"): TypedContractMethod<[arg0: AddressLike], [boolean], "view">;
+    getEvent(key: "OwnershipTransferred"): TypedContractEvent<OwnershipTransferredEvent$3.InputTuple, OwnershipTransferredEvent$3.OutputTuple, OwnershipTransferredEvent$3.OutputObject>;
+    getEvent(key: "ProviderRegistered"): TypedContractEvent<ProviderRegisteredEvent.InputTuple, ProviderRegisteredEvent.OutputTuple, ProviderRegisteredEvent.OutputObject>;
+    getEvent(key: "WriterUpdated"): TypedContractEvent<WriterUpdatedEvent.InputTuple, WriterUpdatedEvent.OutputTuple, WriterUpdatedEvent.OutputObject>;
+    filters: {
+        "OwnershipTransferred(address,address)": TypedContractEvent<OwnershipTransferredEvent$3.InputTuple, OwnershipTransferredEvent$3.OutputTuple, OwnershipTransferredEvent$3.OutputObject>;
+        OwnershipTransferred: TypedContractEvent<OwnershipTransferredEvent$3.InputTuple, OwnershipTransferredEvent$3.OutputTuple, OwnershipTransferredEvent$3.OutputObject>;
+        "ProviderRegistered(address,uint256)": TypedContractEvent<ProviderRegisteredEvent.InputTuple, ProviderRegisteredEvent.OutputTuple, ProviderRegisteredEvent.OutputObject>;
+        ProviderRegistered: TypedContractEvent<ProviderRegisteredEvent.InputTuple, ProviderRegisteredEvent.OutputTuple, ProviderRegisteredEvent.OutputObject>;
+        "WriterUpdated(address,bool)": TypedContractEvent<WriterUpdatedEvent.InputTuple, WriterUpdatedEvent.OutputTuple, WriterUpdatedEvent.OutputObject>;
+        WriterUpdated: TypedContractEvent<WriterUpdatedEvent.InputTuple, WriterUpdatedEvent.OutputTuple, WriterUpdatedEvent.OutputObject>;
+    };
+}
+
+type LiquidityStruct = {
+    provider: BigNumberish;
+    lid: BigNumberish;
+    amount: BigNumberish;
+    maxPrice: BigNumberish;
+};
+type RouteStruct = {
+    liqs: LiquidityStruct[];
+    market: AddressLike;
+};
+type RouteParamsStruct = {
+    deadline: BigNumberish;
+    operator: BigNumberish;
+    routes: RouteStruct[];
+    target: AddressLike;
+};
+declare namespace Structs {
+    type AssetStruct = {
+        addr: AddressLike;
+        assetType: BigNumberish;
+    };
+    type AssetStructOutput = [addr: string, assetType: bigint] & {
+        addr: string;
+        assetType: bigint;
+    };
+}
+interface RouterInterface extends Interface {
+    getFunction(nameOrSignature: "core" | "isERC20" | "isNative" | "owner" | "provReg" | "renounceOwnership" | "route" | "setCore" | "setProviderRegistry" | "transferOwnership"): FunctionFragment;
+    getEvent(nameOrSignatureOrTopic: "OwnershipTransferred" | "Routed" | "UpdatedCore" | "UpdatedProvReg"): EventFragment;
+    encodeFunctionData(functionFragment: "core", values?: undefined): string;
+    encodeFunctionData(functionFragment: "isERC20", values: [Structs.AssetStruct]): string;
+    encodeFunctionData(functionFragment: "isNative", values: [Structs.AssetStruct]): string;
+    encodeFunctionData(functionFragment: "owner", values?: undefined): string;
+    encodeFunctionData(functionFragment: "provReg", values?: undefined): string;
+    encodeFunctionData(functionFragment: "renounceOwnership", values?: undefined): string;
+    encodeFunctionData(functionFragment: "route", values: [RouteParamsStruct]): string;
+    encodeFunctionData(functionFragment: "setCore", values: [AddressLike]): string;
+    encodeFunctionData(functionFragment: "setProviderRegistry", values: [AddressLike]): string;
+    encodeFunctionData(functionFragment: "transferOwnership", values: [AddressLike]): string;
+    decodeFunctionResult(functionFragment: "core", data: BytesLike): Result;
+    decodeFunctionResult(functionFragment: "isERC20", data: BytesLike): Result;
+    decodeFunctionResult(functionFragment: "isNative", data: BytesLike): Result;
+    decodeFunctionResult(functionFragment: "owner", data: BytesLike): Result;
+    decodeFunctionResult(functionFragment: "provReg", data: BytesLike): Result;
+    decodeFunctionResult(functionFragment: "renounceOwnership", data: BytesLike): Result;
+    decodeFunctionResult(functionFragment: "route", data: BytesLike): Result;
+    decodeFunctionResult(functionFragment: "setCore", data: BytesLike): Result;
+    decodeFunctionResult(functionFragment: "setProviderRegistry", data: BytesLike): Result;
+    decodeFunctionResult(functionFragment: "transferOwnership", data: BytesLike): Result;
+}
+declare namespace OwnershipTransferredEvent$2 {
+    type InputTuple = [previousOwner: AddressLike, newOwner: AddressLike];
+    type OutputTuple = [previousOwner: string, newOwner: string];
+    interface OutputObject {
+        previousOwner: string;
+        newOwner: string;
+    }
+    type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>;
+    type Filter = TypedDeferredTopicFilter<Event>;
+    type Log = TypedEventLog<Event>;
+    type LogDescription = TypedLogDescription<Event>;
+}
+declare namespace RoutedEvent {
+    type InputTuple = [
+        sender: AddressLike,
+        target: AddressLike,
+        operator: BigNumberish,
+        routeCount: BigNumberish
+    ];
+    type OutputTuple = [
+        sender: string,
+        target: string,
+        operator: bigint,
+        routeCount: bigint
+    ];
+    interface OutputObject {
+        sender: string;
+        target: string;
+        operator: bigint;
+        routeCount: bigint;
+    }
+    type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>;
+    type Filter = TypedDeferredTopicFilter<Event>;
+    type Log = TypedEventLog<Event>;
+    type LogDescription = TypedLogDescription<Event>;
+}
+declare namespace UpdatedCoreEvent {
+    type InputTuple = [addr: AddressLike];
+    type OutputTuple = [addr: string];
+    interface OutputObject {
+        addr: string;
+    }
+    type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>;
+    type Filter = TypedDeferredTopicFilter<Event>;
+    type Log = TypedEventLog<Event>;
+    type LogDescription = TypedLogDescription<Event>;
+}
+declare namespace UpdatedProvRegEvent {
+    type InputTuple = [addr: AddressLike];
+    type OutputTuple = [addr: string];
+    interface OutputObject {
+        addr: string;
+    }
+    type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>;
+    type Filter = TypedDeferredTopicFilter<Event>;
+    type Log = TypedEventLog<Event>;
+    type LogDescription = TypedLogDescription<Event>;
+}
+interface Router extends BaseContract {
+    connect(runner?: ContractRunner | null): Router;
+    waitForDeployment(): Promise<this>;
+    interface: RouterInterface;
+    queryFilter<TCEvent extends TypedContractEvent>(event: TCEvent, fromBlockOrBlockhash?: string | number | undefined, toBlock?: string | number | undefined): Promise<Array<TypedEventLog<TCEvent>>>;
+    queryFilter<TCEvent extends TypedContractEvent>(filter: TypedDeferredTopicFilter<TCEvent>, fromBlockOrBlockhash?: string | number | undefined, toBlock?: string | number | undefined): Promise<Array<TypedEventLog<TCEvent>>>;
+    on<TCEvent extends TypedContractEvent>(event: TCEvent, listener: TypedListener<TCEvent>): Promise<this>;
+    on<TCEvent extends TypedContractEvent>(filter: TypedDeferredTopicFilter<TCEvent>, listener: TypedListener<TCEvent>): Promise<this>;
+    once<TCEvent extends TypedContractEvent>(event: TCEvent, listener: TypedListener<TCEvent>): Promise<this>;
+    once<TCEvent extends TypedContractEvent>(filter: TypedDeferredTopicFilter<TCEvent>, listener: TypedListener<TCEvent>): Promise<this>;
+    listeners<TCEvent extends TypedContractEvent>(event: TCEvent): Promise<Array<TypedListener<TCEvent>>>;
+    listeners(eventName?: string): Promise<Array<Listener>>;
+    removeAllListeners<TCEvent extends TypedContractEvent>(event?: TCEvent): Promise<this>;
+    core: TypedContractMethod<[], [string], "view">;
+    isERC20: TypedContractMethod<[asset: Structs.AssetStruct], [boolean], "view">;
+    isNative: TypedContractMethod<[
+        asset: Structs.AssetStruct
+    ], [
+        boolean
+    ], "view">;
+    owner: TypedContractMethod<[], [string], "view">;
+    provReg: TypedContractMethod<[], [string], "view">;
+    renounceOwnership: TypedContractMethod<[], [void], "nonpayable">;
+    route: TypedContractMethod<[
+        routeParams: RouteParamsStruct
+    ], [
+        void
+    ], "payable">;
+    setCore: TypedContractMethod<[_core: AddressLike], [void], "nonpayable">;
+    setProviderRegistry: TypedContractMethod<[
+        _provReg: AddressLike
+    ], [
+        void
+    ], "nonpayable">;
+    transferOwnership: TypedContractMethod<[
+        newOwner: AddressLike
+    ], [
+        void
+    ], "nonpayable">;
+    getFunction<T extends ContractMethod = ContractMethod>(key: string | FunctionFragment): T;
+    getFunction(nameOrSignature: "core"): TypedContractMethod<[], [string], "view">;
+    getFunction(nameOrSignature: "isERC20"): TypedContractMethod<[asset: Structs.AssetStruct], [boolean], "view">;
+    getFunction(nameOrSignature: "isNative"): TypedContractMethod<[asset: Structs.AssetStruct], [boolean], "view">;
+    getFunction(nameOrSignature: "owner"): TypedContractMethod<[], [string], "view">;
+    getFunction(nameOrSignature: "provReg"): TypedContractMethod<[], [string], "view">;
+    getFunction(nameOrSignature: "renounceOwnership"): TypedContractMethod<[], [void], "nonpayable">;
+    getFunction(nameOrSignature: "route"): TypedContractMethod<[routeParams: RouteParamsStruct], [void], "payable">;
+    getFunction(nameOrSignature: "setCore"): TypedContractMethod<[_core: AddressLike], [void], "nonpayable">;
+    getFunction(nameOrSignature: "setProviderRegistry"): TypedContractMethod<[_provReg: AddressLike], [void], "nonpayable">;
+    getFunction(nameOrSignature: "transferOwnership"): TypedContractMethod<[newOwner: AddressLike], [void], "nonpayable">;
+    getEvent(key: "OwnershipTransferred"): TypedContractEvent<OwnershipTransferredEvent$2.InputTuple, OwnershipTransferredEvent$2.OutputTuple, OwnershipTransferredEvent$2.OutputObject>;
+    getEvent(key: "Routed"): TypedContractEvent<RoutedEvent.InputTuple, RoutedEvent.OutputTuple, RoutedEvent.OutputObject>;
+    getEvent(key: "UpdatedCore"): TypedContractEvent<UpdatedCoreEvent.InputTuple, UpdatedCoreEvent.OutputTuple, UpdatedCoreEvent.OutputObject>;
+    getEvent(key: "UpdatedProvReg"): TypedContractEvent<UpdatedProvRegEvent.InputTuple, UpdatedProvRegEvent.OutputTuple, UpdatedProvRegEvent.OutputObject>;
+    filters: {
+        "OwnershipTransferred(address,address)": TypedContractEvent<OwnershipTransferredEvent$2.InputTuple, OwnershipTransferredEvent$2.OutputTuple, OwnershipTransferredEvent$2.OutputObject>;
+        OwnershipTransferred: TypedContractEvent<OwnershipTransferredEvent$2.InputTuple, OwnershipTransferredEvent$2.OutputTuple, OwnershipTransferredEvent$2.OutputObject>;
+        "Routed(address,address,uint256,uint256)": TypedContractEvent<RoutedEvent.InputTuple, RoutedEvent.OutputTuple, RoutedEvent.OutputObject>;
+        Routed: TypedContractEvent<RoutedEvent.InputTuple, RoutedEvent.OutputTuple, RoutedEvent.OutputObject>;
+        "UpdatedCore(address)": TypedContractEvent<UpdatedCoreEvent.InputTuple, UpdatedCoreEvent.OutputTuple, UpdatedCoreEvent.OutputObject>;
+        UpdatedCore: TypedContractEvent<UpdatedCoreEvent.InputTuple, UpdatedCoreEvent.OutputTuple, UpdatedCoreEvent.OutputObject>;
+        "UpdatedProvReg(address)": TypedContractEvent<UpdatedProvRegEvent.InputTuple, UpdatedProvRegEvent.OutputTuple, UpdatedProvRegEvent.OutputObject>;
+        UpdatedProvReg: TypedContractEvent<UpdatedProvRegEvent.InputTuple, UpdatedProvRegEvent.OutputTuple, UpdatedProvRegEvent.OutputObject>;
     };
 }
 
@@ -14225,16 +15794,6 @@ declare class Core__factory {
         readonly anonymous: false;
         readonly inputs: readonly [{
             readonly indexed: false;
-            readonly internalType: "uint256";
-            readonly name: "bp";
-            readonly type: "uint256";
-        }];
-        readonly name: "NFTDiscountUpdated";
-        readonly type: "event";
-    }, {
-        readonly anonymous: false;
-        readonly inputs: readonly [{
-            readonly indexed: false;
             readonly internalType: "address";
             readonly name: "marketId";
             readonly type: "address";
@@ -14826,16 +16385,6 @@ declare class Core__factory {
         }, {
             readonly indexed: false;
             readonly internalType: "uint256";
-            readonly name: "minSwap";
-            readonly type: "uint256";
-        }, {
-            readonly indexed: false;
-            readonly internalType: "uint256";
-            readonly name: "maxSwap";
-            readonly type: "uint256";
-        }, {
-            readonly indexed: false;
-            readonly internalType: "uint256";
             readonly name: "timeToPay";
             readonly type: "uint256";
         }];
@@ -14954,16 +16503,6 @@ declare class Core__factory {
     }, {
         readonly anonymous: false;
         readonly inputs: readonly [{
-            readonly indexed: false;
-            readonly internalType: "address";
-            readonly name: "addr";
-            readonly type: "address";
-        }];
-        readonly name: "UpdatedNFT";
-        readonly type: "event";
-    }, {
-        readonly anonymous: false;
-        readonly inputs: readonly [{
             readonly indexed: true;
             readonly internalType: "address";
             readonly name: "provider";
@@ -15070,6 +16609,16 @@ declare class Core__factory {
             readonly type: "uint256";
         }];
         readonly name: "UpdatedPrice";
+        readonly type: "event";
+    }, {
+        readonly anonymous: false;
+        readonly inputs: readonly [{
+            readonly indexed: false;
+            readonly internalType: "address";
+            readonly name: "addr";
+            readonly type: "address";
+        }];
+        readonly name: "UpdatedProviderRegistry";
         readonly type: "event";
     }, {
         readonly inputs: readonly [{
@@ -15209,41 +16758,46 @@ declare class Core__factory {
         readonly type: "function";
     }, {
         readonly inputs: readonly [{
-            readonly internalType: "address";
-            readonly name: "marketId";
-            readonly type: "address";
-        }, {
-            readonly internalType: "address";
-            readonly name: "provider";
-            readonly type: "address";
-        }, {
-            readonly internalType: "address";
-            readonly name: "recipient";
-            readonly type: "address";
-        }, {
-            readonly internalType: "uint256";
-            readonly name: "lid";
-            readonly type: "uint256";
-        }, {
-            readonly internalType: "uint256";
-            readonly name: "amount";
-            readonly type: "uint256";
-        }, {
-            readonly internalType: "uint256";
-            readonly name: "price";
-            readonly type: "uint256";
-        }, {
-            readonly internalType: "uint256[]";
-            readonly name: "ids";
-            readonly type: "uint256[]";
-        }, {
-            readonly internalType: "uint256";
-            readonly name: "deadline";
-            readonly type: "uint256";
-        }, {
-            readonly internalType: "uint256";
-            readonly name: "operator";
-            readonly type: "uint256";
+            readonly components: readonly [{
+                readonly internalType: "address";
+                readonly name: "marketId";
+                readonly type: "address";
+            }, {
+                readonly internalType: "address";
+                readonly name: "provider";
+                readonly type: "address";
+            }, {
+                readonly internalType: "address";
+                readonly name: "recipient";
+                readonly type: "address";
+            }, {
+                readonly internalType: "uint256";
+                readonly name: "lid";
+                readonly type: "uint256";
+            }, {
+                readonly internalType: "uint256";
+                readonly name: "amount";
+                readonly type: "uint256";
+            }, {
+                readonly internalType: "uint256";
+                readonly name: "price";
+                readonly type: "uint256";
+            }, {
+                readonly internalType: "uint256[]";
+                readonly name: "ids";
+                readonly type: "uint256[]";
+            }, {
+                readonly internalType: "uint256";
+                readonly name: "deadline";
+                readonly type: "uint256";
+            }, {
+                readonly internalType: "uint256";
+                readonly name: "operator";
+                readonly type: "uint256";
+            }];
+            readonly internalType: "struct StructsLib.CreateOfferParams";
+            readonly name: "params";
+            readonly type: "tuple";
         }];
         readonly name: "createOffer";
         readonly outputs: readonly [];
@@ -15318,14 +16872,6 @@ declare class Core__factory {
             }, {
                 readonly internalType: "uint256";
                 readonly name: "price";
-                readonly type: "uint256";
-            }, {
-                readonly internalType: "uint256";
-                readonly name: "minSwap";
-                readonly type: "uint256";
-            }, {
-                readonly internalType: "uint256";
-                readonly name: "maxSwap";
                 readonly type: "uint256";
             }, {
                 readonly internalType: "uint256";
@@ -15983,16 +17529,6 @@ declare class Core__factory {
         readonly type: "function";
     }, {
         readonly inputs: readonly [{
-            readonly internalType: "uint256";
-            readonly name: "bp";
-            readonly type: "uint256";
-        }];
-        readonly name: "setDiscountForNFTHolder";
-        readonly outputs: readonly [];
-        readonly stateMutability: "nonpayable";
-        readonly type: "function";
-    }, {
-        readonly inputs: readonly [{
             readonly internalType: "address";
             readonly name: "addr";
             readonly type: "address";
@@ -16101,16 +17637,6 @@ declare class Core__factory {
             readonly name: "addr";
             readonly type: "address";
         }];
-        readonly name: "setNFT";
-        readonly outputs: readonly [];
-        readonly stateMutability: "nonpayable";
-        readonly type: "function";
-    }, {
-        readonly inputs: readonly [{
-            readonly internalType: "address";
-            readonly name: "addr";
-            readonly type: "address";
-        }];
         readonly name: "setOperator";
         readonly outputs: readonly [];
         readonly stateMutability: "nonpayable";
@@ -16170,6 +17696,16 @@ declare class Core__factory {
             readonly type: "uint256";
         }];
         readonly name: "setProtoFeeSplit";
+        readonly outputs: readonly [];
+        readonly stateMutability: "nonpayable";
+        readonly type: "function";
+    }, {
+        readonly inputs: readonly [{
+            readonly internalType: "address";
+            readonly name: "addr";
+            readonly type: "address";
+        }];
+        readonly name: "setProviderRegistry";
         readonly outputs: readonly [];
         readonly stateMutability: "nonpayable";
         readonly type: "function";
@@ -16278,10 +17814,6 @@ declare class Core__factory {
         readonly outputs: readonly [{
             readonly components: readonly [{
                 readonly internalType: "uint256";
-                readonly name: "nftDiscountBp";
-                readonly type: "uint256";
-            }, {
-                readonly internalType: "uint256";
                 readonly name: "ammEthPoolFee";
                 readonly type: "uint256";
             }];
@@ -16294,11 +17826,11 @@ declare class Core__factory {
             readonly type: "address";
         }, {
             readonly internalType: "address";
-            readonly name: "nft";
+            readonly name: "ammEth";
             readonly type: "address";
         }, {
-            readonly internalType: "address";
-            readonly name: "ammEth";
+            readonly internalType: "contract IProviderRegistry";
+            readonly name: "provReg";
             readonly type: "address";
         }, {
             readonly internalType: "contract IAssetRegistry";
@@ -16351,41 +17883,50 @@ declare class Core__factory {
         readonly type: "function";
     }, {
         readonly inputs: readonly [{
-            readonly internalType: "address";
-            readonly name: "marketId";
-            readonly type: "address";
-        }, {
-            readonly internalType: "address";
-            readonly name: "provider";
-            readonly type: "address";
-        }, {
-            readonly internalType: "address";
-            readonly name: "recipient";
-            readonly type: "address";
-        }, {
-            readonly internalType: "uint256";
-            readonly name: "lid";
-            readonly type: "uint256";
-        }, {
-            readonly internalType: "uint256";
-            readonly name: "amount";
-            readonly type: "uint256";
-        }, {
-            readonly internalType: "uint256";
-            readonly name: "maxPrice";
-            readonly type: "uint256";
-        }, {
-            readonly internalType: "uint256[]";
-            readonly name: "ids";
-            readonly type: "uint256[]";
-        }, {
-            readonly internalType: "uint256";
-            readonly name: "txDeadline";
-            readonly type: "uint256";
-        }, {
-            readonly internalType: "uint256";
-            readonly name: "operator";
-            readonly type: "uint256";
+            readonly components: readonly [{
+                readonly internalType: "address";
+                readonly name: "marketId";
+                readonly type: "address";
+            }, {
+                readonly internalType: "address";
+                readonly name: "provider";
+                readonly type: "address";
+            }, {
+                readonly internalType: "address";
+                readonly name: "recipient";
+                readonly type: "address";
+            }, {
+                readonly internalType: "uint256";
+                readonly name: "lid";
+                readonly type: "uint256";
+            }, {
+                readonly internalType: "uint256";
+                readonly name: "amount";
+                readonly type: "uint256";
+            }, {
+                readonly internalType: "uint256";
+                readonly name: "maxPrice";
+                readonly type: "uint256";
+            }, {
+                readonly internalType: "uint256[]";
+                readonly name: "ids";
+                readonly type: "uint256[]";
+            }, {
+                readonly internalType: "uint256";
+                readonly name: "expireAt";
+                readonly type: "uint256";
+            }, {
+                readonly internalType: "uint256";
+                readonly name: "operator";
+                readonly type: "uint256";
+            }, {
+                readonly internalType: "bytes";
+                readonly name: "marketMgrData";
+                readonly type: "bytes";
+            }];
+            readonly internalType: "struct StructsLib.SwapQuoteForBaseParams";
+            readonly name: "params";
+            readonly type: "tuple";
         }];
         readonly name: "swapQuoteForBase";
         readonly outputs: readonly [];
@@ -16441,37 +17982,54 @@ declare class Core__factory {
         readonly type: "function";
     }, {
         readonly inputs: readonly [{
-            readonly internalType: "address";
-            readonly name: "marketId";
-            readonly type: "address";
-        }, {
-            readonly internalType: "uint256";
-            readonly name: "lid";
-            readonly type: "uint256";
-        }, {
-            readonly internalType: "bool";
-            readonly name: "deduct";
-            readonly type: "bool";
-        }, {
-            readonly internalType: "address";
-            readonly name: "target";
-            readonly type: "address";
-        }, {
-            readonly internalType: "uint256[2]";
-            readonly name: "amountAndPrice";
-            readonly type: "uint256[2]";
-        }, {
-            readonly internalType: "uint256[]";
-            readonly name: "wantOrIds";
-            readonly type: "uint256[]";
-        }, {
-            readonly internalType: "uint256[]";
-            readonly name: "wantAndIds";
-            readonly type: "uint256[]";
-        }, {
-            readonly internalType: "uint256[5]";
-            readonly name: "limits";
-            readonly type: "uint256[5]";
+            readonly components: readonly [{
+                readonly internalType: "address";
+                readonly name: "marketId";
+                readonly type: "address";
+            }, {
+                readonly internalType: "address";
+                readonly name: "target";
+                readonly type: "address";
+            }, {
+                readonly internalType: "uint256";
+                readonly name: "lid";
+                readonly type: "uint256";
+            }, {
+                readonly internalType: "uint256";
+                readonly name: "amount";
+                readonly type: "uint256";
+            }, {
+                readonly internalType: "uint256";
+                readonly name: "price";
+                readonly type: "uint256";
+            }, {
+                readonly internalType: "uint256";
+                readonly name: "timeToPay";
+                readonly type: "uint256";
+            }, {
+                readonly internalType: "uint256";
+                readonly name: "expireAt";
+                readonly type: "uint256";
+            }, {
+                readonly internalType: "uint256[]";
+                readonly name: "wantOrIds";
+                readonly type: "uint256[]";
+            }, {
+                readonly internalType: "uint256[]";
+                readonly name: "wantAndIds";
+                readonly type: "uint256[]";
+            }, {
+                readonly internalType: "bool";
+                readonly name: "deduct";
+                readonly type: "bool";
+            }, {
+                readonly internalType: "bool";
+                readonly name: "pause";
+                readonly type: "bool";
+            }];
+            readonly internalType: "struct StructsLib.UpdateFungibleLiquidityParams";
+            readonly name: "params";
+            readonly type: "tuple";
         }];
         readonly name: "updateFungibleLiquidity";
         readonly outputs: readonly [];
@@ -16505,41 +18063,54 @@ declare class Core__factory {
         readonly type: "function";
     }, {
         readonly inputs: readonly [{
-            readonly internalType: "address";
-            readonly name: "marketId";
-            readonly type: "address";
-        }, {
-            readonly internalType: "uint256";
-            readonly name: "lid";
-            readonly type: "uint256";
-        }, {
-            readonly internalType: "bool";
-            readonly name: "deduct";
-            readonly type: "bool";
-        }, {
-            readonly internalType: "address";
-            readonly name: "target";
-            readonly type: "address";
-        }, {
-            readonly internalType: "uint256[]";
-            readonly name: "ids";
-            readonly type: "uint256[]";
-        }, {
-            readonly internalType: "uint256";
-            readonly name: "price";
-            readonly type: "uint256";
-        }, {
-            readonly internalType: "uint256[]";
-            readonly name: "wantOrIds";
-            readonly type: "uint256[]";
-        }, {
-            readonly internalType: "uint256[]";
-            readonly name: "wantAndIds";
-            readonly type: "uint256[]";
-        }, {
-            readonly internalType: "uint256[3]";
-            readonly name: "limits";
-            readonly type: "uint256[3]";
+            readonly components: readonly [{
+                readonly internalType: "address";
+                readonly name: "marketId";
+                readonly type: "address";
+            }, {
+                readonly internalType: "address";
+                readonly name: "target";
+                readonly type: "address";
+            }, {
+                readonly internalType: "uint256";
+                readonly name: "lid";
+                readonly type: "uint256";
+            }, {
+                readonly internalType: "uint256";
+                readonly name: "price";
+                readonly type: "uint256";
+            }, {
+                readonly internalType: "uint256";
+                readonly name: "timeToPay";
+                readonly type: "uint256";
+            }, {
+                readonly internalType: "uint256";
+                readonly name: "expireAt";
+                readonly type: "uint256";
+            }, {
+                readonly internalType: "uint256[]";
+                readonly name: "ids";
+                readonly type: "uint256[]";
+            }, {
+                readonly internalType: "uint256[]";
+                readonly name: "wantOrIds";
+                readonly type: "uint256[]";
+            }, {
+                readonly internalType: "uint256[]";
+                readonly name: "wantAndIds";
+                readonly type: "uint256[]";
+            }, {
+                readonly internalType: "bool";
+                readonly name: "deduct";
+                readonly type: "bool";
+            }, {
+                readonly internalType: "bool";
+                readonly name: "pause";
+                readonly type: "bool";
+            }];
+            readonly internalType: "struct StructsLib.UpdateNonFungibleLiquidityParams";
+            readonly name: "params";
+            readonly type: "tuple";
         }];
         readonly name: "updateNonFungibleLiquidity";
         readonly outputs: readonly [];
@@ -20784,6 +22355,471 @@ declare class MarketCore__factory {
     static connect(address: string, runner?: ContractRunner | null): MarketCore;
 }
 
+declare class MarketManager__factory {
+    static readonly abi: readonly [{
+        readonly inputs: readonly [{
+            readonly internalType: "address";
+            readonly name: "_core";
+            readonly type: "address";
+        }, {
+            readonly internalType: "address";
+            readonly name: "_payRouter";
+            readonly type: "address";
+        }];
+        readonly stateMutability: "nonpayable";
+        readonly type: "constructor";
+    }, {
+        readonly anonymous: false;
+        readonly inputs: readonly [{
+            readonly indexed: false;
+            readonly internalType: "address";
+            readonly name: "core";
+            readonly type: "address";
+        }];
+        readonly name: "CoreUpdated";
+        readonly type: "event";
+    }, {
+        readonly anonymous: false;
+        readonly inputs: readonly [{
+            readonly indexed: true;
+            readonly internalType: "address";
+            readonly name: "previousOwner";
+            readonly type: "address";
+        }, {
+            readonly indexed: true;
+            readonly internalType: "address";
+            readonly name: "newOwner";
+            readonly type: "address";
+        }];
+        readonly name: "OwnershipTransferred";
+        readonly type: "event";
+    }, {
+        readonly anonymous: false;
+        readonly inputs: readonly [{
+            readonly indexed: false;
+            readonly internalType: "address";
+            readonly name: "payRouter";
+            readonly type: "address";
+        }];
+        readonly name: "PayRouterUpdated";
+        readonly type: "event";
+    }, {
+        readonly anonymous: false;
+        readonly inputs: readonly [{
+            readonly indexed: false;
+            readonly internalType: "address";
+            readonly name: "sender";
+            readonly type: "address";
+        }, {
+            readonly indexed: false;
+            readonly internalType: "uint256";
+            readonly name: "requestId";
+            readonly type: "uint256";
+        }, {
+            readonly indexed: false;
+            readonly internalType: "uint256";
+            readonly name: "routeId";
+            readonly type: "uint256";
+        }, {
+            readonly indexed: false;
+            readonly internalType: "uint256";
+            readonly name: "amount";
+            readonly type: "uint256";
+        }, {
+            readonly indexed: false;
+            readonly internalType: "address";
+            readonly name: "to";
+            readonly type: "address";
+        }];
+        readonly name: "TransferredRequestBond";
+        readonly type: "event";
+    }, {
+        readonly anonymous: false;
+        readonly inputs: readonly [{
+            readonly indexed: false;
+            readonly internalType: "address";
+            readonly name: "sender";
+            readonly type: "address";
+        }, {
+            readonly indexed: false;
+            readonly internalType: "uint256";
+            readonly name: "requestId";
+            readonly type: "uint256";
+        }, {
+            readonly indexed: false;
+            readonly internalType: "uint256";
+            readonly name: "amount";
+            readonly type: "uint256";
+        }, {
+            readonly indexed: false;
+            readonly internalType: "address";
+            readonly name: "to";
+            readonly type: "address";
+        }];
+        readonly name: "TransferredRequestSource";
+        readonly type: "event";
+    }, {
+        readonly anonymous: false;
+        readonly inputs: readonly [{
+            readonly indexed: false;
+            readonly internalType: "address";
+            readonly name: "delegate";
+            readonly type: "address";
+        }, {
+            readonly indexed: false;
+            readonly internalType: "bool";
+            readonly name: "isDelegate";
+            readonly type: "bool";
+        }];
+        readonly name: "UpdatedDelegate";
+        readonly type: "event";
+    }, {
+        readonly inputs: readonly [{
+            readonly internalType: "address";
+            readonly name: "delegate";
+            readonly type: "address";
+        }];
+        readonly name: "addDelegate";
+        readonly outputs: readonly [];
+        readonly stateMutability: "nonpayable";
+        readonly type: "function";
+    }, {
+        readonly inputs: readonly [{
+            readonly components: readonly [{
+                readonly internalType: "address";
+                readonly name: "marketId";
+                readonly type: "address";
+            }, {
+                readonly internalType: "address";
+                readonly name: "provider";
+                readonly type: "address";
+            }, {
+                readonly internalType: "address";
+                readonly name: "recipient";
+                readonly type: "address";
+            }, {
+                readonly internalType: "uint256";
+                readonly name: "lid";
+                readonly type: "uint256";
+            }, {
+                readonly internalType: "uint256";
+                readonly name: "amount";
+                readonly type: "uint256";
+            }, {
+                readonly internalType: "uint256";
+                readonly name: "maxPrice";
+                readonly type: "uint256";
+            }, {
+                readonly internalType: "uint256[]";
+                readonly name: "ids";
+                readonly type: "uint256[]";
+            }, {
+                readonly internalType: "uint256";
+                readonly name: "expireAt";
+                readonly type: "uint256";
+            }, {
+                readonly internalType: "uint256";
+                readonly name: "operator";
+                readonly type: "uint256";
+            }, {
+                readonly internalType: "bytes";
+                readonly name: "marketMgrData";
+                readonly type: "bytes";
+            }];
+            readonly internalType: "struct StructsLib.SwapQuoteForBaseParams";
+            readonly name: "params";
+            readonly type: "tuple";
+        }, {
+            readonly internalType: "uint256";
+            readonly name: "orderId";
+            readonly type: "uint256";
+        }];
+        readonly name: "afterSwap";
+        readonly outputs: readonly [];
+        readonly stateMutability: "nonpayable";
+        readonly type: "function";
+    }, {
+        readonly inputs: readonly [{
+            readonly components: readonly [{
+                readonly internalType: "address";
+                readonly name: "marketId";
+                readonly type: "address";
+            }, {
+                readonly internalType: "address";
+                readonly name: "provider";
+                readonly type: "address";
+            }, {
+                readonly internalType: "address";
+                readonly name: "recipient";
+                readonly type: "address";
+            }, {
+                readonly internalType: "uint256";
+                readonly name: "lid";
+                readonly type: "uint256";
+            }, {
+                readonly internalType: "uint256";
+                readonly name: "amount";
+                readonly type: "uint256";
+            }, {
+                readonly internalType: "uint256";
+                readonly name: "maxPrice";
+                readonly type: "uint256";
+            }, {
+                readonly internalType: "uint256[]";
+                readonly name: "ids";
+                readonly type: "uint256[]";
+            }, {
+                readonly internalType: "uint256";
+                readonly name: "expireAt";
+                readonly type: "uint256";
+            }, {
+                readonly internalType: "uint256";
+                readonly name: "operator";
+                readonly type: "uint256";
+            }, {
+                readonly internalType: "bytes";
+                readonly name: "marketMgrData";
+                readonly type: "bytes";
+            }];
+            readonly internalType: "struct StructsLib.SwapQuoteForBaseParams";
+            readonly name: "params";
+            readonly type: "tuple";
+        }];
+        readonly name: "beforeSwap";
+        readonly outputs: readonly [];
+        readonly stateMutability: "nonpayable";
+        readonly type: "function";
+    }, {
+        readonly inputs: readonly [];
+        readonly name: "core";
+        readonly outputs: readonly [{
+            readonly internalType: "contract ICore";
+            readonly name: "";
+            readonly type: "address";
+        }];
+        readonly stateMutability: "view";
+        readonly type: "function";
+    }, {
+        readonly inputs: readonly [{
+            readonly internalType: "address";
+            readonly name: "";
+            readonly type: "address";
+        }];
+        readonly name: "delegates";
+        readonly outputs: readonly [{
+            readonly internalType: "bool";
+            readonly name: "";
+            readonly type: "bool";
+        }];
+        readonly stateMutability: "view";
+        readonly type: "function";
+    }, {
+        readonly inputs: readonly [{
+            readonly internalType: "uint256";
+            readonly name: "orderId";
+            readonly type: "uint256";
+        }];
+        readonly name: "onCancel";
+        readonly outputs: readonly [];
+        readonly stateMutability: "nonpayable";
+        readonly type: "function";
+    }, {
+        readonly inputs: readonly [{
+            readonly internalType: "uint256";
+            readonly name: "orderId";
+            readonly type: "uint256";
+        }];
+        readonly name: "onPaid";
+        readonly outputs: readonly [];
+        readonly stateMutability: "nonpayable";
+        readonly type: "function";
+    }, {
+        readonly inputs: readonly [{
+            readonly internalType: "uint256";
+            readonly name: "orderId";
+            readonly type: "uint256";
+        }];
+        readonly name: "onRelease";
+        readonly outputs: readonly [];
+        readonly stateMutability: "nonpayable";
+        readonly type: "function";
+    }, {
+        readonly inputs: readonly [];
+        readonly name: "owner";
+        readonly outputs: readonly [{
+            readonly internalType: "address";
+            readonly name: "";
+            readonly type: "address";
+        }];
+        readonly stateMutability: "view";
+        readonly type: "function";
+    }, {
+        readonly inputs: readonly [];
+        readonly name: "payRouter";
+        readonly outputs: readonly [{
+            readonly internalType: "contract IPayRouter";
+            readonly name: "";
+            readonly type: "address";
+        }];
+        readonly stateMutability: "view";
+        readonly type: "function";
+    }, {
+        readonly inputs: readonly [{
+            readonly internalType: "address";
+            readonly name: "delegate";
+            readonly type: "address";
+        }];
+        readonly name: "removeDelegate";
+        readonly outputs: readonly [];
+        readonly stateMutability: "nonpayable";
+        readonly type: "function";
+    }, {
+        readonly inputs: readonly [];
+        readonly name: "renounceOwnership";
+        readonly outputs: readonly [];
+        readonly stateMutability: "nonpayable";
+        readonly type: "function";
+    }, {
+        readonly inputs: readonly [{
+            readonly internalType: "uint256";
+            readonly name: "";
+            readonly type: "uint256";
+        }];
+        readonly name: "requestInfo";
+        readonly outputs: readonly [{
+            readonly internalType: "bool";
+            readonly name: "exists";
+            readonly type: "bool";
+        }, {
+            readonly internalType: "uint256";
+            readonly name: "requestId";
+            readonly type: "uint256";
+        }, {
+            readonly internalType: "uint256";
+            readonly name: "orderId";
+            readonly type: "uint256";
+        }];
+        readonly stateMutability: "view";
+        readonly type: "function";
+    }, {
+        readonly inputs: readonly [{
+            readonly internalType: "address";
+            readonly name: "_core";
+            readonly type: "address";
+        }];
+        readonly name: "setCore";
+        readonly outputs: readonly [];
+        readonly stateMutability: "nonpayable";
+        readonly type: "function";
+    }, {
+        readonly inputs: readonly [{
+            readonly internalType: "address";
+            readonly name: "_payRouter";
+            readonly type: "address";
+        }];
+        readonly name: "setPayRouter";
+        readonly outputs: readonly [];
+        readonly stateMutability: "nonpayable";
+        readonly type: "function";
+    }, {
+        readonly inputs: readonly [{
+            readonly internalType: "uint256";
+            readonly name: "feeBp";
+            readonly type: "uint256";
+        }];
+        readonly name: "setRequesterFeeBp";
+        readonly outputs: readonly [];
+        readonly stateMutability: "nonpayable";
+        readonly type: "function";
+    }, {
+        readonly inputs: readonly [{
+            readonly internalType: "uint256";
+            readonly name: "duration";
+            readonly type: "uint256";
+        }];
+        readonly name: "setRequesterValueLockDuration";
+        readonly outputs: readonly [];
+        readonly stateMutability: "nonpayable";
+        readonly type: "function";
+    }, {
+        readonly inputs: readonly [{
+            readonly internalType: "bytes4";
+            readonly name: "interfaceId";
+            readonly type: "bytes4";
+        }];
+        readonly name: "supportsInterface";
+        readonly outputs: readonly [{
+            readonly internalType: "bool";
+            readonly name: "";
+            readonly type: "bool";
+        }];
+        readonly stateMutability: "view";
+        readonly type: "function";
+    }, {
+        readonly inputs: readonly [{
+            readonly internalType: "address";
+            readonly name: "newOwner";
+            readonly type: "address";
+        }];
+        readonly name: "transferOwnership";
+        readonly outputs: readonly [];
+        readonly stateMutability: "nonpayable";
+        readonly type: "function";
+    }, {
+        readonly inputs: readonly [{
+            readonly internalType: "uint256";
+            readonly name: "requestId";
+            readonly type: "uint256";
+        }, {
+            readonly internalType: "uint256";
+            readonly name: "routeId";
+            readonly type: "uint256";
+        }, {
+            readonly internalType: "uint256";
+            readonly name: "amount";
+            readonly type: "uint256";
+        }, {
+            readonly internalType: "address";
+            readonly name: "to";
+            readonly type: "address";
+        }];
+        readonly name: "transferRequestBond";
+        readonly outputs: readonly [];
+        readonly stateMutability: "nonpayable";
+        readonly type: "function";
+    }, {
+        readonly inputs: readonly [{
+            readonly internalType: "uint256";
+            readonly name: "requestId";
+            readonly type: "uint256";
+        }, {
+            readonly internalType: "uint256";
+            readonly name: "amount";
+            readonly type: "uint256";
+        }, {
+            readonly internalType: "address";
+            readonly name: "to";
+            readonly type: "address";
+        }];
+        readonly name: "transferRequestSource";
+        readonly outputs: readonly [];
+        readonly stateMutability: "nonpayable";
+        readonly type: "function";
+    }, {
+        readonly inputs: readonly [{
+            readonly internalType: "address";
+            readonly name: "beneficiary";
+            readonly type: "address";
+        }];
+        readonly name: "withdrawRequesterFee";
+        readonly outputs: readonly [];
+        readonly stateMutability: "nonpayable";
+        readonly type: "function";
+    }];
+    static createInterface(): MarketManagerInterface;
+    static connect(address: string, runner?: ContractRunner | null): MarketManager;
+}
+
 declare class MediatorManager__factory {
     static readonly abi: readonly [{
         readonly inputs: readonly [{
@@ -24117,6 +26153,1473 @@ declare class NFT__factory {
     }];
     static createInterface(): NFTInterface;
     static connect(address: string, runner?: ContractRunner | null): NFT;
+}
+
+declare class PayRouter__factory {
+    static readonly abi: readonly [{
+        readonly inputs: readonly [{
+            readonly internalType: "address";
+            readonly name: "_bondToken";
+            readonly type: "address";
+        }];
+        readonly stateMutability: "nonpayable";
+        readonly type: "constructor";
+    }, {
+        readonly anonymous: false;
+        readonly inputs: readonly [{
+            readonly indexed: false;
+            readonly internalType: "uint256";
+            readonly name: "routeId";
+            readonly type: "uint256";
+        }, {
+            readonly indexed: false;
+            readonly internalType: "address";
+            readonly name: "requester";
+            readonly type: "address";
+        }];
+        readonly name: "ApprovedRequester";
+        readonly type: "event";
+    }, {
+        readonly anonymous: false;
+        readonly inputs: readonly [{
+            readonly indexed: false;
+            readonly internalType: "address";
+            readonly name: "router";
+            readonly type: "address";
+        }, {
+            readonly indexed: false;
+            readonly internalType: "uint256";
+            readonly name: "routeId";
+            readonly type: "uint256";
+        }, {
+            readonly indexed: false;
+            readonly internalType: "uint256";
+            readonly name: "bond";
+            readonly type: "uint256";
+        }];
+        readonly name: "BondReturned";
+        readonly type: "event";
+    }, {
+        readonly anonymous: false;
+        readonly inputs: readonly [{
+            readonly indexed: false;
+            readonly internalType: "uint256";
+            readonly name: "requestId";
+            readonly type: "uint256";
+        }, {
+            readonly indexed: false;
+            readonly internalType: "uint256";
+            readonly name: "routeId";
+            readonly type: "uint256";
+        }, {
+            readonly indexed: false;
+            readonly internalType: "uint256";
+            readonly name: "amount";
+            readonly type: "uint256";
+        }, {
+            readonly indexed: false;
+            readonly internalType: "address";
+            readonly name: "to";
+            readonly type: "address";
+        }];
+        readonly name: "BondTransferred";
+        readonly type: "event";
+    }, {
+        readonly anonymous: false;
+        readonly inputs: readonly [{
+            readonly indexed: true;
+            readonly internalType: "address";
+            readonly name: "depositor";
+            readonly type: "address";
+        }, {
+            readonly indexed: false;
+            readonly internalType: "uint256";
+            readonly name: "routeId";
+            readonly type: "uint256";
+        }, {
+            readonly indexed: false;
+            readonly internalType: "uint256";
+            readonly name: "amount";
+            readonly type: "uint256";
+        }];
+        readonly name: "DepositedBond";
+        readonly type: "event";
+    }, {
+        readonly anonymous: false;
+        readonly inputs: readonly [{
+            readonly indexed: false;
+            readonly internalType: "address";
+            readonly name: "creator";
+            readonly type: "address";
+        }, {
+            readonly indexed: false;
+            readonly internalType: "string";
+            readonly name: "name";
+            readonly type: "string";
+        }, {
+            readonly indexed: false;
+            readonly internalType: "uint256";
+            readonly name: "orgId";
+            readonly type: "uint256";
+        }];
+        readonly name: "OrgCreated";
+        readonly type: "event";
+    }, {
+        readonly anonymous: false;
+        readonly inputs: readonly [{
+            readonly indexed: false;
+            readonly internalType: "uint256";
+            readonly name: "requestId";
+            readonly type: "uint256";
+        }];
+        readonly name: "OrgSourcePaid";
+        readonly type: "event";
+    }, {
+        readonly anonymous: false;
+        readonly inputs: readonly [{
+            readonly indexed: true;
+            readonly internalType: "address";
+            readonly name: "previousOwner";
+            readonly type: "address";
+        }, {
+            readonly indexed: true;
+            readonly internalType: "address";
+            readonly name: "newOwner";
+            readonly type: "address";
+        }];
+        readonly name: "OwnershipTransferred";
+        readonly type: "event";
+    }, {
+        readonly anonymous: false;
+        readonly inputs: readonly [{
+            readonly indexed: false;
+            readonly internalType: "address";
+            readonly name: "beneficiary";
+            readonly type: "address";
+        }, {
+            readonly indexed: false;
+            readonly internalType: "uint256";
+            readonly name: "amount";
+            readonly type: "uint256";
+        }];
+        readonly name: "ProtocolFeeWithdrawn";
+        readonly type: "event";
+    }, {
+        readonly anonymous: false;
+        readonly inputs: readonly [{
+            readonly indexed: false;
+            readonly internalType: "uint256";
+            readonly name: "requestId";
+            readonly type: "uint256";
+        }];
+        readonly name: "RequestCancelled";
+        readonly type: "event";
+    }, {
+        readonly anonymous: false;
+        readonly inputs: readonly [{
+            readonly indexed: false;
+            readonly internalType: "uint256";
+            readonly name: "requestId";
+            readonly type: "uint256";
+        }];
+        readonly name: "RequestClosed";
+        readonly type: "event";
+    }, {
+        readonly anonymous: false;
+        readonly inputs: readonly [{
+            readonly indexed: false;
+            readonly internalType: "address";
+            readonly name: "creator";
+            readonly type: "address";
+        }, {
+            readonly indexed: false;
+            readonly internalType: "uint256";
+            readonly name: "requestId";
+            readonly type: "uint256";
+        }, {
+            readonly indexed: false;
+            readonly internalType: "uint256[]";
+            readonly name: "routeIds";
+            readonly type: "uint256[]";
+        }, {
+            readonly indexed: false;
+            readonly internalType: "uint256[]";
+            readonly name: "bonds";
+            readonly type: "uint256[]";
+        }, {
+            readonly indexed: false;
+            readonly internalType: "uint256";
+            readonly name: "sourceAmt";
+            readonly type: "uint256";
+        }];
+        readonly name: "RequestCreated";
+        readonly type: "event";
+    }, {
+        readonly anonymous: false;
+        readonly inputs: readonly [{
+            readonly indexed: false;
+            readonly internalType: "address";
+            readonly name: "router";
+            readonly type: "address";
+        }, {
+            readonly indexed: false;
+            readonly internalType: "uint256";
+            readonly name: "requestId";
+            readonly type: "uint256";
+        }, {
+            readonly indexed: false;
+            readonly internalType: "uint256";
+            readonly name: "routeId";
+            readonly type: "uint256";
+        }, {
+            readonly indexed: false;
+            readonly internalType: "uint256";
+            readonly name: "bond";
+            readonly type: "uint256";
+        }];
+        readonly name: "RequestPaid";
+        readonly type: "event";
+    }, {
+        readonly anonymous: false;
+        readonly inputs: readonly [{
+            readonly indexed: false;
+            readonly internalType: "address";
+            readonly name: "requester";
+            readonly type: "address";
+        }, {
+            readonly indexed: false;
+            readonly internalType: "address";
+            readonly name: "beneficiary";
+            readonly type: "address";
+        }, {
+            readonly indexed: false;
+            readonly internalType: "uint256";
+            readonly name: "amount";
+            readonly type: "uint256";
+        }];
+        readonly name: "RequesterFeeWithdrawn";
+        readonly type: "event";
+    }, {
+        readonly anonymous: false;
+        readonly inputs: readonly [{
+            readonly indexed: false;
+            readonly internalType: "uint256";
+            readonly name: "routeId";
+            readonly type: "uint256";
+        }, {
+            readonly indexed: false;
+            readonly internalType: "address";
+            readonly name: "owner";
+            readonly type: "address";
+        }, {
+            readonly indexed: false;
+            readonly internalType: "enum SourceType";
+            readonly name: "source";
+            readonly type: "uint8";
+        }, {
+            readonly indexed: false;
+            readonly internalType: "address";
+            readonly name: "sourceToken";
+            readonly type: "address";
+        }, {
+            readonly indexed: false;
+            readonly internalType: "uint256";
+            readonly name: "sourceOrgId";
+            readonly type: "uint256";
+        }, {
+            readonly indexed: false;
+            readonly internalType: "uint256";
+            readonly name: "destOrgId";
+            readonly type: "uint256";
+        }, {
+            readonly indexed: false;
+            readonly internalType: "uint256";
+            readonly name: "bond";
+            readonly type: "uint256";
+        }];
+        readonly name: "RouteCreated";
+        readonly type: "event";
+    }, {
+        readonly anonymous: false;
+        readonly inputs: readonly [{
+            readonly indexed: true;
+            readonly internalType: "address";
+            readonly name: "router";
+            readonly type: "address";
+        }, {
+            readonly indexed: false;
+            readonly internalType: "uint256";
+            readonly name: "routeId";
+            readonly type: "uint256";
+        }, {
+            readonly indexed: false;
+            readonly internalType: "uint256";
+            readonly name: "amount";
+            readonly type: "uint256";
+        }];
+        readonly name: "SourceReturned";
+        readonly type: "event";
+    }, {
+        readonly anonymous: false;
+        readonly inputs: readonly [{
+            readonly indexed: false;
+            readonly internalType: "uint256";
+            readonly name: "requestId";
+            readonly type: "uint256";
+        }, {
+            readonly indexed: false;
+            readonly internalType: "uint256";
+            readonly name: "amount";
+            readonly type: "uint256";
+        }, {
+            readonly indexed: false;
+            readonly internalType: "address";
+            readonly name: "to";
+            readonly type: "address";
+        }];
+        readonly name: "SourceTransferred";
+        readonly type: "event";
+    }, {
+        readonly anonymous: false;
+        readonly inputs: readonly [{
+            readonly indexed: false;
+            readonly internalType: "uint256";
+            readonly name: "routeId";
+            readonly type: "uint256";
+        }, {
+            readonly indexed: false;
+            readonly internalType: "address";
+            readonly name: "requester";
+            readonly type: "address";
+        }];
+        readonly name: "UnapprovedRequester";
+        readonly type: "event";
+    }, {
+        readonly anonymous: false;
+        readonly inputs: readonly [{
+            readonly indexed: false;
+            readonly internalType: "address";
+            readonly name: "bondToken";
+            readonly type: "address";
+        }];
+        readonly name: "UpdatedBondToken";
+        readonly type: "event";
+    }, {
+        readonly anonymous: false;
+        readonly inputs: readonly [{
+            readonly indexed: false;
+            readonly internalType: "uint256";
+            readonly name: "protocolFeeBp";
+            readonly type: "uint256";
+        }];
+        readonly name: "UpdatedProtocolFeeBp";
+        readonly type: "event";
+    }, {
+        readonly anonymous: false;
+        readonly inputs: readonly [{
+            readonly indexed: false;
+            readonly internalType: "address";
+            readonly name: "requester";
+            readonly type: "address";
+        }, {
+            readonly indexed: false;
+            readonly internalType: "uint256";
+            readonly name: "feeBp";
+            readonly type: "uint256";
+        }];
+        readonly name: "UpdatedRequesterFeeBp";
+        readonly type: "event";
+    }, {
+        readonly anonymous: false;
+        readonly inputs: readonly [{
+            readonly indexed: false;
+            readonly internalType: "address";
+            readonly name: "requester";
+            readonly type: "address";
+        }, {
+            readonly indexed: false;
+            readonly internalType: "uint256";
+            readonly name: "duration";
+            readonly type: "uint256";
+        }];
+        readonly name: "UpdatedValueLockDuration";
+        readonly type: "event";
+    }, {
+        readonly anonymous: false;
+        readonly inputs: readonly [{
+            readonly indexed: true;
+            readonly internalType: "address";
+            readonly name: "withdrawer";
+            readonly type: "address";
+        }, {
+            readonly indexed: false;
+            readonly internalType: "uint256";
+            readonly name: "routeId";
+            readonly type: "uint256";
+        }, {
+            readonly indexed: false;
+            readonly internalType: "uint256";
+            readonly name: "amount";
+            readonly type: "uint256";
+        }];
+        readonly name: "WithdrawnBond";
+        readonly type: "event";
+    }, {
+        readonly inputs: readonly [{
+            readonly internalType: "uint256";
+            readonly name: "routeId";
+            readonly type: "uint256";
+        }, {
+            readonly internalType: "address";
+            readonly name: "requester";
+            readonly type: "address";
+        }];
+        readonly name: "approveRequester";
+        readonly outputs: readonly [];
+        readonly stateMutability: "nonpayable";
+        readonly type: "function";
+    }, {
+        readonly inputs: readonly [{
+            readonly internalType: "uint256";
+            readonly name: "";
+            readonly type: "uint256";
+        }, {
+            readonly internalType: "address";
+            readonly name: "";
+            readonly type: "address";
+        }];
+        readonly name: "approvedRouteRequesters";
+        readonly outputs: readonly [{
+            readonly internalType: "bool";
+            readonly name: "";
+            readonly type: "bool";
+        }];
+        readonly stateMutability: "view";
+        readonly type: "function";
+    }, {
+        readonly inputs: readonly [];
+        readonly name: "bondToken";
+        readonly outputs: readonly [{
+            readonly internalType: "address";
+            readonly name: "";
+            readonly type: "address";
+        }];
+        readonly stateMutability: "view";
+        readonly type: "function";
+    }, {
+        readonly inputs: readonly [{
+            readonly internalType: "uint256";
+            readonly name: "requestId";
+            readonly type: "uint256";
+        }];
+        readonly name: "cancelRequest";
+        readonly outputs: readonly [];
+        readonly stateMutability: "nonpayable";
+        readonly type: "function";
+    }, {
+        readonly inputs: readonly [{
+            readonly internalType: "uint256";
+            readonly name: "requestId";
+            readonly type: "uint256";
+        }];
+        readonly name: "closeRequest";
+        readonly outputs: readonly [];
+        readonly stateMutability: "nonpayable";
+        readonly type: "function";
+    }, {
+        readonly inputs: readonly [{
+            readonly internalType: "string";
+            readonly name: "name";
+            readonly type: "string";
+        }];
+        readonly name: "createOrg";
+        readonly outputs: readonly [];
+        readonly stateMutability: "nonpayable";
+        readonly type: "function";
+    }, {
+        readonly inputs: readonly [{
+            readonly internalType: "uint256[]";
+            readonly name: "_routeIds";
+            readonly type: "uint256[]";
+        }, {
+            readonly internalType: "uint256[]";
+            readonly name: "_bonds";
+            readonly type: "uint256[]";
+        }, {
+            readonly internalType: "uint256";
+            readonly name: "_sourceAmt";
+            readonly type: "uint256";
+        }];
+        readonly name: "createRequest";
+        readonly outputs: readonly [];
+        readonly stateMutability: "payable";
+        readonly type: "function";
+    }, {
+        readonly inputs: readonly [{
+            readonly components: readonly [{
+                readonly internalType: "address";
+                readonly name: "owner";
+                readonly type: "address";
+            }, {
+                readonly internalType: "enum SourceType";
+                readonly name: "source";
+                readonly type: "uint8";
+            }, {
+                readonly internalType: "address";
+                readonly name: "sourceToken";
+                readonly type: "address";
+            }, {
+                readonly internalType: "uint256";
+                readonly name: "sourceOrgId";
+                readonly type: "uint256";
+            }, {
+                readonly internalType: "uint256";
+                readonly name: "destOrgId";
+                readonly type: "uint256";
+            }, {
+                readonly internalType: "uint256";
+                readonly name: "bond";
+                readonly type: "uint256";
+            }, {
+                readonly internalType: "address[]";
+                readonly name: "requesters";
+                readonly type: "address[]";
+            }];
+            readonly internalType: "struct Route";
+            readonly name: "route";
+            readonly type: "tuple";
+        }];
+        readonly name: "createRoute";
+        readonly outputs: readonly [];
+        readonly stateMutability: "nonpayable";
+        readonly type: "function";
+    }, {
+        readonly inputs: readonly [{
+            readonly internalType: "uint256";
+            readonly name: "routeId";
+            readonly type: "uint256";
+        }, {
+            readonly internalType: "uint256";
+            readonly name: "amount";
+            readonly type: "uint256";
+        }];
+        readonly name: "depositBond";
+        readonly outputs: readonly [];
+        readonly stateMutability: "nonpayable";
+        readonly type: "function";
+    }, {
+        readonly inputs: readonly [{
+            readonly internalType: "address";
+            readonly name: "requester";
+            readonly type: "address";
+        }];
+        readonly name: "feeBalanceOf";
+        readonly outputs: readonly [{
+            readonly internalType: "uint256";
+            readonly name: "";
+            readonly type: "uint256";
+        }];
+        readonly stateMutability: "view";
+        readonly type: "function";
+    }, {
+        readonly inputs: readonly [{
+            readonly internalType: "uint256";
+            readonly name: "requestId";
+            readonly type: "uint256";
+        }];
+        readonly name: "getRequest";
+        readonly outputs: readonly [{
+            readonly components: readonly [{
+                readonly internalType: "address";
+                readonly name: "creator";
+                readonly type: "address";
+            }, {
+                readonly internalType: "address";
+                readonly name: "sourceToken";
+                readonly type: "address";
+            }, {
+                readonly internalType: "uint256[]";
+                readonly name: "routeIds";
+                readonly type: "uint256[]";
+            }, {
+                readonly internalType: "uint256[]";
+                readonly name: "bonds";
+                readonly type: "uint256[]";
+            }, {
+                readonly internalType: "uint256";
+                readonly name: "sourceAmt";
+                readonly type: "uint256";
+            }, {
+                readonly internalType: "uint256";
+                readonly name: "sourceAmtLeft";
+                readonly type: "uint256";
+            }, {
+                readonly internalType: "uint256";
+                readonly name: "requesterFeeBp";
+                readonly type: "uint256";
+            }, {
+                readonly internalType: "uint256";
+                readonly name: "protocolFeeBp";
+                readonly type: "uint256";
+            }, {
+                readonly internalType: "uint256";
+                readonly name: "valueLockDuration";
+                readonly type: "uint256";
+            }, {
+                readonly internalType: "uint256";
+                readonly name: "valueUnlockAt";
+                readonly type: "uint256";
+            }, {
+                readonly internalType: "uint256";
+                readonly name: "numRoutersPaid";
+                readonly type: "uint256";
+            }, {
+                readonly internalType: "bool[]";
+                readonly name: "paid";
+                readonly type: "bool[]";
+            }, {
+                readonly internalType: "bool";
+                readonly name: "closed";
+                readonly type: "bool";
+            }, {
+                readonly internalType: "bool";
+                readonly name: "cancelled";
+                readonly type: "bool";
+            }, {
+                readonly internalType: "bool";
+                readonly name: "orgSrcPaid";
+                readonly type: "bool";
+            }];
+            readonly internalType: "struct Request";
+            readonly name: "";
+            readonly type: "tuple";
+        }];
+        readonly stateMutability: "view";
+        readonly type: "function";
+    }, {
+        readonly inputs: readonly [{
+            readonly internalType: "uint256";
+            readonly name: "routeId";
+            readonly type: "uint256";
+        }, {
+            readonly internalType: "address";
+            readonly name: "requester";
+            readonly type: "address";
+        }];
+        readonly name: "isRequesterApproved";
+        readonly outputs: readonly [{
+            readonly internalType: "bool";
+            readonly name: "";
+            readonly type: "bool";
+        }];
+        readonly stateMutability: "view";
+        readonly type: "function";
+    }, {
+        readonly inputs: readonly [{
+            readonly internalType: "uint256";
+            readonly name: "requestId";
+            readonly type: "uint256";
+        }];
+        readonly name: "markOrgSourceAsPaid";
+        readonly outputs: readonly [];
+        readonly stateMutability: "nonpayable";
+        readonly type: "function";
+    }, {
+        readonly inputs: readonly [{
+            readonly internalType: "uint256";
+            readonly name: "requestId";
+            readonly type: "uint256";
+        }];
+        readonly name: "markRequestAsPaid";
+        readonly outputs: readonly [];
+        readonly stateMutability: "nonpayable";
+        readonly type: "function";
+    }, {
+        readonly inputs: readonly [];
+        readonly name: "numOrgs";
+        readonly outputs: readonly [{
+            readonly internalType: "uint256";
+            readonly name: "";
+            readonly type: "uint256";
+        }];
+        readonly stateMutability: "view";
+        readonly type: "function";
+    }, {
+        readonly inputs: readonly [];
+        readonly name: "numRequests";
+        readonly outputs: readonly [{
+            readonly internalType: "uint256";
+            readonly name: "";
+            readonly type: "uint256";
+        }];
+        readonly stateMutability: "view";
+        readonly type: "function";
+    }, {
+        readonly inputs: readonly [];
+        readonly name: "numRoutes";
+        readonly outputs: readonly [{
+            readonly internalType: "uint256";
+            readonly name: "";
+            readonly type: "uint256";
+        }];
+        readonly stateMutability: "view";
+        readonly type: "function";
+    }, {
+        readonly inputs: readonly [{
+            readonly internalType: "uint256";
+            readonly name: "";
+            readonly type: "uint256";
+        }];
+        readonly name: "orgs";
+        readonly outputs: readonly [{
+            readonly internalType: "address";
+            readonly name: "creator";
+            readonly type: "address";
+        }, {
+            readonly internalType: "string";
+            readonly name: "name";
+            readonly type: "string";
+        }];
+        readonly stateMutability: "view";
+        readonly type: "function";
+    }, {
+        readonly inputs: readonly [];
+        readonly name: "owner";
+        readonly outputs: readonly [{
+            readonly internalType: "address";
+            readonly name: "";
+            readonly type: "address";
+        }];
+        readonly stateMutability: "view";
+        readonly type: "function";
+    }, {
+        readonly inputs: readonly [];
+        readonly name: "protocolFeeBalance";
+        readonly outputs: readonly [{
+            readonly internalType: "uint256";
+            readonly name: "";
+            readonly type: "uint256";
+        }];
+        readonly stateMutability: "view";
+        readonly type: "function";
+    }, {
+        readonly inputs: readonly [];
+        readonly name: "protocolFeeBp";
+        readonly outputs: readonly [{
+            readonly internalType: "uint256";
+            readonly name: "";
+            readonly type: "uint256";
+        }];
+        readonly stateMutability: "view";
+        readonly type: "function";
+    }, {
+        readonly inputs: readonly [];
+        readonly name: "renounceOwnership";
+        readonly outputs: readonly [];
+        readonly stateMutability: "nonpayable";
+        readonly type: "function";
+    }, {
+        readonly inputs: readonly [{
+            readonly internalType: "address";
+            readonly name: "";
+            readonly type: "address";
+        }];
+        readonly name: "requesterValueLockDuration";
+        readonly outputs: readonly [{
+            readonly internalType: "uint256";
+            readonly name: "";
+            readonly type: "uint256";
+        }];
+        readonly stateMutability: "view";
+        readonly type: "function";
+    }, {
+        readonly inputs: readonly [{
+            readonly internalType: "address";
+            readonly name: "";
+            readonly type: "address";
+        }];
+        readonly name: "requestersBalance";
+        readonly outputs: readonly [{
+            readonly internalType: "uint256";
+            readonly name: "";
+            readonly type: "uint256";
+        }];
+        readonly stateMutability: "view";
+        readonly type: "function";
+    }, {
+        readonly inputs: readonly [{
+            readonly internalType: "address";
+            readonly name: "";
+            readonly type: "address";
+        }];
+        readonly name: "requestersFeeBp";
+        readonly outputs: readonly [{
+            readonly internalType: "uint256";
+            readonly name: "";
+            readonly type: "uint256";
+        }];
+        readonly stateMutability: "view";
+        readonly type: "function";
+    }, {
+        readonly inputs: readonly [{
+            readonly internalType: "uint256";
+            readonly name: "";
+            readonly type: "uint256";
+        }];
+        readonly name: "requests";
+        readonly outputs: readonly [{
+            readonly internalType: "address";
+            readonly name: "creator";
+            readonly type: "address";
+        }, {
+            readonly internalType: "address";
+            readonly name: "sourceToken";
+            readonly type: "address";
+        }, {
+            readonly internalType: "uint256";
+            readonly name: "sourceAmt";
+            readonly type: "uint256";
+        }, {
+            readonly internalType: "uint256";
+            readonly name: "sourceAmtLeft";
+            readonly type: "uint256";
+        }, {
+            readonly internalType: "uint256";
+            readonly name: "requesterFeeBp";
+            readonly type: "uint256";
+        }, {
+            readonly internalType: "uint256";
+            readonly name: "protocolFeeBp";
+            readonly type: "uint256";
+        }, {
+            readonly internalType: "uint256";
+            readonly name: "valueLockDuration";
+            readonly type: "uint256";
+        }, {
+            readonly internalType: "uint256";
+            readonly name: "valueUnlockAt";
+            readonly type: "uint256";
+        }, {
+            readonly internalType: "uint256";
+            readonly name: "numRoutersPaid";
+            readonly type: "uint256";
+        }, {
+            readonly internalType: "bool";
+            readonly name: "closed";
+            readonly type: "bool";
+        }, {
+            readonly internalType: "bool";
+            readonly name: "cancelled";
+            readonly type: "bool";
+        }, {
+            readonly internalType: "bool";
+            readonly name: "orgSrcPaid";
+            readonly type: "bool";
+        }];
+        readonly stateMutability: "view";
+        readonly type: "function";
+    }, {
+        readonly inputs: readonly [{
+            readonly internalType: "uint256";
+            readonly name: "";
+            readonly type: "uint256";
+        }];
+        readonly name: "routes";
+        readonly outputs: readonly [{
+            readonly internalType: "address";
+            readonly name: "owner";
+            readonly type: "address";
+        }, {
+            readonly internalType: "enum SourceType";
+            readonly name: "source";
+            readonly type: "uint8";
+        }, {
+            readonly internalType: "address";
+            readonly name: "sourceToken";
+            readonly type: "address";
+        }, {
+            readonly internalType: "uint256";
+            readonly name: "sourceOrgId";
+            readonly type: "uint256";
+        }, {
+            readonly internalType: "uint256";
+            readonly name: "destOrgId";
+            readonly type: "uint256";
+        }, {
+            readonly internalType: "uint256";
+            readonly name: "bond";
+            readonly type: "uint256";
+        }];
+        readonly stateMutability: "view";
+        readonly type: "function";
+    }, {
+        readonly inputs: readonly [{
+            readonly internalType: "address";
+            readonly name: "_bondToken";
+            readonly type: "address";
+        }];
+        readonly name: "setBondToken";
+        readonly outputs: readonly [];
+        readonly stateMutability: "nonpayable";
+        readonly type: "function";
+    }, {
+        readonly inputs: readonly [{
+            readonly internalType: "uint256";
+            readonly name: "_protocolFeeBp";
+            readonly type: "uint256";
+        }];
+        readonly name: "setProtocolFeeBp";
+        readonly outputs: readonly [];
+        readonly stateMutability: "nonpayable";
+        readonly type: "function";
+    }, {
+        readonly inputs: readonly [{
+            readonly internalType: "uint256";
+            readonly name: "feeBp";
+            readonly type: "uint256";
+        }];
+        readonly name: "setRequesterFeeBp";
+        readonly outputs: readonly [];
+        readonly stateMutability: "nonpayable";
+        readonly type: "function";
+    }, {
+        readonly inputs: readonly [{
+            readonly internalType: "uint256";
+            readonly name: "duration";
+            readonly type: "uint256";
+        }];
+        readonly name: "setRequesterValueLockDuration";
+        readonly outputs: readonly [];
+        readonly stateMutability: "nonpayable";
+        readonly type: "function";
+    }, {
+        readonly inputs: readonly [{
+            readonly internalType: "address";
+            readonly name: "newOwner";
+            readonly type: "address";
+        }];
+        readonly name: "transferOwnership";
+        readonly outputs: readonly [];
+        readonly stateMutability: "nonpayable";
+        readonly type: "function";
+    }, {
+        readonly inputs: readonly [{
+            readonly internalType: "uint256";
+            readonly name: "requestId";
+            readonly type: "uint256";
+        }, {
+            readonly internalType: "uint256";
+            readonly name: "routeId";
+            readonly type: "uint256";
+        }, {
+            readonly internalType: "uint256";
+            readonly name: "amount";
+            readonly type: "uint256";
+        }, {
+            readonly internalType: "address";
+            readonly name: "to";
+            readonly type: "address";
+        }];
+        readonly name: "transferRequestBond";
+        readonly outputs: readonly [];
+        readonly stateMutability: "nonpayable";
+        readonly type: "function";
+    }, {
+        readonly inputs: readonly [{
+            readonly internalType: "uint256";
+            readonly name: "requestId";
+            readonly type: "uint256";
+        }, {
+            readonly internalType: "uint256";
+            readonly name: "amount";
+            readonly type: "uint256";
+        }, {
+            readonly internalType: "address";
+            readonly name: "to";
+            readonly type: "address";
+        }];
+        readonly name: "transferRequestSource";
+        readonly outputs: readonly [];
+        readonly stateMutability: "nonpayable";
+        readonly type: "function";
+    }, {
+        readonly inputs: readonly [{
+            readonly internalType: "uint256";
+            readonly name: "routeId";
+            readonly type: "uint256";
+        }, {
+            readonly internalType: "address";
+            readonly name: "requester";
+            readonly type: "address";
+        }];
+        readonly name: "unapproveRequester";
+        readonly outputs: readonly [];
+        readonly stateMutability: "nonpayable";
+        readonly type: "function";
+    }, {
+        readonly inputs: readonly [{
+            readonly internalType: "uint256";
+            readonly name: "routeId";
+            readonly type: "uint256";
+        }, {
+            readonly internalType: "uint256";
+            readonly name: "amount";
+            readonly type: "uint256";
+        }];
+        readonly name: "withdrawBond";
+        readonly outputs: readonly [];
+        readonly stateMutability: "nonpayable";
+        readonly type: "function";
+    }, {
+        readonly inputs: readonly [{
+            readonly internalType: "address";
+            readonly name: "beneficiary";
+            readonly type: "address";
+        }];
+        readonly name: "withdrawProtocolFee";
+        readonly outputs: readonly [];
+        readonly stateMutability: "nonpayable";
+        readonly type: "function";
+    }, {
+        readonly inputs: readonly [{
+            readonly internalType: "address";
+            readonly name: "beneficiary";
+            readonly type: "address";
+        }];
+        readonly name: "withdrawRequesterFee";
+        readonly outputs: readonly [];
+        readonly stateMutability: "nonpayable";
+        readonly type: "function";
+    }];
+    static createInterface(): PayRouterInterface;
+    static connect(address: string, runner?: ContractRunner | null): PayRouter;
+}
+
+declare class ProviderRegistry__factory {
+    static readonly abi: readonly [{
+        readonly anonymous: false;
+        readonly inputs: readonly [{
+            readonly indexed: true;
+            readonly internalType: "address";
+            readonly name: "previousOwner";
+            readonly type: "address";
+        }, {
+            readonly indexed: true;
+            readonly internalType: "address";
+            readonly name: "newOwner";
+            readonly type: "address";
+        }];
+        readonly name: "OwnershipTransferred";
+        readonly type: "event";
+    }, {
+        readonly anonymous: false;
+        readonly inputs: readonly [{
+            readonly indexed: true;
+            readonly internalType: "address";
+            readonly name: "provider";
+            readonly type: "address";
+        }, {
+            readonly indexed: false;
+            readonly internalType: "uint256";
+            readonly name: "idx";
+            readonly type: "uint256";
+        }];
+        readonly name: "ProviderRegistered";
+        readonly type: "event";
+    }, {
+        readonly anonymous: false;
+        readonly inputs: readonly [{
+            readonly indexed: false;
+            readonly internalType: "address";
+            readonly name: "addr";
+            readonly type: "address";
+        }, {
+            readonly indexed: false;
+            readonly internalType: "bool";
+            readonly name: "added";
+            readonly type: "bool";
+        }];
+        readonly name: "WriterUpdated";
+        readonly type: "event";
+    }, {
+        readonly inputs: readonly [{
+            readonly internalType: "uint256";
+            readonly name: "id";
+            readonly type: "uint256";
+        }];
+        readonly name: "get";
+        readonly outputs: readonly [{
+            readonly internalType: "address";
+            readonly name: "";
+            readonly type: "address";
+        }];
+        readonly stateMutability: "view";
+        readonly type: "function";
+    }, {
+        readonly inputs: readonly [{
+            readonly internalType: "address";
+            readonly name: "addr";
+            readonly type: "address";
+        }];
+        readonly name: "getByAddr";
+        readonly outputs: readonly [{
+            readonly internalType: "uint256";
+            readonly name: "";
+            readonly type: "uint256";
+        }];
+        readonly stateMutability: "view";
+        readonly type: "function";
+    }, {
+        readonly inputs: readonly [];
+        readonly name: "nextId";
+        readonly outputs: readonly [{
+            readonly internalType: "uint256";
+            readonly name: "";
+            readonly type: "uint256";
+        }];
+        readonly stateMutability: "view";
+        readonly type: "function";
+    }, {
+        readonly inputs: readonly [];
+        readonly name: "owner";
+        readonly outputs: readonly [{
+            readonly internalType: "address";
+            readonly name: "";
+            readonly type: "address";
+        }];
+        readonly stateMutability: "view";
+        readonly type: "function";
+    }, {
+        readonly inputs: readonly [{
+            readonly internalType: "address";
+            readonly name: "";
+            readonly type: "address";
+        }];
+        readonly name: "providerIdx";
+        readonly outputs: readonly [{
+            readonly internalType: "uint256";
+            readonly name: "";
+            readonly type: "uint256";
+        }];
+        readonly stateMutability: "view";
+        readonly type: "function";
+    }, {
+        readonly inputs: readonly [{
+            readonly internalType: "uint256";
+            readonly name: "";
+            readonly type: "uint256";
+        }];
+        readonly name: "providers";
+        readonly outputs: readonly [{
+            readonly internalType: "address";
+            readonly name: "";
+            readonly type: "address";
+        }];
+        readonly stateMutability: "view";
+        readonly type: "function";
+    }, {
+        readonly inputs: readonly [{
+            readonly internalType: "address";
+            readonly name: "addr";
+            readonly type: "address";
+        }];
+        readonly name: "register";
+        readonly outputs: readonly [];
+        readonly stateMutability: "nonpayable";
+        readonly type: "function";
+    }, {
+        readonly inputs: readonly [];
+        readonly name: "renounceOwnership";
+        readonly outputs: readonly [];
+        readonly stateMutability: "nonpayable";
+        readonly type: "function";
+    }, {
+        readonly inputs: readonly [{
+            readonly internalType: "address";
+            readonly name: "newOwner";
+            readonly type: "address";
+        }];
+        readonly name: "transferOwnership";
+        readonly outputs: readonly [];
+        readonly stateMutability: "nonpayable";
+        readonly type: "function";
+    }, {
+        readonly inputs: readonly [{
+            readonly internalType: "address";
+            readonly name: "addr";
+            readonly type: "address";
+        }, {
+            readonly internalType: "bool";
+            readonly name: "add";
+            readonly type: "bool";
+        }];
+        readonly name: "updateWriter";
+        readonly outputs: readonly [];
+        readonly stateMutability: "nonpayable";
+        readonly type: "function";
+    }, {
+        readonly inputs: readonly [{
+            readonly internalType: "address";
+            readonly name: "";
+            readonly type: "address";
+        }];
+        readonly name: "writers";
+        readonly outputs: readonly [{
+            readonly internalType: "bool";
+            readonly name: "";
+            readonly type: "bool";
+        }];
+        readonly stateMutability: "view";
+        readonly type: "function";
+    }];
+    static createInterface(): ProviderRegistryInterface;
+    static connect(address: string, runner?: ContractRunner | null): ProviderRegistry;
+}
+
+declare class Router__factory {
+    static readonly abi: readonly [{
+        readonly inputs: readonly [{
+            readonly internalType: "address";
+            readonly name: "_core";
+            readonly type: "address";
+        }, {
+            readonly internalType: "address";
+            readonly name: "_provReg";
+            readonly type: "address";
+        }];
+        readonly stateMutability: "nonpayable";
+        readonly type: "constructor";
+    }, {
+        readonly anonymous: false;
+        readonly inputs: readonly [{
+            readonly indexed: true;
+            readonly internalType: "address";
+            readonly name: "previousOwner";
+            readonly type: "address";
+        }, {
+            readonly indexed: true;
+            readonly internalType: "address";
+            readonly name: "newOwner";
+            readonly type: "address";
+        }];
+        readonly name: "OwnershipTransferred";
+        readonly type: "event";
+    }, {
+        readonly anonymous: false;
+        readonly inputs: readonly [{
+            readonly indexed: false;
+            readonly internalType: "address";
+            readonly name: "sender";
+            readonly type: "address";
+        }, {
+            readonly indexed: false;
+            readonly internalType: "address";
+            readonly name: "target";
+            readonly type: "address";
+        }, {
+            readonly indexed: false;
+            readonly internalType: "uint256";
+            readonly name: "operator";
+            readonly type: "uint256";
+        }, {
+            readonly indexed: false;
+            readonly internalType: "uint256";
+            readonly name: "routeCount";
+            readonly type: "uint256";
+        }];
+        readonly name: "Routed";
+        readonly type: "event";
+    }, {
+        readonly anonymous: false;
+        readonly inputs: readonly [{
+            readonly indexed: false;
+            readonly internalType: "address";
+            readonly name: "addr";
+            readonly type: "address";
+        }];
+        readonly name: "UpdatedCore";
+        readonly type: "event";
+    }, {
+        readonly anonymous: false;
+        readonly inputs: readonly [{
+            readonly indexed: false;
+            readonly internalType: "address";
+            readonly name: "addr";
+            readonly type: "address";
+        }];
+        readonly name: "UpdatedProvReg";
+        readonly type: "event";
+    }, {
+        readonly inputs: readonly [];
+        readonly name: "core";
+        readonly outputs: readonly [{
+            readonly internalType: "contract ICore";
+            readonly name: "";
+            readonly type: "address";
+        }];
+        readonly stateMutability: "view";
+        readonly type: "function";
+    }, {
+        readonly inputs: readonly [{
+            readonly components: readonly [{
+                readonly internalType: "address";
+                readonly name: "addr";
+                readonly type: "address";
+            }, {
+                readonly internalType: "enum Structs.AssetType";
+                readonly name: "assetType";
+                readonly type: "uint8";
+            }];
+            readonly internalType: "struct Structs.Asset";
+            readonly name: "asset";
+            readonly type: "tuple";
+        }];
+        readonly name: "isERC20";
+        readonly outputs: readonly [{
+            readonly internalType: "bool";
+            readonly name: "";
+            readonly type: "bool";
+        }];
+        readonly stateMutability: "pure";
+        readonly type: "function";
+    }, {
+        readonly inputs: readonly [{
+            readonly components: readonly [{
+                readonly internalType: "address";
+                readonly name: "addr";
+                readonly type: "address";
+            }, {
+                readonly internalType: "enum Structs.AssetType";
+                readonly name: "assetType";
+                readonly type: "uint8";
+            }];
+            readonly internalType: "struct Structs.Asset";
+            readonly name: "asset";
+            readonly type: "tuple";
+        }];
+        readonly name: "isNative";
+        readonly outputs: readonly [{
+            readonly internalType: "bool";
+            readonly name: "";
+            readonly type: "bool";
+        }];
+        readonly stateMutability: "pure";
+        readonly type: "function";
+    }, {
+        readonly inputs: readonly [];
+        readonly name: "owner";
+        readonly outputs: readonly [{
+            readonly internalType: "address";
+            readonly name: "";
+            readonly type: "address";
+        }];
+        readonly stateMutability: "view";
+        readonly type: "function";
+    }, {
+        readonly inputs: readonly [];
+        readonly name: "provReg";
+        readonly outputs: readonly [{
+            readonly internalType: "contract IProviderRegistry";
+            readonly name: "";
+            readonly type: "address";
+        }];
+        readonly stateMutability: "view";
+        readonly type: "function";
+    }, {
+        readonly inputs: readonly [];
+        readonly name: "renounceOwnership";
+        readonly outputs: readonly [];
+        readonly stateMutability: "nonpayable";
+        readonly type: "function";
+    }, {
+        readonly inputs: readonly [{
+            readonly components: readonly [{
+                readonly internalType: "uint256";
+                readonly name: "deadline";
+                readonly type: "uint256";
+            }, {
+                readonly internalType: "uint256";
+                readonly name: "operator";
+                readonly type: "uint256";
+            }, {
+                readonly components: readonly [{
+                    readonly components: readonly [{
+                        readonly internalType: "uint256";
+                        readonly name: "provider";
+                        readonly type: "uint256";
+                    }, {
+                        readonly internalType: "uint256";
+                        readonly name: "lid";
+                        readonly type: "uint256";
+                    }, {
+                        readonly internalType: "uint256";
+                        readonly name: "amount";
+                        readonly type: "uint256";
+                    }, {
+                        readonly internalType: "uint256";
+                        readonly name: "maxPrice";
+                        readonly type: "uint256";
+                    }];
+                    readonly internalType: "struct Liquidity[]";
+                    readonly name: "liqs";
+                    readonly type: "tuple[]";
+                }, {
+                    readonly internalType: "address";
+                    readonly name: "market";
+                    readonly type: "address";
+                }];
+                readonly internalType: "struct Route[]";
+                readonly name: "routes";
+                readonly type: "tuple[]";
+            }, {
+                readonly internalType: "address";
+                readonly name: "target";
+                readonly type: "address";
+            }];
+            readonly internalType: "struct RouteParams";
+            readonly name: "routeParams";
+            readonly type: "tuple";
+        }];
+        readonly name: "route";
+        readonly outputs: readonly [];
+        readonly stateMutability: "payable";
+        readonly type: "function";
+    }, {
+        readonly inputs: readonly [{
+            readonly internalType: "address";
+            readonly name: "_core";
+            readonly type: "address";
+        }];
+        readonly name: "setCore";
+        readonly outputs: readonly [];
+        readonly stateMutability: "nonpayable";
+        readonly type: "function";
+    }, {
+        readonly inputs: readonly [{
+            readonly internalType: "address";
+            readonly name: "_provReg";
+            readonly type: "address";
+        }];
+        readonly name: "setProviderRegistry";
+        readonly outputs: readonly [];
+        readonly stateMutability: "nonpayable";
+        readonly type: "function";
+    }, {
+        readonly inputs: readonly [{
+            readonly internalType: "address";
+            readonly name: "newOwner";
+            readonly type: "address";
+        }];
+        readonly name: "transferOwnership";
+        readonly outputs: readonly [];
+        readonly stateMutability: "nonpayable";
+        readonly type: "function";
+    }, {
+        readonly stateMutability: "payable";
+        readonly type: "receive";
+    }];
+    static createInterface(): RouterInterface;
+    static connect(address: string, runner?: ContractRunner | null): Router;
 }
 
 declare class Token__factory {
@@ -28506,12 +32009,20 @@ type index$1_LPPool__factory = LPPool__factory;
 declare const index$1_LPPool__factory: typeof LPPool__factory;
 type index$1_MarketCore__factory = MarketCore__factory;
 declare const index$1_MarketCore__factory: typeof MarketCore__factory;
+type index$1_MarketManager__factory = MarketManager__factory;
+declare const index$1_MarketManager__factory: typeof MarketManager__factory;
 type index$1_MediatorManager__factory = MediatorManager__factory;
 declare const index$1_MediatorManager__factory: typeof MediatorManager__factory;
 type index$1_MinerRegistry__factory = MinerRegistry__factory;
 declare const index$1_MinerRegistry__factory: typeof MinerRegistry__factory;
 type index$1_NFT__factory = NFT__factory;
 declare const index$1_NFT__factory: typeof NFT__factory;
+type index$1_PayRouter__factory = PayRouter__factory;
+declare const index$1_PayRouter__factory: typeof PayRouter__factory;
+type index$1_ProviderRegistry__factory = ProviderRegistry__factory;
+declare const index$1_ProviderRegistry__factory: typeof ProviderRegistry__factory;
+type index$1_Router__factory = Router__factory;
+declare const index$1_Router__factory: typeof Router__factory;
 type index$1_TokenPool__factory = TokenPool__factory;
 declare const index$1_TokenPool__factory: typeof TokenPool__factory;
 type index$1_Token__factory = Token__factory;
@@ -28529,7 +32040,7 @@ declare const index$1_UniswapV3Router__factory: typeof UniswapV3Router__factory;
 type index$1_WETH__factory = WETH__factory;
 declare const index$1_WETH__factory: typeof WETH__factory;
 declare namespace index$1 {
-  export { index$1_AssetRegistry__factory as AssetRegistry__factory, index$1_BadgeManager__factory as BadgeManager__factory, index$1_Core__factory as Core__factory, index$1_DisputeManager__factory as DisputeManager__factory, index$1_ERC20__factory as ERC20__factory, index$1_ERC721__factory as ERC721__factory, index$1_Energon__factory as Energon__factory, index$1_FeePool__factory as FeePool__factory, index$1_LPPool__factory as LPPool__factory, index$1_MarketCore__factory as MarketCore__factory, index$1_MediatorManager__factory as MediatorManager__factory, index$1_MinerRegistry__factory as MinerRegistry__factory, index$1_NFT__factory as NFT__factory, index$1_TokenPool__factory as TokenPool__factory, index$1_Token__factory as Token__factory, index$1_UniswapV2Router2__factory as UniswapV2Router2__factory, index$1_UniswapV2Router__factory as UniswapV2Router__factory, index$1_UniswapV3Router2__factory as UniswapV3Router2__factory, index$1_UniswapV3RouterUniversal__factory as UniswapV3RouterUniversal__factory, index$1_UniswapV3Router__factory as UniswapV3Router__factory, index$1_WETH__factory as WETH__factory };
+  export { index$1_AssetRegistry__factory as AssetRegistry__factory, index$1_BadgeManager__factory as BadgeManager__factory, index$1_Core__factory as Core__factory, index$1_DisputeManager__factory as DisputeManager__factory, index$1_ERC20__factory as ERC20__factory, index$1_ERC721__factory as ERC721__factory, index$1_Energon__factory as Energon__factory, index$1_FeePool__factory as FeePool__factory, index$1_LPPool__factory as LPPool__factory, index$1_MarketCore__factory as MarketCore__factory, index$1_MarketManager__factory as MarketManager__factory, index$1_MediatorManager__factory as MediatorManager__factory, index$1_MinerRegistry__factory as MinerRegistry__factory, index$1_NFT__factory as NFT__factory, index$1_PayRouter__factory as PayRouter__factory, index$1_ProviderRegistry__factory as ProviderRegistry__factory, index$1_Router__factory as Router__factory, index$1_TokenPool__factory as TokenPool__factory, index$1_Token__factory as Token__factory, index$1_UniswapV2Router2__factory as UniswapV2Router2__factory, index$1_UniswapV2Router__factory as UniswapV2Router__factory, index$1_UniswapV3Router2__factory as UniswapV3Router2__factory, index$1_UniswapV3RouterUniversal__factory as UniswapV3RouterUniversal__factory, index$1_UniswapV3Router__factory as UniswapV3Router__factory, index$1_WETH__factory as WETH__factory };
 }
 
 type index_AssetRegistry = AssetRegistry;
@@ -28562,6 +32073,9 @@ declare const index_LPPool__factory: typeof LPPool__factory;
 type index_MarketCore = MarketCore;
 type index_MarketCore__factory = MarketCore__factory;
 declare const index_MarketCore__factory: typeof MarketCore__factory;
+type index_MarketManager = MarketManager;
+type index_MarketManager__factory = MarketManager__factory;
+declare const index_MarketManager__factory: typeof MarketManager__factory;
 type index_MediatorManager = MediatorManager;
 type index_MediatorManager__factory = MediatorManager__factory;
 declare const index_MediatorManager__factory: typeof MediatorManager__factory;
@@ -28571,6 +32085,15 @@ declare const index_MinerRegistry__factory: typeof MinerRegistry__factory;
 type index_NFT = NFT;
 type index_NFT__factory = NFT__factory;
 declare const index_NFT__factory: typeof NFT__factory;
+type index_PayRouter = PayRouter;
+type index_PayRouter__factory = PayRouter__factory;
+declare const index_PayRouter__factory: typeof PayRouter__factory;
+type index_ProviderRegistry = ProviderRegistry;
+type index_ProviderRegistry__factory = ProviderRegistry__factory;
+declare const index_ProviderRegistry__factory: typeof ProviderRegistry__factory;
+type index_Router = Router;
+type index_Router__factory = Router__factory;
+declare const index_Router__factory: typeof Router__factory;
 type index_Token = Token;
 type index_TokenPool = TokenPool;
 type index_TokenPool__factory = TokenPool__factory;
@@ -28596,7 +32119,7 @@ type index_WETH = WETH;
 type index_WETH__factory = WETH__factory;
 declare const index_WETH__factory: typeof WETH__factory;
 declare namespace index {
-  export { type index_AssetRegistry as AssetRegistry, index_AssetRegistry__factory as AssetRegistry__factory, type index_BadgeManager as BadgeManager, index_BadgeManager__factory as BadgeManager__factory, type index_Core as Core, index_Core__factory as Core__factory, type index_DisputeManager as DisputeManager, index_DisputeManager__factory as DisputeManager__factory, type index_ERC20 as ERC20, index_ERC20__factory as ERC20__factory, type index_ERC721 as ERC721, index_ERC721__factory as ERC721__factory, type index_Energon as Energon, index_Energon__factory as Energon__factory, type index_FeePool as FeePool, index_FeePool__factory as FeePool__factory, type index_LPPool as LPPool, index_LPPool__factory as LPPool__factory, type index_MarketCore as MarketCore, index_MarketCore__factory as MarketCore__factory, type index_MediatorManager as MediatorManager, index_MediatorManager__factory as MediatorManager__factory, type index_MinerRegistry as MinerRegistry, index_MinerRegistry__factory as MinerRegistry__factory, type index_NFT as NFT, index_NFT__factory as NFT__factory, type index_Token as Token, type index_TokenPool as TokenPool, index_TokenPool__factory as TokenPool__factory, index_Token__factory as Token__factory, type index_UniswapV2Router as UniswapV2Router, type index_UniswapV2Router2 as UniswapV2Router2, index_UniswapV2Router2__factory as UniswapV2Router2__factory, index_UniswapV2Router__factory as UniswapV2Router__factory, type index_UniswapV3Router as UniswapV3Router, type index_UniswapV3Router2 as UniswapV3Router2, index_UniswapV3Router2__factory as UniswapV3Router2__factory, type index_UniswapV3RouterUniversal as UniswapV3RouterUniversal, index_UniswapV3RouterUniversal__factory as UniswapV3RouterUniversal__factory, index_UniswapV3Router__factory as UniswapV3Router__factory, type index_WETH as WETH, index_WETH__factory as WETH__factory, index$1 as factories };
+  export { type index_AssetRegistry as AssetRegistry, index_AssetRegistry__factory as AssetRegistry__factory, type index_BadgeManager as BadgeManager, index_BadgeManager__factory as BadgeManager__factory, type index_Core as Core, index_Core__factory as Core__factory, type index_DisputeManager as DisputeManager, index_DisputeManager__factory as DisputeManager__factory, type index_ERC20 as ERC20, index_ERC20__factory as ERC20__factory, type index_ERC721 as ERC721, index_ERC721__factory as ERC721__factory, type index_Energon as Energon, index_Energon__factory as Energon__factory, type index_FeePool as FeePool, index_FeePool__factory as FeePool__factory, type index_LPPool as LPPool, index_LPPool__factory as LPPool__factory, type index_MarketCore as MarketCore, index_MarketCore__factory as MarketCore__factory, type index_MarketManager as MarketManager, index_MarketManager__factory as MarketManager__factory, type index_MediatorManager as MediatorManager, index_MediatorManager__factory as MediatorManager__factory, type index_MinerRegistry as MinerRegistry, index_MinerRegistry__factory as MinerRegistry__factory, type index_NFT as NFT, index_NFT__factory as NFT__factory, type index_PayRouter as PayRouter, index_PayRouter__factory as PayRouter__factory, type index_ProviderRegistry as ProviderRegistry, index_ProviderRegistry__factory as ProviderRegistry__factory, type index_Router as Router, index_Router__factory as Router__factory, type index_Token as Token, type index_TokenPool as TokenPool, index_TokenPool__factory as TokenPool__factory, index_Token__factory as Token__factory, type index_UniswapV2Router as UniswapV2Router, type index_UniswapV2Router2 as UniswapV2Router2, index_UniswapV2Router2__factory as UniswapV2Router2__factory, index_UniswapV2Router__factory as UniswapV2Router__factory, type index_UniswapV3Router as UniswapV3Router, type index_UniswapV3Router2 as UniswapV3Router2, index_UniswapV3Router2__factory as UniswapV3Router2__factory, type index_UniswapV3RouterUniversal as UniswapV3RouterUniversal, index_UniswapV3RouterUniversal__factory as UniswapV3RouterUniversal__factory, index_UniswapV3Router__factory as UniswapV3Router__factory, type index_WETH as WETH, index_WETH__factory as WETH__factory, index$1 as factories };
 }
 
-export { Abi, index as AbiTypes, type BadgeManifest, BadgeManifests, type ChainBadgeManifest, type ChainInfo, type ChainNames, type ContractInfo, type ContractNames, contract as ContractParamTypes, type Contracts, type KnownMediatorPools, type MediatorPool, MediatorPools, type PaymentMethods, TokenLists, contractsParams, Chains as default, findTokenInLocalhost, findTokenInSynthetic, getChain, getChainByName, getChainID, getChainNames, getChains, getChainsID, getContractsParams, getTokenInfo, isValidChain, parseBadgeLocals, paymentMethods };
+export { Abi, index as AbiTypes, type BadgeManifest, BadgeManifests, type ChainBadgeManifest, type ChainInfo, type ChainNames, type ContractInfo, type ContractNames, contract as ContractParamTypes, type Contracts, type KnownMediatorPools, type MediatorPool, MediatorPools, type PaymentMethods, TokenList, TokenLists, contractsParams, Chains as default, findTokenInLocalhost, findTokenInSynthetic, getChain, getChainByName, getChainID, getChainNames, getChains, getChainsID, getContractsParams, getTokenInfo, isValidChain, parseBadgeLocals, paymentMethods };

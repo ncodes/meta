@@ -23,13 +23,201 @@ import type {
   TypedContractMethod,
 } from "./common";
 
+export declare namespace StructsLib {
+  export type CreateOfferParamsStruct = {
+    marketId: AddressLike;
+    provider: AddressLike;
+    recipient: AddressLike;
+    lid: BigNumberish;
+    amount: BigNumberish;
+    price: BigNumberish;
+    ids: BigNumberish[];
+    deadline: BigNumberish;
+    operator: BigNumberish;
+  };
+
+  export type CreateOfferParamsStructOutput = [
+    marketId: string,
+    provider: string,
+    recipient: string,
+    lid: bigint,
+    amount: bigint,
+    price: bigint,
+    ids: bigint[],
+    deadline: bigint,
+    operator: bigint
+  ] & {
+    marketId: string;
+    provider: string;
+    recipient: string;
+    lid: bigint;
+    amount: bigint;
+    price: bigint;
+    ids: bigint[];
+    deadline: bigint;
+    operator: bigint;
+  };
+
+  export type IntSlotStateStruct = {
+    instantSwapFeeBp: BigNumberish;
+    synthSwapFeeBp: BigNumberish;
+    stableSwapFeeBp: BigNumberish;
+    instantNFTSwapFeeBp: BigNumberish;
+    fixedSynthSwapFee: BigNumberish;
+    fixedNFTSwapFee: BigNumberish;
+    maxOpenOrders: BigNumberish;
+    maxOpenDisputes: BigNumberish;
+  };
+
+  export type IntSlotStateStructOutput = [
+    instantSwapFeeBp: bigint,
+    synthSwapFeeBp: bigint,
+    stableSwapFeeBp: bigint,
+    instantNFTSwapFeeBp: bigint,
+    fixedSynthSwapFee: bigint,
+    fixedNFTSwapFee: bigint,
+    maxOpenOrders: bigint,
+    maxOpenDisputes: bigint
+  ] & {
+    instantSwapFeeBp: bigint;
+    synthSwapFeeBp: bigint;
+    stableSwapFeeBp: bigint;
+    instantNFTSwapFeeBp: bigint;
+    fixedSynthSwapFee: bigint;
+    fixedNFTSwapFee: bigint;
+    maxOpenOrders: bigint;
+    maxOpenDisputes: bigint;
+  };
+
+  export type UintSlotState2Struct = { ammEthPoolFee: BigNumberish };
+
+  export type UintSlotState2StructOutput = [ammEthPoolFee: bigint] & {
+    ammEthPoolFee: bigint;
+  };
+
+  export type SwapQuoteForBaseParamsStruct = {
+    marketId: AddressLike;
+    provider: AddressLike;
+    recipient: AddressLike;
+    lid: BigNumberish;
+    amount: BigNumberish;
+    maxPrice: BigNumberish;
+    ids: BigNumberish[];
+    expireAt: BigNumberish;
+    operator: BigNumberish;
+    marketMgrData: BytesLike;
+  };
+
+  export type SwapQuoteForBaseParamsStructOutput = [
+    marketId: string,
+    provider: string,
+    recipient: string,
+    lid: bigint,
+    amount: bigint,
+    maxPrice: bigint,
+    ids: bigint[],
+    expireAt: bigint,
+    operator: bigint,
+    marketMgrData: string
+  ] & {
+    marketId: string;
+    provider: string;
+    recipient: string;
+    lid: bigint;
+    amount: bigint;
+    maxPrice: bigint;
+    ids: bigint[];
+    expireAt: bigint;
+    operator: bigint;
+    marketMgrData: string;
+  };
+
+  export type UpdateFungibleLiquidityParamsStruct = {
+    marketId: AddressLike;
+    target: AddressLike;
+    lid: BigNumberish;
+    amount: BigNumberish;
+    price: BigNumberish;
+    timeToPay: BigNumberish;
+    expireAt: BigNumberish;
+    wantOrIds: BigNumberish[];
+    wantAndIds: BigNumberish[];
+    deduct: boolean;
+    pause: boolean;
+  };
+
+  export type UpdateFungibleLiquidityParamsStructOutput = [
+    marketId: string,
+    target: string,
+    lid: bigint,
+    amount: bigint,
+    price: bigint,
+    timeToPay: bigint,
+    expireAt: bigint,
+    wantOrIds: bigint[],
+    wantAndIds: bigint[],
+    deduct: boolean,
+    pause: boolean
+  ] & {
+    marketId: string;
+    target: string;
+    lid: bigint;
+    amount: bigint;
+    price: bigint;
+    timeToPay: bigint;
+    expireAt: bigint;
+    wantOrIds: bigint[];
+    wantAndIds: bigint[];
+    deduct: boolean;
+    pause: boolean;
+  };
+
+  export type UpdateNonFungibleLiquidityParamsStruct = {
+    marketId: AddressLike;
+    target: AddressLike;
+    lid: BigNumberish;
+    price: BigNumberish;
+    timeToPay: BigNumberish;
+    expireAt: BigNumberish;
+    ids: BigNumberish[];
+    wantOrIds: BigNumberish[];
+    wantAndIds: BigNumberish[];
+    deduct: boolean;
+    pause: boolean;
+  };
+
+  export type UpdateNonFungibleLiquidityParamsStructOutput = [
+    marketId: string,
+    target: string,
+    lid: bigint,
+    price: bigint,
+    timeToPay: bigint,
+    expireAt: bigint,
+    ids: bigint[],
+    wantOrIds: bigint[],
+    wantAndIds: bigint[],
+    deduct: boolean,
+    pause: boolean
+  ] & {
+    marketId: string;
+    target: string;
+    lid: bigint;
+    price: bigint;
+    timeToPay: bigint;
+    expireAt: bigint;
+    ids: bigint[];
+    wantOrIds: bigint[];
+    wantAndIds: bigint[];
+    deduct: boolean;
+    pause: boolean;
+  };
+}
+
 export declare namespace Structs {
   export type LiquidityStruct = {
     ids: BigNumberish[];
     amount: BigNumberish;
     price: BigNumberish;
-    minSwap: BigNumberish;
-    maxSwap: BigNumberish;
     timeToPay: BigNumberish;
     openOrders: BigNumberish;
     openDisputes: BigNumberish;
@@ -47,8 +235,6 @@ export declare namespace Structs {
     ids: bigint[],
     amount: bigint,
     price: bigint,
-    minSwap: bigint,
-    maxSwap: bigint,
     timeToPay: bigint,
     openOrders: bigint,
     openDisputes: bigint,
@@ -64,8 +250,6 @@ export declare namespace Structs {
     ids: bigint[];
     amount: bigint;
     price: bigint;
-    minSwap: bigint;
-    maxSwap: bigint;
     timeToPay: bigint;
     openOrders: bigint;
     openDisputes: bigint;
@@ -274,49 +458,6 @@ export declare namespace Structs {
   };
 }
 
-export declare namespace StructsLib {
-  export type IntSlotStateStruct = {
-    instantSwapFeeBp: BigNumberish;
-    synthSwapFeeBp: BigNumberish;
-    stableSwapFeeBp: BigNumberish;
-    instantNFTSwapFeeBp: BigNumberish;
-    fixedSynthSwapFee: BigNumberish;
-    fixedNFTSwapFee: BigNumberish;
-    maxOpenOrders: BigNumberish;
-    maxOpenDisputes: BigNumberish;
-  };
-
-  export type IntSlotStateStructOutput = [
-    instantSwapFeeBp: bigint,
-    synthSwapFeeBp: bigint,
-    stableSwapFeeBp: bigint,
-    instantNFTSwapFeeBp: bigint,
-    fixedSynthSwapFee: bigint,
-    fixedNFTSwapFee: bigint,
-    maxOpenOrders: bigint,
-    maxOpenDisputes: bigint
-  ] & {
-    instantSwapFeeBp: bigint;
-    synthSwapFeeBp: bigint;
-    stableSwapFeeBp: bigint;
-    instantNFTSwapFeeBp: bigint;
-    fixedSynthSwapFee: bigint;
-    fixedNFTSwapFee: bigint;
-    maxOpenOrders: bigint;
-    maxOpenDisputes: bigint;
-  };
-
-  export type UintSlotState2Struct = {
-    nftDiscountBp: BigNumberish;
-    ammEthPoolFee: BigNumberish;
-  };
-
-  export type UintSlotState2StructOutput = [
-    nftDiscountBp: bigint,
-    ammEthPoolFee: bigint
-  ] & { nftDiscountBp: bigint; ammEthPoolFee: bigint };
-}
-
 export interface CoreInterface extends Interface {
   getFunction(
     nameOrSignature:
@@ -357,7 +498,6 @@ export interface CoreInterface extends Interface {
       | "setAmmPoolInfo"
       | "setAssetRegistry"
       | "setBadgeMgr"
-      | "setDiscountForNFTHolder"
       | "setDisputeManager"
       | "setFeePool"
       | "setFeePurse"
@@ -368,11 +508,11 @@ export interface CoreInterface extends Interface {
       | "setMaxOpenOrders"
       | "setMinTimeToPay"
       | "setMinerRegistry"
-      | "setNFT"
       | "setOperator"
       | "setOrderGraceDur"
       | "setProtoFee"
       | "setProtoFeeSplit"
+      | "setProviderRegistry"
       | "setSwapBadgeForLiquidity"
       | "shareablesBalanceOf"
       | "state"
@@ -396,7 +536,6 @@ export interface CoreInterface extends Interface {
   getEvent(
     nameOrSignatureOrTopic:
       | "FinalizedByManagerSig"
-      | "NFTDiscountUpdated"
       | "NewOffer"
       | "OfferAccepted"
       | "OfferCancelled"
@@ -431,11 +570,11 @@ export interface CoreInterface extends Interface {
       | "UpdatedMaxOpenOrders"
       | "UpdatedMinTimeToPay"
       | "UpdatedMinerRegistry"
-      | "UpdatedNFT"
       | "UpdatedNonFungibleLiquidity"
       | "UpdatedOperator"
       | "UpdatedOrderGraceDur"
       | "UpdatedPrice"
+      | "UpdatedProviderRegistry"
   ): EventFragment;
 
   encodeFunctionData(
@@ -479,17 +618,7 @@ export interface CoreInterface extends Interface {
   ): string;
   encodeFunctionData(
     functionFragment: "createOffer",
-    values: [
-      AddressLike,
-      AddressLike,
-      AddressLike,
-      BigNumberish,
-      BigNumberish,
-      BigNumberish,
-      BigNumberish[],
-      BigNumberish,
-      BigNumberish
-    ]
+    values: [StructsLib.CreateOfferParamsStruct]
   ): string;
   encodeFunctionData(
     functionFragment: "executeOffer",
@@ -604,10 +733,6 @@ export interface CoreInterface extends Interface {
     values: [AddressLike]
   ): string;
   encodeFunctionData(
-    functionFragment: "setDiscountForNFTHolder",
-    values: [BigNumberish]
-  ): string;
-  encodeFunctionData(
     functionFragment: "setDisputeManager",
     values: [AddressLike]
   ): string;
@@ -647,7 +772,6 @@ export interface CoreInterface extends Interface {
     functionFragment: "setMinerRegistry",
     values: [AddressLike]
   ): string;
-  encodeFunctionData(functionFragment: "setNFT", values: [AddressLike]): string;
   encodeFunctionData(
     functionFragment: "setOperator",
     values: [AddressLike]
@@ -672,6 +796,10 @@ export interface CoreInterface extends Interface {
     values: [BigNumberish, BigNumberish, BigNumberish]
   ): string;
   encodeFunctionData(
+    functionFragment: "setProviderRegistry",
+    values: [AddressLike]
+  ): string;
+  encodeFunctionData(
     functionFragment: "setSwapBadgeForLiquidity",
     values: [AddressLike, BigNumberish, [string, string][]]
   ): string;
@@ -687,17 +815,7 @@ export interface CoreInterface extends Interface {
   ): string;
   encodeFunctionData(
     functionFragment: "swapQuoteForBase",
-    values: [
-      AddressLike,
-      AddressLike,
-      AddressLike,
-      BigNumberish,
-      BigNumberish,
-      BigNumberish,
-      BigNumberish[],
-      BigNumberish,
-      BigNumberish
-    ]
+    values: [StructsLib.SwapQuoteForBaseParamsStruct]
   ): string;
   encodeFunctionData(
     functionFragment: "togglePause",
@@ -717,16 +835,7 @@ export interface CoreInterface extends Interface {
   ): string;
   encodeFunctionData(
     functionFragment: "updateFungibleLiquidity",
-    values: [
-      AddressLike,
-      BigNumberish,
-      boolean,
-      AddressLike,
-      [BigNumberish, BigNumberish],
-      BigNumberish[],
-      BigNumberish[],
-      [BigNumberish, BigNumberish, BigNumberish, BigNumberish, BigNumberish]
-    ]
+    values: [StructsLib.UpdateFungibleLiquidityParamsStruct]
   ): string;
   encodeFunctionData(
     functionFragment: "updateLiquidityPrice",
@@ -734,17 +843,7 @@ export interface CoreInterface extends Interface {
   ): string;
   encodeFunctionData(
     functionFragment: "updateNonFungibleLiquidity",
-    values: [
-      AddressLike,
-      BigNumberish,
-      boolean,
-      AddressLike,
-      BigNumberish[],
-      BigNumberish,
-      BigNumberish[],
-      BigNumberish[],
-      [BigNumberish, BigNumberish, BigNumberish]
-    ]
+    values: [StructsLib.UpdateNonFungibleLiquidityParamsStruct]
   ): string;
   encodeFunctionData(
     functionFragment: "updateOffer",
@@ -898,10 +997,6 @@ export interface CoreInterface extends Interface {
     data: BytesLike
   ): Result;
   decodeFunctionResult(
-    functionFragment: "setDiscountForNFTHolder",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
     functionFragment: "setDisputeManager",
     data: BytesLike
   ): Result;
@@ -938,7 +1033,6 @@ export interface CoreInterface extends Interface {
     functionFragment: "setMinerRegistry",
     data: BytesLike
   ): Result;
-  decodeFunctionResult(functionFragment: "setNFT", data: BytesLike): Result;
   decodeFunctionResult(
     functionFragment: "setOperator",
     data: BytesLike
@@ -953,6 +1047,10 @@ export interface CoreInterface extends Interface {
   ): Result;
   decodeFunctionResult(
     functionFragment: "setProtoFeeSplit",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "setProviderRegistry",
     data: BytesLike
   ): Result;
   decodeFunctionResult(
@@ -1041,18 +1139,6 @@ export namespace FinalizedByManagerSigEvent {
     finalizer: string;
     orderId: bigint;
     action: bigint;
-  }
-  export type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>;
-  export type Filter = TypedDeferredTopicFilter<Event>;
-  export type Log = TypedEventLog<Event>;
-  export type LogDescription = TypedLogDescription<Event>;
-}
-
-export namespace NFTDiscountUpdatedEvent {
-  export type InputTuple = [bp: BigNumberish];
-  export type OutputTuple = [bp: bigint];
-  export interface OutputObject {
-    bp: bigint;
   }
   export type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>;
   export type Filter = TypedDeferredTopicFilter<Event>;
@@ -1586,8 +1672,6 @@ export namespace UpdatedFungibleLiquidityEvent {
     price: BigNumberish,
     wantOrIds: BigNumberish[],
     wantAndIds: BigNumberish[],
-    minSwap: BigNumberish,
-    maxSwap: BigNumberish,
     timeToPay: BigNumberish
   ];
   export type OutputTuple = [
@@ -1601,8 +1685,6 @@ export namespace UpdatedFungibleLiquidityEvent {
     price: bigint,
     wantOrIds: bigint[],
     wantAndIds: bigint[],
-    minSwap: bigint,
-    maxSwap: bigint,
     timeToPay: bigint
   ];
   export interface OutputObject {
@@ -1616,8 +1698,6 @@ export namespace UpdatedFungibleLiquidityEvent {
     price: bigint;
     wantOrIds: bigint[];
     wantAndIds: bigint[];
-    minSwap: bigint;
-    maxSwap: bigint;
     timeToPay: bigint;
   }
   export type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>;
@@ -1748,18 +1828,6 @@ export namespace UpdatedMinerRegistryEvent {
   export type LogDescription = TypedLogDescription<Event>;
 }
 
-export namespace UpdatedNFTEvent {
-  export type InputTuple = [addr: AddressLike];
-  export type OutputTuple = [addr: string];
-  export interface OutputObject {
-    addr: string;
-  }
-  export type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>;
-  export type Filter = TypedDeferredTopicFilter<Event>;
-  export type Log = TypedEventLog<Event>;
-  export type LogDescription = TypedLogDescription<Event>;
-}
-
 export namespace UpdatedNonFungibleLiquidityEvent {
   export type InputTuple = [
     provider: AddressLike,
@@ -1851,6 +1919,18 @@ export namespace UpdatedPriceEvent {
     manager: string;
     lid: bigint;
     price: bigint;
+  }
+  export type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>;
+  export type Filter = TypedDeferredTopicFilter<Event>;
+  export type Log = TypedEventLog<Event>;
+  export type LogDescription = TypedLogDescription<Event>;
+}
+
+export namespace UpdatedProviderRegistryEvent {
+  export type InputTuple = [addr: AddressLike];
+  export type OutputTuple = [addr: string];
+  export interface OutputObject {
+    addr: string;
   }
   export type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>;
   export type Filter = TypedDeferredTopicFilter<Event>;
@@ -1953,17 +2033,7 @@ export interface Core extends BaseContract {
   >;
 
   createOffer: TypedContractMethod<
-    [
-      marketId: AddressLike,
-      provider: AddressLike,
-      recipient: AddressLike,
-      lid: BigNumberish,
-      amount: BigNumberish,
-      price: BigNumberish,
-      ids: BigNumberish[],
-      deadline: BigNumberish,
-      operator: BigNumberish
-    ],
+    [params: StructsLib.CreateOfferParamsStruct],
     [void],
     "nonpayable"
   >;
@@ -2116,12 +2186,6 @@ export interface Core extends BaseContract {
 
   setBadgeMgr: TypedContractMethod<[val: AddressLike], [void], "nonpayable">;
 
-  setDiscountForNFTHolder: TypedContractMethod<
-    [bp: BigNumberish],
-    [void],
-    "nonpayable"
-  >;
-
   setDisputeManager: TypedContractMethod<
     [addr: AddressLike],
     [void],
@@ -2166,8 +2230,6 @@ export interface Core extends BaseContract {
     "nonpayable"
   >;
 
-  setNFT: TypedContractMethod<[addr: AddressLike], [void], "nonpayable">;
-
   setOperator: TypedContractMethod<[addr: AddressLike], [void], "nonpayable">;
 
   setOrderGraceDur: TypedContractMethod<
@@ -2195,6 +2257,12 @@ export interface Core extends BaseContract {
       sharedBP: BigNumberish,
       operatorBP: BigNumberish
     ],
+    [void],
+    "nonpayable"
+  >;
+
+  setProviderRegistry: TypedContractMethod<
+    [addr: AddressLike],
     [void],
     "nonpayable"
   >;
@@ -2254,8 +2322,8 @@ export interface Core extends BaseContract {
       ] & {
         ints: StructsLib.UintSlotState2StructOutput;
         disputeManager: string;
-        nft: string;
         ammEth: string;
+        provReg: string;
         assetReg: string;
         token: string;
         marketCore: string;
@@ -2276,17 +2344,7 @@ export interface Core extends BaseContract {
   >;
 
   swapQuoteForBase: TypedContractMethod<
-    [
-      marketId: AddressLike,
-      provider: AddressLike,
-      recipient: AddressLike,
-      lid: BigNumberish,
-      amount: BigNumberish,
-      maxPrice: BigNumberish,
-      ids: BigNumberish[],
-      txDeadline: BigNumberish,
-      operator: BigNumberish
-    ],
+    [params: StructsLib.SwapQuoteForBaseParamsStruct],
     [void],
     "payable"
   >;
@@ -2316,22 +2374,7 @@ export interface Core extends BaseContract {
   >;
 
   updateFungibleLiquidity: TypedContractMethod<
-    [
-      marketId: AddressLike,
-      lid: BigNumberish,
-      deduct: boolean,
-      target: AddressLike,
-      amountAndPrice: [BigNumberish, BigNumberish],
-      wantOrIds: BigNumberish[],
-      wantAndIds: BigNumberish[],
-      limits: [
-        BigNumberish,
-        BigNumberish,
-        BigNumberish,
-        BigNumberish,
-        BigNumberish
-      ]
-    ],
+    [params: StructsLib.UpdateFungibleLiquidityParamsStruct],
     [void],
     "payable"
   >;
@@ -2349,17 +2392,7 @@ export interface Core extends BaseContract {
   >;
 
   updateNonFungibleLiquidity: TypedContractMethod<
-    [
-      marketId: AddressLike,
-      lid: BigNumberish,
-      deduct: boolean,
-      target: AddressLike,
-      ids: BigNumberish[],
-      price: BigNumberish,
-      wantOrIds: BigNumberish[],
-      wantAndIds: BigNumberish[],
-      limits: [BigNumberish, BigNumberish, BigNumberish]
-    ],
+    [params: StructsLib.UpdateNonFungibleLiquidityParamsStruct],
     [void],
     "nonpayable"
   >;
@@ -2459,17 +2492,7 @@ export interface Core extends BaseContract {
   getFunction(
     nameOrSignature: "createOffer"
   ): TypedContractMethod<
-    [
-      marketId: AddressLike,
-      provider: AddressLike,
-      recipient: AddressLike,
-      lid: BigNumberish,
-      amount: BigNumberish,
-      price: BigNumberish,
-      ids: BigNumberish[],
-      deadline: BigNumberish,
-      operator: BigNumberish
-    ],
+    [params: StructsLib.CreateOfferParamsStruct],
     [void],
     "nonpayable"
   >;
@@ -2634,9 +2657,6 @@ export interface Core extends BaseContract {
     nameOrSignature: "setBadgeMgr"
   ): TypedContractMethod<[val: AddressLike], [void], "nonpayable">;
   getFunction(
-    nameOrSignature: "setDiscountForNFTHolder"
-  ): TypedContractMethod<[bp: BigNumberish], [void], "nonpayable">;
-  getFunction(
     nameOrSignature: "setDisputeManager"
   ): TypedContractMethod<[addr: AddressLike], [void], "nonpayable">;
   getFunction(
@@ -2671,9 +2691,6 @@ export interface Core extends BaseContract {
     nameOrSignature: "setMinerRegistry"
   ): TypedContractMethod<[addr: AddressLike], [void], "nonpayable">;
   getFunction(
-    nameOrSignature: "setNFT"
-  ): TypedContractMethod<[addr: AddressLike], [void], "nonpayable">;
-  getFunction(
     nameOrSignature: "setOperator"
   ): TypedContractMethod<[addr: AddressLike], [void], "nonpayable">;
   getFunction(
@@ -2704,6 +2721,9 @@ export interface Core extends BaseContract {
     [void],
     "nonpayable"
   >;
+  getFunction(
+    nameOrSignature: "setProviderRegistry"
+  ): TypedContractMethod<[addr: AddressLike], [void], "nonpayable">;
   getFunction(
     nameOrSignature: "setSwapBadgeForLiquidity"
   ): TypedContractMethod<
@@ -2760,8 +2780,8 @@ export interface Core extends BaseContract {
       ] & {
         ints: StructsLib.UintSlotState2StructOutput;
         disputeManager: string;
-        nft: string;
         ammEth: string;
+        provReg: string;
         assetReg: string;
         token: string;
         marketCore: string;
@@ -2780,17 +2800,7 @@ export interface Core extends BaseContract {
   getFunction(
     nameOrSignature: "swapQuoteForBase"
   ): TypedContractMethod<
-    [
-      marketId: AddressLike,
-      provider: AddressLike,
-      recipient: AddressLike,
-      lid: BigNumberish,
-      amount: BigNumberish,
-      maxPrice: BigNumberish,
-      ids: BigNumberish[],
-      txDeadline: BigNumberish,
-      operator: BigNumberish
-    ],
+    [params: StructsLib.SwapQuoteForBaseParamsStruct],
     [void],
     "payable"
   >;
@@ -2813,22 +2823,7 @@ export interface Core extends BaseContract {
   getFunction(
     nameOrSignature: "updateFungibleLiquidity"
   ): TypedContractMethod<
-    [
-      marketId: AddressLike,
-      lid: BigNumberish,
-      deduct: boolean,
-      target: AddressLike,
-      amountAndPrice: [BigNumberish, BigNumberish],
-      wantOrIds: BigNumberish[],
-      wantAndIds: BigNumberish[],
-      limits: [
-        BigNumberish,
-        BigNumberish,
-        BigNumberish,
-        BigNumberish,
-        BigNumberish
-      ]
-    ],
+    [params: StructsLib.UpdateFungibleLiquidityParamsStruct],
     [void],
     "payable"
   >;
@@ -2848,17 +2843,7 @@ export interface Core extends BaseContract {
   getFunction(
     nameOrSignature: "updateNonFungibleLiquidity"
   ): TypedContractMethod<
-    [
-      marketId: AddressLike,
-      lid: BigNumberish,
-      deduct: boolean,
-      target: AddressLike,
-      ids: BigNumberish[],
-      price: BigNumberish,
-      wantOrIds: BigNumberish[],
-      wantAndIds: BigNumberish[],
-      limits: [BigNumberish, BigNumberish, BigNumberish]
-    ],
+    [params: StructsLib.UpdateNonFungibleLiquidityParamsStruct],
     [void],
     "nonpayable"
   >;
@@ -2903,13 +2888,6 @@ export interface Core extends BaseContract {
     FinalizedByManagerSigEvent.InputTuple,
     FinalizedByManagerSigEvent.OutputTuple,
     FinalizedByManagerSigEvent.OutputObject
-  >;
-  getEvent(
-    key: "NFTDiscountUpdated"
-  ): TypedContractEvent<
-    NFTDiscountUpdatedEvent.InputTuple,
-    NFTDiscountUpdatedEvent.OutputTuple,
-    NFTDiscountUpdatedEvent.OutputObject
   >;
   getEvent(
     key: "NewOffer"
@@ -3150,13 +3128,6 @@ export interface Core extends BaseContract {
     UpdatedMinerRegistryEvent.OutputObject
   >;
   getEvent(
-    key: "UpdatedNFT"
-  ): TypedContractEvent<
-    UpdatedNFTEvent.InputTuple,
-    UpdatedNFTEvent.OutputTuple,
-    UpdatedNFTEvent.OutputObject
-  >;
-  getEvent(
     key: "UpdatedNonFungibleLiquidity"
   ): TypedContractEvent<
     UpdatedNonFungibleLiquidityEvent.InputTuple,
@@ -3184,6 +3155,13 @@ export interface Core extends BaseContract {
     UpdatedPriceEvent.OutputTuple,
     UpdatedPriceEvent.OutputObject
   >;
+  getEvent(
+    key: "UpdatedProviderRegistry"
+  ): TypedContractEvent<
+    UpdatedProviderRegistryEvent.InputTuple,
+    UpdatedProviderRegistryEvent.OutputTuple,
+    UpdatedProviderRegistryEvent.OutputObject
+  >;
 
   filters: {
     "FinalizedByManagerSig(address,address,uint256,uint256)": TypedContractEvent<
@@ -3195,17 +3173,6 @@ export interface Core extends BaseContract {
       FinalizedByManagerSigEvent.InputTuple,
       FinalizedByManagerSigEvent.OutputTuple,
       FinalizedByManagerSigEvent.OutputObject
-    >;
-
-    "NFTDiscountUpdated(uint256)": TypedContractEvent<
-      NFTDiscountUpdatedEvent.InputTuple,
-      NFTDiscountUpdatedEvent.OutputTuple,
-      NFTDiscountUpdatedEvent.OutputObject
-    >;
-    NFTDiscountUpdated: TypedContractEvent<
-      NFTDiscountUpdatedEvent.InputTuple,
-      NFTDiscountUpdatedEvent.OutputTuple,
-      NFTDiscountUpdatedEvent.OutputObject
     >;
 
     "NewOffer(address,address,uint256,address,uint256,uint256,uint256,uint256[],uint256)": TypedContractEvent<
@@ -3483,7 +3450,7 @@ export interface Core extends BaseContract {
       UpdatedFeePurseEvent.OutputObject
     >;
 
-    "UpdatedFungibleLiquidity(address,address,address,bool,bool,uint256,uint256,uint256,uint256[],uint256[],uint256,uint256,uint256)": TypedContractEvent<
+    "UpdatedFungibleLiquidity(address,address,address,bool,bool,uint256,uint256,uint256,uint256[],uint256[],uint256)": TypedContractEvent<
       UpdatedFungibleLiquidityEvent.InputTuple,
       UpdatedFungibleLiquidityEvent.OutputTuple,
       UpdatedFungibleLiquidityEvent.OutputObject
@@ -3582,17 +3549,6 @@ export interface Core extends BaseContract {
       UpdatedMinerRegistryEvent.OutputObject
     >;
 
-    "UpdatedNFT(address)": TypedContractEvent<
-      UpdatedNFTEvent.InputTuple,
-      UpdatedNFTEvent.OutputTuple,
-      UpdatedNFTEvent.OutputObject
-    >;
-    UpdatedNFT: TypedContractEvent<
-      UpdatedNFTEvent.InputTuple,
-      UpdatedNFTEvent.OutputTuple,
-      UpdatedNFTEvent.OutputObject
-    >;
-
     "UpdatedNonFungibleLiquidity(address,address,address,bool,bool,uint256,uint256[],uint256,uint256[],uint256[],uint256)": TypedContractEvent<
       UpdatedNonFungibleLiquidityEvent.InputTuple,
       UpdatedNonFungibleLiquidityEvent.OutputTuple,
@@ -3635,6 +3591,17 @@ export interface Core extends BaseContract {
       UpdatedPriceEvent.InputTuple,
       UpdatedPriceEvent.OutputTuple,
       UpdatedPriceEvent.OutputObject
+    >;
+
+    "UpdatedProviderRegistry(address)": TypedContractEvent<
+      UpdatedProviderRegistryEvent.InputTuple,
+      UpdatedProviderRegistryEvent.OutputTuple,
+      UpdatedProviderRegistryEvent.OutputObject
+    >;
+    UpdatedProviderRegistry: TypedContractEvent<
+      UpdatedProviderRegistryEvent.InputTuple,
+      UpdatedProviderRegistryEvent.OutputTuple,
+      UpdatedProviderRegistryEvent.OutputObject
     >;
   };
 }

@@ -18,9 +18,13 @@ import DisputeManagerABI from './abi/DisputeManager.json';
 import EnergonABI from './abi/Energon.json';
 import { Abi } from './abi/index';
 import MarketCoreABI from './abi/MarketCore.json';
+import MarketManagerABI from './abi/MarketManager.json';
 import MediatorManagerABI from './abi/MediatorManager.json';
 import MinerRegistryABI from './abi/MinerRegistry.json';
 import NftABI from './abi/NFT.json';
+import PayRouterABI from './abi/PayRouter.json';
+import ProviderRegistryABI from './abi/ProviderRegistry.json';
+import RouterABI from './abi/Router.json';
 import NativeTokenABI from './abi/Token.json';
 import WETHABI from './abi/WETH.json';
 import IconArbitrum from './icons/IconArbitrum';
@@ -132,6 +136,34 @@ const Chains: ChainInfo[] = [
 					import.meta.env.VITE_ETHEREUM_MINER_REG_ADDRESS ??
 					'',
 				abi: MinerRegistryABI,
+			},
+			providerRegistry: {
+				address:
+					process.env.ETHEREUM_PROVIDER_REG_ADDRESS ??
+					process.env.NEXT_PUBLIC_ETHEREUM_PROVIDER_REG_ADDRESS ??
+					import.meta.env.VITE_ETHEREUM_PROVIDER_REG_ADDRESS,
+				abi: ProviderRegistryABI,
+			},
+			router: {
+				address:
+					process.env.ETHEREUM_ROUTER_ADDRESS ??
+					process.env.NEXT_PUBLIC_ETHEREUM_ROUTER_ADDRESS ??
+					import.meta.env.VITE_ETHEREUM_ROUTER_ADDRESS,
+				abi: RouterABI,
+			},
+			payRouter: {
+				address:
+					process.env.ETHEREUM_PAY_ROUTER_ADDRESS ??
+					process.env.NEXT_PUBLIC_ETHEREUM_PAY_ROUTER_ADDRESS ??
+					import.meta.env.VITE_ETHEREUM_PAY_ROUTER_ADDRESS,
+				abi: PayRouterABI,
+			},
+			marketManager: {
+				address:
+					process.env.ETHEREUM_MARKET_MGR_ADDRESS ??
+					process.env.NEXT_PUBLIC_ETHEREUM_MARKET_MGR_ADDRESS ??
+					import.meta.env.VITE_ETHEREUM_MARKET_MGR_ADDRESS,
+				abi: MarketManagerABI,
 			},
 			uniswapV2Router: {
 				address: '0xf164fC0Ec4E93095b804a4795bBe1e041497b92a',
@@ -387,6 +419,34 @@ const Chains: ChainInfo[] = [
 					'0x4fDEE423445866c9e626F5BAA116F8a080A21aC0',
 				abi: MinerRegistryABI,
 			},
+			providerRegistry: {
+				address:
+					process.env.ARBITRUM_PROVIDER_REG_ADDRESS ??
+					process.env.NEXT_PUBLIC_ARBITRUM_PROVIDER_REG_ADDRESS ??
+					import.meta.env.VITE_ARBITRUM_PROVIDER_REG_ADDRESS,
+				abi: ProviderRegistryABI,
+			},
+			router: {
+				address:
+					process.env.ARBITRUM_ROUTER_ADDRESS ??
+					process.env.NEXT_PUBLIC_ARBITRUM_ROUTER_ADDRESS ??
+					import.meta.env.VITE_ARBITRUM_ROUTER_ADDRESS,
+				abi: RouterABI,
+			},
+			payRouter: {
+				address:
+					process.env.ARBITRUM_PAY_ROUTER_ADDRESS ??
+					process.env.NEXT_PUBLIC_ARBITRUM_PAY_ROUTER_ADDRESS ??
+					import.meta.env.VITE_ARBITRUM_PAY_ROUTER_ADDRESS,
+				abi: PayRouterABI,
+			},
+			marketManager: {
+				address:
+					process.env.ARBITRUM_MARKET_MGR_ADDRESS ??
+					process.env.NEXT_PUBLIC_ARBITRUM_MARKET_MGR_ADDRESS ??
+					import.meta.env.VITE_ARBITRUM_MARKET_MGR_ADDRESS,
+				abi: MarketManagerABI,
+			},
 		},
 	},
 	{
@@ -500,6 +560,34 @@ const Chains: ChainInfo[] = [
 					'',
 				abi: MinerRegistryABI,
 			},
+			providerRegistry: {
+				address:
+					process.env.ARBITRUM_SEPOLIA_PROVIDER_REG_ADDRESS ??
+					process.env.NEXT_PUBLIC_ARBITRUM_SEPOLIA_PROVIDER_REG_ADDRESS ??
+					import.meta.env.VITE_ARBITRUM_SEPOLIA_PROVIDER_REG_ADDRESS,
+				abi: ProviderRegistryABI,
+			},
+			router: {
+				address:
+					process.env.ARBITRUM_SEPOLIA_ROUTER_ADDRESS ??
+					process.env.NEXT_PUBLIC_ARBITRUM_SEPOLIA_ROUTER_ADDRESS ??
+					import.meta.env.VITE_ARBITRUM_SEPOLIA_ROUTER_ADDRESS,
+				abi: RouterABI,
+			},
+			payRouter: {
+				address:
+					process.env.ARBITRUM_SEPOLIA_PAY_ROUTER_ADDRESS ??
+					process.env.NEXT_PUBLIC_ARBITRUM_SEPOLIA_PAY_ROUTER_ADDRESS ??
+					import.meta.env.VITE_ARBITRUM_SEPOLIA_PAY_ROUTER_ADDRESS,
+				abi: PayRouterABI,
+			},
+			marketManager: {
+				address:
+					process.env.ARBITRUM_SEPOLIA_MARKET_MGR_ADDRESS ??
+					process.env.NEXT_PUBLIC_ARBITRUM_SEPOLIA_MARKET_MGR_ADDRESS ??
+					import.meta.env.VITE_ARBITRUM_SEPOLIA_MARKET_MGR_ADDRESS,
+				abi: MarketManagerABI,
+			},
 		},
 	},
 	{
@@ -608,6 +696,34 @@ const Chains: ChainInfo[] = [
 					'',
 				abi: MinerRegistryABI,
 			},
+			providerRegistry: {
+				address:
+					process.env.SEPOLIA_PROVIDER_REG_ADDRESS ??
+					process.env.NEXT_PUBLIC_SEPOLIA_PROVIDER_REG_ADDRESS ??
+					import.meta.env.VITE_SEPOLIA_PROVIDER_REG_ADDRESS,
+				abi: ProviderRegistryABI,
+			},
+			router: {
+				address:
+					process.env.SEPOLIA_ROUTER_ADDRESS ??
+					process.env.NEXT_PUBLIC_SEPOLIA_ROUTER_ADDRESS ??
+					import.meta.env.VITE_SEPOLIA_ROUTER_ADDRESS,
+				abi: RouterABI,
+			},
+			payRouter: {
+				address:
+					process.env.SEPOLIA_PAY_ROUTER_ADDRESS ??
+					process.env.NEXT_PUBLIC_SEPOLIA_PAY_ROUTER_ADDRESS ??
+					import.meta.env.VITE_SEPOLIA_PAY_ROUTER_ADDRESS,
+				abi: PayRouterABI,
+			},
+			marketManager: {
+				address:
+					process.env.SEPOLIA_MARKET_MGR_ADDRESS ??
+					process.env.NEXT_PUBLIC_SEPOLIA_MARKET_MGR_ADDRESS ??
+					import.meta.env.VITE_SEPOLIA_MARKET_MGR_ADDRESS,
+				abi: MarketManagerABI,
+			},
 		},
 	},
 	{
@@ -709,6 +825,34 @@ const Chains: ChainInfo[] = [
 					process.env.NEXT_PUBLIC_LOCALHOST_MINER_REG_ADDRESS ??
 					import.meta.env.VITE_LOCALHOST_MINER_REG_ADDRESS,
 				abi: MinerRegistryABI,
+			},
+			providerRegistry: {
+				address:
+					process.env.LOCALHOST_PROVIDER_REG_ADDRESS ??
+					process.env.NEXT_PUBLIC_LOCALHOST_PROVIDER_REG_ADDRESS ??
+					import.meta.env.VITE_LOCALHOST_PROVIDER_REG_ADDRESS,
+				abi: ProviderRegistryABI,
+			},
+			router: {
+				address:
+					process.env.LOCALHOST_ROUTER_ADDRESS ??
+					process.env.NEXT_PUBLIC_LOCALHOST_ROUTER_ADDRESS ??
+					import.meta.env.VITE_LOCALHOST_ROUTER_ADDRESS,
+				abi: RouterABI,
+			},
+			payRouter: {
+				address:
+					process.env.LOCALHOST_PAY_ROUTER_ADDRESS ??
+					process.env.NEXT_PUBLIC_LOCALHOST_PAY_ROUTER_ADDRESS ??
+					import.meta.env.VITE_LOCALHOST_PAY_ROUTER_ADDRESS,
+				abi: PayRouterABI,
+			},
+			marketManager: {
+				address:
+					process.env.LOCALHOST_MARKET_MGR_ADDRESS ??
+					process.env.NEXT_PUBLIC_LOCALHOST_MARKET_MGR_ADDRESS ??
+					import.meta.env.VITE_LOCALHOST_MARKET_MGR_ADDRESS,
+				abi: MarketManagerABI,
 			},
 		},
 	},

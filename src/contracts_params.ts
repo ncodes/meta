@@ -6,6 +6,7 @@ export const contractsParams: ContractsParams = {
 		others: {
 			operatorBond: '120',
 			allocatorAddr: '0xA47FFd6c828EFB58c6B42F722ABA286cF87C19a0',
+			nativeAssetAddr: '0x0E801D84Fa97b50751Dbf25036d067dCf18858bF',
 		},
 		core: {
 			minTimeToPay: 1800,
@@ -13,7 +14,6 @@ export const contractsParams: ContractsParams = {
 			maxOpenOrders: 3,
 			maxOpenDisputes: 3,
 			transferToFeePoolInterval: 86400,
-			nftDiscountBP: 2500,
 		},
 		token: {},
 		energon: {},
@@ -54,6 +54,10 @@ export const contractsParams: ContractsParams = {
 			minerMatureDur: 86400,
 			minerCancelDur: 604800,
 		},
+		payRouter: {
+			payRouterProtocolFeeBp: 0,
+		},
+		marketManager: {},
 		chainlink: {},
 	},
 	sepolia: {
@@ -67,7 +71,6 @@ export const contractsParams: ContractsParams = {
 			maxOpenOrders: 3,
 			maxOpenDisputes: 3,
 			transferToFeePoolInterval: 86400,
-			nftDiscountBP: 2500,
 		},
 		token: {},
 		energon: {},
@@ -108,6 +111,10 @@ export const contractsParams: ContractsParams = {
 			minerCancelDur: 604800,
 		},
 		chainlink: {},
+		payRouter: {
+			payRouterProtocolFeeBp: 0,
+		},
+		marketManager: {},
 	},
 	arbitrum: {
 		others: {
@@ -120,7 +127,6 @@ export const contractsParams: ContractsParams = {
 			maxOpenOrders: 3,
 			maxOpenDisputes: 3,
 			transferToFeePoolInterval: 86400,
-			nftDiscountBP: 2500,
 		},
 		token: {},
 		energon: {},
@@ -161,6 +167,10 @@ export const contractsParams: ContractsParams = {
 			minerCancelDur: 604800,
 		},
 		chainlink: {},
+		payRouter: {
+			payRouterProtocolFeeBp: 0,
+		},
+		marketManager: {},
 	},
 	'arbitrum-sepolia': {
 		others: {
@@ -173,7 +183,6 @@ export const contractsParams: ContractsParams = {
 			maxOpenOrders: 3,
 			maxOpenDisputes: 3,
 			transferToFeePoolInterval: 86400,
-			nftDiscountBP: 2500,
 		},
 		token: {},
 		energon: {},
@@ -214,6 +223,10 @@ export const contractsParams: ContractsParams = {
 			minerCancelDur: 604800,
 		},
 		chainlink: {},
+		payRouter: {
+			payRouterProtocolFeeBp: 0,
+		},
+		marketManager: {},
 	},
 	ethereum: {
 		others: {
@@ -226,7 +239,6 @@ export const contractsParams: ContractsParams = {
 			maxOpenOrders: 0,
 			maxOpenDisputes: 0,
 			transferToFeePoolInterval: 0,
-			nftDiscountBP: 0,
 		},
 		token: {},
 		energon: {},
@@ -267,6 +279,10 @@ export const contractsParams: ContractsParams = {
 			minerCancelDur: 604800,
 		},
 		chainlink: {},
+		payRouter: {
+			payRouterProtocolFeeBp: 0,
+		},
+		marketManager: {},
 	},
 };
 

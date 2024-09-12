@@ -9,7 +9,6 @@ export type Contracts = Partial<{
 	[key in ContractNames]: ContractInfo;
 }>;
 
-
 export type ContractNames =
 	| 'core'
 	| 'token'
@@ -21,6 +20,10 @@ export type ContractNames =
 	| 'mediatorManager'
 	| 'assetRegistry'
 	| 'minerRegistry'
+	| 'providerRegistry'
+	| 'router'
+	| 'payRouter'
+	| 'marketManager'
 	| 'uniswapV2Router'
 	| 'uniswapV2Router2'
 	| 'uniswapV3Router'
@@ -36,6 +39,8 @@ export type ContractsParams = {
 		minerRegistry: MinerRegistryParams;
 		others: OthersParams;
 		chainlink: ChainLinkParams;
+		payRouter: PayRouterParams;
+		marketManager: {};
 		token: {};
 		energon: {};
 		nft: {};
@@ -50,7 +55,10 @@ export type CoreParams = {
 	maxOpenOrders?: number;
 	maxOpenDisputes?: number;
 	transferToFeePoolInterval?: number;
-	nftDiscountBP?: number;
+};
+
+export type PayRouterParams = {
+	payRouterProtocolFeeBp?: number;
 };
 
 export type MarketCoreParams = {
@@ -89,6 +97,7 @@ export type OthersParams = {
 	operatorBond?: string;
 	allocatorAddr?: string;
 	safe?: string;
+	nativeAssetAddr?: string;
 };
 
 export type MinerRegistryParams = {
