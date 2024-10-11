@@ -141,6 +141,8 @@ export interface PayRouterInterface extends Interface {
       | "transferRequestBond"
       | "transferRequestSource"
       | "unapproveRequester"
+      | "userHasOrg"
+      | "userOrgs"
       | "withdrawBond"
       | "withdrawProtocolFee"
       | "withdrawRequesterFee"
@@ -192,7 +194,7 @@ export interface PayRouterInterface extends Interface {
   encodeFunctionData(functionFragment: "createOrg", values: [string]): string;
   encodeFunctionData(
     functionFragment: "createRequest",
-    values: [BigNumberish[], BigNumberish[], BigNumberish]
+    values: [BigNumberish[], BigNumberish[], BigNumberish, BigNumberish]
   ): string;
   encodeFunctionData(
     functionFragment: "createRoute",
@@ -220,7 +222,7 @@ export interface PayRouterInterface extends Interface {
   ): string;
   encodeFunctionData(
     functionFragment: "markRequestAsPaid",
-    values: [BigNumberish]
+    values: [BigNumberish, BigNumberish]
   ): string;
   encodeFunctionData(functionFragment: "numOrgs", values?: undefined): string;
   encodeFunctionData(
@@ -293,6 +295,14 @@ export interface PayRouterInterface extends Interface {
   encodeFunctionData(
     functionFragment: "unapproveRequester",
     values: [BigNumberish, AddressLike]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "userHasOrg",
+    values: [AddressLike, string]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "userOrgs",
+    values: [AddressLike, string]
   ): string;
   encodeFunctionData(
     functionFragment: "withdrawBond",
@@ -420,6 +430,8 @@ export interface PayRouterInterface extends Interface {
     functionFragment: "unapproveRequester",
     data: BytesLike
   ): Result;
+  decodeFunctionResult(functionFragment: "userHasOrg", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "userOrgs", data: BytesLike): Result;
   decodeFunctionResult(
     functionFragment: "withdrawBond",
     data: BytesLike
@@ -598,14 +610,16 @@ export namespace RequestCreatedEvent {
     requestId: BigNumberish,
     routeIds: BigNumberish[],
     bonds: BigNumberish[],
-    sourceAmt: BigNumberish
+    sourceAmt: BigNumberish,
+    valueLockDuration: BigNumberish
   ];
   export type OutputTuple = [
     creator: string,
     requestId: bigint,
     routeIds: bigint[],
     bonds: bigint[],
-    sourceAmt: bigint
+    sourceAmt: bigint,
+    valueLockDuration: bigint
   ];
   export interface OutputObject {
     creator: string;
@@ -613,6 +627,7 @@ export namespace RequestCreatedEvent {
     routeIds: bigint[];
     bonds: bigint[];
     sourceAmt: bigint;
+    valueLockDuration: bigint;
   }
   export type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>;
   export type Filter = TypedDeferredTopicFilter<Event>;
@@ -897,7 +912,8 @@ export interface PayRouter extends BaseContract {
     [
       _routeIds: BigNumberish[],
       _bonds: BigNumberish[],
-      _sourceAmt: BigNumberish
+      _sourceAmt: BigNumberish,
+      _valueLockDuration: BigNumberish
     ],
     [void],
     "payable"
@@ -932,7 +948,7 @@ export interface PayRouter extends BaseContract {
   >;
 
   markRequestAsPaid: TypedContractMethod<
-    [requestId: BigNumberish],
+    [requestId: BigNumberish, routeId: BigNumberish],
     [void],
     "nonpayable"
   >;
@@ -1069,6 +1085,18 @@ export interface PayRouter extends BaseContract {
     "nonpayable"
   >;
 
+  userHasOrg: TypedContractMethod<
+    [user: AddressLike, name: string],
+    [boolean],
+    "view"
+  >;
+
+  userOrgs: TypedContractMethod<
+    [arg0: AddressLike, arg1: string],
+    [boolean],
+    "view"
+  >;
+
   withdrawBond: TypedContractMethod<
     [routeId: BigNumberish, amount: BigNumberish],
     [void],
@@ -1123,7 +1151,8 @@ export interface PayRouter extends BaseContract {
     [
       _routeIds: BigNumberish[],
       _bonds: BigNumberish[],
-      _sourceAmt: BigNumberish
+      _sourceAmt: BigNumberish,
+      _valueLockDuration: BigNumberish
     ],
     [void],
     "payable"
@@ -1160,7 +1189,11 @@ export interface PayRouter extends BaseContract {
   ): TypedContractMethod<[requestId: BigNumberish], [void], "nonpayable">;
   getFunction(
     nameOrSignature: "markRequestAsPaid"
-  ): TypedContractMethod<[requestId: BigNumberish], [void], "nonpayable">;
+  ): TypedContractMethod<
+    [requestId: BigNumberish, routeId: BigNumberish],
+    [void],
+    "nonpayable"
+  >;
   getFunction(
     nameOrSignature: "numOrgs"
   ): TypedContractMethod<[], [bigint], "view">;
@@ -1290,6 +1323,12 @@ export interface PayRouter extends BaseContract {
     [void],
     "nonpayable"
   >;
+  getFunction(
+    nameOrSignature: "userHasOrg"
+  ): TypedContractMethod<[user: AddressLike, name: string], [boolean], "view">;
+  getFunction(
+    nameOrSignature: "userOrgs"
+  ): TypedContractMethod<[arg0: AddressLike, arg1: string], [boolean], "view">;
   getFunction(
     nameOrSignature: "withdrawBond"
   ): TypedContractMethod<
@@ -1570,7 +1609,7 @@ export interface PayRouter extends BaseContract {
       RequestClosedEvent.OutputObject
     >;
 
-    "RequestCreated(address,uint256,uint256[],uint256[],uint256)": TypedContractEvent<
+    "RequestCreated(address,uint256,uint256[],uint256[],uint256,uint256)": TypedContractEvent<
       RequestCreatedEvent.InputTuple,
       RequestCreatedEvent.OutputTuple,
       RequestCreatedEvent.OutputObject

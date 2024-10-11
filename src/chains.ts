@@ -63,6 +63,22 @@ const Chains: ChainInfo[] = [
 			logoURI:
 				'https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2/logo.png',
 		}),
+		bondToken: {
+			address:
+				process.env.ETHEREUM_BOND_TOKEN_ADDRESS ??
+				process.env.NEXT_PUBLIC_ETHEREUM_BOND_TOKEN_ADDRESS ??
+				import.meta.env.VITE_ETHEREUM_BOND_TOKEN_ADDRESS,
+			decimals: parseInt(
+				process.env.ETHEREUM_BOND_TOKEN_DECIMALS ??
+					process.env.NEXT_PUBLIC_ETHEREUM_BOND_TOKEN_DECIMALS ??
+					import.meta.env.VITE_ETHEREUM_BOND_TOKEN_DECIMALS ??
+					'18',
+			),
+			symbol:
+				process.env.ETHEREUM_BOND_TOKEN_SYMBOL ??
+				process.env.NEXT_PUBLIC_ETHEREUM_BOND_TOKEN_SYMBOL ??
+				import.meta.env.VITE_ETHEREUM_BOND_TOKEN_SYMBOL,
+		},
 		contracts: {
 			core: {
 				address:
@@ -211,6 +227,22 @@ const Chains: ChainInfo[] = [
 			logoURI:
 				'https://assets-cdn.trustwallet.com/blockchains/polygon/assets/0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270/logo.png',
 		}),
+		bondToken: {
+			address:
+				process.env.POLYGON_BOND_TOKEN_ADDRESS ??
+				process.env.NEXT_PUBLIC_POLYGON_BOND_TOKEN_ADDRESS ??
+				import.meta.env.VITE_POLYGON_BOND_TOKEN_ADDRESS,
+			decimals: parseInt(
+				process.env.POLYGON_BOND_TOKEN_DECIMALS ??
+					process.env.NEXT_PUBLIC_POLYGON_BOND_TOKEN_DECIMALS ??
+					import.meta.env.VITE_POLYGON_BOND_TOKEN_DECIMALS ??
+					'18',
+			),
+			symbol:
+				process.env.POLYGON_BOND_TOKEN_SYMBOL ??
+				process.env.NEXT_PUBLIC_POLYGON_BOND_TOKEN_SYMBOL ??
+				import.meta.env.VITE_POLYGON_BOND_TOKEN_SYMBOL,
+		},
 	},
 	{
 		displayName: 'Optimism',
@@ -236,6 +268,22 @@ const Chains: ChainInfo[] = [
 			logoURI:
 				'https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2/logo.png',
 		}),
+		bondToken: {
+			address:
+				process.env.OPTIMISM_BOND_TOKEN_ADDRESS ??
+				process.env.NEXT_PUBLIC_OPTIMISM_BOND_TOKEN_ADDRESS ??
+				import.meta.env.VITE_OPTIMISM_BOND_TOKEN_ADDRESS,
+			decimals: parseInt(
+				process.env.OPTIMISM_BOND_TOKEN_DECIMALS ??
+					process.env.NEXT_PUBLIC_OPTIMISM_BOND_TOKEN_DECIMALS ??
+					import.meta.env.VITE_OPTIMISM_BOND_TOKEN_DECIMALS ??
+					'18',
+			),
+			symbol:
+				process.env.OPTIMISM_BOND_TOKEN_SYMBOL ??
+				process.env.NEXT_PUBLIC_OPTIMISM_BOND_TOKEN_SYMBOL ??
+				import.meta.env.VITE_OPTIMISM_BOND_TOKEN_SYMBOL,
+		},
 	},
 	{
 		displayName: 'BNB Chain',
@@ -262,6 +310,22 @@ const Chains: ChainInfo[] = [
 			logoURI:
 				'https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c/logo.png',
 		}),
+		bondToken: {
+			address:
+				process.env.BINANCE_BOND_TOKEN_ADDRESS ??
+				process.env.NEXT_PUBLIC_BINANCE_BOND_TOKEN_ADDRESS ??
+				import.meta.env.VITE_BINANCE_BOND_TOKEN_ADDRESS,
+			decimals: parseInt(
+				process.env.BINANCE_BOND_TOKEN_DECIMALS ??
+					process.env.NEXT_PUBLIC_BINANCE_BOND_TOKEN_DECIMALS ??
+					import.meta.env.VITE_BINANCE_BOND_TOKEN_DECIMALS ??
+					'18',
+			),
+			symbol:
+				process.env.BINANCE_BOND_TOKEN_SYMBOL ??
+				process.env.NEXT_PUBLIC_BINANCE_BOND_TOKEN_SYMBOL ??
+				import.meta.env.VITE_BINANCE_BOND_TOKEN_SYMBOL,
+		},
 	},
 	{
 		displayName: 'Base',
@@ -287,6 +351,22 @@ const Chains: ChainInfo[] = [
 			logoURI:
 				'https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2/logo.png',
 		}),
+		bondToken: {
+			address:
+				process.env.BASE_BOND_TOKEN_ADDRESS ??
+				process.env.NEXT_PUBLIC_BASE_BOND_TOKEN_ADDRESS ??
+				import.meta.env.VITE_BASE_BOND_TOKEN_ADDRESS,
+			decimals: parseInt(
+				process.env.BASE_BOND_TOKEN_DECIMALS ??
+					process.env.NEXT_PUBLIC_BASE_BOND_TOKEN_DECIMALS ??
+					import.meta.env.VITE_BASE_BOND_TOKEN_DECIMALS ??
+					'18',
+			),
+			symbol:
+				process.env.BASE_BOND_TOKEN_SYMBOL ??
+				process.env.NEXT_PUBLIC_BASE_BOND_TOKEN_SYMBOL ??
+				import.meta.env.VITE_BASE_BOND_TOKEN_SYMBOL,
+		},
 	},
 	{
 		displayName: 'Blast',
@@ -312,6 +392,22 @@ const Chains: ChainInfo[] = [
 			logoURI:
 				'https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2/logo.png',
 		}),
+		bondToken: {
+			address:
+				process.env.BLAST_BOND_TOKEN_ADDRESS ??
+				process.env.NEXT_PUBLIC_BLAST_BOND_TOKEN_ADDRESS ??
+				import.meta.env.VITE_BLAST_BOND_TOKEN_ADDRESS,
+			decimals: parseInt(
+				process.env.BLAST_BOND_TOKEN_DECIMALS ??
+					process.env.NEXT_PUBLIC_BLAST_BOND_TOKEN_DECIMALS ??
+					import.meta.env.VITE_BLAST_BOND_TOKEN_DECIMALS ??
+					'18',
+			),
+			symbol:
+				process.env.BLAST_BOND_TOKEN_SYMBOL ??
+				process.env.NEXT_PUBLIC_BLAST_BOND_TOKEN_SYMBOL ??
+				import.meta.env.VITE_BLAST_BOND_TOKEN_SYMBOL,
+		},
 	},
 	{
 		displayName: 'Arbitrum One',
@@ -338,6 +434,22 @@ const Chains: ChainInfo[] = [
 			logoURI:
 				'https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2/logo.png',
 		}),
+		bondToken: {
+			address:
+				process.env.ARBITRUM_BOND_TOKEN_ADDRESS ??
+				process.env.NEXT_PUBLIC_ARBITRUM_BOND_TOKEN_ADDRESS ??
+				import.meta.env.VITE_ARBITRUM_BOND_TOKEN_ADDRESS,
+			decimals: parseInt(
+				process.env.ARBITRUM_BOND_TOKEN_DECIMALS ??
+					process.env.NEXT_PUBLIC_ARBITRUM_BOND_TOKEN_DECIMALS ??
+					import.meta.env.VITE_ARBITRUM_BOND_TOKEN_DECIMALS ??
+					'18',
+			),
+			symbol:
+				process.env.ARBITRUM_BOND_TOKEN_SYMBOL ??
+				process.env.NEXT_PUBLIC_ARBITRUM_BOND_TOKEN_SYMBOL ??
+				import.meta.env.VITE_ARBITRUM_BOND_TOKEN_SYMBOL,
+		},
 		contracts: {
 			core: {
 				address:
@@ -480,6 +592,22 @@ const Chains: ChainInfo[] = [
 			logoURI:
 				'https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2/logo.png',
 		}),
+		bondToken: {
+			address:
+				process.env.ARBITRUM_SEPOLIA_BOND_TOKEN_ADDRESS ??
+				process.env.NEXT_PUBLIC_ARBITRUM_SEPOLIA_BOND_TOKEN_ADDRESS ??
+				import.meta.env.VITE_ARBITRUM_SEPOLIA_BOND_TOKEN_ADDRESS,
+			decimals: parseInt(
+				process.env.ARBITRUM_SEPOLIA_BOND_TOKEN_DECIMALS ??
+					process.env.NEXT_PUBLIC_ARBITRUM_SEPOLIA_BOND_TOKEN_DECIMALS ??
+					import.meta.env.VITE_ARBITRUM_SEPOLIA_BOND_TOKEN_DECIMALS ??
+					'18',
+			),
+			symbol:
+				process.env.ARBITRUM_SEPOLIA_BOND_TOKEN_SYMBOL ??
+				process.env.NEXT_PUBLIC_ARBITRUM_SEPOLIA_BOND_TOKEN_SYMBOL ??
+				import.meta.env.VITE_ARBITRUM_SEPOLIA_BOND_TOKEN_SYMBOL,
+		},
 		contracts: {
 			core: {
 				address:
@@ -616,6 +744,22 @@ const Chains: ChainInfo[] = [
 			logoURI:
 				'https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2/logo.png',
 		}),
+		bondToken: {
+			address:
+				process.env.SEPOLIA_BOND_TOKEN_ADDRESS ??
+				process.env.NEXT_PUBLIC_SEPOLIA_BOND_TOKEN_ADDRESS ??
+				import.meta.env.VITE_SEPOLIA_BOND_TOKEN_ADDRESS,
+			decimals: parseInt(
+				process.env.SEPOLIA_BOND_TOKEN_DECIMALS ??
+					process.env.NEXT_PUBLIC_SEPOLIA_BOND_TOKEN_DECIMALS ??
+					import.meta.env.VITE_SEPOLIA_BOND_TOKEN_DECIMALS ??
+					'18',
+			),
+			symbol:
+				process.env.SEPOLIA_BOND_TOKEN_SYMBOL ??
+				process.env.NEXT_PUBLIC_SEPOLIA_BOND_TOKEN_SYMBOL ??
+				import.meta.env.VITE_SEPOLIA_BOND_TOKEN_SYMBOL,
+		},
 		contracts: {
 			core: {
 				address:
@@ -755,6 +899,22 @@ const Chains: ChainInfo[] = [
 			logoURI:
 				'https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2/logo.png',
 		}),
+		bondToken: {
+			address:
+				process.env.LOCALHOST_BOND_TOKEN_ADDRESS ??
+				process.env.NEXT_PUBLIC_LOCALHOST_BOND_TOKEN_ADDRESS ??
+				import.meta.env.VITE_LOCALHOST_BOND_TOKEN_ADDRESS,
+			decimals: parseInt(
+				process.env.LOCALHOST_BOND_TOKEN_DECIMALS ??
+					process.env.NEXT_PUBLIC_LOCALHOST_BOND_TOKEN_DECIMALS ??
+					import.meta.env.VITE_LOCALHOST_BOND_TOKEN_DECIMALS ??
+					'18',
+			),
+			symbol:
+				process.env.LOCALHOST_BOND_TOKEN_SYMBOL ??
+				process.env.NEXT_PUBLIC_LOCALHOST_BOND_TOKEN_SYMBOL ??
+				import.meta.env.VITE_LOCALHOST_BOND_TOKEN_SYMBOL,
+		},
 		contracts: {
 			core: {
 				address:

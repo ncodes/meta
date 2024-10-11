@@ -28,5 +28,10 @@ export interface ChainInfo {
 	blockExplorer: string;
 	logoPath: any;
 	wrappedTokenInfo: TokenInfo;
+	bondToken: {
+		address: string;
+		decimals: number;
+		symbol: string;
+	};
 	contracts?: Contracts;
 }

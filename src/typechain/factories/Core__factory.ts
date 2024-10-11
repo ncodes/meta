@@ -48,37 +48,6 @@ const _abi = [
       {
         indexed: false,
         internalType: "address",
-        name: "manager",
-        type: "address",
-      },
-      {
-        indexed: false,
-        internalType: "address",
-        name: "finalizer",
-        type: "address",
-      },
-      {
-        indexed: false,
-        internalType: "uint256",
-        name: "orderId",
-        type: "uint256",
-      },
-      {
-        indexed: false,
-        internalType: "uint256",
-        name: "action",
-        type: "uint256",
-      },
-    ],
-    name: "FinalizedByManagerSig",
-    type: "event",
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: false,
-        internalType: "address",
         name: "marketId",
         type: "address",
       },
@@ -602,70 +571,8 @@ const _abi = [
         name: "amount",
         type: "uint256",
       },
-      {
-        indexed: false,
-        internalType: "address",
-        name: "convAsset",
-        type: "address",
-      },
-      {
-        indexed: false,
-        internalType: "uint256",
-        name: "convAmount",
-        type: "uint256",
-      },
     ],
     name: "TransferredToFeePool",
-    type: "event",
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: false,
-        internalType: "address",
-        name: "swapRouter",
-        type: "address",
-      },
-      {
-        indexed: false,
-        internalType: "address",
-        name: "ethErc20Addr",
-        type: "address",
-      },
-      {
-        indexed: false,
-        internalType: "uint256",
-        name: "poolFee",
-        type: "uint256",
-      },
-    ],
-    name: "UpdatedAMMInfo",
-    type: "event",
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: false,
-        internalType: "address",
-        name: "input",
-        type: "address",
-      },
-      {
-        indexed: false,
-        internalType: "address",
-        name: "output",
-        type: "address",
-      },
-      {
-        indexed: false,
-        internalType: "uint256",
-        name: "poolFee",
-        type: "uint256",
-      },
-    ],
-    name: "UpdatedAMMPoolInfo",
     type: "event",
   },
   {
@@ -1185,29 +1092,6 @@ const _abi = [
       },
     ],
     name: "cancelOrderByDispute",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
-        internalType: "uint256",
-        name: "id",
-        type: "uint256",
-      },
-      {
-        internalType: "uint256",
-        name: "expireAt",
-        type: "uint256",
-      },
-      {
-        internalType: "bytes",
-        name: "signature",
-        type: "bytes",
-      },
-    ],
-    name: "cancelOrderByManagerSig",
     outputs: [],
     stateMutability: "nonpayable",
     type: "function",
@@ -2019,29 +1903,6 @@ const _abi = [
   {
     inputs: [
       {
-        internalType: "uint256",
-        name: "id",
-        type: "uint256",
-      },
-      {
-        internalType: "uint256",
-        name: "expireAt",
-        type: "uint256",
-      },
-      {
-        internalType: "bytes",
-        name: "signature",
-        type: "bytes",
-      },
-    ],
-    name: "markOrderAsPaidByManagerSig",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
         internalType: "address",
         name: "",
         type: "address",
@@ -2181,77 +2042,8 @@ const _abi = [
     type: "function",
   },
   {
-    inputs: [
-      {
-        internalType: "uint256",
-        name: "id",
-        type: "uint256",
-      },
-      {
-        internalType: "uint256",
-        name: "expireAt",
-        type: "uint256",
-      },
-      {
-        internalType: "bytes",
-        name: "signature",
-        type: "bytes",
-      },
-    ],
-    name: "releaseOrderByManagerSig",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
     inputs: [],
     name: "renounceOwnership",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
-        internalType: "address",
-        name: "swapRouter",
-        type: "address",
-      },
-      {
-        internalType: "address",
-        name: "ethErc20Addr",
-        type: "address",
-      },
-      {
-        internalType: "uint256",
-        name: "poolFee",
-        type: "uint256",
-      },
-    ],
-    name: "setAmmInfo",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
-        internalType: "address",
-        name: "input",
-        type: "address",
-      },
-      {
-        internalType: "address",
-        name: "out",
-        type: "address",
-      },
-      {
-        internalType: "uint256",
-        name: "poolFee",
-        type: "uint256",
-      },
-    ],
-    name: "setAmmPoolInfo",
     outputs: [],
     stateMutability: "nonpayable",
     type: "function",
@@ -2635,11 +2427,6 @@ const _abi = [
         name: "inventor",
         type: "address",
       },
-      {
-        internalType: "address",
-        name: "ammSwapRouter",
-        type: "address",
-      },
     ],
     stateMutability: "view",
     type: "function",
@@ -2649,25 +2436,8 @@ const _abi = [
     name: "state2",
     outputs: [
       {
-        components: [
-          {
-            internalType: "uint256",
-            name: "ammEthPoolFee",
-            type: "uint256",
-          },
-        ],
-        internalType: "struct StructsLib.UintSlotState2",
-        name: "ints",
-        type: "tuple",
-      },
-      {
         internalType: "address",
         name: "disputeManager",
-        type: "address",
-      },
-      {
-        internalType: "address",
-        name: "ammEth",
         type: "address",
       },
       {

@@ -89,12 +89,6 @@ export declare namespace StructsLib {
     maxOpenDisputes: bigint;
   };
 
-  export type UintSlotState2Struct = { ammEthPoolFee: BigNumberish };
-
-  export type UintSlotState2StructOutput = [ammEthPoolFee: bigint] & {
-    ammEthPoolFee: bigint;
-  };
-
   export type SwapQuoteForBaseParamsStruct = {
     marketId: AddressLike;
     provider: AddressLike;
@@ -466,7 +460,6 @@ export interface CoreInterface extends Interface {
       | "cancelOffer"
       | "cancelOrder"
       | "cancelOrderByDispute"
-      | "cancelOrderByManagerSig"
       | "computeSwapFee"
       | "configureFeePool"
       | "createOffer"
@@ -485,17 +478,13 @@ export interface CoreInterface extends Interface {
       | "isVerified"
       | "markAsDisputed"
       | "markOrderAsPaid"
-      | "markOrderAsPaidByManagerSig"
       | "onERC1155BatchReceived"
       | "onERC1155Received"
       | "operatorBalanceOf"
       | "owner"
       | "releaseOrder"
       | "releaseOrderByDispute"
-      | "releaseOrderByManagerSig"
       | "renounceOwnership"
-      | "setAmmInfo"
-      | "setAmmPoolInfo"
       | "setAssetRegistry"
       | "setBadgeMgr"
       | "setDisputeManager"
@@ -535,7 +524,6 @@ export interface CoreInterface extends Interface {
 
   getEvent(
     nameOrSignatureOrTopic:
-      | "FinalizedByManagerSig"
       | "NewOffer"
       | "OfferAccepted"
       | "OfferCancelled"
@@ -553,8 +541,6 @@ export interface CoreInterface extends Interface {
       | "TransferInventorBalance"
       | "TransferOperatorBalance"
       | "TransferredToFeePool"
-      | "UpdatedAMMInfo"
-      | "UpdatedAMMPoolInfo"
       | "UpdatedAssetRegistry"
       | "UpdatedBadge"
       | "UpdatedDisputeManager"
@@ -596,10 +582,6 @@ export interface CoreInterface extends Interface {
   encodeFunctionData(
     functionFragment: "cancelOrderByDispute",
     values: [BigNumberish]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "cancelOrderByManagerSig",
-    values: [BigNumberish, BigNumberish, BytesLike]
   ): string;
   encodeFunctionData(
     functionFragment: "computeSwapFee",
@@ -678,10 +660,6 @@ export interface CoreInterface extends Interface {
     values: [BigNumberish]
   ): string;
   encodeFunctionData(
-    functionFragment: "markOrderAsPaidByManagerSig",
-    values: [BigNumberish, BigNumberish, BytesLike]
-  ): string;
-  encodeFunctionData(
     functionFragment: "onERC1155BatchReceived",
     values: [
       AddressLike,
@@ -709,20 +687,8 @@ export interface CoreInterface extends Interface {
     values: [BigNumberish]
   ): string;
   encodeFunctionData(
-    functionFragment: "releaseOrderByManagerSig",
-    values: [BigNumberish, BigNumberish, BytesLike]
-  ): string;
-  encodeFunctionData(
     functionFragment: "renounceOwnership",
     values?: undefined
-  ): string;
-  encodeFunctionData(
-    functionFragment: "setAmmInfo",
-    values: [AddressLike, AddressLike, BigNumberish]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "setAmmPoolInfo",
-    values: [AddressLike, AddressLike, BigNumberish]
   ): string;
   encodeFunctionData(
     functionFragment: "setAssetRegistry",
@@ -893,10 +859,6 @@ export interface CoreInterface extends Interface {
     data: BytesLike
   ): Result;
   decodeFunctionResult(
-    functionFragment: "cancelOrderByManagerSig",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
     functionFragment: "computeSwapFee",
     data: BytesLike
   ): Result;
@@ -951,10 +913,6 @@ export interface CoreInterface extends Interface {
     data: BytesLike
   ): Result;
   decodeFunctionResult(
-    functionFragment: "markOrderAsPaidByManagerSig",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
     functionFragment: "onERC1155BatchReceived",
     data: BytesLike
   ): Result;
@@ -976,16 +934,7 @@ export interface CoreInterface extends Interface {
     data: BytesLike
   ): Result;
   decodeFunctionResult(
-    functionFragment: "releaseOrderByManagerSig",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
     functionFragment: "renounceOwnership",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(functionFragment: "setAmmInfo", data: BytesLike): Result;
-  decodeFunctionResult(
-    functionFragment: "setAmmPoolInfo",
     data: BytesLike
   ): Result;
   decodeFunctionResult(
@@ -1119,31 +1068,6 @@ export interface CoreInterface extends Interface {
     functionFragment: "withdrawOperatorBalance",
     data: BytesLike
   ): Result;
-}
-
-export namespace FinalizedByManagerSigEvent {
-  export type InputTuple = [
-    manager: AddressLike,
-    finalizer: AddressLike,
-    orderId: BigNumberish,
-    action: BigNumberish
-  ];
-  export type OutputTuple = [
-    manager: string,
-    finalizer: string,
-    orderId: bigint,
-    action: bigint
-  ];
-  export interface OutputObject {
-    manager: string;
-    finalizer: string;
-    orderId: bigint;
-    action: bigint;
-  }
-  export type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>;
-  export type Filter = TypedDeferredTopicFilter<Event>;
-  export type Log = TypedEventLog<Event>;
-  export type LogDescription = TypedLogDescription<Event>;
 }
 
 export namespace NewOfferEvent {
@@ -1524,63 +1448,11 @@ export namespace TransferOperatorBalanceEvent {
 }
 
 export namespace TransferredToFeePoolEvent {
-  export type InputTuple = [
-    token: AddressLike,
-    amount: BigNumberish,
-    convAsset: AddressLike,
-    convAmount: BigNumberish
-  ];
-  export type OutputTuple = [
-    token: string,
-    amount: bigint,
-    convAsset: string,
-    convAmount: bigint
-  ];
+  export type InputTuple = [token: AddressLike, amount: BigNumberish];
+  export type OutputTuple = [token: string, amount: bigint];
   export interface OutputObject {
     token: string;
     amount: bigint;
-    convAsset: string;
-    convAmount: bigint;
-  }
-  export type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>;
-  export type Filter = TypedDeferredTopicFilter<Event>;
-  export type Log = TypedEventLog<Event>;
-  export type LogDescription = TypedLogDescription<Event>;
-}
-
-export namespace UpdatedAMMInfoEvent {
-  export type InputTuple = [
-    swapRouter: AddressLike,
-    ethErc20Addr: AddressLike,
-    poolFee: BigNumberish
-  ];
-  export type OutputTuple = [
-    swapRouter: string,
-    ethErc20Addr: string,
-    poolFee: bigint
-  ];
-  export interface OutputObject {
-    swapRouter: string;
-    ethErc20Addr: string;
-    poolFee: bigint;
-  }
-  export type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>;
-  export type Filter = TypedDeferredTopicFilter<Event>;
-  export type Log = TypedEventLog<Event>;
-  export type LogDescription = TypedLogDescription<Event>;
-}
-
-export namespace UpdatedAMMPoolInfoEvent {
-  export type InputTuple = [
-    input: AddressLike,
-    output: AddressLike,
-    poolFee: BigNumberish
-  ];
-  export type OutputTuple = [input: string, output: string, poolFee: bigint];
-  export interface OutputObject {
-    input: string;
-    output: string;
-    poolFee: bigint;
   }
   export type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>;
   export type Filter = TypedDeferredTopicFilter<Event>;
@@ -2007,12 +1879,6 @@ export interface Core extends BaseContract {
     "nonpayable"
   >;
 
-  cancelOrderByManagerSig: TypedContractMethod<
-    [id: BigNumberish, expireAt: BigNumberish, signature: BytesLike],
-    [void],
-    "nonpayable"
-  >;
-
   computeSwapFee: TypedContractMethod<
     [
       mid: AddressLike,
@@ -2112,12 +1978,6 @@ export interface Core extends BaseContract {
     "nonpayable"
   >;
 
-  markOrderAsPaidByManagerSig: TypedContractMethod<
-    [id: BigNumberish, expireAt: BigNumberish, signature: BytesLike],
-    [void],
-    "nonpayable"
-  >;
-
   onERC1155BatchReceived: TypedContractMethod<
     [
       arg0: AddressLike,
@@ -2158,25 +2018,7 @@ export interface Core extends BaseContract {
     "nonpayable"
   >;
 
-  releaseOrderByManagerSig: TypedContractMethod<
-    [id: BigNumberish, expireAt: BigNumberish, signature: BytesLike],
-    [void],
-    "nonpayable"
-  >;
-
   renounceOwnership: TypedContractMethod<[], [void], "nonpayable">;
-
-  setAmmInfo: TypedContractMethod<
-    [swapRouter: AddressLike, ethErc20Addr: AddressLike, poolFee: BigNumberish],
-    [void],
-    "nonpayable"
-  >;
-
-  setAmmPoolInfo: TypedContractMethod<
-    [input: AddressLike, out: AddressLike, poolFee: BigNumberish],
-    [void],
-    "nonpayable"
-  >;
 
   setAssetRegistry: TypedContractMethod<
     [addr: AddressLike],
@@ -2288,7 +2130,6 @@ export interface Core extends BaseContract {
         bigint,
         bigint,
         bigint,
-        string,
         string
       ] & {
         ints: StructsLib.IntSlotStateStructOutput;
@@ -2297,7 +2138,6 @@ export interface Core extends BaseContract {
         numOrders: bigint;
         feePoolTxInterval: bigint;
         inventor: string;
-        ammSwapRouter: string;
       }
     ],
     "view"
@@ -2307,8 +2147,6 @@ export interface Core extends BaseContract {
     [],
     [
       [
-        StructsLib.UintSlotState2StructOutput,
-        string,
         string,
         string,
         string,
@@ -2320,9 +2158,7 @@ export interface Core extends BaseContract {
         string,
         string
       ] & {
-        ints: StructsLib.UintSlotState2StructOutput;
         disputeManager: string;
-        ammEth: string;
         provReg: string;
         assetReg: string;
         token: string;
@@ -2466,13 +2302,6 @@ export interface Core extends BaseContract {
     nameOrSignature: "cancelOrderByDispute"
   ): TypedContractMethod<[id: BigNumberish], [void], "nonpayable">;
   getFunction(
-    nameOrSignature: "cancelOrderByManagerSig"
-  ): TypedContractMethod<
-    [id: BigNumberish, expireAt: BigNumberish, signature: BytesLike],
-    [void],
-    "nonpayable"
-  >;
-  getFunction(
     nameOrSignature: "computeSwapFee"
   ): TypedContractMethod<
     [
@@ -2578,13 +2407,6 @@ export interface Core extends BaseContract {
     nameOrSignature: "markOrderAsPaid"
   ): TypedContractMethod<[id: BigNumberish], [void], "nonpayable">;
   getFunction(
-    nameOrSignature: "markOrderAsPaidByManagerSig"
-  ): TypedContractMethod<
-    [id: BigNumberish, expireAt: BigNumberish, signature: BytesLike],
-    [void],
-    "nonpayable"
-  >;
-  getFunction(
     nameOrSignature: "onERC1155BatchReceived"
   ): TypedContractMethod<
     [
@@ -2627,29 +2449,8 @@ export interface Core extends BaseContract {
     nameOrSignature: "releaseOrderByDispute"
   ): TypedContractMethod<[id: BigNumberish], [void], "nonpayable">;
   getFunction(
-    nameOrSignature: "releaseOrderByManagerSig"
-  ): TypedContractMethod<
-    [id: BigNumberish, expireAt: BigNumberish, signature: BytesLike],
-    [void],
-    "nonpayable"
-  >;
-  getFunction(
     nameOrSignature: "renounceOwnership"
   ): TypedContractMethod<[], [void], "nonpayable">;
-  getFunction(
-    nameOrSignature: "setAmmInfo"
-  ): TypedContractMethod<
-    [swapRouter: AddressLike, ethErc20Addr: AddressLike, poolFee: BigNumberish],
-    [void],
-    "nonpayable"
-  >;
-  getFunction(
-    nameOrSignature: "setAmmPoolInfo"
-  ): TypedContractMethod<
-    [input: AddressLike, out: AddressLike, poolFee: BigNumberish],
-    [void],
-    "nonpayable"
-  >;
   getFunction(
     nameOrSignature: "setAssetRegistry"
   ): TypedContractMethod<[addr: AddressLike], [void], "nonpayable">;
@@ -2745,7 +2546,6 @@ export interface Core extends BaseContract {
         bigint,
         bigint,
         bigint,
-        string,
         string
       ] & {
         ints: StructsLib.IntSlotStateStructOutput;
@@ -2754,7 +2554,6 @@ export interface Core extends BaseContract {
         numOrders: bigint;
         feePoolTxInterval: bigint;
         inventor: string;
-        ammSwapRouter: string;
       }
     ],
     "view"
@@ -2765,8 +2564,6 @@ export interface Core extends BaseContract {
     [],
     [
       [
-        StructsLib.UintSlotState2StructOutput,
-        string,
         string,
         string,
         string,
@@ -2778,9 +2575,7 @@ export interface Core extends BaseContract {
         string,
         string
       ] & {
-        ints: StructsLib.UintSlotState2StructOutput;
         disputeManager: string;
-        ammEth: string;
         provReg: string;
         assetReg: string;
         token: string;
@@ -2882,13 +2677,6 @@ export interface Core extends BaseContract {
     nameOrSignature: "withdrawOperatorBalance"
   ): TypedContractMethod<[_token: AddressLike], [void], "nonpayable">;
 
-  getEvent(
-    key: "FinalizedByManagerSig"
-  ): TypedContractEvent<
-    FinalizedByManagerSigEvent.InputTuple,
-    FinalizedByManagerSigEvent.OutputTuple,
-    FinalizedByManagerSigEvent.OutputObject
-  >;
   getEvent(
     key: "NewOffer"
   ): TypedContractEvent<
@@ -3007,20 +2795,6 @@ export interface Core extends BaseContract {
     TransferredToFeePoolEvent.InputTuple,
     TransferredToFeePoolEvent.OutputTuple,
     TransferredToFeePoolEvent.OutputObject
-  >;
-  getEvent(
-    key: "UpdatedAMMInfo"
-  ): TypedContractEvent<
-    UpdatedAMMInfoEvent.InputTuple,
-    UpdatedAMMInfoEvent.OutputTuple,
-    UpdatedAMMInfoEvent.OutputObject
-  >;
-  getEvent(
-    key: "UpdatedAMMPoolInfo"
-  ): TypedContractEvent<
-    UpdatedAMMPoolInfoEvent.InputTuple,
-    UpdatedAMMPoolInfoEvent.OutputTuple,
-    UpdatedAMMPoolInfoEvent.OutputObject
   >;
   getEvent(
     key: "UpdatedAssetRegistry"
@@ -3164,17 +2938,6 @@ export interface Core extends BaseContract {
   >;
 
   filters: {
-    "FinalizedByManagerSig(address,address,uint256,uint256)": TypedContractEvent<
-      FinalizedByManagerSigEvent.InputTuple,
-      FinalizedByManagerSigEvent.OutputTuple,
-      FinalizedByManagerSigEvent.OutputObject
-    >;
-    FinalizedByManagerSig: TypedContractEvent<
-      FinalizedByManagerSigEvent.InputTuple,
-      FinalizedByManagerSigEvent.OutputTuple,
-      FinalizedByManagerSigEvent.OutputObject
-    >;
-
     "NewOffer(address,address,uint256,address,uint256,uint256,uint256,uint256[],uint256)": TypedContractEvent<
       NewOfferEvent.InputTuple,
       NewOfferEvent.OutputTuple,
@@ -3351,7 +3114,7 @@ export interface Core extends BaseContract {
       TransferOperatorBalanceEvent.OutputObject
     >;
 
-    "TransferredToFeePool(address,uint256,address,uint256)": TypedContractEvent<
+    "TransferredToFeePool(address,uint256)": TypedContractEvent<
       TransferredToFeePoolEvent.InputTuple,
       TransferredToFeePoolEvent.OutputTuple,
       TransferredToFeePoolEvent.OutputObject
@@ -3360,28 +3123,6 @@ export interface Core extends BaseContract {
       TransferredToFeePoolEvent.InputTuple,
       TransferredToFeePoolEvent.OutputTuple,
       TransferredToFeePoolEvent.OutputObject
-    >;
-
-    "UpdatedAMMInfo(address,address,uint256)": TypedContractEvent<
-      UpdatedAMMInfoEvent.InputTuple,
-      UpdatedAMMInfoEvent.OutputTuple,
-      UpdatedAMMInfoEvent.OutputObject
-    >;
-    UpdatedAMMInfo: TypedContractEvent<
-      UpdatedAMMInfoEvent.InputTuple,
-      UpdatedAMMInfoEvent.OutputTuple,
-      UpdatedAMMInfoEvent.OutputObject
-    >;
-
-    "UpdatedAMMPoolInfo(address,address,uint256)": TypedContractEvent<
-      UpdatedAMMPoolInfoEvent.InputTuple,
-      UpdatedAMMPoolInfoEvent.OutputTuple,
-      UpdatedAMMPoolInfoEvent.OutputObject
-    >;
-    UpdatedAMMPoolInfo: TypedContractEvent<
-      UpdatedAMMPoolInfoEvent.InputTuple,
-      UpdatedAMMPoolInfoEvent.OutputTuple,
-      UpdatedAMMPoolInfoEvent.OutputObject
     >;
 
     "UpdatedAssetRegistry(address)": TypedContractEvent<

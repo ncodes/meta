@@ -252,6 +252,12 @@ const _abi = [
         name: "sourceAmt",
         type: "uint256",
       },
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "valueLockDuration",
+        type: "uint256",
+      },
     ],
     name: "RequestCreated",
     type: "event",
@@ -630,6 +636,11 @@ const _abi = [
         name: "_sourceAmt",
         type: "uint256",
       },
+      {
+        internalType: "uint256",
+        name: "_valueLockDuration",
+        type: "uint256",
+      },
     ],
     name: "createRequest",
     outputs: [],
@@ -861,6 +872,11 @@ const _abi = [
       {
         internalType: "uint256",
         name: "requestId",
+        type: "uint256",
+      },
+      {
+        internalType: "uint256",
+        name: "routeId",
         type: "uint256",
       },
     ],
@@ -1285,6 +1301,54 @@ const _abi = [
     name: "unapproveRequester",
     outputs: [],
     stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "user",
+        type: "address",
+      },
+      {
+        internalType: "string",
+        name: "name",
+        type: "string",
+      },
+    ],
+    name: "userHasOrg",
+    outputs: [
+      {
+        internalType: "bool",
+        name: "",
+        type: "bool",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "",
+        type: "address",
+      },
+      {
+        internalType: "string",
+        name: "",
+        type: "string",
+      },
+    ],
+    name: "userOrgs",
+    outputs: [
+      {
+        internalType: "bool",
+        name: "",
+        type: "bool",
+      },
+    ],
+    stateMutability: "view",
     type: "function",
   },
   {

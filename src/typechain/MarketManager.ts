@@ -68,13 +68,16 @@ export interface MarketManagerInterface extends Interface {
       | "addDelegate"
       | "afterSwap"
       | "beforeSwap"
+      | "cancelOrder"
       | "core"
       | "delegates"
+      | "markOrderAsPaid"
       | "onCancel"
       | "onPaid"
       | "onRelease"
       | "owner"
       | "payRouter"
+      | "releaseOrder"
       | "removeDelegate"
       | "renounceOwnership"
       | "requestInfo"
@@ -85,7 +88,6 @@ export interface MarketManagerInterface extends Interface {
       | "supportsInterface"
       | "transferOwnership"
       | "transferRequestBond"
-      | "transferRequestSource"
       | "withdrawRequesterFee"
   ): FunctionFragment;
 
@@ -94,6 +96,10 @@ export interface MarketManagerInterface extends Interface {
       | "CoreUpdated"
       | "OwnershipTransferred"
       | "PayRouterUpdated"
+      | "RequestCancelled"
+      | "RequestCreated"
+      | "RequestPaid"
+      | "RequestReleased"
       | "TransferredRequestBond"
       | "TransferredRequestSource"
       | "UpdatedDelegate"
@@ -111,10 +117,18 @@ export interface MarketManagerInterface extends Interface {
     functionFragment: "beforeSwap",
     values: [StructsLib.SwapQuoteForBaseParamsStruct]
   ): string;
+  encodeFunctionData(
+    functionFragment: "cancelOrder",
+    values: [BigNumberish]
+  ): string;
   encodeFunctionData(functionFragment: "core", values?: undefined): string;
   encodeFunctionData(
     functionFragment: "delegates",
     values: [AddressLike]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "markOrderAsPaid",
+    values: [BigNumberish]
   ): string;
   encodeFunctionData(
     functionFragment: "onCancel",
@@ -130,6 +144,10 @@ export interface MarketManagerInterface extends Interface {
   ): string;
   encodeFunctionData(functionFragment: "owner", values?: undefined): string;
   encodeFunctionData(functionFragment: "payRouter", values?: undefined): string;
+  encodeFunctionData(
+    functionFragment: "releaseOrder",
+    values: [BigNumberish]
+  ): string;
   encodeFunctionData(
     functionFragment: "removeDelegate",
     values: [AddressLike]
@@ -171,10 +189,6 @@ export interface MarketManagerInterface extends Interface {
     values: [BigNumberish, BigNumberish, BigNumberish, AddressLike]
   ): string;
   encodeFunctionData(
-    functionFragment: "transferRequestSource",
-    values: [BigNumberish, BigNumberish, AddressLike]
-  ): string;
-  encodeFunctionData(
     functionFragment: "withdrawRequesterFee",
     values: [AddressLike]
   ): string;
@@ -185,13 +199,25 @@ export interface MarketManagerInterface extends Interface {
   ): Result;
   decodeFunctionResult(functionFragment: "afterSwap", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "beforeSwap", data: BytesLike): Result;
+  decodeFunctionResult(
+    functionFragment: "cancelOrder",
+    data: BytesLike
+  ): Result;
   decodeFunctionResult(functionFragment: "core", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "delegates", data: BytesLike): Result;
+  decodeFunctionResult(
+    functionFragment: "markOrderAsPaid",
+    data: BytesLike
+  ): Result;
   decodeFunctionResult(functionFragment: "onCancel", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "onPaid", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "onRelease", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "owner", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "payRouter", data: BytesLike): Result;
+  decodeFunctionResult(
+    functionFragment: "releaseOrder",
+    data: BytesLike
+  ): Result;
   decodeFunctionResult(
     functionFragment: "removeDelegate",
     data: BytesLike
@@ -230,10 +256,6 @@ export interface MarketManagerInterface extends Interface {
     data: BytesLike
   ): Result;
   decodeFunctionResult(
-    functionFragment: "transferRequestSource",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
     functionFragment: "withdrawRequesterFee",
     data: BytesLike
   ): Result;
@@ -269,6 +291,58 @@ export namespace PayRouterUpdatedEvent {
   export type OutputTuple = [payRouter: string];
   export interface OutputObject {
     payRouter: string;
+  }
+  export type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>;
+  export type Filter = TypedDeferredTopicFilter<Event>;
+  export type Log = TypedEventLog<Event>;
+  export type LogDescription = TypedLogDescription<Event>;
+}
+
+export namespace RequestCancelledEvent {
+  export type InputTuple = [requestId: BigNumberish, orderId: BigNumberish];
+  export type OutputTuple = [requestId: bigint, orderId: bigint];
+  export interface OutputObject {
+    requestId: bigint;
+    orderId: bigint;
+  }
+  export type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>;
+  export type Filter = TypedDeferredTopicFilter<Event>;
+  export type Log = TypedEventLog<Event>;
+  export type LogDescription = TypedLogDescription<Event>;
+}
+
+export namespace RequestCreatedEvent {
+  export type InputTuple = [requestId: BigNumberish, orderId: BigNumberish];
+  export type OutputTuple = [requestId: bigint, orderId: bigint];
+  export interface OutputObject {
+    requestId: bigint;
+    orderId: bigint;
+  }
+  export type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>;
+  export type Filter = TypedDeferredTopicFilter<Event>;
+  export type Log = TypedEventLog<Event>;
+  export type LogDescription = TypedLogDescription<Event>;
+}
+
+export namespace RequestPaidEvent {
+  export type InputTuple = [requestId: BigNumberish, orderId: BigNumberish];
+  export type OutputTuple = [requestId: bigint, orderId: bigint];
+  export interface OutputObject {
+    requestId: bigint;
+    orderId: bigint;
+  }
+  export type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>;
+  export type Filter = TypedDeferredTopicFilter<Event>;
+  export type Log = TypedEventLog<Event>;
+  export type LogDescription = TypedLogDescription<Event>;
+}
+
+export namespace RequestReleasedEvent {
+  export type InputTuple = [requestId: BigNumberish, orderId: BigNumberish];
+  export type OutputTuple = [requestId: bigint, orderId: bigint];
+  export interface OutputObject {
+    requestId: bigint;
+    orderId: bigint;
   }
   export type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>;
   export type Filter = TypedDeferredTopicFilter<Event>;
@@ -403,9 +477,21 @@ export interface MarketManager extends BaseContract {
     "nonpayable"
   >;
 
+  cancelOrder: TypedContractMethod<
+    [orderId: BigNumberish],
+    [void],
+    "nonpayable"
+  >;
+
   core: TypedContractMethod<[], [string], "view">;
 
   delegates: TypedContractMethod<[arg0: AddressLike], [boolean], "view">;
+
+  markOrderAsPaid: TypedContractMethod<
+    [orderId: BigNumberish],
+    [void],
+    "nonpayable"
+  >;
 
   onCancel: TypedContractMethod<[orderId: BigNumberish], [void], "nonpayable">;
 
@@ -416,6 +502,12 @@ export interface MarketManager extends BaseContract {
   owner: TypedContractMethod<[], [string], "view">;
 
   payRouter: TypedContractMethod<[], [string], "view">;
+
+  releaseOrder: TypedContractMethod<
+    [orderId: BigNumberish],
+    [void],
+    "nonpayable"
+  >;
 
   removeDelegate: TypedContractMethod<
     [delegate: AddressLike],
@@ -480,12 +572,6 @@ export interface MarketManager extends BaseContract {
     "nonpayable"
   >;
 
-  transferRequestSource: TypedContractMethod<
-    [requestId: BigNumberish, amount: BigNumberish, to: AddressLike],
-    [void],
-    "nonpayable"
-  >;
-
   withdrawRequesterFee: TypedContractMethod<
     [beneficiary: AddressLike],
     [void],
@@ -514,11 +600,17 @@ export interface MarketManager extends BaseContract {
     "nonpayable"
   >;
   getFunction(
+    nameOrSignature: "cancelOrder"
+  ): TypedContractMethod<[orderId: BigNumberish], [void], "nonpayable">;
+  getFunction(
     nameOrSignature: "core"
   ): TypedContractMethod<[], [string], "view">;
   getFunction(
     nameOrSignature: "delegates"
   ): TypedContractMethod<[arg0: AddressLike], [boolean], "view">;
+  getFunction(
+    nameOrSignature: "markOrderAsPaid"
+  ): TypedContractMethod<[orderId: BigNumberish], [void], "nonpayable">;
   getFunction(
     nameOrSignature: "onCancel"
   ): TypedContractMethod<[orderId: BigNumberish], [void], "nonpayable">;
@@ -534,6 +626,9 @@ export interface MarketManager extends BaseContract {
   getFunction(
     nameOrSignature: "payRouter"
   ): TypedContractMethod<[], [string], "view">;
+  getFunction(
+    nameOrSignature: "releaseOrder"
+  ): TypedContractMethod<[orderId: BigNumberish], [void], "nonpayable">;
   getFunction(
     nameOrSignature: "removeDelegate"
   ): TypedContractMethod<[delegate: AddressLike], [void], "nonpayable">;
@@ -584,13 +679,6 @@ export interface MarketManager extends BaseContract {
     "nonpayable"
   >;
   getFunction(
-    nameOrSignature: "transferRequestSource"
-  ): TypedContractMethod<
-    [requestId: BigNumberish, amount: BigNumberish, to: AddressLike],
-    [void],
-    "nonpayable"
-  >;
-  getFunction(
     nameOrSignature: "withdrawRequesterFee"
   ): TypedContractMethod<[beneficiary: AddressLike], [void], "nonpayable">;
 
@@ -614,6 +702,34 @@ export interface MarketManager extends BaseContract {
     PayRouterUpdatedEvent.InputTuple,
     PayRouterUpdatedEvent.OutputTuple,
     PayRouterUpdatedEvent.OutputObject
+  >;
+  getEvent(
+    key: "RequestCancelled"
+  ): TypedContractEvent<
+    RequestCancelledEvent.InputTuple,
+    RequestCancelledEvent.OutputTuple,
+    RequestCancelledEvent.OutputObject
+  >;
+  getEvent(
+    key: "RequestCreated"
+  ): TypedContractEvent<
+    RequestCreatedEvent.InputTuple,
+    RequestCreatedEvent.OutputTuple,
+    RequestCreatedEvent.OutputObject
+  >;
+  getEvent(
+    key: "RequestPaid"
+  ): TypedContractEvent<
+    RequestPaidEvent.InputTuple,
+    RequestPaidEvent.OutputTuple,
+    RequestPaidEvent.OutputObject
+  >;
+  getEvent(
+    key: "RequestReleased"
+  ): TypedContractEvent<
+    RequestReleasedEvent.InputTuple,
+    RequestReleasedEvent.OutputTuple,
+    RequestReleasedEvent.OutputObject
   >;
   getEvent(
     key: "TransferredRequestBond"
@@ -669,6 +785,50 @@ export interface MarketManager extends BaseContract {
       PayRouterUpdatedEvent.InputTuple,
       PayRouterUpdatedEvent.OutputTuple,
       PayRouterUpdatedEvent.OutputObject
+    >;
+
+    "RequestCancelled(uint256,uint256)": TypedContractEvent<
+      RequestCancelledEvent.InputTuple,
+      RequestCancelledEvent.OutputTuple,
+      RequestCancelledEvent.OutputObject
+    >;
+    RequestCancelled: TypedContractEvent<
+      RequestCancelledEvent.InputTuple,
+      RequestCancelledEvent.OutputTuple,
+      RequestCancelledEvent.OutputObject
+    >;
+
+    "RequestCreated(uint256,uint256)": TypedContractEvent<
+      RequestCreatedEvent.InputTuple,
+      RequestCreatedEvent.OutputTuple,
+      RequestCreatedEvent.OutputObject
+    >;
+    RequestCreated: TypedContractEvent<
+      RequestCreatedEvent.InputTuple,
+      RequestCreatedEvent.OutputTuple,
+      RequestCreatedEvent.OutputObject
+    >;
+
+    "RequestPaid(uint256,uint256)": TypedContractEvent<
+      RequestPaidEvent.InputTuple,
+      RequestPaidEvent.OutputTuple,
+      RequestPaidEvent.OutputObject
+    >;
+    RequestPaid: TypedContractEvent<
+      RequestPaidEvent.InputTuple,
+      RequestPaidEvent.OutputTuple,
+      RequestPaidEvent.OutputObject
+    >;
+
+    "RequestReleased(uint256,uint256)": TypedContractEvent<
+      RequestReleasedEvent.InputTuple,
+      RequestReleasedEvent.OutputTuple,
+      RequestReleasedEvent.OutputObject
+    >;
+    RequestReleased: TypedContractEvent<
+      RequestReleasedEvent.InputTuple,
+      RequestReleasedEvent.OutputTuple,
+      RequestReleasedEvent.OutputObject
     >;
 
     "TransferredRequestBond(address,uint256,uint256,uint256,address)": TypedContractEvent<

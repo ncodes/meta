@@ -11,12 +11,12 @@ import Chains, {
 } from './chains';
 import { contractsParams, getContractsParams } from './contracts_params';
 import { KnownMediatorPools, MediatorPool, MediatorPools } from './mediator_pools';
-import { PaymentMethods, paymentMethods } from './payment_methods';
 import { findTokenInLocalhost, findTokenInSynthetic, getTokenInfo, TokenLists } from './tokens_list';
 import * as AbiTypes from './typechain/index';
 import { ChainInfo, ChainNames } from './types/chain';
 import * as ContractParamTypes from './types/contract';
 import { ContractInfo, ContractNames, Contracts } from './types/contract';
+export * from './payment_methods';
 export * from './types/token';
 
 export {
@@ -47,8 +47,6 @@ export {
 	MediatorPool,
 	MediatorPools,
 	parseBadgeLocals,
-	PaymentMethods,
-	paymentMethods,
 	TokenLists,
 };
 
