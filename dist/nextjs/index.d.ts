@@ -1425,8 +1425,10 @@ interface BadgeManager extends BaseContract {
 }
 
 interface BondCurveTokenInterface extends Interface {
-    getFunction(nameOrSignature: "allowClaim" | "allowSell" | "allowTrade" | "allowWithdraw" | "allowance" | "approve" | "balanceOf" | "bondingCurveAlloc" | "bondingCurveEthBal" | "buy" | "buyPrice" | "circulatingSupply" | "claim" | "claimMulti" | "claimedBalance" | "claims" | "decimals" | "decreaseAllowance" | "devAlloc" | "devFeeBp" | "devFeeEthBal" | "increaseAllowance" | "initialBondingCurveAlloc" | "k" | "minBuyForReset" | "name" | "owner" | "renounceOwnership" | "root" | "sell" | "sellPrice" | "setDevFeeBp" | "setMinBuyForReset" | "symbol" | "toggleAllowClaim" | "toggleAllowSell" | "toggleAllowTrade" | "toggleAllowWithdraw" | "totalSupply" | "transfer" | "transferFrom" | "transferOwnership" | "usedClaims" | "withdrawClaim" | "withdrawDevFee" | "withdrawEth" | "withdrawToken"): FunctionFragment;
-    getEvent(nameOrSignatureOrTopic: "AllowClaim" | "AllowSell" | "AllowTrade" | "AllowWithdraw" | "Approval" | "Buy" | "ClaimWithdrawn" | "Claimed" | "OwnershipTransferred" | "Sell" | "Transfer" | "UpdatedDevFeeBp" | "UpdatedMinBuyForReset" | "WithdrawnDevFee" | "WithdrawnEth" | "WithdrawnToken"): EventFragment;
+    getFunction(nameOrSignature: "airdropAlloc" | "allowBuyTransfer" | "allowClaim" | "allowSell" | "allowTrade" | "allowWithdraw" | "allowance" | "approve" | "balanceOf" | "bondingCurveAlloc" | "bondingCurveEthBal" | "buy" | "buyPrice" | "circulatingSupply" | "claim" | "claimMulti" | "claimedBalance" | "claims" | "decimals" | "decreaseAllowance" | "devAlloc" | "devFeeBp" | "devFeeEthBal" | "increaseAllowance" | "initialBondingCurveAlloc" | "k" | "minBuyForReset" | "name" | "owner" | "reInit" | "renounceOwnership" | "root" | "sell" | "sellPrice" | "setDevFeeBp" | "setMinBuyForReset" | "symbol" | "toggleAllowBuyTransfer" | "toggleAllowClaim" | "toggleAllowSell" | "toggleAllowTrade" | "toggleAllowWithdraw" | "totalSupply" | "transfer" | "transferFrom" | "transferOwnership" | "usedClaims" | "withdrawClaim" | "withdrawDevFee" | "withdrawEth" | "withdrawToken"): FunctionFragment;
+    getEvent(nameOrSignatureOrTopic: "AllowBuyTransfer" | "AllowClaim" | "AllowSell" | "AllowTrade" | "AllowWithdraw" | "Approval" | "Buy" | "ClaimWithdrawn" | "Claimed" | "OwnershipTransferred" | "ReInitialized" | "Sell" | "Transfer" | "UpdatedDevFeeBp" | "UpdatedMinBuyForReset" | "WithdrawnDevFee" | "WithdrawnEth" | "WithdrawnToken"): EventFragment;
+    encodeFunctionData(functionFragment: "airdropAlloc", values?: undefined): string;
+    encodeFunctionData(functionFragment: "allowBuyTransfer", values?: undefined): string;
     encodeFunctionData(functionFragment: "allowClaim", values?: undefined): string;
     encodeFunctionData(functionFragment: "allowSell", values?: undefined): string;
     encodeFunctionData(functionFragment: "allowTrade", values?: undefined): string;
@@ -1454,6 +1456,14 @@ interface BondCurveTokenInterface extends Interface {
     encodeFunctionData(functionFragment: "minBuyForReset", values?: undefined): string;
     encodeFunctionData(functionFragment: "name", values?: undefined): string;
     encodeFunctionData(functionFragment: "owner", values?: undefined): string;
+    encodeFunctionData(functionFragment: "reInit", values: [
+        BytesLike,
+        BigNumberish,
+        BigNumberish,
+        BigNumberish,
+        BigNumberish,
+        BigNumberish
+    ]): string;
     encodeFunctionData(functionFragment: "renounceOwnership", values?: undefined): string;
     encodeFunctionData(functionFragment: "root", values?: undefined): string;
     encodeFunctionData(functionFragment: "sell", values: [BigNumberish, BigNumberish]): string;
@@ -1461,6 +1471,7 @@ interface BondCurveTokenInterface extends Interface {
     encodeFunctionData(functionFragment: "setDevFeeBp", values: [BigNumberish]): string;
     encodeFunctionData(functionFragment: "setMinBuyForReset", values: [BigNumberish]): string;
     encodeFunctionData(functionFragment: "symbol", values?: undefined): string;
+    encodeFunctionData(functionFragment: "toggleAllowBuyTransfer", values?: undefined): string;
     encodeFunctionData(functionFragment: "toggleAllowClaim", values?: undefined): string;
     encodeFunctionData(functionFragment: "toggleAllowSell", values?: undefined): string;
     encodeFunctionData(functionFragment: "toggleAllowTrade", values?: undefined): string;
@@ -1474,6 +1485,8 @@ interface BondCurveTokenInterface extends Interface {
     encodeFunctionData(functionFragment: "withdrawDevFee", values: [AddressLike]): string;
     encodeFunctionData(functionFragment: "withdrawEth", values: [AddressLike]): string;
     encodeFunctionData(functionFragment: "withdrawToken", values: [AddressLike]): string;
+    decodeFunctionResult(functionFragment: "airdropAlloc", data: BytesLike): Result;
+    decodeFunctionResult(functionFragment: "allowBuyTransfer", data: BytesLike): Result;
     decodeFunctionResult(functionFragment: "allowClaim", data: BytesLike): Result;
     decodeFunctionResult(functionFragment: "allowSell", data: BytesLike): Result;
     decodeFunctionResult(functionFragment: "allowTrade", data: BytesLike): Result;
@@ -1501,6 +1514,7 @@ interface BondCurveTokenInterface extends Interface {
     decodeFunctionResult(functionFragment: "minBuyForReset", data: BytesLike): Result;
     decodeFunctionResult(functionFragment: "name", data: BytesLike): Result;
     decodeFunctionResult(functionFragment: "owner", data: BytesLike): Result;
+    decodeFunctionResult(functionFragment: "reInit", data: BytesLike): Result;
     decodeFunctionResult(functionFragment: "renounceOwnership", data: BytesLike): Result;
     decodeFunctionResult(functionFragment: "root", data: BytesLike): Result;
     decodeFunctionResult(functionFragment: "sell", data: BytesLike): Result;
@@ -1508,6 +1522,7 @@ interface BondCurveTokenInterface extends Interface {
     decodeFunctionResult(functionFragment: "setDevFeeBp", data: BytesLike): Result;
     decodeFunctionResult(functionFragment: "setMinBuyForReset", data: BytesLike): Result;
     decodeFunctionResult(functionFragment: "symbol", data: BytesLike): Result;
+    decodeFunctionResult(functionFragment: "toggleAllowBuyTransfer", data: BytesLike): Result;
     decodeFunctionResult(functionFragment: "toggleAllowClaim", data: BytesLike): Result;
     decodeFunctionResult(functionFragment: "toggleAllowSell", data: BytesLike): Result;
     decodeFunctionResult(functionFragment: "toggleAllowTrade", data: BytesLike): Result;
@@ -1521,6 +1536,17 @@ interface BondCurveTokenInterface extends Interface {
     decodeFunctionResult(functionFragment: "withdrawDevFee", data: BytesLike): Result;
     decodeFunctionResult(functionFragment: "withdrawEth", data: BytesLike): Result;
     decodeFunctionResult(functionFragment: "withdrawToken", data: BytesLike): Result;
+}
+declare namespace AllowBuyTransferEvent {
+    type InputTuple = [allowBuyTransfer: boolean];
+    type OutputTuple = [allowBuyTransfer: boolean];
+    interface OutputObject {
+        allowBuyTransfer: boolean;
+    }
+    type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>;
+    type Filter = TypedDeferredTopicFilter<Event>;
+    type Log = TypedEventLog<Event>;
+    type LogDescription = TypedLogDescription<Event>;
 }
 declare namespace AllowClaimEvent {
     type InputTuple = [allowClaim: boolean];
@@ -1648,6 +1674,36 @@ declare namespace OwnershipTransferredEvent$f {
     type Log = TypedEventLog<Event>;
     type LogDescription = TypedLogDescription<Event>;
 }
+declare namespace ReInitializedEvent {
+    type InputTuple = [
+        root: BytesLike,
+        airdropAlloc: BigNumberish,
+        devAlloc: BigNumberish,
+        bondingCurveAlloc: BigNumberish,
+        devFeeBp: BigNumberish,
+        k: BigNumberish
+    ];
+    type OutputTuple = [
+        root: string,
+        airdropAlloc: bigint,
+        devAlloc: bigint,
+        bondingCurveAlloc: bigint,
+        devFeeBp: bigint,
+        k: bigint
+    ];
+    interface OutputObject {
+        root: string;
+        airdropAlloc: bigint;
+        devAlloc: bigint;
+        bondingCurveAlloc: bigint;
+        devFeeBp: bigint;
+        k: bigint;
+    }
+    type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>;
+    type Filter = TypedDeferredTopicFilter<Event>;
+    type Log = TypedEventLog<Event>;
+    type LogDescription = TypedLogDescription<Event>;
+}
 declare namespace SellEvent {
     type InputTuple = [
         seller: AddressLike,
@@ -1760,6 +1816,8 @@ interface BondCurveToken extends BaseContract {
     listeners<TCEvent extends TypedContractEvent>(event: TCEvent): Promise<Array<TypedListener<TCEvent>>>;
     listeners(eventName?: string): Promise<Array<Listener>>;
     removeAllListeners<TCEvent extends TypedContractEvent>(event?: TCEvent): Promise<this>;
+    airdropAlloc: TypedContractMethod<[], [bigint], "view">;
+    allowBuyTransfer: TypedContractMethod<[], [boolean], "view">;
     allowClaim: TypedContractMethod<[], [boolean], "view">;
     allowSell: TypedContractMethod<[], [boolean], "view">;
     allowTrade: TypedContractMethod<[], [boolean], "view">;
@@ -1821,6 +1879,16 @@ interface BondCurveToken extends BaseContract {
     minBuyForReset: TypedContractMethod<[], [bigint], "view">;
     name: TypedContractMethod<[], [string], "view">;
     owner: TypedContractMethod<[], [string], "view">;
+    reInit: TypedContractMethod<[
+        _airdropTreeRoot: BytesLike,
+        _airdropAlloc: BigNumberish,
+        _devAlloc: BigNumberish,
+        _bondingCurveAlloc: BigNumberish,
+        _devFeeBp: BigNumberish,
+        _k: BigNumberish
+    ], [
+        void
+    ], "nonpayable">;
     renounceOwnership: TypedContractMethod<[], [void], "nonpayable">;
     root: TypedContractMethod<[], [string], "view">;
     sell: TypedContractMethod<[
@@ -1846,6 +1914,7 @@ interface BondCurveToken extends BaseContract {
         void
     ], "nonpayable">;
     symbol: TypedContractMethod<[], [string], "view">;
+    toggleAllowBuyTransfer: TypedContractMethod<[], [void], "nonpayable">;
     toggleAllowClaim: TypedContractMethod<[], [void], "nonpayable">;
     toggleAllowSell: TypedContractMethod<[], [void], "nonpayable">;
     toggleAllowTrade: TypedContractMethod<[], [void], "nonpayable">;
@@ -1892,6 +1961,8 @@ interface BondCurveToken extends BaseContract {
         void
     ], "nonpayable">;
     getFunction<T extends ContractMethod = ContractMethod>(key: string | FunctionFragment): T;
+    getFunction(nameOrSignature: "airdropAlloc"): TypedContractMethod<[], [bigint], "view">;
+    getFunction(nameOrSignature: "allowBuyTransfer"): TypedContractMethod<[], [boolean], "view">;
     getFunction(nameOrSignature: "allowClaim"): TypedContractMethod<[], [boolean], "view">;
     getFunction(nameOrSignature: "allowSell"): TypedContractMethod<[], [boolean], "view">;
     getFunction(nameOrSignature: "allowTrade"): TypedContractMethod<[], [boolean], "view">;
@@ -1953,6 +2024,16 @@ interface BondCurveToken extends BaseContract {
     getFunction(nameOrSignature: "minBuyForReset"): TypedContractMethod<[], [bigint], "view">;
     getFunction(nameOrSignature: "name"): TypedContractMethod<[], [string], "view">;
     getFunction(nameOrSignature: "owner"): TypedContractMethod<[], [string], "view">;
+    getFunction(nameOrSignature: "reInit"): TypedContractMethod<[
+        _airdropTreeRoot: BytesLike,
+        _airdropAlloc: BigNumberish,
+        _devAlloc: BigNumberish,
+        _bondingCurveAlloc: BigNumberish,
+        _devFeeBp: BigNumberish,
+        _k: BigNumberish
+    ], [
+        void
+    ], "nonpayable">;
     getFunction(nameOrSignature: "renounceOwnership"): TypedContractMethod<[], [void], "nonpayable">;
     getFunction(nameOrSignature: "root"): TypedContractMethod<[], [string], "view">;
     getFunction(nameOrSignature: "sell"): TypedContractMethod<[
@@ -1970,6 +2051,7 @@ interface BondCurveToken extends BaseContract {
     getFunction(nameOrSignature: "setDevFeeBp"): TypedContractMethod<[_devFeeBp: BigNumberish], [void], "nonpayable">;
     getFunction(nameOrSignature: "setMinBuyForReset"): TypedContractMethod<[_minBuyForReset: BigNumberish], [void], "nonpayable">;
     getFunction(nameOrSignature: "symbol"): TypedContractMethod<[], [string], "view">;
+    getFunction(nameOrSignature: "toggleAllowBuyTransfer"): TypedContractMethod<[], [void], "nonpayable">;
     getFunction(nameOrSignature: "toggleAllowClaim"): TypedContractMethod<[], [void], "nonpayable">;
     getFunction(nameOrSignature: "toggleAllowSell"): TypedContractMethod<[], [void], "nonpayable">;
     getFunction(nameOrSignature: "toggleAllowTrade"): TypedContractMethod<[], [void], "nonpayable">;
@@ -1999,6 +2081,7 @@ interface BondCurveToken extends BaseContract {
     getFunction(nameOrSignature: "withdrawDevFee"): TypedContractMethod<[beneficiary: AddressLike], [void], "nonpayable">;
     getFunction(nameOrSignature: "withdrawEth"): TypedContractMethod<[beneficiary: AddressLike], [void], "nonpayable">;
     getFunction(nameOrSignature: "withdrawToken"): TypedContractMethod<[beneficiary: AddressLike], [void], "nonpayable">;
+    getEvent(key: "AllowBuyTransfer"): TypedContractEvent<AllowBuyTransferEvent.InputTuple, AllowBuyTransferEvent.OutputTuple, AllowBuyTransferEvent.OutputObject>;
     getEvent(key: "AllowClaim"): TypedContractEvent<AllowClaimEvent.InputTuple, AllowClaimEvent.OutputTuple, AllowClaimEvent.OutputObject>;
     getEvent(key: "AllowSell"): TypedContractEvent<AllowSellEvent.InputTuple, AllowSellEvent.OutputTuple, AllowSellEvent.OutputObject>;
     getEvent(key: "AllowTrade"): TypedContractEvent<AllowTradeEvent.InputTuple, AllowTradeEvent.OutputTuple, AllowTradeEvent.OutputObject>;
@@ -2008,6 +2091,7 @@ interface BondCurveToken extends BaseContract {
     getEvent(key: "ClaimWithdrawn"): TypedContractEvent<ClaimWithdrawnEvent.InputTuple, ClaimWithdrawnEvent.OutputTuple, ClaimWithdrawnEvent.OutputObject>;
     getEvent(key: "Claimed"): TypedContractEvent<ClaimedEvent$1.InputTuple, ClaimedEvent$1.OutputTuple, ClaimedEvent$1.OutputObject>;
     getEvent(key: "OwnershipTransferred"): TypedContractEvent<OwnershipTransferredEvent$f.InputTuple, OwnershipTransferredEvent$f.OutputTuple, OwnershipTransferredEvent$f.OutputObject>;
+    getEvent(key: "ReInitialized"): TypedContractEvent<ReInitializedEvent.InputTuple, ReInitializedEvent.OutputTuple, ReInitializedEvent.OutputObject>;
     getEvent(key: "Sell"): TypedContractEvent<SellEvent.InputTuple, SellEvent.OutputTuple, SellEvent.OutputObject>;
     getEvent(key: "Transfer"): TypedContractEvent<TransferEvent$6.InputTuple, TransferEvent$6.OutputTuple, TransferEvent$6.OutputObject>;
     getEvent(key: "UpdatedDevFeeBp"): TypedContractEvent<UpdatedDevFeeBpEvent.InputTuple, UpdatedDevFeeBpEvent.OutputTuple, UpdatedDevFeeBpEvent.OutputObject>;
@@ -2016,6 +2100,8 @@ interface BondCurveToken extends BaseContract {
     getEvent(key: "WithdrawnEth"): TypedContractEvent<WithdrawnEthEvent.InputTuple, WithdrawnEthEvent.OutputTuple, WithdrawnEthEvent.OutputObject>;
     getEvent(key: "WithdrawnToken"): TypedContractEvent<WithdrawnTokenEvent.InputTuple, WithdrawnTokenEvent.OutputTuple, WithdrawnTokenEvent.OutputObject>;
     filters: {
+        "AllowBuyTransfer(bool)": TypedContractEvent<AllowBuyTransferEvent.InputTuple, AllowBuyTransferEvent.OutputTuple, AllowBuyTransferEvent.OutputObject>;
+        AllowBuyTransfer: TypedContractEvent<AllowBuyTransferEvent.InputTuple, AllowBuyTransferEvent.OutputTuple, AllowBuyTransferEvent.OutputObject>;
         "AllowClaim(bool)": TypedContractEvent<AllowClaimEvent.InputTuple, AllowClaimEvent.OutputTuple, AllowClaimEvent.OutputObject>;
         AllowClaim: TypedContractEvent<AllowClaimEvent.InputTuple, AllowClaimEvent.OutputTuple, AllowClaimEvent.OutputObject>;
         "AllowSell(bool)": TypedContractEvent<AllowSellEvent.InputTuple, AllowSellEvent.OutputTuple, AllowSellEvent.OutputObject>;
@@ -2034,6 +2120,8 @@ interface BondCurveToken extends BaseContract {
         Claimed: TypedContractEvent<ClaimedEvent$1.InputTuple, ClaimedEvent$1.OutputTuple, ClaimedEvent$1.OutputObject>;
         "OwnershipTransferred(address,address)": TypedContractEvent<OwnershipTransferredEvent$f.InputTuple, OwnershipTransferredEvent$f.OutputTuple, OwnershipTransferredEvent$f.OutputObject>;
         OwnershipTransferred: TypedContractEvent<OwnershipTransferredEvent$f.InputTuple, OwnershipTransferredEvent$f.OutputTuple, OwnershipTransferredEvent$f.OutputObject>;
+        "ReInitialized(bytes32,uint256,uint256,uint256,uint256,uint256)": TypedContractEvent<ReInitializedEvent.InputTuple, ReInitializedEvent.OutputTuple, ReInitializedEvent.OutputObject>;
+        ReInitialized: TypedContractEvent<ReInitializedEvent.InputTuple, ReInitializedEvent.OutputTuple, ReInitializedEvent.OutputObject>;
         "Sell(address,uint256,uint256,uint256)": TypedContractEvent<SellEvent.InputTuple, SellEvent.OutputTuple, SellEvent.OutputObject>;
         Sell: TypedContractEvent<SellEvent.InputTuple, SellEvent.OutputTuple, SellEvent.OutputObject>;
         "Transfer(address,address,uint256)": TypedContractEvent<TransferEvent$6.InputTuple, TransferEvent$6.OutputTuple, TransferEvent$6.OutputObject>;
@@ -16298,6 +16386,10 @@ declare class BondCurveToken__factory {
             readonly type: "bytes32";
         }, {
             readonly internalType: "uint256";
+            readonly name: "_airdropAlloc";
+            readonly type: "uint256";
+        }, {
+            readonly internalType: "uint256";
             readonly name: "_devAlloc";
             readonly type: "uint256";
         }, {
@@ -16311,6 +16403,16 @@ declare class BondCurveToken__factory {
         }];
         readonly stateMutability: "nonpayable";
         readonly type: "constructor";
+    }, {
+        readonly anonymous: false;
+        readonly inputs: readonly [{
+            readonly indexed: false;
+            readonly internalType: "bool";
+            readonly name: "allowBuyTransfer";
+            readonly type: "bool";
+        }];
+        readonly name: "AllowBuyTransfer";
+        readonly type: "event";
     }, {
         readonly anonymous: false;
         readonly inputs: readonly [{
@@ -16450,6 +16552,41 @@ declare class BondCurveToken__factory {
         readonly anonymous: false;
         readonly inputs: readonly [{
             readonly indexed: false;
+            readonly internalType: "bytes32";
+            readonly name: "root";
+            readonly type: "bytes32";
+        }, {
+            readonly indexed: false;
+            readonly internalType: "uint256";
+            readonly name: "airdropAlloc";
+            readonly type: "uint256";
+        }, {
+            readonly indexed: false;
+            readonly internalType: "uint256";
+            readonly name: "devAlloc";
+            readonly type: "uint256";
+        }, {
+            readonly indexed: false;
+            readonly internalType: "uint256";
+            readonly name: "bondingCurveAlloc";
+            readonly type: "uint256";
+        }, {
+            readonly indexed: false;
+            readonly internalType: "uint256";
+            readonly name: "devFeeBp";
+            readonly type: "uint256";
+        }, {
+            readonly indexed: false;
+            readonly internalType: "uint256";
+            readonly name: "k";
+            readonly type: "uint256";
+        }];
+        readonly name: "ReInitialized";
+        readonly type: "event";
+    }, {
+        readonly anonymous: false;
+        readonly inputs: readonly [{
+            readonly indexed: false;
             readonly internalType: "address";
             readonly name: "seller";
             readonly type: "address";
@@ -16556,6 +16693,26 @@ declare class BondCurveToken__factory {
         }];
         readonly name: "WithdrawnToken";
         readonly type: "event";
+    }, {
+        readonly inputs: readonly [];
+        readonly name: "airdropAlloc";
+        readonly outputs: readonly [{
+            readonly internalType: "uint256";
+            readonly name: "";
+            readonly type: "uint256";
+        }];
+        readonly stateMutability: "view";
+        readonly type: "function";
+    }, {
+        readonly inputs: readonly [];
+        readonly name: "allowBuyTransfer";
+        readonly outputs: readonly [{
+            readonly internalType: "bool";
+            readonly name: "";
+            readonly type: "bool";
+        }];
+        readonly stateMutability: "view";
+        readonly type: "function";
     }, {
         readonly inputs: readonly [];
         readonly name: "allowClaim";
@@ -16895,6 +17052,36 @@ declare class BondCurveToken__factory {
         readonly stateMutability: "view";
         readonly type: "function";
     }, {
+        readonly inputs: readonly [{
+            readonly internalType: "bytes32";
+            readonly name: "_airdropTreeRoot";
+            readonly type: "bytes32";
+        }, {
+            readonly internalType: "uint256";
+            readonly name: "_airdropAlloc";
+            readonly type: "uint256";
+        }, {
+            readonly internalType: "uint256";
+            readonly name: "_devAlloc";
+            readonly type: "uint256";
+        }, {
+            readonly internalType: "uint256";
+            readonly name: "_bondingCurveAlloc";
+            readonly type: "uint256";
+        }, {
+            readonly internalType: "uint256";
+            readonly name: "_devFeeBp";
+            readonly type: "uint256";
+        }, {
+            readonly internalType: "uint256";
+            readonly name: "_k";
+            readonly type: "uint256";
+        }];
+        readonly name: "reInit";
+        readonly outputs: readonly [];
+        readonly stateMutability: "nonpayable";
+        readonly type: "function";
+    }, {
         readonly inputs: readonly [];
         readonly name: "renounceOwnership";
         readonly outputs: readonly [];
@@ -16971,6 +17158,12 @@ declare class BondCurveToken__factory {
             readonly type: "string";
         }];
         readonly stateMutability: "view";
+        readonly type: "function";
+    }, {
+        readonly inputs: readonly [];
+        readonly name: "toggleAllowBuyTransfer";
+        readonly outputs: readonly [];
+        readonly stateMutability: "nonpayable";
         readonly type: "function";
     }, {
         readonly inputs: readonly [];

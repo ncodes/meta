@@ -1700,6 +1700,11 @@ var BondCurveToken_default = [
       },
       {
         internalType: "uint256",
+        name: "_airdropAlloc",
+        type: "uint256"
+      },
+      {
+        internalType: "uint256",
         name: "_devAlloc",
         type: "uint256"
       },
@@ -1716,6 +1721,19 @@ var BondCurveToken_default = [
     ],
     stateMutability: "nonpayable",
     type: "constructor"
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: false,
+        internalType: "bool",
+        name: "allowBuyTransfer",
+        type: "bool"
+      }
+    ],
+    name: "AllowBuyTransfer",
+    type: "event"
   },
   {
     anonymous: false,
@@ -1893,6 +1911,49 @@ var BondCurveToken_default = [
     inputs: [
       {
         indexed: false,
+        internalType: "bytes32",
+        name: "root",
+        type: "bytes32"
+      },
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "airdropAlloc",
+        type: "uint256"
+      },
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "devAlloc",
+        type: "uint256"
+      },
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "bondingCurveAlloc",
+        type: "uint256"
+      },
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "devFeeBp",
+        type: "uint256"
+      },
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "k",
+        type: "uint256"
+      }
+    ],
+    name: "ReInitialized",
+    type: "event"
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: false,
         internalType: "address",
         name: "seller",
         type: "address"
@@ -2026,6 +2087,32 @@ var BondCurveToken_default = [
     ],
     name: "WithdrawnToken",
     type: "event"
+  },
+  {
+    inputs: [],
+    name: "airdropAlloc",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256"
+      }
+    ],
+    stateMutability: "view",
+    type: "function"
+  },
+  {
+    inputs: [],
+    name: "allowBuyTransfer",
+    outputs: [
+      {
+        internalType: "bool",
+        name: "",
+        type: "bool"
+      }
+    ],
+    stateMutability: "view",
+    type: "function"
   },
   {
     inputs: [],
@@ -2471,6 +2558,44 @@ var BondCurveToken_default = [
     type: "function"
   },
   {
+    inputs: [
+      {
+        internalType: "bytes32",
+        name: "_airdropTreeRoot",
+        type: "bytes32"
+      },
+      {
+        internalType: "uint256",
+        name: "_airdropAlloc",
+        type: "uint256"
+      },
+      {
+        internalType: "uint256",
+        name: "_devAlloc",
+        type: "uint256"
+      },
+      {
+        internalType: "uint256",
+        name: "_bondingCurveAlloc",
+        type: "uint256"
+      },
+      {
+        internalType: "uint256",
+        name: "_devFeeBp",
+        type: "uint256"
+      },
+      {
+        internalType: "uint256",
+        name: "_k",
+        type: "uint256"
+      }
+    ],
+    name: "reInit",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function"
+  },
+  {
     inputs: [],
     name: "renounceOwnership",
     outputs: [],
@@ -2569,6 +2694,13 @@ var BondCurveToken_default = [
       }
     ],
     stateMutability: "view",
+    type: "function"
+  },
+  {
+    inputs: [],
+    name: "toggleAllowBuyTransfer",
+    outputs: [],
+    stateMutability: "nonpayable",
     type: "function"
   },
   {
@@ -25884,7 +26016,7 @@ var Chains = [
         abi: Core_default
       },
       token: {
-        address: process.env.BASE_TOKEN_ADDRESS ?? process.env.NEXT_PUBLIC_BASE_TOKEN_ADDRESS ?? process.env.VITE_BASE_TOKEN_ADDRESS ?? "0x07B7Cdd77E18AC2b0F0A0B529F2EA86200c9Ebda",
+        address: process.env.BASE_TOKEN_ADDRESS ?? process.env.NEXT_PUBLIC_BASE_TOKEN_ADDRESS ?? process.env.VITE_BASE_TOKEN_ADDRESS ?? "0x34d70Cf690d67AC2C05eC4464E1Dd5fDB3c84b1E",
         abi: Token_default
       },
       badgeManager: {
@@ -26923,35 +27055,23 @@ var base_default = {
   name: "Trust Wallet: Base",
   logoURI: "https://trustwallet.com/assets/images/favicon.png",
   timestamp: "2021-10-07T08:50:36.056Z",
-  tokens: [
-    {
-      asset: "0000",
-      chainId: 1,
-      type: "ERC20",
-      address: "0x4200000000000000000000000000000000000006",
-      name: "ETH",
-      symbol: "ETH",
-      native: true,
-      decimals: 18,
-      logoURI: "https://files.joint.exchange/images/eth.svg",
-      price: 0
-    },
-    {
-      asset: "0001",
-      type: "ERC20",
-      address: "0x4200000000000000000000000000000000000006",
-      name: "WETH",
-      symbol: "WETH",
-      decimals: 18,
-      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2/logo.png",
-      price: 0
-    }
-  ],
   version: {
     major: 6,
     minor: 0,
     patch: 0
-  }
+  },
+  tokens: [
+    {
+      asset: "0001",
+      type: "ERC20",
+      address: "0x34d70Cf690d67AC2C05eC4464E1Dd5fDB3c84b1E",
+      name: "Joint",
+      symbol: "JOIN",
+      decimals: 18,
+      logoURI: "https://files.joint.exchange/images/join.svg",
+      price: 0
+    }
+  ]
 };
 
 // src/tokenlist/binance.json
@@ -40670,6 +40790,11 @@ var _abi3 = [
       },
       {
         internalType: "uint256",
+        name: "_airdropAlloc",
+        type: "uint256"
+      },
+      {
+        internalType: "uint256",
         name: "_devAlloc",
         type: "uint256"
       },
@@ -40686,6 +40811,19 @@ var _abi3 = [
     ],
     stateMutability: "nonpayable",
     type: "constructor"
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: false,
+        internalType: "bool",
+        name: "allowBuyTransfer",
+        type: "bool"
+      }
+    ],
+    name: "AllowBuyTransfer",
+    type: "event"
   },
   {
     anonymous: false,
@@ -40863,6 +41001,49 @@ var _abi3 = [
     inputs: [
       {
         indexed: false,
+        internalType: "bytes32",
+        name: "root",
+        type: "bytes32"
+      },
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "airdropAlloc",
+        type: "uint256"
+      },
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "devAlloc",
+        type: "uint256"
+      },
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "bondingCurveAlloc",
+        type: "uint256"
+      },
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "devFeeBp",
+        type: "uint256"
+      },
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "k",
+        type: "uint256"
+      }
+    ],
+    name: "ReInitialized",
+    type: "event"
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: false,
         internalType: "address",
         name: "seller",
         type: "address"
@@ -40996,6 +41177,32 @@ var _abi3 = [
     ],
     name: "WithdrawnToken",
     type: "event"
+  },
+  {
+    inputs: [],
+    name: "airdropAlloc",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256"
+      }
+    ],
+    stateMutability: "view",
+    type: "function"
+  },
+  {
+    inputs: [],
+    name: "allowBuyTransfer",
+    outputs: [
+      {
+        internalType: "bool",
+        name: "",
+        type: "bool"
+      }
+    ],
+    stateMutability: "view",
+    type: "function"
   },
   {
     inputs: [],
@@ -41441,6 +41648,44 @@ var _abi3 = [
     type: "function"
   },
   {
+    inputs: [
+      {
+        internalType: "bytes32",
+        name: "_airdropTreeRoot",
+        type: "bytes32"
+      },
+      {
+        internalType: "uint256",
+        name: "_airdropAlloc",
+        type: "uint256"
+      },
+      {
+        internalType: "uint256",
+        name: "_devAlloc",
+        type: "uint256"
+      },
+      {
+        internalType: "uint256",
+        name: "_bondingCurveAlloc",
+        type: "uint256"
+      },
+      {
+        internalType: "uint256",
+        name: "_devFeeBp",
+        type: "uint256"
+      },
+      {
+        internalType: "uint256",
+        name: "_k",
+        type: "uint256"
+      }
+    ],
+    name: "reInit",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function"
+  },
+  {
     inputs: [],
     name: "renounceOwnership",
     outputs: [],
@@ -41539,6 +41784,13 @@ var _abi3 = [
       }
     ],
     stateMutability: "view",
+    type: "function"
+  },
+  {
+    inputs: [],
+    name: "toggleAllowBuyTransfer",
+    outputs: [],
+    stateMutability: "nonpayable",
     type: "function"
   },
   {

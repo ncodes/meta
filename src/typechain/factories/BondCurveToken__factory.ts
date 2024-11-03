@@ -38,6 +38,11 @@ const _abi = [
       },
       {
         internalType: "uint256",
+        name: "_airdropAlloc",
+        type: "uint256",
+      },
+      {
+        internalType: "uint256",
         name: "_devAlloc",
         type: "uint256",
       },
@@ -54,6 +59,19 @@ const _abi = [
     ],
     stateMutability: "nonpayable",
     type: "constructor",
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: false,
+        internalType: "bool",
+        name: "allowBuyTransfer",
+        type: "bool",
+      },
+    ],
+    name: "AllowBuyTransfer",
+    type: "event",
   },
   {
     anonymous: false,
@@ -231,6 +249,49 @@ const _abi = [
     inputs: [
       {
         indexed: false,
+        internalType: "bytes32",
+        name: "root",
+        type: "bytes32",
+      },
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "airdropAlloc",
+        type: "uint256",
+      },
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "devAlloc",
+        type: "uint256",
+      },
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "bondingCurveAlloc",
+        type: "uint256",
+      },
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "devFeeBp",
+        type: "uint256",
+      },
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "k",
+        type: "uint256",
+      },
+    ],
+    name: "ReInitialized",
+    type: "event",
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: false,
         internalType: "address",
         name: "seller",
         type: "address",
@@ -364,6 +425,32 @@ const _abi = [
     ],
     name: "WithdrawnToken",
     type: "event",
+  },
+  {
+    inputs: [],
+    name: "airdropAlloc",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "allowBuyTransfer",
+    outputs: [
+      {
+        internalType: "bool",
+        name: "",
+        type: "bool",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
   },
   {
     inputs: [],
@@ -809,6 +896,44 @@ const _abi = [
     type: "function",
   },
   {
+    inputs: [
+      {
+        internalType: "bytes32",
+        name: "_airdropTreeRoot",
+        type: "bytes32",
+      },
+      {
+        internalType: "uint256",
+        name: "_airdropAlloc",
+        type: "uint256",
+      },
+      {
+        internalType: "uint256",
+        name: "_devAlloc",
+        type: "uint256",
+      },
+      {
+        internalType: "uint256",
+        name: "_bondingCurveAlloc",
+        type: "uint256",
+      },
+      {
+        internalType: "uint256",
+        name: "_devFeeBp",
+        type: "uint256",
+      },
+      {
+        internalType: "uint256",
+        name: "_k",
+        type: "uint256",
+      },
+    ],
+    name: "reInit",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
     inputs: [],
     name: "renounceOwnership",
     outputs: [],
@@ -907,6 +1032,13 @@ const _abi = [
       },
     ],
     stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "toggleAllowBuyTransfer",
+    outputs: [],
+    stateMutability: "nonpayable",
     type: "function",
   },
   {

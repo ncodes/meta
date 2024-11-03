@@ -382,7 +382,7 @@ const Chains: ChainInfo[] = [
 					process.env.BASE_TOKEN_ADDRESS ??
 					process.env.NEXT_PUBLIC_BASE_TOKEN_ADDRESS ??
 					import.meta.env.VITE_BASE_TOKEN_ADDRESS ??
-					'0x07B7Cdd77E18AC2b0F0A0B529F2EA86200c9Ebda',
+					'0x34d70Cf690d67AC2C05eC4464E1Dd5fDB3c84b1E',
 				abi: NativeTokenABI,
 			},
 			badgeManager: {
