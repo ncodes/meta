@@ -13,6 +13,7 @@ import {
 } from 'viem/chains';
 import AssetRegistryABI from './abi/AssetRegistry.json';
 import BadgeManagerABI from './abi/BadgeManager.json';
+import BondCurveTokenABI from './abi/BondCurveToken.json';
 import CoreABI from './abi/Core.json';
 import DisputeManagerABI from './abi/DisputeManager.json';
 import EnergonABI from './abi/Energon.json';
@@ -366,6 +367,116 @@ const Chains: ChainInfo[] = [
 				process.env.BASE_BOND_TOKEN_SYMBOL ??
 				process.env.NEXT_PUBLIC_BASE_BOND_TOKEN_SYMBOL ??
 				import.meta.env.VITE_BASE_BOND_TOKEN_SYMBOL,
+		},
+		contracts: {
+			core: {
+				address:
+					process.env.BASE_CORE_ADDRESS ??
+					process.env.NEXT_PUBLIC_BASE_CORE_ADDRESS ??
+					import.meta.env.VITE_BASE_CORE_ADDRESS ??
+					'0xB1Da6463681EC6E10baaDc3AaF6bCdc280cBbD1f',
+				abi: CoreABI,
+			},
+			token: {
+				address:
+					process.env.BASE_TOKEN_ADDRESS ??
+					process.env.NEXT_PUBLIC_BASE_TOKEN_ADDRESS ??
+					import.meta.env.VITE_BASE_TOKEN_ADDRESS ??
+					'0x07B7Cdd77E18AC2b0F0A0B529F2EA86200c9Ebda',
+				abi: NativeTokenABI,
+			},
+			badgeManager: {
+				address:
+					process.env.BASE_BADGE_MGR_ADDRESS ??
+					process.env.NEXT_PUBLIC_BASE_BADGE_MGR_ADDRESS ??
+					import.meta.env.VITE_BASE_BADGE_MGR_ADDRESS ??
+					'0xcAB92E8C4110bf70E2F92Fd27D26FAEA79A89c0A',
+				abi: BadgeManagerABI,
+			},
+			marketCore: {
+				address:
+					process.env.BASE_MARKET_CORE_ADDRESS ??
+					process.env.NEXT_PUBLIC_BASE_MARKET_CORE_ADDRESS ??
+					import.meta.env.VITE_BASE_MARKET_CORE_ADDRESS ??
+					'0x36371d785e11759A44ec10776a8363351307b5c7',
+				abi: MarketCoreABI,
+			},
+			disputeManager: {
+				address:
+					process.env.BASE_DISPUTE_MGR_ADDRESS ??
+					process.env.NEXT_PUBLIC_BASE_DISPUTE_MGR_ADDRESS ??
+					import.meta.env.VITE_BASE_DISPUTE_MGR_ADDRESS ??
+					'0x689d76878bff3929B8f48166cA8E08C23Db23757',
+				abi: DisputeManagerABI,
+			},
+			mediatorManager: {
+				address:
+					process.env.BASE_MEDIATOR_MGR_ADDRESS ??
+					process.env.NEXT_PUBLIC_BASE_MEDIATOR_MGR_ADDRESS ??
+					import.meta.env.VITE_BASE_MEDIATOR_MGR_ADDRESS ??
+					'0x086CA7908d3152aEd32284CeE3BF4020C41c1b32',
+				abi: MediatorManagerABI,
+			},
+			energon: {
+				address:
+					process.env.BASE_ENERGON_ADDRESS ??
+					process.env.NEXT_PUBLIC_BASE_ENERGON_ADDRESS ??
+					import.meta.env.VITE_BASE_ENERGON_ADDRESS ??
+					'0x0000000000000000000000000000000000000000',
+				abi: EnergonABI,
+			},
+			nft: {
+				address:
+					process.env.BASE_NFT_ADDRESS ??
+					process.env.NEXT_PUBLIC_BASE_NFT_ADDRESS ??
+					import.meta.env.VITE_BASE_NFT_ADDRESS ??
+					'0x0000000000000000000000000000000000000000',
+				abi: NftABI,
+			},
+			assetRegistry: {
+				address:
+					process.env.BASE_ASSET_REG_ADDRESS ??
+					process.env.NEXT_PUBLIC_BASE_ASSET_REG_ADDRESS ??
+					import.meta.env.VITE_BASE_ASSET_REG_ADDRESS ??
+					'0x23f152f801585E86Bbe837698e9CD20Ac753387D',
+				abi: AssetRegistryABI,
+			},
+			minerRegistry: {
+				address:
+					process.env.BASE_MINER_REG_ADDRESS ??
+					process.env.NEXT_PUBLIC_BASE_MINER_REG_ADDRESS ??
+					import.meta.env.VITE_BASE_MINER_REG_ADDRESS ??
+					'0x2fC197a9B4CFd9a059f1A0f216801351474F9910',
+				abi: MinerRegistryABI,
+			},
+			providerRegistry: {
+				address:
+					process.env.BASE_PROVIDER_REG_ADDRESS ??
+					process.env.NEXT_PUBLIC_BASE_PROVIDER_REG_ADDRESS ??
+					import.meta.env.VITE_BASE_PROVIDER_REG_ADDRESS,
+				abi: ProviderRegistryABI,
+			},
+			router: {
+				address:
+					process.env.BASE_ROUTER_ADDRESS ??
+					process.env.NEXT_PUBLIC_BASE_ROUTER_ADDRESS ??
+					import.meta.env.VITE_BASE_ROUTER_ADDRESS,
+				abi: RouterABI,
+			},
+			payRouter: {
+				address:
+					process.env.BASE_PAY_ROUTER_ADDRESS ??
+					process.env.NEXT_PUBLIC_BASE_PAY_ROUTER_ADDRESS ??
+					import.meta.env.VITE_BASE_PAY_ROUTER_ADDRESS,
+				abi: PayRouterABI,
+			},
+			marketManager: {
+				address:
+					process.env.BASE_MARKET_MGR_ADDRESS ??
+					process.env.NEXT_PUBLIC_BASE_MARKET_MGR_ADDRESS ??
+					import.meta.env.VITE_BASE_MARKET_MGR_ADDRESS,
+				abi: MarketManagerABI,
+			},
 		},
 	},
 	{
@@ -928,7 +1039,7 @@ const Chains: ChainInfo[] = [
 					process.env.LOCALHOST_TOKEN_ADDRESS ??
 					process.env.NEXT_PUBLIC_LOCALHOST_TOKEN_ADDRESS ??
 					import.meta.env.VITE_LOCALHOST_TOKEN_ADDRESS,
-				abi: NativeTokenABI,
+				abi: BondCurveTokenABI,
 			},
 			badgeManager: {
 				address:

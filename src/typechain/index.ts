@@ -3,6 +3,7 @@
 /* eslint-disable */
 export type { AssetRegistry } from "./AssetRegistry";
 export type { BadgeManager } from "./BadgeManager";
+export type { BondCurveToken } from "./BondCurveToken";
 export type { Core } from "./Core";
 export type { DisputeManager } from "./DisputeManager";
 export type { ERC20 } from "./ERC20";
@@ -29,6 +30,7 @@ export type { WETH } from "./WETH";
 export * as factories from "./factories";
 export { AssetRegistry__factory } from "./factories/AssetRegistry__factory";
 export { BadgeManager__factory } from "./factories/BadgeManager__factory";
+export { BondCurveToken__factory } from "./factories/BondCurveToken__factory";
 export { Core__factory } from "./factories/Core__factory";
 export { DisputeManager__factory } from "./factories/DisputeManager__factory";
 export { ERC20__factory } from "./factories/ERC20__factory";

@@ -1,5 +1,6 @@
 import AssetRegAbi from './AssetRegistry.json';
 import BadgeManagerAbi from './BadgeManager.json';
+import BondCurveAbi from './BondCurveToken.json';
 import CoreAbi from './Core.json';
 import DisputeManagerAbi from './DisputeManager.json';
 import ERC20Abi from './ERC20.json';
@@ -50,6 +51,7 @@ interface Abi {
 	UniswapV3Router: any;
 	UniswapV3Router2: any;
 	UniswapV3RouterUniversal: any;
+	BondCurveToken: any;
 }
 
 export const Abi: Abi = {
@@ -78,4 +80,5 @@ export const Abi: Abi = {
 	UniswapV3Router: UniswapV3RouterAbi,
 	UniswapV3Router2: UniswapV3Router2Abi,
 	UniswapV3RouterUniversal: UniswapV3RouterUniversalAbi,
+	BondCurveToken: BondCurveAbi,
 } as const;

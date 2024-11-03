@@ -1613,6 +1613,1091 @@ var BadgeManager_default = [
   }
 ];
 
+// src/abi/BondCurveToken.json
+var BondCurveToken_default = [
+  {
+    inputs: [
+      {
+        internalType: "string",
+        name: "_name",
+        type: "string"
+      },
+      {
+        internalType: "string",
+        name: "_symbol",
+        type: "string"
+      },
+      {
+        internalType: "uint256",
+        name: "_initialSupply",
+        type: "uint256"
+      },
+      {
+        internalType: "uint8",
+        name: "_decimals",
+        type: "uint8"
+      },
+      {
+        internalType: "bytes32",
+        name: "_airdropTreeRoot",
+        type: "bytes32"
+      },
+      {
+        internalType: "uint256",
+        name: "_devAlloc",
+        type: "uint256"
+      },
+      {
+        internalType: "uint256",
+        name: "_bondingCurveAlloc",
+        type: "uint256"
+      },
+      {
+        internalType: "uint256",
+        name: "_devFeeBp",
+        type: "uint256"
+      }
+    ],
+    stateMutability: "nonpayable",
+    type: "constructor"
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: false,
+        internalType: "bool",
+        name: "allowClaim",
+        type: "bool"
+      }
+    ],
+    name: "AllowClaim",
+    type: "event"
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: false,
+        internalType: "bool",
+        name: "allowSell",
+        type: "bool"
+      }
+    ],
+    name: "AllowSell",
+    type: "event"
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: false,
+        internalType: "bool",
+        name: "allowTrade",
+        type: "bool"
+      }
+    ],
+    name: "AllowTrade",
+    type: "event"
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: false,
+        internalType: "bool",
+        name: "allowWithdraw",
+        type: "bool"
+      }
+    ],
+    name: "AllowWithdraw",
+    type: "event"
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: true,
+        internalType: "address",
+        name: "owner",
+        type: "address"
+      },
+      {
+        indexed: true,
+        internalType: "address",
+        name: "spender",
+        type: "address"
+      },
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "value",
+        type: "uint256"
+      }
+    ],
+    name: "Approval",
+    type: "event"
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: false,
+        internalType: "address",
+        name: "buyer",
+        type: "address"
+      },
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "input",
+        type: "uint256"
+      },
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "output",
+        type: "uint256"
+      },
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "fee",
+        type: "uint256"
+      }
+    ],
+    name: "Buy",
+    type: "event"
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: false,
+        internalType: "address",
+        name: "addr",
+        type: "address"
+      },
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "amount",
+        type: "uint256"
+      }
+    ],
+    name: "ClaimWithdrawn",
+    type: "event"
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: false,
+        internalType: "address",
+        name: "addr",
+        type: "address"
+      },
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "claimId",
+        type: "uint256"
+      },
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "allocation",
+        type: "uint256"
+      }
+    ],
+    name: "Claimed",
+    type: "event"
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: true,
+        internalType: "address",
+        name: "previousOwner",
+        type: "address"
+      },
+      {
+        indexed: true,
+        internalType: "address",
+        name: "newOwner",
+        type: "address"
+      }
+    ],
+    name: "OwnershipTransferred",
+    type: "event"
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: false,
+        internalType: "address",
+        name: "seller",
+        type: "address"
+      },
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "input",
+        type: "uint256"
+      },
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "output",
+        type: "uint256"
+      },
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "fee",
+        type: "uint256"
+      }
+    ],
+    name: "Sell",
+    type: "event"
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: true,
+        internalType: "address",
+        name: "from",
+        type: "address"
+      },
+      {
+        indexed: true,
+        internalType: "address",
+        name: "to",
+        type: "address"
+      },
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "value",
+        type: "uint256"
+      }
+    ],
+    name: "Transfer",
+    type: "event"
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "devFeeBp",
+        type: "uint256"
+      }
+    ],
+    name: "UpdatedDevFeeBp",
+    type: "event"
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "minBuyForReset",
+        type: "uint256"
+      }
+    ],
+    name: "UpdatedMinBuyForReset",
+    type: "event"
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: false,
+        internalType: "address",
+        name: "beneficiary",
+        type: "address"
+      },
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "amount",
+        type: "uint256"
+      }
+    ],
+    name: "WithdrawnDevFee",
+    type: "event"
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: false,
+        internalType: "address",
+        name: "beneficiary",
+        type: "address"
+      },
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "amount",
+        type: "uint256"
+      }
+    ],
+    name: "WithdrawnEth",
+    type: "event"
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: false,
+        internalType: "address",
+        name: "beneficiary",
+        type: "address"
+      },
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "amount",
+        type: "uint256"
+      }
+    ],
+    name: "WithdrawnToken",
+    type: "event"
+  },
+  {
+    inputs: [],
+    name: "allowClaim",
+    outputs: [
+      {
+        internalType: "bool",
+        name: "",
+        type: "bool"
+      }
+    ],
+    stateMutability: "view",
+    type: "function"
+  },
+  {
+    inputs: [],
+    name: "allowSell",
+    outputs: [
+      {
+        internalType: "bool",
+        name: "",
+        type: "bool"
+      }
+    ],
+    stateMutability: "view",
+    type: "function"
+  },
+  {
+    inputs: [],
+    name: "allowTrade",
+    outputs: [
+      {
+        internalType: "bool",
+        name: "",
+        type: "bool"
+      }
+    ],
+    stateMutability: "view",
+    type: "function"
+  },
+  {
+    inputs: [],
+    name: "allowWithdraw",
+    outputs: [
+      {
+        internalType: "bool",
+        name: "",
+        type: "bool"
+      }
+    ],
+    stateMutability: "view",
+    type: "function"
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "owner",
+        type: "address"
+      },
+      {
+        internalType: "address",
+        name: "spender",
+        type: "address"
+      }
+    ],
+    name: "allowance",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256"
+      }
+    ],
+    stateMutability: "view",
+    type: "function"
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "spender",
+        type: "address"
+      },
+      {
+        internalType: "uint256",
+        name: "amount",
+        type: "uint256"
+      }
+    ],
+    name: "approve",
+    outputs: [
+      {
+        internalType: "bool",
+        name: "",
+        type: "bool"
+      }
+    ],
+    stateMutability: "nonpayable",
+    type: "function"
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "account",
+        type: "address"
+      }
+    ],
+    name: "balanceOf",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256"
+      }
+    ],
+    stateMutability: "view",
+    type: "function"
+  },
+  {
+    inputs: [],
+    name: "bondingCurveAlloc",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256"
+      }
+    ],
+    stateMutability: "view",
+    type: "function"
+  },
+  {
+    inputs: [],
+    name: "bondingCurveEthBal",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256"
+      }
+    ],
+    stateMutability: "view",
+    type: "function"
+  },
+  {
+    inputs: [
+      {
+        internalType: "uint256",
+        name: "maxPrice",
+        type: "uint256"
+      }
+    ],
+    name: "buy",
+    outputs: [],
+    stateMutability: "payable",
+    type: "function"
+  },
+  {
+    inputs: [
+      {
+        internalType: "uint256",
+        name: "supply",
+        type: "uint256"
+      }
+    ],
+    name: "buyPrice",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256"
+      }
+    ],
+    stateMutability: "view",
+    type: "function"
+  },
+  {
+    inputs: [],
+    name: "circulatingSupply",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256"
+      }
+    ],
+    stateMutability: "view",
+    type: "function"
+  },
+  {
+    inputs: [
+      {
+        internalType: "bytes32[]",
+        name: "proof",
+        type: "bytes32[]"
+      },
+      {
+        internalType: "address",
+        name: "addr",
+        type: "address"
+      },
+      {
+        internalType: "uint256",
+        name: "claimId",
+        type: "uint256"
+      },
+      {
+        internalType: "uint256",
+        name: "allocation",
+        type: "uint256"
+      }
+    ],
+    name: "claim",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function"
+  },
+  {
+    inputs: [
+      {
+        internalType: "bytes32[][]",
+        name: "proofs",
+        type: "bytes32[][]"
+      },
+      {
+        internalType: "address",
+        name: "addr",
+        type: "address"
+      },
+      {
+        internalType: "uint256[]",
+        name: "claimIds",
+        type: "uint256[]"
+      },
+      {
+        internalType: "uint256[]",
+        name: "allocations",
+        type: "uint256[]"
+      }
+    ],
+    name: "claimMulti",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function"
+  },
+  {
+    inputs: [],
+    name: "claimedBalance",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256"
+      }
+    ],
+    stateMutability: "view",
+    type: "function"
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "",
+        type: "address"
+      }
+    ],
+    name: "claims",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256"
+      }
+    ],
+    stateMutability: "view",
+    type: "function"
+  },
+  {
+    inputs: [],
+    name: "decimals",
+    outputs: [
+      {
+        internalType: "uint8",
+        name: "",
+        type: "uint8"
+      }
+    ],
+    stateMutability: "view",
+    type: "function"
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "spender",
+        type: "address"
+      },
+      {
+        internalType: "uint256",
+        name: "subtractedValue",
+        type: "uint256"
+      }
+    ],
+    name: "decreaseAllowance",
+    outputs: [
+      {
+        internalType: "bool",
+        name: "",
+        type: "bool"
+      }
+    ],
+    stateMutability: "nonpayable",
+    type: "function"
+  },
+  {
+    inputs: [],
+    name: "devAlloc",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256"
+      }
+    ],
+    stateMutability: "view",
+    type: "function"
+  },
+  {
+    inputs: [],
+    name: "devFeeBp",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256"
+      }
+    ],
+    stateMutability: "view",
+    type: "function"
+  },
+  {
+    inputs: [],
+    name: "devFeeEthBal",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256"
+      }
+    ],
+    stateMutability: "view",
+    type: "function"
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "spender",
+        type: "address"
+      },
+      {
+        internalType: "uint256",
+        name: "addedValue",
+        type: "uint256"
+      }
+    ],
+    name: "increaseAllowance",
+    outputs: [
+      {
+        internalType: "bool",
+        name: "",
+        type: "bool"
+      }
+    ],
+    stateMutability: "nonpayable",
+    type: "function"
+  },
+  {
+    inputs: [],
+    name: "initialBondingCurveAlloc",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256"
+      }
+    ],
+    stateMutability: "view",
+    type: "function"
+  },
+  {
+    inputs: [],
+    name: "k",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256"
+      }
+    ],
+    stateMutability: "view",
+    type: "function"
+  },
+  {
+    inputs: [],
+    name: "minBuyForReset",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256"
+      }
+    ],
+    stateMutability: "view",
+    type: "function"
+  },
+  {
+    inputs: [],
+    name: "name",
+    outputs: [
+      {
+        internalType: "string",
+        name: "",
+        type: "string"
+      }
+    ],
+    stateMutability: "view",
+    type: "function"
+  },
+  {
+    inputs: [],
+    name: "owner",
+    outputs: [
+      {
+        internalType: "address",
+        name: "",
+        type: "address"
+      }
+    ],
+    stateMutability: "view",
+    type: "function"
+  },
+  {
+    inputs: [],
+    name: "renounceOwnership",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function"
+  },
+  {
+    inputs: [],
+    name: "root",
+    outputs: [
+      {
+        internalType: "bytes32",
+        name: "",
+        type: "bytes32"
+      }
+    ],
+    stateMutability: "view",
+    type: "function"
+  },
+  {
+    inputs: [
+      {
+        internalType: "uint256",
+        name: "amount",
+        type: "uint256"
+      },
+      {
+        internalType: "uint256",
+        name: "minPrice",
+        type: "uint256"
+      }
+    ],
+    name: "sell",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function"
+  },
+  {
+    inputs: [
+      {
+        internalType: "uint256",
+        name: "supply",
+        type: "uint256"
+      },
+      {
+        internalType: "uint256",
+        name: "amountToSell",
+        type: "uint256"
+      }
+    ],
+    name: "sellPrice",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256"
+      }
+    ],
+    stateMutability: "view",
+    type: "function"
+  },
+  {
+    inputs: [
+      {
+        internalType: "uint256",
+        name: "_devFeeBp",
+        type: "uint256"
+      }
+    ],
+    name: "setDevFeeBp",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function"
+  },
+  {
+    inputs: [
+      {
+        internalType: "uint256",
+        name: "_minBuyForReset",
+        type: "uint256"
+      }
+    ],
+    name: "setMinBuyForReset",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function"
+  },
+  {
+    inputs: [],
+    name: "symbol",
+    outputs: [
+      {
+        internalType: "string",
+        name: "",
+        type: "string"
+      }
+    ],
+    stateMutability: "view",
+    type: "function"
+  },
+  {
+    inputs: [],
+    name: "toggleAllowClaim",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function"
+  },
+  {
+    inputs: [],
+    name: "toggleAllowSell",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function"
+  },
+  {
+    inputs: [],
+    name: "toggleAllowTrade",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function"
+  },
+  {
+    inputs: [],
+    name: "toggleAllowWithdraw",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function"
+  },
+  {
+    inputs: [],
+    name: "totalSupply",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256"
+      }
+    ],
+    stateMutability: "view",
+    type: "function"
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "to",
+        type: "address"
+      },
+      {
+        internalType: "uint256",
+        name: "amount",
+        type: "uint256"
+      }
+    ],
+    name: "transfer",
+    outputs: [
+      {
+        internalType: "bool",
+        name: "",
+        type: "bool"
+      }
+    ],
+    stateMutability: "nonpayable",
+    type: "function"
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "from",
+        type: "address"
+      },
+      {
+        internalType: "address",
+        name: "to",
+        type: "address"
+      },
+      {
+        internalType: "uint256",
+        name: "amount",
+        type: "uint256"
+      }
+    ],
+    name: "transferFrom",
+    outputs: [
+      {
+        internalType: "bool",
+        name: "",
+        type: "bool"
+      }
+    ],
+    stateMutability: "nonpayable",
+    type: "function"
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "newOwner",
+        type: "address"
+      }
+    ],
+    name: "transferOwnership",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function"
+  },
+  {
+    inputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256"
+      },
+      {
+        internalType: "address",
+        name: "",
+        type: "address"
+      }
+    ],
+    name: "usedClaims",
+    outputs: [
+      {
+        internalType: "int256",
+        name: "",
+        type: "int256"
+      }
+    ],
+    stateMutability: "view",
+    type: "function"
+  },
+  {
+    inputs: [],
+    name: "withdrawClaim",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function"
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "beneficiary",
+        type: "address"
+      }
+    ],
+    name: "withdrawDevFee",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function"
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "beneficiary",
+        type: "address"
+      }
+    ],
+    name: "withdrawEth",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function"
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "beneficiary",
+        type: "address"
+      }
+    ],
+    name: "withdrawToken",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function"
+  },
+  {
+    stateMutability: "payable",
+    type: "receive"
+  }
+];
+
 // src/abi/Core.json
 var Core_default = [
   {
@@ -22407,7 +23492,8 @@ var Abi = {
   UniswapV2Router2: UniswapV2Router2_default,
   UniswapV3Router: UniswapV3Router_default,
   UniswapV3Router2: UniswapV3Router2_default,
-  UniswapV3RouterUniversal: UniswapV3RouterUniversal_default
+  UniswapV3RouterUniversal: UniswapV3RouterUniversal_default,
+  BondCurveToken: BondCurveToken_default
 };
 
 // src/badge_manifest.ts
@@ -24744,6 +25830,64 @@ var Chains = [
         import.meta.env.BASE_BOND_TOKEN_DECIMALS ?? import.meta.env.NEXT_PUBLIC_BASE_BOND_TOKEN_DECIMALS ?? import.meta.env.VITE_BASE_BOND_TOKEN_DECIMALS ?? "18"
       ),
       symbol: import.meta.env.BASE_BOND_TOKEN_SYMBOL ?? import.meta.env.NEXT_PUBLIC_BASE_BOND_TOKEN_SYMBOL ?? import.meta.env.VITE_BASE_BOND_TOKEN_SYMBOL
+    },
+    contracts: {
+      core: {
+        address: import.meta.env.BASE_CORE_ADDRESS ?? import.meta.env.NEXT_PUBLIC_BASE_CORE_ADDRESS ?? import.meta.env.VITE_BASE_CORE_ADDRESS ?? "0xB1Da6463681EC6E10baaDc3AaF6bCdc280cBbD1f",
+        abi: Core_default
+      },
+      token: {
+        address: import.meta.env.BASE_TOKEN_ADDRESS ?? import.meta.env.NEXT_PUBLIC_BASE_TOKEN_ADDRESS ?? import.meta.env.VITE_BASE_TOKEN_ADDRESS ?? "0x07B7Cdd77E18AC2b0F0A0B529F2EA86200c9Ebda",
+        abi: Token_default
+      },
+      badgeManager: {
+        address: import.meta.env.BASE_BADGE_MGR_ADDRESS ?? import.meta.env.NEXT_PUBLIC_BASE_BADGE_MGR_ADDRESS ?? import.meta.env.VITE_BASE_BADGE_MGR_ADDRESS ?? "0xcAB92E8C4110bf70E2F92Fd27D26FAEA79A89c0A",
+        abi: BadgeManager_default
+      },
+      marketCore: {
+        address: import.meta.env.BASE_MARKET_CORE_ADDRESS ?? import.meta.env.NEXT_PUBLIC_BASE_MARKET_CORE_ADDRESS ?? import.meta.env.VITE_BASE_MARKET_CORE_ADDRESS ?? "0x36371d785e11759A44ec10776a8363351307b5c7",
+        abi: MarketCore_default
+      },
+      disputeManager: {
+        address: import.meta.env.BASE_DISPUTE_MGR_ADDRESS ?? import.meta.env.NEXT_PUBLIC_BASE_DISPUTE_MGR_ADDRESS ?? import.meta.env.VITE_BASE_DISPUTE_MGR_ADDRESS ?? "0x689d76878bff3929B8f48166cA8E08C23Db23757",
+        abi: DisputeManager_default
+      },
+      mediatorManager: {
+        address: import.meta.env.BASE_MEDIATOR_MGR_ADDRESS ?? import.meta.env.NEXT_PUBLIC_BASE_MEDIATOR_MGR_ADDRESS ?? import.meta.env.VITE_BASE_MEDIATOR_MGR_ADDRESS ?? "0x086CA7908d3152aEd32284CeE3BF4020C41c1b32",
+        abi: MediatorManager_default
+      },
+      energon: {
+        address: import.meta.env.BASE_ENERGON_ADDRESS ?? import.meta.env.NEXT_PUBLIC_BASE_ENERGON_ADDRESS ?? import.meta.env.VITE_BASE_ENERGON_ADDRESS ?? "0x0000000000000000000000000000000000000000",
+        abi: Energon_default
+      },
+      nft: {
+        address: import.meta.env.BASE_NFT_ADDRESS ?? import.meta.env.NEXT_PUBLIC_BASE_NFT_ADDRESS ?? import.meta.env.VITE_BASE_NFT_ADDRESS ?? "0x0000000000000000000000000000000000000000",
+        abi: NFT_default
+      },
+      assetRegistry: {
+        address: import.meta.env.BASE_ASSET_REG_ADDRESS ?? import.meta.env.NEXT_PUBLIC_BASE_ASSET_REG_ADDRESS ?? import.meta.env.VITE_BASE_ASSET_REG_ADDRESS ?? "0x23f152f801585E86Bbe837698e9CD20Ac753387D",
+        abi: AssetRegistry_default
+      },
+      minerRegistry: {
+        address: import.meta.env.BASE_MINER_REG_ADDRESS ?? import.meta.env.NEXT_PUBLIC_BASE_MINER_REG_ADDRESS ?? import.meta.env.VITE_BASE_MINER_REG_ADDRESS ?? "0x2fC197a9B4CFd9a059f1A0f216801351474F9910",
+        abi: MinerRegistry_default
+      },
+      providerRegistry: {
+        address: import.meta.env.BASE_PROVIDER_REG_ADDRESS ?? import.meta.env.NEXT_PUBLIC_BASE_PROVIDER_REG_ADDRESS ?? import.meta.env.VITE_BASE_PROVIDER_REG_ADDRESS,
+        abi: ProviderRegistry_default
+      },
+      router: {
+        address: import.meta.env.BASE_ROUTER_ADDRESS ?? import.meta.env.NEXT_PUBLIC_BASE_ROUTER_ADDRESS ?? import.meta.env.VITE_BASE_ROUTER_ADDRESS,
+        abi: Router_default
+      },
+      payRouter: {
+        address: import.meta.env.BASE_PAY_ROUTER_ADDRESS ?? import.meta.env.NEXT_PUBLIC_BASE_PAY_ROUTER_ADDRESS ?? import.meta.env.VITE_BASE_PAY_ROUTER_ADDRESS,
+        abi: PayRouter_default
+      },
+      marketManager: {
+        address: import.meta.env.BASE_MARKET_MGR_ADDRESS ?? import.meta.env.NEXT_PUBLIC_BASE_MARKET_MGR_ADDRESS ?? import.meta.env.VITE_BASE_MARKET_MGR_ADDRESS,
+        abi: MarketManager_default
+      }
     }
   },
   {
@@ -25061,7 +26205,7 @@ var Chains = [
       },
       token: {
         address: import.meta.env.LOCALHOST_TOKEN_ADDRESS ?? import.meta.env.NEXT_PUBLIC_LOCALHOST_TOKEN_ADDRESS ?? import.meta.env.VITE_LOCALHOST_TOKEN_ADDRESS,
-        abi: Token_default
+        abi: BondCurveToken_default
       },
       badgeManager: {
         address: import.meta.env.LOCALHOST_BADGE_MGR_ADDRESS ?? import.meta.env.NEXT_PUBLIC_LOCALHOST_BADGE_MGR_ADDRESS ?? import.meta.env.VITE_LOCALHOST_BADGE_MGR_ADDRESS,
@@ -25215,6 +26359,62 @@ var contractsParams = {
     chainlink: {}
   },
   sepolia: {
+    others: {
+      operatorBond: "0",
+      allocatorAddr: "0xA47FFd6c828EFB58c6B42F722ABA286cF87C19a0"
+    },
+    core: {
+      minTimeToPay: 1800,
+      orderGraceDur: 1800,
+      maxOpenOrders: 3,
+      maxOpenDisputes: 3,
+      transferToFeePoolInterval: 86400
+    },
+    token: {},
+    energon: {},
+    nft: {},
+    badgeManager: {},
+    marketCore: {
+      defaultDisputeDelayDur: 0
+    },
+    disputeManager: {
+      evidenceDur: 1800,
+      predictDur: 3600
+    },
+    mediatorManager: {
+      baseTicketPrice: "100000000000000000000",
+      ticketWindowDur: 86400,
+      ticketsPerWindow: 256,
+      ticketSupply: 6e4,
+      priceSupplyDeltaBP: 2e3,
+      minInactiveWindowBeforeReset: 7,
+      soldOutBP: 8e3,
+      ticketMatureDur: 86400,
+      ticketCancelDur: 604800,
+      ticketExpireDur: 172800,
+      ticketPauseDur: 604800,
+      reqPoolBond: "1000000000000000000000",
+      poolDraftReward: "100000000000000000000",
+      poolWinReward: "200000000000000000000",
+      poolNumDraftee: 1,
+      poolNoVoteSlashBP: 1e3,
+      poolLoseVoteSlashBP: 2e3,
+      poolEvidenceDur: 86400,
+      poolPredictDur: 172800
+    },
+    assetRegistry: {},
+    minerRegistry: {
+      minerBond: "1000000000000000000000",
+      minerMatureDur: 86400,
+      minerCancelDur: 604800
+    },
+    chainlink: {},
+    payRouter: {
+      payRouterProtocolFeeBp: 0
+    },
+    marketManager: {}
+  },
+  base: {
     others: {
       operatorBond: "0",
       allocatorAddr: "0xA47FFd6c828EFB58c6B42F722ABA286cF87C19a0"
@@ -25498,6 +26698,19 @@ var MediatorPools = {
     }
   ],
   arbitrum: [
+    {
+      name: "General",
+      description: "For mediators specializing in global crypto to fiat swaps and vice versa.",
+      id: 0,
+      reqBond: "1000000000000000000000",
+      draftReward: "100000000000000000000",
+      winReward: "200000000000000000000",
+      noVoteSlashBP: 1e3,
+      loseVoteSlashBP: 2e3,
+      numDraftees: 1
+    }
+  ],
+  base: [
     {
       name: "General",
       description: "For mediators specializing in global crypto to fiat swaps and vice versa.",
@@ -30410,6 +31623,7 @@ var typechain_exports = {};
 __export(typechain_exports, {
   AssetRegistry__factory: () => AssetRegistry__factory,
   BadgeManager__factory: () => BadgeManager__factory,
+  BondCurveToken__factory: () => BondCurveToken__factory,
   Core__factory: () => Core__factory,
   DisputeManager__factory: () => DisputeManager__factory,
   ERC20__factory: () => ERC20__factory,
@@ -30441,6 +31655,7 @@ var factories_exports = {};
 __export(factories_exports, {
   AssetRegistry__factory: () => AssetRegistry__factory,
   BadgeManager__factory: () => BadgeManager__factory,
+  BondCurveToken__factory: () => BondCurveToken__factory,
   Core__factory: () => Core__factory,
   DisputeManager__factory: () => DisputeManager__factory,
   ERC20__factory: () => ERC20__factory,
@@ -39377,8 +40592,1102 @@ var BadgeManager__factory = class {
   }
 };
 
-// src/typechain/factories/Core__factory.ts
+// src/typechain/factories/BondCurveToken__factory.ts
 var _abi3 = [
+  {
+    inputs: [
+      {
+        internalType: "string",
+        name: "_name",
+        type: "string"
+      },
+      {
+        internalType: "string",
+        name: "_symbol",
+        type: "string"
+      },
+      {
+        internalType: "uint256",
+        name: "_initialSupply",
+        type: "uint256"
+      },
+      {
+        internalType: "uint8",
+        name: "_decimals",
+        type: "uint8"
+      },
+      {
+        internalType: "bytes32",
+        name: "_airdropTreeRoot",
+        type: "bytes32"
+      },
+      {
+        internalType: "uint256",
+        name: "_devAlloc",
+        type: "uint256"
+      },
+      {
+        internalType: "uint256",
+        name: "_bondingCurveAlloc",
+        type: "uint256"
+      },
+      {
+        internalType: "uint256",
+        name: "_devFeeBp",
+        type: "uint256"
+      }
+    ],
+    stateMutability: "nonpayable",
+    type: "constructor"
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: false,
+        internalType: "bool",
+        name: "allowClaim",
+        type: "bool"
+      }
+    ],
+    name: "AllowClaim",
+    type: "event"
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: false,
+        internalType: "bool",
+        name: "allowSell",
+        type: "bool"
+      }
+    ],
+    name: "AllowSell",
+    type: "event"
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: false,
+        internalType: "bool",
+        name: "allowTrade",
+        type: "bool"
+      }
+    ],
+    name: "AllowTrade",
+    type: "event"
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: false,
+        internalType: "bool",
+        name: "allowWithdraw",
+        type: "bool"
+      }
+    ],
+    name: "AllowWithdraw",
+    type: "event"
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: true,
+        internalType: "address",
+        name: "owner",
+        type: "address"
+      },
+      {
+        indexed: true,
+        internalType: "address",
+        name: "spender",
+        type: "address"
+      },
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "value",
+        type: "uint256"
+      }
+    ],
+    name: "Approval",
+    type: "event"
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: false,
+        internalType: "address",
+        name: "buyer",
+        type: "address"
+      },
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "input",
+        type: "uint256"
+      },
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "output",
+        type: "uint256"
+      },
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "fee",
+        type: "uint256"
+      }
+    ],
+    name: "Buy",
+    type: "event"
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: false,
+        internalType: "address",
+        name: "addr",
+        type: "address"
+      },
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "amount",
+        type: "uint256"
+      }
+    ],
+    name: "ClaimWithdrawn",
+    type: "event"
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: false,
+        internalType: "address",
+        name: "addr",
+        type: "address"
+      },
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "claimId",
+        type: "uint256"
+      },
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "allocation",
+        type: "uint256"
+      }
+    ],
+    name: "Claimed",
+    type: "event"
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: true,
+        internalType: "address",
+        name: "previousOwner",
+        type: "address"
+      },
+      {
+        indexed: true,
+        internalType: "address",
+        name: "newOwner",
+        type: "address"
+      }
+    ],
+    name: "OwnershipTransferred",
+    type: "event"
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: false,
+        internalType: "address",
+        name: "seller",
+        type: "address"
+      },
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "input",
+        type: "uint256"
+      },
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "output",
+        type: "uint256"
+      },
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "fee",
+        type: "uint256"
+      }
+    ],
+    name: "Sell",
+    type: "event"
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: true,
+        internalType: "address",
+        name: "from",
+        type: "address"
+      },
+      {
+        indexed: true,
+        internalType: "address",
+        name: "to",
+        type: "address"
+      },
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "value",
+        type: "uint256"
+      }
+    ],
+    name: "Transfer",
+    type: "event"
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "devFeeBp",
+        type: "uint256"
+      }
+    ],
+    name: "UpdatedDevFeeBp",
+    type: "event"
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "minBuyForReset",
+        type: "uint256"
+      }
+    ],
+    name: "UpdatedMinBuyForReset",
+    type: "event"
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: false,
+        internalType: "address",
+        name: "beneficiary",
+        type: "address"
+      },
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "amount",
+        type: "uint256"
+      }
+    ],
+    name: "WithdrawnDevFee",
+    type: "event"
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: false,
+        internalType: "address",
+        name: "beneficiary",
+        type: "address"
+      },
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "amount",
+        type: "uint256"
+      }
+    ],
+    name: "WithdrawnEth",
+    type: "event"
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: false,
+        internalType: "address",
+        name: "beneficiary",
+        type: "address"
+      },
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "amount",
+        type: "uint256"
+      }
+    ],
+    name: "WithdrawnToken",
+    type: "event"
+  },
+  {
+    inputs: [],
+    name: "allowClaim",
+    outputs: [
+      {
+        internalType: "bool",
+        name: "",
+        type: "bool"
+      }
+    ],
+    stateMutability: "view",
+    type: "function"
+  },
+  {
+    inputs: [],
+    name: "allowSell",
+    outputs: [
+      {
+        internalType: "bool",
+        name: "",
+        type: "bool"
+      }
+    ],
+    stateMutability: "view",
+    type: "function"
+  },
+  {
+    inputs: [],
+    name: "allowTrade",
+    outputs: [
+      {
+        internalType: "bool",
+        name: "",
+        type: "bool"
+      }
+    ],
+    stateMutability: "view",
+    type: "function"
+  },
+  {
+    inputs: [],
+    name: "allowWithdraw",
+    outputs: [
+      {
+        internalType: "bool",
+        name: "",
+        type: "bool"
+      }
+    ],
+    stateMutability: "view",
+    type: "function"
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "owner",
+        type: "address"
+      },
+      {
+        internalType: "address",
+        name: "spender",
+        type: "address"
+      }
+    ],
+    name: "allowance",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256"
+      }
+    ],
+    stateMutability: "view",
+    type: "function"
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "spender",
+        type: "address"
+      },
+      {
+        internalType: "uint256",
+        name: "amount",
+        type: "uint256"
+      }
+    ],
+    name: "approve",
+    outputs: [
+      {
+        internalType: "bool",
+        name: "",
+        type: "bool"
+      }
+    ],
+    stateMutability: "nonpayable",
+    type: "function"
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "account",
+        type: "address"
+      }
+    ],
+    name: "balanceOf",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256"
+      }
+    ],
+    stateMutability: "view",
+    type: "function"
+  },
+  {
+    inputs: [],
+    name: "bondingCurveAlloc",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256"
+      }
+    ],
+    stateMutability: "view",
+    type: "function"
+  },
+  {
+    inputs: [],
+    name: "bondingCurveEthBal",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256"
+      }
+    ],
+    stateMutability: "view",
+    type: "function"
+  },
+  {
+    inputs: [
+      {
+        internalType: "uint256",
+        name: "maxPrice",
+        type: "uint256"
+      }
+    ],
+    name: "buy",
+    outputs: [],
+    stateMutability: "payable",
+    type: "function"
+  },
+  {
+    inputs: [
+      {
+        internalType: "uint256",
+        name: "supply",
+        type: "uint256"
+      }
+    ],
+    name: "buyPrice",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256"
+      }
+    ],
+    stateMutability: "view",
+    type: "function"
+  },
+  {
+    inputs: [],
+    name: "circulatingSupply",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256"
+      }
+    ],
+    stateMutability: "view",
+    type: "function"
+  },
+  {
+    inputs: [
+      {
+        internalType: "bytes32[]",
+        name: "proof",
+        type: "bytes32[]"
+      },
+      {
+        internalType: "address",
+        name: "addr",
+        type: "address"
+      },
+      {
+        internalType: "uint256",
+        name: "claimId",
+        type: "uint256"
+      },
+      {
+        internalType: "uint256",
+        name: "allocation",
+        type: "uint256"
+      }
+    ],
+    name: "claim",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function"
+  },
+  {
+    inputs: [
+      {
+        internalType: "bytes32[][]",
+        name: "proofs",
+        type: "bytes32[][]"
+      },
+      {
+        internalType: "address",
+        name: "addr",
+        type: "address"
+      },
+      {
+        internalType: "uint256[]",
+        name: "claimIds",
+        type: "uint256[]"
+      },
+      {
+        internalType: "uint256[]",
+        name: "allocations",
+        type: "uint256[]"
+      }
+    ],
+    name: "claimMulti",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function"
+  },
+  {
+    inputs: [],
+    name: "claimedBalance",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256"
+      }
+    ],
+    stateMutability: "view",
+    type: "function"
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "",
+        type: "address"
+      }
+    ],
+    name: "claims",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256"
+      }
+    ],
+    stateMutability: "view",
+    type: "function"
+  },
+  {
+    inputs: [],
+    name: "decimals",
+    outputs: [
+      {
+        internalType: "uint8",
+        name: "",
+        type: "uint8"
+      }
+    ],
+    stateMutability: "view",
+    type: "function"
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "spender",
+        type: "address"
+      },
+      {
+        internalType: "uint256",
+        name: "subtractedValue",
+        type: "uint256"
+      }
+    ],
+    name: "decreaseAllowance",
+    outputs: [
+      {
+        internalType: "bool",
+        name: "",
+        type: "bool"
+      }
+    ],
+    stateMutability: "nonpayable",
+    type: "function"
+  },
+  {
+    inputs: [],
+    name: "devAlloc",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256"
+      }
+    ],
+    stateMutability: "view",
+    type: "function"
+  },
+  {
+    inputs: [],
+    name: "devFeeBp",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256"
+      }
+    ],
+    stateMutability: "view",
+    type: "function"
+  },
+  {
+    inputs: [],
+    name: "devFeeEthBal",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256"
+      }
+    ],
+    stateMutability: "view",
+    type: "function"
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "spender",
+        type: "address"
+      },
+      {
+        internalType: "uint256",
+        name: "addedValue",
+        type: "uint256"
+      }
+    ],
+    name: "increaseAllowance",
+    outputs: [
+      {
+        internalType: "bool",
+        name: "",
+        type: "bool"
+      }
+    ],
+    stateMutability: "nonpayable",
+    type: "function"
+  },
+  {
+    inputs: [],
+    name: "initialBondingCurveAlloc",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256"
+      }
+    ],
+    stateMutability: "view",
+    type: "function"
+  },
+  {
+    inputs: [],
+    name: "k",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256"
+      }
+    ],
+    stateMutability: "view",
+    type: "function"
+  },
+  {
+    inputs: [],
+    name: "minBuyForReset",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256"
+      }
+    ],
+    stateMutability: "view",
+    type: "function"
+  },
+  {
+    inputs: [],
+    name: "name",
+    outputs: [
+      {
+        internalType: "string",
+        name: "",
+        type: "string"
+      }
+    ],
+    stateMutability: "view",
+    type: "function"
+  },
+  {
+    inputs: [],
+    name: "owner",
+    outputs: [
+      {
+        internalType: "address",
+        name: "",
+        type: "address"
+      }
+    ],
+    stateMutability: "view",
+    type: "function"
+  },
+  {
+    inputs: [],
+    name: "renounceOwnership",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function"
+  },
+  {
+    inputs: [],
+    name: "root",
+    outputs: [
+      {
+        internalType: "bytes32",
+        name: "",
+        type: "bytes32"
+      }
+    ],
+    stateMutability: "view",
+    type: "function"
+  },
+  {
+    inputs: [
+      {
+        internalType: "uint256",
+        name: "amount",
+        type: "uint256"
+      },
+      {
+        internalType: "uint256",
+        name: "minPrice",
+        type: "uint256"
+      }
+    ],
+    name: "sell",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function"
+  },
+  {
+    inputs: [
+      {
+        internalType: "uint256",
+        name: "supply",
+        type: "uint256"
+      },
+      {
+        internalType: "uint256",
+        name: "amountToSell",
+        type: "uint256"
+      }
+    ],
+    name: "sellPrice",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256"
+      }
+    ],
+    stateMutability: "view",
+    type: "function"
+  },
+  {
+    inputs: [
+      {
+        internalType: "uint256",
+        name: "_devFeeBp",
+        type: "uint256"
+      }
+    ],
+    name: "setDevFeeBp",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function"
+  },
+  {
+    inputs: [
+      {
+        internalType: "uint256",
+        name: "_minBuyForReset",
+        type: "uint256"
+      }
+    ],
+    name: "setMinBuyForReset",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function"
+  },
+  {
+    inputs: [],
+    name: "symbol",
+    outputs: [
+      {
+        internalType: "string",
+        name: "",
+        type: "string"
+      }
+    ],
+    stateMutability: "view",
+    type: "function"
+  },
+  {
+    inputs: [],
+    name: "toggleAllowClaim",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function"
+  },
+  {
+    inputs: [],
+    name: "toggleAllowSell",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function"
+  },
+  {
+    inputs: [],
+    name: "toggleAllowTrade",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function"
+  },
+  {
+    inputs: [],
+    name: "toggleAllowWithdraw",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function"
+  },
+  {
+    inputs: [],
+    name: "totalSupply",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256"
+      }
+    ],
+    stateMutability: "view",
+    type: "function"
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "to",
+        type: "address"
+      },
+      {
+        internalType: "uint256",
+        name: "amount",
+        type: "uint256"
+      }
+    ],
+    name: "transfer",
+    outputs: [
+      {
+        internalType: "bool",
+        name: "",
+        type: "bool"
+      }
+    ],
+    stateMutability: "nonpayable",
+    type: "function"
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "from",
+        type: "address"
+      },
+      {
+        internalType: "address",
+        name: "to",
+        type: "address"
+      },
+      {
+        internalType: "uint256",
+        name: "amount",
+        type: "uint256"
+      }
+    ],
+    name: "transferFrom",
+    outputs: [
+      {
+        internalType: "bool",
+        name: "",
+        type: "bool"
+      }
+    ],
+    stateMutability: "nonpayable",
+    type: "function"
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "newOwner",
+        type: "address"
+      }
+    ],
+    name: "transferOwnership",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function"
+  },
+  {
+    inputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256"
+      },
+      {
+        internalType: "address",
+        name: "",
+        type: "address"
+      }
+    ],
+    name: "usedClaims",
+    outputs: [
+      {
+        internalType: "int256",
+        name: "",
+        type: "int256"
+      }
+    ],
+    stateMutability: "view",
+    type: "function"
+  },
+  {
+    inputs: [],
+    name: "withdrawClaim",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function"
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "beneficiary",
+        type: "address"
+      }
+    ],
+    name: "withdrawDevFee",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function"
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "beneficiary",
+        type: "address"
+      }
+    ],
+    name: "withdrawEth",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function"
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "beneficiary",
+        type: "address"
+      }
+    ],
+    name: "withdrawToken",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function"
+  },
+  {
+    stateMutability: "payable",
+    type: "receive"
+  }
+];
+var BondCurveToken__factory = class {
+  static abi = _abi3;
+  static createInterface() {
+    return new Interface(_abi3);
+  }
+  static connect(address, runner) {
+    return new Contract(address, _abi3, runner);
+  }
+};
+
+// src/typechain/factories/Core__factory.ts
+var _abi4 = [
   {
     inputs: [
       {
@@ -42283,17 +44592,17 @@ var _abi3 = [
   }
 ];
 var Core__factory = class {
-  static abi = _abi3;
+  static abi = _abi4;
   static createInterface() {
-    return new Interface(_abi3);
+    return new Interface(_abi4);
   }
   static connect(address, runner) {
-    return new Contract(address, _abi3, runner);
+    return new Contract(address, _abi4, runner);
   }
 };
 
 // src/typechain/factories/DisputeManager__factory.ts
-var _abi4 = [
+var _abi5 = [
   {
     inputs: [
       {
@@ -43379,17 +45688,17 @@ var _abi4 = [
   }
 ];
 var DisputeManager__factory = class {
-  static abi = _abi4;
+  static abi = _abi5;
   static createInterface() {
-    return new Interface(_abi4);
+    return new Interface(_abi5);
   }
   static connect(address, runner) {
-    return new Contract(address, _abi4, runner);
+    return new Contract(address, _abi5, runner);
   }
 };
 
 // src/typechain/factories/ERC20__factory.ts
-var _abi5 = [
+var _abi6 = [
   {
     inputs: [
       {
@@ -43678,17 +45987,17 @@ var _abi5 = [
   }
 ];
 var ERC20__factory = class {
-  static abi = _abi5;
+  static abi = _abi6;
   static createInterface() {
-    return new Interface(_abi5);
+    return new Interface(_abi6);
   }
   static connect(address, runner) {
-    return new Contract(address, _abi5, runner);
+    return new Contract(address, _abi6, runner);
   }
 };
 
 // src/typechain/factories/ERC721__factory.ts
-var _abi6 = [
+var _abi7 = [
   {
     inputs: [
       {
@@ -44037,17 +46346,17 @@ var _abi6 = [
   }
 ];
 var ERC721__factory = class {
-  static abi = _abi6;
+  static abi = _abi7;
   static createInterface() {
-    return new Interface(_abi6);
+    return new Interface(_abi7);
   }
   static connect(address, runner) {
-    return new Contract(address, _abi6, runner);
+    return new Contract(address, _abi7, runner);
   }
 };
 
 // src/typechain/factories/Energon__factory.ts
-var _abi7 = [
+var _abi8 = [
   {
     inputs: [
       {
@@ -44752,17 +47061,17 @@ var _abi7 = [
   }
 ];
 var Energon__factory = class {
-  static abi = _abi7;
+  static abi = _abi8;
   static createInterface() {
-    return new Interface(_abi7);
+    return new Interface(_abi8);
   }
   static connect(address, runner) {
-    return new Contract(address, _abi7, runner);
+    return new Contract(address, _abi8, runner);
   }
 };
 
 // src/typechain/factories/FeePool__factory.ts
-var _abi8 = [
+var _abi9 = [
   {
     inputs: [
       {
@@ -45684,17 +47993,17 @@ var _abi8 = [
   }
 ];
 var FeePool__factory = class {
-  static abi = _abi8;
+  static abi = _abi9;
   static createInterface() {
-    return new Interface(_abi8);
+    return new Interface(_abi9);
   }
   static connect(address, runner) {
-    return new Contract(address, _abi8, runner);
+    return new Contract(address, _abi9, runner);
   }
 };
 
 // src/typechain/factories/LPPool__factory.ts
-var _abi9 = [
+var _abi10 = [
   {
     inputs: [
       {
@@ -46202,17 +48511,17 @@ var _abi9 = [
   }
 ];
 var LPPool__factory = class {
-  static abi = _abi9;
+  static abi = _abi10;
   static createInterface() {
-    return new Interface(_abi9);
+    return new Interface(_abi10);
   }
   static connect(address, runner) {
-    return new Contract(address, _abi9, runner);
+    return new Contract(address, _abi10, runner);
   }
 };
 
 // src/typechain/factories/MarketCore__factory.ts
-var _abi10 = [
+var _abi11 = [
   {
     inputs: [
       {
@@ -47695,17 +50004,17 @@ var _abi10 = [
   }
 ];
 var MarketCore__factory = class {
-  static abi = _abi10;
+  static abi = _abi11;
   static createInterface() {
-    return new Interface(_abi10);
+    return new Interface(_abi11);
   }
   static connect(address, runner) {
-    return new Contract(address, _abi10, runner);
+    return new Contract(address, _abi11, runner);
   }
 };
 
 // src/typechain/factories/MarketManager__factory.ts
-var _abi11 = [
+var _abi12 = [
   {
     inputs: [
       {
@@ -48390,17 +50699,17 @@ var _abi11 = [
   }
 ];
 var MarketManager__factory = class {
-  static abi = _abi11;
+  static abi = _abi12;
   static createInterface() {
-    return new Interface(_abi11);
+    return new Interface(_abi12);
   }
   static connect(address, runner) {
-    return new Contract(address, _abi11, runner);
+    return new Contract(address, _abi12, runner);
   }
 };
 
 // src/typechain/factories/MediatorManager__factory.ts
-var _abi12 = [
+var _abi13 = [
   {
     inputs: [
       {
@@ -50313,17 +52622,17 @@ var _abi12 = [
   }
 ];
 var MediatorManager__factory = class {
-  static abi = _abi12;
+  static abi = _abi13;
   static createInterface() {
-    return new Interface(_abi12);
+    return new Interface(_abi13);
   }
   static connect(address, runner) {
-    return new Contract(address, _abi12, runner);
+    return new Contract(address, _abi13, runner);
   }
 };
 
 // src/typechain/factories/MinerRegistry__factory.ts
-var _abi13 = [
+var _abi14 = [
   {
     inputs: [
       {
@@ -51006,17 +53315,17 @@ var _abi13 = [
   }
 ];
 var MinerRegistry__factory = class {
-  static abi = _abi13;
+  static abi = _abi14;
   static createInterface() {
-    return new Interface(_abi13);
+    return new Interface(_abi14);
   }
   static connect(address, runner) {
-    return new Contract(address, _abi13, runner);
+    return new Contract(address, _abi14, runner);
   }
 };
 
 // src/typechain/factories/NFT__factory.ts
-var _abi14 = [
+var _abi15 = [
   {
     inputs: [
       {
@@ -52693,17 +55002,17 @@ var _abi14 = [
   }
 ];
 var NFT__factory = class {
-  static abi = _abi14;
+  static abi = _abi15;
   static createInterface() {
-    return new Interface(_abi14);
+    return new Interface(_abi15);
   }
   static connect(address, runner) {
-    return new Contract(address, _abi14, runner);
+    return new Contract(address, _abi15, runner);
   }
 };
 
 // src/typechain/factories/PayRouter__factory.ts
-var _abi15 = [
+var _abi16 = [
   {
     inputs: [
       {
@@ -54095,17 +56404,17 @@ var _abi15 = [
   }
 ];
 var PayRouter__factory = class {
-  static abi = _abi15;
+  static abi = _abi16;
   static createInterface() {
-    return new Interface(_abi15);
+    return new Interface(_abi16);
   }
   static connect(address, runner) {
-    return new Contract(address, _abi15, runner);
+    return new Contract(address, _abi16, runner);
   }
 };
 
 // src/typechain/factories/ProviderRegistry__factory.ts
-var _abi16 = [
+var _abi17 = [
   {
     anonymous: false,
     inputs: [
@@ -54337,17 +56646,17 @@ var _abi16 = [
   }
 ];
 var ProviderRegistry__factory = class {
-  static abi = _abi16;
+  static abi = _abi17;
   static createInterface() {
-    return new Interface(_abi16);
+    return new Interface(_abi17);
   }
   static connect(address, runner) {
-    return new Contract(address, _abi16, runner);
+    return new Contract(address, _abi17, runner);
   }
 };
 
 // src/typechain/factories/Router__factory.ts
-var _abi17 = [
+var _abi18 = [
   {
     inputs: [
       {
@@ -54662,17 +56971,17 @@ var _abi17 = [
   }
 ];
 var Router__factory = class {
-  static abi = _abi17;
+  static abi = _abi18;
   static createInterface() {
-    return new Interface(_abi17);
+    return new Interface(_abi18);
   }
   static connect(address, runner) {
-    return new Contract(address, _abi17, runner);
+    return new Contract(address, _abi18, runner);
   }
 };
 
 // src/typechain/factories/Token__factory.ts
-var _abi18 = [
+var _abi19 = [
   {
     inputs: [
       {
@@ -55175,17 +57484,17 @@ var _abi18 = [
   }
 ];
 var Token__factory = class {
-  static abi = _abi18;
+  static abi = _abi19;
   static createInterface() {
-    return new Interface(_abi18);
+    return new Interface(_abi19);
   }
   static connect(address, runner) {
-    return new Contract(address, _abi18, runner);
+    return new Contract(address, _abi19, runner);
   }
 };
 
 // src/typechain/factories/TokenPool__factory.ts
-var _abi19 = [
+var _abi20 = [
   {
     inputs: [
       {
@@ -55927,17 +58236,17 @@ var _abi19 = [
   }
 ];
 var TokenPool__factory = class {
-  static abi = _abi19;
+  static abi = _abi20;
   static createInterface() {
-    return new Interface(_abi19);
+    return new Interface(_abi20);
   }
   static connect(address, runner) {
-    return new Contract(address, _abi19, runner);
+    return new Contract(address, _abi20, runner);
   }
 };
 
 // src/typechain/factories/UniswapV2Router__factory.ts
-var _abi20 = [
+var _abi21 = [
   {
     inputs: [
       {
@@ -56752,17 +59061,17 @@ var _abi20 = [
   }
 ];
 var UniswapV2Router__factory = class {
-  static abi = _abi20;
+  static abi = _abi21;
   static createInterface() {
-    return new Interface(_abi20);
+    return new Interface(_abi21);
   }
   static connect(address, runner) {
-    return new Contract(address, _abi20, runner);
+    return new Contract(address, _abi21, runner);
   }
 };
 
 // src/typechain/factories/UniswapV2Router2__factory.ts
-var _abi21 = [
+var _abi22 = [
   {
     inputs: [],
     name: "WETH",
@@ -57759,17 +60068,17 @@ var _abi21 = [
   }
 ];
 var UniswapV2Router2__factory = class {
-  static abi = _abi21;
+  static abi = _abi22;
   static createInterface() {
-    return new Interface(_abi21);
+    return new Interface(_abi22);
   }
   static connect(address, runner) {
-    return new Contract(address, _abi21, runner);
+    return new Contract(address, _abi22, runner);
   }
 };
 
 // src/typechain/factories/UniswapV3Router__factory.ts
-var _abi22 = [
+var _abi23 = [
   {
     inputs: [
       {
@@ -58378,17 +60687,17 @@ var _abi22 = [
   }
 ];
 var UniswapV3Router__factory = class {
-  static abi = _abi22;
+  static abi = _abi23;
   static createInterface() {
-    return new Interface(_abi22);
+    return new Interface(_abi23);
   }
   static connect(address, runner) {
-    return new Contract(address, _abi22, runner);
+    return new Contract(address, _abi23, runner);
   }
 };
 
 // src/typechain/factories/UniswapV3Router2__factory.ts
-var _abi23 = [
+var _abi24 = [
   {
     inputs: [
       {
@@ -59495,17 +61804,17 @@ var _abi23 = [
   }
 ];
 var UniswapV3Router2__factory = class {
-  static abi = _abi23;
+  static abi = _abi24;
   static createInterface() {
-    return new Interface(_abi23);
+    return new Interface(_abi24);
   }
   static connect(address, runner) {
-    return new Contract(address, _abi23, runner);
+    return new Contract(address, _abi24, runner);
   }
 };
 
 // src/typechain/factories/UniswapV3RouterUniversal__factory.ts
-var _abi24 = [
+var _abi25 = [
   {
     inputs: [
       {
@@ -60046,21 +62355,21 @@ var _abi24 = [
   }
 ];
 var UniswapV3RouterUniversal__factory = class {
-  static abi = _abi24;
+  static abi = _abi25;
   static createInterface() {
-    return new Interface(_abi24);
+    return new Interface(_abi25);
   }
   static connect(address, runner) {
     return new Contract(
       address,
-      _abi24,
+      _abi25,
       runner
     );
   }
 };
 
 // src/typechain/factories/WETH__factory.ts
-var _abi25 = [
+var _abi26 = [
   {
     anonymous: false,
     inputs: [
@@ -60347,12 +62656,12 @@ var _abi25 = [
   }
 ];
 var WETH__factory = class {
-  static abi = _abi25;
+  static abi = _abi26;
   static createInterface() {
-    return new Interface(_abi25);
+    return new Interface(_abi26);
   }
   static connect(address, runner) {
-    return new Contract(address, _abi25, runner);
+    return new Contract(address, _abi26, runner);
   }
 };
 
