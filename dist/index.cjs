@@ -26012,27 +26012,27 @@ var Chains = [
     },
     contracts: {
       core: {
-        address: process.env.BASE_CORE_ADDRESS ?? process.env.NEXT_PUBLIC_BASE_CORE_ADDRESS ?? process.env.VITE_BASE_CORE_ADDRESS ?? "0xB1Da6463681EC6E10baaDc3AaF6bCdc280cBbD1f",
+        address: process.env.BASE_CORE_ADDRESS ?? process.env.NEXT_PUBLIC_BASE_CORE_ADDRESS ?? process.env.VITE_BASE_CORE_ADDRESS ?? "0x4fDEE423445866c9e626F5BAA116F8a080A21aC0",
         abi: Core_default
       },
       token: {
-        address: process.env.BASE_TOKEN_ADDRESS ?? process.env.NEXT_PUBLIC_BASE_TOKEN_ADDRESS ?? process.env.VITE_BASE_TOKEN_ADDRESS ?? "0x34d70Cf690d67AC2C05eC4464E1Dd5fDB3c84b1E",
+        address: process.env.BASE_TOKEN_ADDRESS ?? process.env.NEXT_PUBLIC_BASE_TOKEN_ADDRESS ?? process.env.VITE_BASE_TOKEN_ADDRESS ?? "0x6EEDC7E26A5D195ab9a1beDD1494E96Eef58a3C0",
         abi: Token_default
       },
       badgeManager: {
-        address: process.env.BASE_BADGE_MGR_ADDRESS ?? process.env.NEXT_PUBLIC_BASE_BADGE_MGR_ADDRESS ?? process.env.VITE_BASE_BADGE_MGR_ADDRESS ?? "0xcAB92E8C4110bf70E2F92Fd27D26FAEA79A89c0A",
+        address: process.env.BASE_BADGE_MGR_ADDRESS ?? process.env.NEXT_PUBLIC_BASE_BADGE_MGR_ADDRESS ?? process.env.VITE_BASE_BADGE_MGR_ADDRESS ?? "0x15e15A0A609ab2735836c794e8f345Cf631bb16E",
         abi: BadgeManager_default
       },
       marketCore: {
-        address: process.env.BASE_MARKET_CORE_ADDRESS ?? process.env.NEXT_PUBLIC_BASE_MARKET_CORE_ADDRESS ?? process.env.VITE_BASE_MARKET_CORE_ADDRESS ?? "0x36371d785e11759A44ec10776a8363351307b5c7",
+        address: process.env.BASE_MARKET_CORE_ADDRESS ?? process.env.NEXT_PUBLIC_BASE_MARKET_CORE_ADDRESS ?? process.env.VITE_BASE_MARKET_CORE_ADDRESS ?? "0xf5428593A82b49789a2F6B675CcF0ce2b90F1398",
         abi: MarketCore_default
       },
       disputeManager: {
-        address: process.env.BASE_DISPUTE_MGR_ADDRESS ?? process.env.NEXT_PUBLIC_BASE_DISPUTE_MGR_ADDRESS ?? process.env.VITE_BASE_DISPUTE_MGR_ADDRESS ?? "0x689d76878bff3929B8f48166cA8E08C23Db23757",
+        address: process.env.BASE_DISPUTE_MGR_ADDRESS ?? process.env.NEXT_PUBLIC_BASE_DISPUTE_MGR_ADDRESS ?? process.env.VITE_BASE_DISPUTE_MGR_ADDRESS ?? "0x4D540bbCD810A20840c19E463C5a3fc3D969C946",
         abi: DisputeManager_default
       },
       mediatorManager: {
-        address: process.env.BASE_MEDIATOR_MGR_ADDRESS ?? process.env.NEXT_PUBLIC_BASE_MEDIATOR_MGR_ADDRESS ?? process.env.VITE_BASE_MEDIATOR_MGR_ADDRESS ?? "0x086CA7908d3152aEd32284CeE3BF4020C41c1b32",
+        address: process.env.BASE_MEDIATOR_MGR_ADDRESS ?? process.env.NEXT_PUBLIC_BASE_MEDIATOR_MGR_ADDRESS ?? process.env.VITE_BASE_MEDIATOR_MGR_ADDRESS ?? "0xd9D81fbc8313055F9ad6F06f05A2C616d697a6Dc",
         abi: MediatorManager_default
       },
       energon: {
@@ -26044,11 +26044,11 @@ var Chains = [
         abi: NFT_default
       },
       assetRegistry: {
-        address: process.env.BASE_ASSET_REG_ADDRESS ?? process.env.NEXT_PUBLIC_BASE_ASSET_REG_ADDRESS ?? process.env.VITE_BASE_ASSET_REG_ADDRESS ?? "0x23f152f801585E86Bbe837698e9CD20Ac753387D",
+        address: process.env.BASE_ASSET_REG_ADDRESS ?? process.env.NEXT_PUBLIC_BASE_ASSET_REG_ADDRESS ?? process.env.VITE_BASE_ASSET_REG_ADDRESS ?? "0x9A68F35cBBE7cB1218273173371Cf914f5943BFe",
         abi: AssetRegistry_default
       },
       minerRegistry: {
-        address: process.env.BASE_MINER_REG_ADDRESS ?? process.env.NEXT_PUBLIC_BASE_MINER_REG_ADDRESS ?? process.env.VITE_BASE_MINER_REG_ADDRESS ?? "0x2fC197a9B4CFd9a059f1A0f216801351474F9910",
+        address: process.env.BASE_MINER_REG_ADDRESS ?? process.env.NEXT_PUBLIC_BASE_MINER_REG_ADDRESS ?? process.env.VITE_BASE_MINER_REG_ADDRESS ?? "0xEf9c5ce6deDD5c966dE27601c011f3597728b7B1",
         abi: MinerRegistry_default
       },
       providerRegistry: {
