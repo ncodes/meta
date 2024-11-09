@@ -4,37 +4,17 @@
 
 import { Contract, Interface, type ContractRunner } from "ethers";
 import type {
-  BondCurveToken,
-  BondCurveTokenInterface,
-} from "../BondCurveToken";
+  BondCurveDistro,
+  BondCurveDistroInterface,
+} from "../BondCurveDistro";
 
 const _abi = [
   {
     inputs: [
       {
-        internalType: "string",
-        name: "_name",
-        type: "string",
-      },
-      {
-        internalType: "string",
-        name: "_symbol",
-        type: "string",
-      },
-      {
-        internalType: "uint256",
-        name: "_initialSupply",
-        type: "uint256",
-      },
-      {
-        internalType: "uint8",
-        name: "_decimals",
-        type: "uint8",
-      },
-      {
-        internalType: "bytes32",
-        name: "_airdropTreeRoot",
-        type: "bytes32",
+        internalType: "address",
+        name: "_rewardToken",
+        type: "address",
       },
       {
         internalType: "uint256",
@@ -129,31 +109,6 @@ const _abi = [
     anonymous: false,
     inputs: [
       {
-        indexed: true,
-        internalType: "address",
-        name: "owner",
-        type: "address",
-      },
-      {
-        indexed: true,
-        internalType: "address",
-        name: "spender",
-        type: "address",
-      },
-      {
-        indexed: false,
-        internalType: "uint256",
-        name: "value",
-        type: "uint256",
-      },
-    ],
-    name: "Approval",
-    type: "event",
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
         indexed: false,
         internalType: "address",
         name: "buyer",
@@ -187,6 +142,25 @@ const _abi = [
       {
         indexed: false,
         internalType: "address",
+        name: "newSigner",
+        type: "address",
+      },
+      {
+        indexed: false,
+        internalType: "address",
+        name: "oldSigner",
+        type: "address",
+      },
+    ],
+    name: "ClaimSignerUpdated",
+    type: "event",
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: false,
+        internalType: "address",
         name: "addr",
         type: "address",
       },
@@ -212,7 +186,7 @@ const _abi = [
       {
         indexed: false,
         internalType: "uint256",
-        name: "claimId",
+        name: "nonce",
         type: "uint256",
       },
       {
@@ -249,9 +223,9 @@ const _abi = [
     inputs: [
       {
         indexed: false,
-        internalType: "bytes32",
-        name: "root",
-        type: "bytes32",
+        internalType: "address",
+        name: "rewardToken",
+        type: "address",
       },
       {
         indexed: false,
@@ -322,31 +296,6 @@ const _abi = [
     anonymous: false,
     inputs: [
       {
-        indexed: true,
-        internalType: "address",
-        name: "from",
-        type: "address",
-      },
-      {
-        indexed: true,
-        internalType: "address",
-        name: "to",
-        type: "address",
-      },
-      {
-        indexed: false,
-        internalType: "uint256",
-        name: "value",
-        type: "uint256",
-      },
-    ],
-    name: "Transfer",
-    type: "event",
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
         indexed: false,
         internalType: "uint256",
         name: "devFeeBp",
@@ -354,19 +303,6 @@ const _abi = [
       },
     ],
     name: "UpdatedDevFeeBp",
-    type: "event",
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: false,
-        internalType: "uint256",
-        name: "minBuyForReset",
-        type: "uint256",
-      },
-    ],
-    name: "UpdatedMinBuyForReset",
     type: "event",
   },
   {
@@ -505,73 +441,6 @@ const _abi = [
     type: "function",
   },
   {
-    inputs: [
-      {
-        internalType: "address",
-        name: "owner",
-        type: "address",
-      },
-      {
-        internalType: "address",
-        name: "spender",
-        type: "address",
-      },
-    ],
-    name: "allowance",
-    outputs: [
-      {
-        internalType: "uint256",
-        name: "",
-        type: "uint256",
-      },
-    ],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
-        internalType: "address",
-        name: "spender",
-        type: "address",
-      },
-      {
-        internalType: "uint256",
-        name: "amount",
-        type: "uint256",
-      },
-    ],
-    name: "approve",
-    outputs: [
-      {
-        internalType: "bool",
-        name: "",
-        type: "bool",
-      },
-    ],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
-        internalType: "address",
-        name: "account",
-        type: "address",
-      },
-    ],
-    name: "balanceOf",
-    outputs: [
-      {
-        internalType: "uint256",
-        name: "",
-        type: "uint256",
-      },
-    ],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
     inputs: [],
     name: "bondingCurveAlloc",
     outputs: [
@@ -645,24 +514,19 @@ const _abi = [
   {
     inputs: [
       {
-        internalType: "bytes32[]",
-        name: "proof",
-        type: "bytes32[]",
-      },
-      {
-        internalType: "address",
-        name: "addr",
-        type: "address",
-      },
-      {
         internalType: "uint256",
-        name: "claimId",
+        name: "amount",
         type: "uint256",
       },
       {
         internalType: "uint256",
-        name: "allocation",
+        name: "nonce",
         type: "uint256",
+      },
+      {
+        internalType: "bytes",
+        name: "sig",
+        type: "bytes",
       },
     ],
     name: "claim",
@@ -673,18 +537,13 @@ const _abi = [
   {
     inputs: [
       {
-        internalType: "bytes32[][]",
-        name: "proofs",
-        type: "bytes32[][]",
-      },
-      {
-        internalType: "address",
-        name: "addr",
-        type: "address",
+        internalType: "bytes[]",
+        name: "signatures",
+        type: "bytes[]",
       },
       {
         internalType: "uint256[]",
-        name: "claimIds",
+        name: "nonces",
         type: "uint256[]",
       },
       {
@@ -696,6 +555,19 @@ const _abi = [
     name: "claimMulti",
     outputs: [],
     stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "claimSigner",
+    outputs: [
+      {
+        internalType: "address",
+        name: "",
+        type: "address",
+      },
+    ],
+    stateMutability: "view",
     type: "function",
   },
   {
@@ -728,43 +600,6 @@ const _abi = [
       },
     ],
     stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [],
-    name: "decimals",
-    outputs: [
-      {
-        internalType: "uint8",
-        name: "",
-        type: "uint8",
-      },
-    ],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
-        internalType: "address",
-        name: "spender",
-        type: "address",
-      },
-      {
-        internalType: "uint256",
-        name: "subtractedValue",
-        type: "uint256",
-      },
-    ],
-    name: "decreaseAllowance",
-    outputs: [
-      {
-        internalType: "bool",
-        name: "",
-        type: "bool",
-      },
-    ],
-    stateMutability: "nonpayable",
     type: "function",
   },
   {
@@ -807,30 +642,6 @@ const _abi = [
     type: "function",
   },
   {
-    inputs: [
-      {
-        internalType: "address",
-        name: "spender",
-        type: "address",
-      },
-      {
-        internalType: "uint256",
-        name: "addedValue",
-        type: "uint256",
-      },
-    ],
-    name: "increaseAllowance",
-    outputs: [
-      {
-        internalType: "bool",
-        name: "",
-        type: "bool",
-      },
-    ],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
     inputs: [],
     name: "initialBondingCurveAlloc",
     outputs: [
@@ -858,32 +669,6 @@ const _abi = [
   },
   {
     inputs: [],
-    name: "minBuyForReset",
-    outputs: [
-      {
-        internalType: "uint256",
-        name: "",
-        type: "uint256",
-      },
-    ],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [],
-    name: "name",
-    outputs: [
-      {
-        internalType: "string",
-        name: "",
-        type: "string",
-      },
-    ],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [],
     name: "owner",
     outputs: [
       {
@@ -898,9 +683,9 @@ const _abi = [
   {
     inputs: [
       {
-        internalType: "bytes32",
-        name: "_airdropTreeRoot",
-        type: "bytes32",
+        internalType: "address",
+        name: "_rewardToken",
+        type: "address",
       },
       {
         internalType: "uint256",
@@ -942,12 +727,12 @@ const _abi = [
   },
   {
     inputs: [],
-    name: "root",
+    name: "rewardToken",
     outputs: [
       {
-        internalType: "bytes32",
+        internalType: "address",
         name: "",
-        type: "bytes32",
+        type: "address",
       },
     ],
     stateMutability: "view",
@@ -998,12 +783,12 @@ const _abi = [
   {
     inputs: [
       {
-        internalType: "uint256",
-        name: "_devFeeBp",
-        type: "uint256",
+        internalType: "address",
+        name: "_claimSigner",
+        type: "address",
       },
     ],
-    name: "setDevFeeBp",
+    name: "setClaimSigner",
     outputs: [],
     stateMutability: "nonpayable",
     type: "function",
@@ -1012,26 +797,13 @@ const _abi = [
     inputs: [
       {
         internalType: "uint256",
-        name: "_minBuyForReset",
+        name: "_devFeeBp",
         type: "uint256",
       },
     ],
-    name: "setMinBuyForReset",
+    name: "setDevFeeBp",
     outputs: [],
     stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    inputs: [],
-    name: "symbol",
-    outputs: [
-      {
-        internalType: "string",
-        name: "",
-        type: "string",
-      },
-    ],
-    stateMutability: "view",
     type: "function",
   },
   {
@@ -1070,72 +842,6 @@ const _abi = [
     type: "function",
   },
   {
-    inputs: [],
-    name: "totalSupply",
-    outputs: [
-      {
-        internalType: "uint256",
-        name: "",
-        type: "uint256",
-      },
-    ],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
-        internalType: "address",
-        name: "to",
-        type: "address",
-      },
-      {
-        internalType: "uint256",
-        name: "amount",
-        type: "uint256",
-      },
-    ],
-    name: "transfer",
-    outputs: [
-      {
-        internalType: "bool",
-        name: "",
-        type: "bool",
-      },
-    ],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
-        internalType: "address",
-        name: "from",
-        type: "address",
-      },
-      {
-        internalType: "address",
-        name: "to",
-        type: "address",
-      },
-      {
-        internalType: "uint256",
-        name: "amount",
-        type: "uint256",
-      },
-    ],
-    name: "transferFrom",
-    outputs: [
-      {
-        internalType: "bool",
-        name: "",
-        type: "bool",
-      },
-    ],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
     inputs: [
       {
         internalType: "address",
@@ -1151,22 +857,22 @@ const _abi = [
   {
     inputs: [
       {
-        internalType: "uint256",
-        name: "",
-        type: "uint256",
-      },
-      {
         internalType: "address",
         name: "",
         type: "address",
       },
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
     ],
-    name: "usedClaims",
+    name: "usedClaimNonces",
     outputs: [
       {
-        internalType: "int256",
+        internalType: "bool",
         name: "",
-        type: "int256",
+        type: "bool",
       },
     ],
     stateMutability: "view",
@@ -1224,15 +930,15 @@ const _abi = [
   },
 ] as const;
 
-export class BondCurveToken__factory {
+export class BondCurveDistro__factory {
   static readonly abi = _abi;
-  static createInterface(): BondCurveTokenInterface {
-    return new Interface(_abi) as BondCurveTokenInterface;
+  static createInterface(): BondCurveDistroInterface {
+    return new Interface(_abi) as BondCurveDistroInterface;
   }
   static connect(
     address: string,
     runner?: ContractRunner | null
-  ): BondCurveToken {
-    return new Contract(address, _abi, runner) as unknown as BondCurveToken;
+  ): BondCurveDistro {
+    return new Contract(address, _abi, runner) as unknown as BondCurveDistro;
   }
 }

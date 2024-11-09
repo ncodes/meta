@@ -13,7 +13,7 @@ import {
 } from 'viem/chains';
 import AssetRegistryABI from './abi/AssetRegistry.json';
 import BadgeManagerABI from './abi/BadgeManager.json';
-import BondCurveTokenABI from './abi/BondCurveToken.json';
+import BondCurveDistroABI from './abi/BondCurveDistro.json';
 import CoreABI from './abi/Core.json';
 import DisputeManagerABI from './abi/DisputeManager.json';
 import EnergonABI from './abi/Energon.json';
@@ -181,6 +181,13 @@ const Chains: ChainInfo[] = [
 					process.env.NEXT_PUBLIC_ETHEREUM_MARKET_MGR_ADDRESS ??
 					import.meta.env.VITE_ETHEREUM_MARKET_MGR_ADDRESS,
 				abi: MarketManagerABI,
+			},
+			bondCurveDistro: {
+				address:
+					process.env.ETHEREUM_BOND_CURVE_DISTRO_ADDRESS ??
+					process.env.NEXT_PUBLIC_ETHEREUM_BOND_CURVE_DISTRO_ADDRESS ??
+					import.meta.env.VITE_ETHEREUM_BOND_CURVE_DISTRO_ADDRESS,
+				abi: BondCurveDistroABI,
 			},
 			uniswapV2Router: {
 				address: '0xf164fC0Ec4E93095b804a4795bBe1e041497b92a',
@@ -1039,7 +1046,7 @@ const Chains: ChainInfo[] = [
 					process.env.LOCALHOST_TOKEN_ADDRESS ??
 					process.env.NEXT_PUBLIC_LOCALHOST_TOKEN_ADDRESS ??
 					import.meta.env.VITE_LOCALHOST_TOKEN_ADDRESS,
-				abi: BondCurveTokenABI,
+				abi: NativeTokenABI,
 			},
 			badgeManager: {
 				address:
@@ -1124,6 +1131,13 @@ const Chains: ChainInfo[] = [
 					process.env.NEXT_PUBLIC_LOCALHOST_MARKET_MGR_ADDRESS ??
 					import.meta.env.VITE_LOCALHOST_MARKET_MGR_ADDRESS,
 				abi: MarketManagerABI,
+			},
+			bondCurveDistro: {
+				address:
+					process.env.LOCALHOST_BOND_CURVE_DISTRO_ADDRESS ??
+					process.env.NEXT_PUBLIC_LOCALHOST_BOND_CURVE_DISTRO_ADDRESS ??
+					import.meta.env.VITE_LOCALHOST_BOND_CURVE_DISTRO_ADDRESS,
+				abi: BondCurveDistroABI,
 			},
 		},
 	},

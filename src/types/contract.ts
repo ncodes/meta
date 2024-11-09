@@ -23,6 +23,7 @@ export type ContractNames =
 	| 'providerRegistry'
 	| 'router'
 	| 'payRouter'
+	| 'bondCurveDistro'
 	| 'marketManager'
 	| 'uniswapV2Router'
 	| 'uniswapV2Router2'

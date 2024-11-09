@@ -27,7 +27,7 @@ interface Abi {
     UniswapV3Router: any;
     UniswapV3Router2: any;
     UniswapV3RouterUniversal: any;
-    BondCurveToken: any;
+    BondCurveDistro: any;
 }
 declare const Abi: Abi;
 
@@ -38,7 +38,7 @@ interface ContractInfo {
 type Contracts = Partial<{
     [key in ContractNames]: ContractInfo;
 }>;
-type ContractNames = 'core' | 'token' | 'energon' | 'nft' | 'badgeManager' | 'marketCore' | 'disputeManager' | 'mediatorManager' | 'assetRegistry' | 'minerRegistry' | 'providerRegistry' | 'router' | 'payRouter' | 'marketManager' | 'uniswapV2Router' | 'uniswapV2Router2' | 'uniswapV3Router' | 'uniswapV3Router02' | 'uniswapV3UniversalRouter';
+type ContractNames = 'core' | 'token' | 'energon' | 'nft' | 'badgeManager' | 'marketCore' | 'disputeManager' | 'mediatorManager' | 'assetRegistry' | 'minerRegistry' | 'providerRegistry' | 'router' | 'payRouter' | 'bondCurveDistro' | 'marketManager' | 'uniswapV2Router' | 'uniswapV2Router2' | 'uniswapV3Router' | 'uniswapV3Router02' | 'uniswapV3UniversalRouter';
 type ContractsParams = {
     [key in ChainNames]?: {
         core: CoreParams;
@@ -1424,40 +1424,33 @@ interface BadgeManager extends BaseContract {
     };
 }
 
-interface BondCurveTokenInterface extends Interface {
-    getFunction(nameOrSignature: "airdropAlloc" | "allowBuyTransfer" | "allowClaim" | "allowSell" | "allowTrade" | "allowWithdraw" | "allowance" | "approve" | "balanceOf" | "bondingCurveAlloc" | "bondingCurveEthBal" | "buy" | "buyPrice" | "circulatingSupply" | "claim" | "claimMulti" | "claimedBalance" | "claims" | "decimals" | "decreaseAllowance" | "devAlloc" | "devFeeBp" | "devFeeEthBal" | "increaseAllowance" | "initialBondingCurveAlloc" | "k" | "minBuyForReset" | "name" | "owner" | "reInit" | "renounceOwnership" | "root" | "sell" | "sellPrice" | "setDevFeeBp" | "setMinBuyForReset" | "symbol" | "toggleAllowBuyTransfer" | "toggleAllowClaim" | "toggleAllowSell" | "toggleAllowTrade" | "toggleAllowWithdraw" | "totalSupply" | "transfer" | "transferFrom" | "transferOwnership" | "usedClaims" | "withdrawClaim" | "withdrawDevFee" | "withdrawEth" | "withdrawToken"): FunctionFragment;
-    getEvent(nameOrSignatureOrTopic: "AllowBuyTransfer" | "AllowClaim" | "AllowSell" | "AllowTrade" | "AllowWithdraw" | "Approval" | "Buy" | "ClaimWithdrawn" | "Claimed" | "OwnershipTransferred" | "ReInitialized" | "Sell" | "Transfer" | "UpdatedDevFeeBp" | "UpdatedMinBuyForReset" | "WithdrawnDevFee" | "WithdrawnEth" | "WithdrawnToken"): EventFragment;
+interface BondCurveDistroInterface extends Interface {
+    getFunction(nameOrSignature: "airdropAlloc" | "allowBuyTransfer" | "allowClaim" | "allowSell" | "allowTrade" | "allowWithdraw" | "bondingCurveAlloc" | "bondingCurveEthBal" | "buy" | "buyPrice" | "circulatingSupply" | "claim" | "claimMulti" | "claimSigner" | "claimedBalance" | "claims" | "devAlloc" | "devFeeBp" | "devFeeEthBal" | "initialBondingCurveAlloc" | "k" | "owner" | "reInit" | "renounceOwnership" | "rewardToken" | "sell" | "sellPrice" | "setClaimSigner" | "setDevFeeBp" | "toggleAllowBuyTransfer" | "toggleAllowClaim" | "toggleAllowSell" | "toggleAllowTrade" | "toggleAllowWithdraw" | "transferOwnership" | "usedClaimNonces" | "withdrawClaim" | "withdrawDevFee" | "withdrawEth" | "withdrawToken"): FunctionFragment;
+    getEvent(nameOrSignatureOrTopic: "AllowBuyTransfer" | "AllowClaim" | "AllowSell" | "AllowTrade" | "AllowWithdraw" | "Buy" | "ClaimSignerUpdated" | "ClaimWithdrawn" | "Claimed" | "OwnershipTransferred" | "ReInitialized" | "Sell" | "UpdatedDevFeeBp" | "WithdrawnDevFee" | "WithdrawnEth" | "WithdrawnToken"): EventFragment;
     encodeFunctionData(functionFragment: "airdropAlloc", values?: undefined): string;
     encodeFunctionData(functionFragment: "allowBuyTransfer", values?: undefined): string;
     encodeFunctionData(functionFragment: "allowClaim", values?: undefined): string;
     encodeFunctionData(functionFragment: "allowSell", values?: undefined): string;
     encodeFunctionData(functionFragment: "allowTrade", values?: undefined): string;
     encodeFunctionData(functionFragment: "allowWithdraw", values?: undefined): string;
-    encodeFunctionData(functionFragment: "allowance", values: [AddressLike, AddressLike]): string;
-    encodeFunctionData(functionFragment: "approve", values: [AddressLike, BigNumberish]): string;
-    encodeFunctionData(functionFragment: "balanceOf", values: [AddressLike]): string;
     encodeFunctionData(functionFragment: "bondingCurveAlloc", values?: undefined): string;
     encodeFunctionData(functionFragment: "bondingCurveEthBal", values?: undefined): string;
     encodeFunctionData(functionFragment: "buy", values: [BigNumberish]): string;
     encodeFunctionData(functionFragment: "buyPrice", values: [BigNumberish]): string;
     encodeFunctionData(functionFragment: "circulatingSupply", values?: undefined): string;
-    encodeFunctionData(functionFragment: "claim", values: [BytesLike[], AddressLike, BigNumberish, BigNumberish]): string;
-    encodeFunctionData(functionFragment: "claimMulti", values: [BytesLike[][], AddressLike, BigNumberish[], BigNumberish[]]): string;
+    encodeFunctionData(functionFragment: "claim", values: [BigNumberish, BigNumberish, BytesLike]): string;
+    encodeFunctionData(functionFragment: "claimMulti", values: [BytesLike[], BigNumberish[], BigNumberish[]]): string;
+    encodeFunctionData(functionFragment: "claimSigner", values?: undefined): string;
     encodeFunctionData(functionFragment: "claimedBalance", values?: undefined): string;
     encodeFunctionData(functionFragment: "claims", values: [AddressLike]): string;
-    encodeFunctionData(functionFragment: "decimals", values?: undefined): string;
-    encodeFunctionData(functionFragment: "decreaseAllowance", values: [AddressLike, BigNumberish]): string;
     encodeFunctionData(functionFragment: "devAlloc", values?: undefined): string;
     encodeFunctionData(functionFragment: "devFeeBp", values?: undefined): string;
     encodeFunctionData(functionFragment: "devFeeEthBal", values?: undefined): string;
-    encodeFunctionData(functionFragment: "increaseAllowance", values: [AddressLike, BigNumberish]): string;
     encodeFunctionData(functionFragment: "initialBondingCurveAlloc", values?: undefined): string;
     encodeFunctionData(functionFragment: "k", values?: undefined): string;
-    encodeFunctionData(functionFragment: "minBuyForReset", values?: undefined): string;
-    encodeFunctionData(functionFragment: "name", values?: undefined): string;
     encodeFunctionData(functionFragment: "owner", values?: undefined): string;
     encodeFunctionData(functionFragment: "reInit", values: [
-        BytesLike,
+        AddressLike,
         BigNumberish,
         BigNumberish,
         BigNumberish,
@@ -1465,22 +1458,18 @@ interface BondCurveTokenInterface extends Interface {
         BigNumberish
     ]): string;
     encodeFunctionData(functionFragment: "renounceOwnership", values?: undefined): string;
-    encodeFunctionData(functionFragment: "root", values?: undefined): string;
+    encodeFunctionData(functionFragment: "rewardToken", values?: undefined): string;
     encodeFunctionData(functionFragment: "sell", values: [BigNumberish, BigNumberish]): string;
     encodeFunctionData(functionFragment: "sellPrice", values: [BigNumberish, BigNumberish]): string;
+    encodeFunctionData(functionFragment: "setClaimSigner", values: [AddressLike]): string;
     encodeFunctionData(functionFragment: "setDevFeeBp", values: [BigNumberish]): string;
-    encodeFunctionData(functionFragment: "setMinBuyForReset", values: [BigNumberish]): string;
-    encodeFunctionData(functionFragment: "symbol", values?: undefined): string;
     encodeFunctionData(functionFragment: "toggleAllowBuyTransfer", values?: undefined): string;
     encodeFunctionData(functionFragment: "toggleAllowClaim", values?: undefined): string;
     encodeFunctionData(functionFragment: "toggleAllowSell", values?: undefined): string;
     encodeFunctionData(functionFragment: "toggleAllowTrade", values?: undefined): string;
     encodeFunctionData(functionFragment: "toggleAllowWithdraw", values?: undefined): string;
-    encodeFunctionData(functionFragment: "totalSupply", values?: undefined): string;
-    encodeFunctionData(functionFragment: "transfer", values: [AddressLike, BigNumberish]): string;
-    encodeFunctionData(functionFragment: "transferFrom", values: [AddressLike, AddressLike, BigNumberish]): string;
     encodeFunctionData(functionFragment: "transferOwnership", values: [AddressLike]): string;
-    encodeFunctionData(functionFragment: "usedClaims", values: [BigNumberish, AddressLike]): string;
+    encodeFunctionData(functionFragment: "usedClaimNonces", values: [AddressLike, BigNumberish]): string;
     encodeFunctionData(functionFragment: "withdrawClaim", values?: undefined): string;
     encodeFunctionData(functionFragment: "withdrawDevFee", values: [AddressLike]): string;
     encodeFunctionData(functionFragment: "withdrawEth", values: [AddressLike]): string;
@@ -1491,9 +1480,6 @@ interface BondCurveTokenInterface extends Interface {
     decodeFunctionResult(functionFragment: "allowSell", data: BytesLike): Result;
     decodeFunctionResult(functionFragment: "allowTrade", data: BytesLike): Result;
     decodeFunctionResult(functionFragment: "allowWithdraw", data: BytesLike): Result;
-    decodeFunctionResult(functionFragment: "allowance", data: BytesLike): Result;
-    decodeFunctionResult(functionFragment: "approve", data: BytesLike): Result;
-    decodeFunctionResult(functionFragment: "balanceOf", data: BytesLike): Result;
     decodeFunctionResult(functionFragment: "bondingCurveAlloc", data: BytesLike): Result;
     decodeFunctionResult(functionFragment: "bondingCurveEthBal", data: BytesLike): Result;
     decodeFunctionResult(functionFragment: "buy", data: BytesLike): Result;
@@ -1501,37 +1487,29 @@ interface BondCurveTokenInterface extends Interface {
     decodeFunctionResult(functionFragment: "circulatingSupply", data: BytesLike): Result;
     decodeFunctionResult(functionFragment: "claim", data: BytesLike): Result;
     decodeFunctionResult(functionFragment: "claimMulti", data: BytesLike): Result;
+    decodeFunctionResult(functionFragment: "claimSigner", data: BytesLike): Result;
     decodeFunctionResult(functionFragment: "claimedBalance", data: BytesLike): Result;
     decodeFunctionResult(functionFragment: "claims", data: BytesLike): Result;
-    decodeFunctionResult(functionFragment: "decimals", data: BytesLike): Result;
-    decodeFunctionResult(functionFragment: "decreaseAllowance", data: BytesLike): Result;
     decodeFunctionResult(functionFragment: "devAlloc", data: BytesLike): Result;
     decodeFunctionResult(functionFragment: "devFeeBp", data: BytesLike): Result;
     decodeFunctionResult(functionFragment: "devFeeEthBal", data: BytesLike): Result;
-    decodeFunctionResult(functionFragment: "increaseAllowance", data: BytesLike): Result;
     decodeFunctionResult(functionFragment: "initialBondingCurveAlloc", data: BytesLike): Result;
     decodeFunctionResult(functionFragment: "k", data: BytesLike): Result;
-    decodeFunctionResult(functionFragment: "minBuyForReset", data: BytesLike): Result;
-    decodeFunctionResult(functionFragment: "name", data: BytesLike): Result;
     decodeFunctionResult(functionFragment: "owner", data: BytesLike): Result;
     decodeFunctionResult(functionFragment: "reInit", data: BytesLike): Result;
     decodeFunctionResult(functionFragment: "renounceOwnership", data: BytesLike): Result;
-    decodeFunctionResult(functionFragment: "root", data: BytesLike): Result;
+    decodeFunctionResult(functionFragment: "rewardToken", data: BytesLike): Result;
     decodeFunctionResult(functionFragment: "sell", data: BytesLike): Result;
     decodeFunctionResult(functionFragment: "sellPrice", data: BytesLike): Result;
+    decodeFunctionResult(functionFragment: "setClaimSigner", data: BytesLike): Result;
     decodeFunctionResult(functionFragment: "setDevFeeBp", data: BytesLike): Result;
-    decodeFunctionResult(functionFragment: "setMinBuyForReset", data: BytesLike): Result;
-    decodeFunctionResult(functionFragment: "symbol", data: BytesLike): Result;
     decodeFunctionResult(functionFragment: "toggleAllowBuyTransfer", data: BytesLike): Result;
     decodeFunctionResult(functionFragment: "toggleAllowClaim", data: BytesLike): Result;
     decodeFunctionResult(functionFragment: "toggleAllowSell", data: BytesLike): Result;
     decodeFunctionResult(functionFragment: "toggleAllowTrade", data: BytesLike): Result;
     decodeFunctionResult(functionFragment: "toggleAllowWithdraw", data: BytesLike): Result;
-    decodeFunctionResult(functionFragment: "totalSupply", data: BytesLike): Result;
-    decodeFunctionResult(functionFragment: "transfer", data: BytesLike): Result;
-    decodeFunctionResult(functionFragment: "transferFrom", data: BytesLike): Result;
     decodeFunctionResult(functionFragment: "transferOwnership", data: BytesLike): Result;
-    decodeFunctionResult(functionFragment: "usedClaims", data: BytesLike): Result;
+    decodeFunctionResult(functionFragment: "usedClaimNonces", data: BytesLike): Result;
     decodeFunctionResult(functionFragment: "withdrawClaim", data: BytesLike): Result;
     decodeFunctionResult(functionFragment: "withdrawDevFee", data: BytesLike): Result;
     decodeFunctionResult(functionFragment: "withdrawEth", data: BytesLike): Result;
@@ -1592,23 +1570,6 @@ declare namespace AllowWithdrawEvent {
     type Log = TypedEventLog<Event>;
     type LogDescription = TypedLogDescription<Event>;
 }
-declare namespace ApprovalEvent$6 {
-    type InputTuple = [
-        owner: AddressLike,
-        spender: AddressLike,
-        value: BigNumberish
-    ];
-    type OutputTuple = [owner: string, spender: string, value: bigint];
-    interface OutputObject {
-        owner: string;
-        spender: string;
-        value: bigint;
-    }
-    type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>;
-    type Filter = TypedDeferredTopicFilter<Event>;
-    type Log = TypedEventLog<Event>;
-    type LogDescription = TypedLogDescription<Event>;
-}
 declare namespace BuyEvent {
     type InputTuple = [
         buyer: AddressLike,
@@ -1633,6 +1594,18 @@ declare namespace BuyEvent {
     type Log = TypedEventLog<Event>;
     type LogDescription = TypedLogDescription<Event>;
 }
+declare namespace ClaimSignerUpdatedEvent {
+    type InputTuple = [newSigner: AddressLike, oldSigner: AddressLike];
+    type OutputTuple = [newSigner: string, oldSigner: string];
+    interface OutputObject {
+        newSigner: string;
+        oldSigner: string;
+    }
+    type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>;
+    type Filter = TypedDeferredTopicFilter<Event>;
+    type Log = TypedEventLog<Event>;
+    type LogDescription = TypedLogDescription<Event>;
+}
 declare namespace ClaimWithdrawnEvent {
     type InputTuple = [addr: AddressLike, amount: BigNumberish];
     type OutputTuple = [addr: string, amount: bigint];
@@ -1648,13 +1621,13 @@ declare namespace ClaimWithdrawnEvent {
 declare namespace ClaimedEvent$1 {
     type InputTuple = [
         addr: AddressLike,
-        claimId: BigNumberish,
+        nonce: BigNumberish,
         allocation: BigNumberish
     ];
-    type OutputTuple = [addr: string, claimId: bigint, allocation: bigint];
+    type OutputTuple = [addr: string, nonce: bigint, allocation: bigint];
     interface OutputObject {
         addr: string;
-        claimId: bigint;
+        nonce: bigint;
         allocation: bigint;
     }
     type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>;
@@ -1676,7 +1649,7 @@ declare namespace OwnershipTransferredEvent$f {
 }
 declare namespace ReInitializedEvent {
     type InputTuple = [
-        root: BytesLike,
+        rewardToken: AddressLike,
         airdropAlloc: BigNumberish,
         devAlloc: BigNumberish,
         bondingCurveAlloc: BigNumberish,
@@ -1684,7 +1657,7 @@ declare namespace ReInitializedEvent {
         k: BigNumberish
     ];
     type OutputTuple = [
-        root: string,
+        rewardToken: string,
         airdropAlloc: bigint,
         devAlloc: bigint,
         bondingCurveAlloc: bigint,
@@ -1692,7 +1665,7 @@ declare namespace ReInitializedEvent {
         k: bigint
     ];
     interface OutputObject {
-        root: string;
+        rewardToken: string;
         airdropAlloc: bigint;
         devAlloc: bigint;
         bondingCurveAlloc: bigint;
@@ -1728,39 +1701,11 @@ declare namespace SellEvent {
     type Log = TypedEventLog<Event>;
     type LogDescription = TypedLogDescription<Event>;
 }
-declare namespace TransferEvent$6 {
-    type InputTuple = [
-        from: AddressLike,
-        to: AddressLike,
-        value: BigNumberish
-    ];
-    type OutputTuple = [from: string, to: string, value: bigint];
-    interface OutputObject {
-        from: string;
-        to: string;
-        value: bigint;
-    }
-    type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>;
-    type Filter = TypedDeferredTopicFilter<Event>;
-    type Log = TypedEventLog<Event>;
-    type LogDescription = TypedLogDescription<Event>;
-}
 declare namespace UpdatedDevFeeBpEvent {
     type InputTuple = [devFeeBp: BigNumberish];
     type OutputTuple = [devFeeBp: bigint];
     interface OutputObject {
         devFeeBp: bigint;
-    }
-    type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>;
-    type Filter = TypedDeferredTopicFilter<Event>;
-    type Log = TypedEventLog<Event>;
-    type LogDescription = TypedLogDescription<Event>;
-}
-declare namespace UpdatedMinBuyForResetEvent {
-    type InputTuple = [minBuyForReset: BigNumberish];
-    type OutputTuple = [minBuyForReset: bigint];
-    interface OutputObject {
-        minBuyForReset: bigint;
     }
     type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>;
     type Filter = TypedDeferredTopicFilter<Event>;
@@ -1803,10 +1748,10 @@ declare namespace WithdrawnTokenEvent {
     type Log = TypedEventLog<Event>;
     type LogDescription = TypedLogDescription<Event>;
 }
-interface BondCurveToken extends BaseContract {
-    connect(runner?: ContractRunner | null): BondCurveToken;
+interface BondCurveDistro extends BaseContract {
+    connect(runner?: ContractRunner | null): BondCurveDistro;
     waitForDeployment(): Promise<this>;
-    interface: BondCurveTokenInterface;
+    interface: BondCurveDistroInterface;
     queryFilter<TCEvent extends TypedContractEvent>(event: TCEvent, fromBlockOrBlockhash?: string | number | undefined, toBlock?: string | number | undefined): Promise<Array<TypedEventLog<TCEvent>>>;
     queryFilter<TCEvent extends TypedContractEvent>(filter: TypedDeferredTopicFilter<TCEvent>, fromBlockOrBlockhash?: string | number | undefined, toBlock?: string | number | undefined): Promise<Array<TypedEventLog<TCEvent>>>;
     on<TCEvent extends TypedContractEvent>(event: TCEvent, listener: TypedListener<TCEvent>): Promise<this>;
@@ -1822,65 +1767,36 @@ interface BondCurveToken extends BaseContract {
     allowSell: TypedContractMethod<[], [boolean], "view">;
     allowTrade: TypedContractMethod<[], [boolean], "view">;
     allowWithdraw: TypedContractMethod<[], [boolean], "view">;
-    allowance: TypedContractMethod<[
-        owner: AddressLike,
-        spender: AddressLike
-    ], [
-        bigint
-    ], "view">;
-    approve: TypedContractMethod<[
-        spender: AddressLike,
-        amount: BigNumberish
-    ], [
-        boolean
-    ], "nonpayable">;
-    balanceOf: TypedContractMethod<[account: AddressLike], [bigint], "view">;
     bondingCurveAlloc: TypedContractMethod<[], [bigint], "view">;
     bondingCurveEthBal: TypedContractMethod<[], [bigint], "view">;
     buy: TypedContractMethod<[maxPrice: BigNumberish], [void], "payable">;
     buyPrice: TypedContractMethod<[supply: BigNumberish], [bigint], "view">;
     circulatingSupply: TypedContractMethod<[], [bigint], "view">;
     claim: TypedContractMethod<[
-        proof: BytesLike[],
-        addr: AddressLike,
-        claimId: BigNumberish,
-        allocation: BigNumberish
+        amount: BigNumberish,
+        nonce: BigNumberish,
+        sig: BytesLike
     ], [
         void
     ], "nonpayable">;
     claimMulti: TypedContractMethod<[
-        proofs: BytesLike[][],
-        addr: AddressLike,
-        claimIds: BigNumberish[],
+        signatures: BytesLike[],
+        nonces: BigNumberish[],
         allocations: BigNumberish[]
     ], [
         void
     ], "nonpayable">;
+    claimSigner: TypedContractMethod<[], [string], "view">;
     claimedBalance: TypedContractMethod<[], [bigint], "view">;
     claims: TypedContractMethod<[arg0: AddressLike], [bigint], "view">;
-    decimals: TypedContractMethod<[], [bigint], "view">;
-    decreaseAllowance: TypedContractMethod<[
-        spender: AddressLike,
-        subtractedValue: BigNumberish
-    ], [
-        boolean
-    ], "nonpayable">;
     devAlloc: TypedContractMethod<[], [bigint], "view">;
     devFeeBp: TypedContractMethod<[], [bigint], "view">;
     devFeeEthBal: TypedContractMethod<[], [bigint], "view">;
-    increaseAllowance: TypedContractMethod<[
-        spender: AddressLike,
-        addedValue: BigNumberish
-    ], [
-        boolean
-    ], "nonpayable">;
     initialBondingCurveAlloc: TypedContractMethod<[], [bigint], "view">;
     k: TypedContractMethod<[], [bigint], "view">;
-    minBuyForReset: TypedContractMethod<[], [bigint], "view">;
-    name: TypedContractMethod<[], [string], "view">;
     owner: TypedContractMethod<[], [string], "view">;
     reInit: TypedContractMethod<[
-        _airdropTreeRoot: BytesLike,
+        _rewardToken: AddressLike,
         _airdropAlloc: BigNumberish,
         _devAlloc: BigNumberish,
         _bondingCurveAlloc: BigNumberish,
@@ -1890,7 +1806,7 @@ interface BondCurveToken extends BaseContract {
         void
     ], "nonpayable">;
     renounceOwnership: TypedContractMethod<[], [void], "nonpayable">;
-    root: TypedContractMethod<[], [string], "view">;
+    rewardToken: TypedContractMethod<[], [string], "view">;
     sell: TypedContractMethod<[
         amount: BigNumberish,
         minPrice: BigNumberish
@@ -1903,46 +1819,31 @@ interface BondCurveToken extends BaseContract {
     ], [
         bigint
     ], "view">;
+    setClaimSigner: TypedContractMethod<[
+        _claimSigner: AddressLike
+    ], [
+        void
+    ], "nonpayable">;
     setDevFeeBp: TypedContractMethod<[
         _devFeeBp: BigNumberish
     ], [
         void
     ], "nonpayable">;
-    setMinBuyForReset: TypedContractMethod<[
-        _minBuyForReset: BigNumberish
-    ], [
-        void
-    ], "nonpayable">;
-    symbol: TypedContractMethod<[], [string], "view">;
     toggleAllowBuyTransfer: TypedContractMethod<[], [void], "nonpayable">;
     toggleAllowClaim: TypedContractMethod<[], [void], "nonpayable">;
     toggleAllowSell: TypedContractMethod<[], [void], "nonpayable">;
     toggleAllowTrade: TypedContractMethod<[], [void], "nonpayable">;
     toggleAllowWithdraw: TypedContractMethod<[], [void], "nonpayable">;
-    totalSupply: TypedContractMethod<[], [bigint], "view">;
-    transfer: TypedContractMethod<[
-        to: AddressLike,
-        amount: BigNumberish
-    ], [
-        boolean
-    ], "nonpayable">;
-    transferFrom: TypedContractMethod<[
-        from: AddressLike,
-        to: AddressLike,
-        amount: BigNumberish
-    ], [
-        boolean
-    ], "nonpayable">;
     transferOwnership: TypedContractMethod<[
         newOwner: AddressLike
     ], [
         void
     ], "nonpayable">;
-    usedClaims: TypedContractMethod<[
-        arg0: BigNumberish,
-        arg1: AddressLike
+    usedClaimNonces: TypedContractMethod<[
+        arg0: AddressLike,
+        arg1: BigNumberish
     ], [
-        bigint
+        boolean
     ], "view">;
     withdrawClaim: TypedContractMethod<[], [void], "nonpayable">;
     withdrawDevFee: TypedContractMethod<[
@@ -1967,65 +1868,36 @@ interface BondCurveToken extends BaseContract {
     getFunction(nameOrSignature: "allowSell"): TypedContractMethod<[], [boolean], "view">;
     getFunction(nameOrSignature: "allowTrade"): TypedContractMethod<[], [boolean], "view">;
     getFunction(nameOrSignature: "allowWithdraw"): TypedContractMethod<[], [boolean], "view">;
-    getFunction(nameOrSignature: "allowance"): TypedContractMethod<[
-        owner: AddressLike,
-        spender: AddressLike
-    ], [
-        bigint
-    ], "view">;
-    getFunction(nameOrSignature: "approve"): TypedContractMethod<[
-        spender: AddressLike,
-        amount: BigNumberish
-    ], [
-        boolean
-    ], "nonpayable">;
-    getFunction(nameOrSignature: "balanceOf"): TypedContractMethod<[account: AddressLike], [bigint], "view">;
     getFunction(nameOrSignature: "bondingCurveAlloc"): TypedContractMethod<[], [bigint], "view">;
     getFunction(nameOrSignature: "bondingCurveEthBal"): TypedContractMethod<[], [bigint], "view">;
     getFunction(nameOrSignature: "buy"): TypedContractMethod<[maxPrice: BigNumberish], [void], "payable">;
     getFunction(nameOrSignature: "buyPrice"): TypedContractMethod<[supply: BigNumberish], [bigint], "view">;
     getFunction(nameOrSignature: "circulatingSupply"): TypedContractMethod<[], [bigint], "view">;
     getFunction(nameOrSignature: "claim"): TypedContractMethod<[
-        proof: BytesLike[],
-        addr: AddressLike,
-        claimId: BigNumberish,
-        allocation: BigNumberish
+        amount: BigNumberish,
+        nonce: BigNumberish,
+        sig: BytesLike
     ], [
         void
     ], "nonpayable">;
     getFunction(nameOrSignature: "claimMulti"): TypedContractMethod<[
-        proofs: BytesLike[][],
-        addr: AddressLike,
-        claimIds: BigNumberish[],
+        signatures: BytesLike[],
+        nonces: BigNumberish[],
         allocations: BigNumberish[]
     ], [
         void
     ], "nonpayable">;
+    getFunction(nameOrSignature: "claimSigner"): TypedContractMethod<[], [string], "view">;
     getFunction(nameOrSignature: "claimedBalance"): TypedContractMethod<[], [bigint], "view">;
     getFunction(nameOrSignature: "claims"): TypedContractMethod<[arg0: AddressLike], [bigint], "view">;
-    getFunction(nameOrSignature: "decimals"): TypedContractMethod<[], [bigint], "view">;
-    getFunction(nameOrSignature: "decreaseAllowance"): TypedContractMethod<[
-        spender: AddressLike,
-        subtractedValue: BigNumberish
-    ], [
-        boolean
-    ], "nonpayable">;
     getFunction(nameOrSignature: "devAlloc"): TypedContractMethod<[], [bigint], "view">;
     getFunction(nameOrSignature: "devFeeBp"): TypedContractMethod<[], [bigint], "view">;
     getFunction(nameOrSignature: "devFeeEthBal"): TypedContractMethod<[], [bigint], "view">;
-    getFunction(nameOrSignature: "increaseAllowance"): TypedContractMethod<[
-        spender: AddressLike,
-        addedValue: BigNumberish
-    ], [
-        boolean
-    ], "nonpayable">;
     getFunction(nameOrSignature: "initialBondingCurveAlloc"): TypedContractMethod<[], [bigint], "view">;
     getFunction(nameOrSignature: "k"): TypedContractMethod<[], [bigint], "view">;
-    getFunction(nameOrSignature: "minBuyForReset"): TypedContractMethod<[], [bigint], "view">;
-    getFunction(nameOrSignature: "name"): TypedContractMethod<[], [string], "view">;
     getFunction(nameOrSignature: "owner"): TypedContractMethod<[], [string], "view">;
     getFunction(nameOrSignature: "reInit"): TypedContractMethod<[
-        _airdropTreeRoot: BytesLike,
+        _rewardToken: AddressLike,
         _airdropAlloc: BigNumberish,
         _devAlloc: BigNumberish,
         _bondingCurveAlloc: BigNumberish,
@@ -2035,7 +1907,7 @@ interface BondCurveToken extends BaseContract {
         void
     ], "nonpayable">;
     getFunction(nameOrSignature: "renounceOwnership"): TypedContractMethod<[], [void], "nonpayable">;
-    getFunction(nameOrSignature: "root"): TypedContractMethod<[], [string], "view">;
+    getFunction(nameOrSignature: "rewardToken"): TypedContractMethod<[], [string], "view">;
     getFunction(nameOrSignature: "sell"): TypedContractMethod<[
         amount: BigNumberish,
         minPrice: BigNumberish
@@ -2048,34 +1920,19 @@ interface BondCurveToken extends BaseContract {
     ], [
         bigint
     ], "view">;
+    getFunction(nameOrSignature: "setClaimSigner"): TypedContractMethod<[_claimSigner: AddressLike], [void], "nonpayable">;
     getFunction(nameOrSignature: "setDevFeeBp"): TypedContractMethod<[_devFeeBp: BigNumberish], [void], "nonpayable">;
-    getFunction(nameOrSignature: "setMinBuyForReset"): TypedContractMethod<[_minBuyForReset: BigNumberish], [void], "nonpayable">;
-    getFunction(nameOrSignature: "symbol"): TypedContractMethod<[], [string], "view">;
     getFunction(nameOrSignature: "toggleAllowBuyTransfer"): TypedContractMethod<[], [void], "nonpayable">;
     getFunction(nameOrSignature: "toggleAllowClaim"): TypedContractMethod<[], [void], "nonpayable">;
     getFunction(nameOrSignature: "toggleAllowSell"): TypedContractMethod<[], [void], "nonpayable">;
     getFunction(nameOrSignature: "toggleAllowTrade"): TypedContractMethod<[], [void], "nonpayable">;
     getFunction(nameOrSignature: "toggleAllowWithdraw"): TypedContractMethod<[], [void], "nonpayable">;
-    getFunction(nameOrSignature: "totalSupply"): TypedContractMethod<[], [bigint], "view">;
-    getFunction(nameOrSignature: "transfer"): TypedContractMethod<[
-        to: AddressLike,
-        amount: BigNumberish
-    ], [
-        boolean
-    ], "nonpayable">;
-    getFunction(nameOrSignature: "transferFrom"): TypedContractMethod<[
-        from: AddressLike,
-        to: AddressLike,
-        amount: BigNumberish
-    ], [
-        boolean
-    ], "nonpayable">;
     getFunction(nameOrSignature: "transferOwnership"): TypedContractMethod<[newOwner: AddressLike], [void], "nonpayable">;
-    getFunction(nameOrSignature: "usedClaims"): TypedContractMethod<[
-        arg0: BigNumberish,
-        arg1: AddressLike
+    getFunction(nameOrSignature: "usedClaimNonces"): TypedContractMethod<[
+        arg0: AddressLike,
+        arg1: BigNumberish
     ], [
-        bigint
+        boolean
     ], "view">;
     getFunction(nameOrSignature: "withdrawClaim"): TypedContractMethod<[], [void], "nonpayable">;
     getFunction(nameOrSignature: "withdrawDevFee"): TypedContractMethod<[beneficiary: AddressLike], [void], "nonpayable">;
@@ -2086,16 +1943,14 @@ interface BondCurveToken extends BaseContract {
     getEvent(key: "AllowSell"): TypedContractEvent<AllowSellEvent.InputTuple, AllowSellEvent.OutputTuple, AllowSellEvent.OutputObject>;
     getEvent(key: "AllowTrade"): TypedContractEvent<AllowTradeEvent.InputTuple, AllowTradeEvent.OutputTuple, AllowTradeEvent.OutputObject>;
     getEvent(key: "AllowWithdraw"): TypedContractEvent<AllowWithdrawEvent.InputTuple, AllowWithdrawEvent.OutputTuple, AllowWithdrawEvent.OutputObject>;
-    getEvent(key: "Approval"): TypedContractEvent<ApprovalEvent$6.InputTuple, ApprovalEvent$6.OutputTuple, ApprovalEvent$6.OutputObject>;
     getEvent(key: "Buy"): TypedContractEvent<BuyEvent.InputTuple, BuyEvent.OutputTuple, BuyEvent.OutputObject>;
+    getEvent(key: "ClaimSignerUpdated"): TypedContractEvent<ClaimSignerUpdatedEvent.InputTuple, ClaimSignerUpdatedEvent.OutputTuple, ClaimSignerUpdatedEvent.OutputObject>;
     getEvent(key: "ClaimWithdrawn"): TypedContractEvent<ClaimWithdrawnEvent.InputTuple, ClaimWithdrawnEvent.OutputTuple, ClaimWithdrawnEvent.OutputObject>;
     getEvent(key: "Claimed"): TypedContractEvent<ClaimedEvent$1.InputTuple, ClaimedEvent$1.OutputTuple, ClaimedEvent$1.OutputObject>;
     getEvent(key: "OwnershipTransferred"): TypedContractEvent<OwnershipTransferredEvent$f.InputTuple, OwnershipTransferredEvent$f.OutputTuple, OwnershipTransferredEvent$f.OutputObject>;
     getEvent(key: "ReInitialized"): TypedContractEvent<ReInitializedEvent.InputTuple, ReInitializedEvent.OutputTuple, ReInitializedEvent.OutputObject>;
     getEvent(key: "Sell"): TypedContractEvent<SellEvent.InputTuple, SellEvent.OutputTuple, SellEvent.OutputObject>;
-    getEvent(key: "Transfer"): TypedContractEvent<TransferEvent$6.InputTuple, TransferEvent$6.OutputTuple, TransferEvent$6.OutputObject>;
     getEvent(key: "UpdatedDevFeeBp"): TypedContractEvent<UpdatedDevFeeBpEvent.InputTuple, UpdatedDevFeeBpEvent.OutputTuple, UpdatedDevFeeBpEvent.OutputObject>;
-    getEvent(key: "UpdatedMinBuyForReset"): TypedContractEvent<UpdatedMinBuyForResetEvent.InputTuple, UpdatedMinBuyForResetEvent.OutputTuple, UpdatedMinBuyForResetEvent.OutputObject>;
     getEvent(key: "WithdrawnDevFee"): TypedContractEvent<WithdrawnDevFeeEvent.InputTuple, WithdrawnDevFeeEvent.OutputTuple, WithdrawnDevFeeEvent.OutputObject>;
     getEvent(key: "WithdrawnEth"): TypedContractEvent<WithdrawnEthEvent.InputTuple, WithdrawnEthEvent.OutputTuple, WithdrawnEthEvent.OutputObject>;
     getEvent(key: "WithdrawnToken"): TypedContractEvent<WithdrawnTokenEvent.InputTuple, WithdrawnTokenEvent.OutputTuple, WithdrawnTokenEvent.OutputObject>;
@@ -2110,26 +1965,22 @@ interface BondCurveToken extends BaseContract {
         AllowTrade: TypedContractEvent<AllowTradeEvent.InputTuple, AllowTradeEvent.OutputTuple, AllowTradeEvent.OutputObject>;
         "AllowWithdraw(bool)": TypedContractEvent<AllowWithdrawEvent.InputTuple, AllowWithdrawEvent.OutputTuple, AllowWithdrawEvent.OutputObject>;
         AllowWithdraw: TypedContractEvent<AllowWithdrawEvent.InputTuple, AllowWithdrawEvent.OutputTuple, AllowWithdrawEvent.OutputObject>;
-        "Approval(address,address,uint256)": TypedContractEvent<ApprovalEvent$6.InputTuple, ApprovalEvent$6.OutputTuple, ApprovalEvent$6.OutputObject>;
-        Approval: TypedContractEvent<ApprovalEvent$6.InputTuple, ApprovalEvent$6.OutputTuple, ApprovalEvent$6.OutputObject>;
         "Buy(address,uint256,uint256,uint256)": TypedContractEvent<BuyEvent.InputTuple, BuyEvent.OutputTuple, BuyEvent.OutputObject>;
         Buy: TypedContractEvent<BuyEvent.InputTuple, BuyEvent.OutputTuple, BuyEvent.OutputObject>;
+        "ClaimSignerUpdated(address,address)": TypedContractEvent<ClaimSignerUpdatedEvent.InputTuple, ClaimSignerUpdatedEvent.OutputTuple, ClaimSignerUpdatedEvent.OutputObject>;
+        ClaimSignerUpdated: TypedContractEvent<ClaimSignerUpdatedEvent.InputTuple, ClaimSignerUpdatedEvent.OutputTuple, ClaimSignerUpdatedEvent.OutputObject>;
         "ClaimWithdrawn(address,uint256)": TypedContractEvent<ClaimWithdrawnEvent.InputTuple, ClaimWithdrawnEvent.OutputTuple, ClaimWithdrawnEvent.OutputObject>;
         ClaimWithdrawn: TypedContractEvent<ClaimWithdrawnEvent.InputTuple, ClaimWithdrawnEvent.OutputTuple, ClaimWithdrawnEvent.OutputObject>;
         "Claimed(address,uint256,uint256)": TypedContractEvent<ClaimedEvent$1.InputTuple, ClaimedEvent$1.OutputTuple, ClaimedEvent$1.OutputObject>;
         Claimed: TypedContractEvent<ClaimedEvent$1.InputTuple, ClaimedEvent$1.OutputTuple, ClaimedEvent$1.OutputObject>;
         "OwnershipTransferred(address,address)": TypedContractEvent<OwnershipTransferredEvent$f.InputTuple, OwnershipTransferredEvent$f.OutputTuple, OwnershipTransferredEvent$f.OutputObject>;
         OwnershipTransferred: TypedContractEvent<OwnershipTransferredEvent$f.InputTuple, OwnershipTransferredEvent$f.OutputTuple, OwnershipTransferredEvent$f.OutputObject>;
-        "ReInitialized(bytes32,uint256,uint256,uint256,uint256,uint256)": TypedContractEvent<ReInitializedEvent.InputTuple, ReInitializedEvent.OutputTuple, ReInitializedEvent.OutputObject>;
+        "ReInitialized(address,uint256,uint256,uint256,uint256,uint256)": TypedContractEvent<ReInitializedEvent.InputTuple, ReInitializedEvent.OutputTuple, ReInitializedEvent.OutputObject>;
         ReInitialized: TypedContractEvent<ReInitializedEvent.InputTuple, ReInitializedEvent.OutputTuple, ReInitializedEvent.OutputObject>;
         "Sell(address,uint256,uint256,uint256)": TypedContractEvent<SellEvent.InputTuple, SellEvent.OutputTuple, SellEvent.OutputObject>;
         Sell: TypedContractEvent<SellEvent.InputTuple, SellEvent.OutputTuple, SellEvent.OutputObject>;
-        "Transfer(address,address,uint256)": TypedContractEvent<TransferEvent$6.InputTuple, TransferEvent$6.OutputTuple, TransferEvent$6.OutputObject>;
-        Transfer: TypedContractEvent<TransferEvent$6.InputTuple, TransferEvent$6.OutputTuple, TransferEvent$6.OutputObject>;
         "UpdatedDevFeeBp(uint256)": TypedContractEvent<UpdatedDevFeeBpEvent.InputTuple, UpdatedDevFeeBpEvent.OutputTuple, UpdatedDevFeeBpEvent.OutputObject>;
         UpdatedDevFeeBp: TypedContractEvent<UpdatedDevFeeBpEvent.InputTuple, UpdatedDevFeeBpEvent.OutputTuple, UpdatedDevFeeBpEvent.OutputObject>;
-        "UpdatedMinBuyForReset(uint256)": TypedContractEvent<UpdatedMinBuyForResetEvent.InputTuple, UpdatedMinBuyForResetEvent.OutputTuple, UpdatedMinBuyForResetEvent.OutputObject>;
-        UpdatedMinBuyForReset: TypedContractEvent<UpdatedMinBuyForResetEvent.InputTuple, UpdatedMinBuyForResetEvent.OutputTuple, UpdatedMinBuyForResetEvent.OutputObject>;
         "WithdrawnDevFee(address,uint256)": TypedContractEvent<WithdrawnDevFeeEvent.InputTuple, WithdrawnDevFeeEvent.OutputTuple, WithdrawnDevFeeEvent.OutputObject>;
         WithdrawnDevFee: TypedContractEvent<WithdrawnDevFeeEvent.InputTuple, WithdrawnDevFeeEvent.OutputTuple, WithdrawnDevFeeEvent.OutputObject>;
         "WithdrawnEth(address,uint256)": TypedContractEvent<WithdrawnEthEvent.InputTuple, WithdrawnEthEvent.OutputTuple, WithdrawnEthEvent.OutputObject>;
@@ -16362,28 +16213,12 @@ declare class BadgeManager__factory {
     static connect(address: string, runner?: ContractRunner | null): BadgeManager;
 }
 
-declare class BondCurveToken__factory {
+declare class BondCurveDistro__factory {
     static readonly abi: readonly [{
         readonly inputs: readonly [{
-            readonly internalType: "string";
-            readonly name: "_name";
-            readonly type: "string";
-        }, {
-            readonly internalType: "string";
-            readonly name: "_symbol";
-            readonly type: "string";
-        }, {
-            readonly internalType: "uint256";
-            readonly name: "_initialSupply";
-            readonly type: "uint256";
-        }, {
-            readonly internalType: "uint8";
-            readonly name: "_decimals";
-            readonly type: "uint8";
-        }, {
-            readonly internalType: "bytes32";
-            readonly name: "_airdropTreeRoot";
-            readonly type: "bytes32";
+            readonly internalType: "address";
+            readonly name: "_rewardToken";
+            readonly type: "address";
         }, {
             readonly internalType: "uint256";
             readonly name: "_airdropAlloc";
@@ -16456,26 +16291,6 @@ declare class BondCurveToken__factory {
     }, {
         readonly anonymous: false;
         readonly inputs: readonly [{
-            readonly indexed: true;
-            readonly internalType: "address";
-            readonly name: "owner";
-            readonly type: "address";
-        }, {
-            readonly indexed: true;
-            readonly internalType: "address";
-            readonly name: "spender";
-            readonly type: "address";
-        }, {
-            readonly indexed: false;
-            readonly internalType: "uint256";
-            readonly name: "value";
-            readonly type: "uint256";
-        }];
-        readonly name: "Approval";
-        readonly type: "event";
-    }, {
-        readonly anonymous: false;
-        readonly inputs: readonly [{
             readonly indexed: false;
             readonly internalType: "address";
             readonly name: "buyer";
@@ -16503,6 +16318,21 @@ declare class BondCurveToken__factory {
         readonly inputs: readonly [{
             readonly indexed: false;
             readonly internalType: "address";
+            readonly name: "newSigner";
+            readonly type: "address";
+        }, {
+            readonly indexed: false;
+            readonly internalType: "address";
+            readonly name: "oldSigner";
+            readonly type: "address";
+        }];
+        readonly name: "ClaimSignerUpdated";
+        readonly type: "event";
+    }, {
+        readonly anonymous: false;
+        readonly inputs: readonly [{
+            readonly indexed: false;
+            readonly internalType: "address";
             readonly name: "addr";
             readonly type: "address";
         }, {
@@ -16523,7 +16353,7 @@ declare class BondCurveToken__factory {
         }, {
             readonly indexed: false;
             readonly internalType: "uint256";
-            readonly name: "claimId";
+            readonly name: "nonce";
             readonly type: "uint256";
         }, {
             readonly indexed: false;
@@ -16552,9 +16382,9 @@ declare class BondCurveToken__factory {
         readonly anonymous: false;
         readonly inputs: readonly [{
             readonly indexed: false;
-            readonly internalType: "bytes32";
-            readonly name: "root";
-            readonly type: "bytes32";
+            readonly internalType: "address";
+            readonly name: "rewardToken";
+            readonly type: "address";
         }, {
             readonly indexed: false;
             readonly internalType: "uint256";
@@ -16611,42 +16441,12 @@ declare class BondCurveToken__factory {
     }, {
         readonly anonymous: false;
         readonly inputs: readonly [{
-            readonly indexed: true;
-            readonly internalType: "address";
-            readonly name: "from";
-            readonly type: "address";
-        }, {
-            readonly indexed: true;
-            readonly internalType: "address";
-            readonly name: "to";
-            readonly type: "address";
-        }, {
-            readonly indexed: false;
-            readonly internalType: "uint256";
-            readonly name: "value";
-            readonly type: "uint256";
-        }];
-        readonly name: "Transfer";
-        readonly type: "event";
-    }, {
-        readonly anonymous: false;
-        readonly inputs: readonly [{
             readonly indexed: false;
             readonly internalType: "uint256";
             readonly name: "devFeeBp";
             readonly type: "uint256";
         }];
         readonly name: "UpdatedDevFeeBp";
-        readonly type: "event";
-    }, {
-        readonly anonymous: false;
-        readonly inputs: readonly [{
-            readonly indexed: false;
-            readonly internalType: "uint256";
-            readonly name: "minBuyForReset";
-            readonly type: "uint256";
-        }];
-        readonly name: "UpdatedMinBuyForReset";
         readonly type: "event";
     }, {
         readonly anonymous: false;
@@ -16754,56 +16554,6 @@ declare class BondCurveToken__factory {
         readonly stateMutability: "view";
         readonly type: "function";
     }, {
-        readonly inputs: readonly [{
-            readonly internalType: "address";
-            readonly name: "owner";
-            readonly type: "address";
-        }, {
-            readonly internalType: "address";
-            readonly name: "spender";
-            readonly type: "address";
-        }];
-        readonly name: "allowance";
-        readonly outputs: readonly [{
-            readonly internalType: "uint256";
-            readonly name: "";
-            readonly type: "uint256";
-        }];
-        readonly stateMutability: "view";
-        readonly type: "function";
-    }, {
-        readonly inputs: readonly [{
-            readonly internalType: "address";
-            readonly name: "spender";
-            readonly type: "address";
-        }, {
-            readonly internalType: "uint256";
-            readonly name: "amount";
-            readonly type: "uint256";
-        }];
-        readonly name: "approve";
-        readonly outputs: readonly [{
-            readonly internalType: "bool";
-            readonly name: "";
-            readonly type: "bool";
-        }];
-        readonly stateMutability: "nonpayable";
-        readonly type: "function";
-    }, {
-        readonly inputs: readonly [{
-            readonly internalType: "address";
-            readonly name: "account";
-            readonly type: "address";
-        }];
-        readonly name: "balanceOf";
-        readonly outputs: readonly [{
-            readonly internalType: "uint256";
-            readonly name: "";
-            readonly type: "uint256";
-        }];
-        readonly stateMutability: "view";
-        readonly type: "function";
-    }, {
         readonly inputs: readonly [];
         readonly name: "bondingCurveAlloc";
         readonly outputs: readonly [{
@@ -16859,21 +16609,17 @@ declare class BondCurveToken__factory {
         readonly type: "function";
     }, {
         readonly inputs: readonly [{
-            readonly internalType: "bytes32[]";
-            readonly name: "proof";
-            readonly type: "bytes32[]";
-        }, {
-            readonly internalType: "address";
-            readonly name: "addr";
-            readonly type: "address";
-        }, {
             readonly internalType: "uint256";
-            readonly name: "claimId";
+            readonly name: "amount";
             readonly type: "uint256";
         }, {
             readonly internalType: "uint256";
-            readonly name: "allocation";
+            readonly name: "nonce";
             readonly type: "uint256";
+        }, {
+            readonly internalType: "bytes";
+            readonly name: "sig";
+            readonly type: "bytes";
         }];
         readonly name: "claim";
         readonly outputs: readonly [];
@@ -16881,16 +16627,12 @@ declare class BondCurveToken__factory {
         readonly type: "function";
     }, {
         readonly inputs: readonly [{
-            readonly internalType: "bytes32[][]";
-            readonly name: "proofs";
-            readonly type: "bytes32[][]";
-        }, {
-            readonly internalType: "address";
-            readonly name: "addr";
-            readonly type: "address";
+            readonly internalType: "bytes[]";
+            readonly name: "signatures";
+            readonly type: "bytes[]";
         }, {
             readonly internalType: "uint256[]";
-            readonly name: "claimIds";
+            readonly name: "nonces";
             readonly type: "uint256[]";
         }, {
             readonly internalType: "uint256[]";
@@ -16900,6 +16642,16 @@ declare class BondCurveToken__factory {
         readonly name: "claimMulti";
         readonly outputs: readonly [];
         readonly stateMutability: "nonpayable";
+        readonly type: "function";
+    }, {
+        readonly inputs: readonly [];
+        readonly name: "claimSigner";
+        readonly outputs: readonly [{
+            readonly internalType: "address";
+            readonly name: "";
+            readonly type: "address";
+        }];
+        readonly stateMutability: "view";
         readonly type: "function";
     }, {
         readonly inputs: readonly [];
@@ -16924,34 +16676,6 @@ declare class BondCurveToken__factory {
             readonly type: "uint256";
         }];
         readonly stateMutability: "view";
-        readonly type: "function";
-    }, {
-        readonly inputs: readonly [];
-        readonly name: "decimals";
-        readonly outputs: readonly [{
-            readonly internalType: "uint8";
-            readonly name: "";
-            readonly type: "uint8";
-        }];
-        readonly stateMutability: "view";
-        readonly type: "function";
-    }, {
-        readonly inputs: readonly [{
-            readonly internalType: "address";
-            readonly name: "spender";
-            readonly type: "address";
-        }, {
-            readonly internalType: "uint256";
-            readonly name: "subtractedValue";
-            readonly type: "uint256";
-        }];
-        readonly name: "decreaseAllowance";
-        readonly outputs: readonly [{
-            readonly internalType: "bool";
-            readonly name: "";
-            readonly type: "bool";
-        }];
-        readonly stateMutability: "nonpayable";
         readonly type: "function";
     }, {
         readonly inputs: readonly [];
@@ -16984,24 +16708,6 @@ declare class BondCurveToken__factory {
         readonly stateMutability: "view";
         readonly type: "function";
     }, {
-        readonly inputs: readonly [{
-            readonly internalType: "address";
-            readonly name: "spender";
-            readonly type: "address";
-        }, {
-            readonly internalType: "uint256";
-            readonly name: "addedValue";
-            readonly type: "uint256";
-        }];
-        readonly name: "increaseAllowance";
-        readonly outputs: readonly [{
-            readonly internalType: "bool";
-            readonly name: "";
-            readonly type: "bool";
-        }];
-        readonly stateMutability: "nonpayable";
-        readonly type: "function";
-    }, {
         readonly inputs: readonly [];
         readonly name: "initialBondingCurveAlloc";
         readonly outputs: readonly [{
@@ -17023,26 +16729,6 @@ declare class BondCurveToken__factory {
         readonly type: "function";
     }, {
         readonly inputs: readonly [];
-        readonly name: "minBuyForReset";
-        readonly outputs: readonly [{
-            readonly internalType: "uint256";
-            readonly name: "";
-            readonly type: "uint256";
-        }];
-        readonly stateMutability: "view";
-        readonly type: "function";
-    }, {
-        readonly inputs: readonly [];
-        readonly name: "name";
-        readonly outputs: readonly [{
-            readonly internalType: "string";
-            readonly name: "";
-            readonly type: "string";
-        }];
-        readonly stateMutability: "view";
-        readonly type: "function";
-    }, {
-        readonly inputs: readonly [];
         readonly name: "owner";
         readonly outputs: readonly [{
             readonly internalType: "address";
@@ -17053,9 +16739,9 @@ declare class BondCurveToken__factory {
         readonly type: "function";
     }, {
         readonly inputs: readonly [{
-            readonly internalType: "bytes32";
-            readonly name: "_airdropTreeRoot";
-            readonly type: "bytes32";
+            readonly internalType: "address";
+            readonly name: "_rewardToken";
+            readonly type: "address";
         }, {
             readonly internalType: "uint256";
             readonly name: "_airdropAlloc";
@@ -17089,11 +16775,11 @@ declare class BondCurveToken__factory {
         readonly type: "function";
     }, {
         readonly inputs: readonly [];
-        readonly name: "root";
+        readonly name: "rewardToken";
         readonly outputs: readonly [{
-            readonly internalType: "bytes32";
+            readonly internalType: "address";
             readonly name: "";
-            readonly type: "bytes32";
+            readonly type: "address";
         }];
         readonly stateMutability: "view";
         readonly type: "function";
@@ -17131,6 +16817,16 @@ declare class BondCurveToken__factory {
         readonly type: "function";
     }, {
         readonly inputs: readonly [{
+            readonly internalType: "address";
+            readonly name: "_claimSigner";
+            readonly type: "address";
+        }];
+        readonly name: "setClaimSigner";
+        readonly outputs: readonly [];
+        readonly stateMutability: "nonpayable";
+        readonly type: "function";
+    }, {
+        readonly inputs: readonly [{
             readonly internalType: "uint256";
             readonly name: "_devFeeBp";
             readonly type: "uint256";
@@ -17138,26 +16834,6 @@ declare class BondCurveToken__factory {
         readonly name: "setDevFeeBp";
         readonly outputs: readonly [];
         readonly stateMutability: "nonpayable";
-        readonly type: "function";
-    }, {
-        readonly inputs: readonly [{
-            readonly internalType: "uint256";
-            readonly name: "_minBuyForReset";
-            readonly type: "uint256";
-        }];
-        readonly name: "setMinBuyForReset";
-        readonly outputs: readonly [];
-        readonly stateMutability: "nonpayable";
-        readonly type: "function";
-    }, {
-        readonly inputs: readonly [];
-        readonly name: "symbol";
-        readonly outputs: readonly [{
-            readonly internalType: "string";
-            readonly name: "";
-            readonly type: "string";
-        }];
-        readonly stateMutability: "view";
         readonly type: "function";
     }, {
         readonly inputs: readonly [];
@@ -17190,56 +16866,6 @@ declare class BondCurveToken__factory {
         readonly stateMutability: "nonpayable";
         readonly type: "function";
     }, {
-        readonly inputs: readonly [];
-        readonly name: "totalSupply";
-        readonly outputs: readonly [{
-            readonly internalType: "uint256";
-            readonly name: "";
-            readonly type: "uint256";
-        }];
-        readonly stateMutability: "view";
-        readonly type: "function";
-    }, {
-        readonly inputs: readonly [{
-            readonly internalType: "address";
-            readonly name: "to";
-            readonly type: "address";
-        }, {
-            readonly internalType: "uint256";
-            readonly name: "amount";
-            readonly type: "uint256";
-        }];
-        readonly name: "transfer";
-        readonly outputs: readonly [{
-            readonly internalType: "bool";
-            readonly name: "";
-            readonly type: "bool";
-        }];
-        readonly stateMutability: "nonpayable";
-        readonly type: "function";
-    }, {
-        readonly inputs: readonly [{
-            readonly internalType: "address";
-            readonly name: "from";
-            readonly type: "address";
-        }, {
-            readonly internalType: "address";
-            readonly name: "to";
-            readonly type: "address";
-        }, {
-            readonly internalType: "uint256";
-            readonly name: "amount";
-            readonly type: "uint256";
-        }];
-        readonly name: "transferFrom";
-        readonly outputs: readonly [{
-            readonly internalType: "bool";
-            readonly name: "";
-            readonly type: "bool";
-        }];
-        readonly stateMutability: "nonpayable";
-        readonly type: "function";
-    }, {
         readonly inputs: readonly [{
             readonly internalType: "address";
             readonly name: "newOwner";
@@ -17251,19 +16877,19 @@ declare class BondCurveToken__factory {
         readonly type: "function";
     }, {
         readonly inputs: readonly [{
-            readonly internalType: "uint256";
-            readonly name: "";
-            readonly type: "uint256";
-        }, {
             readonly internalType: "address";
             readonly name: "";
             readonly type: "address";
-        }];
-        readonly name: "usedClaims";
-        readonly outputs: readonly [{
-            readonly internalType: "int256";
+        }, {
+            readonly internalType: "uint256";
             readonly name: "";
-            readonly type: "int256";
+            readonly type: "uint256";
+        }];
+        readonly name: "usedClaimNonces";
+        readonly outputs: readonly [{
+            readonly internalType: "bool";
+            readonly name: "";
+            readonly type: "bool";
         }];
         readonly stateMutability: "view";
         readonly type: "function";
@@ -17307,8 +16933,8 @@ declare class BondCurveToken__factory {
         readonly stateMutability: "payable";
         readonly type: "receive";
     }];
-    static createInterface(): BondCurveTokenInterface;
-    static connect(address: string, runner?: ContractRunner | null): BondCurveToken;
+    static createInterface(): BondCurveDistroInterface;
+    static connect(address: string, runner?: ContractRunner | null): BondCurveDistro;
 }
 
 declare class Core__factory {
@@ -33507,8 +33133,8 @@ type index$1_AssetRegistry__factory = AssetRegistry__factory;
 declare const index$1_AssetRegistry__factory: typeof AssetRegistry__factory;
 type index$1_BadgeManager__factory = BadgeManager__factory;
 declare const index$1_BadgeManager__factory: typeof BadgeManager__factory;
-type index$1_BondCurveToken__factory = BondCurveToken__factory;
-declare const index$1_BondCurveToken__factory: typeof BondCurveToken__factory;
+type index$1_BondCurveDistro__factory = BondCurveDistro__factory;
+declare const index$1_BondCurveDistro__factory: typeof BondCurveDistro__factory;
 type index$1_Core__factory = Core__factory;
 declare const index$1_Core__factory: typeof Core__factory;
 type index$1_DisputeManager__factory = DisputeManager__factory;
@@ -33556,7 +33182,7 @@ declare const index$1_UniswapV3Router__factory: typeof UniswapV3Router__factory;
 type index$1_WETH__factory = WETH__factory;
 declare const index$1_WETH__factory: typeof WETH__factory;
 declare namespace index$1 {
-  export { index$1_AssetRegistry__factory as AssetRegistry__factory, index$1_BadgeManager__factory as BadgeManager__factory, index$1_BondCurveToken__factory as BondCurveToken__factory, index$1_Core__factory as Core__factory, index$1_DisputeManager__factory as DisputeManager__factory, index$1_ERC20__factory as ERC20__factory, index$1_ERC721__factory as ERC721__factory, index$1_Energon__factory as Energon__factory, index$1_FeePool__factory as FeePool__factory, index$1_LPPool__factory as LPPool__factory, index$1_MarketCore__factory as MarketCore__factory, index$1_MarketManager__factory as MarketManager__factory, index$1_MediatorManager__factory as MediatorManager__factory, index$1_MinerRegistry__factory as MinerRegistry__factory, index$1_NFT__factory as NFT__factory, index$1_PayRouter__factory as PayRouter__factory, index$1_ProviderRegistry__factory as ProviderRegistry__factory, index$1_Router__factory as Router__factory, index$1_TokenPool__factory as TokenPool__factory, index$1_Token__factory as Token__factory, index$1_UniswapV2Router2__factory as UniswapV2Router2__factory, index$1_UniswapV2Router__factory as UniswapV2Router__factory, index$1_UniswapV3Router2__factory as UniswapV3Router2__factory, index$1_UniswapV3RouterUniversal__factory as UniswapV3RouterUniversal__factory, index$1_UniswapV3Router__factory as UniswapV3Router__factory, index$1_WETH__factory as WETH__factory };
+  export { index$1_AssetRegistry__factory as AssetRegistry__factory, index$1_BadgeManager__factory as BadgeManager__factory, index$1_BondCurveDistro__factory as BondCurveDistro__factory, index$1_Core__factory as Core__factory, index$1_DisputeManager__factory as DisputeManager__factory, index$1_ERC20__factory as ERC20__factory, index$1_ERC721__factory as ERC721__factory, index$1_Energon__factory as Energon__factory, index$1_FeePool__factory as FeePool__factory, index$1_LPPool__factory as LPPool__factory, index$1_MarketCore__factory as MarketCore__factory, index$1_MarketManager__factory as MarketManager__factory, index$1_MediatorManager__factory as MediatorManager__factory, index$1_MinerRegistry__factory as MinerRegistry__factory, index$1_NFT__factory as NFT__factory, index$1_PayRouter__factory as PayRouter__factory, index$1_ProviderRegistry__factory as ProviderRegistry__factory, index$1_Router__factory as Router__factory, index$1_TokenPool__factory as TokenPool__factory, index$1_Token__factory as Token__factory, index$1_UniswapV2Router2__factory as UniswapV2Router2__factory, index$1_UniswapV2Router__factory as UniswapV2Router__factory, index$1_UniswapV3Router2__factory as UniswapV3Router2__factory, index$1_UniswapV3RouterUniversal__factory as UniswapV3RouterUniversal__factory, index$1_UniswapV3Router__factory as UniswapV3Router__factory, index$1_WETH__factory as WETH__factory };
 }
 
 type index_AssetRegistry = AssetRegistry;
@@ -33565,9 +33191,9 @@ declare const index_AssetRegistry__factory: typeof AssetRegistry__factory;
 type index_BadgeManager = BadgeManager;
 type index_BadgeManager__factory = BadgeManager__factory;
 declare const index_BadgeManager__factory: typeof BadgeManager__factory;
-type index_BondCurveToken = BondCurveToken;
-type index_BondCurveToken__factory = BondCurveToken__factory;
-declare const index_BondCurveToken__factory: typeof BondCurveToken__factory;
+type index_BondCurveDistro = BondCurveDistro;
+type index_BondCurveDistro__factory = BondCurveDistro__factory;
+declare const index_BondCurveDistro__factory: typeof BondCurveDistro__factory;
 type index_Core = Core;
 type index_Core__factory = Core__factory;
 declare const index_Core__factory: typeof Core__factory;
@@ -33638,7 +33264,7 @@ type index_WETH = WETH;
 type index_WETH__factory = WETH__factory;
 declare const index_WETH__factory: typeof WETH__factory;
 declare namespace index {
-  export { type index_AssetRegistry as AssetRegistry, index_AssetRegistry__factory as AssetRegistry__factory, type index_BadgeManager as BadgeManager, index_BadgeManager__factory as BadgeManager__factory, type index_BondCurveToken as BondCurveToken, index_BondCurveToken__factory as BondCurveToken__factory, type index_Core as Core, index_Core__factory as Core__factory, type index_DisputeManager as DisputeManager, index_DisputeManager__factory as DisputeManager__factory, type index_ERC20 as ERC20, index_ERC20__factory as ERC20__factory, type index_ERC721 as ERC721, index_ERC721__factory as ERC721__factory, type index_Energon as Energon, index_Energon__factory as Energon__factory, type index_FeePool as FeePool, index_FeePool__factory as FeePool__factory, type index_LPPool as LPPool, index_LPPool__factory as LPPool__factory, type index_MarketCore as MarketCore, index_MarketCore__factory as MarketCore__factory, type index_MarketManager as MarketManager, index_MarketManager__factory as MarketManager__factory, type index_MediatorManager as MediatorManager, index_MediatorManager__factory as MediatorManager__factory, type index_MinerRegistry as MinerRegistry, index_MinerRegistry__factory as MinerRegistry__factory, type index_NFT as NFT, index_NFT__factory as NFT__factory, type index_PayRouter as PayRouter, index_PayRouter__factory as PayRouter__factory, type index_ProviderRegistry as ProviderRegistry, index_ProviderRegistry__factory as ProviderRegistry__factory, type index_Router as Router, index_Router__factory as Router__factory, type index_Token as Token, type index_TokenPool as TokenPool, index_TokenPool__factory as TokenPool__factory, index_Token__factory as Token__factory, type index_UniswapV2Router as UniswapV2Router, type index_UniswapV2Router2 as UniswapV2Router2, index_UniswapV2Router2__factory as UniswapV2Router2__factory, index_UniswapV2Router__factory as UniswapV2Router__factory, type index_UniswapV3Router as UniswapV3Router, type index_UniswapV3Router2 as UniswapV3Router2, index_UniswapV3Router2__factory as UniswapV3Router2__factory, type index_UniswapV3RouterUniversal as UniswapV3RouterUniversal, index_UniswapV3RouterUniversal__factory as UniswapV3RouterUniversal__factory, index_UniswapV3Router__factory as UniswapV3Router__factory, type index_WETH as WETH, index_WETH__factory as WETH__factory, index$1 as factories };
+  export { type index_AssetRegistry as AssetRegistry, index_AssetRegistry__factory as AssetRegistry__factory, type index_BadgeManager as BadgeManager, index_BadgeManager__factory as BadgeManager__factory, type index_BondCurveDistro as BondCurveDistro, index_BondCurveDistro__factory as BondCurveDistro__factory, type index_Core as Core, index_Core__factory as Core__factory, type index_DisputeManager as DisputeManager, index_DisputeManager__factory as DisputeManager__factory, type index_ERC20 as ERC20, index_ERC20__factory as ERC20__factory, type index_ERC721 as ERC721, index_ERC721__factory as ERC721__factory, type index_Energon as Energon, index_Energon__factory as Energon__factory, type index_FeePool as FeePool, index_FeePool__factory as FeePool__factory, type index_LPPool as LPPool, index_LPPool__factory as LPPool__factory, type index_MarketCore as MarketCore, index_MarketCore__factory as MarketCore__factory, type index_MarketManager as MarketManager, index_MarketManager__factory as MarketManager__factory, type index_MediatorManager as MediatorManager, index_MediatorManager__factory as MediatorManager__factory, type index_MinerRegistry as MinerRegistry, index_MinerRegistry__factory as MinerRegistry__factory, type index_NFT as NFT, index_NFT__factory as NFT__factory, type index_PayRouter as PayRouter, index_PayRouter__factory as PayRouter__factory, type index_ProviderRegistry as ProviderRegistry, index_ProviderRegistry__factory as ProviderRegistry__factory, type index_Router as Router, index_Router__factory as Router__factory, type index_Token as Token, type index_TokenPool as TokenPool, index_TokenPool__factory as TokenPool__factory, index_Token__factory as Token__factory, type index_UniswapV2Router as UniswapV2Router, type index_UniswapV2Router2 as UniswapV2Router2, index_UniswapV2Router2__factory as UniswapV2Router2__factory, index_UniswapV2Router__factory as UniswapV2Router__factory, type index_UniswapV3Router as UniswapV3Router, type index_UniswapV3Router2 as UniswapV3Router2, index_UniswapV3Router2__factory as UniswapV3Router2__factory, type index_UniswapV3RouterUniversal as UniswapV3RouterUniversal, index_UniswapV3RouterUniversal__factory as UniswapV3RouterUniversal__factory, index_UniswapV3Router__factory as UniswapV3Router__factory, type index_WETH as WETH, index_WETH__factory as WETH__factory, index$1 as factories };
 }
 
 declare enum PaymentMethodType {

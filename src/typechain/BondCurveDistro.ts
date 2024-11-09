@@ -23,7 +23,7 @@ import type {
   TypedContractMethod,
 } from "./common";
 
-export interface BondCurveTokenInterface extends Interface {
+export interface BondCurveDistroInterface extends Interface {
   getFunction(
     nameOrSignature:
       | "airdropAlloc"
@@ -32,9 +32,6 @@ export interface BondCurveTokenInterface extends Interface {
       | "allowSell"
       | "allowTrade"
       | "allowWithdraw"
-      | "allowance"
-      | "approve"
-      | "balanceOf"
       | "bondingCurveAlloc"
       | "bondingCurveEthBal"
       | "buy"
@@ -42,37 +39,29 @@ export interface BondCurveTokenInterface extends Interface {
       | "circulatingSupply"
       | "claim"
       | "claimMulti"
+      | "claimSigner"
       | "claimedBalance"
       | "claims"
-      | "decimals"
-      | "decreaseAllowance"
       | "devAlloc"
       | "devFeeBp"
       | "devFeeEthBal"
-      | "increaseAllowance"
       | "initialBondingCurveAlloc"
       | "k"
-      | "minBuyForReset"
-      | "name"
       | "owner"
       | "reInit"
       | "renounceOwnership"
-      | "root"
+      | "rewardToken"
       | "sell"
       | "sellPrice"
+      | "setClaimSigner"
       | "setDevFeeBp"
-      | "setMinBuyForReset"
-      | "symbol"
       | "toggleAllowBuyTransfer"
       | "toggleAllowClaim"
       | "toggleAllowSell"
       | "toggleAllowTrade"
       | "toggleAllowWithdraw"
-      | "totalSupply"
-      | "transfer"
-      | "transferFrom"
       | "transferOwnership"
-      | "usedClaims"
+      | "usedClaimNonces"
       | "withdrawClaim"
       | "withdrawDevFee"
       | "withdrawEth"
@@ -86,16 +75,14 @@ export interface BondCurveTokenInterface extends Interface {
       | "AllowSell"
       | "AllowTrade"
       | "AllowWithdraw"
-      | "Approval"
       | "Buy"
+      | "ClaimSignerUpdated"
       | "ClaimWithdrawn"
       | "Claimed"
       | "OwnershipTransferred"
       | "ReInitialized"
       | "Sell"
-      | "Transfer"
       | "UpdatedDevFeeBp"
-      | "UpdatedMinBuyForReset"
       | "WithdrawnDevFee"
       | "WithdrawnEth"
       | "WithdrawnToken"
@@ -123,18 +110,6 @@ export interface BondCurveTokenInterface extends Interface {
     values?: undefined
   ): string;
   encodeFunctionData(
-    functionFragment: "allowance",
-    values: [AddressLike, AddressLike]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "approve",
-    values: [AddressLike, BigNumberish]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "balanceOf",
-    values: [AddressLike]
-  ): string;
-  encodeFunctionData(
     functionFragment: "bondingCurveAlloc",
     values?: undefined
   ): string;
@@ -153,22 +128,21 @@ export interface BondCurveTokenInterface extends Interface {
   ): string;
   encodeFunctionData(
     functionFragment: "claim",
-    values: [BytesLike[], AddressLike, BigNumberish, BigNumberish]
+    values: [BigNumberish, BigNumberish, BytesLike]
   ): string;
   encodeFunctionData(
     functionFragment: "claimMulti",
-    values: [BytesLike[][], AddressLike, BigNumberish[], BigNumberish[]]
+    values: [BytesLike[], BigNumberish[], BigNumberish[]]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "claimSigner",
+    values?: undefined
   ): string;
   encodeFunctionData(
     functionFragment: "claimedBalance",
     values?: undefined
   ): string;
   encodeFunctionData(functionFragment: "claims", values: [AddressLike]): string;
-  encodeFunctionData(functionFragment: "decimals", values?: undefined): string;
-  encodeFunctionData(
-    functionFragment: "decreaseAllowance",
-    values: [AddressLike, BigNumberish]
-  ): string;
   encodeFunctionData(functionFragment: "devAlloc", values?: undefined): string;
   encodeFunctionData(functionFragment: "devFeeBp", values?: undefined): string;
   encodeFunctionData(
@@ -176,24 +150,15 @@ export interface BondCurveTokenInterface extends Interface {
     values?: undefined
   ): string;
   encodeFunctionData(
-    functionFragment: "increaseAllowance",
-    values: [AddressLike, BigNumberish]
-  ): string;
-  encodeFunctionData(
     functionFragment: "initialBondingCurveAlloc",
     values?: undefined
   ): string;
   encodeFunctionData(functionFragment: "k", values?: undefined): string;
-  encodeFunctionData(
-    functionFragment: "minBuyForReset",
-    values?: undefined
-  ): string;
-  encodeFunctionData(functionFragment: "name", values?: undefined): string;
   encodeFunctionData(functionFragment: "owner", values?: undefined): string;
   encodeFunctionData(
     functionFragment: "reInit",
     values: [
-      BytesLike,
+      AddressLike,
       BigNumberish,
       BigNumberish,
       BigNumberish,
@@ -205,7 +170,10 @@ export interface BondCurveTokenInterface extends Interface {
     functionFragment: "renounceOwnership",
     values?: undefined
   ): string;
-  encodeFunctionData(functionFragment: "root", values?: undefined): string;
+  encodeFunctionData(
+    functionFragment: "rewardToken",
+    values?: undefined
+  ): string;
   encodeFunctionData(
     functionFragment: "sell",
     values: [BigNumberish, BigNumberish]
@@ -215,14 +183,13 @@ export interface BondCurveTokenInterface extends Interface {
     values: [BigNumberish, BigNumberish]
   ): string;
   encodeFunctionData(
+    functionFragment: "setClaimSigner",
+    values: [AddressLike]
+  ): string;
+  encodeFunctionData(
     functionFragment: "setDevFeeBp",
     values: [BigNumberish]
   ): string;
-  encodeFunctionData(
-    functionFragment: "setMinBuyForReset",
-    values: [BigNumberish]
-  ): string;
-  encodeFunctionData(functionFragment: "symbol", values?: undefined): string;
   encodeFunctionData(
     functionFragment: "toggleAllowBuyTransfer",
     values?: undefined
@@ -244,24 +211,12 @@ export interface BondCurveTokenInterface extends Interface {
     values?: undefined
   ): string;
   encodeFunctionData(
-    functionFragment: "totalSupply",
-    values?: undefined
-  ): string;
-  encodeFunctionData(
-    functionFragment: "transfer",
-    values: [AddressLike, BigNumberish]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "transferFrom",
-    values: [AddressLike, AddressLike, BigNumberish]
-  ): string;
-  encodeFunctionData(
     functionFragment: "transferOwnership",
     values: [AddressLike]
   ): string;
   encodeFunctionData(
-    functionFragment: "usedClaims",
-    values: [BigNumberish, AddressLike]
+    functionFragment: "usedClaimNonces",
+    values: [AddressLike, BigNumberish]
   ): string;
   encodeFunctionData(
     functionFragment: "withdrawClaim",
@@ -295,9 +250,6 @@ export interface BondCurveTokenInterface extends Interface {
     functionFragment: "allowWithdraw",
     data: BytesLike
   ): Result;
-  decodeFunctionResult(functionFragment: "allowance", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "approve", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "balanceOf", data: BytesLike): Result;
   decodeFunctionResult(
     functionFragment: "bondingCurveAlloc",
     data: BytesLike
@@ -315,15 +267,14 @@ export interface BondCurveTokenInterface extends Interface {
   decodeFunctionResult(functionFragment: "claim", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "claimMulti", data: BytesLike): Result;
   decodeFunctionResult(
+    functionFragment: "claimSigner",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
     functionFragment: "claimedBalance",
     data: BytesLike
   ): Result;
   decodeFunctionResult(functionFragment: "claims", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "decimals", data: BytesLike): Result;
-  decodeFunctionResult(
-    functionFragment: "decreaseAllowance",
-    data: BytesLike
-  ): Result;
   decodeFunctionResult(functionFragment: "devAlloc", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "devFeeBp", data: BytesLike): Result;
   decodeFunctionResult(
@@ -331,37 +282,30 @@ export interface BondCurveTokenInterface extends Interface {
     data: BytesLike
   ): Result;
   decodeFunctionResult(
-    functionFragment: "increaseAllowance",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
     functionFragment: "initialBondingCurveAlloc",
     data: BytesLike
   ): Result;
   decodeFunctionResult(functionFragment: "k", data: BytesLike): Result;
-  decodeFunctionResult(
-    functionFragment: "minBuyForReset",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(functionFragment: "name", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "owner", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "reInit", data: BytesLike): Result;
   decodeFunctionResult(
     functionFragment: "renounceOwnership",
     data: BytesLike
   ): Result;
-  decodeFunctionResult(functionFragment: "root", data: BytesLike): Result;
+  decodeFunctionResult(
+    functionFragment: "rewardToken",
+    data: BytesLike
+  ): Result;
   decodeFunctionResult(functionFragment: "sell", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "sellPrice", data: BytesLike): Result;
+  decodeFunctionResult(
+    functionFragment: "setClaimSigner",
+    data: BytesLike
+  ): Result;
   decodeFunctionResult(
     functionFragment: "setDevFeeBp",
     data: BytesLike
   ): Result;
-  decodeFunctionResult(
-    functionFragment: "setMinBuyForReset",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(functionFragment: "symbol", data: BytesLike): Result;
   decodeFunctionResult(
     functionFragment: "toggleAllowBuyTransfer",
     data: BytesLike
@@ -383,19 +327,13 @@ export interface BondCurveTokenInterface extends Interface {
     data: BytesLike
   ): Result;
   decodeFunctionResult(
-    functionFragment: "totalSupply",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(functionFragment: "transfer", data: BytesLike): Result;
-  decodeFunctionResult(
-    functionFragment: "transferFrom",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
     functionFragment: "transferOwnership",
     data: BytesLike
   ): Result;
-  decodeFunctionResult(functionFragment: "usedClaims", data: BytesLike): Result;
+  decodeFunctionResult(
+    functionFragment: "usedClaimNonces",
+    data: BytesLike
+  ): Result;
   decodeFunctionResult(
     functionFragment: "withdrawClaim",
     data: BytesLike
@@ -474,24 +412,6 @@ export namespace AllowWithdrawEvent {
   export type LogDescription = TypedLogDescription<Event>;
 }
 
-export namespace ApprovalEvent {
-  export type InputTuple = [
-    owner: AddressLike,
-    spender: AddressLike,
-    value: BigNumberish
-  ];
-  export type OutputTuple = [owner: string, spender: string, value: bigint];
-  export interface OutputObject {
-    owner: string;
-    spender: string;
-    value: bigint;
-  }
-  export type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>;
-  export type Filter = TypedDeferredTopicFilter<Event>;
-  export type Log = TypedEventLog<Event>;
-  export type LogDescription = TypedLogDescription<Event>;
-}
-
 export namespace BuyEvent {
   export type InputTuple = [
     buyer: AddressLike,
@@ -517,6 +437,19 @@ export namespace BuyEvent {
   export type LogDescription = TypedLogDescription<Event>;
 }
 
+export namespace ClaimSignerUpdatedEvent {
+  export type InputTuple = [newSigner: AddressLike, oldSigner: AddressLike];
+  export type OutputTuple = [newSigner: string, oldSigner: string];
+  export interface OutputObject {
+    newSigner: string;
+    oldSigner: string;
+  }
+  export type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>;
+  export type Filter = TypedDeferredTopicFilter<Event>;
+  export type Log = TypedEventLog<Event>;
+  export type LogDescription = TypedLogDescription<Event>;
+}
+
 export namespace ClaimWithdrawnEvent {
   export type InputTuple = [addr: AddressLike, amount: BigNumberish];
   export type OutputTuple = [addr: string, amount: bigint];
@@ -533,13 +466,13 @@ export namespace ClaimWithdrawnEvent {
 export namespace ClaimedEvent {
   export type InputTuple = [
     addr: AddressLike,
-    claimId: BigNumberish,
+    nonce: BigNumberish,
     allocation: BigNumberish
   ];
-  export type OutputTuple = [addr: string, claimId: bigint, allocation: bigint];
+  export type OutputTuple = [addr: string, nonce: bigint, allocation: bigint];
   export interface OutputObject {
     addr: string;
-    claimId: bigint;
+    nonce: bigint;
     allocation: bigint;
   }
   export type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>;
@@ -563,7 +496,7 @@ export namespace OwnershipTransferredEvent {
 
 export namespace ReInitializedEvent {
   export type InputTuple = [
-    root: BytesLike,
+    rewardToken: AddressLike,
     airdropAlloc: BigNumberish,
     devAlloc: BigNumberish,
     bondingCurveAlloc: BigNumberish,
@@ -571,7 +504,7 @@ export namespace ReInitializedEvent {
     k: BigNumberish
   ];
   export type OutputTuple = [
-    root: string,
+    rewardToken: string,
     airdropAlloc: bigint,
     devAlloc: bigint,
     bondingCurveAlloc: bigint,
@@ -579,7 +512,7 @@ export namespace ReInitializedEvent {
     k: bigint
   ];
   export interface OutputObject {
-    root: string;
+    rewardToken: string;
     airdropAlloc: bigint;
     devAlloc: bigint;
     bondingCurveAlloc: bigint;
@@ -617,41 +550,11 @@ export namespace SellEvent {
   export type LogDescription = TypedLogDescription<Event>;
 }
 
-export namespace TransferEvent {
-  export type InputTuple = [
-    from: AddressLike,
-    to: AddressLike,
-    value: BigNumberish
-  ];
-  export type OutputTuple = [from: string, to: string, value: bigint];
-  export interface OutputObject {
-    from: string;
-    to: string;
-    value: bigint;
-  }
-  export type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>;
-  export type Filter = TypedDeferredTopicFilter<Event>;
-  export type Log = TypedEventLog<Event>;
-  export type LogDescription = TypedLogDescription<Event>;
-}
-
 export namespace UpdatedDevFeeBpEvent {
   export type InputTuple = [devFeeBp: BigNumberish];
   export type OutputTuple = [devFeeBp: bigint];
   export interface OutputObject {
     devFeeBp: bigint;
-  }
-  export type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>;
-  export type Filter = TypedDeferredTopicFilter<Event>;
-  export type Log = TypedEventLog<Event>;
-  export type LogDescription = TypedLogDescription<Event>;
-}
-
-export namespace UpdatedMinBuyForResetEvent {
-  export type InputTuple = [minBuyForReset: BigNumberish];
-  export type OutputTuple = [minBuyForReset: bigint];
-  export interface OutputObject {
-    minBuyForReset: bigint;
   }
   export type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>;
   export type Filter = TypedDeferredTopicFilter<Event>;
@@ -698,11 +601,11 @@ export namespace WithdrawnTokenEvent {
   export type LogDescription = TypedLogDescription<Event>;
 }
 
-export interface BondCurveToken extends BaseContract {
-  connect(runner?: ContractRunner | null): BondCurveToken;
+export interface BondCurveDistro extends BaseContract {
+  connect(runner?: ContractRunner | null): BondCurveDistro;
   waitForDeployment(): Promise<this>;
 
-  interface: BondCurveTokenInterface;
+  interface: BondCurveDistroInterface;
 
   queryFilter<TCEvent extends TypedContractEvent>(
     event: TCEvent,
@@ -753,20 +656,6 @@ export interface BondCurveToken extends BaseContract {
 
   allowWithdraw: TypedContractMethod<[], [boolean], "view">;
 
-  allowance: TypedContractMethod<
-    [owner: AddressLike, spender: AddressLike],
-    [bigint],
-    "view"
-  >;
-
-  approve: TypedContractMethod<
-    [spender: AddressLike, amount: BigNumberish],
-    [boolean],
-    "nonpayable"
-  >;
-
-  balanceOf: TypedContractMethod<[account: AddressLike], [bigint], "view">;
-
   bondingCurveAlloc: TypedContractMethod<[], [bigint], "view">;
 
   bondingCurveEthBal: TypedContractMethod<[], [bigint], "view">;
@@ -778,38 +667,26 @@ export interface BondCurveToken extends BaseContract {
   circulatingSupply: TypedContractMethod<[], [bigint], "view">;
 
   claim: TypedContractMethod<
-    [
-      proof: BytesLike[],
-      addr: AddressLike,
-      claimId: BigNumberish,
-      allocation: BigNumberish
-    ],
+    [amount: BigNumberish, nonce: BigNumberish, sig: BytesLike],
     [void],
     "nonpayable"
   >;
 
   claimMulti: TypedContractMethod<
     [
-      proofs: BytesLike[][],
-      addr: AddressLike,
-      claimIds: BigNumberish[],
+      signatures: BytesLike[],
+      nonces: BigNumberish[],
       allocations: BigNumberish[]
     ],
     [void],
     "nonpayable"
   >;
 
+  claimSigner: TypedContractMethod<[], [string], "view">;
+
   claimedBalance: TypedContractMethod<[], [bigint], "view">;
 
   claims: TypedContractMethod<[arg0: AddressLike], [bigint], "view">;
-
-  decimals: TypedContractMethod<[], [bigint], "view">;
-
-  decreaseAllowance: TypedContractMethod<
-    [spender: AddressLike, subtractedValue: BigNumberish],
-    [boolean],
-    "nonpayable"
-  >;
 
   devAlloc: TypedContractMethod<[], [bigint], "view">;
 
@@ -817,25 +694,15 @@ export interface BondCurveToken extends BaseContract {
 
   devFeeEthBal: TypedContractMethod<[], [bigint], "view">;
 
-  increaseAllowance: TypedContractMethod<
-    [spender: AddressLike, addedValue: BigNumberish],
-    [boolean],
-    "nonpayable"
-  >;
-
   initialBondingCurveAlloc: TypedContractMethod<[], [bigint], "view">;
 
   k: TypedContractMethod<[], [bigint], "view">;
-
-  minBuyForReset: TypedContractMethod<[], [bigint], "view">;
-
-  name: TypedContractMethod<[], [string], "view">;
 
   owner: TypedContractMethod<[], [string], "view">;
 
   reInit: TypedContractMethod<
     [
-      _airdropTreeRoot: BytesLike,
+      _rewardToken: AddressLike,
       _airdropAlloc: BigNumberish,
       _devAlloc: BigNumberish,
       _bondingCurveAlloc: BigNumberish,
@@ -848,7 +715,7 @@ export interface BondCurveToken extends BaseContract {
 
   renounceOwnership: TypedContractMethod<[], [void], "nonpayable">;
 
-  root: TypedContractMethod<[], [string], "view">;
+  rewardToken: TypedContractMethod<[], [string], "view">;
 
   sell: TypedContractMethod<
     [amount: BigNumberish, minPrice: BigNumberish],
@@ -862,19 +729,17 @@ export interface BondCurveToken extends BaseContract {
     "view"
   >;
 
+  setClaimSigner: TypedContractMethod<
+    [_claimSigner: AddressLike],
+    [void],
+    "nonpayable"
+  >;
+
   setDevFeeBp: TypedContractMethod<
     [_devFeeBp: BigNumberish],
     [void],
     "nonpayable"
   >;
-
-  setMinBuyForReset: TypedContractMethod<
-    [_minBuyForReset: BigNumberish],
-    [void],
-    "nonpayable"
-  >;
-
-  symbol: TypedContractMethod<[], [string], "view">;
 
   toggleAllowBuyTransfer: TypedContractMethod<[], [void], "nonpayable">;
 
@@ -886,29 +751,15 @@ export interface BondCurveToken extends BaseContract {
 
   toggleAllowWithdraw: TypedContractMethod<[], [void], "nonpayable">;
 
-  totalSupply: TypedContractMethod<[], [bigint], "view">;
-
-  transfer: TypedContractMethod<
-    [to: AddressLike, amount: BigNumberish],
-    [boolean],
-    "nonpayable"
-  >;
-
-  transferFrom: TypedContractMethod<
-    [from: AddressLike, to: AddressLike, amount: BigNumberish],
-    [boolean],
-    "nonpayable"
-  >;
-
   transferOwnership: TypedContractMethod<
     [newOwner: AddressLike],
     [void],
     "nonpayable"
   >;
 
-  usedClaims: TypedContractMethod<
-    [arg0: BigNumberish, arg1: AddressLike],
-    [bigint],
+  usedClaimNonces: TypedContractMethod<
+    [arg0: AddressLike, arg1: BigNumberish],
+    [boolean],
     "view"
   >;
 
@@ -955,23 +806,6 @@ export interface BondCurveToken extends BaseContract {
     nameOrSignature: "allowWithdraw"
   ): TypedContractMethod<[], [boolean], "view">;
   getFunction(
-    nameOrSignature: "allowance"
-  ): TypedContractMethod<
-    [owner: AddressLike, spender: AddressLike],
-    [bigint],
-    "view"
-  >;
-  getFunction(
-    nameOrSignature: "approve"
-  ): TypedContractMethod<
-    [spender: AddressLike, amount: BigNumberish],
-    [boolean],
-    "nonpayable"
-  >;
-  getFunction(
-    nameOrSignature: "balanceOf"
-  ): TypedContractMethod<[account: AddressLike], [bigint], "view">;
-  getFunction(
     nameOrSignature: "bondingCurveAlloc"
   ): TypedContractMethod<[], [bigint], "view">;
   getFunction(
@@ -989,12 +823,7 @@ export interface BondCurveToken extends BaseContract {
   getFunction(
     nameOrSignature: "claim"
   ): TypedContractMethod<
-    [
-      proof: BytesLike[],
-      addr: AddressLike,
-      claimId: BigNumberish,
-      allocation: BigNumberish
-    ],
+    [amount: BigNumberish, nonce: BigNumberish, sig: BytesLike],
     [void],
     "nonpayable"
   >;
@@ -1002,30 +831,22 @@ export interface BondCurveToken extends BaseContract {
     nameOrSignature: "claimMulti"
   ): TypedContractMethod<
     [
-      proofs: BytesLike[][],
-      addr: AddressLike,
-      claimIds: BigNumberish[],
+      signatures: BytesLike[],
+      nonces: BigNumberish[],
       allocations: BigNumberish[]
     ],
     [void],
     "nonpayable"
   >;
   getFunction(
+    nameOrSignature: "claimSigner"
+  ): TypedContractMethod<[], [string], "view">;
+  getFunction(
     nameOrSignature: "claimedBalance"
   ): TypedContractMethod<[], [bigint], "view">;
   getFunction(
     nameOrSignature: "claims"
   ): TypedContractMethod<[arg0: AddressLike], [bigint], "view">;
-  getFunction(
-    nameOrSignature: "decimals"
-  ): TypedContractMethod<[], [bigint], "view">;
-  getFunction(
-    nameOrSignature: "decreaseAllowance"
-  ): TypedContractMethod<
-    [spender: AddressLike, subtractedValue: BigNumberish],
-    [boolean],
-    "nonpayable"
-  >;
   getFunction(
     nameOrSignature: "devAlloc"
   ): TypedContractMethod<[], [bigint], "view">;
@@ -1036,22 +857,9 @@ export interface BondCurveToken extends BaseContract {
     nameOrSignature: "devFeeEthBal"
   ): TypedContractMethod<[], [bigint], "view">;
   getFunction(
-    nameOrSignature: "increaseAllowance"
-  ): TypedContractMethod<
-    [spender: AddressLike, addedValue: BigNumberish],
-    [boolean],
-    "nonpayable"
-  >;
-  getFunction(
     nameOrSignature: "initialBondingCurveAlloc"
   ): TypedContractMethod<[], [bigint], "view">;
   getFunction(nameOrSignature: "k"): TypedContractMethod<[], [bigint], "view">;
-  getFunction(
-    nameOrSignature: "minBuyForReset"
-  ): TypedContractMethod<[], [bigint], "view">;
-  getFunction(
-    nameOrSignature: "name"
-  ): TypedContractMethod<[], [string], "view">;
   getFunction(
     nameOrSignature: "owner"
   ): TypedContractMethod<[], [string], "view">;
@@ -1059,7 +867,7 @@ export interface BondCurveToken extends BaseContract {
     nameOrSignature: "reInit"
   ): TypedContractMethod<
     [
-      _airdropTreeRoot: BytesLike,
+      _rewardToken: AddressLike,
       _airdropAlloc: BigNumberish,
       _devAlloc: BigNumberish,
       _bondingCurveAlloc: BigNumberish,
@@ -1073,7 +881,7 @@ export interface BondCurveToken extends BaseContract {
     nameOrSignature: "renounceOwnership"
   ): TypedContractMethod<[], [void], "nonpayable">;
   getFunction(
-    nameOrSignature: "root"
+    nameOrSignature: "rewardToken"
   ): TypedContractMethod<[], [string], "view">;
   getFunction(
     nameOrSignature: "sell"
@@ -1090,14 +898,11 @@ export interface BondCurveToken extends BaseContract {
     "view"
   >;
   getFunction(
+    nameOrSignature: "setClaimSigner"
+  ): TypedContractMethod<[_claimSigner: AddressLike], [void], "nonpayable">;
+  getFunction(
     nameOrSignature: "setDevFeeBp"
   ): TypedContractMethod<[_devFeeBp: BigNumberish], [void], "nonpayable">;
-  getFunction(
-    nameOrSignature: "setMinBuyForReset"
-  ): TypedContractMethod<[_minBuyForReset: BigNumberish], [void], "nonpayable">;
-  getFunction(
-    nameOrSignature: "symbol"
-  ): TypedContractMethod<[], [string], "view">;
   getFunction(
     nameOrSignature: "toggleAllowBuyTransfer"
   ): TypedContractMethod<[], [void], "nonpayable">;
@@ -1114,30 +919,13 @@ export interface BondCurveToken extends BaseContract {
     nameOrSignature: "toggleAllowWithdraw"
   ): TypedContractMethod<[], [void], "nonpayable">;
   getFunction(
-    nameOrSignature: "totalSupply"
-  ): TypedContractMethod<[], [bigint], "view">;
-  getFunction(
-    nameOrSignature: "transfer"
-  ): TypedContractMethod<
-    [to: AddressLike, amount: BigNumberish],
-    [boolean],
-    "nonpayable"
-  >;
-  getFunction(
-    nameOrSignature: "transferFrom"
-  ): TypedContractMethod<
-    [from: AddressLike, to: AddressLike, amount: BigNumberish],
-    [boolean],
-    "nonpayable"
-  >;
-  getFunction(
     nameOrSignature: "transferOwnership"
   ): TypedContractMethod<[newOwner: AddressLike], [void], "nonpayable">;
   getFunction(
-    nameOrSignature: "usedClaims"
+    nameOrSignature: "usedClaimNonces"
   ): TypedContractMethod<
-    [arg0: BigNumberish, arg1: AddressLike],
-    [bigint],
+    [arg0: AddressLike, arg1: BigNumberish],
+    [boolean],
     "view"
   >;
   getFunction(
@@ -1189,18 +977,18 @@ export interface BondCurveToken extends BaseContract {
     AllowWithdrawEvent.OutputObject
   >;
   getEvent(
-    key: "Approval"
-  ): TypedContractEvent<
-    ApprovalEvent.InputTuple,
-    ApprovalEvent.OutputTuple,
-    ApprovalEvent.OutputObject
-  >;
-  getEvent(
     key: "Buy"
   ): TypedContractEvent<
     BuyEvent.InputTuple,
     BuyEvent.OutputTuple,
     BuyEvent.OutputObject
+  >;
+  getEvent(
+    key: "ClaimSignerUpdated"
+  ): TypedContractEvent<
+    ClaimSignerUpdatedEvent.InputTuple,
+    ClaimSignerUpdatedEvent.OutputTuple,
+    ClaimSignerUpdatedEvent.OutputObject
   >;
   getEvent(
     key: "ClaimWithdrawn"
@@ -1238,25 +1026,11 @@ export interface BondCurveToken extends BaseContract {
     SellEvent.OutputObject
   >;
   getEvent(
-    key: "Transfer"
-  ): TypedContractEvent<
-    TransferEvent.InputTuple,
-    TransferEvent.OutputTuple,
-    TransferEvent.OutputObject
-  >;
-  getEvent(
     key: "UpdatedDevFeeBp"
   ): TypedContractEvent<
     UpdatedDevFeeBpEvent.InputTuple,
     UpdatedDevFeeBpEvent.OutputTuple,
     UpdatedDevFeeBpEvent.OutputObject
-  >;
-  getEvent(
-    key: "UpdatedMinBuyForReset"
-  ): TypedContractEvent<
-    UpdatedMinBuyForResetEvent.InputTuple,
-    UpdatedMinBuyForResetEvent.OutputTuple,
-    UpdatedMinBuyForResetEvent.OutputObject
   >;
   getEvent(
     key: "WithdrawnDevFee"
@@ -1336,17 +1110,6 @@ export interface BondCurveToken extends BaseContract {
       AllowWithdrawEvent.OutputObject
     >;
 
-    "Approval(address,address,uint256)": TypedContractEvent<
-      ApprovalEvent.InputTuple,
-      ApprovalEvent.OutputTuple,
-      ApprovalEvent.OutputObject
-    >;
-    Approval: TypedContractEvent<
-      ApprovalEvent.InputTuple,
-      ApprovalEvent.OutputTuple,
-      ApprovalEvent.OutputObject
-    >;
-
     "Buy(address,uint256,uint256,uint256)": TypedContractEvent<
       BuyEvent.InputTuple,
       BuyEvent.OutputTuple,
@@ -1356,6 +1119,17 @@ export interface BondCurveToken extends BaseContract {
       BuyEvent.InputTuple,
       BuyEvent.OutputTuple,
       BuyEvent.OutputObject
+    >;
+
+    "ClaimSignerUpdated(address,address)": TypedContractEvent<
+      ClaimSignerUpdatedEvent.InputTuple,
+      ClaimSignerUpdatedEvent.OutputTuple,
+      ClaimSignerUpdatedEvent.OutputObject
+    >;
+    ClaimSignerUpdated: TypedContractEvent<
+      ClaimSignerUpdatedEvent.InputTuple,
+      ClaimSignerUpdatedEvent.OutputTuple,
+      ClaimSignerUpdatedEvent.OutputObject
     >;
 
     "ClaimWithdrawn(address,uint256)": TypedContractEvent<
@@ -1391,7 +1165,7 @@ export interface BondCurveToken extends BaseContract {
       OwnershipTransferredEvent.OutputObject
     >;
 
-    "ReInitialized(bytes32,uint256,uint256,uint256,uint256,uint256)": TypedContractEvent<
+    "ReInitialized(address,uint256,uint256,uint256,uint256,uint256)": TypedContractEvent<
       ReInitializedEvent.InputTuple,
       ReInitializedEvent.OutputTuple,
       ReInitializedEvent.OutputObject
@@ -1413,17 +1187,6 @@ export interface BondCurveToken extends BaseContract {
       SellEvent.OutputObject
     >;
 
-    "Transfer(address,address,uint256)": TypedContractEvent<
-      TransferEvent.InputTuple,
-      TransferEvent.OutputTuple,
-      TransferEvent.OutputObject
-    >;
-    Transfer: TypedContractEvent<
-      TransferEvent.InputTuple,
-      TransferEvent.OutputTuple,
-      TransferEvent.OutputObject
-    >;
-
     "UpdatedDevFeeBp(uint256)": TypedContractEvent<
       UpdatedDevFeeBpEvent.InputTuple,
       UpdatedDevFeeBpEvent.OutputTuple,
@@ -1433,17 +1196,6 @@ export interface BondCurveToken extends BaseContract {
       UpdatedDevFeeBpEvent.InputTuple,
       UpdatedDevFeeBpEvent.OutputTuple,
       UpdatedDevFeeBpEvent.OutputObject
-    >;
-
-    "UpdatedMinBuyForReset(uint256)": TypedContractEvent<
-      UpdatedMinBuyForResetEvent.InputTuple,
-      UpdatedMinBuyForResetEvent.OutputTuple,
-      UpdatedMinBuyForResetEvent.OutputObject
-    >;
-    UpdatedMinBuyForReset: TypedContractEvent<
-      UpdatedMinBuyForResetEvent.InputTuple,
-      UpdatedMinBuyForResetEvent.OutputTuple,
-      UpdatedMinBuyForResetEvent.OutputObject
     >;
 
     "WithdrawnDevFee(address,uint256)": TypedContractEvent<
