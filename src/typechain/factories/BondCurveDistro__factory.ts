@@ -186,6 +186,12 @@ const _abi = [
       {
         indexed: false,
         internalType: "uint256",
+        name: "claimId",
+        type: "uint256",
+      },
+      {
+        indexed: false,
+        internalType: "uint256",
         name: "nonce",
         type: "uint256",
       },
@@ -520,6 +526,11 @@ const _abi = [
       },
       {
         internalType: "uint256",
+        name: "claimId",
+        type: "uint256",
+      },
+      {
+        internalType: "uint256",
         name: "nonce",
         type: "uint256",
       },
@@ -540,6 +551,11 @@ const _abi = [
         internalType: "bytes[]",
         name: "signatures",
         type: "bytes[]",
+      },
+      {
+        internalType: "uint256[]",
+        name: "claimIds",
+        type: "uint256[]",
       },
       {
         internalType: "uint256[]",

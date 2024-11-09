@@ -1438,8 +1438,8 @@ interface BondCurveDistroInterface extends Interface {
     encodeFunctionData(functionFragment: "buy", values: [BigNumberish]): string;
     encodeFunctionData(functionFragment: "buyPrice", values: [BigNumberish]): string;
     encodeFunctionData(functionFragment: "circulatingSupply", values?: undefined): string;
-    encodeFunctionData(functionFragment: "claim", values: [BigNumberish, BigNumberish, BytesLike]): string;
-    encodeFunctionData(functionFragment: "claimMulti", values: [BytesLike[], BigNumberish[], BigNumberish[]]): string;
+    encodeFunctionData(functionFragment: "claim", values: [BigNumberish, BigNumberish, BigNumberish, BytesLike]): string;
+    encodeFunctionData(functionFragment: "claimMulti", values: [BytesLike[], BigNumberish[], BigNumberish[], BigNumberish[]]): string;
     encodeFunctionData(functionFragment: "claimSigner", values?: undefined): string;
     encodeFunctionData(functionFragment: "claimedBalance", values?: undefined): string;
     encodeFunctionData(functionFragment: "claims", values: [AddressLike]): string;
@@ -1621,12 +1621,19 @@ declare namespace ClaimWithdrawnEvent {
 declare namespace ClaimedEvent$1 {
     type InputTuple = [
         addr: AddressLike,
+        claimId: BigNumberish,
         nonce: BigNumberish,
         allocation: BigNumberish
     ];
-    type OutputTuple = [addr: string, nonce: bigint, allocation: bigint];
+    type OutputTuple = [
+        addr: string,
+        claimId: bigint,
+        nonce: bigint,
+        allocation: bigint
+    ];
     interface OutputObject {
         addr: string;
+        claimId: bigint;
         nonce: bigint;
         allocation: bigint;
     }
@@ -1774,6 +1781,7 @@ interface BondCurveDistro extends BaseContract {
     circulatingSupply: TypedContractMethod<[], [bigint], "view">;
     claim: TypedContractMethod<[
         amount: BigNumberish,
+        claimId: BigNumberish,
         nonce: BigNumberish,
         sig: BytesLike
     ], [
@@ -1781,6 +1789,7 @@ interface BondCurveDistro extends BaseContract {
     ], "nonpayable">;
     claimMulti: TypedContractMethod<[
         signatures: BytesLike[],
+        claimIds: BigNumberish[],
         nonces: BigNumberish[],
         allocations: BigNumberish[]
     ], [
@@ -1875,6 +1884,7 @@ interface BondCurveDistro extends BaseContract {
     getFunction(nameOrSignature: "circulatingSupply"): TypedContractMethod<[], [bigint], "view">;
     getFunction(nameOrSignature: "claim"): TypedContractMethod<[
         amount: BigNumberish,
+        claimId: BigNumberish,
         nonce: BigNumberish,
         sig: BytesLike
     ], [
@@ -1882,6 +1892,7 @@ interface BondCurveDistro extends BaseContract {
     ], "nonpayable">;
     getFunction(nameOrSignature: "claimMulti"): TypedContractMethod<[
         signatures: BytesLike[],
+        claimIds: BigNumberish[],
         nonces: BigNumberish[],
         allocations: BigNumberish[]
     ], [
@@ -1971,7 +1982,7 @@ interface BondCurveDistro extends BaseContract {
         ClaimSignerUpdated: TypedContractEvent<ClaimSignerUpdatedEvent.InputTuple, ClaimSignerUpdatedEvent.OutputTuple, ClaimSignerUpdatedEvent.OutputObject>;
         "ClaimWithdrawn(address,uint256)": TypedContractEvent<ClaimWithdrawnEvent.InputTuple, ClaimWithdrawnEvent.OutputTuple, ClaimWithdrawnEvent.OutputObject>;
         ClaimWithdrawn: TypedContractEvent<ClaimWithdrawnEvent.InputTuple, ClaimWithdrawnEvent.OutputTuple, ClaimWithdrawnEvent.OutputObject>;
-        "Claimed(address,uint256,uint256)": TypedContractEvent<ClaimedEvent$1.InputTuple, ClaimedEvent$1.OutputTuple, ClaimedEvent$1.OutputObject>;
+        "Claimed(address,uint256,uint256,uint256)": TypedContractEvent<ClaimedEvent$1.InputTuple, ClaimedEvent$1.OutputTuple, ClaimedEvent$1.OutputObject>;
         Claimed: TypedContractEvent<ClaimedEvent$1.InputTuple, ClaimedEvent$1.OutputTuple, ClaimedEvent$1.OutputObject>;
         "OwnershipTransferred(address,address)": TypedContractEvent<OwnershipTransferredEvent$f.InputTuple, OwnershipTransferredEvent$f.OutputTuple, OwnershipTransferredEvent$f.OutputObject>;
         OwnershipTransferred: TypedContractEvent<OwnershipTransferredEvent$f.InputTuple, OwnershipTransferredEvent$f.OutputTuple, OwnershipTransferredEvent$f.OutputObject>;
@@ -16353,6 +16364,11 @@ declare class BondCurveDistro__factory {
         }, {
             readonly indexed: false;
             readonly internalType: "uint256";
+            readonly name: "claimId";
+            readonly type: "uint256";
+        }, {
+            readonly indexed: false;
+            readonly internalType: "uint256";
             readonly name: "nonce";
             readonly type: "uint256";
         }, {
@@ -16614,6 +16630,10 @@ declare class BondCurveDistro__factory {
             readonly type: "uint256";
         }, {
             readonly internalType: "uint256";
+            readonly name: "claimId";
+            readonly type: "uint256";
+        }, {
+            readonly internalType: "uint256";
             readonly name: "nonce";
             readonly type: "uint256";
         }, {
@@ -16630,6 +16650,10 @@ declare class BondCurveDistro__factory {
             readonly internalType: "bytes[]";
             readonly name: "signatures";
             readonly type: "bytes[]";
+        }, {
+            readonly internalType: "uint256[]";
+            readonly name: "claimIds";
+            readonly type: "uint256[]";
         }, {
             readonly internalType: "uint256[]";
             readonly name: "nonces";

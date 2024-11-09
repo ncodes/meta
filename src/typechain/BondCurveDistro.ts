@@ -128,11 +128,11 @@ export interface BondCurveDistroInterface extends Interface {
   ): string;
   encodeFunctionData(
     functionFragment: "claim",
-    values: [BigNumberish, BigNumberish, BytesLike]
+    values: [BigNumberish, BigNumberish, BigNumberish, BytesLike]
   ): string;
   encodeFunctionData(
     functionFragment: "claimMulti",
-    values: [BytesLike[], BigNumberish[], BigNumberish[]]
+    values: [BytesLike[], BigNumberish[], BigNumberish[], BigNumberish[]]
   ): string;
   encodeFunctionData(
     functionFragment: "claimSigner",
@@ -466,12 +466,19 @@ export namespace ClaimWithdrawnEvent {
 export namespace ClaimedEvent {
   export type InputTuple = [
     addr: AddressLike,
+    claimId: BigNumberish,
     nonce: BigNumberish,
     allocation: BigNumberish
   ];
-  export type OutputTuple = [addr: string, nonce: bigint, allocation: bigint];
+  export type OutputTuple = [
+    addr: string,
+    claimId: bigint,
+    nonce: bigint,
+    allocation: bigint
+  ];
   export interface OutputObject {
     addr: string;
+    claimId: bigint;
     nonce: bigint;
     allocation: bigint;
   }
@@ -667,7 +674,12 @@ export interface BondCurveDistro extends BaseContract {
   circulatingSupply: TypedContractMethod<[], [bigint], "view">;
 
   claim: TypedContractMethod<
-    [amount: BigNumberish, nonce: BigNumberish, sig: BytesLike],
+    [
+      amount: BigNumberish,
+      claimId: BigNumberish,
+      nonce: BigNumberish,
+      sig: BytesLike
+    ],
     [void],
     "nonpayable"
   >;
@@ -675,6 +687,7 @@ export interface BondCurveDistro extends BaseContract {
   claimMulti: TypedContractMethod<
     [
       signatures: BytesLike[],
+      claimIds: BigNumberish[],
       nonces: BigNumberish[],
       allocations: BigNumberish[]
     ],
@@ -823,7 +836,12 @@ export interface BondCurveDistro extends BaseContract {
   getFunction(
     nameOrSignature: "claim"
   ): TypedContractMethod<
-    [amount: BigNumberish, nonce: BigNumberish, sig: BytesLike],
+    [
+      amount: BigNumberish,
+      claimId: BigNumberish,
+      nonce: BigNumberish,
+      sig: BytesLike
+    ],
     [void],
     "nonpayable"
   >;
@@ -832,6 +850,7 @@ export interface BondCurveDistro extends BaseContract {
   ): TypedContractMethod<
     [
       signatures: BytesLike[],
+      claimIds: BigNumberish[],
       nonces: BigNumberish[],
       allocations: BigNumberish[]
     ],
@@ -1143,7 +1162,7 @@ export interface BondCurveDistro extends BaseContract {
       ClaimWithdrawnEvent.OutputObject
     >;
 
-    "Claimed(address,uint256,uint256)": TypedContractEvent<
+    "Claimed(address,uint256,uint256,uint256)": TypedContractEvent<
       ClaimedEvent.InputTuple,
       ClaimedEvent.OutputTuple,
       ClaimedEvent.OutputObject

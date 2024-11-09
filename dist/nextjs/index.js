@@ -1792,6 +1792,12 @@ var BondCurveDistro_default = [
       {
         indexed: false,
         internalType: "uint256",
+        name: "claimId",
+        type: "uint256"
+      },
+      {
+        indexed: false,
+        internalType: "uint256",
         name: "nonce",
         type: "uint256"
       },
@@ -2126,6 +2132,11 @@ var BondCurveDistro_default = [
       },
       {
         internalType: "uint256",
+        name: "claimId",
+        type: "uint256"
+      },
+      {
+        internalType: "uint256",
         name: "nonce",
         type: "uint256"
       },
@@ -2146,6 +2157,11 @@ var BondCurveDistro_default = [
         internalType: "bytes[]",
         name: "signatures",
         type: "bytes[]"
+      },
+      {
+        internalType: "uint256[]",
+        name: "claimIds",
+        type: "uint256[]"
       },
       {
         internalType: "uint256[]",
@@ -40605,6 +40621,12 @@ var _abi3 = [
       {
         indexed: false,
         internalType: "uint256",
+        name: "claimId",
+        type: "uint256"
+      },
+      {
+        indexed: false,
+        internalType: "uint256",
         name: "nonce",
         type: "uint256"
       },
@@ -40939,6 +40961,11 @@ var _abi3 = [
       },
       {
         internalType: "uint256",
+        name: "claimId",
+        type: "uint256"
+      },
+      {
+        internalType: "uint256",
         name: "nonce",
         type: "uint256"
       },
@@ -40959,6 +40986,11 @@ var _abi3 = [
         internalType: "bytes[]",
         name: "signatures",
         type: "bytes[]"
+      },
+      {
+        internalType: "uint256[]",
+        name: "claimIds",
+        type: "uint256[]"
       },
       {
         internalType: "uint256[]",
