@@ -26829,6 +26829,16 @@ var base_default = {
       decimals: 18,
       logoURI: "https://files.joint.exchange/images/droid.svg",
       price: 0
+    },
+    {
+      asset: "0004",
+      type: "ERC20",
+      address: "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+      name: "USDC",
+      symbol: "USDC",
+      decimals: 6,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/arbitrum/assets/0xaf88d065e77c8cC2239327C5EDb3A432268e5831/logo.png",
+      price: 0
     }
   ]
 };
