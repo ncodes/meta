@@ -1469,7 +1469,7 @@ interface BondCurveDistroInterface extends Interface {
     encodeFunctionData(functionFragment: "toggleAllowTrade", values?: undefined): string;
     encodeFunctionData(functionFragment: "toggleAllowWithdraw", values?: undefined): string;
     encodeFunctionData(functionFragment: "transferOwnership", values: [AddressLike]): string;
-    encodeFunctionData(functionFragment: "usedClaimNonces", values: [AddressLike, BigNumberish]): string;
+    encodeFunctionData(functionFragment: "usedClaimNonces", values: [AddressLike, BigNumberish, BigNumberish]): string;
     encodeFunctionData(functionFragment: "withdrawClaim", values?: undefined): string;
     encodeFunctionData(functionFragment: "withdrawDevFee", values: [AddressLike]): string;
     encodeFunctionData(functionFragment: "withdrawEth", values: [AddressLike]): string;
@@ -1850,7 +1850,8 @@ interface BondCurveDistro extends BaseContract {
     ], "nonpayable">;
     usedClaimNonces: TypedContractMethod<[
         arg0: AddressLike,
-        arg1: BigNumberish
+        arg1: BigNumberish,
+        arg2: BigNumberish
     ], [
         boolean
     ], "view">;
@@ -1941,7 +1942,8 @@ interface BondCurveDistro extends BaseContract {
     getFunction(nameOrSignature: "transferOwnership"): TypedContractMethod<[newOwner: AddressLike], [void], "nonpayable">;
     getFunction(nameOrSignature: "usedClaimNonces"): TypedContractMethod<[
         arg0: AddressLike,
-        arg1: BigNumberish
+        arg1: BigNumberish,
+        arg2: BigNumberish
     ], [
         boolean
     ], "view">;
@@ -16904,6 +16906,10 @@ declare class BondCurveDistro__factory {
             readonly internalType: "address";
             readonly name: "";
             readonly type: "address";
+        }, {
+            readonly internalType: "uint256";
+            readonly name: "";
+            readonly type: "uint256";
         }, {
             readonly internalType: "uint256";
             readonly name: "";

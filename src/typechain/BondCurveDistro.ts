@@ -216,7 +216,7 @@ export interface BondCurveDistroInterface extends Interface {
   ): string;
   encodeFunctionData(
     functionFragment: "usedClaimNonces",
-    values: [AddressLike, BigNumberish]
+    values: [AddressLike, BigNumberish, BigNumberish]
   ): string;
   encodeFunctionData(
     functionFragment: "withdrawClaim",
@@ -771,7 +771,7 @@ export interface BondCurveDistro extends BaseContract {
   >;
 
   usedClaimNonces: TypedContractMethod<
-    [arg0: AddressLike, arg1: BigNumberish],
+    [arg0: AddressLike, arg1: BigNumberish, arg2: BigNumberish],
     [boolean],
     "view"
   >;
@@ -943,7 +943,7 @@ export interface BondCurveDistro extends BaseContract {
   getFunction(
     nameOrSignature: "usedClaimNonces"
   ): TypedContractMethod<
-    [arg0: AddressLike, arg1: BigNumberish],
+    [arg0: AddressLike, arg1: BigNumberish, arg2: BigNumberish],
     [boolean],
     "view"
   >;

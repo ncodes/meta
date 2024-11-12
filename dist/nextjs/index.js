@@ -2487,6 +2487,11 @@ var BondCurveDistro_default = [
         internalType: "uint256",
         name: "",
         type: "uint256"
+      },
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256"
       }
     ],
     name: "usedClaimNonces",
@@ -41311,6 +41316,11 @@ var _abi3 = [
         internalType: "address",
         name: "",
         type: "address"
+      },
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256"
       },
       {
         internalType: "uint256",
