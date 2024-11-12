@@ -2003,185 +2003,13 @@ interface BondCurveDistro extends BaseContract {
     };
 }
 
-declare namespace StructsLib$1 {
-    type CreateOfferParamsStruct = {
-        marketId: AddressLike;
-        provider: AddressLike;
-        recipient: AddressLike;
-        lid: BigNumberish;
-        amount: BigNumberish;
-        price: BigNumberish;
-        ids: BigNumberish[];
-        deadline: BigNumberish;
-        operator: BigNumberish;
-    };
-    type CreateOfferParamsStructOutput = [
-        marketId: string,
-        provider: string,
-        recipient: string,
-        lid: bigint,
-        amount: bigint,
-        price: bigint,
-        ids: bigint[],
-        deadline: bigint,
-        operator: bigint
-    ] & {
-        marketId: string;
-        provider: string;
-        recipient: string;
-        lid: bigint;
-        amount: bigint;
-        price: bigint;
-        ids: bigint[];
-        deadline: bigint;
-        operator: bigint;
-    };
-    type IntSlotStateStruct = {
-        instantSwapFeeBp: BigNumberish;
-        synthSwapFeeBp: BigNumberish;
-        stableSwapFeeBp: BigNumberish;
-        instantNFTSwapFeeBp: BigNumberish;
-        fixedSynthSwapFee: BigNumberish;
-        fixedNFTSwapFee: BigNumberish;
-        maxOpenOrders: BigNumberish;
-        maxOpenDisputes: BigNumberish;
-    };
-    type IntSlotStateStructOutput = [
-        instantSwapFeeBp: bigint,
-        synthSwapFeeBp: bigint,
-        stableSwapFeeBp: bigint,
-        instantNFTSwapFeeBp: bigint,
-        fixedSynthSwapFee: bigint,
-        fixedNFTSwapFee: bigint,
-        maxOpenOrders: bigint,
-        maxOpenDisputes: bigint
-    ] & {
-        instantSwapFeeBp: bigint;
-        synthSwapFeeBp: bigint;
-        stableSwapFeeBp: bigint;
-        instantNFTSwapFeeBp: bigint;
-        fixedSynthSwapFee: bigint;
-        fixedNFTSwapFee: bigint;
-        maxOpenOrders: bigint;
-        maxOpenDisputes: bigint;
-    };
-    type SwapQuoteForBaseParamsStruct = {
-        marketId: AddressLike;
-        provider: AddressLike;
-        recipient: AddressLike;
-        lid: BigNumberish;
-        amount: BigNumberish;
-        maxPrice: BigNumberish;
-        ids: BigNumberish[];
-        expireAt: BigNumberish;
-        operator: BigNumberish;
-        marketMgrData: BytesLike;
-    };
-    type SwapQuoteForBaseParamsStructOutput = [
-        marketId: string,
-        provider: string,
-        recipient: string,
-        lid: bigint,
-        amount: bigint,
-        maxPrice: bigint,
-        ids: bigint[],
-        expireAt: bigint,
-        operator: bigint,
-        marketMgrData: string
-    ] & {
-        marketId: string;
-        provider: string;
-        recipient: string;
-        lid: bigint;
-        amount: bigint;
-        maxPrice: bigint;
-        ids: bigint[];
-        expireAt: bigint;
-        operator: bigint;
-        marketMgrData: string;
-    };
-    type UpdateFungibleLiquidityParamsStruct = {
-        marketId: AddressLike;
-        target: AddressLike;
-        lid: BigNumberish;
-        amount: BigNumberish;
-        price: BigNumberish;
-        timeToPay: BigNumberish;
-        expireAt: BigNumberish;
-        wantOrIds: BigNumberish[];
-        wantAndIds: BigNumberish[];
-        deduct: boolean;
-        pause: boolean;
-    };
-    type UpdateFungibleLiquidityParamsStructOutput = [
-        marketId: string,
-        target: string,
-        lid: bigint,
-        amount: bigint,
-        price: bigint,
-        timeToPay: bigint,
-        expireAt: bigint,
-        wantOrIds: bigint[],
-        wantAndIds: bigint[],
-        deduct: boolean,
-        pause: boolean
-    ] & {
-        marketId: string;
-        target: string;
-        lid: bigint;
-        amount: bigint;
-        price: bigint;
-        timeToPay: bigint;
-        expireAt: bigint;
-        wantOrIds: bigint[];
-        wantAndIds: bigint[];
-        deduct: boolean;
-        pause: boolean;
-    };
-    type UpdateNonFungibleLiquidityParamsStruct = {
-        marketId: AddressLike;
-        target: AddressLike;
-        lid: BigNumberish;
-        price: BigNumberish;
-        timeToPay: BigNumberish;
-        expireAt: BigNumberish;
-        ids: BigNumberish[];
-        wantOrIds: BigNumberish[];
-        wantAndIds: BigNumberish[];
-        deduct: boolean;
-        pause: boolean;
-    };
-    type UpdateNonFungibleLiquidityParamsStructOutput = [
-        marketId: string,
-        target: string,
-        lid: bigint,
-        price: bigint,
-        timeToPay: bigint,
-        expireAt: bigint,
-        ids: bigint[],
-        wantOrIds: bigint[],
-        wantAndIds: bigint[],
-        deduct: boolean,
-        pause: boolean
-    ] & {
-        marketId: string;
-        target: string;
-        lid: bigint;
-        price: bigint;
-        timeToPay: bigint;
-        expireAt: bigint;
-        ids: bigint[];
-        wantOrIds: bigint[];
-        wantAndIds: bigint[];
-        deduct: boolean;
-        pause: boolean;
-    };
-}
 declare namespace Structs$3 {
     type LiquidityStruct = {
         ids: BigNumberish[];
         amount: BigNumberish;
         price: BigNumberish;
+        minSwap: BigNumberish;
+        maxSwap: BigNumberish;
         timeToPay: BigNumberish;
         openOrders: BigNumberish;
         openDisputes: BigNumberish;
@@ -2198,6 +2026,8 @@ declare namespace Structs$3 {
         ids: bigint[],
         amount: bigint,
         price: bigint,
+        minSwap: bigint,
+        maxSwap: bigint,
         timeToPay: bigint,
         openOrders: bigint,
         openDisputes: bigint,
@@ -2213,6 +2043,8 @@ declare namespace Structs$3 {
         ids: bigint[];
         amount: bigint;
         price: bigint;
+        minSwap: bigint;
+        maxSwap: bigint;
         timeToPay: bigint;
         openOrders: bigint;
         openDisputes: bigint;
@@ -2413,14 +2245,57 @@ declare namespace Structs$3 {
         cancelled: boolean;
     };
 }
+declare namespace StructsLib$1 {
+    type IntSlotStateStruct = {
+        instantSwapFeeBp: BigNumberish;
+        synthSwapFeeBp: BigNumberish;
+        stableSwapFeeBp: BigNumberish;
+        instantNFTSwapFeeBp: BigNumberish;
+        fixedSynthSwapFee: BigNumberish;
+        fixedNFTSwapFee: BigNumberish;
+        maxOpenOrders: BigNumberish;
+        maxOpenDisputes: BigNumberish;
+    };
+    type IntSlotStateStructOutput = [
+        instantSwapFeeBp: bigint,
+        synthSwapFeeBp: bigint,
+        stableSwapFeeBp: bigint,
+        instantNFTSwapFeeBp: bigint,
+        fixedSynthSwapFee: bigint,
+        fixedNFTSwapFee: bigint,
+        maxOpenOrders: bigint,
+        maxOpenDisputes: bigint
+    ] & {
+        instantSwapFeeBp: bigint;
+        synthSwapFeeBp: bigint;
+        stableSwapFeeBp: bigint;
+        instantNFTSwapFeeBp: bigint;
+        fixedSynthSwapFee: bigint;
+        fixedNFTSwapFee: bigint;
+        maxOpenOrders: bigint;
+        maxOpenDisputes: bigint;
+    };
+    type UintSlotState2Struct = {
+        nftDiscountBp: BigNumberish;
+        ammEthPoolFee: BigNumberish;
+    };
+    type UintSlotState2StructOutput = [
+        nftDiscountBp: bigint,
+        ammEthPoolFee: bigint
+    ] & {
+        nftDiscountBp: bigint;
+        ammEthPoolFee: bigint;
+    };
+}
 interface CoreInterface extends Interface {
-    getFunction(nameOrSignature: "acceptOffer" | "canCreateDispute" | "cancelOffer" | "cancelOrder" | "cancelOrderByDispute" | "computeSwapFee" | "configureFeePool" | "createOffer" | "executeOffer" | "feeBalanceOf" | "getFeeBPs" | "getLiquidity" | "getLiquidityManager" | "getMarket" | "getOffer" | "getOrder" | "getReqSwapBadges" | "hasLiquidity" | "hasOrder" | "inventorBalanceOf" | "isVerified" | "markAsDisputed" | "markOrderAsPaid" | "onERC1155BatchReceived" | "onERC1155Received" | "operatorBalanceOf" | "owner" | "releaseOrder" | "releaseOrderByDispute" | "renounceOwnership" | "setAssetRegistry" | "setBadgeMgr" | "setDisputeManager" | "setFeePool" | "setFeePurse" | "setInventor" | "setLiquidityManager" | "setMarketCore" | "setMaxOpenDisputes" | "setMaxOpenOrders" | "setMinTimeToPay" | "setMinerRegistry" | "setOperator" | "setOrderGraceDur" | "setProtoFee" | "setProtoFeeSplit" | "setProviderRegistry" | "setSwapBadgeForLiquidity" | "shareablesBalanceOf" | "state" | "state2" | "supportsInterface" | "swapQuoteForBase" | "togglePause" | "transferOwnership" | "transferToFeePool" | "unacceptOffer" | "updateFungibleLiquidity" | "updateLiquidityPrice" | "updateNonFungibleLiquidity" | "updateOffer" | "updateOpenDisputesCount" | "withdrawFeeBalance" | "withdrawInventorBalance" | "withdrawOperatorBalance"): FunctionFragment;
-    getEvent(nameOrSignatureOrTopic: "NewOffer" | "OfferAccepted" | "OfferCancelled" | "OfferExecuted" | "OfferUnaccepted" | "OfferUpdated" | "OrderCancelled" | "OwnershipTransferred" | "ProtocolFeeSplitUpdated" | "ProtocolFeeUpdated" | "Swap" | "SwapOrder" | "SwapOrderPaid" | "TogglePause" | "TransferInventorBalance" | "TransferOperatorBalance" | "TransferredToFeePool" | "UpdatedAssetRegistry" | "UpdatedBadge" | "UpdatedDisputeManager" | "UpdatedFeePool" | "UpdatedFeePoolConfig" | "UpdatedFeePurse" | "UpdatedFungibleLiquidity" | "UpdatedInventor" | "UpdatedLiquidityManager" | "UpdatedLiquiditySwapBadges" | "UpdatedMarketCore" | "UpdatedMaxOpenDisputes" | "UpdatedMaxOpenOrders" | "UpdatedMinTimeToPay" | "UpdatedMinerRegistry" | "UpdatedNonFungibleLiquidity" | "UpdatedOperator" | "UpdatedOrderGraceDur" | "UpdatedPrice" | "UpdatedProviderRegistry"): EventFragment;
+    getFunction(nameOrSignature: "acceptOffer" | "canCreateDispute" | "cancelOffer" | "cancelOrder" | "cancelOrderByDispute" | "cancelOrderByManagerSig" | "computeSwapFee" | "configureFeePool" | "createOffer" | "executeOffer" | "feeBalanceOf" | "getFeeBPs" | "getLiquidity" | "getLiquidityManager" | "getMarket" | "getOffer" | "getOrder" | "getReqSwapBadges" | "hasLiquidity" | "hasOrder" | "inventorBalanceOf" | "isVerified" | "markAsDisputed" | "markOrderAsPaid" | "markOrderAsPaidByManagerSig" | "onERC1155BatchReceived" | "onERC1155Received" | "operatorBalanceOf" | "owner" | "releaseOrder" | "releaseOrderByDispute" | "releaseOrderByManagerSig" | "renounceOwnership" | "setAmmInfo" | "setAmmPoolInfo" | "setAssetRegistry" | "setBadgeMgr" | "setDiscountForNFTHolder" | "setDisputeManager" | "setFeePool" | "setFeePurse" | "setInventor" | "setLiquidityManager" | "setMarketCore" | "setMaxOpenDisputes" | "setMaxOpenOrders" | "setMinTimeToPay" | "setMinerRegistry" | "setNFT" | "setOperator" | "setOrderGraceDur" | "setProtoFee" | "setProtoFeeSplit" | "setSwapBadgeForLiquidity" | "shareablesBalanceOf" | "state" | "state2" | "supportsInterface" | "swapQuoteForBase" | "togglePause" | "transferOwnership" | "transferToFeePool" | "unacceptOffer" | "updateFungibleLiquidity" | "updateLiquidityPrice" | "updateNonFungibleLiquidity" | "updateOffer" | "updateOpenDisputesCount" | "withdrawFeeBalance" | "withdrawInventorBalance" | "withdrawOperatorBalance"): FunctionFragment;
+    getEvent(nameOrSignatureOrTopic: "FinalizedByManagerSig" | "NFTDiscountUpdated" | "NewOffer" | "OfferAccepted" | "OfferCancelled" | "OfferExecuted" | "OfferUnaccepted" | "OfferUpdated" | "OrderCancelled" | "OwnershipTransferred" | "ProtocolFeeSplitUpdated" | "ProtocolFeeUpdated" | "Swap" | "SwapOrder" | "SwapOrderPaid" | "TogglePause" | "TransferInventorBalance" | "TransferOperatorBalance" | "TransferredToFeePool" | "UpdatedAMMInfo" | "UpdatedAMMPoolInfo" | "UpdatedAssetRegistry" | "UpdatedBadge" | "UpdatedDisputeManager" | "UpdatedFeePool" | "UpdatedFeePoolConfig" | "UpdatedFeePurse" | "UpdatedFungibleLiquidity" | "UpdatedInventor" | "UpdatedLiquidityManager" | "UpdatedLiquiditySwapBadges" | "UpdatedMarketCore" | "UpdatedMaxOpenDisputes" | "UpdatedMaxOpenOrders" | "UpdatedMinTimeToPay" | "UpdatedMinerRegistry" | "UpdatedNFT" | "UpdatedNonFungibleLiquidity" | "UpdatedOperator" | "UpdatedOrderGraceDur" | "UpdatedPrice"): EventFragment;
     encodeFunctionData(functionFragment: "acceptOffer", values: [BigNumberish, BigNumberish]): string;
     encodeFunctionData(functionFragment: "canCreateDispute", values: [BigNumberish, AddressLike]): string;
     encodeFunctionData(functionFragment: "cancelOffer", values: [BigNumberish]): string;
     encodeFunctionData(functionFragment: "cancelOrder", values: [BigNumberish]): string;
     encodeFunctionData(functionFragment: "cancelOrderByDispute", values: [BigNumberish]): string;
+    encodeFunctionData(functionFragment: "cancelOrderByManagerSig", values: [BigNumberish, BigNumberish, BytesLike]): string;
     encodeFunctionData(functionFragment: "computeSwapFee", values: [
         AddressLike,
         AddressLike,
@@ -2430,7 +2305,17 @@ interface CoreInterface extends Interface {
         BigNumberish
     ]): string;
     encodeFunctionData(functionFragment: "configureFeePool", values: [BigNumberish]): string;
-    encodeFunctionData(functionFragment: "createOffer", values: [StructsLib$1.CreateOfferParamsStruct]): string;
+    encodeFunctionData(functionFragment: "createOffer", values: [
+        AddressLike,
+        AddressLike,
+        AddressLike,
+        BigNumberish,
+        BigNumberish,
+        BigNumberish,
+        BigNumberish[],
+        BigNumberish,
+        BigNumberish
+    ]): string;
     encodeFunctionData(functionFragment: "executeOffer", values: [BigNumberish, BigNumberish]): string;
     encodeFunctionData(functionFragment: "feeBalanceOf", values: [AddressLike, AddressLike]): string;
     encodeFunctionData(functionFragment: "getFeeBPs", values?: undefined): string;
@@ -2446,6 +2331,7 @@ interface CoreInterface extends Interface {
     encodeFunctionData(functionFragment: "isVerified", values: [AddressLike]): string;
     encodeFunctionData(functionFragment: "markAsDisputed", values: [BigNumberish]): string;
     encodeFunctionData(functionFragment: "markOrderAsPaid", values: [BigNumberish]): string;
+    encodeFunctionData(functionFragment: "markOrderAsPaidByManagerSig", values: [BigNumberish, BigNumberish, BytesLike]): string;
     encodeFunctionData(functionFragment: "onERC1155BatchReceived", values: [
         AddressLike,
         AddressLike,
@@ -2458,9 +2344,13 @@ interface CoreInterface extends Interface {
     encodeFunctionData(functionFragment: "owner", values?: undefined): string;
     encodeFunctionData(functionFragment: "releaseOrder", values: [BigNumberish]): string;
     encodeFunctionData(functionFragment: "releaseOrderByDispute", values: [BigNumberish]): string;
+    encodeFunctionData(functionFragment: "releaseOrderByManagerSig", values: [BigNumberish, BigNumberish, BytesLike]): string;
     encodeFunctionData(functionFragment: "renounceOwnership", values?: undefined): string;
+    encodeFunctionData(functionFragment: "setAmmInfo", values: [AddressLike, AddressLike, BigNumberish]): string;
+    encodeFunctionData(functionFragment: "setAmmPoolInfo", values: [AddressLike, AddressLike, BigNumberish]): string;
     encodeFunctionData(functionFragment: "setAssetRegistry", values: [AddressLike]): string;
     encodeFunctionData(functionFragment: "setBadgeMgr", values: [AddressLike]): string;
+    encodeFunctionData(functionFragment: "setDiscountForNFTHolder", values: [BigNumberish]): string;
     encodeFunctionData(functionFragment: "setDisputeManager", values: [AddressLike]): string;
     encodeFunctionData(functionFragment: "setFeePool", values: [AddressLike]): string;
     encodeFunctionData(functionFragment: "setFeePurse", values: [AddressLike]): string;
@@ -2471,6 +2361,7 @@ interface CoreInterface extends Interface {
     encodeFunctionData(functionFragment: "setMaxOpenOrders", values: [BigNumberish]): string;
     encodeFunctionData(functionFragment: "setMinTimeToPay", values: [BigNumberish]): string;
     encodeFunctionData(functionFragment: "setMinerRegistry", values: [AddressLike]): string;
+    encodeFunctionData(functionFragment: "setNFT", values: [AddressLike]): string;
     encodeFunctionData(functionFragment: "setOperator", values: [AddressLike]): string;
     encodeFunctionData(functionFragment: "setOrderGraceDur", values: [BigNumberish]): string;
     encodeFunctionData(functionFragment: "setProtoFee", values: [
@@ -2482,20 +2373,61 @@ interface CoreInterface extends Interface {
         BigNumberish
     ]): string;
     encodeFunctionData(functionFragment: "setProtoFeeSplit", values: [BigNumberish, BigNumberish, BigNumberish]): string;
-    encodeFunctionData(functionFragment: "setProviderRegistry", values: [AddressLike]): string;
     encodeFunctionData(functionFragment: "setSwapBadgeForLiquidity", values: [AddressLike, BigNumberish, [string, string][]]): string;
     encodeFunctionData(functionFragment: "shareablesBalanceOf", values: [AddressLike]): string;
     encodeFunctionData(functionFragment: "state", values?: undefined): string;
     encodeFunctionData(functionFragment: "state2", values?: undefined): string;
     encodeFunctionData(functionFragment: "supportsInterface", values: [BytesLike]): string;
-    encodeFunctionData(functionFragment: "swapQuoteForBase", values: [StructsLib$1.SwapQuoteForBaseParamsStruct]): string;
+    encodeFunctionData(functionFragment: "swapQuoteForBase", values: [
+        AddressLike,
+        AddressLike,
+        AddressLike,
+        BigNumberish,
+        BigNumberish,
+        BigNumberish,
+        BigNumberish[],
+        BigNumberish,
+        BigNumberish
+    ]): string;
     encodeFunctionData(functionFragment: "togglePause", values: [AddressLike, BigNumberish, BigNumberish]): string;
     encodeFunctionData(functionFragment: "transferOwnership", values: [AddressLike]): string;
     encodeFunctionData(functionFragment: "transferToFeePool", values: [AddressLike]): string;
     encodeFunctionData(functionFragment: "unacceptOffer", values: [BigNumberish]): string;
-    encodeFunctionData(functionFragment: "updateFungibleLiquidity", values: [StructsLib$1.UpdateFungibleLiquidityParamsStruct]): string;
+    encodeFunctionData(functionFragment: "updateFungibleLiquidity", values: [
+        AddressLike,
+        BigNumberish,
+        boolean,
+        AddressLike,
+        [
+            BigNumberish,
+            BigNumberish
+        ],
+        BigNumberish[],
+        BigNumberish[],
+        [
+            BigNumberish,
+            BigNumberish,
+            BigNumberish,
+            BigNumberish,
+            BigNumberish
+        ]
+    ]): string;
     encodeFunctionData(functionFragment: "updateLiquidityPrice", values: [AddressLike, AddressLike, BigNumberish, BigNumberish, BigNumberish]): string;
-    encodeFunctionData(functionFragment: "updateNonFungibleLiquidity", values: [StructsLib$1.UpdateNonFungibleLiquidityParamsStruct]): string;
+    encodeFunctionData(functionFragment: "updateNonFungibleLiquidity", values: [
+        AddressLike,
+        BigNumberish,
+        boolean,
+        AddressLike,
+        BigNumberish[],
+        BigNumberish,
+        BigNumberish[],
+        BigNumberish[],
+        [
+            BigNumberish,
+            BigNumberish,
+            BigNumberish
+        ]
+    ]): string;
     encodeFunctionData(functionFragment: "updateOffer", values: [
         BigNumberish,
         BigNumberish,
@@ -2512,6 +2444,7 @@ interface CoreInterface extends Interface {
     decodeFunctionResult(functionFragment: "cancelOffer", data: BytesLike): Result;
     decodeFunctionResult(functionFragment: "cancelOrder", data: BytesLike): Result;
     decodeFunctionResult(functionFragment: "cancelOrderByDispute", data: BytesLike): Result;
+    decodeFunctionResult(functionFragment: "cancelOrderByManagerSig", data: BytesLike): Result;
     decodeFunctionResult(functionFragment: "computeSwapFee", data: BytesLike): Result;
     decodeFunctionResult(functionFragment: "configureFeePool", data: BytesLike): Result;
     decodeFunctionResult(functionFragment: "createOffer", data: BytesLike): Result;
@@ -2530,15 +2463,20 @@ interface CoreInterface extends Interface {
     decodeFunctionResult(functionFragment: "isVerified", data: BytesLike): Result;
     decodeFunctionResult(functionFragment: "markAsDisputed", data: BytesLike): Result;
     decodeFunctionResult(functionFragment: "markOrderAsPaid", data: BytesLike): Result;
+    decodeFunctionResult(functionFragment: "markOrderAsPaidByManagerSig", data: BytesLike): Result;
     decodeFunctionResult(functionFragment: "onERC1155BatchReceived", data: BytesLike): Result;
     decodeFunctionResult(functionFragment: "onERC1155Received", data: BytesLike): Result;
     decodeFunctionResult(functionFragment: "operatorBalanceOf", data: BytesLike): Result;
     decodeFunctionResult(functionFragment: "owner", data: BytesLike): Result;
     decodeFunctionResult(functionFragment: "releaseOrder", data: BytesLike): Result;
     decodeFunctionResult(functionFragment: "releaseOrderByDispute", data: BytesLike): Result;
+    decodeFunctionResult(functionFragment: "releaseOrderByManagerSig", data: BytesLike): Result;
     decodeFunctionResult(functionFragment: "renounceOwnership", data: BytesLike): Result;
+    decodeFunctionResult(functionFragment: "setAmmInfo", data: BytesLike): Result;
+    decodeFunctionResult(functionFragment: "setAmmPoolInfo", data: BytesLike): Result;
     decodeFunctionResult(functionFragment: "setAssetRegistry", data: BytesLike): Result;
     decodeFunctionResult(functionFragment: "setBadgeMgr", data: BytesLike): Result;
+    decodeFunctionResult(functionFragment: "setDiscountForNFTHolder", data: BytesLike): Result;
     decodeFunctionResult(functionFragment: "setDisputeManager", data: BytesLike): Result;
     decodeFunctionResult(functionFragment: "setFeePool", data: BytesLike): Result;
     decodeFunctionResult(functionFragment: "setFeePurse", data: BytesLike): Result;
@@ -2549,11 +2487,11 @@ interface CoreInterface extends Interface {
     decodeFunctionResult(functionFragment: "setMaxOpenOrders", data: BytesLike): Result;
     decodeFunctionResult(functionFragment: "setMinTimeToPay", data: BytesLike): Result;
     decodeFunctionResult(functionFragment: "setMinerRegistry", data: BytesLike): Result;
+    decodeFunctionResult(functionFragment: "setNFT", data: BytesLike): Result;
     decodeFunctionResult(functionFragment: "setOperator", data: BytesLike): Result;
     decodeFunctionResult(functionFragment: "setOrderGraceDur", data: BytesLike): Result;
     decodeFunctionResult(functionFragment: "setProtoFee", data: BytesLike): Result;
     decodeFunctionResult(functionFragment: "setProtoFeeSplit", data: BytesLike): Result;
-    decodeFunctionResult(functionFragment: "setProviderRegistry", data: BytesLike): Result;
     decodeFunctionResult(functionFragment: "setSwapBadgeForLiquidity", data: BytesLike): Result;
     decodeFunctionResult(functionFragment: "shareablesBalanceOf", data: BytesLike): Result;
     decodeFunctionResult(functionFragment: "state", data: BytesLike): Result;
@@ -2572,6 +2510,41 @@ interface CoreInterface extends Interface {
     decodeFunctionResult(functionFragment: "withdrawFeeBalance", data: BytesLike): Result;
     decodeFunctionResult(functionFragment: "withdrawInventorBalance", data: BytesLike): Result;
     decodeFunctionResult(functionFragment: "withdrawOperatorBalance", data: BytesLike): Result;
+}
+declare namespace FinalizedByManagerSigEvent {
+    type InputTuple = [
+        manager: AddressLike,
+        finalizer: AddressLike,
+        orderId: BigNumberish,
+        action: BigNumberish
+    ];
+    type OutputTuple = [
+        manager: string,
+        finalizer: string,
+        orderId: bigint,
+        action: bigint
+    ];
+    interface OutputObject {
+        manager: string;
+        finalizer: string;
+        orderId: bigint;
+        action: bigint;
+    }
+    type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>;
+    type Filter = TypedDeferredTopicFilter<Event>;
+    type Log = TypedEventLog<Event>;
+    type LogDescription = TypedLogDescription<Event>;
+}
+declare namespace NFTDiscountUpdatedEvent {
+    type InputTuple = [bp: BigNumberish];
+    type OutputTuple = [bp: bigint];
+    interface OutputObject {
+        bp: bigint;
+    }
+    type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>;
+    type Filter = TypedDeferredTopicFilter<Event>;
+    type Log = TypedEventLog<Event>;
+    type LogDescription = TypedLogDescription<Event>;
 }
 declare namespace NewOfferEvent {
     type InputTuple = [
@@ -2935,11 +2908,61 @@ declare namespace TransferOperatorBalanceEvent {
     type LogDescription = TypedLogDescription<Event>;
 }
 declare namespace TransferredToFeePoolEvent {
-    type InputTuple = [token: AddressLike, amount: BigNumberish];
-    type OutputTuple = [token: string, amount: bigint];
+    type InputTuple = [
+        token: AddressLike,
+        amount: BigNumberish,
+        convAsset: AddressLike,
+        convAmount: BigNumberish
+    ];
+    type OutputTuple = [
+        token: string,
+        amount: bigint,
+        convAsset: string,
+        convAmount: bigint
+    ];
     interface OutputObject {
         token: string;
         amount: bigint;
+        convAsset: string;
+        convAmount: bigint;
+    }
+    type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>;
+    type Filter = TypedDeferredTopicFilter<Event>;
+    type Log = TypedEventLog<Event>;
+    type LogDescription = TypedLogDescription<Event>;
+}
+declare namespace UpdatedAMMInfoEvent {
+    type InputTuple = [
+        swapRouter: AddressLike,
+        ethErc20Addr: AddressLike,
+        poolFee: BigNumberish
+    ];
+    type OutputTuple = [
+        swapRouter: string,
+        ethErc20Addr: string,
+        poolFee: bigint
+    ];
+    interface OutputObject {
+        swapRouter: string;
+        ethErc20Addr: string;
+        poolFee: bigint;
+    }
+    type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>;
+    type Filter = TypedDeferredTopicFilter<Event>;
+    type Log = TypedEventLog<Event>;
+    type LogDescription = TypedLogDescription<Event>;
+}
+declare namespace UpdatedAMMPoolInfoEvent {
+    type InputTuple = [
+        input: AddressLike,
+        output: AddressLike,
+        poolFee: BigNumberish
+    ];
+    type OutputTuple = [input: string, output: string, poolFee: bigint];
+    interface OutputObject {
+        input: string;
+        output: string;
+        poolFee: bigint;
     }
     type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>;
     type Filter = TypedDeferredTopicFilter<Event>;
@@ -3024,6 +3047,8 @@ declare namespace UpdatedFungibleLiquidityEvent {
         price: BigNumberish,
         wantOrIds: BigNumberish[],
         wantAndIds: BigNumberish[],
+        minSwap: BigNumberish,
+        maxSwap: BigNumberish,
         timeToPay: BigNumberish
     ];
     type OutputTuple = [
@@ -3037,6 +3062,8 @@ declare namespace UpdatedFungibleLiquidityEvent {
         price: bigint,
         wantOrIds: bigint[],
         wantAndIds: bigint[],
+        minSwap: bigint,
+        maxSwap: bigint,
         timeToPay: bigint
     ];
     interface OutputObject {
@@ -3050,6 +3077,8 @@ declare namespace UpdatedFungibleLiquidityEvent {
         price: bigint;
         wantOrIds: bigint[];
         wantAndIds: bigint[];
+        minSwap: bigint;
+        maxSwap: bigint;
         timeToPay: bigint;
     }
     type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>;
@@ -3171,6 +3200,17 @@ declare namespace UpdatedMinerRegistryEvent$1 {
     type Log = TypedEventLog<Event>;
     type LogDescription = TypedLogDescription<Event>;
 }
+declare namespace UpdatedNFTEvent$1 {
+    type InputTuple = [addr: AddressLike];
+    type OutputTuple = [addr: string];
+    interface OutputObject {
+        addr: string;
+    }
+    type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>;
+    type Filter = TypedDeferredTopicFilter<Event>;
+    type Log = TypedEventLog<Event>;
+    type LogDescription = TypedLogDescription<Event>;
+}
 declare namespace UpdatedNonFungibleLiquidityEvent {
     type InputTuple = [
         provider: AddressLike,
@@ -3265,17 +3305,6 @@ declare namespace UpdatedPriceEvent {
     type Log = TypedEventLog<Event>;
     type LogDescription = TypedLogDescription<Event>;
 }
-declare namespace UpdatedProviderRegistryEvent {
-    type InputTuple = [addr: AddressLike];
-    type OutputTuple = [addr: string];
-    interface OutputObject {
-        addr: string;
-    }
-    type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>;
-    type Filter = TypedDeferredTopicFilter<Event>;
-    type Log = TypedEventLog<Event>;
-    type LogDescription = TypedLogDescription<Event>;
-}
 interface Core extends BaseContract {
     connect(runner?: ContractRunner | null): Core;
     waitForDeployment(): Promise<this>;
@@ -3312,6 +3341,13 @@ interface Core extends BaseContract {
     ], [
         void
     ], "nonpayable">;
+    cancelOrderByManagerSig: TypedContractMethod<[
+        id: BigNumberish,
+        expireAt: BigNumberish,
+        signature: BytesLike
+    ], [
+        void
+    ], "nonpayable">;
     computeSwapFee: TypedContractMethod<[
         mid: AddressLike,
         provider: AddressLike,
@@ -3328,7 +3364,15 @@ interface Core extends BaseContract {
         void
     ], "nonpayable">;
     createOffer: TypedContractMethod<[
-        params: StructsLib$1.CreateOfferParamsStruct
+        marketId: AddressLike,
+        provider: AddressLike,
+        recipient: AddressLike,
+        lid: BigNumberish,
+        amount: BigNumberish,
+        price: BigNumberish,
+        ids: BigNumberish[],
+        deadline: BigNumberish,
+        operator: BigNumberish
     ], [
         void
     ], "nonpayable">;
@@ -3400,6 +3444,13 @@ interface Core extends BaseContract {
     ], [
         void
     ], "nonpayable">;
+    markOrderAsPaidByManagerSig: TypedContractMethod<[
+        id: BigNumberish,
+        expireAt: BigNumberish,
+        signature: BytesLike
+    ], [
+        void
+    ], "nonpayable">;
     onERC1155BatchReceived: TypedContractMethod<[
         arg0: AddressLike,
         arg1: AddressLike,
@@ -3431,13 +3482,39 @@ interface Core extends BaseContract {
     ], [
         void
     ], "nonpayable">;
+    releaseOrderByManagerSig: TypedContractMethod<[
+        id: BigNumberish,
+        expireAt: BigNumberish,
+        signature: BytesLike
+    ], [
+        void
+    ], "nonpayable">;
     renounceOwnership: TypedContractMethod<[], [void], "nonpayable">;
+    setAmmInfo: TypedContractMethod<[
+        swapRouter: AddressLike,
+        ethErc20Addr: AddressLike,
+        poolFee: BigNumberish
+    ], [
+        void
+    ], "nonpayable">;
+    setAmmPoolInfo: TypedContractMethod<[
+        input: AddressLike,
+        out: AddressLike,
+        poolFee: BigNumberish
+    ], [
+        void
+    ], "nonpayable">;
     setAssetRegistry: TypedContractMethod<[
         addr: AddressLike
     ], [
         void
     ], "nonpayable">;
     setBadgeMgr: TypedContractMethod<[val: AddressLike], [void], "nonpayable">;
+    setDiscountForNFTHolder: TypedContractMethod<[
+        bp: BigNumberish
+    ], [
+        void
+    ], "nonpayable">;
     setDisputeManager: TypedContractMethod<[
         addr: AddressLike
     ], [
@@ -3473,6 +3550,7 @@ interface Core extends BaseContract {
     ], [
         void
     ], "nonpayable">;
+    setNFT: TypedContractMethod<[addr: AddressLike], [void], "nonpayable">;
     setOperator: TypedContractMethod<[addr: AddressLike], [void], "nonpayable">;
     setOrderGraceDur: TypedContractMethod<[
         val: BigNumberish
@@ -3496,11 +3574,6 @@ interface Core extends BaseContract {
     ], [
         void
     ], "nonpayable">;
-    setProviderRegistry: TypedContractMethod<[
-        addr: AddressLike
-    ], [
-        void
-    ], "nonpayable">;
     setSwapBadgeForLiquidity: TypedContractMethod<[
         marketId: AddressLike,
         lid: BigNumberish,
@@ -3521,6 +3594,7 @@ interface Core extends BaseContract {
             bigint,
             bigint,
             bigint,
+            string,
             string
         ] & {
             ints: StructsLib$1.IntSlotStateStructOutput;
@@ -3529,11 +3603,14 @@ interface Core extends BaseContract {
             numOrders: bigint;
             feePoolTxInterval: bigint;
             inventor: string;
+            ammSwapRouter: string;
         }
     ], "view">;
     state2: TypedContractMethod<[
     ], [
         [
+            StructsLib$1.UintSlotState2StructOutput,
+            string,
             string,
             string,
             string,
@@ -3545,8 +3622,10 @@ interface Core extends BaseContract {
             string,
             string
         ] & {
+            ints: StructsLib$1.UintSlotState2StructOutput;
             disputeManager: string;
-            provReg: string;
+            nft: string;
+            ammEth: string;
             assetReg: string;
             token: string;
             marketCore: string;
@@ -3563,7 +3642,15 @@ interface Core extends BaseContract {
         boolean
     ], "view">;
     swapQuoteForBase: TypedContractMethod<[
-        params: StructsLib$1.SwapQuoteForBaseParamsStruct
+        marketId: AddressLike,
+        provider: AddressLike,
+        recipient: AddressLike,
+        lid: BigNumberish,
+        amount: BigNumberish,
+        maxPrice: BigNumberish,
+        ids: BigNumberish[],
+        txDeadline: BigNumberish,
+        operator: BigNumberish
     ], [
         void
     ], "payable">;
@@ -3590,7 +3677,20 @@ interface Core extends BaseContract {
         void
     ], "nonpayable">;
     updateFungibleLiquidity: TypedContractMethod<[
-        params: StructsLib$1.UpdateFungibleLiquidityParamsStruct
+        marketId: AddressLike,
+        lid: BigNumberish,
+        deduct: boolean,
+        target: AddressLike,
+        amountAndPrice: [BigNumberish, BigNumberish],
+        wantOrIds: BigNumberish[],
+        wantAndIds: BigNumberish[],
+        limits: [
+            BigNumberish,
+            BigNumberish,
+            BigNumberish,
+            BigNumberish,
+            BigNumberish
+        ]
     ], [
         void
     ], "payable">;
@@ -3604,7 +3704,15 @@ interface Core extends BaseContract {
         void
     ], "nonpayable">;
     updateNonFungibleLiquidity: TypedContractMethod<[
-        params: StructsLib$1.UpdateNonFungibleLiquidityParamsStruct
+        marketId: AddressLike,
+        lid: BigNumberish,
+        deduct: boolean,
+        target: AddressLike,
+        ids: BigNumberish[],
+        price: BigNumberish,
+        wantOrIds: BigNumberish[],
+        wantAndIds: BigNumberish[],
+        limits: [BigNumberish, BigNumberish, BigNumberish]
     ], [
         void
     ], "nonpayable">;
@@ -3656,6 +3764,13 @@ interface Core extends BaseContract {
     getFunction(nameOrSignature: "cancelOffer"): TypedContractMethod<[offerId: BigNumberish], [void], "nonpayable">;
     getFunction(nameOrSignature: "cancelOrder"): TypedContractMethod<[id: BigNumberish], [void], "nonpayable">;
     getFunction(nameOrSignature: "cancelOrderByDispute"): TypedContractMethod<[id: BigNumberish], [void], "nonpayable">;
+    getFunction(nameOrSignature: "cancelOrderByManagerSig"): TypedContractMethod<[
+        id: BigNumberish,
+        expireAt: BigNumberish,
+        signature: BytesLike
+    ], [
+        void
+    ], "nonpayable">;
     getFunction(nameOrSignature: "computeSwapFee"): TypedContractMethod<[
         mid: AddressLike,
         provider: AddressLike,
@@ -3668,7 +3783,15 @@ interface Core extends BaseContract {
     ], "view">;
     getFunction(nameOrSignature: "configureFeePool"): TypedContractMethod<[interval: BigNumberish], [void], "nonpayable">;
     getFunction(nameOrSignature: "createOffer"): TypedContractMethod<[
-        params: StructsLib$1.CreateOfferParamsStruct
+        marketId: AddressLike,
+        provider: AddressLike,
+        recipient: AddressLike,
+        lid: BigNumberish,
+        amount: BigNumberish,
+        price: BigNumberish,
+        ids: BigNumberish[],
+        deadline: BigNumberish,
+        operator: BigNumberish
     ], [
         void
     ], "nonpayable">;
@@ -3732,6 +3855,13 @@ interface Core extends BaseContract {
     getFunction(nameOrSignature: "isVerified"): TypedContractMethod<[addr: AddressLike], [boolean], "view">;
     getFunction(nameOrSignature: "markAsDisputed"): TypedContractMethod<[id: BigNumberish], [void], "nonpayable">;
     getFunction(nameOrSignature: "markOrderAsPaid"): TypedContractMethod<[id: BigNumberish], [void], "nonpayable">;
+    getFunction(nameOrSignature: "markOrderAsPaidByManagerSig"): TypedContractMethod<[
+        id: BigNumberish,
+        expireAt: BigNumberish,
+        signature: BytesLike
+    ], [
+        void
+    ], "nonpayable">;
     getFunction(nameOrSignature: "onERC1155BatchReceived"): TypedContractMethod<[
         arg0: AddressLike,
         arg1: AddressLike,
@@ -3759,9 +3889,31 @@ interface Core extends BaseContract {
     getFunction(nameOrSignature: "owner"): TypedContractMethod<[], [string], "view">;
     getFunction(nameOrSignature: "releaseOrder"): TypedContractMethod<[id: BigNumberish], [void], "nonpayable">;
     getFunction(nameOrSignature: "releaseOrderByDispute"): TypedContractMethod<[id: BigNumberish], [void], "nonpayable">;
+    getFunction(nameOrSignature: "releaseOrderByManagerSig"): TypedContractMethod<[
+        id: BigNumberish,
+        expireAt: BigNumberish,
+        signature: BytesLike
+    ], [
+        void
+    ], "nonpayable">;
     getFunction(nameOrSignature: "renounceOwnership"): TypedContractMethod<[], [void], "nonpayable">;
+    getFunction(nameOrSignature: "setAmmInfo"): TypedContractMethod<[
+        swapRouter: AddressLike,
+        ethErc20Addr: AddressLike,
+        poolFee: BigNumberish
+    ], [
+        void
+    ], "nonpayable">;
+    getFunction(nameOrSignature: "setAmmPoolInfo"): TypedContractMethod<[
+        input: AddressLike,
+        out: AddressLike,
+        poolFee: BigNumberish
+    ], [
+        void
+    ], "nonpayable">;
     getFunction(nameOrSignature: "setAssetRegistry"): TypedContractMethod<[addr: AddressLike], [void], "nonpayable">;
     getFunction(nameOrSignature: "setBadgeMgr"): TypedContractMethod<[val: AddressLike], [void], "nonpayable">;
+    getFunction(nameOrSignature: "setDiscountForNFTHolder"): TypedContractMethod<[bp: BigNumberish], [void], "nonpayable">;
     getFunction(nameOrSignature: "setDisputeManager"): TypedContractMethod<[addr: AddressLike], [void], "nonpayable">;
     getFunction(nameOrSignature: "setFeePool"): TypedContractMethod<[addr: AddressLike], [void], "nonpayable">;
     getFunction(nameOrSignature: "setFeePurse"): TypedContractMethod<[val: AddressLike], [void], "nonpayable">;
@@ -3777,6 +3929,7 @@ interface Core extends BaseContract {
     getFunction(nameOrSignature: "setMaxOpenOrders"): TypedContractMethod<[val: BigNumberish], [void], "nonpayable">;
     getFunction(nameOrSignature: "setMinTimeToPay"): TypedContractMethod<[val: BigNumberish], [void], "nonpayable">;
     getFunction(nameOrSignature: "setMinerRegistry"): TypedContractMethod<[addr: AddressLike], [void], "nonpayable">;
+    getFunction(nameOrSignature: "setNFT"): TypedContractMethod<[addr: AddressLike], [void], "nonpayable">;
     getFunction(nameOrSignature: "setOperator"): TypedContractMethod<[addr: AddressLike], [void], "nonpayable">;
     getFunction(nameOrSignature: "setOrderGraceDur"): TypedContractMethod<[val: BigNumberish], [void], "nonpayable">;
     getFunction(nameOrSignature: "setProtoFee"): TypedContractMethod<[
@@ -3796,7 +3949,6 @@ interface Core extends BaseContract {
     ], [
         void
     ], "nonpayable">;
-    getFunction(nameOrSignature: "setProviderRegistry"): TypedContractMethod<[addr: AddressLike], [void], "nonpayable">;
     getFunction(nameOrSignature: "setSwapBadgeForLiquidity"): TypedContractMethod<[
         marketId: AddressLike,
         lid: BigNumberish,
@@ -3813,6 +3965,7 @@ interface Core extends BaseContract {
             bigint,
             bigint,
             bigint,
+            string,
             string
         ] & {
             ints: StructsLib$1.IntSlotStateStructOutput;
@@ -3821,11 +3974,14 @@ interface Core extends BaseContract {
             numOrders: bigint;
             feePoolTxInterval: bigint;
             inventor: string;
+            ammSwapRouter: string;
         }
     ], "view">;
     getFunction(nameOrSignature: "state2"): TypedContractMethod<[
     ], [
         [
+            StructsLib$1.UintSlotState2StructOutput,
+            string,
             string,
             string,
             string,
@@ -3837,8 +3993,10 @@ interface Core extends BaseContract {
             string,
             string
         ] & {
+            ints: StructsLib$1.UintSlotState2StructOutput;
             disputeManager: string;
-            provReg: string;
+            nft: string;
+            ammEth: string;
             assetReg: string;
             token: string;
             marketCore: string;
@@ -3851,7 +4009,15 @@ interface Core extends BaseContract {
     ], "view">;
     getFunction(nameOrSignature: "supportsInterface"): TypedContractMethod<[interfaceId: BytesLike], [boolean], "view">;
     getFunction(nameOrSignature: "swapQuoteForBase"): TypedContractMethod<[
-        params: StructsLib$1.SwapQuoteForBaseParamsStruct
+        marketId: AddressLike,
+        provider: AddressLike,
+        recipient: AddressLike,
+        lid: BigNumberish,
+        amount: BigNumberish,
+        maxPrice: BigNumberish,
+        ids: BigNumberish[],
+        txDeadline: BigNumberish,
+        operator: BigNumberish
     ], [
         void
     ], "payable">;
@@ -3866,7 +4032,20 @@ interface Core extends BaseContract {
     getFunction(nameOrSignature: "transferToFeePool"): TypedContractMethod<[_token: AddressLike], [void], "nonpayable">;
     getFunction(nameOrSignature: "unacceptOffer"): TypedContractMethod<[offerId: BigNumberish], [void], "nonpayable">;
     getFunction(nameOrSignature: "updateFungibleLiquidity"): TypedContractMethod<[
-        params: StructsLib$1.UpdateFungibleLiquidityParamsStruct
+        marketId: AddressLike,
+        lid: BigNumberish,
+        deduct: boolean,
+        target: AddressLike,
+        amountAndPrice: [BigNumberish, BigNumberish],
+        wantOrIds: BigNumberish[],
+        wantAndIds: BigNumberish[],
+        limits: [
+            BigNumberish,
+            BigNumberish,
+            BigNumberish,
+            BigNumberish,
+            BigNumberish
+        ]
     ], [
         void
     ], "payable">;
@@ -3880,7 +4059,15 @@ interface Core extends BaseContract {
         void
     ], "nonpayable">;
     getFunction(nameOrSignature: "updateNonFungibleLiquidity"): TypedContractMethod<[
-        params: StructsLib$1.UpdateNonFungibleLiquidityParamsStruct
+        marketId: AddressLike,
+        lid: BigNumberish,
+        deduct: boolean,
+        target: AddressLike,
+        ids: BigNumberish[],
+        price: BigNumberish,
+        wantOrIds: BigNumberish[],
+        wantAndIds: BigNumberish[],
+        limits: [BigNumberish, BigNumberish, BigNumberish]
     ], [
         void
     ], "nonpayable">;
@@ -3904,6 +4091,8 @@ interface Core extends BaseContract {
     getFunction(nameOrSignature: "withdrawFeeBalance"): TypedContractMethod<[asset: AddressLike], [void], "nonpayable">;
     getFunction(nameOrSignature: "withdrawInventorBalance"): TypedContractMethod<[asset: AddressLike], [void], "nonpayable">;
     getFunction(nameOrSignature: "withdrawOperatorBalance"): TypedContractMethod<[_token: AddressLike], [void], "nonpayable">;
+    getEvent(key: "FinalizedByManagerSig"): TypedContractEvent<FinalizedByManagerSigEvent.InputTuple, FinalizedByManagerSigEvent.OutputTuple, FinalizedByManagerSigEvent.OutputObject>;
+    getEvent(key: "NFTDiscountUpdated"): TypedContractEvent<NFTDiscountUpdatedEvent.InputTuple, NFTDiscountUpdatedEvent.OutputTuple, NFTDiscountUpdatedEvent.OutputObject>;
     getEvent(key: "NewOffer"): TypedContractEvent<NewOfferEvent.InputTuple, NewOfferEvent.OutputTuple, NewOfferEvent.OutputObject>;
     getEvent(key: "OfferAccepted"): TypedContractEvent<OfferAcceptedEvent.InputTuple, OfferAcceptedEvent.OutputTuple, OfferAcceptedEvent.OutputObject>;
     getEvent(key: "OfferCancelled"): TypedContractEvent<OfferCancelledEvent.InputTuple, OfferCancelledEvent.OutputTuple, OfferCancelledEvent.OutputObject>;
@@ -3921,6 +4110,8 @@ interface Core extends BaseContract {
     getEvent(key: "TransferInventorBalance"): TypedContractEvent<TransferInventorBalanceEvent.InputTuple, TransferInventorBalanceEvent.OutputTuple, TransferInventorBalanceEvent.OutputObject>;
     getEvent(key: "TransferOperatorBalance"): TypedContractEvent<TransferOperatorBalanceEvent.InputTuple, TransferOperatorBalanceEvent.OutputTuple, TransferOperatorBalanceEvent.OutputObject>;
     getEvent(key: "TransferredToFeePool"): TypedContractEvent<TransferredToFeePoolEvent.InputTuple, TransferredToFeePoolEvent.OutputTuple, TransferredToFeePoolEvent.OutputObject>;
+    getEvent(key: "UpdatedAMMInfo"): TypedContractEvent<UpdatedAMMInfoEvent.InputTuple, UpdatedAMMInfoEvent.OutputTuple, UpdatedAMMInfoEvent.OutputObject>;
+    getEvent(key: "UpdatedAMMPoolInfo"): TypedContractEvent<UpdatedAMMPoolInfoEvent.InputTuple, UpdatedAMMPoolInfoEvent.OutputTuple, UpdatedAMMPoolInfoEvent.OutputObject>;
     getEvent(key: "UpdatedAssetRegistry"): TypedContractEvent<UpdatedAssetRegistryEvent.InputTuple, UpdatedAssetRegistryEvent.OutputTuple, UpdatedAssetRegistryEvent.OutputObject>;
     getEvent(key: "UpdatedBadge"): TypedContractEvent<UpdatedBadgeEvent.InputTuple, UpdatedBadgeEvent.OutputTuple, UpdatedBadgeEvent.OutputObject>;
     getEvent(key: "UpdatedDisputeManager"): TypedContractEvent<UpdatedDisputeManagerEvent$1.InputTuple, UpdatedDisputeManagerEvent$1.OutputTuple, UpdatedDisputeManagerEvent$1.OutputObject>;
@@ -3936,12 +4127,16 @@ interface Core extends BaseContract {
     getEvent(key: "UpdatedMaxOpenOrders"): TypedContractEvent<UpdatedMaxOpenOrdersEvent.InputTuple, UpdatedMaxOpenOrdersEvent.OutputTuple, UpdatedMaxOpenOrdersEvent.OutputObject>;
     getEvent(key: "UpdatedMinTimeToPay"): TypedContractEvent<UpdatedMinTimeToPayEvent.InputTuple, UpdatedMinTimeToPayEvent.OutputTuple, UpdatedMinTimeToPayEvent.OutputObject>;
     getEvent(key: "UpdatedMinerRegistry"): TypedContractEvent<UpdatedMinerRegistryEvent$1.InputTuple, UpdatedMinerRegistryEvent$1.OutputTuple, UpdatedMinerRegistryEvent$1.OutputObject>;
+    getEvent(key: "UpdatedNFT"): TypedContractEvent<UpdatedNFTEvent$1.InputTuple, UpdatedNFTEvent$1.OutputTuple, UpdatedNFTEvent$1.OutputObject>;
     getEvent(key: "UpdatedNonFungibleLiquidity"): TypedContractEvent<UpdatedNonFungibleLiquidityEvent.InputTuple, UpdatedNonFungibleLiquidityEvent.OutputTuple, UpdatedNonFungibleLiquidityEvent.OutputObject>;
     getEvent(key: "UpdatedOperator"): TypedContractEvent<UpdatedOperatorEvent.InputTuple, UpdatedOperatorEvent.OutputTuple, UpdatedOperatorEvent.OutputObject>;
     getEvent(key: "UpdatedOrderGraceDur"): TypedContractEvent<UpdatedOrderGraceDurEvent.InputTuple, UpdatedOrderGraceDurEvent.OutputTuple, UpdatedOrderGraceDurEvent.OutputObject>;
     getEvent(key: "UpdatedPrice"): TypedContractEvent<UpdatedPriceEvent.InputTuple, UpdatedPriceEvent.OutputTuple, UpdatedPriceEvent.OutputObject>;
-    getEvent(key: "UpdatedProviderRegistry"): TypedContractEvent<UpdatedProviderRegistryEvent.InputTuple, UpdatedProviderRegistryEvent.OutputTuple, UpdatedProviderRegistryEvent.OutputObject>;
     filters: {
+        "FinalizedByManagerSig(address,address,uint256,uint256)": TypedContractEvent<FinalizedByManagerSigEvent.InputTuple, FinalizedByManagerSigEvent.OutputTuple, FinalizedByManagerSigEvent.OutputObject>;
+        FinalizedByManagerSig: TypedContractEvent<FinalizedByManagerSigEvent.InputTuple, FinalizedByManagerSigEvent.OutputTuple, FinalizedByManagerSigEvent.OutputObject>;
+        "NFTDiscountUpdated(uint256)": TypedContractEvent<NFTDiscountUpdatedEvent.InputTuple, NFTDiscountUpdatedEvent.OutputTuple, NFTDiscountUpdatedEvent.OutputObject>;
+        NFTDiscountUpdated: TypedContractEvent<NFTDiscountUpdatedEvent.InputTuple, NFTDiscountUpdatedEvent.OutputTuple, NFTDiscountUpdatedEvent.OutputObject>;
         "NewOffer(address,address,uint256,address,uint256,uint256,uint256,uint256[],uint256)": TypedContractEvent<NewOfferEvent.InputTuple, NewOfferEvent.OutputTuple, NewOfferEvent.OutputObject>;
         NewOffer: TypedContractEvent<NewOfferEvent.InputTuple, NewOfferEvent.OutputTuple, NewOfferEvent.OutputObject>;
         "OfferAccepted(uint256,address,uint256)": TypedContractEvent<OfferAcceptedEvent.InputTuple, OfferAcceptedEvent.OutputTuple, OfferAcceptedEvent.OutputObject>;
@@ -3974,8 +4169,12 @@ interface Core extends BaseContract {
         TransferInventorBalance: TypedContractEvent<TransferInventorBalanceEvent.InputTuple, TransferInventorBalanceEvent.OutputTuple, TransferInventorBalanceEvent.OutputObject>;
         "TransferOperatorBalance(address,address,uint256)": TypedContractEvent<TransferOperatorBalanceEvent.InputTuple, TransferOperatorBalanceEvent.OutputTuple, TransferOperatorBalanceEvent.OutputObject>;
         TransferOperatorBalance: TypedContractEvent<TransferOperatorBalanceEvent.InputTuple, TransferOperatorBalanceEvent.OutputTuple, TransferOperatorBalanceEvent.OutputObject>;
-        "TransferredToFeePool(address,uint256)": TypedContractEvent<TransferredToFeePoolEvent.InputTuple, TransferredToFeePoolEvent.OutputTuple, TransferredToFeePoolEvent.OutputObject>;
+        "TransferredToFeePool(address,uint256,address,uint256)": TypedContractEvent<TransferredToFeePoolEvent.InputTuple, TransferredToFeePoolEvent.OutputTuple, TransferredToFeePoolEvent.OutputObject>;
         TransferredToFeePool: TypedContractEvent<TransferredToFeePoolEvent.InputTuple, TransferredToFeePoolEvent.OutputTuple, TransferredToFeePoolEvent.OutputObject>;
+        "UpdatedAMMInfo(address,address,uint256)": TypedContractEvent<UpdatedAMMInfoEvent.InputTuple, UpdatedAMMInfoEvent.OutputTuple, UpdatedAMMInfoEvent.OutputObject>;
+        UpdatedAMMInfo: TypedContractEvent<UpdatedAMMInfoEvent.InputTuple, UpdatedAMMInfoEvent.OutputTuple, UpdatedAMMInfoEvent.OutputObject>;
+        "UpdatedAMMPoolInfo(address,address,uint256)": TypedContractEvent<UpdatedAMMPoolInfoEvent.InputTuple, UpdatedAMMPoolInfoEvent.OutputTuple, UpdatedAMMPoolInfoEvent.OutputObject>;
+        UpdatedAMMPoolInfo: TypedContractEvent<UpdatedAMMPoolInfoEvent.InputTuple, UpdatedAMMPoolInfoEvent.OutputTuple, UpdatedAMMPoolInfoEvent.OutputObject>;
         "UpdatedAssetRegistry(address)": TypedContractEvent<UpdatedAssetRegistryEvent.InputTuple, UpdatedAssetRegistryEvent.OutputTuple, UpdatedAssetRegistryEvent.OutputObject>;
         UpdatedAssetRegistry: TypedContractEvent<UpdatedAssetRegistryEvent.InputTuple, UpdatedAssetRegistryEvent.OutputTuple, UpdatedAssetRegistryEvent.OutputObject>;
         "UpdatedBadge(address)": TypedContractEvent<UpdatedBadgeEvent.InputTuple, UpdatedBadgeEvent.OutputTuple, UpdatedBadgeEvent.OutputObject>;
@@ -3988,7 +4187,7 @@ interface Core extends BaseContract {
         UpdatedFeePoolConfig: TypedContractEvent<UpdatedFeePoolConfigEvent.InputTuple, UpdatedFeePoolConfigEvent.OutputTuple, UpdatedFeePoolConfigEvent.OutputObject>;
         "UpdatedFeePurse(address)": TypedContractEvent<UpdatedFeePurseEvent.InputTuple, UpdatedFeePurseEvent.OutputTuple, UpdatedFeePurseEvent.OutputObject>;
         UpdatedFeePurse: TypedContractEvent<UpdatedFeePurseEvent.InputTuple, UpdatedFeePurseEvent.OutputTuple, UpdatedFeePurseEvent.OutputObject>;
-        "UpdatedFungibleLiquidity(address,address,address,bool,bool,uint256,uint256,uint256,uint256[],uint256[],uint256)": TypedContractEvent<UpdatedFungibleLiquidityEvent.InputTuple, UpdatedFungibleLiquidityEvent.OutputTuple, UpdatedFungibleLiquidityEvent.OutputObject>;
+        "UpdatedFungibleLiquidity(address,address,address,bool,bool,uint256,uint256,uint256,uint256[],uint256[],uint256,uint256,uint256)": TypedContractEvent<UpdatedFungibleLiquidityEvent.InputTuple, UpdatedFungibleLiquidityEvent.OutputTuple, UpdatedFungibleLiquidityEvent.OutputObject>;
         UpdatedFungibleLiquidity: TypedContractEvent<UpdatedFungibleLiquidityEvent.InputTuple, UpdatedFungibleLiquidityEvent.OutputTuple, UpdatedFungibleLiquidityEvent.OutputObject>;
         "UpdatedInventor(address)": TypedContractEvent<UpdatedInventorEvent.InputTuple, UpdatedInventorEvent.OutputTuple, UpdatedInventorEvent.OutputObject>;
         UpdatedInventor: TypedContractEvent<UpdatedInventorEvent.InputTuple, UpdatedInventorEvent.OutputTuple, UpdatedInventorEvent.OutputObject>;
@@ -4006,6 +4205,8 @@ interface Core extends BaseContract {
         UpdatedMinTimeToPay: TypedContractEvent<UpdatedMinTimeToPayEvent.InputTuple, UpdatedMinTimeToPayEvent.OutputTuple, UpdatedMinTimeToPayEvent.OutputObject>;
         "UpdatedMinerRegistry(address)": TypedContractEvent<UpdatedMinerRegistryEvent$1.InputTuple, UpdatedMinerRegistryEvent$1.OutputTuple, UpdatedMinerRegistryEvent$1.OutputObject>;
         UpdatedMinerRegistry: TypedContractEvent<UpdatedMinerRegistryEvent$1.InputTuple, UpdatedMinerRegistryEvent$1.OutputTuple, UpdatedMinerRegistryEvent$1.OutputObject>;
+        "UpdatedNFT(address)": TypedContractEvent<UpdatedNFTEvent$1.InputTuple, UpdatedNFTEvent$1.OutputTuple, UpdatedNFTEvent$1.OutputObject>;
+        UpdatedNFT: TypedContractEvent<UpdatedNFTEvent$1.InputTuple, UpdatedNFTEvent$1.OutputTuple, UpdatedNFTEvent$1.OutputObject>;
         "UpdatedNonFungibleLiquidity(address,address,address,bool,bool,uint256,uint256[],uint256,uint256[],uint256[],uint256)": TypedContractEvent<UpdatedNonFungibleLiquidityEvent.InputTuple, UpdatedNonFungibleLiquidityEvent.OutputTuple, UpdatedNonFungibleLiquidityEvent.OutputObject>;
         UpdatedNonFungibleLiquidity: TypedContractEvent<UpdatedNonFungibleLiquidityEvent.InputTuple, UpdatedNonFungibleLiquidityEvent.OutputTuple, UpdatedNonFungibleLiquidityEvent.OutputObject>;
         "UpdatedOperator(address)": TypedContractEvent<UpdatedOperatorEvent.InputTuple, UpdatedOperatorEvent.OutputTuple, UpdatedOperatorEvent.OutputObject>;
@@ -4014,8 +4215,6 @@ interface Core extends BaseContract {
         UpdatedOrderGraceDur: TypedContractEvent<UpdatedOrderGraceDurEvent.InputTuple, UpdatedOrderGraceDurEvent.OutputTuple, UpdatedOrderGraceDurEvent.OutputObject>;
         "UpdatedPrice(address,address,address,uint256,uint256)": TypedContractEvent<UpdatedPriceEvent.InputTuple, UpdatedPriceEvent.OutputTuple, UpdatedPriceEvent.OutputObject>;
         UpdatedPrice: TypedContractEvent<UpdatedPriceEvent.InputTuple, UpdatedPriceEvent.OutputTuple, UpdatedPriceEvent.OutputObject>;
-        "UpdatedProviderRegistry(address)": TypedContractEvent<UpdatedProviderRegistryEvent.InputTuple, UpdatedProviderRegistryEvent.OutputTuple, UpdatedProviderRegistryEvent.OutputObject>;
-        UpdatedProviderRegistry: TypedContractEvent<UpdatedProviderRegistryEvent.InputTuple, UpdatedProviderRegistryEvent.OutputTuple, UpdatedProviderRegistryEvent.OutputObject>;
     };
 }
 
@@ -17001,6 +17200,41 @@ declare class Core__factory {
         readonly inputs: readonly [{
             readonly indexed: false;
             readonly internalType: "address";
+            readonly name: "manager";
+            readonly type: "address";
+        }, {
+            readonly indexed: false;
+            readonly internalType: "address";
+            readonly name: "finalizer";
+            readonly type: "address";
+        }, {
+            readonly indexed: false;
+            readonly internalType: "uint256";
+            readonly name: "orderId";
+            readonly type: "uint256";
+        }, {
+            readonly indexed: false;
+            readonly internalType: "uint256";
+            readonly name: "action";
+            readonly type: "uint256";
+        }];
+        readonly name: "FinalizedByManagerSig";
+        readonly type: "event";
+    }, {
+        readonly anonymous: false;
+        readonly inputs: readonly [{
+            readonly indexed: false;
+            readonly internalType: "uint256";
+            readonly name: "bp";
+            readonly type: "uint256";
+        }];
+        readonly name: "NFTDiscountUpdated";
+        readonly type: "event";
+    }, {
+        readonly anonymous: false;
+        readonly inputs: readonly [{
+            readonly indexed: false;
+            readonly internalType: "address";
             readonly name: "marketId";
             readonly type: "address";
         }, {
@@ -17423,8 +17657,58 @@ declare class Core__factory {
             readonly internalType: "uint256";
             readonly name: "amount";
             readonly type: "uint256";
+        }, {
+            readonly indexed: false;
+            readonly internalType: "address";
+            readonly name: "convAsset";
+            readonly type: "address";
+        }, {
+            readonly indexed: false;
+            readonly internalType: "uint256";
+            readonly name: "convAmount";
+            readonly type: "uint256";
         }];
         readonly name: "TransferredToFeePool";
+        readonly type: "event";
+    }, {
+        readonly anonymous: false;
+        readonly inputs: readonly [{
+            readonly indexed: false;
+            readonly internalType: "address";
+            readonly name: "swapRouter";
+            readonly type: "address";
+        }, {
+            readonly indexed: false;
+            readonly internalType: "address";
+            readonly name: "ethErc20Addr";
+            readonly type: "address";
+        }, {
+            readonly indexed: false;
+            readonly internalType: "uint256";
+            readonly name: "poolFee";
+            readonly type: "uint256";
+        }];
+        readonly name: "UpdatedAMMInfo";
+        readonly type: "event";
+    }, {
+        readonly anonymous: false;
+        readonly inputs: readonly [{
+            readonly indexed: false;
+            readonly internalType: "address";
+            readonly name: "input";
+            readonly type: "address";
+        }, {
+            readonly indexed: false;
+            readonly internalType: "address";
+            readonly name: "output";
+            readonly type: "address";
+        }, {
+            readonly indexed: false;
+            readonly internalType: "uint256";
+            readonly name: "poolFee";
+            readonly type: "uint256";
+        }];
+        readonly name: "UpdatedAMMPoolInfo";
         readonly type: "event";
     }, {
         readonly anonymous: false;
@@ -17538,6 +17822,16 @@ declare class Core__factory {
             readonly internalType: "uint256[]";
             readonly name: "wantAndIds";
             readonly type: "uint256[]";
+        }, {
+            readonly indexed: false;
+            readonly internalType: "uint256";
+            readonly name: "minSwap";
+            readonly type: "uint256";
+        }, {
+            readonly indexed: false;
+            readonly internalType: "uint256";
+            readonly name: "maxSwap";
+            readonly type: "uint256";
         }, {
             readonly indexed: false;
             readonly internalType: "uint256";
@@ -17659,6 +17953,16 @@ declare class Core__factory {
     }, {
         readonly anonymous: false;
         readonly inputs: readonly [{
+            readonly indexed: false;
+            readonly internalType: "address";
+            readonly name: "addr";
+            readonly type: "address";
+        }];
+        readonly name: "UpdatedNFT";
+        readonly type: "event";
+    }, {
+        readonly anonymous: false;
+        readonly inputs: readonly [{
             readonly indexed: true;
             readonly internalType: "address";
             readonly name: "provider";
@@ -17767,16 +18071,6 @@ declare class Core__factory {
         readonly name: "UpdatedPrice";
         readonly type: "event";
     }, {
-        readonly anonymous: false;
-        readonly inputs: readonly [{
-            readonly indexed: false;
-            readonly internalType: "address";
-            readonly name: "addr";
-            readonly type: "address";
-        }];
-        readonly name: "UpdatedProviderRegistry";
-        readonly type: "event";
-    }, {
         readonly inputs: readonly [{
             readonly internalType: "uint256";
             readonly name: "offerId";
@@ -17840,6 +18134,24 @@ declare class Core__factory {
         readonly type: "function";
     }, {
         readonly inputs: readonly [{
+            readonly internalType: "uint256";
+            readonly name: "id";
+            readonly type: "uint256";
+        }, {
+            readonly internalType: "uint256";
+            readonly name: "expireAt";
+            readonly type: "uint256";
+        }, {
+            readonly internalType: "bytes";
+            readonly name: "signature";
+            readonly type: "bytes";
+        }];
+        readonly name: "cancelOrderByManagerSig";
+        readonly outputs: readonly [];
+        readonly stateMutability: "nonpayable";
+        readonly type: "function";
+    }, {
+        readonly inputs: readonly [{
             readonly internalType: "address";
             readonly name: "mid";
             readonly type: "address";
@@ -17896,46 +18208,41 @@ declare class Core__factory {
         readonly type: "function";
     }, {
         readonly inputs: readonly [{
-            readonly components: readonly [{
-                readonly internalType: "address";
-                readonly name: "marketId";
-                readonly type: "address";
-            }, {
-                readonly internalType: "address";
-                readonly name: "provider";
-                readonly type: "address";
-            }, {
-                readonly internalType: "address";
-                readonly name: "recipient";
-                readonly type: "address";
-            }, {
-                readonly internalType: "uint256";
-                readonly name: "lid";
-                readonly type: "uint256";
-            }, {
-                readonly internalType: "uint256";
-                readonly name: "amount";
-                readonly type: "uint256";
-            }, {
-                readonly internalType: "uint256";
-                readonly name: "price";
-                readonly type: "uint256";
-            }, {
-                readonly internalType: "uint256[]";
-                readonly name: "ids";
-                readonly type: "uint256[]";
-            }, {
-                readonly internalType: "uint256";
-                readonly name: "deadline";
-                readonly type: "uint256";
-            }, {
-                readonly internalType: "uint256";
-                readonly name: "operator";
-                readonly type: "uint256";
-            }];
-            readonly internalType: "struct StructsLib.CreateOfferParams";
-            readonly name: "params";
-            readonly type: "tuple";
+            readonly internalType: "address";
+            readonly name: "marketId";
+            readonly type: "address";
+        }, {
+            readonly internalType: "address";
+            readonly name: "provider";
+            readonly type: "address";
+        }, {
+            readonly internalType: "address";
+            readonly name: "recipient";
+            readonly type: "address";
+        }, {
+            readonly internalType: "uint256";
+            readonly name: "lid";
+            readonly type: "uint256";
+        }, {
+            readonly internalType: "uint256";
+            readonly name: "amount";
+            readonly type: "uint256";
+        }, {
+            readonly internalType: "uint256";
+            readonly name: "price";
+            readonly type: "uint256";
+        }, {
+            readonly internalType: "uint256[]";
+            readonly name: "ids";
+            readonly type: "uint256[]";
+        }, {
+            readonly internalType: "uint256";
+            readonly name: "deadline";
+            readonly type: "uint256";
+        }, {
+            readonly internalType: "uint256";
+            readonly name: "operator";
+            readonly type: "uint256";
         }];
         readonly name: "createOffer";
         readonly outputs: readonly [];
@@ -18010,6 +18317,14 @@ declare class Core__factory {
             }, {
                 readonly internalType: "uint256";
                 readonly name: "price";
+                readonly type: "uint256";
+            }, {
+                readonly internalType: "uint256";
+                readonly name: "minSwap";
+                readonly type: "uint256";
+            }, {
+                readonly internalType: "uint256";
+                readonly name: "maxSwap";
                 readonly type: "uint256";
             }, {
                 readonly internalType: "uint256";
@@ -18461,6 +18776,24 @@ declare class Core__factory {
         readonly type: "function";
     }, {
         readonly inputs: readonly [{
+            readonly internalType: "uint256";
+            readonly name: "id";
+            readonly type: "uint256";
+        }, {
+            readonly internalType: "uint256";
+            readonly name: "expireAt";
+            readonly type: "uint256";
+        }, {
+            readonly internalType: "bytes";
+            readonly name: "signature";
+            readonly type: "bytes";
+        }];
+        readonly name: "markOrderAsPaidByManagerSig";
+        readonly outputs: readonly [];
+        readonly stateMutability: "nonpayable";
+        readonly type: "function";
+    }, {
+        readonly inputs: readonly [{
             readonly internalType: "address";
             readonly name: "";
             readonly type: "address";
@@ -18568,8 +18901,62 @@ declare class Core__factory {
         readonly stateMutability: "nonpayable";
         readonly type: "function";
     }, {
+        readonly inputs: readonly [{
+            readonly internalType: "uint256";
+            readonly name: "id";
+            readonly type: "uint256";
+        }, {
+            readonly internalType: "uint256";
+            readonly name: "expireAt";
+            readonly type: "uint256";
+        }, {
+            readonly internalType: "bytes";
+            readonly name: "signature";
+            readonly type: "bytes";
+        }];
+        readonly name: "releaseOrderByManagerSig";
+        readonly outputs: readonly [];
+        readonly stateMutability: "nonpayable";
+        readonly type: "function";
+    }, {
         readonly inputs: readonly [];
         readonly name: "renounceOwnership";
+        readonly outputs: readonly [];
+        readonly stateMutability: "nonpayable";
+        readonly type: "function";
+    }, {
+        readonly inputs: readonly [{
+            readonly internalType: "address";
+            readonly name: "swapRouter";
+            readonly type: "address";
+        }, {
+            readonly internalType: "address";
+            readonly name: "ethErc20Addr";
+            readonly type: "address";
+        }, {
+            readonly internalType: "uint256";
+            readonly name: "poolFee";
+            readonly type: "uint256";
+        }];
+        readonly name: "setAmmInfo";
+        readonly outputs: readonly [];
+        readonly stateMutability: "nonpayable";
+        readonly type: "function";
+    }, {
+        readonly inputs: readonly [{
+            readonly internalType: "address";
+            readonly name: "input";
+            readonly type: "address";
+        }, {
+            readonly internalType: "address";
+            readonly name: "out";
+            readonly type: "address";
+        }, {
+            readonly internalType: "uint256";
+            readonly name: "poolFee";
+            readonly type: "uint256";
+        }];
+        readonly name: "setAmmPoolInfo";
         readonly outputs: readonly [];
         readonly stateMutability: "nonpayable";
         readonly type: "function";
@@ -18590,6 +18977,16 @@ declare class Core__factory {
             readonly type: "address";
         }];
         readonly name: "setBadgeMgr";
+        readonly outputs: readonly [];
+        readonly stateMutability: "nonpayable";
+        readonly type: "function";
+    }, {
+        readonly inputs: readonly [{
+            readonly internalType: "uint256";
+            readonly name: "bp";
+            readonly type: "uint256";
+        }];
+        readonly name: "setDiscountForNFTHolder";
         readonly outputs: readonly [];
         readonly stateMutability: "nonpayable";
         readonly type: "function";
@@ -18703,6 +19100,16 @@ declare class Core__factory {
             readonly name: "addr";
             readonly type: "address";
         }];
+        readonly name: "setNFT";
+        readonly outputs: readonly [];
+        readonly stateMutability: "nonpayable";
+        readonly type: "function";
+    }, {
+        readonly inputs: readonly [{
+            readonly internalType: "address";
+            readonly name: "addr";
+            readonly type: "address";
+        }];
         readonly name: "setOperator";
         readonly outputs: readonly [];
         readonly stateMutability: "nonpayable";
@@ -18762,16 +19169,6 @@ declare class Core__factory {
             readonly type: "uint256";
         }];
         readonly name: "setProtoFeeSplit";
-        readonly outputs: readonly [];
-        readonly stateMutability: "nonpayable";
-        readonly type: "function";
-    }, {
-        readonly inputs: readonly [{
-            readonly internalType: "address";
-            readonly name: "addr";
-            readonly type: "address";
-        }];
-        readonly name: "setProviderRegistry";
         readonly outputs: readonly [];
         readonly stateMutability: "nonpayable";
         readonly type: "function";
@@ -18867,6 +19264,10 @@ declare class Core__factory {
             readonly internalType: "address";
             readonly name: "inventor";
             readonly type: "address";
+        }, {
+            readonly internalType: "address";
+            readonly name: "ammSwapRouter";
+            readonly type: "address";
         }];
         readonly stateMutability: "view";
         readonly type: "function";
@@ -18874,12 +19275,29 @@ declare class Core__factory {
         readonly inputs: readonly [];
         readonly name: "state2";
         readonly outputs: readonly [{
+            readonly components: readonly [{
+                readonly internalType: "uint256";
+                readonly name: "nftDiscountBp";
+                readonly type: "uint256";
+            }, {
+                readonly internalType: "uint256";
+                readonly name: "ammEthPoolFee";
+                readonly type: "uint256";
+            }];
+            readonly internalType: "struct StructsLib.UintSlotState2";
+            readonly name: "ints";
+            readonly type: "tuple";
+        }, {
             readonly internalType: "address";
             readonly name: "disputeManager";
             readonly type: "address";
         }, {
-            readonly internalType: "contract IProviderRegistry";
-            readonly name: "provReg";
+            readonly internalType: "address";
+            readonly name: "nft";
+            readonly type: "address";
+        }, {
+            readonly internalType: "address";
+            readonly name: "ammEth";
             readonly type: "address";
         }, {
             readonly internalType: "contract IAssetRegistry";
@@ -18932,50 +19350,41 @@ declare class Core__factory {
         readonly type: "function";
     }, {
         readonly inputs: readonly [{
-            readonly components: readonly [{
-                readonly internalType: "address";
-                readonly name: "marketId";
-                readonly type: "address";
-            }, {
-                readonly internalType: "address";
-                readonly name: "provider";
-                readonly type: "address";
-            }, {
-                readonly internalType: "address";
-                readonly name: "recipient";
-                readonly type: "address";
-            }, {
-                readonly internalType: "uint256";
-                readonly name: "lid";
-                readonly type: "uint256";
-            }, {
-                readonly internalType: "uint256";
-                readonly name: "amount";
-                readonly type: "uint256";
-            }, {
-                readonly internalType: "uint256";
-                readonly name: "maxPrice";
-                readonly type: "uint256";
-            }, {
-                readonly internalType: "uint256[]";
-                readonly name: "ids";
-                readonly type: "uint256[]";
-            }, {
-                readonly internalType: "uint256";
-                readonly name: "expireAt";
-                readonly type: "uint256";
-            }, {
-                readonly internalType: "uint256";
-                readonly name: "operator";
-                readonly type: "uint256";
-            }, {
-                readonly internalType: "bytes";
-                readonly name: "marketMgrData";
-                readonly type: "bytes";
-            }];
-            readonly internalType: "struct StructsLib.SwapQuoteForBaseParams";
-            readonly name: "params";
-            readonly type: "tuple";
+            readonly internalType: "address";
+            readonly name: "marketId";
+            readonly type: "address";
+        }, {
+            readonly internalType: "address";
+            readonly name: "provider";
+            readonly type: "address";
+        }, {
+            readonly internalType: "address";
+            readonly name: "recipient";
+            readonly type: "address";
+        }, {
+            readonly internalType: "uint256";
+            readonly name: "lid";
+            readonly type: "uint256";
+        }, {
+            readonly internalType: "uint256";
+            readonly name: "amount";
+            readonly type: "uint256";
+        }, {
+            readonly internalType: "uint256";
+            readonly name: "maxPrice";
+            readonly type: "uint256";
+        }, {
+            readonly internalType: "uint256[]";
+            readonly name: "ids";
+            readonly type: "uint256[]";
+        }, {
+            readonly internalType: "uint256";
+            readonly name: "txDeadline";
+            readonly type: "uint256";
+        }, {
+            readonly internalType: "uint256";
+            readonly name: "operator";
+            readonly type: "uint256";
         }];
         readonly name: "swapQuoteForBase";
         readonly outputs: readonly [];
@@ -19031,54 +19440,37 @@ declare class Core__factory {
         readonly type: "function";
     }, {
         readonly inputs: readonly [{
-            readonly components: readonly [{
-                readonly internalType: "address";
-                readonly name: "marketId";
-                readonly type: "address";
-            }, {
-                readonly internalType: "address";
-                readonly name: "target";
-                readonly type: "address";
-            }, {
-                readonly internalType: "uint256";
-                readonly name: "lid";
-                readonly type: "uint256";
-            }, {
-                readonly internalType: "uint256";
-                readonly name: "amount";
-                readonly type: "uint256";
-            }, {
-                readonly internalType: "uint256";
-                readonly name: "price";
-                readonly type: "uint256";
-            }, {
-                readonly internalType: "uint256";
-                readonly name: "timeToPay";
-                readonly type: "uint256";
-            }, {
-                readonly internalType: "uint256";
-                readonly name: "expireAt";
-                readonly type: "uint256";
-            }, {
-                readonly internalType: "uint256[]";
-                readonly name: "wantOrIds";
-                readonly type: "uint256[]";
-            }, {
-                readonly internalType: "uint256[]";
-                readonly name: "wantAndIds";
-                readonly type: "uint256[]";
-            }, {
-                readonly internalType: "bool";
-                readonly name: "deduct";
-                readonly type: "bool";
-            }, {
-                readonly internalType: "bool";
-                readonly name: "pause";
-                readonly type: "bool";
-            }];
-            readonly internalType: "struct StructsLib.UpdateFungibleLiquidityParams";
-            readonly name: "params";
-            readonly type: "tuple";
+            readonly internalType: "address";
+            readonly name: "marketId";
+            readonly type: "address";
+        }, {
+            readonly internalType: "uint256";
+            readonly name: "lid";
+            readonly type: "uint256";
+        }, {
+            readonly internalType: "bool";
+            readonly name: "deduct";
+            readonly type: "bool";
+        }, {
+            readonly internalType: "address";
+            readonly name: "target";
+            readonly type: "address";
+        }, {
+            readonly internalType: "uint256[2]";
+            readonly name: "amountAndPrice";
+            readonly type: "uint256[2]";
+        }, {
+            readonly internalType: "uint256[]";
+            readonly name: "wantOrIds";
+            readonly type: "uint256[]";
+        }, {
+            readonly internalType: "uint256[]";
+            readonly name: "wantAndIds";
+            readonly type: "uint256[]";
+        }, {
+            readonly internalType: "uint256[5]";
+            readonly name: "limits";
+            readonly type: "uint256[5]";
         }];
         readonly name: "updateFungibleLiquidity";
         readonly outputs: readonly [];
@@ -19112,54 +19504,41 @@ declare class Core__factory {
         readonly type: "function";
     }, {
         readonly inputs: readonly [{
-            readonly components: readonly [{
-                readonly internalType: "address";
-                readonly name: "marketId";
-                readonly type: "address";
-            }, {
-                readonly internalType: "address";
-                readonly name: "target";
-                readonly type: "address";
-            }, {
-                readonly internalType: "uint256";
-                readonly name: "lid";
-                readonly type: "uint256";
-            }, {
-                readonly internalType: "uint256";
-                readonly name: "price";
-                readonly type: "uint256";
-            }, {
-                readonly internalType: "uint256";
-                readonly name: "timeToPay";
-                readonly type: "uint256";
-            }, {
-                readonly internalType: "uint256";
-                readonly name: "expireAt";
-                readonly type: "uint256";
-            }, {
-                readonly internalType: "uint256[]";
-                readonly name: "ids";
-                readonly type: "uint256[]";
-            }, {
-                readonly internalType: "uint256[]";
-                readonly name: "wantOrIds";
-                readonly type: "uint256[]";
-            }, {
-                readonly internalType: "uint256[]";
-                readonly name: "wantAndIds";
-                readonly type: "uint256[]";
-            }, {
-                readonly internalType: "bool";
-                readonly name: "deduct";
-                readonly type: "bool";
-            }, {
-                readonly internalType: "bool";
-                readonly name: "pause";
-                readonly type: "bool";
-            }];
-            readonly internalType: "struct StructsLib.UpdateNonFungibleLiquidityParams";
-            readonly name: "params";
-            readonly type: "tuple";
+            readonly internalType: "address";
+            readonly name: "marketId";
+            readonly type: "address";
+        }, {
+            readonly internalType: "uint256";
+            readonly name: "lid";
+            readonly type: "uint256";
+        }, {
+            readonly internalType: "bool";
+            readonly name: "deduct";
+            readonly type: "bool";
+        }, {
+            readonly internalType: "address";
+            readonly name: "target";
+            readonly type: "address";
+        }, {
+            readonly internalType: "uint256[]";
+            readonly name: "ids";
+            readonly type: "uint256[]";
+        }, {
+            readonly internalType: "uint256";
+            readonly name: "price";
+            readonly type: "uint256";
+        }, {
+            readonly internalType: "uint256[]";
+            readonly name: "wantOrIds";
+            readonly type: "uint256[]";
+        }, {
+            readonly internalType: "uint256[]";
+            readonly name: "wantAndIds";
+            readonly type: "uint256[]";
+        }, {
+            readonly internalType: "uint256[3]";
+            readonly name: "limits";
+            readonly type: "uint256[3]";
         }];
         readonly name: "updateNonFungibleLiquidity";
         readonly outputs: readonly [];

@@ -48,6 +48,50 @@ const _abi = [
       {
         indexed: false,
         internalType: "address",
+        name: "manager",
+        type: "address",
+      },
+      {
+        indexed: false,
+        internalType: "address",
+        name: "finalizer",
+        type: "address",
+      },
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "orderId",
+        type: "uint256",
+      },
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "action",
+        type: "uint256",
+      },
+    ],
+    name: "FinalizedByManagerSig",
+    type: "event",
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "bp",
+        type: "uint256",
+      },
+    ],
+    name: "NFTDiscountUpdated",
+    type: "event",
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: false,
+        internalType: "address",
         name: "marketId",
         type: "address",
       },
@@ -571,8 +615,70 @@ const _abi = [
         name: "amount",
         type: "uint256",
       },
+      {
+        indexed: false,
+        internalType: "address",
+        name: "convAsset",
+        type: "address",
+      },
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "convAmount",
+        type: "uint256",
+      },
     ],
     name: "TransferredToFeePool",
+    type: "event",
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: false,
+        internalType: "address",
+        name: "swapRouter",
+        type: "address",
+      },
+      {
+        indexed: false,
+        internalType: "address",
+        name: "ethErc20Addr",
+        type: "address",
+      },
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "poolFee",
+        type: "uint256",
+      },
+    ],
+    name: "UpdatedAMMInfo",
+    type: "event",
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: false,
+        internalType: "address",
+        name: "input",
+        type: "address",
+      },
+      {
+        indexed: false,
+        internalType: "address",
+        name: "output",
+        type: "address",
+      },
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "poolFee",
+        type: "uint256",
+      },
+    ],
+    name: "UpdatedAMMPoolInfo",
     type: "event",
   },
   {
@@ -715,6 +821,18 @@ const _abi = [
         internalType: "uint256[]",
         name: "wantAndIds",
         type: "uint256[]",
+      },
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "minSwap",
+        type: "uint256",
+      },
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "maxSwap",
+        type: "uint256",
       },
       {
         indexed: false,
@@ -870,6 +988,19 @@ const _abi = [
     anonymous: false,
     inputs: [
       {
+        indexed: false,
+        internalType: "address",
+        name: "addr",
+        type: "address",
+      },
+    ],
+    name: "UpdatedNFT",
+    type: "event",
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
         indexed: true,
         internalType: "address",
         name: "provider",
@@ -1003,19 +1134,6 @@ const _abi = [
     type: "event",
   },
   {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: false,
-        internalType: "address",
-        name: "addr",
-        type: "address",
-      },
-    ],
-    name: "UpdatedProviderRegistry",
-    type: "event",
-  },
-  {
     inputs: [
       {
         internalType: "uint256",
@@ -1099,6 +1217,29 @@ const _abi = [
   {
     inputs: [
       {
+        internalType: "uint256",
+        name: "id",
+        type: "uint256",
+      },
+      {
+        internalType: "uint256",
+        name: "expireAt",
+        type: "uint256",
+      },
+      {
+        internalType: "bytes",
+        name: "signature",
+        type: "bytes",
+      },
+    ],
+    name: "cancelOrderByManagerSig",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
         internalType: "address",
         name: "mid",
         type: "address",
@@ -1171,56 +1312,49 @@ const _abi = [
   {
     inputs: [
       {
-        components: [
-          {
-            internalType: "address",
-            name: "marketId",
-            type: "address",
-          },
-          {
-            internalType: "address",
-            name: "provider",
-            type: "address",
-          },
-          {
-            internalType: "address",
-            name: "recipient",
-            type: "address",
-          },
-          {
-            internalType: "uint256",
-            name: "lid",
-            type: "uint256",
-          },
-          {
-            internalType: "uint256",
-            name: "amount",
-            type: "uint256",
-          },
-          {
-            internalType: "uint256",
-            name: "price",
-            type: "uint256",
-          },
-          {
-            internalType: "uint256[]",
-            name: "ids",
-            type: "uint256[]",
-          },
-          {
-            internalType: "uint256",
-            name: "deadline",
-            type: "uint256",
-          },
-          {
-            internalType: "uint256",
-            name: "operator",
-            type: "uint256",
-          },
-        ],
-        internalType: "struct StructsLib.CreateOfferParams",
-        name: "params",
-        type: "tuple",
+        internalType: "address",
+        name: "marketId",
+        type: "address",
+      },
+      {
+        internalType: "address",
+        name: "provider",
+        type: "address",
+      },
+      {
+        internalType: "address",
+        name: "recipient",
+        type: "address",
+      },
+      {
+        internalType: "uint256",
+        name: "lid",
+        type: "uint256",
+      },
+      {
+        internalType: "uint256",
+        name: "amount",
+        type: "uint256",
+      },
+      {
+        internalType: "uint256",
+        name: "price",
+        type: "uint256",
+      },
+      {
+        internalType: "uint256[]",
+        name: "ids",
+        type: "uint256[]",
+      },
+      {
+        internalType: "uint256",
+        name: "deadline",
+        type: "uint256",
+      },
+      {
+        internalType: "uint256",
+        name: "operator",
+        type: "uint256",
       },
     ],
     name: "createOffer",
@@ -1318,6 +1452,16 @@ const _abi = [
           {
             internalType: "uint256",
             name: "price",
+            type: "uint256",
+          },
+          {
+            internalType: "uint256",
+            name: "minSwap",
+            type: "uint256",
+          },
+          {
+            internalType: "uint256",
+            name: "maxSwap",
             type: "uint256",
           },
           {
@@ -1903,6 +2047,29 @@ const _abi = [
   {
     inputs: [
       {
+        internalType: "uint256",
+        name: "id",
+        type: "uint256",
+      },
+      {
+        internalType: "uint256",
+        name: "expireAt",
+        type: "uint256",
+      },
+      {
+        internalType: "bytes",
+        name: "signature",
+        type: "bytes",
+      },
+    ],
+    name: "markOrderAsPaidByManagerSig",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
         internalType: "address",
         name: "",
         type: "address",
@@ -2042,8 +2209,77 @@ const _abi = [
     type: "function",
   },
   {
+    inputs: [
+      {
+        internalType: "uint256",
+        name: "id",
+        type: "uint256",
+      },
+      {
+        internalType: "uint256",
+        name: "expireAt",
+        type: "uint256",
+      },
+      {
+        internalType: "bytes",
+        name: "signature",
+        type: "bytes",
+      },
+    ],
+    name: "releaseOrderByManagerSig",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
     inputs: [],
     name: "renounceOwnership",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "swapRouter",
+        type: "address",
+      },
+      {
+        internalType: "address",
+        name: "ethErc20Addr",
+        type: "address",
+      },
+      {
+        internalType: "uint256",
+        name: "poolFee",
+        type: "uint256",
+      },
+    ],
+    name: "setAmmInfo",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "input",
+        type: "address",
+      },
+      {
+        internalType: "address",
+        name: "out",
+        type: "address",
+      },
+      {
+        internalType: "uint256",
+        name: "poolFee",
+        type: "uint256",
+      },
+    ],
+    name: "setAmmPoolInfo",
     outputs: [],
     stateMutability: "nonpayable",
     type: "function",
@@ -2070,6 +2306,19 @@ const _abi = [
       },
     ],
     name: "setBadgeMgr",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "uint256",
+        name: "bp",
+        type: "uint256",
+      },
+    ],
+    name: "setDiscountForNFTHolder",
     outputs: [],
     stateMutability: "nonpayable",
     type: "function",
@@ -2217,6 +2466,19 @@ const _abi = [
         type: "address",
       },
     ],
+    name: "setNFT",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "addr",
+        type: "address",
+      },
+    ],
     name: "setOperator",
     outputs: [],
     stateMutability: "nonpayable",
@@ -2292,19 +2554,6 @@ const _abi = [
       },
     ],
     name: "setProtoFeeSplit",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
-        internalType: "address",
-        name: "addr",
-        type: "address",
-      },
-    ],
-    name: "setProviderRegistry",
     outputs: [],
     stateMutability: "nonpayable",
     type: "function",
@@ -2427,6 +2676,11 @@ const _abi = [
         name: "inventor",
         type: "address",
       },
+      {
+        internalType: "address",
+        name: "ammSwapRouter",
+        type: "address",
+      },
     ],
     stateMutability: "view",
     type: "function",
@@ -2436,13 +2690,35 @@ const _abi = [
     name: "state2",
     outputs: [
       {
+        components: [
+          {
+            internalType: "uint256",
+            name: "nftDiscountBp",
+            type: "uint256",
+          },
+          {
+            internalType: "uint256",
+            name: "ammEthPoolFee",
+            type: "uint256",
+          },
+        ],
+        internalType: "struct StructsLib.UintSlotState2",
+        name: "ints",
+        type: "tuple",
+      },
+      {
         internalType: "address",
         name: "disputeManager",
         type: "address",
       },
       {
-        internalType: "contract IProviderRegistry",
-        name: "provReg",
+        internalType: "address",
+        name: "nft",
+        type: "address",
+      },
+      {
+        internalType: "address",
+        name: "ammEth",
         type: "address",
       },
       {
@@ -2511,61 +2787,49 @@ const _abi = [
   {
     inputs: [
       {
-        components: [
-          {
-            internalType: "address",
-            name: "marketId",
-            type: "address",
-          },
-          {
-            internalType: "address",
-            name: "provider",
-            type: "address",
-          },
-          {
-            internalType: "address",
-            name: "recipient",
-            type: "address",
-          },
-          {
-            internalType: "uint256",
-            name: "lid",
-            type: "uint256",
-          },
-          {
-            internalType: "uint256",
-            name: "amount",
-            type: "uint256",
-          },
-          {
-            internalType: "uint256",
-            name: "maxPrice",
-            type: "uint256",
-          },
-          {
-            internalType: "uint256[]",
-            name: "ids",
-            type: "uint256[]",
-          },
-          {
-            internalType: "uint256",
-            name: "expireAt",
-            type: "uint256",
-          },
-          {
-            internalType: "uint256",
-            name: "operator",
-            type: "uint256",
-          },
-          {
-            internalType: "bytes",
-            name: "marketMgrData",
-            type: "bytes",
-          },
-        ],
-        internalType: "struct StructsLib.SwapQuoteForBaseParams",
-        name: "params",
-        type: "tuple",
+        internalType: "address",
+        name: "marketId",
+        type: "address",
+      },
+      {
+        internalType: "address",
+        name: "provider",
+        type: "address",
+      },
+      {
+        internalType: "address",
+        name: "recipient",
+        type: "address",
+      },
+      {
+        internalType: "uint256",
+        name: "lid",
+        type: "uint256",
+      },
+      {
+        internalType: "uint256",
+        name: "amount",
+        type: "uint256",
+      },
+      {
+        internalType: "uint256",
+        name: "maxPrice",
+        type: "uint256",
+      },
+      {
+        internalType: "uint256[]",
+        name: "ids",
+        type: "uint256[]",
+      },
+      {
+        internalType: "uint256",
+        name: "txDeadline",
+        type: "uint256",
+      },
+      {
+        internalType: "uint256",
+        name: "operator",
+        type: "uint256",
       },
     ],
     name: "swapQuoteForBase",
@@ -2638,66 +2902,44 @@ const _abi = [
   {
     inputs: [
       {
-        components: [
-          {
-            internalType: "address",
-            name: "marketId",
-            type: "address",
-          },
-          {
-            internalType: "address",
-            name: "target",
-            type: "address",
-          },
-          {
-            internalType: "uint256",
-            name: "lid",
-            type: "uint256",
-          },
-          {
-            internalType: "uint256",
-            name: "amount",
-            type: "uint256",
-          },
-          {
-            internalType: "uint256",
-            name: "price",
-            type: "uint256",
-          },
-          {
-            internalType: "uint256",
-            name: "timeToPay",
-            type: "uint256",
-          },
-          {
-            internalType: "uint256",
-            name: "expireAt",
-            type: "uint256",
-          },
-          {
-            internalType: "uint256[]",
-            name: "wantOrIds",
-            type: "uint256[]",
-          },
-          {
-            internalType: "uint256[]",
-            name: "wantAndIds",
-            type: "uint256[]",
-          },
-          {
-            internalType: "bool",
-            name: "deduct",
-            type: "bool",
-          },
-          {
-            internalType: "bool",
-            name: "pause",
-            type: "bool",
-          },
-        ],
-        internalType: "struct StructsLib.UpdateFungibleLiquidityParams",
-        name: "params",
-        type: "tuple",
+        internalType: "address",
+        name: "marketId",
+        type: "address",
+      },
+      {
+        internalType: "uint256",
+        name: "lid",
+        type: "uint256",
+      },
+      {
+        internalType: "bool",
+        name: "deduct",
+        type: "bool",
+      },
+      {
+        internalType: "address",
+        name: "target",
+        type: "address",
+      },
+      {
+        internalType: "uint256[2]",
+        name: "amountAndPrice",
+        type: "uint256[2]",
+      },
+      {
+        internalType: "uint256[]",
+        name: "wantOrIds",
+        type: "uint256[]",
+      },
+      {
+        internalType: "uint256[]",
+        name: "wantAndIds",
+        type: "uint256[]",
+      },
+      {
+        internalType: "uint256[5]",
+        name: "limits",
+        type: "uint256[5]",
       },
     ],
     name: "updateFungibleLiquidity",
@@ -2741,66 +2983,49 @@ const _abi = [
   {
     inputs: [
       {
-        components: [
-          {
-            internalType: "address",
-            name: "marketId",
-            type: "address",
-          },
-          {
-            internalType: "address",
-            name: "target",
-            type: "address",
-          },
-          {
-            internalType: "uint256",
-            name: "lid",
-            type: "uint256",
-          },
-          {
-            internalType: "uint256",
-            name: "price",
-            type: "uint256",
-          },
-          {
-            internalType: "uint256",
-            name: "timeToPay",
-            type: "uint256",
-          },
-          {
-            internalType: "uint256",
-            name: "expireAt",
-            type: "uint256",
-          },
-          {
-            internalType: "uint256[]",
-            name: "ids",
-            type: "uint256[]",
-          },
-          {
-            internalType: "uint256[]",
-            name: "wantOrIds",
-            type: "uint256[]",
-          },
-          {
-            internalType: "uint256[]",
-            name: "wantAndIds",
-            type: "uint256[]",
-          },
-          {
-            internalType: "bool",
-            name: "deduct",
-            type: "bool",
-          },
-          {
-            internalType: "bool",
-            name: "pause",
-            type: "bool",
-          },
-        ],
-        internalType: "struct StructsLib.UpdateNonFungibleLiquidityParams",
-        name: "params",
-        type: "tuple",
+        internalType: "address",
+        name: "marketId",
+        type: "address",
+      },
+      {
+        internalType: "uint256",
+        name: "lid",
+        type: "uint256",
+      },
+      {
+        internalType: "bool",
+        name: "deduct",
+        type: "bool",
+      },
+      {
+        internalType: "address",
+        name: "target",
+        type: "address",
+      },
+      {
+        internalType: "uint256[]",
+        name: "ids",
+        type: "uint256[]",
+      },
+      {
+        internalType: "uint256",
+        name: "price",
+        type: "uint256",
+      },
+      {
+        internalType: "uint256[]",
+        name: "wantOrIds",
+        type: "uint256[]",
+      },
+      {
+        internalType: "uint256[]",
+        name: "wantAndIds",
+        type: "uint256[]",
+      },
+      {
+        internalType: "uint256[3]",
+        name: "limits",
+        type: "uint256[3]",
       },
     ],
     name: "updateNonFungibleLiquidity",
