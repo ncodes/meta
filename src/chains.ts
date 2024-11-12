@@ -381,7 +381,7 @@ const Chains: ChainInfo[] = [
 					process.env.BASE_CORE_ADDRESS ??
 					process.env.NEXT_PUBLIC_BASE_CORE_ADDRESS ??
 					import.meta.env.VITE_BASE_CORE_ADDRESS ??
-					'0xbC0B833896a359723fe759e4a237544183c54Fa4',
+					'0xe613759EE3fd3F8eE1240b3c7428f21c2f1c1996',
 				abi: CoreABI,
 			},
 			token: {
@@ -389,7 +389,7 @@ const Chains: ChainInfo[] = [
 					process.env.BASE_TOKEN_ADDRESS ??
 					process.env.NEXT_PUBLIC_BASE_TOKEN_ADDRESS ??
 					import.meta.env.VITE_BASE_TOKEN_ADDRESS ??
-					'0xda668F1c6B6329f19afc657fD9D8093E6187e3eF',
+					'0x60ea5245179F18E71771f6087Db737De56F03f16',
 				abi: NativeTokenABI,
 			},
 			badgeManager: {
@@ -397,7 +397,7 @@ const Chains: ChainInfo[] = [
 					process.env.BASE_BADGE_MGR_ADDRESS ??
 					process.env.NEXT_PUBLIC_BASE_BADGE_MGR_ADDRESS ??
 					import.meta.env.VITE_BASE_BADGE_MGR_ADDRESS ??
-					'0x9120374B1fdd0eb3f4767CB9b39247D7d82ca9AC',
+					'0x43C4db101537078132dB28222af5079D91FEc914',
 				abi: BadgeManagerABI,
 			},
 			marketCore: {
@@ -405,7 +405,7 @@ const Chains: ChainInfo[] = [
 					process.env.BASE_MARKET_CORE_ADDRESS ??
 					process.env.NEXT_PUBLIC_BASE_MARKET_CORE_ADDRESS ??
 					import.meta.env.VITE_BASE_MARKET_CORE_ADDRESS ??
-					'0xAa77e14277F727B3C5158A07DFf83019d063a131',
+					'0x7F21677753907Ce5f6E49C01FD03C16EA98737Ae',
 				abi: MarketCoreABI,
 			},
 			disputeManager: {
@@ -413,7 +413,7 @@ const Chains: ChainInfo[] = [
 					process.env.BASE_DISPUTE_MGR_ADDRESS ??
 					process.env.NEXT_PUBLIC_BASE_DISPUTE_MGR_ADDRESS ??
 					import.meta.env.VITE_BASE_DISPUTE_MGR_ADDRESS ??
-					'0x86C1fF8dafACA9D99a25AE9eE94522563205c3Ac',
+					'0x52E1b685C3589CeB24196425aE9998e952479F79',
 				abi: DisputeManagerABI,
 			},
 			mediatorManager: {
@@ -421,7 +421,7 @@ const Chains: ChainInfo[] = [
 					process.env.BASE_MEDIATOR_MGR_ADDRESS ??
 					process.env.NEXT_PUBLIC_BASE_MEDIATOR_MGR_ADDRESS ??
 					import.meta.env.VITE_BASE_MEDIATOR_MGR_ADDRESS ??
-					'0x22Ae691a36f08047dB49251d3ad0D60Ece3eC4b2',
+					'0x753489965A140c2bC6b551F8b9231c51479a7a77',
 				abi: MediatorManagerABI,
 			},
 			energon: {
@@ -445,7 +445,7 @@ const Chains: ChainInfo[] = [
 					process.env.BASE_ASSET_REG_ADDRESS ??
 					process.env.NEXT_PUBLIC_BASE_ASSET_REG_ADDRESS ??
 					import.meta.env.VITE_BASE_ASSET_REG_ADDRESS ??
-					'0x5B67e9e15373079D7e2D1e8bEDaC1de3398a93E4',
+					'0xed48ec3Dbbc198eeDEEf18db93928bEb13A8C722',
 				abi: AssetRegistryABI,
 			},
 			minerRegistry: {
@@ -453,7 +453,7 @@ const Chains: ChainInfo[] = [
 					process.env.BASE_MINER_REG_ADDRESS ??
 					process.env.NEXT_PUBLIC_BASE_MINER_REG_ADDRESS ??
 					import.meta.env.VITE_BASE_MINER_REG_ADDRESS ??
-					'0x46d73f0470069C07c250B4c74D2D892956651828',
+					'0x5Df5557a98d6F652505A1a52Aa76817bA56045eC',
 				abi: MinerRegistryABI,
 			},
 			providerRegistry: {
@@ -483,6 +483,14 @@ const Chains: ChainInfo[] = [
 					process.env.NEXT_PUBLIC_BASE_MARKET_MGR_ADDRESS ??
 					import.meta.env.VITE_BASE_MARKET_MGR_ADDRESS,
 				abi: MarketManagerABI,
+			},
+			bondCurveDistro: {
+				address:
+					process.env.BASE_BOND_CURVE_DISTRO_ADDRESS ??
+					process.env.NEXT_PUBLIC_BASE_BOND_CURVE_DISTRO_ADDRESS ??
+					import.meta.env.VITE_BASE_BOND_CURVE_DISTRO_ADDRESS ??
+					'0x11b157C9C11c269B840372EF08d7F8b1EcEEA920',
+				abi: BondCurveDistroABI,
 			},
 		},
 	},

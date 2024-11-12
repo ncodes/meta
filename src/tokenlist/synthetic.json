@@ -11,6 +11,15 @@
 			"symbol": "NGN",
 			"decimals": 18,
 			"logoURI": "https://files.joint.exchange/images/nigeria.svg"
+		},
+		{
+			"asset": "0001",
+			"type": "SYNTHETIC",
+			"address": "0xD6F3bb044222cDB85a588542C5dFa3E66cE70d3f",
+			"name": "USD",
+			"symbol": "USD",
+			"decimals": 18,
+			"logoURI": "https://files.joint.exchange/images/usa.svg"
 		}
 	],
 	"version": {

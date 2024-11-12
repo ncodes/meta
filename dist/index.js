@@ -25696,27 +25696,27 @@ var Chains = [
     },
     contracts: {
       core: {
-        address: import.meta.env.BASE_CORE_ADDRESS ?? import.meta.env.NEXT_PUBLIC_BASE_CORE_ADDRESS ?? import.meta.env.VITE_BASE_CORE_ADDRESS ?? "0xbC0B833896a359723fe759e4a237544183c54Fa4",
+        address: import.meta.env.BASE_CORE_ADDRESS ?? import.meta.env.NEXT_PUBLIC_BASE_CORE_ADDRESS ?? import.meta.env.VITE_BASE_CORE_ADDRESS ?? "0xe613759EE3fd3F8eE1240b3c7428f21c2f1c1996",
         abi: Core_default
       },
       token: {
-        address: import.meta.env.BASE_TOKEN_ADDRESS ?? import.meta.env.NEXT_PUBLIC_BASE_TOKEN_ADDRESS ?? import.meta.env.VITE_BASE_TOKEN_ADDRESS ?? "0xda668F1c6B6329f19afc657fD9D8093E6187e3eF",
+        address: import.meta.env.BASE_TOKEN_ADDRESS ?? import.meta.env.NEXT_PUBLIC_BASE_TOKEN_ADDRESS ?? import.meta.env.VITE_BASE_TOKEN_ADDRESS ?? "0x60ea5245179F18E71771f6087Db737De56F03f16",
         abi: Token_default
       },
       badgeManager: {
-        address: import.meta.env.BASE_BADGE_MGR_ADDRESS ?? import.meta.env.NEXT_PUBLIC_BASE_BADGE_MGR_ADDRESS ?? import.meta.env.VITE_BASE_BADGE_MGR_ADDRESS ?? "0x9120374B1fdd0eb3f4767CB9b39247D7d82ca9AC",
+        address: import.meta.env.BASE_BADGE_MGR_ADDRESS ?? import.meta.env.NEXT_PUBLIC_BASE_BADGE_MGR_ADDRESS ?? import.meta.env.VITE_BASE_BADGE_MGR_ADDRESS ?? "0x43C4db101537078132dB28222af5079D91FEc914",
         abi: BadgeManager_default
       },
       marketCore: {
-        address: import.meta.env.BASE_MARKET_CORE_ADDRESS ?? import.meta.env.NEXT_PUBLIC_BASE_MARKET_CORE_ADDRESS ?? import.meta.env.VITE_BASE_MARKET_CORE_ADDRESS ?? "0xAa77e14277F727B3C5158A07DFf83019d063a131",
+        address: import.meta.env.BASE_MARKET_CORE_ADDRESS ?? import.meta.env.NEXT_PUBLIC_BASE_MARKET_CORE_ADDRESS ?? import.meta.env.VITE_BASE_MARKET_CORE_ADDRESS ?? "0x7F21677753907Ce5f6E49C01FD03C16EA98737Ae",
         abi: MarketCore_default
       },
       disputeManager: {
-        address: import.meta.env.BASE_DISPUTE_MGR_ADDRESS ?? import.meta.env.NEXT_PUBLIC_BASE_DISPUTE_MGR_ADDRESS ?? import.meta.env.VITE_BASE_DISPUTE_MGR_ADDRESS ?? "0x86C1fF8dafACA9D99a25AE9eE94522563205c3Ac",
+        address: import.meta.env.BASE_DISPUTE_MGR_ADDRESS ?? import.meta.env.NEXT_PUBLIC_BASE_DISPUTE_MGR_ADDRESS ?? import.meta.env.VITE_BASE_DISPUTE_MGR_ADDRESS ?? "0x52E1b685C3589CeB24196425aE9998e952479F79",
         abi: DisputeManager_default
       },
       mediatorManager: {
-        address: import.meta.env.BASE_MEDIATOR_MGR_ADDRESS ?? import.meta.env.NEXT_PUBLIC_BASE_MEDIATOR_MGR_ADDRESS ?? import.meta.env.VITE_BASE_MEDIATOR_MGR_ADDRESS ?? "0x22Ae691a36f08047dB49251d3ad0D60Ece3eC4b2",
+        address: import.meta.env.BASE_MEDIATOR_MGR_ADDRESS ?? import.meta.env.NEXT_PUBLIC_BASE_MEDIATOR_MGR_ADDRESS ?? import.meta.env.VITE_BASE_MEDIATOR_MGR_ADDRESS ?? "0x753489965A140c2bC6b551F8b9231c51479a7a77",
         abi: MediatorManager_default
       },
       energon: {
@@ -25728,11 +25728,11 @@ var Chains = [
         abi: NFT_default
       },
       assetRegistry: {
-        address: import.meta.env.BASE_ASSET_REG_ADDRESS ?? import.meta.env.NEXT_PUBLIC_BASE_ASSET_REG_ADDRESS ?? import.meta.env.VITE_BASE_ASSET_REG_ADDRESS ?? "0x5B67e9e15373079D7e2D1e8bEDaC1de3398a93E4",
+        address: import.meta.env.BASE_ASSET_REG_ADDRESS ?? import.meta.env.NEXT_PUBLIC_BASE_ASSET_REG_ADDRESS ?? import.meta.env.VITE_BASE_ASSET_REG_ADDRESS ?? "0xed48ec3Dbbc198eeDEEf18db93928bEb13A8C722",
         abi: AssetRegistry_default
       },
       minerRegistry: {
-        address: import.meta.env.BASE_MINER_REG_ADDRESS ?? import.meta.env.NEXT_PUBLIC_BASE_MINER_REG_ADDRESS ?? import.meta.env.VITE_BASE_MINER_REG_ADDRESS ?? "0x46d73f0470069C07c250B4c74D2D892956651828",
+        address: import.meta.env.BASE_MINER_REG_ADDRESS ?? import.meta.env.NEXT_PUBLIC_BASE_MINER_REG_ADDRESS ?? import.meta.env.VITE_BASE_MINER_REG_ADDRESS ?? "0x5Df5557a98d6F652505A1a52Aa76817bA56045eC",
         abi: MinerRegistry_default
       },
       providerRegistry: {
@@ -25750,6 +25750,10 @@ var Chains = [
       marketManager: {
         address: import.meta.env.BASE_MARKET_MGR_ADDRESS ?? import.meta.env.NEXT_PUBLIC_BASE_MARKET_MGR_ADDRESS ?? import.meta.env.VITE_BASE_MARKET_MGR_ADDRESS,
         abi: MarketManager_default
+      },
+      bondCurveDistro: {
+        address: import.meta.env.BASE_BOND_CURVE_DISTRO_ADDRESS ?? import.meta.env.NEXT_PUBLIC_BASE_BOND_CURVE_DISTRO_ADDRESS ?? import.meta.env.VITE_BASE_BOND_CURVE_DISTRO_ADDRESS ?? "0x11b157C9C11c269B840372EF08d7F8b1EcEEA920",
+        abi: BondCurveDistro_default
       }
     }
   },
@@ -26752,11 +26756,31 @@ var base_default = {
     {
       asset: "0001",
       type: "ERC20",
-      address: "0x34d70Cf690d67AC2C05eC4464E1Dd5fDB3c84b1E",
+      address: "0x60ea5245179F18E71771f6087Db737De56F03f16",
       name: "Joint",
       symbol: "JOIN",
       decimals: 18,
       logoURI: "https://files.joint.exchange/images/join.svg",
+      price: 0
+    },
+    {
+      asset: "0002",
+      type: "ERC20",
+      address: "0x40cF5289cbc6949fddAD8b14d85ead5d20F6AE8C",
+      name: "BANDIT",
+      symbol: "BANDIT",
+      decimals: 18,
+      logoURI: "https://files.joint.exchange/images/bandit.svg",
+      price: 0
+    },
+    {
+      asset: "0003",
+      type: "ERC20",
+      address: "0x6225ccf32687ea72FDaf21394C9eb917bC9B485E",
+      name: "DROID",
+      symbol: "DROID",
+      decimals: 18,
+      logoURI: "https://files.joint.exchange/images/droid.svg",
       price: 0
     }
   ]
@@ -31425,6 +31449,15 @@ var synthetic_default = {
       symbol: "NGN",
       decimals: 18,
       logoURI: "https://files.joint.exchange/images/nigeria.svg"
+    },
+    {
+      asset: "0001",
+      type: "SYNTHETIC",
+      address: "0xD6F3bb044222cDB85a588542C5dFa3E66cE70d3f",
+      name: "USD",
+      symbol: "USD",
+      decimals: 18,
+      logoURI: "https://files.joint.exchange/images/usa.svg"
     }
   ],
   version: {
