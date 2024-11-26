@@ -27017,6 +27017,16 @@ var base_default = {
       decimals: 6,
       logoURI: "https://assets-cdn.trustwallet.com/blockchains/arbitrum/assets/0xaf88d065e77c8cC2239327C5EDb3A432268e5831/logo.png",
       price: 0
+    },
+    {
+      asset: "0005",
+      type: "ERC20",
+      address: "0xfde4C96c8593536E31F229EA8f37b2ADa2699bb2",
+      name: "USDT",
+      symbol: "USDT",
+      decimals: 6,
+      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xdAC17F958D2ee523a2206206994597C13D831ec7/logo.png",
+      price: 0
     }
   ]
 };
