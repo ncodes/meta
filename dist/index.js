@@ -31356,7 +31356,7 @@ var localhost_default = {
     {
       asset: "0002",
       type: "ERC20",
-      address: "0x4826533B4897376654Bb4d4AD88B7faFD0C98528",
+      address: "0x0E801D84Fa97b50751Dbf25036d067dCf18858bF",
       name: "WETH LOCAL",
       symbol: "WETH",
       decimals: 18,
@@ -31387,7 +31387,7 @@ var localhost_default = {
     {
       asset: "0003",
       type: "ERC20",
-      address: "0x99bbA657f2BbC93c02D617f8bA121cB8Fc104Acf",
+      address: "0x8f86403A4DE0BB5791fa46B8e795C547942fE4Cf",
       name: "UNI LOCAL",
       symbol: "UNI",
       decimals: 18,
@@ -31397,7 +31397,7 @@ var localhost_default = {
     {
       asset: "0004",
       type: "SYNTHETIC",
-      address: "0x0E801D84Fa97b50751Dbf25036d067dCf18858bF",
+      address: "0x9d4454B023096f34B160D6B654540c56A1F81688",
       name: "NGN LOCAL",
       symbol: "NGN",
       decimals: 18,
