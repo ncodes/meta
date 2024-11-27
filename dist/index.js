@@ -25706,7 +25706,7 @@ var TokenInfo = class {
 // src/chains.ts
 var Chains = [
   {
-    // disabled: true,
+    disabled: true,
     displayName: "Ethereum",
     queryName: "ethereum",
     chainId: mainnet.id,
@@ -25815,6 +25815,7 @@ var Chains = [
     }
   },
   {
+    disabled: true,
     displayName: "Polygon",
     queryName: "polygon",
     chainId: polygon.id,
@@ -25867,6 +25868,7 @@ var Chains = [
     }
   },
   {
+    disabled: true,
     displayName: "BNB Chain",
     altDisplayName: "BSC",
     queryName: "binance",
@@ -25983,6 +25985,7 @@ var Chains = [
     }
   },
   {
+    disabled: true,
     displayName: "Blast",
     altDisplayName: "Blast",
     queryName: "blast",
@@ -26010,6 +26013,7 @@ var Chains = [
     }
   },
   {
+    disabled: true,
     displayName: "Arbitrum One",
     queryName: "arbitrum",
     chainId: arbitrum.id,

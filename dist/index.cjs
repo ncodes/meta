@@ -25753,7 +25753,7 @@ var TokenInfo = class {
 var import_meta2 = {};
 var Chains = [
   {
-    // disabled: true,
+    disabled: true,
     displayName: "Ethereum",
     queryName: "ethereum",
     chainId: import_chains.mainnet.id,
@@ -25862,6 +25862,7 @@ var Chains = [
     }
   },
   {
+    disabled: true,
     displayName: "Polygon",
     queryName: "polygon",
     chainId: import_chains.polygon.id,
@@ -25914,6 +25915,7 @@ var Chains = [
     }
   },
   {
+    disabled: true,
     displayName: "BNB Chain",
     altDisplayName: "BSC",
     queryName: "binance",
@@ -26030,6 +26032,7 @@ var Chains = [
     }
   },
   {
+    disabled: true,
     displayName: "Blast",
     altDisplayName: "Blast",
     queryName: "blast",
@@ -26057,6 +26060,7 @@ var Chains = [
     }
   },
   {
+    disabled: true,
     displayName: "Arbitrum One",
     queryName: "arbitrum",
     chainId: import_chains.arbitrum.id,

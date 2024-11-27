@@ -43,7 +43,7 @@ import TokenInfo from './types/token';
  */
 const Chains: ChainInfo[] = [
 	{
-		// disabled: true,
+		disabled: true,
 		displayName: 'Ethereum',
 		queryName: 'ethereum',
 		chainId: mainnet.id,
@@ -212,6 +212,7 @@ const Chains: ChainInfo[] = [
 		},
 	},
 	{
+		disabled: true,
 		displayName: 'Polygon',
 		queryName: 'polygon',
 		chainId: polygon.id,
@@ -294,6 +295,7 @@ const Chains: ChainInfo[] = [
 		},
 	},
 	{
+		disabled: true,
 		displayName: 'BNB Chain',
 		altDisplayName: 'BSC',
 		queryName: 'binance',
@@ -495,6 +497,7 @@ const Chains: ChainInfo[] = [
 		},
 	},
 	{
+		disabled: true,
 		displayName: 'Blast',
 		altDisplayName: 'Blast',
 		queryName: 'blast',
@@ -536,6 +539,7 @@ const Chains: ChainInfo[] = [
 		},
 	},
 	{
+		disabled: true,
 		displayName: 'Arbitrum One',
 		queryName: 'arbitrum',
 		chainId: arbitrum.id,
