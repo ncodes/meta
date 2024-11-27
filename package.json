@@ -1,6 +1,6 @@
 {
 	"name": "@jointlabs/meta",
-	"version": "0.0.15",
+	"version": "0.0.16",
 	"type": "module",
 	"engines": {
 		"node": ">=18.17.1"

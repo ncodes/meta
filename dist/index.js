@@ -25842,6 +25842,7 @@ var Chains = [
     }
   },
   {
+    disabled: true,
     displayName: "Optimism",
     queryName: "optimism",
     chainId: optimism.id,
@@ -26013,7 +26014,6 @@ var Chains = [
     }
   },
   {
-    disabled: true,
     displayName: "Arbitrum One",
     queryName: "arbitrum",
     chainId: arbitrum.id,

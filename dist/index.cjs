@@ -25889,6 +25889,7 @@ var Chains = [
     }
   },
   {
+    disabled: true,
     displayName: "Optimism",
     queryName: "optimism",
     chainId: import_chains.optimism.id,
@@ -26060,7 +26061,6 @@ var Chains = [
     }
   },
   {
-    disabled: true,
     displayName: "Arbitrum One",
     queryName: "arbitrum",
     chainId: import_chains.arbitrum.id,

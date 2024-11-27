@@ -254,6 +254,7 @@ const Chains: ChainInfo[] = [
 		},
 	},
 	{
+		disabled: true,
 		displayName: 'Optimism',
 		queryName: 'optimism',
 		chainId: optimism.id,
@@ -539,7 +540,6 @@ const Chains: ChainInfo[] = [
 		},
 	},
 	{
-		disabled: true,
 		displayName: 'Arbitrum One',
 		queryName: 'arbitrum',
 		chainId: arbitrum.id,
