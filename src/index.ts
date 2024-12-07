@@ -11,7 +11,13 @@ import Chains, {
 } from './chains';
 import { contractsParams, getContractsParams } from './contracts_params';
 import { KnownMediatorPools, MediatorPool, MediatorPools } from './mediator_pools';
-import { findTokenInLocalhost, findTokenInSynthetic, getTokenInfo, TokenLists } from './tokens_list';
+import {
+	addTokenToLocalhost,
+	findTokenInLocalhost,
+	findTokenInSynthetic,
+	getTokenInfo,
+	TokenLists,
+} from './tokens_list';
 import * as AbiTypes from './typechain/index';
 import { ChainInfo, ChainNames } from './types/chain';
 import * as ContractParamTypes from './types/contract';
@@ -22,6 +28,7 @@ export * from './types/token';
 export {
 	Abi,
 	AbiTypes,
+	addTokenToLocalhost,
 	BadgeManifest,
 	BadgeManifests,
 	ChainBadgeManifest,

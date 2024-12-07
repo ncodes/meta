@@ -65,3 +65,11 @@ export function findTokenInSynthetic(address: string): TokenList.Token | undefin
 		return token;
 	});
 }
+
+/**
+ * Add tokens to the localhost token list
+ * @param tokens The tokens to add
+ */
+export function addTokenToLocalhost(tokens: TokenList.Token[]) {
+	TokenLists.localhost.tokens.push(...tokens);
+}

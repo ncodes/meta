@@ -327,6 +327,11 @@ declare function findTokenInLocalhost(address: string): TokenList.Token | undefi
  * @param address The target address
  */
 declare function findTokenInSynthetic(address: string): TokenList.Token | undefined;
+/**
+ * Add tokens to the localhost token list
+ * @param tokens The tokens to add
+ */
+declare function addTokenToLocalhost(tokens: TokenList.Token[]): void;
 
 interface TypedDeferredTopicFilter<_TCEvent extends TypedContractEvent> extends DeferredTopicFilter {
 }
@@ -33738,4 +33743,4 @@ declare function getCurrency(name: string): string | undefined;
  */
 declare function getRegions(name: string): string[] | undefined;
 
-export { Abi, index as AbiTypes, type BadgeManifest, BadgeManifests, type ChainBadgeManifest, type ChainInfo, type ChainNames, type ContractInfo, type ContractNames, contract as ContractParamTypes, type Contracts, type KnownMediatorPools, type MediatorPool, MediatorPools, PaymentMethodType, PaymentMethods, TokenList, TokenLists, contractsParams, Chains as default, findTokenInLocalhost, findTokenInSynthetic, getChain, getChainByName, getChainID, getChainNames, getChains, getChainsID, getContractsParams, getCurrency, getLogoUrl, getPaymentMethod, getRegions, getShortName, getTokenInfo, isValidChain, parseBadgeLocals };
+export { Abi, index as AbiTypes, type BadgeManifest, BadgeManifests, type ChainBadgeManifest, type ChainInfo, type ChainNames, type ContractInfo, type ContractNames, contract as ContractParamTypes, type Contracts, type KnownMediatorPools, type MediatorPool, MediatorPools, PaymentMethodType, PaymentMethods, TokenList, TokenLists, addTokenToLocalhost, contractsParams, Chains as default, findTokenInLocalhost, findTokenInSynthetic, getChain, getChainByName, getChainID, getChainNames, getChains, getChainsID, getContractsParams, getCurrency, getLogoUrl, getPaymentMethod, getRegions, getShortName, getTokenInfo, isValidChain, parseBadgeLocals };

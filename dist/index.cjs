@@ -38,6 +38,7 @@ __export(src_exports, {
   PaymentMethodType: () => PaymentMethodType,
   PaymentMethods: () => PaymentMethods,
   TokenLists: () => TokenLists,
+  addTokenToLocalhost: () => addTokenToLocalhost,
   contractsParams: () => contractsParams,
   default: () => src_default,
   findTokenInLocalhost: () => findTokenInLocalhost,
@@ -31413,59 +31414,7 @@ var localhost_default = {
   name: "Joint Labs: Localhost",
   logoURI: "https://trustwallet.com/assets/images/favicon.png",
   timestamp: "2021-10-07T08:50:36.056Z",
-  tokens: [
-    {
-      asset: "0002",
-      type: "ERC20",
-      address: "0x9d4454B023096f34B160D6B654540c56A1F81688",
-      name: "WETH LOCAL",
-      symbol: "WETH",
-      decimals: 18,
-      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2/logo.png",
-      price: 0
-    },
-    {
-      asset: "0000",
-      type: "NATIVE",
-      address: "0x4826533B4897376654Bb4d4AD88B7faFD0C98528",
-      name: "ETH",
-      symbol: "ETH",
-      native: true,
-      decimals: 18,
-      logoURI: "https://files.joint.exchange/images/eth.svg",
-      price: 0
-    },
-    {
-      asset: "0001",
-      type: "ERC20",
-      address: "0xDc64a140Aa3E981100a9becA4E685f962f0cF6C9",
-      name: "Joint LOCAL",
-      symbol: "JOIN",
-      decimals: 18,
-      logoURI: "https://files.joint.exchange/images/join.svg",
-      price: 1
-    },
-    {
-      asset: "0003",
-      type: "ERC20",
-      address: "0x5eb3Bc0a489C5A8288765d2336659EbCA68FCd00",
-      name: "UNI LOCAL",
-      symbol: "UNI",
-      decimals: 18,
-      logoURI: "https://assets-cdn.trustwallet.com/blockchains/ethereum/assets/0x1f9840a85d5aF5bf1D1762F925BDADdC4201F984/logo.png",
-      price: 0
-    },
-    {
-      asset: "0004",
-      type: "SYNTHETIC",
-      address: "0x9d4454B023096f34B160D6B654540c56A1F81688",
-      name: "NGN LOCAL",
-      symbol: "NGN",
-      decimals: 18,
-      logoURI: "https://files.joint.exchange/images/nigeria.svg",
-      price: 0
-    }
-  ],
+  tokens: [],
   version: {
     major: 6,
     minor: 0,
@@ -31800,6 +31749,9 @@ function findTokenInSynthetic(address) {
     token.isSynthetic = token.isSynthetic || token.type == "SYNTHETIC";
     return token;
   });
+}
+function addTokenToLocalhost(tokens) {
+  TokenLists.localhost.tokens.push(...tokens);
 }
 
 // src/typechain/index.ts
@@ -63286,6 +63238,7 @@ var src_default = chains_default;
   PaymentMethodType,
   PaymentMethods,
   TokenLists,
+  addTokenToLocalhost,
   contractsParams,
   findTokenInLocalhost,
   findTokenInSynthetic,
