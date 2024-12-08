@@ -472,6 +472,65 @@ const _abi = [
       },
     ],
     name: "createMarket",
+    outputs: [
+      {
+        internalType: "address",
+        name: "",
+        type: "address",
+      },
+    ],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "base",
+        type: "address",
+      },
+      {
+        internalType: "address",
+        name: "quote",
+        type: "address",
+      },
+      {
+        internalType: "enum Structs.AssetType",
+        name: "baseType",
+        type: "uint8",
+      },
+      {
+        internalType: "enum Structs.AssetType",
+        name: "quoteType",
+        type: "uint8",
+      },
+      {
+        internalType: "bool",
+        name: "permPut",
+        type: "bool",
+      },
+      {
+        internalType: "bool",
+        name: "permSwap",
+        type: "bool",
+      },
+      {
+        internalType: "uint256",
+        name: "commission",
+        type: "uint256",
+      },
+      {
+        internalType: "uint256",
+        name: "mediatePoolId",
+        type: "uint256",
+      },
+      {
+        internalType: "address",
+        name: "manager",
+        type: "address",
+      },
+    ],
+    name: "createMarketWithManager",
     outputs: [],
     stateMutability: "nonpayable",
     type: "function",
@@ -1190,24 +1249,6 @@ const _abi = [
       },
     ],
     name: "setDisputeDelayDuration",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
-        internalType: "address",
-        name: "id",
-        type: "address",
-      },
-      {
-        internalType: "address",
-        name: "mgr",
-        type: "address",
-      },
-    ],
-    name: "setManager",
     outputs: [],
     stateMutability: "nonpayable",
     type: "function",

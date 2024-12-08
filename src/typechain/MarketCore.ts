@@ -106,6 +106,7 @@ export interface MarketCoreInterface extends Interface {
       | "allowZeroOfferPrice"
       | "badge"
       | "createMarket"
+      | "createMarketWithManager"
       | "defaultDisputeDelayDur"
       | "getMarket"
       | "getNativeAssetAddr"
@@ -133,7 +134,6 @@ export interface MarketCoreInterface extends Interface {
       | "setCounters"
       | "setDefaultDisputeDelayDuration"
       | "setDisputeDelayDuration"
-      | "setManager"
       | "setMarket"
       | "setMediatorManager"
       | "setNativeAssetAddr"
@@ -184,6 +184,20 @@ export interface MarketCoreInterface extends Interface {
       boolean,
       BigNumberish,
       BigNumberish
+    ]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "createMarketWithManager",
+    values: [
+      AddressLike,
+      AddressLike,
+      BigNumberish,
+      BigNumberish,
+      boolean,
+      boolean,
+      BigNumberish,
+      BigNumberish,
+      AddressLike
     ]
   ): string;
   encodeFunctionData(
@@ -292,10 +306,6 @@ export interface MarketCoreInterface extends Interface {
     values: [AddressLike, BigNumberish]
   ): string;
   encodeFunctionData(
-    functionFragment: "setManager",
-    values: [AddressLike, AddressLike]
-  ): string;
-  encodeFunctionData(
     functionFragment: "setMarket",
     values: [AddressLike, Structs.MarketStruct]
   ): string;
@@ -339,6 +349,10 @@ export interface MarketCoreInterface extends Interface {
   decodeFunctionResult(functionFragment: "badge", data: BytesLike): Result;
   decodeFunctionResult(
     functionFragment: "createMarket",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "createMarketWithManager",
     data: BytesLike
   ): Result;
   decodeFunctionResult(
@@ -425,7 +439,6 @@ export interface MarketCoreInterface extends Interface {
     functionFragment: "setDisputeDelayDuration",
     data: BytesLike
   ): Result;
-  decodeFunctionResult(functionFragment: "setManager", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "setMarket", data: BytesLike): Result;
   decodeFunctionResult(
     functionFragment: "setMediatorManager",
@@ -805,6 +818,22 @@ export interface MarketCore extends BaseContract {
       commission: BigNumberish,
       mediatePoolId: BigNumberish
     ],
+    [string],
+    "nonpayable"
+  >;
+
+  createMarketWithManager: TypedContractMethod<
+    [
+      base: AddressLike,
+      quote: AddressLike,
+      baseType: BigNumberish,
+      quoteType: BigNumberish,
+      permPut: boolean,
+      permSwap: boolean,
+      commission: BigNumberish,
+      mediatePoolId: BigNumberish,
+      manager: AddressLike
+    ],
     [void],
     "nonpayable"
   >;
@@ -965,12 +994,6 @@ export interface MarketCore extends BaseContract {
     "nonpayable"
   >;
 
-  setManager: TypedContractMethod<
-    [id: AddressLike, mgr: AddressLike],
-    [void],
-    "nonpayable"
-  >;
-
   setMarket: TypedContractMethod<
     [id: AddressLike, upd: Structs.MarketStruct],
     [void],
@@ -1043,6 +1066,23 @@ export interface MarketCore extends BaseContract {
       permSwap: boolean,
       commission: BigNumberish,
       mediatePoolId: BigNumberish
+    ],
+    [string],
+    "nonpayable"
+  >;
+  getFunction(
+    nameOrSignature: "createMarketWithManager"
+  ): TypedContractMethod<
+    [
+      base: AddressLike,
+      quote: AddressLike,
+      baseType: BigNumberish,
+      quoteType: BigNumberish,
+      permPut: boolean,
+      permSwap: boolean,
+      commission: BigNumberish,
+      mediatePoolId: BigNumberish,
+      manager: AddressLike
     ],
     [void],
     "nonpayable"
@@ -1219,13 +1259,6 @@ export interface MarketCore extends BaseContract {
     nameOrSignature: "setDisputeDelayDuration"
   ): TypedContractMethod<
     [id: AddressLike, duration: BigNumberish],
-    [void],
-    "nonpayable"
-  >;
-  getFunction(
-    nameOrSignature: "setManager"
-  ): TypedContractMethod<
-    [id: AddressLike, mgr: AddressLike],
     [void],
     "nonpayable"
   >;

@@ -2658,50 +2658,6 @@ var Core_default = [
       {
         indexed: false,
         internalType: "address",
-        name: "manager",
-        type: "address"
-      },
-      {
-        indexed: false,
-        internalType: "address",
-        name: "finalizer",
-        type: "address"
-      },
-      {
-        indexed: false,
-        internalType: "uint256",
-        name: "orderId",
-        type: "uint256"
-      },
-      {
-        indexed: false,
-        internalType: "uint256",
-        name: "action",
-        type: "uint256"
-      }
-    ],
-    name: "FinalizedByManagerSig",
-    type: "event"
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: false,
-        internalType: "uint256",
-        name: "bp",
-        type: "uint256"
-      }
-    ],
-    name: "NFTDiscountUpdated",
-    type: "event"
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: false,
-        internalType: "address",
         name: "marketId",
         type: "address"
       },
@@ -3224,71 +3180,9 @@ var Core_default = [
         internalType: "uint256",
         name: "amount",
         type: "uint256"
-      },
-      {
-        indexed: false,
-        internalType: "address",
-        name: "convAsset",
-        type: "address"
-      },
-      {
-        indexed: false,
-        internalType: "uint256",
-        name: "convAmount",
-        type: "uint256"
       }
     ],
     name: "TransferredToFeePool",
-    type: "event"
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: false,
-        internalType: "address",
-        name: "swapRouter",
-        type: "address"
-      },
-      {
-        indexed: false,
-        internalType: "address",
-        name: "ethErc20Addr",
-        type: "address"
-      },
-      {
-        indexed: false,
-        internalType: "uint256",
-        name: "poolFee",
-        type: "uint256"
-      }
-    ],
-    name: "UpdatedAMMInfo",
-    type: "event"
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: false,
-        internalType: "address",
-        name: "input",
-        type: "address"
-      },
-      {
-        indexed: false,
-        internalType: "address",
-        name: "output",
-        type: "address"
-      },
-      {
-        indexed: false,
-        internalType: "uint256",
-        name: "poolFee",
-        type: "uint256"
-      }
-    ],
-    name: "UpdatedAMMPoolInfo",
     type: "event"
   },
   {
@@ -3431,18 +3325,6 @@ var Core_default = [
         internalType: "uint256[]",
         name: "wantAndIds",
         type: "uint256[]"
-      },
-      {
-        indexed: false,
-        internalType: "uint256",
-        name: "minSwap",
-        type: "uint256"
-      },
-      {
-        indexed: false,
-        internalType: "uint256",
-        name: "maxSwap",
-        type: "uint256"
       },
       {
         indexed: false,
@@ -3598,19 +3480,6 @@ var Core_default = [
     anonymous: false,
     inputs: [
       {
-        indexed: false,
-        internalType: "address",
-        name: "addr",
-        type: "address"
-      }
-    ],
-    name: "UpdatedNFT",
-    type: "event"
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
         indexed: true,
         internalType: "address",
         name: "provider",
@@ -3744,6 +3613,19 @@ var Core_default = [
     type: "event"
   },
   {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: false,
+        internalType: "address",
+        name: "addr",
+        type: "address"
+      }
+    ],
+    name: "UpdatedProviderRegistry",
+    type: "event"
+  },
+  {
     inputs: [
       {
         internalType: "uint256",
@@ -3827,29 +3709,6 @@ var Core_default = [
   {
     inputs: [
       {
-        internalType: "uint256",
-        name: "id",
-        type: "uint256"
-      },
-      {
-        internalType: "uint256",
-        name: "expireAt",
-        type: "uint256"
-      },
-      {
-        internalType: "bytes",
-        name: "signature",
-        type: "bytes"
-      }
-    ],
-    name: "cancelOrderByManagerSig",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function"
-  },
-  {
-    inputs: [
-      {
         internalType: "address",
         name: "mid",
         type: "address"
@@ -3922,49 +3781,56 @@ var Core_default = [
   {
     inputs: [
       {
-        internalType: "address",
-        name: "marketId",
-        type: "address"
-      },
-      {
-        internalType: "address",
-        name: "provider",
-        type: "address"
-      },
-      {
-        internalType: "address",
-        name: "recipient",
-        type: "address"
-      },
-      {
-        internalType: "uint256",
-        name: "lid",
-        type: "uint256"
-      },
-      {
-        internalType: "uint256",
-        name: "amount",
-        type: "uint256"
-      },
-      {
-        internalType: "uint256",
-        name: "price",
-        type: "uint256"
-      },
-      {
-        internalType: "uint256[]",
-        name: "ids",
-        type: "uint256[]"
-      },
-      {
-        internalType: "uint256",
-        name: "deadline",
-        type: "uint256"
-      },
-      {
-        internalType: "uint256",
-        name: "operator",
-        type: "uint256"
+        components: [
+          {
+            internalType: "address",
+            name: "marketId",
+            type: "address"
+          },
+          {
+            internalType: "address",
+            name: "provider",
+            type: "address"
+          },
+          {
+            internalType: "address",
+            name: "recipient",
+            type: "address"
+          },
+          {
+            internalType: "uint256",
+            name: "lid",
+            type: "uint256"
+          },
+          {
+            internalType: "uint256",
+            name: "amount",
+            type: "uint256"
+          },
+          {
+            internalType: "uint256",
+            name: "price",
+            type: "uint256"
+          },
+          {
+            internalType: "uint256[]",
+            name: "ids",
+            type: "uint256[]"
+          },
+          {
+            internalType: "uint256",
+            name: "deadline",
+            type: "uint256"
+          },
+          {
+            internalType: "uint256",
+            name: "operator",
+            type: "uint256"
+          }
+        ],
+        internalType: "struct StructsLib.CreateOfferParams",
+        name: "params",
+        type: "tuple"
       }
     ],
     name: "createOffer",
@@ -4062,16 +3928,6 @@ var Core_default = [
           {
             internalType: "uint256",
             name: "price",
-            type: "uint256"
-          },
-          {
-            internalType: "uint256",
-            name: "minSwap",
-            type: "uint256"
-          },
-          {
-            internalType: "uint256",
-            name: "maxSwap",
             type: "uint256"
           },
           {
@@ -4657,29 +4513,6 @@ var Core_default = [
   {
     inputs: [
       {
-        internalType: "uint256",
-        name: "id",
-        type: "uint256"
-      },
-      {
-        internalType: "uint256",
-        name: "expireAt",
-        type: "uint256"
-      },
-      {
-        internalType: "bytes",
-        name: "signature",
-        type: "bytes"
-      }
-    ],
-    name: "markOrderAsPaidByManagerSig",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function"
-  },
-  {
-    inputs: [
-      {
         internalType: "address",
         name: "",
         type: "address"
@@ -4819,77 +4652,8 @@ var Core_default = [
     type: "function"
   },
   {
-    inputs: [
-      {
-        internalType: "uint256",
-        name: "id",
-        type: "uint256"
-      },
-      {
-        internalType: "uint256",
-        name: "expireAt",
-        type: "uint256"
-      },
-      {
-        internalType: "bytes",
-        name: "signature",
-        type: "bytes"
-      }
-    ],
-    name: "releaseOrderByManagerSig",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function"
-  },
-  {
     inputs: [],
     name: "renounceOwnership",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function"
-  },
-  {
-    inputs: [
-      {
-        internalType: "address",
-        name: "swapRouter",
-        type: "address"
-      },
-      {
-        internalType: "address",
-        name: "ethErc20Addr",
-        type: "address"
-      },
-      {
-        internalType: "uint256",
-        name: "poolFee",
-        type: "uint256"
-      }
-    ],
-    name: "setAmmInfo",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function"
-  },
-  {
-    inputs: [
-      {
-        internalType: "address",
-        name: "input",
-        type: "address"
-      },
-      {
-        internalType: "address",
-        name: "out",
-        type: "address"
-      },
-      {
-        internalType: "uint256",
-        name: "poolFee",
-        type: "uint256"
-      }
-    ],
-    name: "setAmmPoolInfo",
     outputs: [],
     stateMutability: "nonpayable",
     type: "function"
@@ -4916,19 +4680,6 @@ var Core_default = [
       }
     ],
     name: "setBadgeMgr",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function"
-  },
-  {
-    inputs: [
-      {
-        internalType: "uint256",
-        name: "bp",
-        type: "uint256"
-      }
-    ],
-    name: "setDiscountForNFTHolder",
     outputs: [],
     stateMutability: "nonpayable",
     type: "function"
@@ -5076,19 +4827,6 @@ var Core_default = [
         type: "address"
       }
     ],
-    name: "setNFT",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function"
-  },
-  {
-    inputs: [
-      {
-        internalType: "address",
-        name: "addr",
-        type: "address"
-      }
-    ],
     name: "setOperator",
     outputs: [],
     stateMutability: "nonpayable",
@@ -5164,6 +4902,19 @@ var Core_default = [
       }
     ],
     name: "setProtoFeeSplit",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function"
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "addr",
+        type: "address"
+      }
+    ],
+    name: "setProviderRegistry",
     outputs: [],
     stateMutability: "nonpayable",
     type: "function"
@@ -5285,11 +5036,6 @@ var Core_default = [
         internalType: "address",
         name: "inventor",
         type: "address"
-      },
-      {
-        internalType: "address",
-        name: "ammSwapRouter",
-        type: "address"
       }
     ],
     stateMutability: "view",
@@ -5300,35 +5046,13 @@ var Core_default = [
     name: "state2",
     outputs: [
       {
-        components: [
-          {
-            internalType: "uint256",
-            name: "nftDiscountBp",
-            type: "uint256"
-          },
-          {
-            internalType: "uint256",
-            name: "ammEthPoolFee",
-            type: "uint256"
-          }
-        ],
-        internalType: "struct StructsLib.UintSlotState2",
-        name: "ints",
-        type: "tuple"
-      },
-      {
         internalType: "address",
         name: "disputeManager",
         type: "address"
       },
       {
-        internalType: "address",
-        name: "nft",
-        type: "address"
-      },
-      {
-        internalType: "address",
-        name: "ammEth",
+        internalType: "contract IProviderRegistry",
+        name: "provReg",
         type: "address"
       },
       {
@@ -5397,49 +5121,61 @@ var Core_default = [
   {
     inputs: [
       {
-        internalType: "address",
-        name: "marketId",
-        type: "address"
-      },
-      {
-        internalType: "address",
-        name: "provider",
-        type: "address"
-      },
-      {
-        internalType: "address",
-        name: "recipient",
-        type: "address"
-      },
-      {
-        internalType: "uint256",
-        name: "lid",
-        type: "uint256"
-      },
-      {
-        internalType: "uint256",
-        name: "amount",
-        type: "uint256"
-      },
-      {
-        internalType: "uint256",
-        name: "maxPrice",
-        type: "uint256"
-      },
-      {
-        internalType: "uint256[]",
-        name: "ids",
-        type: "uint256[]"
-      },
-      {
-        internalType: "uint256",
-        name: "txDeadline",
-        type: "uint256"
-      },
-      {
-        internalType: "uint256",
-        name: "operator",
-        type: "uint256"
+        components: [
+          {
+            internalType: "address",
+            name: "marketId",
+            type: "address"
+          },
+          {
+            internalType: "address",
+            name: "provider",
+            type: "address"
+          },
+          {
+            internalType: "address",
+            name: "recipient",
+            type: "address"
+          },
+          {
+            internalType: "uint256",
+            name: "lid",
+            type: "uint256"
+          },
+          {
+            internalType: "uint256",
+            name: "amount",
+            type: "uint256"
+          },
+          {
+            internalType: "uint256",
+            name: "maxPrice",
+            type: "uint256"
+          },
+          {
+            internalType: "uint256[]",
+            name: "ids",
+            type: "uint256[]"
+          },
+          {
+            internalType: "uint256",
+            name: "expireAt",
+            type: "uint256"
+          },
+          {
+            internalType: "uint256",
+            name: "operator",
+            type: "uint256"
+          },
+          {
+            internalType: "bytes",
+            name: "marketMgrData",
+            type: "bytes"
+          }
+        ],
+        internalType: "struct StructsLib.SwapQuoteForBaseParams",
+        name: "params",
+        type: "tuple"
       }
     ],
     name: "swapQuoteForBase",
@@ -5512,44 +5248,66 @@ var Core_default = [
   {
     inputs: [
       {
-        internalType: "address",
-        name: "marketId",
-        type: "address"
-      },
-      {
-        internalType: "uint256",
-        name: "lid",
-        type: "uint256"
-      },
-      {
-        internalType: "bool",
-        name: "deduct",
-        type: "bool"
-      },
-      {
-        internalType: "address",
-        name: "target",
-        type: "address"
-      },
-      {
-        internalType: "uint256[2]",
-        name: "amountAndPrice",
-        type: "uint256[2]"
-      },
-      {
-        internalType: "uint256[]",
-        name: "wantOrIds",
-        type: "uint256[]"
-      },
-      {
-        internalType: "uint256[]",
-        name: "wantAndIds",
-        type: "uint256[]"
-      },
-      {
-        internalType: "uint256[5]",
-        name: "limits",
-        type: "uint256[5]"
+        components: [
+          {
+            internalType: "address",
+            name: "marketId",
+            type: "address"
+          },
+          {
+            internalType: "address",
+            name: "target",
+            type: "address"
+          },
+          {
+            internalType: "uint256",
+            name: "lid",
+            type: "uint256"
+          },
+          {
+            internalType: "uint256",
+            name: "amount",
+            type: "uint256"
+          },
+          {
+            internalType: "uint256",
+            name: "price",
+            type: "uint256"
+          },
+          {
+            internalType: "uint256",
+            name: "timeToPay",
+            type: "uint256"
+          },
+          {
+            internalType: "uint256",
+            name: "expireAt",
+            type: "uint256"
+          },
+          {
+            internalType: "uint256[]",
+            name: "wantOrIds",
+            type: "uint256[]"
+          },
+          {
+            internalType: "uint256[]",
+            name: "wantAndIds",
+            type: "uint256[]"
+          },
+          {
+            internalType: "bool",
+            name: "deduct",
+            type: "bool"
+          },
+          {
+            internalType: "bool",
+            name: "pause",
+            type: "bool"
+          }
+        ],
+        internalType: "struct StructsLib.UpdateFungibleLiquidityParams",
+        name: "params",
+        type: "tuple"
       }
     ],
     name: "updateFungibleLiquidity",
@@ -5593,49 +5351,66 @@ var Core_default = [
   {
     inputs: [
       {
-        internalType: "address",
-        name: "marketId",
-        type: "address"
-      },
-      {
-        internalType: "uint256",
-        name: "lid",
-        type: "uint256"
-      },
-      {
-        internalType: "bool",
-        name: "deduct",
-        type: "bool"
-      },
-      {
-        internalType: "address",
-        name: "target",
-        type: "address"
-      },
-      {
-        internalType: "uint256[]",
-        name: "ids",
-        type: "uint256[]"
-      },
-      {
-        internalType: "uint256",
-        name: "price",
-        type: "uint256"
-      },
-      {
-        internalType: "uint256[]",
-        name: "wantOrIds",
-        type: "uint256[]"
-      },
-      {
-        internalType: "uint256[]",
-        name: "wantAndIds",
-        type: "uint256[]"
-      },
-      {
-        internalType: "uint256[3]",
-        name: "limits",
-        type: "uint256[3]"
+        components: [
+          {
+            internalType: "address",
+            name: "marketId",
+            type: "address"
+          },
+          {
+            internalType: "address",
+            name: "target",
+            type: "address"
+          },
+          {
+            internalType: "uint256",
+            name: "lid",
+            type: "uint256"
+          },
+          {
+            internalType: "uint256",
+            name: "price",
+            type: "uint256"
+          },
+          {
+            internalType: "uint256",
+            name: "timeToPay",
+            type: "uint256"
+          },
+          {
+            internalType: "uint256",
+            name: "expireAt",
+            type: "uint256"
+          },
+          {
+            internalType: "uint256[]",
+            name: "ids",
+            type: "uint256[]"
+          },
+          {
+            internalType: "uint256[]",
+            name: "wantOrIds",
+            type: "uint256[]"
+          },
+          {
+            internalType: "uint256[]",
+            name: "wantAndIds",
+            type: "uint256[]"
+          },
+          {
+            internalType: "bool",
+            name: "deduct",
+            type: "bool"
+          },
+          {
+            internalType: "bool",
+            name: "pause",
+            type: "bool"
+          }
+        ],
+        internalType: "struct StructsLib.UpdateNonFungibleLiquidityParams",
+        name: "params",
+        type: "tuple"
       }
     ],
     name: "updateNonFungibleLiquidity",
@@ -10078,6 +9853,65 @@ var MarketCore_default = [
       }
     ],
     name: "createMarket",
+    outputs: [
+      {
+        internalType: "address",
+        name: "",
+        type: "address"
+      }
+    ],
+    stateMutability: "nonpayable",
+    type: "function"
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "base",
+        type: "address"
+      },
+      {
+        internalType: "address",
+        name: "quote",
+        type: "address"
+      },
+      {
+        internalType: "enum Structs.AssetType",
+        name: "baseType",
+        type: "uint8"
+      },
+      {
+        internalType: "enum Structs.AssetType",
+        name: "quoteType",
+        type: "uint8"
+      },
+      {
+        internalType: "bool",
+        name: "permPut",
+        type: "bool"
+      },
+      {
+        internalType: "bool",
+        name: "permSwap",
+        type: "bool"
+      },
+      {
+        internalType: "uint256",
+        name: "commission",
+        type: "uint256"
+      },
+      {
+        internalType: "uint256",
+        name: "mediatePoolId",
+        type: "uint256"
+      },
+      {
+        internalType: "address",
+        name: "manager",
+        type: "address"
+      }
+    ],
+    name: "createMarketWithManager",
     outputs: [],
     stateMutability: "nonpayable",
     type: "function"
@@ -10796,24 +10630,6 @@ var MarketCore_default = [
       }
     ],
     name: "setDisputeDelayDuration",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function"
-  },
-  {
-    inputs: [
-      {
-        internalType: "address",
-        name: "id",
-        type: "address"
-      },
-      {
-        internalType: "address",
-        name: "mgr",
-        type: "address"
-      }
-    ],
-    name: "setManager",
     outputs: [],
     stateMutability: "nonpayable",
     type: "function"
@@ -41725,50 +41541,6 @@ var _abi4 = [
       {
         indexed: false,
         internalType: "address",
-        name: "manager",
-        type: "address"
-      },
-      {
-        indexed: false,
-        internalType: "address",
-        name: "finalizer",
-        type: "address"
-      },
-      {
-        indexed: false,
-        internalType: "uint256",
-        name: "orderId",
-        type: "uint256"
-      },
-      {
-        indexed: false,
-        internalType: "uint256",
-        name: "action",
-        type: "uint256"
-      }
-    ],
-    name: "FinalizedByManagerSig",
-    type: "event"
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: false,
-        internalType: "uint256",
-        name: "bp",
-        type: "uint256"
-      }
-    ],
-    name: "NFTDiscountUpdated",
-    type: "event"
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: false,
-        internalType: "address",
         name: "marketId",
         type: "address"
       },
@@ -42291,71 +42063,9 @@ var _abi4 = [
         internalType: "uint256",
         name: "amount",
         type: "uint256"
-      },
-      {
-        indexed: false,
-        internalType: "address",
-        name: "convAsset",
-        type: "address"
-      },
-      {
-        indexed: false,
-        internalType: "uint256",
-        name: "convAmount",
-        type: "uint256"
       }
     ],
     name: "TransferredToFeePool",
-    type: "event"
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: false,
-        internalType: "address",
-        name: "swapRouter",
-        type: "address"
-      },
-      {
-        indexed: false,
-        internalType: "address",
-        name: "ethErc20Addr",
-        type: "address"
-      },
-      {
-        indexed: false,
-        internalType: "uint256",
-        name: "poolFee",
-        type: "uint256"
-      }
-    ],
-    name: "UpdatedAMMInfo",
-    type: "event"
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: false,
-        internalType: "address",
-        name: "input",
-        type: "address"
-      },
-      {
-        indexed: false,
-        internalType: "address",
-        name: "output",
-        type: "address"
-      },
-      {
-        indexed: false,
-        internalType: "uint256",
-        name: "poolFee",
-        type: "uint256"
-      }
-    ],
-    name: "UpdatedAMMPoolInfo",
     type: "event"
   },
   {
@@ -42498,18 +42208,6 @@ var _abi4 = [
         internalType: "uint256[]",
         name: "wantAndIds",
         type: "uint256[]"
-      },
-      {
-        indexed: false,
-        internalType: "uint256",
-        name: "minSwap",
-        type: "uint256"
-      },
-      {
-        indexed: false,
-        internalType: "uint256",
-        name: "maxSwap",
-        type: "uint256"
       },
       {
         indexed: false,
@@ -42665,19 +42363,6 @@ var _abi4 = [
     anonymous: false,
     inputs: [
       {
-        indexed: false,
-        internalType: "address",
-        name: "addr",
-        type: "address"
-      }
-    ],
-    name: "UpdatedNFT",
-    type: "event"
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
         indexed: true,
         internalType: "address",
         name: "provider",
@@ -42811,6 +42496,19 @@ var _abi4 = [
     type: "event"
   },
   {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: false,
+        internalType: "address",
+        name: "addr",
+        type: "address"
+      }
+    ],
+    name: "UpdatedProviderRegistry",
+    type: "event"
+  },
+  {
     inputs: [
       {
         internalType: "uint256",
@@ -42894,29 +42592,6 @@ var _abi4 = [
   {
     inputs: [
       {
-        internalType: "uint256",
-        name: "id",
-        type: "uint256"
-      },
-      {
-        internalType: "uint256",
-        name: "expireAt",
-        type: "uint256"
-      },
-      {
-        internalType: "bytes",
-        name: "signature",
-        type: "bytes"
-      }
-    ],
-    name: "cancelOrderByManagerSig",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function"
-  },
-  {
-    inputs: [
-      {
         internalType: "address",
         name: "mid",
         type: "address"
@@ -42989,49 +42664,56 @@ var _abi4 = [
   {
     inputs: [
       {
-        internalType: "address",
-        name: "marketId",
-        type: "address"
-      },
-      {
-        internalType: "address",
-        name: "provider",
-        type: "address"
-      },
-      {
-        internalType: "address",
-        name: "recipient",
-        type: "address"
-      },
-      {
-        internalType: "uint256",
-        name: "lid",
-        type: "uint256"
-      },
-      {
-        internalType: "uint256",
-        name: "amount",
-        type: "uint256"
-      },
-      {
-        internalType: "uint256",
-        name: "price",
-        type: "uint256"
-      },
-      {
-        internalType: "uint256[]",
-        name: "ids",
-        type: "uint256[]"
-      },
-      {
-        internalType: "uint256",
-        name: "deadline",
-        type: "uint256"
-      },
-      {
-        internalType: "uint256",
-        name: "operator",
-        type: "uint256"
+        components: [
+          {
+            internalType: "address",
+            name: "marketId",
+            type: "address"
+          },
+          {
+            internalType: "address",
+            name: "provider",
+            type: "address"
+          },
+          {
+            internalType: "address",
+            name: "recipient",
+            type: "address"
+          },
+          {
+            internalType: "uint256",
+            name: "lid",
+            type: "uint256"
+          },
+          {
+            internalType: "uint256",
+            name: "amount",
+            type: "uint256"
+          },
+          {
+            internalType: "uint256",
+            name: "price",
+            type: "uint256"
+          },
+          {
+            internalType: "uint256[]",
+            name: "ids",
+            type: "uint256[]"
+          },
+          {
+            internalType: "uint256",
+            name: "deadline",
+            type: "uint256"
+          },
+          {
+            internalType: "uint256",
+            name: "operator",
+            type: "uint256"
+          }
+        ],
+        internalType: "struct StructsLib.CreateOfferParams",
+        name: "params",
+        type: "tuple"
       }
     ],
     name: "createOffer",
@@ -43129,16 +42811,6 @@ var _abi4 = [
           {
             internalType: "uint256",
             name: "price",
-            type: "uint256"
-          },
-          {
-            internalType: "uint256",
-            name: "minSwap",
-            type: "uint256"
-          },
-          {
-            internalType: "uint256",
-            name: "maxSwap",
             type: "uint256"
           },
           {
@@ -43724,29 +43396,6 @@ var _abi4 = [
   {
     inputs: [
       {
-        internalType: "uint256",
-        name: "id",
-        type: "uint256"
-      },
-      {
-        internalType: "uint256",
-        name: "expireAt",
-        type: "uint256"
-      },
-      {
-        internalType: "bytes",
-        name: "signature",
-        type: "bytes"
-      }
-    ],
-    name: "markOrderAsPaidByManagerSig",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function"
-  },
-  {
-    inputs: [
-      {
         internalType: "address",
         name: "",
         type: "address"
@@ -43886,77 +43535,8 @@ var _abi4 = [
     type: "function"
   },
   {
-    inputs: [
-      {
-        internalType: "uint256",
-        name: "id",
-        type: "uint256"
-      },
-      {
-        internalType: "uint256",
-        name: "expireAt",
-        type: "uint256"
-      },
-      {
-        internalType: "bytes",
-        name: "signature",
-        type: "bytes"
-      }
-    ],
-    name: "releaseOrderByManagerSig",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function"
-  },
-  {
     inputs: [],
     name: "renounceOwnership",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function"
-  },
-  {
-    inputs: [
-      {
-        internalType: "address",
-        name: "swapRouter",
-        type: "address"
-      },
-      {
-        internalType: "address",
-        name: "ethErc20Addr",
-        type: "address"
-      },
-      {
-        internalType: "uint256",
-        name: "poolFee",
-        type: "uint256"
-      }
-    ],
-    name: "setAmmInfo",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function"
-  },
-  {
-    inputs: [
-      {
-        internalType: "address",
-        name: "input",
-        type: "address"
-      },
-      {
-        internalType: "address",
-        name: "out",
-        type: "address"
-      },
-      {
-        internalType: "uint256",
-        name: "poolFee",
-        type: "uint256"
-      }
-    ],
-    name: "setAmmPoolInfo",
     outputs: [],
     stateMutability: "nonpayable",
     type: "function"
@@ -43983,19 +43563,6 @@ var _abi4 = [
       }
     ],
     name: "setBadgeMgr",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function"
-  },
-  {
-    inputs: [
-      {
-        internalType: "uint256",
-        name: "bp",
-        type: "uint256"
-      }
-    ],
-    name: "setDiscountForNFTHolder",
     outputs: [],
     stateMutability: "nonpayable",
     type: "function"
@@ -44143,19 +43710,6 @@ var _abi4 = [
         type: "address"
       }
     ],
-    name: "setNFT",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function"
-  },
-  {
-    inputs: [
-      {
-        internalType: "address",
-        name: "addr",
-        type: "address"
-      }
-    ],
     name: "setOperator",
     outputs: [],
     stateMutability: "nonpayable",
@@ -44231,6 +43785,19 @@ var _abi4 = [
       }
     ],
     name: "setProtoFeeSplit",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function"
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "addr",
+        type: "address"
+      }
+    ],
+    name: "setProviderRegistry",
     outputs: [],
     stateMutability: "nonpayable",
     type: "function"
@@ -44352,11 +43919,6 @@ var _abi4 = [
         internalType: "address",
         name: "inventor",
         type: "address"
-      },
-      {
-        internalType: "address",
-        name: "ammSwapRouter",
-        type: "address"
       }
     ],
     stateMutability: "view",
@@ -44367,35 +43929,13 @@ var _abi4 = [
     name: "state2",
     outputs: [
       {
-        components: [
-          {
-            internalType: "uint256",
-            name: "nftDiscountBp",
-            type: "uint256"
-          },
-          {
-            internalType: "uint256",
-            name: "ammEthPoolFee",
-            type: "uint256"
-          }
-        ],
-        internalType: "struct StructsLib.UintSlotState2",
-        name: "ints",
-        type: "tuple"
-      },
-      {
         internalType: "address",
         name: "disputeManager",
         type: "address"
       },
       {
-        internalType: "address",
-        name: "nft",
-        type: "address"
-      },
-      {
-        internalType: "address",
-        name: "ammEth",
+        internalType: "contract IProviderRegistry",
+        name: "provReg",
         type: "address"
       },
       {
@@ -44464,49 +44004,61 @@ var _abi4 = [
   {
     inputs: [
       {
-        internalType: "address",
-        name: "marketId",
-        type: "address"
-      },
-      {
-        internalType: "address",
-        name: "provider",
-        type: "address"
-      },
-      {
-        internalType: "address",
-        name: "recipient",
-        type: "address"
-      },
-      {
-        internalType: "uint256",
-        name: "lid",
-        type: "uint256"
-      },
-      {
-        internalType: "uint256",
-        name: "amount",
-        type: "uint256"
-      },
-      {
-        internalType: "uint256",
-        name: "maxPrice",
-        type: "uint256"
-      },
-      {
-        internalType: "uint256[]",
-        name: "ids",
-        type: "uint256[]"
-      },
-      {
-        internalType: "uint256",
-        name: "txDeadline",
-        type: "uint256"
-      },
-      {
-        internalType: "uint256",
-        name: "operator",
-        type: "uint256"
+        components: [
+          {
+            internalType: "address",
+            name: "marketId",
+            type: "address"
+          },
+          {
+            internalType: "address",
+            name: "provider",
+            type: "address"
+          },
+          {
+            internalType: "address",
+            name: "recipient",
+            type: "address"
+          },
+          {
+            internalType: "uint256",
+            name: "lid",
+            type: "uint256"
+          },
+          {
+            internalType: "uint256",
+            name: "amount",
+            type: "uint256"
+          },
+          {
+            internalType: "uint256",
+            name: "maxPrice",
+            type: "uint256"
+          },
+          {
+            internalType: "uint256[]",
+            name: "ids",
+            type: "uint256[]"
+          },
+          {
+            internalType: "uint256",
+            name: "expireAt",
+            type: "uint256"
+          },
+          {
+            internalType: "uint256",
+            name: "operator",
+            type: "uint256"
+          },
+          {
+            internalType: "bytes",
+            name: "marketMgrData",
+            type: "bytes"
+          }
+        ],
+        internalType: "struct StructsLib.SwapQuoteForBaseParams",
+        name: "params",
+        type: "tuple"
       }
     ],
     name: "swapQuoteForBase",
@@ -44579,44 +44131,66 @@ var _abi4 = [
   {
     inputs: [
       {
-        internalType: "address",
-        name: "marketId",
-        type: "address"
-      },
-      {
-        internalType: "uint256",
-        name: "lid",
-        type: "uint256"
-      },
-      {
-        internalType: "bool",
-        name: "deduct",
-        type: "bool"
-      },
-      {
-        internalType: "address",
-        name: "target",
-        type: "address"
-      },
-      {
-        internalType: "uint256[2]",
-        name: "amountAndPrice",
-        type: "uint256[2]"
-      },
-      {
-        internalType: "uint256[]",
-        name: "wantOrIds",
-        type: "uint256[]"
-      },
-      {
-        internalType: "uint256[]",
-        name: "wantAndIds",
-        type: "uint256[]"
-      },
-      {
-        internalType: "uint256[5]",
-        name: "limits",
-        type: "uint256[5]"
+        components: [
+          {
+            internalType: "address",
+            name: "marketId",
+            type: "address"
+          },
+          {
+            internalType: "address",
+            name: "target",
+            type: "address"
+          },
+          {
+            internalType: "uint256",
+            name: "lid",
+            type: "uint256"
+          },
+          {
+            internalType: "uint256",
+            name: "amount",
+            type: "uint256"
+          },
+          {
+            internalType: "uint256",
+            name: "price",
+            type: "uint256"
+          },
+          {
+            internalType: "uint256",
+            name: "timeToPay",
+            type: "uint256"
+          },
+          {
+            internalType: "uint256",
+            name: "expireAt",
+            type: "uint256"
+          },
+          {
+            internalType: "uint256[]",
+            name: "wantOrIds",
+            type: "uint256[]"
+          },
+          {
+            internalType: "uint256[]",
+            name: "wantAndIds",
+            type: "uint256[]"
+          },
+          {
+            internalType: "bool",
+            name: "deduct",
+            type: "bool"
+          },
+          {
+            internalType: "bool",
+            name: "pause",
+            type: "bool"
+          }
+        ],
+        internalType: "struct StructsLib.UpdateFungibleLiquidityParams",
+        name: "params",
+        type: "tuple"
       }
     ],
     name: "updateFungibleLiquidity",
@@ -44660,49 +44234,66 @@ var _abi4 = [
   {
     inputs: [
       {
-        internalType: "address",
-        name: "marketId",
-        type: "address"
-      },
-      {
-        internalType: "uint256",
-        name: "lid",
-        type: "uint256"
-      },
-      {
-        internalType: "bool",
-        name: "deduct",
-        type: "bool"
-      },
-      {
-        internalType: "address",
-        name: "target",
-        type: "address"
-      },
-      {
-        internalType: "uint256[]",
-        name: "ids",
-        type: "uint256[]"
-      },
-      {
-        internalType: "uint256",
-        name: "price",
-        type: "uint256"
-      },
-      {
-        internalType: "uint256[]",
-        name: "wantOrIds",
-        type: "uint256[]"
-      },
-      {
-        internalType: "uint256[]",
-        name: "wantAndIds",
-        type: "uint256[]"
-      },
-      {
-        internalType: "uint256[3]",
-        name: "limits",
-        type: "uint256[3]"
+        components: [
+          {
+            internalType: "address",
+            name: "marketId",
+            type: "address"
+          },
+          {
+            internalType: "address",
+            name: "target",
+            type: "address"
+          },
+          {
+            internalType: "uint256",
+            name: "lid",
+            type: "uint256"
+          },
+          {
+            internalType: "uint256",
+            name: "price",
+            type: "uint256"
+          },
+          {
+            internalType: "uint256",
+            name: "timeToPay",
+            type: "uint256"
+          },
+          {
+            internalType: "uint256",
+            name: "expireAt",
+            type: "uint256"
+          },
+          {
+            internalType: "uint256[]",
+            name: "ids",
+            type: "uint256[]"
+          },
+          {
+            internalType: "uint256[]",
+            name: "wantOrIds",
+            type: "uint256[]"
+          },
+          {
+            internalType: "uint256[]",
+            name: "wantAndIds",
+            type: "uint256[]"
+          },
+          {
+            internalType: "bool",
+            name: "deduct",
+            type: "bool"
+          },
+          {
+            internalType: "bool",
+            name: "pause",
+            type: "bool"
+          }
+        ],
+        internalType: "struct StructsLib.UpdateNonFungibleLiquidityParams",
+        name: "params",
+        type: "tuple"
       }
     ],
     name: "updateNonFungibleLiquidity",
@@ -49208,6 +48799,65 @@ var _abi11 = [
       }
     ],
     name: "createMarket",
+    outputs: [
+      {
+        internalType: "address",
+        name: "",
+        type: "address"
+      }
+    ],
+    stateMutability: "nonpayable",
+    type: "function"
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "base",
+        type: "address"
+      },
+      {
+        internalType: "address",
+        name: "quote",
+        type: "address"
+      },
+      {
+        internalType: "enum Structs.AssetType",
+        name: "baseType",
+        type: "uint8"
+      },
+      {
+        internalType: "enum Structs.AssetType",
+        name: "quoteType",
+        type: "uint8"
+      },
+      {
+        internalType: "bool",
+        name: "permPut",
+        type: "bool"
+      },
+      {
+        internalType: "bool",
+        name: "permSwap",
+        type: "bool"
+      },
+      {
+        internalType: "uint256",
+        name: "commission",
+        type: "uint256"
+      },
+      {
+        internalType: "uint256",
+        name: "mediatePoolId",
+        type: "uint256"
+      },
+      {
+        internalType: "address",
+        name: "manager",
+        type: "address"
+      }
+    ],
+    name: "createMarketWithManager",
     outputs: [],
     stateMutability: "nonpayable",
     type: "function"
@@ -49926,24 +49576,6 @@ var _abi11 = [
       }
     ],
     name: "setDisputeDelayDuration",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function"
-  },
-  {
-    inputs: [
-      {
-        internalType: "address",
-        name: "id",
-        type: "address"
-      },
-      {
-        internalType: "address",
-        name: "mgr",
-        type: "address"
-      }
-    ],
-    name: "setManager",
     outputs: [],
     stateMutability: "nonpayable",
     type: "function"
