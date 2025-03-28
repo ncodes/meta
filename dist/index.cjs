@@ -3298,6 +3298,12 @@ var Core_default = [
       },
       {
         indexed: false,
+        internalType: "bool",
+        name: "usePriceFromRegistry",
+        type: "bool"
+      },
+      {
+        indexed: false,
         internalType: "uint256",
         name: "liq",
         type: "uint256"
@@ -3331,6 +3337,12 @@ var Core_default = [
         internalType: "uint256",
         name: "timeToPay",
         type: "uint256"
+      },
+      {
+        indexed: false,
+        internalType: "int256",
+        name: "priceScaleBps",
+        type: "int256"
       }
     ],
     name: "UpdatedFungibleLiquidity",
@@ -3511,6 +3523,12 @@ var Core_default = [
       },
       {
         indexed: false,
+        internalType: "bool",
+        name: "usePriceFromRegistry",
+        type: "bool"
+      },
+      {
+        indexed: false,
         internalType: "uint256",
         name: "lid",
         type: "uint256"
@@ -3544,6 +3562,12 @@ var Core_default = [
         internalType: "uint256",
         name: "timeToPay",
         type: "uint256"
+      },
+      {
+        indexed: false,
+        internalType: "int256",
+        name: "priceScaleBps",
+        type: "int256"
       }
     ],
     name: "UpdatedNonFungibleLiquidity",
@@ -3610,6 +3634,19 @@ var Core_default = [
       }
     ],
     name: "UpdatedPrice",
+    type: "event"
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: false,
+        internalType: "address",
+        name: "addr",
+        type: "address"
+      }
+    ],
+    name: "UpdatedPriceRegistry",
     type: "event"
   },
   {
@@ -3776,6 +3813,30 @@ var Core_default = [
     name: "configureFeePool",
     outputs: [],
     stateMutability: "nonpayable",
+    type: "function"
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "_mid",
+        type: "address"
+      },
+      {
+        internalType: "address",
+        name: "_owner",
+        type: "address"
+      }
+    ],
+    name: "countLiquidity",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256"
+      }
+    ],
+    stateMutability: "view",
     type: "function"
   },
   {
@@ -3976,8 +4037,18 @@ var Core_default = [
             type: "uint256[]"
           },
           {
+            internalType: "int256",
+            name: "priceScaleBps",
+            type: "int256"
+          },
+          {
             internalType: "bool",
             name: "paused",
+            type: "bool"
+          },
+          {
+            internalType: "bool",
+            name: "usePriceFromRegistry",
             type: "bool"
           },
           {
@@ -4848,6 +4919,19 @@ var Core_default = [
   {
     inputs: [
       {
+        internalType: "address",
+        name: "addr",
+        type: "address"
+      }
+    ],
+    name: "setPriceRegistry",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function"
+  },
+  {
+    inputs: [
+      {
         internalType: "uint256",
         name: "_instantSwapFeeBp",
         type: "uint256"
@@ -5058,6 +5142,11 @@ var Core_default = [
       {
         internalType: "contract IAssetRegistry",
         name: "assetReg",
+        type: "address"
+      },
+      {
+        internalType: "contract IPriceRegistry",
+        name: "priceReg",
         type: "address"
       },
       {
@@ -5295,6 +5384,11 @@ var Core_default = [
             type: "uint256[]"
           },
           {
+            internalType: "int256",
+            name: "priceScaleBps",
+            type: "int256"
+          },
+          {
             internalType: "bool",
             name: "deduct",
             type: "bool"
@@ -5302,6 +5396,11 @@ var Core_default = [
           {
             internalType: "bool",
             name: "pause",
+            type: "bool"
+          },
+          {
+            internalType: "bool",
+            name: "usePriceFromRegistry",
             type: "bool"
           }
         ],
@@ -5311,7 +5410,13 @@ var Core_default = [
       }
     ],
     name: "updateFungibleLiquidity",
-    outputs: [],
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256"
+      }
+    ],
     stateMutability: "payable",
     type: "function"
   },
@@ -5398,6 +5503,11 @@ var Core_default = [
             type: "uint256[]"
           },
           {
+            internalType: "int256",
+            name: "priceScaleBps",
+            type: "int256"
+          },
+          {
             internalType: "bool",
             name: "deduct",
             type: "bool"
@@ -5405,6 +5515,11 @@ var Core_default = [
           {
             internalType: "bool",
             name: "pause",
+            type: "bool"
+          },
+          {
+            internalType: "bool",
+            name: "usePriceFromRegistry",
             type: "bool"
           }
         ],
@@ -5414,7 +5529,13 @@ var Core_default = [
       }
     ],
     name: "updateNonFungibleLiquidity",
-    outputs: [],
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256"
+      }
+    ],
     stateMutability: "nonpayable",
     type: "function"
   },
@@ -42835,6 +42956,12 @@ var _abi4 = [
       },
       {
         indexed: false,
+        internalType: "bool",
+        name: "usePriceFromRegistry",
+        type: "bool"
+      },
+      {
+        indexed: false,
         internalType: "uint256",
         name: "liq",
         type: "uint256"
@@ -42868,6 +42995,12 @@ var _abi4 = [
         internalType: "uint256",
         name: "timeToPay",
         type: "uint256"
+      },
+      {
+        indexed: false,
+        internalType: "int256",
+        name: "priceScaleBps",
+        type: "int256"
       }
     ],
     name: "UpdatedFungibleLiquidity",
@@ -43048,6 +43181,12 @@ var _abi4 = [
       },
       {
         indexed: false,
+        internalType: "bool",
+        name: "usePriceFromRegistry",
+        type: "bool"
+      },
+      {
+        indexed: false,
         internalType: "uint256",
         name: "lid",
         type: "uint256"
@@ -43081,6 +43220,12 @@ var _abi4 = [
         internalType: "uint256",
         name: "timeToPay",
         type: "uint256"
+      },
+      {
+        indexed: false,
+        internalType: "int256",
+        name: "priceScaleBps",
+        type: "int256"
       }
     ],
     name: "UpdatedNonFungibleLiquidity",
@@ -43147,6 +43292,19 @@ var _abi4 = [
       }
     ],
     name: "UpdatedPrice",
+    type: "event"
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: false,
+        internalType: "address",
+        name: "addr",
+        type: "address"
+      }
+    ],
+    name: "UpdatedPriceRegistry",
     type: "event"
   },
   {
@@ -43313,6 +43471,30 @@ var _abi4 = [
     name: "configureFeePool",
     outputs: [],
     stateMutability: "nonpayable",
+    type: "function"
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "_mid",
+        type: "address"
+      },
+      {
+        internalType: "address",
+        name: "_owner",
+        type: "address"
+      }
+    ],
+    name: "countLiquidity",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256"
+      }
+    ],
+    stateMutability: "view",
     type: "function"
   },
   {
@@ -43513,8 +43695,18 @@ var _abi4 = [
             type: "uint256[]"
           },
           {
+            internalType: "int256",
+            name: "priceScaleBps",
+            type: "int256"
+          },
+          {
             internalType: "bool",
             name: "paused",
+            type: "bool"
+          },
+          {
+            internalType: "bool",
+            name: "usePriceFromRegistry",
             type: "bool"
           },
           {
@@ -44385,6 +44577,19 @@ var _abi4 = [
   {
     inputs: [
       {
+        internalType: "address",
+        name: "addr",
+        type: "address"
+      }
+    ],
+    name: "setPriceRegistry",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function"
+  },
+  {
+    inputs: [
+      {
         internalType: "uint256",
         name: "_instantSwapFeeBp",
         type: "uint256"
@@ -44595,6 +44800,11 @@ var _abi4 = [
       {
         internalType: "contract IAssetRegistry",
         name: "assetReg",
+        type: "address"
+      },
+      {
+        internalType: "contract IPriceRegistry",
+        name: "priceReg",
         type: "address"
       },
       {
@@ -44832,6 +45042,11 @@ var _abi4 = [
             type: "uint256[]"
           },
           {
+            internalType: "int256",
+            name: "priceScaleBps",
+            type: "int256"
+          },
+          {
             internalType: "bool",
             name: "deduct",
             type: "bool"
@@ -44839,6 +45054,11 @@ var _abi4 = [
           {
             internalType: "bool",
             name: "pause",
+            type: "bool"
+          },
+          {
+            internalType: "bool",
+            name: "usePriceFromRegistry",
             type: "bool"
           }
         ],
@@ -44848,7 +45068,13 @@ var _abi4 = [
       }
     ],
     name: "updateFungibleLiquidity",
-    outputs: [],
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256"
+      }
+    ],
     stateMutability: "payable",
     type: "function"
   },
@@ -44935,6 +45161,11 @@ var _abi4 = [
             type: "uint256[]"
           },
           {
+            internalType: "int256",
+            name: "priceScaleBps",
+            type: "int256"
+          },
+          {
             internalType: "bool",
             name: "deduct",
             type: "bool"
@@ -44942,6 +45173,11 @@ var _abi4 = [
           {
             internalType: "bool",
             name: "pause",
+            type: "bool"
+          },
+          {
+            internalType: "bool",
+            name: "usePriceFromRegistry",
             type: "bool"
           }
         ],
@@ -44951,7 +45187,13 @@ var _abi4 = [
       }
     ],
     name: "updateNonFungibleLiquidity",
-    outputs: [],
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256"
+      }
+    ],
     stateMutability: "nonpayable",
     type: "function"
   },

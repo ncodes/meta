@@ -688,6 +688,12 @@ const _abi = [
       },
       {
         indexed: false,
+        internalType: "bool",
+        name: "usePriceFromRegistry",
+        type: "bool",
+      },
+      {
+        indexed: false,
         internalType: "uint256",
         name: "liq",
         type: "uint256",
@@ -721,6 +727,12 @@ const _abi = [
         internalType: "uint256",
         name: "timeToPay",
         type: "uint256",
+      },
+      {
+        indexed: false,
+        internalType: "int256",
+        name: "priceScaleBps",
+        type: "int256",
       },
     ],
     name: "UpdatedFungibleLiquidity",
@@ -901,6 +913,12 @@ const _abi = [
       },
       {
         indexed: false,
+        internalType: "bool",
+        name: "usePriceFromRegistry",
+        type: "bool",
+      },
+      {
+        indexed: false,
         internalType: "uint256",
         name: "lid",
         type: "uint256",
@@ -934,6 +952,12 @@ const _abi = [
         internalType: "uint256",
         name: "timeToPay",
         type: "uint256",
+      },
+      {
+        indexed: false,
+        internalType: "int256",
+        name: "priceScaleBps",
+        type: "int256",
       },
     ],
     name: "UpdatedNonFungibleLiquidity",
@@ -1000,6 +1024,19 @@ const _abi = [
       },
     ],
     name: "UpdatedPrice",
+    type: "event",
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: false,
+        internalType: "address",
+        name: "addr",
+        type: "address",
+      },
+    ],
+    name: "UpdatedPriceRegistry",
     type: "event",
   },
   {
@@ -1166,6 +1203,30 @@ const _abi = [
     name: "configureFeePool",
     outputs: [],
     stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "_mid",
+        type: "address",
+      },
+      {
+        internalType: "address",
+        name: "_owner",
+        type: "address",
+      },
+    ],
+    name: "countLiquidity",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
+    stateMutability: "view",
     type: "function",
   },
   {
@@ -1366,8 +1427,18 @@ const _abi = [
             type: "uint256[]",
           },
           {
+            internalType: "int256",
+            name: "priceScaleBps",
+            type: "int256",
+          },
+          {
             internalType: "bool",
             name: "paused",
+            type: "bool",
+          },
+          {
+            internalType: "bool",
+            name: "usePriceFromRegistry",
             type: "bool",
           },
           {
@@ -2238,6 +2309,19 @@ const _abi = [
   {
     inputs: [
       {
+        internalType: "address",
+        name: "addr",
+        type: "address",
+      },
+    ],
+    name: "setPriceRegistry",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
         internalType: "uint256",
         name: "_instantSwapFeeBp",
         type: "uint256",
@@ -2448,6 +2532,11 @@ const _abi = [
       {
         internalType: "contract IAssetRegistry",
         name: "assetReg",
+        type: "address",
+      },
+      {
+        internalType: "contract IPriceRegistry",
+        name: "priceReg",
         type: "address",
       },
       {
@@ -2685,6 +2774,11 @@ const _abi = [
             type: "uint256[]",
           },
           {
+            internalType: "int256",
+            name: "priceScaleBps",
+            type: "int256",
+          },
+          {
             internalType: "bool",
             name: "deduct",
             type: "bool",
@@ -2694,6 +2788,11 @@ const _abi = [
             name: "pause",
             type: "bool",
           },
+          {
+            internalType: "bool",
+            name: "usePriceFromRegistry",
+            type: "bool",
+          },
         ],
         internalType: "struct StructsLib.UpdateFungibleLiquidityParams",
         name: "params",
@@ -2701,7 +2800,13 @@ const _abi = [
       },
     ],
     name: "updateFungibleLiquidity",
-    outputs: [],
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
     stateMutability: "payable",
     type: "function",
   },
@@ -2788,6 +2893,11 @@ const _abi = [
             type: "uint256[]",
           },
           {
+            internalType: "int256",
+            name: "priceScaleBps",
+            type: "int256",
+          },
+          {
             internalType: "bool",
             name: "deduct",
             type: "bool",
@@ -2797,6 +2907,11 @@ const _abi = [
             name: "pause",
             type: "bool",
           },
+          {
+            internalType: "bool",
+            name: "usePriceFromRegistry",
+            type: "bool",
+          },
         ],
         internalType: "struct StructsLib.UpdateNonFungibleLiquidityParams",
         name: "params",
@@ -2804,7 +2919,13 @@ const _abi = [
       },
     ],
     name: "updateNonFungibleLiquidity",
-    outputs: [],
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
     stateMutability: "nonpayable",
     type: "function",
   },

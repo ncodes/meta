@@ -136,8 +136,10 @@ export declare namespace StructsLib {
     expireAt: BigNumberish;
     wantOrIds: BigNumberish[];
     wantAndIds: BigNumberish[];
+    priceScaleBps: BigNumberish;
     deduct: boolean;
     pause: boolean;
+    usePriceFromRegistry: boolean;
   };
 
   export type UpdateFungibleLiquidityParamsStructOutput = [
@@ -150,8 +152,10 @@ export declare namespace StructsLib {
     expireAt: bigint,
     wantOrIds: bigint[],
     wantAndIds: bigint[],
+    priceScaleBps: bigint,
     deduct: boolean,
-    pause: boolean
+    pause: boolean,
+    usePriceFromRegistry: boolean
   ] & {
     marketId: string;
     target: string;
@@ -162,8 +166,10 @@ export declare namespace StructsLib {
     expireAt: bigint;
     wantOrIds: bigint[];
     wantAndIds: bigint[];
+    priceScaleBps: bigint;
     deduct: boolean;
     pause: boolean;
+    usePriceFromRegistry: boolean;
   };
 
   export type UpdateNonFungibleLiquidityParamsStruct = {
@@ -176,8 +182,10 @@ export declare namespace StructsLib {
     ids: BigNumberish[];
     wantOrIds: BigNumberish[];
     wantAndIds: BigNumberish[];
+    priceScaleBps: BigNumberish;
     deduct: boolean;
     pause: boolean;
+    usePriceFromRegistry: boolean;
   };
 
   export type UpdateNonFungibleLiquidityParamsStructOutput = [
@@ -190,8 +198,10 @@ export declare namespace StructsLib {
     ids: bigint[],
     wantOrIds: bigint[],
     wantAndIds: bigint[],
+    priceScaleBps: bigint,
     deduct: boolean,
-    pause: boolean
+    pause: boolean,
+    usePriceFromRegistry: boolean
   ] & {
     marketId: string;
     target: string;
@@ -202,8 +212,10 @@ export declare namespace StructsLib {
     ids: bigint[];
     wantOrIds: bigint[];
     wantAndIds: bigint[];
+    priceScaleBps: bigint;
     deduct: boolean;
     pause: boolean;
+    usePriceFromRegistry: boolean;
   };
 }
 
@@ -221,7 +233,9 @@ export declare namespace Structs {
     mktCreatorFeeRate: BigNumberish;
     wantOrIds: BigNumberish[];
     wantAndIds: BigNumberish[];
+    priceScaleBps: BigNumberish;
     paused: boolean;
+    usePriceFromRegistry: boolean;
     target: AddressLike;
   };
 
@@ -238,7 +252,9 @@ export declare namespace Structs {
     mktCreatorFeeRate: bigint,
     wantOrIds: bigint[],
     wantAndIds: bigint[],
+    priceScaleBps: bigint,
     paused: boolean,
+    usePriceFromRegistry: boolean,
     target: string
   ] & {
     ids: bigint[];
@@ -253,7 +269,9 @@ export declare namespace Structs {
     mktCreatorFeeRate: bigint;
     wantOrIds: bigint[];
     wantAndIds: bigint[];
+    priceScaleBps: bigint;
     paused: boolean;
+    usePriceFromRegistry: boolean;
     target: string;
   };
 
@@ -462,6 +480,7 @@ export interface CoreInterface extends Interface {
       | "cancelOrderByDispute"
       | "computeSwapFee"
       | "configureFeePool"
+      | "countLiquidity"
       | "createOffer"
       | "executeOffer"
       | "feeBalanceOf"
@@ -499,6 +518,7 @@ export interface CoreInterface extends Interface {
       | "setMinerRegistry"
       | "setOperator"
       | "setOrderGraceDur"
+      | "setPriceRegistry"
       | "setProtoFee"
       | "setProtoFeeSplit"
       | "setProviderRegistry"
@@ -560,6 +580,7 @@ export interface CoreInterface extends Interface {
       | "UpdatedOperator"
       | "UpdatedOrderGraceDur"
       | "UpdatedPrice"
+      | "UpdatedPriceRegistry"
       | "UpdatedProviderRegistry"
   ): EventFragment;
 
@@ -597,6 +618,10 @@ export interface CoreInterface extends Interface {
   encodeFunctionData(
     functionFragment: "configureFeePool",
     values: [BigNumberish]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "countLiquidity",
+    values: [AddressLike, AddressLike]
   ): string;
   encodeFunctionData(
     functionFragment: "createOffer",
@@ -747,6 +772,10 @@ export interface CoreInterface extends Interface {
     values: [BigNumberish]
   ): string;
   encodeFunctionData(
+    functionFragment: "setPriceRegistry",
+    values: [AddressLike]
+  ): string;
+  encodeFunctionData(
     functionFragment: "setProtoFee",
     values: [
       BigNumberish,
@@ -864,6 +893,10 @@ export interface CoreInterface extends Interface {
   ): Result;
   decodeFunctionResult(
     functionFragment: "configureFeePool",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "countLiquidity",
     data: BytesLike
   ): Result;
   decodeFunctionResult(
@@ -988,6 +1021,10 @@ export interface CoreInterface extends Interface {
   ): Result;
   decodeFunctionResult(
     functionFragment: "setOrderGraceDur",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "setPriceRegistry",
     data: BytesLike
   ): Result;
   decodeFunctionResult(
@@ -1539,12 +1576,14 @@ export namespace UpdatedFungibleLiquidityEvent {
     target: AddressLike,
     deduct: boolean,
     paused: boolean,
+    usePriceFromRegistry: boolean,
     liq: BigNumberish,
     amount: BigNumberish,
     price: BigNumberish,
     wantOrIds: BigNumberish[],
     wantAndIds: BigNumberish[],
-    timeToPay: BigNumberish
+    timeToPay: BigNumberish,
+    priceScaleBps: BigNumberish
   ];
   export type OutputTuple = [
     provider: string,
@@ -1552,12 +1591,14 @@ export namespace UpdatedFungibleLiquidityEvent {
     target: string,
     deduct: boolean,
     paused: boolean,
+    usePriceFromRegistry: boolean,
     liq: bigint,
     amount: bigint,
     price: bigint,
     wantOrIds: bigint[],
     wantAndIds: bigint[],
-    timeToPay: bigint
+    timeToPay: bigint,
+    priceScaleBps: bigint
   ];
   export interface OutputObject {
     provider: string;
@@ -1565,12 +1606,14 @@ export namespace UpdatedFungibleLiquidityEvent {
     target: string;
     deduct: boolean;
     paused: boolean;
+    usePriceFromRegistry: boolean;
     liq: bigint;
     amount: bigint;
     price: bigint;
     wantOrIds: bigint[];
     wantAndIds: bigint[];
     timeToPay: bigint;
+    priceScaleBps: bigint;
   }
   export type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>;
   export type Filter = TypedDeferredTopicFilter<Event>;
@@ -1707,12 +1750,14 @@ export namespace UpdatedNonFungibleLiquidityEvent {
     target: AddressLike,
     deduct: boolean,
     paused: boolean,
+    usePriceFromRegistry: boolean,
     lid: BigNumberish,
     ids: BigNumberish[],
     price: BigNumberish,
     wantOrIds: BigNumberish[],
     wantAndIds: BigNumberish[],
-    timeToPay: BigNumberish
+    timeToPay: BigNumberish,
+    priceScaleBps: BigNumberish
   ];
   export type OutputTuple = [
     provider: string,
@@ -1720,12 +1765,14 @@ export namespace UpdatedNonFungibleLiquidityEvent {
     target: string,
     deduct: boolean,
     paused: boolean,
+    usePriceFromRegistry: boolean,
     lid: bigint,
     ids: bigint[],
     price: bigint,
     wantOrIds: bigint[],
     wantAndIds: bigint[],
-    timeToPay: bigint
+    timeToPay: bigint,
+    priceScaleBps: bigint
   ];
   export interface OutputObject {
     provider: string;
@@ -1733,12 +1780,14 @@ export namespace UpdatedNonFungibleLiquidityEvent {
     target: string;
     deduct: boolean;
     paused: boolean;
+    usePriceFromRegistry: boolean;
     lid: bigint;
     ids: bigint[];
     price: bigint;
     wantOrIds: bigint[];
     wantAndIds: bigint[];
     timeToPay: bigint;
+    priceScaleBps: bigint;
   }
   export type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>;
   export type Filter = TypedDeferredTopicFilter<Event>;
@@ -1791,6 +1840,18 @@ export namespace UpdatedPriceEvent {
     manager: string;
     lid: bigint;
     price: bigint;
+  }
+  export type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>;
+  export type Filter = TypedDeferredTopicFilter<Event>;
+  export type Log = TypedEventLog<Event>;
+  export type LogDescription = TypedLogDescription<Event>;
+}
+
+export namespace UpdatedPriceRegistryEvent {
+  export type InputTuple = [addr: AddressLike];
+  export type OutputTuple = [addr: string];
+  export interface OutputObject {
+    addr: string;
   }
   export type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>;
   export type Filter = TypedDeferredTopicFilter<Event>;
@@ -1896,6 +1957,12 @@ export interface Core extends BaseContract {
     [interval: BigNumberish],
     [void],
     "nonpayable"
+  >;
+
+  countLiquidity: TypedContractMethod<
+    [_mid: AddressLike, _owner: AddressLike],
+    [bigint],
+    "view"
   >;
 
   createOffer: TypedContractMethod<
@@ -2080,6 +2147,12 @@ export interface Core extends BaseContract {
     "nonpayable"
   >;
 
+  setPriceRegistry: TypedContractMethod<
+    [addr: AddressLike],
+    [void],
+    "nonpayable"
+  >;
+
   setProtoFee: TypedContractMethod<
     [
       _instantSwapFeeBp: BigNumberish,
@@ -2156,11 +2229,13 @@ export interface Core extends BaseContract {
         string,
         string,
         string,
+        string,
         string
       ] & {
         disputeManager: string;
         provReg: string;
         assetReg: string;
+        priceReg: string;
         token: string;
         marketCore: string;
         feePool: string;
@@ -2211,7 +2286,7 @@ export interface Core extends BaseContract {
 
   updateFungibleLiquidity: TypedContractMethod<
     [params: StructsLib.UpdateFungibleLiquidityParamsStruct],
-    [void],
+    [bigint],
     "payable"
   >;
 
@@ -2229,7 +2304,7 @@ export interface Core extends BaseContract {
 
   updateNonFungibleLiquidity: TypedContractMethod<
     [params: StructsLib.UpdateNonFungibleLiquidityParamsStruct],
-    [void],
+    [bigint],
     "nonpayable"
   >;
 
@@ -2318,6 +2393,13 @@ export interface Core extends BaseContract {
   getFunction(
     nameOrSignature: "configureFeePool"
   ): TypedContractMethod<[interval: BigNumberish], [void], "nonpayable">;
+  getFunction(
+    nameOrSignature: "countLiquidity"
+  ): TypedContractMethod<
+    [_mid: AddressLike, _owner: AddressLike],
+    [bigint],
+    "view"
+  >;
   getFunction(
     nameOrSignature: "createOffer"
   ): TypedContractMethod<
@@ -2498,6 +2580,9 @@ export interface Core extends BaseContract {
     nameOrSignature: "setOrderGraceDur"
   ): TypedContractMethod<[val: BigNumberish], [void], "nonpayable">;
   getFunction(
+    nameOrSignature: "setPriceRegistry"
+  ): TypedContractMethod<[addr: AddressLike], [void], "nonpayable">;
+  getFunction(
     nameOrSignature: "setProtoFee"
   ): TypedContractMethod<
     [
@@ -2573,11 +2658,13 @@ export interface Core extends BaseContract {
         string,
         string,
         string,
+        string,
         string
       ] & {
         disputeManager: string;
         provReg: string;
         assetReg: string;
+        priceReg: string;
         token: string;
         marketCore: string;
         feePool: string;
@@ -2619,7 +2706,7 @@ export interface Core extends BaseContract {
     nameOrSignature: "updateFungibleLiquidity"
   ): TypedContractMethod<
     [params: StructsLib.UpdateFungibleLiquidityParamsStruct],
-    [void],
+    [bigint],
     "payable"
   >;
   getFunction(
@@ -2639,7 +2726,7 @@ export interface Core extends BaseContract {
     nameOrSignature: "updateNonFungibleLiquidity"
   ): TypedContractMethod<
     [params: StructsLib.UpdateNonFungibleLiquidityParamsStruct],
-    [void],
+    [bigint],
     "nonpayable"
   >;
   getFunction(
@@ -2930,6 +3017,13 @@ export interface Core extends BaseContract {
     UpdatedPriceEvent.OutputObject
   >;
   getEvent(
+    key: "UpdatedPriceRegistry"
+  ): TypedContractEvent<
+    UpdatedPriceRegistryEvent.InputTuple,
+    UpdatedPriceRegistryEvent.OutputTuple,
+    UpdatedPriceRegistryEvent.OutputObject
+  >;
+  getEvent(
     key: "UpdatedProviderRegistry"
   ): TypedContractEvent<
     UpdatedProviderRegistryEvent.InputTuple,
@@ -3191,7 +3285,7 @@ export interface Core extends BaseContract {
       UpdatedFeePurseEvent.OutputObject
     >;
 
-    "UpdatedFungibleLiquidity(address,address,address,bool,bool,uint256,uint256,uint256,uint256[],uint256[],uint256)": TypedContractEvent<
+    "UpdatedFungibleLiquidity(address,address,address,bool,bool,bool,uint256,uint256,uint256,uint256[],uint256[],uint256,int256)": TypedContractEvent<
       UpdatedFungibleLiquidityEvent.InputTuple,
       UpdatedFungibleLiquidityEvent.OutputTuple,
       UpdatedFungibleLiquidityEvent.OutputObject
@@ -3290,7 +3384,7 @@ export interface Core extends BaseContract {
       UpdatedMinerRegistryEvent.OutputObject
     >;
 
-    "UpdatedNonFungibleLiquidity(address,address,address,bool,bool,uint256,uint256[],uint256,uint256[],uint256[],uint256)": TypedContractEvent<
+    "UpdatedNonFungibleLiquidity(address,address,address,bool,bool,bool,uint256,uint256[],uint256,uint256[],uint256[],uint256,int256)": TypedContractEvent<
       UpdatedNonFungibleLiquidityEvent.InputTuple,
       UpdatedNonFungibleLiquidityEvent.OutputTuple,
       UpdatedNonFungibleLiquidityEvent.OutputObject
@@ -3332,6 +3426,17 @@ export interface Core extends BaseContract {
       UpdatedPriceEvent.InputTuple,
       UpdatedPriceEvent.OutputTuple,
       UpdatedPriceEvent.OutputObject
+    >;
+
+    "UpdatedPriceRegistry(address)": TypedContractEvent<
+      UpdatedPriceRegistryEvent.InputTuple,
+      UpdatedPriceRegistryEvent.OutputTuple,
+      UpdatedPriceRegistryEvent.OutputObject
+    >;
+    UpdatedPriceRegistry: TypedContractEvent<
+      UpdatedPriceRegistryEvent.InputTuple,
+      UpdatedPriceRegistryEvent.OutputTuple,
+      UpdatedPriceRegistryEvent.OutputObject
     >;
 
     "UpdatedProviderRegistry(address)": TypedContractEvent<

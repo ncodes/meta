@@ -2118,8 +2118,10 @@ declare namespace StructsLib$2 {
         expireAt: BigNumberish;
         wantOrIds: BigNumberish[];
         wantAndIds: BigNumberish[];
+        priceScaleBps: BigNumberish;
         deduct: boolean;
         pause: boolean;
+        usePriceFromRegistry: boolean;
     };
     type UpdateFungibleLiquidityParamsStructOutput = [
         marketId: string,
@@ -2131,8 +2133,10 @@ declare namespace StructsLib$2 {
         expireAt: bigint,
         wantOrIds: bigint[],
         wantAndIds: bigint[],
+        priceScaleBps: bigint,
         deduct: boolean,
-        pause: boolean
+        pause: boolean,
+        usePriceFromRegistry: boolean
     ] & {
         marketId: string;
         target: string;
@@ -2143,8 +2147,10 @@ declare namespace StructsLib$2 {
         expireAt: bigint;
         wantOrIds: bigint[];
         wantAndIds: bigint[];
+        priceScaleBps: bigint;
         deduct: boolean;
         pause: boolean;
+        usePriceFromRegistry: boolean;
     };
     type UpdateNonFungibleLiquidityParamsStruct = {
         marketId: AddressLike;
@@ -2156,8 +2162,10 @@ declare namespace StructsLib$2 {
         ids: BigNumberish[];
         wantOrIds: BigNumberish[];
         wantAndIds: BigNumberish[];
+        priceScaleBps: BigNumberish;
         deduct: boolean;
         pause: boolean;
+        usePriceFromRegistry: boolean;
     };
     type UpdateNonFungibleLiquidityParamsStructOutput = [
         marketId: string,
@@ -2169,8 +2177,10 @@ declare namespace StructsLib$2 {
         ids: bigint[],
         wantOrIds: bigint[],
         wantAndIds: bigint[],
+        priceScaleBps: bigint,
         deduct: boolean,
-        pause: boolean
+        pause: boolean,
+        usePriceFromRegistry: boolean
     ] & {
         marketId: string;
         target: string;
@@ -2181,8 +2191,10 @@ declare namespace StructsLib$2 {
         ids: bigint[];
         wantOrIds: bigint[];
         wantAndIds: bigint[];
+        priceScaleBps: bigint;
         deduct: boolean;
         pause: boolean;
+        usePriceFromRegistry: boolean;
     };
 }
 declare namespace Structs$3 {
@@ -2199,7 +2211,9 @@ declare namespace Structs$3 {
         mktCreatorFeeRate: BigNumberish;
         wantOrIds: BigNumberish[];
         wantAndIds: BigNumberish[];
+        priceScaleBps: BigNumberish;
         paused: boolean;
+        usePriceFromRegistry: boolean;
         target: AddressLike;
     };
     type LiquidityStructOutput = [
@@ -2215,7 +2229,9 @@ declare namespace Structs$3 {
         mktCreatorFeeRate: bigint,
         wantOrIds: bigint[],
         wantAndIds: bigint[],
+        priceScaleBps: bigint,
         paused: boolean,
+        usePriceFromRegistry: boolean,
         target: string
     ] & {
         ids: bigint[];
@@ -2230,7 +2246,9 @@ declare namespace Structs$3 {
         mktCreatorFeeRate: bigint;
         wantOrIds: bigint[];
         wantAndIds: bigint[];
+        priceScaleBps: bigint;
         paused: boolean;
+        usePriceFromRegistry: boolean;
         target: string;
     };
     type MarketDurStruct = {
@@ -2422,8 +2440,8 @@ declare namespace Structs$3 {
     };
 }
 interface CoreInterface extends Interface {
-    getFunction(nameOrSignature: "acceptOffer" | "canCreateDispute" | "cancelOffer" | "cancelOrder" | "cancelOrderByDispute" | "computeSwapFee" | "configureFeePool" | "createOffer" | "executeOffer" | "feeBalanceOf" | "getFeeBPs" | "getLiquidity" | "getLiquidityManager" | "getMarket" | "getOffer" | "getOrder" | "getReqSwapBadges" | "hasLiquidity" | "hasOrder" | "inventorBalanceOf" | "isVerified" | "markAsDisputed" | "markOrderAsPaid" | "onERC1155BatchReceived" | "onERC1155Received" | "operatorBalanceOf" | "owner" | "releaseOrder" | "releaseOrderByDispute" | "renounceOwnership" | "setAssetRegistry" | "setBadgeMgr" | "setDisputeManager" | "setFeePool" | "setFeePurse" | "setInventor" | "setLiquidityManager" | "setMarketCore" | "setMaxOpenDisputes" | "setMaxOpenOrders" | "setMinTimeToPay" | "setMinerRegistry" | "setOperator" | "setOrderGraceDur" | "setProtoFee" | "setProtoFeeSplit" | "setProviderRegistry" | "setSwapBadgeForLiquidity" | "shareablesBalanceOf" | "state" | "state2" | "supportsInterface" | "swapQuoteForBase" | "togglePause" | "transferOwnership" | "transferToFeePool" | "unacceptOffer" | "updateFungibleLiquidity" | "updateLiquidityPrice" | "updateNonFungibleLiquidity" | "updateOffer" | "updateOpenDisputesCount" | "withdrawFeeBalance" | "withdrawInventorBalance" | "withdrawOperatorBalance"): FunctionFragment;
-    getEvent(nameOrSignatureOrTopic: "NewOffer" | "OfferAccepted" | "OfferCancelled" | "OfferExecuted" | "OfferUnaccepted" | "OfferUpdated" | "OrderCancelled" | "OwnershipTransferred" | "ProtocolFeeSplitUpdated" | "ProtocolFeeUpdated" | "Swap" | "SwapOrder" | "SwapOrderPaid" | "TogglePause" | "TransferInventorBalance" | "TransferOperatorBalance" | "TransferredToFeePool" | "UpdatedAssetRegistry" | "UpdatedBadge" | "UpdatedDisputeManager" | "UpdatedFeePool" | "UpdatedFeePoolConfig" | "UpdatedFeePurse" | "UpdatedFungibleLiquidity" | "UpdatedInventor" | "UpdatedLiquidityManager" | "UpdatedLiquiditySwapBadges" | "UpdatedMarketCore" | "UpdatedMaxOpenDisputes" | "UpdatedMaxOpenOrders" | "UpdatedMinTimeToPay" | "UpdatedMinerRegistry" | "UpdatedNonFungibleLiquidity" | "UpdatedOperator" | "UpdatedOrderGraceDur" | "UpdatedPrice" | "UpdatedProviderRegistry"): EventFragment;
+    getFunction(nameOrSignature: "acceptOffer" | "canCreateDispute" | "cancelOffer" | "cancelOrder" | "cancelOrderByDispute" | "computeSwapFee" | "configureFeePool" | "countLiquidity" | "createOffer" | "executeOffer" | "feeBalanceOf" | "getFeeBPs" | "getLiquidity" | "getLiquidityManager" | "getMarket" | "getOffer" | "getOrder" | "getReqSwapBadges" | "hasLiquidity" | "hasOrder" | "inventorBalanceOf" | "isVerified" | "markAsDisputed" | "markOrderAsPaid" | "onERC1155BatchReceived" | "onERC1155Received" | "operatorBalanceOf" | "owner" | "releaseOrder" | "releaseOrderByDispute" | "renounceOwnership" | "setAssetRegistry" | "setBadgeMgr" | "setDisputeManager" | "setFeePool" | "setFeePurse" | "setInventor" | "setLiquidityManager" | "setMarketCore" | "setMaxOpenDisputes" | "setMaxOpenOrders" | "setMinTimeToPay" | "setMinerRegistry" | "setOperator" | "setOrderGraceDur" | "setPriceRegistry" | "setProtoFee" | "setProtoFeeSplit" | "setProviderRegistry" | "setSwapBadgeForLiquidity" | "shareablesBalanceOf" | "state" | "state2" | "supportsInterface" | "swapQuoteForBase" | "togglePause" | "transferOwnership" | "transferToFeePool" | "unacceptOffer" | "updateFungibleLiquidity" | "updateLiquidityPrice" | "updateNonFungibleLiquidity" | "updateOffer" | "updateOpenDisputesCount" | "withdrawFeeBalance" | "withdrawInventorBalance" | "withdrawOperatorBalance"): FunctionFragment;
+    getEvent(nameOrSignatureOrTopic: "NewOffer" | "OfferAccepted" | "OfferCancelled" | "OfferExecuted" | "OfferUnaccepted" | "OfferUpdated" | "OrderCancelled" | "OwnershipTransferred" | "ProtocolFeeSplitUpdated" | "ProtocolFeeUpdated" | "Swap" | "SwapOrder" | "SwapOrderPaid" | "TogglePause" | "TransferInventorBalance" | "TransferOperatorBalance" | "TransferredToFeePool" | "UpdatedAssetRegistry" | "UpdatedBadge" | "UpdatedDisputeManager" | "UpdatedFeePool" | "UpdatedFeePoolConfig" | "UpdatedFeePurse" | "UpdatedFungibleLiquidity" | "UpdatedInventor" | "UpdatedLiquidityManager" | "UpdatedLiquiditySwapBadges" | "UpdatedMarketCore" | "UpdatedMaxOpenDisputes" | "UpdatedMaxOpenOrders" | "UpdatedMinTimeToPay" | "UpdatedMinerRegistry" | "UpdatedNonFungibleLiquidity" | "UpdatedOperator" | "UpdatedOrderGraceDur" | "UpdatedPrice" | "UpdatedPriceRegistry" | "UpdatedProviderRegistry"): EventFragment;
     encodeFunctionData(functionFragment: "acceptOffer", values: [BigNumberish, BigNumberish]): string;
     encodeFunctionData(functionFragment: "canCreateDispute", values: [BigNumberish, AddressLike]): string;
     encodeFunctionData(functionFragment: "cancelOffer", values: [BigNumberish]): string;
@@ -2438,6 +2456,7 @@ interface CoreInterface extends Interface {
         BigNumberish
     ]): string;
     encodeFunctionData(functionFragment: "configureFeePool", values: [BigNumberish]): string;
+    encodeFunctionData(functionFragment: "countLiquidity", values: [AddressLike, AddressLike]): string;
     encodeFunctionData(functionFragment: "createOffer", values: [StructsLib$2.CreateOfferParamsStruct]): string;
     encodeFunctionData(functionFragment: "executeOffer", values: [BigNumberish, BigNumberish]): string;
     encodeFunctionData(functionFragment: "feeBalanceOf", values: [AddressLike, AddressLike]): string;
@@ -2481,6 +2500,7 @@ interface CoreInterface extends Interface {
     encodeFunctionData(functionFragment: "setMinerRegistry", values: [AddressLike]): string;
     encodeFunctionData(functionFragment: "setOperator", values: [AddressLike]): string;
     encodeFunctionData(functionFragment: "setOrderGraceDur", values: [BigNumberish]): string;
+    encodeFunctionData(functionFragment: "setPriceRegistry", values: [AddressLike]): string;
     encodeFunctionData(functionFragment: "setProtoFee", values: [
         BigNumberish,
         BigNumberish,
@@ -2522,6 +2542,7 @@ interface CoreInterface extends Interface {
     decodeFunctionResult(functionFragment: "cancelOrderByDispute", data: BytesLike): Result;
     decodeFunctionResult(functionFragment: "computeSwapFee", data: BytesLike): Result;
     decodeFunctionResult(functionFragment: "configureFeePool", data: BytesLike): Result;
+    decodeFunctionResult(functionFragment: "countLiquidity", data: BytesLike): Result;
     decodeFunctionResult(functionFragment: "createOffer", data: BytesLike): Result;
     decodeFunctionResult(functionFragment: "executeOffer", data: BytesLike): Result;
     decodeFunctionResult(functionFragment: "feeBalanceOf", data: BytesLike): Result;
@@ -2559,6 +2580,7 @@ interface CoreInterface extends Interface {
     decodeFunctionResult(functionFragment: "setMinerRegistry", data: BytesLike): Result;
     decodeFunctionResult(functionFragment: "setOperator", data: BytesLike): Result;
     decodeFunctionResult(functionFragment: "setOrderGraceDur", data: BytesLike): Result;
+    decodeFunctionResult(functionFragment: "setPriceRegistry", data: BytesLike): Result;
     decodeFunctionResult(functionFragment: "setProtoFee", data: BytesLike): Result;
     decodeFunctionResult(functionFragment: "setProtoFeeSplit", data: BytesLike): Result;
     decodeFunctionResult(functionFragment: "setProviderRegistry", data: BytesLike): Result;
@@ -3027,12 +3049,14 @@ declare namespace UpdatedFungibleLiquidityEvent$1 {
         target: AddressLike,
         deduct: boolean,
         paused: boolean,
+        usePriceFromRegistry: boolean,
         liq: BigNumberish,
         amount: BigNumberish,
         price: BigNumberish,
         wantOrIds: BigNumberish[],
         wantAndIds: BigNumberish[],
-        timeToPay: BigNumberish
+        timeToPay: BigNumberish,
+        priceScaleBps: BigNumberish
     ];
     type OutputTuple = [
         provider: string,
@@ -3040,12 +3064,14 @@ declare namespace UpdatedFungibleLiquidityEvent$1 {
         target: string,
         deduct: boolean,
         paused: boolean,
+        usePriceFromRegistry: boolean,
         liq: bigint,
         amount: bigint,
         price: bigint,
         wantOrIds: bigint[],
         wantAndIds: bigint[],
-        timeToPay: bigint
+        timeToPay: bigint,
+        priceScaleBps: bigint
     ];
     interface OutputObject {
         provider: string;
@@ -3053,12 +3079,14 @@ declare namespace UpdatedFungibleLiquidityEvent$1 {
         target: string;
         deduct: boolean;
         paused: boolean;
+        usePriceFromRegistry: boolean;
         liq: bigint;
         amount: bigint;
         price: bigint;
         wantOrIds: bigint[];
         wantAndIds: bigint[];
         timeToPay: bigint;
+        priceScaleBps: bigint;
     }
     type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>;
     type Filter = TypedDeferredTopicFilter<Event>;
@@ -3186,12 +3214,14 @@ declare namespace UpdatedNonFungibleLiquidityEvent {
         target: AddressLike,
         deduct: boolean,
         paused: boolean,
+        usePriceFromRegistry: boolean,
         lid: BigNumberish,
         ids: BigNumberish[],
         price: BigNumberish,
         wantOrIds: BigNumberish[],
         wantAndIds: BigNumberish[],
-        timeToPay: BigNumberish
+        timeToPay: BigNumberish,
+        priceScaleBps: BigNumberish
     ];
     type OutputTuple = [
         provider: string,
@@ -3199,12 +3229,14 @@ declare namespace UpdatedNonFungibleLiquidityEvent {
         target: string,
         deduct: boolean,
         paused: boolean,
+        usePriceFromRegistry: boolean,
         lid: bigint,
         ids: bigint[],
         price: bigint,
         wantOrIds: bigint[],
         wantAndIds: bigint[],
-        timeToPay: bigint
+        timeToPay: bigint,
+        priceScaleBps: bigint
     ];
     interface OutputObject {
         provider: string;
@@ -3212,12 +3244,14 @@ declare namespace UpdatedNonFungibleLiquidityEvent {
         target: string;
         deduct: boolean;
         paused: boolean;
+        usePriceFromRegistry: boolean;
         lid: bigint;
         ids: bigint[];
         price: bigint;
         wantOrIds: bigint[];
         wantAndIds: bigint[];
         timeToPay: bigint;
+        priceScaleBps: bigint;
     }
     type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>;
     type Filter = TypedDeferredTopicFilter<Event>;
@@ -3267,6 +3301,17 @@ declare namespace UpdatedPriceEvent {
         manager: string;
         lid: bigint;
         price: bigint;
+    }
+    type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>;
+    type Filter = TypedDeferredTopicFilter<Event>;
+    type Log = TypedEventLog<Event>;
+    type LogDescription = TypedLogDescription<Event>;
+}
+declare namespace UpdatedPriceRegistryEvent {
+    type InputTuple = [addr: AddressLike];
+    type OutputTuple = [addr: string];
+    interface OutputObject {
+        addr: string;
     }
     type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>;
     type Filter = TypedDeferredTopicFilter<Event>;
@@ -3335,6 +3380,12 @@ interface Core extends BaseContract {
     ], [
         void
     ], "nonpayable">;
+    countLiquidity: TypedContractMethod<[
+        _mid: AddressLike,
+        _owner: AddressLike
+    ], [
+        bigint
+    ], "view">;
     createOffer: TypedContractMethod<[
         params: StructsLib$2.CreateOfferParamsStruct
     ], [
@@ -3487,6 +3538,11 @@ interface Core extends BaseContract {
     ], [
         void
     ], "nonpayable">;
+    setPriceRegistry: TypedContractMethod<[
+        addr: AddressLike
+    ], [
+        void
+    ], "nonpayable">;
     setProtoFee: TypedContractMethod<[
         _instantSwapFeeBp: BigNumberish,
         _synthSwapFeeBp: BigNumberish,
@@ -3551,11 +3607,13 @@ interface Core extends BaseContract {
             string,
             string,
             string,
+            string,
             string
         ] & {
             disputeManager: string;
             provReg: string;
             assetReg: string;
+            priceReg: string;
             token: string;
             marketCore: string;
             feePool: string;
@@ -3600,7 +3658,7 @@ interface Core extends BaseContract {
     updateFungibleLiquidity: TypedContractMethod<[
         params: StructsLib$2.UpdateFungibleLiquidityParamsStruct
     ], [
-        void
+        bigint
     ], "payable">;
     updateLiquidityPrice: TypedContractMethod<[
         _marketId: AddressLike,
@@ -3614,7 +3672,7 @@ interface Core extends BaseContract {
     updateNonFungibleLiquidity: TypedContractMethod<[
         params: StructsLib$2.UpdateNonFungibleLiquidityParamsStruct
     ], [
-        void
+        bigint
     ], "nonpayable">;
     updateOffer: TypedContractMethod<[
         offerId: BigNumberish,
@@ -3675,6 +3733,12 @@ interface Core extends BaseContract {
         [bigint, bigint, bigint, bigint]
     ], "view">;
     getFunction(nameOrSignature: "configureFeePool"): TypedContractMethod<[interval: BigNumberish], [void], "nonpayable">;
+    getFunction(nameOrSignature: "countLiquidity"): TypedContractMethod<[
+        _mid: AddressLike,
+        _owner: AddressLike
+    ], [
+        bigint
+    ], "view">;
     getFunction(nameOrSignature: "createOffer"): TypedContractMethod<[
         params: StructsLib$2.CreateOfferParamsStruct
     ], [
@@ -3787,6 +3851,7 @@ interface Core extends BaseContract {
     getFunction(nameOrSignature: "setMinerRegistry"): TypedContractMethod<[addr: AddressLike], [void], "nonpayable">;
     getFunction(nameOrSignature: "setOperator"): TypedContractMethod<[addr: AddressLike], [void], "nonpayable">;
     getFunction(nameOrSignature: "setOrderGraceDur"): TypedContractMethod<[val: BigNumberish], [void], "nonpayable">;
+    getFunction(nameOrSignature: "setPriceRegistry"): TypedContractMethod<[addr: AddressLike], [void], "nonpayable">;
     getFunction(nameOrSignature: "setProtoFee"): TypedContractMethod<[
         _instantSwapFeeBp: BigNumberish,
         _synthSwapFeeBp: BigNumberish,
@@ -3843,11 +3908,13 @@ interface Core extends BaseContract {
             string,
             string,
             string,
+            string,
             string
         ] & {
             disputeManager: string;
             provReg: string;
             assetReg: string;
+            priceReg: string;
             token: string;
             marketCore: string;
             feePool: string;
@@ -3876,7 +3943,7 @@ interface Core extends BaseContract {
     getFunction(nameOrSignature: "updateFungibleLiquidity"): TypedContractMethod<[
         params: StructsLib$2.UpdateFungibleLiquidityParamsStruct
     ], [
-        void
+        bigint
     ], "payable">;
     getFunction(nameOrSignature: "updateLiquidityPrice"): TypedContractMethod<[
         _marketId: AddressLike,
@@ -3890,7 +3957,7 @@ interface Core extends BaseContract {
     getFunction(nameOrSignature: "updateNonFungibleLiquidity"): TypedContractMethod<[
         params: StructsLib$2.UpdateNonFungibleLiquidityParamsStruct
     ], [
-        void
+        bigint
     ], "nonpayable">;
     getFunction(nameOrSignature: "updateOffer"): TypedContractMethod<[
         offerId: BigNumberish,
@@ -3948,6 +4015,7 @@ interface Core extends BaseContract {
     getEvent(key: "UpdatedOperator"): TypedContractEvent<UpdatedOperatorEvent.InputTuple, UpdatedOperatorEvent.OutputTuple, UpdatedOperatorEvent.OutputObject>;
     getEvent(key: "UpdatedOrderGraceDur"): TypedContractEvent<UpdatedOrderGraceDurEvent.InputTuple, UpdatedOrderGraceDurEvent.OutputTuple, UpdatedOrderGraceDurEvent.OutputObject>;
     getEvent(key: "UpdatedPrice"): TypedContractEvent<UpdatedPriceEvent.InputTuple, UpdatedPriceEvent.OutputTuple, UpdatedPriceEvent.OutputObject>;
+    getEvent(key: "UpdatedPriceRegistry"): TypedContractEvent<UpdatedPriceRegistryEvent.InputTuple, UpdatedPriceRegistryEvent.OutputTuple, UpdatedPriceRegistryEvent.OutputObject>;
     getEvent(key: "UpdatedProviderRegistry"): TypedContractEvent<UpdatedProviderRegistryEvent.InputTuple, UpdatedProviderRegistryEvent.OutputTuple, UpdatedProviderRegistryEvent.OutputObject>;
     filters: {
         "NewOffer(address,address,uint256,address,uint256,uint256,uint256,uint256[],uint256)": TypedContractEvent<NewOfferEvent.InputTuple, NewOfferEvent.OutputTuple, NewOfferEvent.OutputObject>;
@@ -3996,7 +4064,7 @@ interface Core extends BaseContract {
         UpdatedFeePoolConfig: TypedContractEvent<UpdatedFeePoolConfigEvent.InputTuple, UpdatedFeePoolConfigEvent.OutputTuple, UpdatedFeePoolConfigEvent.OutputObject>;
         "UpdatedFeePurse(address)": TypedContractEvent<UpdatedFeePurseEvent.InputTuple, UpdatedFeePurseEvent.OutputTuple, UpdatedFeePurseEvent.OutputObject>;
         UpdatedFeePurse: TypedContractEvent<UpdatedFeePurseEvent.InputTuple, UpdatedFeePurseEvent.OutputTuple, UpdatedFeePurseEvent.OutputObject>;
-        "UpdatedFungibleLiquidity(address,address,address,bool,bool,uint256,uint256,uint256,uint256[],uint256[],uint256)": TypedContractEvent<UpdatedFungibleLiquidityEvent$1.InputTuple, UpdatedFungibleLiquidityEvent$1.OutputTuple, UpdatedFungibleLiquidityEvent$1.OutputObject>;
+        "UpdatedFungibleLiquidity(address,address,address,bool,bool,bool,uint256,uint256,uint256,uint256[],uint256[],uint256,int256)": TypedContractEvent<UpdatedFungibleLiquidityEvent$1.InputTuple, UpdatedFungibleLiquidityEvent$1.OutputTuple, UpdatedFungibleLiquidityEvent$1.OutputObject>;
         UpdatedFungibleLiquidity: TypedContractEvent<UpdatedFungibleLiquidityEvent$1.InputTuple, UpdatedFungibleLiquidityEvent$1.OutputTuple, UpdatedFungibleLiquidityEvent$1.OutputObject>;
         "UpdatedInventor(address)": TypedContractEvent<UpdatedInventorEvent.InputTuple, UpdatedInventorEvent.OutputTuple, UpdatedInventorEvent.OutputObject>;
         UpdatedInventor: TypedContractEvent<UpdatedInventorEvent.InputTuple, UpdatedInventorEvent.OutputTuple, UpdatedInventorEvent.OutputObject>;
@@ -4014,7 +4082,7 @@ interface Core extends BaseContract {
         UpdatedMinTimeToPay: TypedContractEvent<UpdatedMinTimeToPayEvent.InputTuple, UpdatedMinTimeToPayEvent.OutputTuple, UpdatedMinTimeToPayEvent.OutputObject>;
         "UpdatedMinerRegistry(address)": TypedContractEvent<UpdatedMinerRegistryEvent$1.InputTuple, UpdatedMinerRegistryEvent$1.OutputTuple, UpdatedMinerRegistryEvent$1.OutputObject>;
         UpdatedMinerRegistry: TypedContractEvent<UpdatedMinerRegistryEvent$1.InputTuple, UpdatedMinerRegistryEvent$1.OutputTuple, UpdatedMinerRegistryEvent$1.OutputObject>;
-        "UpdatedNonFungibleLiquidity(address,address,address,bool,bool,uint256,uint256[],uint256,uint256[],uint256[],uint256)": TypedContractEvent<UpdatedNonFungibleLiquidityEvent.InputTuple, UpdatedNonFungibleLiquidityEvent.OutputTuple, UpdatedNonFungibleLiquidityEvent.OutputObject>;
+        "UpdatedNonFungibleLiquidity(address,address,address,bool,bool,bool,uint256,uint256[],uint256,uint256[],uint256[],uint256,int256)": TypedContractEvent<UpdatedNonFungibleLiquidityEvent.InputTuple, UpdatedNonFungibleLiquidityEvent.OutputTuple, UpdatedNonFungibleLiquidityEvent.OutputObject>;
         UpdatedNonFungibleLiquidity: TypedContractEvent<UpdatedNonFungibleLiquidityEvent.InputTuple, UpdatedNonFungibleLiquidityEvent.OutputTuple, UpdatedNonFungibleLiquidityEvent.OutputObject>;
         "UpdatedOperator(address)": TypedContractEvent<UpdatedOperatorEvent.InputTuple, UpdatedOperatorEvent.OutputTuple, UpdatedOperatorEvent.OutputObject>;
         UpdatedOperator: TypedContractEvent<UpdatedOperatorEvent.InputTuple, UpdatedOperatorEvent.OutputTuple, UpdatedOperatorEvent.OutputObject>;
@@ -4022,6 +4090,8 @@ interface Core extends BaseContract {
         UpdatedOrderGraceDur: TypedContractEvent<UpdatedOrderGraceDurEvent.InputTuple, UpdatedOrderGraceDurEvent.OutputTuple, UpdatedOrderGraceDurEvent.OutputObject>;
         "UpdatedPrice(address,address,address,uint256,uint256)": TypedContractEvent<UpdatedPriceEvent.InputTuple, UpdatedPriceEvent.OutputTuple, UpdatedPriceEvent.OutputObject>;
         UpdatedPrice: TypedContractEvent<UpdatedPriceEvent.InputTuple, UpdatedPriceEvent.OutputTuple, UpdatedPriceEvent.OutputObject>;
+        "UpdatedPriceRegistry(address)": TypedContractEvent<UpdatedPriceRegistryEvent.InputTuple, UpdatedPriceRegistryEvent.OutputTuple, UpdatedPriceRegistryEvent.OutputObject>;
+        UpdatedPriceRegistry: TypedContractEvent<UpdatedPriceRegistryEvent.InputTuple, UpdatedPriceRegistryEvent.OutputTuple, UpdatedPriceRegistryEvent.OutputObject>;
         "UpdatedProviderRegistry(address)": TypedContractEvent<UpdatedProviderRegistryEvent.InputTuple, UpdatedProviderRegistryEvent.OutputTuple, UpdatedProviderRegistryEvent.OutputObject>;
         UpdatedProviderRegistry: TypedContractEvent<UpdatedProviderRegistryEvent.InputTuple, UpdatedProviderRegistryEvent.OutputTuple, UpdatedProviderRegistryEvent.OutputObject>;
     };
@@ -17922,6 +17992,11 @@ declare class Core__factory {
             readonly type: "bool";
         }, {
             readonly indexed: false;
+            readonly internalType: "bool";
+            readonly name: "usePriceFromRegistry";
+            readonly type: "bool";
+        }, {
+            readonly indexed: false;
             readonly internalType: "uint256";
             readonly name: "liq";
             readonly type: "uint256";
@@ -17950,6 +18025,11 @@ declare class Core__factory {
             readonly internalType: "uint256";
             readonly name: "timeToPay";
             readonly type: "uint256";
+        }, {
+            readonly indexed: false;
+            readonly internalType: "int256";
+            readonly name: "priceScaleBps";
+            readonly type: "int256";
         }];
         readonly name: "UpdatedFungibleLiquidity";
         readonly type: "event";
@@ -18092,6 +18172,11 @@ declare class Core__factory {
             readonly type: "bool";
         }, {
             readonly indexed: false;
+            readonly internalType: "bool";
+            readonly name: "usePriceFromRegistry";
+            readonly type: "bool";
+        }, {
+            readonly indexed: false;
             readonly internalType: "uint256";
             readonly name: "lid";
             readonly type: "uint256";
@@ -18120,6 +18205,11 @@ declare class Core__factory {
             readonly internalType: "uint256";
             readonly name: "timeToPay";
             readonly type: "uint256";
+        }, {
+            readonly indexed: false;
+            readonly internalType: "int256";
+            readonly name: "priceScaleBps";
+            readonly type: "int256";
         }];
         readonly name: "UpdatedNonFungibleLiquidity";
         readonly type: "event";
@@ -18172,6 +18262,16 @@ declare class Core__factory {
             readonly type: "uint256";
         }];
         readonly name: "UpdatedPrice";
+        readonly type: "event";
+    }, {
+        readonly anonymous: false;
+        readonly inputs: readonly [{
+            readonly indexed: false;
+            readonly internalType: "address";
+            readonly name: "addr";
+            readonly type: "address";
+        }];
+        readonly name: "UpdatedPriceRegistry";
         readonly type: "event";
     }, {
         readonly anonymous: false;
@@ -18300,6 +18400,24 @@ declare class Core__factory {
         readonly name: "configureFeePool";
         readonly outputs: readonly [];
         readonly stateMutability: "nonpayable";
+        readonly type: "function";
+    }, {
+        readonly inputs: readonly [{
+            readonly internalType: "address";
+            readonly name: "_mid";
+            readonly type: "address";
+        }, {
+            readonly internalType: "address";
+            readonly name: "_owner";
+            readonly type: "address";
+        }];
+        readonly name: "countLiquidity";
+        readonly outputs: readonly [{
+            readonly internalType: "uint256";
+            readonly name: "";
+            readonly type: "uint256";
+        }];
+        readonly stateMutability: "view";
         readonly type: "function";
     }, {
         readonly inputs: readonly [{
@@ -18455,8 +18573,16 @@ declare class Core__factory {
                 readonly name: "wantAndIds";
                 readonly type: "uint256[]";
             }, {
+                readonly internalType: "int256";
+                readonly name: "priceScaleBps";
+                readonly type: "int256";
+            }, {
                 readonly internalType: "bool";
                 readonly name: "paused";
+                readonly type: "bool";
+            }, {
+                readonly internalType: "bool";
+                readonly name: "usePriceFromRegistry";
                 readonly type: "bool";
             }, {
                 readonly internalType: "address";
@@ -19126,6 +19252,16 @@ declare class Core__factory {
         readonly type: "function";
     }, {
         readonly inputs: readonly [{
+            readonly internalType: "address";
+            readonly name: "addr";
+            readonly type: "address";
+        }];
+        readonly name: "setPriceRegistry";
+        readonly outputs: readonly [];
+        readonly stateMutability: "nonpayable";
+        readonly type: "function";
+    }, {
+        readonly inputs: readonly [{
             readonly internalType: "uint256";
             readonly name: "_instantSwapFeeBp";
             readonly type: "uint256";
@@ -19291,6 +19427,10 @@ declare class Core__factory {
         }, {
             readonly internalType: "contract IAssetRegistry";
             readonly name: "assetReg";
+            readonly type: "address";
+        }, {
+            readonly internalType: "contract IPriceRegistry";
+            readonly name: "priceReg";
             readonly type: "address";
         }, {
             readonly internalType: "contract IERC20";
@@ -19475,6 +19615,10 @@ declare class Core__factory {
                 readonly name: "wantAndIds";
                 readonly type: "uint256[]";
             }, {
+                readonly internalType: "int256";
+                readonly name: "priceScaleBps";
+                readonly type: "int256";
+            }, {
                 readonly internalType: "bool";
                 readonly name: "deduct";
                 readonly type: "bool";
@@ -19482,13 +19626,21 @@ declare class Core__factory {
                 readonly internalType: "bool";
                 readonly name: "pause";
                 readonly type: "bool";
+            }, {
+                readonly internalType: "bool";
+                readonly name: "usePriceFromRegistry";
+                readonly type: "bool";
             }];
             readonly internalType: "struct StructsLib.UpdateFungibleLiquidityParams";
             readonly name: "params";
             readonly type: "tuple";
         }];
         readonly name: "updateFungibleLiquidity";
-        readonly outputs: readonly [];
+        readonly outputs: readonly [{
+            readonly internalType: "uint256";
+            readonly name: "";
+            readonly type: "uint256";
+        }];
         readonly stateMutability: "payable";
         readonly type: "function";
     }, {
@@ -19556,6 +19708,10 @@ declare class Core__factory {
                 readonly name: "wantAndIds";
                 readonly type: "uint256[]";
             }, {
+                readonly internalType: "int256";
+                readonly name: "priceScaleBps";
+                readonly type: "int256";
+            }, {
                 readonly internalType: "bool";
                 readonly name: "deduct";
                 readonly type: "bool";
@@ -19563,13 +19719,21 @@ declare class Core__factory {
                 readonly internalType: "bool";
                 readonly name: "pause";
                 readonly type: "bool";
+            }, {
+                readonly internalType: "bool";
+                readonly name: "usePriceFromRegistry";
+                readonly type: "bool";
             }];
             readonly internalType: "struct StructsLib.UpdateNonFungibleLiquidityParams";
             readonly name: "params";
             readonly type: "tuple";
         }];
         readonly name: "updateNonFungibleLiquidity";
-        readonly outputs: readonly [];
+        readonly outputs: readonly [{
+            readonly internalType: "uint256";
+            readonly name: "";
+            readonly type: "uint256";
+        }];
         readonly stateMutability: "nonpayable";
         readonly type: "function";
     }, {
