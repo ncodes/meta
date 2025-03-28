@@ -28,6 +28,7 @@ interface Abi {
     UniswapV3Router2: any;
     UniswapV3RouterUniversal: any;
     BondCurveDistro: any;
+    ProxyLP: any;
 }
 declare const Abi: Abi;
 
@@ -309,7 +310,7 @@ type KnownMediatorPools = {
 };
 declare const MediatorPools: KnownMediatorPools;
 
-type TokenListNames = ChainNames | 'synthetic';
+type TokenListNames = ChainNames | "synthetic";
 declare const TokenLists: Record<TokenListNames, TokenList.TokenData>;
 /**
  * Get token info
@@ -463,7 +464,7 @@ declare namespace AssetRegistryUpdatedEvent {
     type Log = TypedEventLog<Event>;
     type LogDescription = TypedLogDescription<Event>;
 }
-declare namespace OwnershipTransferredEvent$h {
+declare namespace OwnershipTransferredEvent$i {
     type InputTuple = [previousOwner: AddressLike, newOwner: AddressLike];
     type OutputTuple = [previousOwner: string, newOwner: string];
     interface OutputObject {
@@ -638,12 +639,12 @@ interface AssetRegistry extends BaseContract {
     ], "view">;
     getFunction(nameOrSignature: "transferOwnership"): TypedContractMethod<[newOwner: AddressLike], [void], "nonpayable">;
     getEvent(key: "AssetRegistryUpdated"): TypedContractEvent<AssetRegistryUpdatedEvent.InputTuple, AssetRegistryUpdatedEvent.OutputTuple, AssetRegistryUpdatedEvent.OutputObject>;
-    getEvent(key: "OwnershipTransferred"): TypedContractEvent<OwnershipTransferredEvent$h.InputTuple, OwnershipTransferredEvent$h.OutputTuple, OwnershipTransferredEvent$h.OutputObject>;
+    getEvent(key: "OwnershipTransferred"): TypedContractEvent<OwnershipTransferredEvent$i.InputTuple, OwnershipTransferredEvent$i.OutputTuple, OwnershipTransferredEvent$i.OutputObject>;
     filters: {
         "AssetRegistryUpdated(address,uint256,uint256,uint256,bool,bool,bool)": TypedContractEvent<AssetRegistryUpdatedEvent.InputTuple, AssetRegistryUpdatedEvent.OutputTuple, AssetRegistryUpdatedEvent.OutputObject>;
         AssetRegistryUpdated: TypedContractEvent<AssetRegistryUpdatedEvent.InputTuple, AssetRegistryUpdatedEvent.OutputTuple, AssetRegistryUpdatedEvent.OutputObject>;
-        "OwnershipTransferred(address,address)": TypedContractEvent<OwnershipTransferredEvent$h.InputTuple, OwnershipTransferredEvent$h.OutputTuple, OwnershipTransferredEvent$h.OutputObject>;
-        OwnershipTransferred: TypedContractEvent<OwnershipTransferredEvent$h.InputTuple, OwnershipTransferredEvent$h.OutputTuple, OwnershipTransferredEvent$h.OutputObject>;
+        "OwnershipTransferred(address,address)": TypedContractEvent<OwnershipTransferredEvent$i.InputTuple, OwnershipTransferredEvent$i.OutputTuple, OwnershipTransferredEvent$i.OutputObject>;
+        OwnershipTransferred: TypedContractEvent<OwnershipTransferredEvent$i.InputTuple, OwnershipTransferredEvent$i.OutputTuple, OwnershipTransferredEvent$i.OutputObject>;
     };
 }
 
@@ -890,7 +891,7 @@ declare namespace GranteeBadgeMetaUpdatedEvent {
     type Log = TypedEventLog<Event>;
     type LogDescription = TypedLogDescription<Event>;
 }
-declare namespace OwnershipTransferredEvent$g {
+declare namespace OwnershipTransferredEvent$h {
     type InputTuple = [previousOwner: AddressLike, newOwner: AddressLike];
     type OutputTuple = [previousOwner: string, newOwner: string];
     interface OutputObject {
@@ -1398,7 +1399,7 @@ interface BadgeManager extends BaseContract {
     getEvent(key: "BadgeOwnershipTransferred"): TypedContractEvent<BadgeOwnershipTransferredEvent.InputTuple, BadgeOwnershipTransferredEvent.OutputTuple, BadgeOwnershipTransferredEvent.OutputObject>;
     getEvent(key: "GrantedBadge"): TypedContractEvent<GrantedBadgeEvent.InputTuple, GrantedBadgeEvent.OutputTuple, GrantedBadgeEvent.OutputObject>;
     getEvent(key: "GranteeBadgeMetaUpdated"): TypedContractEvent<GranteeBadgeMetaUpdatedEvent.InputTuple, GranteeBadgeMetaUpdatedEvent.OutputTuple, GranteeBadgeMetaUpdatedEvent.OutputObject>;
-    getEvent(key: "OwnershipTransferred"): TypedContractEvent<OwnershipTransferredEvent$g.InputTuple, OwnershipTransferredEvent$g.OutputTuple, OwnershipTransferredEvent$g.OutputObject>;
+    getEvent(key: "OwnershipTransferred"): TypedContractEvent<OwnershipTransferredEvent$h.InputTuple, OwnershipTransferredEvent$h.OutputTuple, OwnershipTransferredEvent$h.OutputObject>;
     getEvent(key: "PathRegistered"): TypedContractEvent<PathRegisteredEvent.InputTuple, PathRegisteredEvent.OutputTuple, PathRegisteredEvent.OutputObject>;
     getEvent(key: "RemovedCoIssuer"): TypedContractEvent<RemovedCoIssuerEvent.InputTuple, RemovedCoIssuerEvent.OutputTuple, RemovedCoIssuerEvent.OutputObject>;
     getEvent(key: "ReplacedIssuer"): TypedContractEvent<ReplacedIssuerEvent.InputTuple, ReplacedIssuerEvent.OutputTuple, ReplacedIssuerEvent.OutputObject>;
@@ -1416,8 +1417,8 @@ interface BadgeManager extends BaseContract {
         GrantedBadge: TypedContractEvent<GrantedBadgeEvent.InputTuple, GrantedBadgeEvent.OutputTuple, GrantedBadgeEvent.OutputObject>;
         "GranteeBadgeMetaUpdated(address,address,string,string,string,string)": TypedContractEvent<GranteeBadgeMetaUpdatedEvent.InputTuple, GranteeBadgeMetaUpdatedEvent.OutputTuple, GranteeBadgeMetaUpdatedEvent.OutputObject>;
         GranteeBadgeMetaUpdated: TypedContractEvent<GranteeBadgeMetaUpdatedEvent.InputTuple, GranteeBadgeMetaUpdatedEvent.OutputTuple, GranteeBadgeMetaUpdatedEvent.OutputObject>;
-        "OwnershipTransferred(address,address)": TypedContractEvent<OwnershipTransferredEvent$g.InputTuple, OwnershipTransferredEvent$g.OutputTuple, OwnershipTransferredEvent$g.OutputObject>;
-        OwnershipTransferred: TypedContractEvent<OwnershipTransferredEvent$g.InputTuple, OwnershipTransferredEvent$g.OutputTuple, OwnershipTransferredEvent$g.OutputObject>;
+        "OwnershipTransferred(address,address)": TypedContractEvent<OwnershipTransferredEvent$h.InputTuple, OwnershipTransferredEvent$h.OutputTuple, OwnershipTransferredEvent$h.OutputObject>;
+        OwnershipTransferred: TypedContractEvent<OwnershipTransferredEvent$h.InputTuple, OwnershipTransferredEvent$h.OutputTuple, OwnershipTransferredEvent$h.OutputObject>;
         "PathRegistered(address,string,string,string[],string[])": TypedContractEvent<PathRegisteredEvent.InputTuple, PathRegisteredEvent.OutputTuple, PathRegisteredEvent.OutputObject>;
         PathRegistered: TypedContractEvent<PathRegisteredEvent.InputTuple, PathRegisteredEvent.OutputTuple, PathRegisteredEvent.OutputObject>;
         "RemovedCoIssuer(address,address,string)": TypedContractEvent<RemovedCoIssuerEvent.InputTuple, RemovedCoIssuerEvent.OutputTuple, RemovedCoIssuerEvent.OutputObject>;
@@ -1647,7 +1648,7 @@ declare namespace ClaimedEvent$1 {
     type Log = TypedEventLog<Event>;
     type LogDescription = TypedLogDescription<Event>;
 }
-declare namespace OwnershipTransferredEvent$f {
+declare namespace OwnershipTransferredEvent$g {
     type InputTuple = [previousOwner: AddressLike, newOwner: AddressLike];
     type OutputTuple = [previousOwner: string, newOwner: string];
     interface OutputObject {
@@ -1965,7 +1966,7 @@ interface BondCurveDistro extends BaseContract {
     getEvent(key: "ClaimSignerUpdated"): TypedContractEvent<ClaimSignerUpdatedEvent.InputTuple, ClaimSignerUpdatedEvent.OutputTuple, ClaimSignerUpdatedEvent.OutputObject>;
     getEvent(key: "ClaimWithdrawn"): TypedContractEvent<ClaimWithdrawnEvent.InputTuple, ClaimWithdrawnEvent.OutputTuple, ClaimWithdrawnEvent.OutputObject>;
     getEvent(key: "Claimed"): TypedContractEvent<ClaimedEvent$1.InputTuple, ClaimedEvent$1.OutputTuple, ClaimedEvent$1.OutputObject>;
-    getEvent(key: "OwnershipTransferred"): TypedContractEvent<OwnershipTransferredEvent$f.InputTuple, OwnershipTransferredEvent$f.OutputTuple, OwnershipTransferredEvent$f.OutputObject>;
+    getEvent(key: "OwnershipTransferred"): TypedContractEvent<OwnershipTransferredEvent$g.InputTuple, OwnershipTransferredEvent$g.OutputTuple, OwnershipTransferredEvent$g.OutputObject>;
     getEvent(key: "ReInitialized"): TypedContractEvent<ReInitializedEvent.InputTuple, ReInitializedEvent.OutputTuple, ReInitializedEvent.OutputObject>;
     getEvent(key: "Sell"): TypedContractEvent<SellEvent.InputTuple, SellEvent.OutputTuple, SellEvent.OutputObject>;
     getEvent(key: "UpdatedDevFeeBp"): TypedContractEvent<UpdatedDevFeeBpEvent.InputTuple, UpdatedDevFeeBpEvent.OutputTuple, UpdatedDevFeeBpEvent.OutputObject>;
@@ -1991,8 +1992,8 @@ interface BondCurveDistro extends BaseContract {
         ClaimWithdrawn: TypedContractEvent<ClaimWithdrawnEvent.InputTuple, ClaimWithdrawnEvent.OutputTuple, ClaimWithdrawnEvent.OutputObject>;
         "Claimed(address,uint256,uint256,uint256)": TypedContractEvent<ClaimedEvent$1.InputTuple, ClaimedEvent$1.OutputTuple, ClaimedEvent$1.OutputObject>;
         Claimed: TypedContractEvent<ClaimedEvent$1.InputTuple, ClaimedEvent$1.OutputTuple, ClaimedEvent$1.OutputObject>;
-        "OwnershipTransferred(address,address)": TypedContractEvent<OwnershipTransferredEvent$f.InputTuple, OwnershipTransferredEvent$f.OutputTuple, OwnershipTransferredEvent$f.OutputObject>;
-        OwnershipTransferred: TypedContractEvent<OwnershipTransferredEvent$f.InputTuple, OwnershipTransferredEvent$f.OutputTuple, OwnershipTransferredEvent$f.OutputObject>;
+        "OwnershipTransferred(address,address)": TypedContractEvent<OwnershipTransferredEvent$g.InputTuple, OwnershipTransferredEvent$g.OutputTuple, OwnershipTransferredEvent$g.OutputObject>;
+        OwnershipTransferred: TypedContractEvent<OwnershipTransferredEvent$g.InputTuple, OwnershipTransferredEvent$g.OutputTuple, OwnershipTransferredEvent$g.OutputObject>;
         "ReInitialized(address,uint256,uint256,uint256,uint256,uint256)": TypedContractEvent<ReInitializedEvent.InputTuple, ReInitializedEvent.OutputTuple, ReInitializedEvent.OutputObject>;
         ReInitialized: TypedContractEvent<ReInitializedEvent.InputTuple, ReInitializedEvent.OutputTuple, ReInitializedEvent.OutputObject>;
         "Sell(address,uint256,uint256,uint256)": TypedContractEvent<SellEvent.InputTuple, SellEvent.OutputTuple, SellEvent.OutputObject>;
@@ -2008,7 +2009,7 @@ interface BondCurveDistro extends BaseContract {
     };
 }
 
-declare namespace StructsLib$1 {
+declare namespace StructsLib$2 {
     type CreateOfferParamsStruct = {
         marketId: AddressLike;
         provider: AddressLike;
@@ -2435,7 +2436,7 @@ interface CoreInterface extends Interface {
         BigNumberish
     ]): string;
     encodeFunctionData(functionFragment: "configureFeePool", values: [BigNumberish]): string;
-    encodeFunctionData(functionFragment: "createOffer", values: [StructsLib$1.CreateOfferParamsStruct]): string;
+    encodeFunctionData(functionFragment: "createOffer", values: [StructsLib$2.CreateOfferParamsStruct]): string;
     encodeFunctionData(functionFragment: "executeOffer", values: [BigNumberish, BigNumberish]): string;
     encodeFunctionData(functionFragment: "feeBalanceOf", values: [AddressLike, AddressLike]): string;
     encodeFunctionData(functionFragment: "getFeeBPs", values?: undefined): string;
@@ -2493,14 +2494,14 @@ interface CoreInterface extends Interface {
     encodeFunctionData(functionFragment: "state", values?: undefined): string;
     encodeFunctionData(functionFragment: "state2", values?: undefined): string;
     encodeFunctionData(functionFragment: "supportsInterface", values: [BytesLike]): string;
-    encodeFunctionData(functionFragment: "swapQuoteForBase", values: [StructsLib$1.SwapQuoteForBaseParamsStruct]): string;
+    encodeFunctionData(functionFragment: "swapQuoteForBase", values: [StructsLib$2.SwapQuoteForBaseParamsStruct]): string;
     encodeFunctionData(functionFragment: "togglePause", values: [AddressLike, BigNumberish, BigNumberish]): string;
     encodeFunctionData(functionFragment: "transferOwnership", values: [AddressLike]): string;
     encodeFunctionData(functionFragment: "transferToFeePool", values: [AddressLike]): string;
     encodeFunctionData(functionFragment: "unacceptOffer", values: [BigNumberish]): string;
-    encodeFunctionData(functionFragment: "updateFungibleLiquidity", values: [StructsLib$1.UpdateFungibleLiquidityParamsStruct]): string;
+    encodeFunctionData(functionFragment: "updateFungibleLiquidity", values: [StructsLib$2.UpdateFungibleLiquidityParamsStruct]): string;
     encodeFunctionData(functionFragment: "updateLiquidityPrice", values: [AddressLike, AddressLike, BigNumberish, BigNumberish, BigNumberish]): string;
-    encodeFunctionData(functionFragment: "updateNonFungibleLiquidity", values: [StructsLib$1.UpdateNonFungibleLiquidityParamsStruct]): string;
+    encodeFunctionData(functionFragment: "updateNonFungibleLiquidity", values: [StructsLib$2.UpdateNonFungibleLiquidityParamsStruct]): string;
     encodeFunctionData(functionFragment: "updateOffer", values: [
         BigNumberish,
         BigNumberish,
@@ -2725,7 +2726,7 @@ declare namespace OrderCancelledEvent {
     type Log = TypedEventLog<Event>;
     type LogDescription = TypedLogDescription<Event>;
 }
-declare namespace OwnershipTransferredEvent$e {
+declare namespace OwnershipTransferredEvent$f {
     type InputTuple = [previousOwner: AddressLike, newOwner: AddressLike];
     type OutputTuple = [previousOwner: string, newOwner: string];
     interface OutputObject {
@@ -3017,7 +3018,7 @@ declare namespace UpdatedFeePurseEvent {
     type Log = TypedEventLog<Event>;
     type LogDescription = TypedLogDescription<Event>;
 }
-declare namespace UpdatedFungibleLiquidityEvent {
+declare namespace UpdatedFungibleLiquidityEvent$1 {
     type InputTuple = [
         provider: AddressLike,
         marketId: AddressLike,
@@ -3333,7 +3334,7 @@ interface Core extends BaseContract {
         void
     ], "nonpayable">;
     createOffer: TypedContractMethod<[
-        params: StructsLib$1.CreateOfferParamsStruct
+        params: StructsLib$2.CreateOfferParamsStruct
     ], [
         void
     ], "nonpayable">;
@@ -3521,14 +3522,14 @@ interface Core extends BaseContract {
     state: TypedContractMethod<[
     ], [
         [
-            StructsLib$1.IntSlotStateStructOutput,
+            StructsLib$2.IntSlotStateStructOutput,
             bigint,
             bigint,
             bigint,
             bigint,
             string
         ] & {
-            ints: StructsLib$1.IntSlotStateStructOutput;
+            ints: StructsLib$2.IntSlotStateStructOutput;
             minTimeToPay: bigint;
             orderGraceDur: bigint;
             numOrders: bigint;
@@ -3568,7 +3569,7 @@ interface Core extends BaseContract {
         boolean
     ], "view">;
     swapQuoteForBase: TypedContractMethod<[
-        params: StructsLib$1.SwapQuoteForBaseParamsStruct
+        params: StructsLib$2.SwapQuoteForBaseParamsStruct
     ], [
         void
     ], "payable">;
@@ -3595,7 +3596,7 @@ interface Core extends BaseContract {
         void
     ], "nonpayable">;
     updateFungibleLiquidity: TypedContractMethod<[
-        params: StructsLib$1.UpdateFungibleLiquidityParamsStruct
+        params: StructsLib$2.UpdateFungibleLiquidityParamsStruct
     ], [
         void
     ], "payable">;
@@ -3609,7 +3610,7 @@ interface Core extends BaseContract {
         void
     ], "nonpayable">;
     updateNonFungibleLiquidity: TypedContractMethod<[
-        params: StructsLib$1.UpdateNonFungibleLiquidityParamsStruct
+        params: StructsLib$2.UpdateNonFungibleLiquidityParamsStruct
     ], [
         void
     ], "nonpayable">;
@@ -3673,7 +3674,7 @@ interface Core extends BaseContract {
     ], "view">;
     getFunction(nameOrSignature: "configureFeePool"): TypedContractMethod<[interval: BigNumberish], [void], "nonpayable">;
     getFunction(nameOrSignature: "createOffer"): TypedContractMethod<[
-        params: StructsLib$1.CreateOfferParamsStruct
+        params: StructsLib$2.CreateOfferParamsStruct
     ], [
         void
     ], "nonpayable">;
@@ -3813,14 +3814,14 @@ interface Core extends BaseContract {
     getFunction(nameOrSignature: "state"): TypedContractMethod<[
     ], [
         [
-            StructsLib$1.IntSlotStateStructOutput,
+            StructsLib$2.IntSlotStateStructOutput,
             bigint,
             bigint,
             bigint,
             bigint,
             string
         ] & {
-            ints: StructsLib$1.IntSlotStateStructOutput;
+            ints: StructsLib$2.IntSlotStateStructOutput;
             minTimeToPay: bigint;
             orderGraceDur: bigint;
             numOrders: bigint;
@@ -3856,7 +3857,7 @@ interface Core extends BaseContract {
     ], "view">;
     getFunction(nameOrSignature: "supportsInterface"): TypedContractMethod<[interfaceId: BytesLike], [boolean], "view">;
     getFunction(nameOrSignature: "swapQuoteForBase"): TypedContractMethod<[
-        params: StructsLib$1.SwapQuoteForBaseParamsStruct
+        params: StructsLib$2.SwapQuoteForBaseParamsStruct
     ], [
         void
     ], "payable">;
@@ -3871,7 +3872,7 @@ interface Core extends BaseContract {
     getFunction(nameOrSignature: "transferToFeePool"): TypedContractMethod<[_token: AddressLike], [void], "nonpayable">;
     getFunction(nameOrSignature: "unacceptOffer"): TypedContractMethod<[offerId: BigNumberish], [void], "nonpayable">;
     getFunction(nameOrSignature: "updateFungibleLiquidity"): TypedContractMethod<[
-        params: StructsLib$1.UpdateFungibleLiquidityParamsStruct
+        params: StructsLib$2.UpdateFungibleLiquidityParamsStruct
     ], [
         void
     ], "payable">;
@@ -3885,7 +3886,7 @@ interface Core extends BaseContract {
         void
     ], "nonpayable">;
     getFunction(nameOrSignature: "updateNonFungibleLiquidity"): TypedContractMethod<[
-        params: StructsLib$1.UpdateNonFungibleLiquidityParamsStruct
+        params: StructsLib$2.UpdateNonFungibleLiquidityParamsStruct
     ], [
         void
     ], "nonpayable">;
@@ -3916,7 +3917,7 @@ interface Core extends BaseContract {
     getEvent(key: "OfferUnaccepted"): TypedContractEvent<OfferUnacceptedEvent.InputTuple, OfferUnacceptedEvent.OutputTuple, OfferUnacceptedEvent.OutputObject>;
     getEvent(key: "OfferUpdated"): TypedContractEvent<OfferUpdatedEvent.InputTuple, OfferUpdatedEvent.OutputTuple, OfferUpdatedEvent.OutputObject>;
     getEvent(key: "OrderCancelled"): TypedContractEvent<OrderCancelledEvent.InputTuple, OrderCancelledEvent.OutputTuple, OrderCancelledEvent.OutputObject>;
-    getEvent(key: "OwnershipTransferred"): TypedContractEvent<OwnershipTransferredEvent$e.InputTuple, OwnershipTransferredEvent$e.OutputTuple, OwnershipTransferredEvent$e.OutputObject>;
+    getEvent(key: "OwnershipTransferred"): TypedContractEvent<OwnershipTransferredEvent$f.InputTuple, OwnershipTransferredEvent$f.OutputTuple, OwnershipTransferredEvent$f.OutputObject>;
     getEvent(key: "ProtocolFeeSplitUpdated"): TypedContractEvent<ProtocolFeeSplitUpdatedEvent.InputTuple, ProtocolFeeSplitUpdatedEvent.OutputTuple, ProtocolFeeSplitUpdatedEvent.OutputObject>;
     getEvent(key: "ProtocolFeeUpdated"): TypedContractEvent<ProtocolFeeUpdatedEvent.InputTuple, ProtocolFeeUpdatedEvent.OutputTuple, ProtocolFeeUpdatedEvent.OutputObject>;
     getEvent(key: "Swap"): TypedContractEvent<SwapEvent$5.InputTuple, SwapEvent$5.OutputTuple, SwapEvent$5.OutputObject>;
@@ -3932,7 +3933,7 @@ interface Core extends BaseContract {
     getEvent(key: "UpdatedFeePool"): TypedContractEvent<UpdatedFeePoolEvent$1.InputTuple, UpdatedFeePoolEvent$1.OutputTuple, UpdatedFeePoolEvent$1.OutputObject>;
     getEvent(key: "UpdatedFeePoolConfig"): TypedContractEvent<UpdatedFeePoolConfigEvent.InputTuple, UpdatedFeePoolConfigEvent.OutputTuple, UpdatedFeePoolConfigEvent.OutputObject>;
     getEvent(key: "UpdatedFeePurse"): TypedContractEvent<UpdatedFeePurseEvent.InputTuple, UpdatedFeePurseEvent.OutputTuple, UpdatedFeePurseEvent.OutputObject>;
-    getEvent(key: "UpdatedFungibleLiquidity"): TypedContractEvent<UpdatedFungibleLiquidityEvent.InputTuple, UpdatedFungibleLiquidityEvent.OutputTuple, UpdatedFungibleLiquidityEvent.OutputObject>;
+    getEvent(key: "UpdatedFungibleLiquidity"): TypedContractEvent<UpdatedFungibleLiquidityEvent$1.InputTuple, UpdatedFungibleLiquidityEvent$1.OutputTuple, UpdatedFungibleLiquidityEvent$1.OutputObject>;
     getEvent(key: "UpdatedInventor"): TypedContractEvent<UpdatedInventorEvent.InputTuple, UpdatedInventorEvent.OutputTuple, UpdatedInventorEvent.OutputObject>;
     getEvent(key: "UpdatedLiquidityManager"): TypedContractEvent<UpdatedLiquidityManagerEvent.InputTuple, UpdatedLiquidityManagerEvent.OutputTuple, UpdatedLiquidityManagerEvent.OutputObject>;
     getEvent(key: "UpdatedLiquiditySwapBadges"): TypedContractEvent<UpdatedLiquiditySwapBadgesEvent.InputTuple, UpdatedLiquiditySwapBadgesEvent.OutputTuple, UpdatedLiquiditySwapBadgesEvent.OutputObject>;
@@ -3961,8 +3962,8 @@ interface Core extends BaseContract {
         OfferUpdated: TypedContractEvent<OfferUpdatedEvent.InputTuple, OfferUpdatedEvent.OutputTuple, OfferUpdatedEvent.OutputObject>;
         "OrderCancelled(uint256,address,bool)": TypedContractEvent<OrderCancelledEvent.InputTuple, OrderCancelledEvent.OutputTuple, OrderCancelledEvent.OutputObject>;
         OrderCancelled: TypedContractEvent<OrderCancelledEvent.InputTuple, OrderCancelledEvent.OutputTuple, OrderCancelledEvent.OutputObject>;
-        "OwnershipTransferred(address,address)": TypedContractEvent<OwnershipTransferredEvent$e.InputTuple, OwnershipTransferredEvent$e.OutputTuple, OwnershipTransferredEvent$e.OutputObject>;
-        OwnershipTransferred: TypedContractEvent<OwnershipTransferredEvent$e.InputTuple, OwnershipTransferredEvent$e.OutputTuple, OwnershipTransferredEvent$e.OutputObject>;
+        "OwnershipTransferred(address,address)": TypedContractEvent<OwnershipTransferredEvent$f.InputTuple, OwnershipTransferredEvent$f.OutputTuple, OwnershipTransferredEvent$f.OutputObject>;
+        OwnershipTransferred: TypedContractEvent<OwnershipTransferredEvent$f.InputTuple, OwnershipTransferredEvent$f.OutputTuple, OwnershipTransferredEvent$f.OutputObject>;
         "ProtocolFeeSplitUpdated(uint256,uint256,uint256)": TypedContractEvent<ProtocolFeeSplitUpdatedEvent.InputTuple, ProtocolFeeSplitUpdatedEvent.OutputTuple, ProtocolFeeSplitUpdatedEvent.OutputObject>;
         ProtocolFeeSplitUpdated: TypedContractEvent<ProtocolFeeSplitUpdatedEvent.InputTuple, ProtocolFeeSplitUpdatedEvent.OutputTuple, ProtocolFeeSplitUpdatedEvent.OutputObject>;
         "ProtocolFeeUpdated(uint256,uint256,uint256,uint256,uint256,uint256)": TypedContractEvent<ProtocolFeeUpdatedEvent.InputTuple, ProtocolFeeUpdatedEvent.OutputTuple, ProtocolFeeUpdatedEvent.OutputObject>;
@@ -3993,8 +3994,8 @@ interface Core extends BaseContract {
         UpdatedFeePoolConfig: TypedContractEvent<UpdatedFeePoolConfigEvent.InputTuple, UpdatedFeePoolConfigEvent.OutputTuple, UpdatedFeePoolConfigEvent.OutputObject>;
         "UpdatedFeePurse(address)": TypedContractEvent<UpdatedFeePurseEvent.InputTuple, UpdatedFeePurseEvent.OutputTuple, UpdatedFeePurseEvent.OutputObject>;
         UpdatedFeePurse: TypedContractEvent<UpdatedFeePurseEvent.InputTuple, UpdatedFeePurseEvent.OutputTuple, UpdatedFeePurseEvent.OutputObject>;
-        "UpdatedFungibleLiquidity(address,address,address,bool,bool,uint256,uint256,uint256,uint256[],uint256[],uint256)": TypedContractEvent<UpdatedFungibleLiquidityEvent.InputTuple, UpdatedFungibleLiquidityEvent.OutputTuple, UpdatedFungibleLiquidityEvent.OutputObject>;
-        UpdatedFungibleLiquidity: TypedContractEvent<UpdatedFungibleLiquidityEvent.InputTuple, UpdatedFungibleLiquidityEvent.OutputTuple, UpdatedFungibleLiquidityEvent.OutputObject>;
+        "UpdatedFungibleLiquidity(address,address,address,bool,bool,uint256,uint256,uint256,uint256[],uint256[],uint256)": TypedContractEvent<UpdatedFungibleLiquidityEvent$1.InputTuple, UpdatedFungibleLiquidityEvent$1.OutputTuple, UpdatedFungibleLiquidityEvent$1.OutputObject>;
+        UpdatedFungibleLiquidity: TypedContractEvent<UpdatedFungibleLiquidityEvent$1.InputTuple, UpdatedFungibleLiquidityEvent$1.OutputTuple, UpdatedFungibleLiquidityEvent$1.OutputObject>;
         "UpdatedInventor(address)": TypedContractEvent<UpdatedInventorEvent.InputTuple, UpdatedInventorEvent.OutputTuple, UpdatedInventorEvent.OutputObject>;
         UpdatedInventor: TypedContractEvent<UpdatedInventorEvent.InputTuple, UpdatedInventorEvent.OutputTuple, UpdatedInventorEvent.OutputObject>;
         "UpdatedLiquidityManager(address,address,address,address)": TypedContractEvent<UpdatedLiquidityManagerEvent.InputTuple, UpdatedLiquidityManagerEvent.OutputTuple, UpdatedLiquidityManagerEvent.OutputObject>;
@@ -4265,7 +4266,7 @@ declare namespace DraftedMediatorEvent {
     type Log = TypedEventLog<Event>;
     type LogDescription = TypedLogDescription<Event>;
 }
-declare namespace OwnershipTransferredEvent$d {
+declare namespace OwnershipTransferredEvent$e {
     type InputTuple = [previousOwner: AddressLike, newOwner: AddressLike];
     type OutputTuple = [previousOwner: string, newOwner: string];
     interface OutputObject {
@@ -4684,7 +4685,7 @@ interface DisputeManager extends BaseContract {
     getEvent(key: "DisputeCreated"): TypedContractEvent<DisputeCreatedEvent.InputTuple, DisputeCreatedEvent.OutputTuple, DisputeCreatedEvent.OutputObject>;
     getEvent(key: "Drafted"): TypedContractEvent<DraftedEvent$1.InputTuple, DraftedEvent$1.OutputTuple, DraftedEvent$1.OutputObject>;
     getEvent(key: "DraftedMediator"): TypedContractEvent<DraftedMediatorEvent.InputTuple, DraftedMediatorEvent.OutputTuple, DraftedMediatorEvent.OutputObject>;
-    getEvent(key: "OwnershipTransferred"): TypedContractEvent<OwnershipTransferredEvent$d.InputTuple, OwnershipTransferredEvent$d.OutputTuple, OwnershipTransferredEvent$d.OutputObject>;
+    getEvent(key: "OwnershipTransferred"): TypedContractEvent<OwnershipTransferredEvent$e.InputTuple, OwnershipTransferredEvent$e.OutputTuple, OwnershipTransferredEvent$e.OutputObject>;
     getEvent(key: "Revealed"): TypedContractEvent<RevealedEvent.InputTuple, RevealedEvent.OutputTuple, RevealedEvent.OutputObject>;
     getEvent(key: "Undrafted"): TypedContractEvent<UndraftedEvent$1.InputTuple, UndraftedEvent$1.OutputTuple, UndraftedEvent$1.OutputObject>;
     getEvent(key: "UpdatedCore"): TypedContractEvent<UpdatedCoreEvent$1.InputTuple, UpdatedCoreEvent$1.OutputTuple, UpdatedCoreEvent$1.OutputObject>;
@@ -4706,8 +4707,8 @@ interface DisputeManager extends BaseContract {
         Drafted: TypedContractEvent<DraftedEvent$1.InputTuple, DraftedEvent$1.OutputTuple, DraftedEvent$1.OutputObject>;
         "DraftedMediator(address,uint256,uint256,uint256,address,address)": TypedContractEvent<DraftedMediatorEvent.InputTuple, DraftedMediatorEvent.OutputTuple, DraftedMediatorEvent.OutputObject>;
         DraftedMediator: TypedContractEvent<DraftedMediatorEvent.InputTuple, DraftedMediatorEvent.OutputTuple, DraftedMediatorEvent.OutputObject>;
-        "OwnershipTransferred(address,address)": TypedContractEvent<OwnershipTransferredEvent$d.InputTuple, OwnershipTransferredEvent$d.OutputTuple, OwnershipTransferredEvent$d.OutputObject>;
-        OwnershipTransferred: TypedContractEvent<OwnershipTransferredEvent$d.InputTuple, OwnershipTransferredEvent$d.OutputTuple, OwnershipTransferredEvent$d.OutputObject>;
+        "OwnershipTransferred(address,address)": TypedContractEvent<OwnershipTransferredEvent$e.InputTuple, OwnershipTransferredEvent$e.OutputTuple, OwnershipTransferredEvent$e.OutputObject>;
+        OwnershipTransferred: TypedContractEvent<OwnershipTransferredEvent$e.InputTuple, OwnershipTransferredEvent$e.OutputTuple, OwnershipTransferredEvent$e.OutputObject>;
         "Revealed(address,uint256,uint256,address,uint256,bytes1)": TypedContractEvent<RevealedEvent.InputTuple, RevealedEvent.OutputTuple, RevealedEvent.OutputObject>;
         Revealed: TypedContractEvent<RevealedEvent.InputTuple, RevealedEvent.OutputTuple, RevealedEvent.OutputObject>;
         "Undrafted(address,uint256,bool,address)": TypedContractEvent<UndraftedEvent$1.InputTuple, UndraftedEvent$1.OutputTuple, UndraftedEvent$1.OutputObject>;
@@ -5253,7 +5254,7 @@ declare namespace MintedEvent$1 {
     type Log = TypedEventLog<Event>;
     type LogDescription = TypedLogDescription<Event>;
 }
-declare namespace OwnershipTransferredEvent$c {
+declare namespace OwnershipTransferredEvent$d {
     type InputTuple = [previousOwner: AddressLike, newOwner: AddressLike];
     type OutputTuple = [previousOwner: string, newOwner: string];
     interface OutputObject {
@@ -5498,7 +5499,7 @@ interface Energon extends BaseContract {
     getEvent(key: "Approval"): TypedContractEvent<ApprovalEvent$3.InputTuple, ApprovalEvent$3.OutputTuple, ApprovalEvent$3.OutputObject>;
     getEvent(key: "Claimed"): TypedContractEvent<ClaimedEvent.InputTuple, ClaimedEvent.OutputTuple, ClaimedEvent.OutputObject>;
     getEvent(key: "Minted"): TypedContractEvent<MintedEvent$1.InputTuple, MintedEvent$1.OutputTuple, MintedEvent$1.OutputObject>;
-    getEvent(key: "OwnershipTransferred"): TypedContractEvent<OwnershipTransferredEvent$c.InputTuple, OwnershipTransferredEvent$c.OutputTuple, OwnershipTransferredEvent$c.OutputObject>;
+    getEvent(key: "OwnershipTransferred"): TypedContractEvent<OwnershipTransferredEvent$d.InputTuple, OwnershipTransferredEvent$d.OutputTuple, OwnershipTransferredEvent$d.OutputObject>;
     getEvent(key: "RemovedMinter"): TypedContractEvent<RemovedMinterEvent$1.InputTuple, RemovedMinterEvent$1.OutputTuple, RemovedMinterEvent$1.OutputObject>;
     getEvent(key: "Transfer"): TypedContractEvent<TransferEvent$3.InputTuple, TransferEvent$3.OutputTuple, TransferEvent$3.OutputObject>;
     getEvent(key: "UpdatedAllocator"): TypedContractEvent<UpdatedAllocatorEvent.InputTuple, UpdatedAllocatorEvent.OutputTuple, UpdatedAllocatorEvent.OutputObject>;
@@ -5515,8 +5516,8 @@ interface Energon extends BaseContract {
         Claimed: TypedContractEvent<ClaimedEvent.InputTuple, ClaimedEvent.OutputTuple, ClaimedEvent.OutputObject>;
         "Minted(address,uint256)": TypedContractEvent<MintedEvent$1.InputTuple, MintedEvent$1.OutputTuple, MintedEvent$1.OutputObject>;
         Minted: TypedContractEvent<MintedEvent$1.InputTuple, MintedEvent$1.OutputTuple, MintedEvent$1.OutputObject>;
-        "OwnershipTransferred(address,address)": TypedContractEvent<OwnershipTransferredEvent$c.InputTuple, OwnershipTransferredEvent$c.OutputTuple, OwnershipTransferredEvent$c.OutputObject>;
-        OwnershipTransferred: TypedContractEvent<OwnershipTransferredEvent$c.InputTuple, OwnershipTransferredEvent$c.OutputTuple, OwnershipTransferredEvent$c.OutputObject>;
+        "OwnershipTransferred(address,address)": TypedContractEvent<OwnershipTransferredEvent$d.InputTuple, OwnershipTransferredEvent$d.OutputTuple, OwnershipTransferredEvent$d.OutputObject>;
+        OwnershipTransferred: TypedContractEvent<OwnershipTransferredEvent$d.InputTuple, OwnershipTransferredEvent$d.OutputTuple, OwnershipTransferredEvent$d.OutputObject>;
         "RemovedMinter(address)": TypedContractEvent<RemovedMinterEvent$1.InputTuple, RemovedMinterEvent$1.OutputTuple, RemovedMinterEvent$1.OutputObject>;
         RemovedMinter: TypedContractEvent<RemovedMinterEvent$1.InputTuple, RemovedMinterEvent$1.OutputTuple, RemovedMinterEvent$1.OutputObject>;
         "Transfer(address,address,uint256)": TypedContractEvent<TransferEvent$3.InputTuple, TransferEvent$3.OutputTuple, TransferEvent$3.OutputObject>;
@@ -5610,7 +5611,7 @@ interface FeePoolInterface extends Interface {
     decodeFunctionResult(functionFragment: "withdrawNFTReward", data: BytesLike): Result;
     decodeFunctionResult(functionFragment: "withdrawReward", data: BytesLike): Result;
 }
-declare namespace OwnershipTransferredEvent$b {
+declare namespace OwnershipTransferredEvent$c {
     type InputTuple = [previousOwner: AddressLike, newOwner: AddressLike];
     type OutputTuple = [previousOwner: string, newOwner: string];
     interface OutputObject {
@@ -6026,7 +6027,7 @@ interface FeePool extends BaseContract {
     ], [
         void
     ], "nonpayable">;
-    getEvent(key: "OwnershipTransferred"): TypedContractEvent<OwnershipTransferredEvent$b.InputTuple, OwnershipTransferredEvent$b.OutputTuple, OwnershipTransferredEvent$b.OutputObject>;
+    getEvent(key: "OwnershipTransferred"): TypedContractEvent<OwnershipTransferredEvent$c.InputTuple, OwnershipTransferredEvent$c.OutputTuple, OwnershipTransferredEvent$c.OutputObject>;
     getEvent(key: "Recovered"): TypedContractEvent<RecoveredEvent$2.InputTuple, RecoveredEvent$2.OutputTuple, RecoveredEvent$2.OutputObject>;
     getEvent(key: "RewardAdded"): TypedContractEvent<RewardAddedEvent$2.InputTuple, RewardAddedEvent$2.OutputTuple, RewardAddedEvent$2.OutputObject>;
     getEvent(key: "RewardNFTWithdrawn"): TypedContractEvent<RewardNFTWithdrawnEvent.InputTuple, RewardNFTWithdrawnEvent.OutputTuple, RewardNFTWithdrawnEvent.OutputObject>;
@@ -6039,8 +6040,8 @@ interface FeePool extends BaseContract {
     getEvent(key: "UpdatedRewardDuration"): TypedContractEvent<UpdatedRewardDurationEvent.InputTuple, UpdatedRewardDurationEvent.OutputTuple, UpdatedRewardDurationEvent.OutputObject>;
     getEvent(key: "UpdatedTokenPool"): TypedContractEvent<UpdatedTokenPoolEvent.InputTuple, UpdatedTokenPoolEvent.OutputTuple, UpdatedTokenPoolEvent.OutputObject>;
     filters: {
-        "OwnershipTransferred(address,address)": TypedContractEvent<OwnershipTransferredEvent$b.InputTuple, OwnershipTransferredEvent$b.OutputTuple, OwnershipTransferredEvent$b.OutputObject>;
-        OwnershipTransferred: TypedContractEvent<OwnershipTransferredEvent$b.InputTuple, OwnershipTransferredEvent$b.OutputTuple, OwnershipTransferredEvent$b.OutputObject>;
+        "OwnershipTransferred(address,address)": TypedContractEvent<OwnershipTransferredEvent$c.InputTuple, OwnershipTransferredEvent$c.OutputTuple, OwnershipTransferredEvent$c.OutputObject>;
+        OwnershipTransferred: TypedContractEvent<OwnershipTransferredEvent$c.InputTuple, OwnershipTransferredEvent$c.OutputTuple, OwnershipTransferredEvent$c.OutputObject>;
         "Recovered(address,uint256)": TypedContractEvent<RecoveredEvent$2.InputTuple, RecoveredEvent$2.OutputTuple, RecoveredEvent$2.OutputObject>;
         Recovered: TypedContractEvent<RecoveredEvent$2.InputTuple, RecoveredEvent$2.OutputTuple, RecoveredEvent$2.OutputObject>;
         "RewardAdded(address,uint256)": TypedContractEvent<RewardAddedEvent$2.InputTuple, RewardAddedEvent$2.OutputTuple, RewardAddedEvent$2.OutputObject>;
@@ -6136,7 +6137,7 @@ declare namespace LockedEvent {
     type Log = TypedEventLog<Event>;
     type LogDescription = TypedLogDescription<Event>;
 }
-declare namespace OwnershipTransferredEvent$a {
+declare namespace OwnershipTransferredEvent$b {
     type InputTuple = [previousOwner: AddressLike, newOwner: AddressLike];
     type OutputTuple = [previousOwner: string, newOwner: string];
     interface OutputObject {
@@ -6318,7 +6319,7 @@ interface LPPool extends BaseContract {
     getFunction(nameOrSignature: "userRewardPerTokenPaid"): TypedContractMethod<[arg0: AddressLike], [bigint], "view">;
     getFunction(nameOrSignature: "withdrawReward"): TypedContractMethod<[_amount: BigNumberish], [void], "nonpayable">;
     getEvent(key: "Locked"): TypedContractEvent<LockedEvent.InputTuple, LockedEvent.OutputTuple, LockedEvent.OutputObject>;
-    getEvent(key: "OwnershipTransferred"): TypedContractEvent<OwnershipTransferredEvent$a.InputTuple, OwnershipTransferredEvent$a.OutputTuple, OwnershipTransferredEvent$a.OutputObject>;
+    getEvent(key: "OwnershipTransferred"): TypedContractEvent<OwnershipTransferredEvent$b.InputTuple, OwnershipTransferredEvent$b.OutputTuple, OwnershipTransferredEvent$b.OutputObject>;
     getEvent(key: "Paused"): TypedContractEvent<PausedEvent$1.InputTuple, PausedEvent$1.OutputTuple, PausedEvent$1.OutputObject>;
     getEvent(key: "Recovered"): TypedContractEvent<RecoveredEvent$1.InputTuple, RecoveredEvent$1.OutputTuple, RecoveredEvent$1.OutputObject>;
     getEvent(key: "RewardAdded"): TypedContractEvent<RewardAddedEvent$1.InputTuple, RewardAddedEvent$1.OutputTuple, RewardAddedEvent$1.OutputObject>;
@@ -6328,8 +6329,8 @@ interface LPPool extends BaseContract {
     filters: {
         "Locked(address,uint256)": TypedContractEvent<LockedEvent.InputTuple, LockedEvent.OutputTuple, LockedEvent.OutputObject>;
         Locked: TypedContractEvent<LockedEvent.InputTuple, LockedEvent.OutputTuple, LockedEvent.OutputObject>;
-        "OwnershipTransferred(address,address)": TypedContractEvent<OwnershipTransferredEvent$a.InputTuple, OwnershipTransferredEvent$a.OutputTuple, OwnershipTransferredEvent$a.OutputObject>;
-        OwnershipTransferred: TypedContractEvent<OwnershipTransferredEvent$a.InputTuple, OwnershipTransferredEvent$a.OutputTuple, OwnershipTransferredEvent$a.OutputObject>;
+        "OwnershipTransferred(address,address)": TypedContractEvent<OwnershipTransferredEvent$b.InputTuple, OwnershipTransferredEvent$b.OutputTuple, OwnershipTransferredEvent$b.OutputObject>;
+        OwnershipTransferred: TypedContractEvent<OwnershipTransferredEvent$b.InputTuple, OwnershipTransferredEvent$b.OutputTuple, OwnershipTransferredEvent$b.OutputObject>;
         "Paused(address)": TypedContractEvent<PausedEvent$1.InputTuple, PausedEvent$1.OutputTuple, PausedEvent$1.OutputObject>;
         Paused: TypedContractEvent<PausedEvent$1.InputTuple, PausedEvent$1.OutputTuple, PausedEvent$1.OutputObject>;
         "Recovered(address,uint256)": TypedContractEvent<RecoveredEvent$1.InputTuple, RecoveredEvent$1.OutputTuple, RecoveredEvent$1.OutputObject>;
@@ -6610,7 +6611,7 @@ declare namespace OfferOnlyEnabledEvent {
     type Log = TypedEventLog<Event>;
     type LogDescription = TypedLogDescription<Event>;
 }
-declare namespace OwnershipTransferredEvent$9 {
+declare namespace OwnershipTransferredEvent$a {
     type InputTuple = [previousOwner: AddressLike, newOwner: AddressLike];
     type OutputTuple = [previousOwner: string, newOwner: string];
     interface OutputObject {
@@ -7215,7 +7216,7 @@ interface MarketCore extends BaseContract {
     getEvent(key: "EnabledZeroOfferPrice"): TypedContractEvent<EnabledZeroOfferPriceEvent.InputTuple, EnabledZeroOfferPriceEvent.OutputTuple, EnabledZeroOfferPriceEvent.OutputObject>;
     getEvent(key: "NewMarket"): TypedContractEvent<NewMarketEvent.InputTuple, NewMarketEvent.OutputTuple, NewMarketEvent.OutputObject>;
     getEvent(key: "OfferOnlyEnabled"): TypedContractEvent<OfferOnlyEnabledEvent.InputTuple, OfferOnlyEnabledEvent.OutputTuple, OfferOnlyEnabledEvent.OutputObject>;
-    getEvent(key: "OwnershipTransferred"): TypedContractEvent<OwnershipTransferredEvent$9.InputTuple, OwnershipTransferredEvent$9.OutputTuple, OwnershipTransferredEvent$9.OutputObject>;
+    getEvent(key: "OwnershipTransferred"): TypedContractEvent<OwnershipTransferredEvent$a.InputTuple, OwnershipTransferredEvent$a.OutputTuple, OwnershipTransferredEvent$a.OutputObject>;
     getEvent(key: "RenouncedMarket"): TypedContractEvent<RenouncedMarketEvent.InputTuple, RenouncedMarketEvent.OutputTuple, RenouncedMarketEvent.OutputObject>;
     getEvent(key: "RevokedPut"): TypedContractEvent<RevokedPutEvent.InputTuple, RevokedPutEvent.OutputTuple, RevokedPutEvent.OutputObject>;
     getEvent(key: "RevokedSwap"): TypedContractEvent<RevokedSwapEvent.InputTuple, RevokedSwapEvent.OutputTuple, RevokedSwapEvent.OutputObject>;
@@ -7240,8 +7241,8 @@ interface MarketCore extends BaseContract {
         NewMarket: TypedContractEvent<NewMarketEvent.InputTuple, NewMarketEvent.OutputTuple, NewMarketEvent.OutputObject>;
         "OfferOnlyEnabled(address)": TypedContractEvent<OfferOnlyEnabledEvent.InputTuple, OfferOnlyEnabledEvent.OutputTuple, OfferOnlyEnabledEvent.OutputObject>;
         OfferOnlyEnabled: TypedContractEvent<OfferOnlyEnabledEvent.InputTuple, OfferOnlyEnabledEvent.OutputTuple, OfferOnlyEnabledEvent.OutputObject>;
-        "OwnershipTransferred(address,address)": TypedContractEvent<OwnershipTransferredEvent$9.InputTuple, OwnershipTransferredEvent$9.OutputTuple, OwnershipTransferredEvent$9.OutputObject>;
-        OwnershipTransferred: TypedContractEvent<OwnershipTransferredEvent$9.InputTuple, OwnershipTransferredEvent$9.OutputTuple, OwnershipTransferredEvent$9.OutputObject>;
+        "OwnershipTransferred(address,address)": TypedContractEvent<OwnershipTransferredEvent$a.InputTuple, OwnershipTransferredEvent$a.OutputTuple, OwnershipTransferredEvent$a.OutputObject>;
+        OwnershipTransferred: TypedContractEvent<OwnershipTransferredEvent$a.InputTuple, OwnershipTransferredEvent$a.OutputTuple, OwnershipTransferredEvent$a.OutputObject>;
         "RenouncedMarket(address,address)": TypedContractEvent<RenouncedMarketEvent.InputTuple, RenouncedMarketEvent.OutputTuple, RenouncedMarketEvent.OutputObject>;
         RenouncedMarket: TypedContractEvent<RenouncedMarketEvent.InputTuple, RenouncedMarketEvent.OutputTuple, RenouncedMarketEvent.OutputObject>;
         "RevokedPut(address,address)": TypedContractEvent<RevokedPutEvent.InputTuple, RevokedPutEvent.OutputTuple, RevokedPutEvent.OutputObject>;
@@ -7271,7 +7272,7 @@ interface MarketCore extends BaseContract {
     };
 }
 
-declare namespace StructsLib {
+declare namespace StructsLib$1 {
     type SwapQuoteForBaseParamsStruct = {
         marketId: AddressLike;
         provider: AddressLike;
@@ -7312,8 +7313,8 @@ interface MarketManagerInterface extends Interface {
     getFunction(nameOrSignature: "addDelegate" | "afterSwap" | "beforeSwap" | "cancelOrder" | "core" | "delegates" | "markOrderAsPaid" | "onCancel" | "onPaid" | "onRelease" | "owner" | "payRouter" | "releaseOrder" | "removeDelegate" | "renounceOwnership" | "requestInfo" | "setCore" | "setPayRouter" | "setRequesterFeeBp" | "setRequesterValueLockDuration" | "supportsInterface" | "transferOwnership" | "transferRequestBond" | "withdrawRequesterFee"): FunctionFragment;
     getEvent(nameOrSignatureOrTopic: "CoreUpdated" | "OwnershipTransferred" | "PayRouterUpdated" | "RequestCancelled" | "RequestCreated" | "RequestPaid" | "RequestReleased" | "TransferredRequestBond" | "TransferredRequestSource" | "UpdatedDelegate"): EventFragment;
     encodeFunctionData(functionFragment: "addDelegate", values: [AddressLike]): string;
-    encodeFunctionData(functionFragment: "afterSwap", values: [StructsLib.SwapQuoteForBaseParamsStruct, BigNumberish]): string;
-    encodeFunctionData(functionFragment: "beforeSwap", values: [StructsLib.SwapQuoteForBaseParamsStruct]): string;
+    encodeFunctionData(functionFragment: "afterSwap", values: [StructsLib$1.SwapQuoteForBaseParamsStruct, BigNumberish]): string;
+    encodeFunctionData(functionFragment: "beforeSwap", values: [StructsLib$1.SwapQuoteForBaseParamsStruct]): string;
     encodeFunctionData(functionFragment: "cancelOrder", values: [BigNumberish]): string;
     encodeFunctionData(functionFragment: "core", values?: undefined): string;
     encodeFunctionData(functionFragment: "delegates", values: [AddressLike]): string;
@@ -7360,7 +7361,7 @@ interface MarketManagerInterface extends Interface {
     decodeFunctionResult(functionFragment: "transferRequestBond", data: BytesLike): Result;
     decodeFunctionResult(functionFragment: "withdrawRequesterFee", data: BytesLike): Result;
 }
-declare namespace CoreUpdatedEvent {
+declare namespace CoreUpdatedEvent$1 {
     type InputTuple = [core: AddressLike];
     type OutputTuple = [core: string];
     interface OutputObject {
@@ -7371,7 +7372,7 @@ declare namespace CoreUpdatedEvent {
     type Log = TypedEventLog<Event>;
     type LogDescription = TypedLogDescription<Event>;
 }
-declare namespace OwnershipTransferredEvent$8 {
+declare namespace OwnershipTransferredEvent$9 {
     type InputTuple = [previousOwner: AddressLike, newOwner: AddressLike];
     type OutputTuple = [previousOwner: string, newOwner: string];
     interface OutputObject {
@@ -7524,13 +7525,13 @@ interface MarketManager extends BaseContract {
         void
     ], "nonpayable">;
     afterSwap: TypedContractMethod<[
-        params: StructsLib.SwapQuoteForBaseParamsStruct,
+        params: StructsLib$1.SwapQuoteForBaseParamsStruct,
         orderId: BigNumberish
     ], [
         void
     ], "nonpayable">;
     beforeSwap: TypedContractMethod<[
-        params: StructsLib.SwapQuoteForBaseParamsStruct
+        params: StructsLib$1.SwapQuoteForBaseParamsStruct
     ], [
         void
     ], "nonpayable">;
@@ -7617,13 +7618,13 @@ interface MarketManager extends BaseContract {
     getFunction<T extends ContractMethod = ContractMethod>(key: string | FunctionFragment): T;
     getFunction(nameOrSignature: "addDelegate"): TypedContractMethod<[delegate: AddressLike], [void], "nonpayable">;
     getFunction(nameOrSignature: "afterSwap"): TypedContractMethod<[
-        params: StructsLib.SwapQuoteForBaseParamsStruct,
+        params: StructsLib$1.SwapQuoteForBaseParamsStruct,
         orderId: BigNumberish
     ], [
         void
     ], "nonpayable">;
     getFunction(nameOrSignature: "beforeSwap"): TypedContractMethod<[
-        params: StructsLib.SwapQuoteForBaseParamsStruct
+        params: StructsLib$1.SwapQuoteForBaseParamsStruct
     ], [
         void
     ], "nonpayable">;
@@ -7667,8 +7668,8 @@ interface MarketManager extends BaseContract {
         void
     ], "nonpayable">;
     getFunction(nameOrSignature: "withdrawRequesterFee"): TypedContractMethod<[beneficiary: AddressLike], [void], "nonpayable">;
-    getEvent(key: "CoreUpdated"): TypedContractEvent<CoreUpdatedEvent.InputTuple, CoreUpdatedEvent.OutputTuple, CoreUpdatedEvent.OutputObject>;
-    getEvent(key: "OwnershipTransferred"): TypedContractEvent<OwnershipTransferredEvent$8.InputTuple, OwnershipTransferredEvent$8.OutputTuple, OwnershipTransferredEvent$8.OutputObject>;
+    getEvent(key: "CoreUpdated"): TypedContractEvent<CoreUpdatedEvent$1.InputTuple, CoreUpdatedEvent$1.OutputTuple, CoreUpdatedEvent$1.OutputObject>;
+    getEvent(key: "OwnershipTransferred"): TypedContractEvent<OwnershipTransferredEvent$9.InputTuple, OwnershipTransferredEvent$9.OutputTuple, OwnershipTransferredEvent$9.OutputObject>;
     getEvent(key: "PayRouterUpdated"): TypedContractEvent<PayRouterUpdatedEvent.InputTuple, PayRouterUpdatedEvent.OutputTuple, PayRouterUpdatedEvent.OutputObject>;
     getEvent(key: "RequestCancelled"): TypedContractEvent<RequestCancelledEvent$1.InputTuple, RequestCancelledEvent$1.OutputTuple, RequestCancelledEvent$1.OutputObject>;
     getEvent(key: "RequestCreated"): TypedContractEvent<RequestCreatedEvent$1.InputTuple, RequestCreatedEvent$1.OutputTuple, RequestCreatedEvent$1.OutputObject>;
@@ -7678,10 +7679,10 @@ interface MarketManager extends BaseContract {
     getEvent(key: "TransferredRequestSource"): TypedContractEvent<TransferredRequestSourceEvent.InputTuple, TransferredRequestSourceEvent.OutputTuple, TransferredRequestSourceEvent.OutputObject>;
     getEvent(key: "UpdatedDelegate"): TypedContractEvent<UpdatedDelegateEvent.InputTuple, UpdatedDelegateEvent.OutputTuple, UpdatedDelegateEvent.OutputObject>;
     filters: {
-        "CoreUpdated(address)": TypedContractEvent<CoreUpdatedEvent.InputTuple, CoreUpdatedEvent.OutputTuple, CoreUpdatedEvent.OutputObject>;
-        CoreUpdated: TypedContractEvent<CoreUpdatedEvent.InputTuple, CoreUpdatedEvent.OutputTuple, CoreUpdatedEvent.OutputObject>;
-        "OwnershipTransferred(address,address)": TypedContractEvent<OwnershipTransferredEvent$8.InputTuple, OwnershipTransferredEvent$8.OutputTuple, OwnershipTransferredEvent$8.OutputObject>;
-        OwnershipTransferred: TypedContractEvent<OwnershipTransferredEvent$8.InputTuple, OwnershipTransferredEvent$8.OutputTuple, OwnershipTransferredEvent$8.OutputObject>;
+        "CoreUpdated(address)": TypedContractEvent<CoreUpdatedEvent$1.InputTuple, CoreUpdatedEvent$1.OutputTuple, CoreUpdatedEvent$1.OutputObject>;
+        CoreUpdated: TypedContractEvent<CoreUpdatedEvent$1.InputTuple, CoreUpdatedEvent$1.OutputTuple, CoreUpdatedEvent$1.OutputObject>;
+        "OwnershipTransferred(address,address)": TypedContractEvent<OwnershipTransferredEvent$9.InputTuple, OwnershipTransferredEvent$9.OutputTuple, OwnershipTransferredEvent$9.OutputObject>;
+        OwnershipTransferred: TypedContractEvent<OwnershipTransferredEvent$9.InputTuple, OwnershipTransferredEvent$9.OutputTuple, OwnershipTransferredEvent$9.OutputObject>;
         "PayRouterUpdated(address)": TypedContractEvent<PayRouterUpdatedEvent.InputTuple, PayRouterUpdatedEvent.OutputTuple, PayRouterUpdatedEvent.OutputObject>;
         PayRouterUpdated: TypedContractEvent<PayRouterUpdatedEvent.InputTuple, PayRouterUpdatedEvent.OutputTuple, PayRouterUpdatedEvent.OutputObject>;
         "RequestCancelled(uint256,uint256)": TypedContractEvent<RequestCancelledEvent$1.InputTuple, RequestCancelledEvent$1.OutputTuple, RequestCancelledEvent$1.OutputObject>;
@@ -7971,7 +7972,7 @@ declare namespace JoinedPoolEvent {
     type Log = TypedEventLog<Event>;
     type LogDescription = TypedLogDescription<Event>;
 }
-declare namespace OwnershipTransferredEvent$7 {
+declare namespace OwnershipTransferredEvent$8 {
     type InputTuple = [previousOwner: AddressLike, newOwner: AddressLike];
     type OutputTuple = [previousOwner: string, newOwner: string];
     interface OutputObject {
@@ -8821,7 +8822,7 @@ interface MediatorManager extends BaseContract {
     ], "view">;
     getEvent(key: "Drafted"): TypedContractEvent<DraftedEvent.InputTuple, DraftedEvent.OutputTuple, DraftedEvent.OutputObject>;
     getEvent(key: "JoinedPool"): TypedContractEvent<JoinedPoolEvent.InputTuple, JoinedPoolEvent.OutputTuple, JoinedPoolEvent.OutputObject>;
-    getEvent(key: "OwnershipTransferred"): TypedContractEvent<OwnershipTransferredEvent$7.InputTuple, OwnershipTransferredEvent$7.OutputTuple, OwnershipTransferredEvent$7.OutputObject>;
+    getEvent(key: "OwnershipTransferred"): TypedContractEvent<OwnershipTransferredEvent$8.InputTuple, OwnershipTransferredEvent$8.OutputTuple, OwnershipTransferredEvent$8.OutputObject>;
     getEvent(key: "PoolMarketApproval"): TypedContractEvent<PoolMarketApprovalEvent.InputTuple, PoolMarketApprovalEvent.OutputTuple, PoolMarketApprovalEvent.OutputObject>;
     getEvent(key: "PoolMediatorApproval"): TypedContractEvent<PoolMediatorApprovalEvent.InputTuple, PoolMediatorApprovalEvent.OutputTuple, PoolMediatorApprovalEvent.OutputObject>;
     getEvent(key: "TicketBlocked"): TypedContractEvent<TicketBlockedEvent.InputTuple, TicketBlockedEvent.OutputTuple, TicketBlockedEvent.OutputObject>;
@@ -8844,8 +8845,8 @@ interface MediatorManager extends BaseContract {
         Drafted: TypedContractEvent<DraftedEvent.InputTuple, DraftedEvent.OutputTuple, DraftedEvent.OutputObject>;
         "JoinedPool(address,uint256,uint256)": TypedContractEvent<JoinedPoolEvent.InputTuple, JoinedPoolEvent.OutputTuple, JoinedPoolEvent.OutputObject>;
         JoinedPool: TypedContractEvent<JoinedPoolEvent.InputTuple, JoinedPoolEvent.OutputTuple, JoinedPoolEvent.OutputObject>;
-        "OwnershipTransferred(address,address)": TypedContractEvent<OwnershipTransferredEvent$7.InputTuple, OwnershipTransferredEvent$7.OutputTuple, OwnershipTransferredEvent$7.OutputObject>;
-        OwnershipTransferred: TypedContractEvent<OwnershipTransferredEvent$7.InputTuple, OwnershipTransferredEvent$7.OutputTuple, OwnershipTransferredEvent$7.OutputObject>;
+        "OwnershipTransferred(address,address)": TypedContractEvent<OwnershipTransferredEvent$8.InputTuple, OwnershipTransferredEvent$8.OutputTuple, OwnershipTransferredEvent$8.OutputObject>;
+        OwnershipTransferred: TypedContractEvent<OwnershipTransferredEvent$8.InputTuple, OwnershipTransferredEvent$8.OutputTuple, OwnershipTransferredEvent$8.OutputObject>;
         "PoolMarketApproval(uint256,address,bool)": TypedContractEvent<PoolMarketApprovalEvent.InputTuple, PoolMarketApprovalEvent.OutputTuple, PoolMarketApprovalEvent.OutputObject>;
         PoolMarketApproval: TypedContractEvent<PoolMarketApprovalEvent.InputTuple, PoolMarketApprovalEvent.OutputTuple, PoolMarketApprovalEvent.OutputObject>;
         "PoolMediatorApproval(uint256,address,bool)": TypedContractEvent<PoolMediatorApprovalEvent.InputTuple, PoolMediatorApprovalEvent.OutputTuple, PoolMediatorApprovalEvent.OutputObject>;
@@ -8992,7 +8993,7 @@ declare namespace DrainedEvent {
     type Log = TypedEventLog<Event>;
     type LogDescription = TypedLogDescription<Event>;
 }
-declare namespace OwnershipTransferredEvent$6 {
+declare namespace OwnershipTransferredEvent$7 {
     type InputTuple = [previousOwner: AddressLike, newOwner: AddressLike];
     type OutputTuple = [previousOwner: string, newOwner: string];
     interface OutputObject {
@@ -9287,7 +9288,7 @@ interface MinerRegistry extends BaseContract {
     getEvent(key: "Blocked"): TypedContractEvent<BlockedEvent.InputTuple, BlockedEvent.OutputTuple, BlockedEvent.OutputObject>;
     getEvent(key: "Cancelled"): TypedContractEvent<CancelledEvent.InputTuple, CancelledEvent.OutputTuple, CancelledEvent.OutputObject>;
     getEvent(key: "Drained"): TypedContractEvent<DrainedEvent.InputTuple, DrainedEvent.OutputTuple, DrainedEvent.OutputObject>;
-    getEvent(key: "OwnershipTransferred"): TypedContractEvent<OwnershipTransferredEvent$6.InputTuple, OwnershipTransferredEvent$6.OutputTuple, OwnershipTransferredEvent$6.OutputObject>;
+    getEvent(key: "OwnershipTransferred"): TypedContractEvent<OwnershipTransferredEvent$7.InputTuple, OwnershipTransferredEvent$7.OutputTuple, OwnershipTransferredEvent$7.OutputObject>;
     getEvent(key: "Registered"): TypedContractEvent<RegisteredEvent.InputTuple, RegisteredEvent.OutputTuple, RegisteredEvent.OutputObject>;
     getEvent(key: "RewardWithdrawn"): TypedContractEvent<RewardWithdrawnEvent$1.InputTuple, RewardWithdrawnEvent$1.OutputTuple, RewardWithdrawnEvent$1.OutputObject>;
     getEvent(key: "Slashed"): TypedContractEvent<SlashedEvent.InputTuple, SlashedEvent.OutputTuple, SlashedEvent.OutputObject>;
@@ -9306,8 +9307,8 @@ interface MinerRegistry extends BaseContract {
         Cancelled: TypedContractEvent<CancelledEvent.InputTuple, CancelledEvent.OutputTuple, CancelledEvent.OutputObject>;
         "Drained(address,uint256)": TypedContractEvent<DrainedEvent.InputTuple, DrainedEvent.OutputTuple, DrainedEvent.OutputObject>;
         Drained: TypedContractEvent<DrainedEvent.InputTuple, DrainedEvent.OutputTuple, DrainedEvent.OutputObject>;
-        "OwnershipTransferred(address,address)": TypedContractEvent<OwnershipTransferredEvent$6.InputTuple, OwnershipTransferredEvent$6.OutputTuple, OwnershipTransferredEvent$6.OutputObject>;
-        OwnershipTransferred: TypedContractEvent<OwnershipTransferredEvent$6.InputTuple, OwnershipTransferredEvent$6.OutputTuple, OwnershipTransferredEvent$6.OutputObject>;
+        "OwnershipTransferred(address,address)": TypedContractEvent<OwnershipTransferredEvent$7.InputTuple, OwnershipTransferredEvent$7.OutputTuple, OwnershipTransferredEvent$7.OutputObject>;
+        OwnershipTransferred: TypedContractEvent<OwnershipTransferredEvent$7.InputTuple, OwnershipTransferredEvent$7.OutputTuple, OwnershipTransferredEvent$7.OutputObject>;
         "Registered(address,uint256)": TypedContractEvent<RegisteredEvent.InputTuple, RegisteredEvent.OutputTuple, RegisteredEvent.OutputObject>;
         Registered: TypedContractEvent<RegisteredEvent.InputTuple, RegisteredEvent.OutputTuple, RegisteredEvent.OutputObject>;
         "RewardWithdrawn(address,uint256)": TypedContractEvent<RewardWithdrawnEvent$1.InputTuple, RewardWithdrawnEvent$1.OutputTuple, RewardWithdrawnEvent$1.OutputObject>;
@@ -9675,7 +9676,7 @@ declare namespace EnergonUpdatedEvent {
     type Log = TypedEventLog<Event>;
     type LogDescription = TypedLogDescription<Event>;
 }
-declare namespace OwnershipTransferredEvent$5 {
+declare namespace OwnershipTransferredEvent$6 {
     type InputTuple = [previousOwner: AddressLike, newOwner: AddressLike];
     type OutputTuple = [previousOwner: string, newOwner: string];
     interface OutputObject {
@@ -10235,7 +10236,7 @@ interface NFT extends BaseContract {
     getEvent(key: "BurnedEnergon"): TypedContractEvent<BurnedEnergonEvent.InputTuple, BurnedEnergonEvent.OutputTuple, BurnedEnergonEvent.OutputObject>;
     getEvent(key: "DepositedEnergon"): TypedContractEvent<DepositedEnergonEvent.InputTuple, DepositedEnergonEvent.OutputTuple, DepositedEnergonEvent.OutputObject>;
     getEvent(key: "EnergonUpdated"): TypedContractEvent<EnergonUpdatedEvent.InputTuple, EnergonUpdatedEvent.OutputTuple, EnergonUpdatedEvent.OutputObject>;
-    getEvent(key: "OwnershipTransferred"): TypedContractEvent<OwnershipTransferredEvent$5.InputTuple, OwnershipTransferredEvent$5.OutputTuple, OwnershipTransferredEvent$5.OutputObject>;
+    getEvent(key: "OwnershipTransferred"): TypedContractEvent<OwnershipTransferredEvent$6.InputTuple, OwnershipTransferredEvent$6.OutputTuple, OwnershipTransferredEvent$6.OutputObject>;
     getEvent(key: "TokenUpdated"): TypedContractEvent<TokenUpdatedEvent.InputTuple, TokenUpdatedEvent.OutputTuple, TokenUpdatedEvent.OutputObject>;
     getEvent(key: "Transfer"): TypedContractEvent<TransferEvent$2.InputTuple, TransferEvent$2.OutputTuple, TransferEvent$2.OutputObject>;
     getEvent(key: "UpdatedBaseExtension"): TypedContractEvent<UpdatedBaseExtensionEvent.InputTuple, UpdatedBaseExtensionEvent.OutputTuple, UpdatedBaseExtensionEvent.OutputObject>;
@@ -10271,8 +10272,8 @@ interface NFT extends BaseContract {
         DepositedEnergon: TypedContractEvent<DepositedEnergonEvent.InputTuple, DepositedEnergonEvent.OutputTuple, DepositedEnergonEvent.OutputObject>;
         "EnergonUpdated(address)": TypedContractEvent<EnergonUpdatedEvent.InputTuple, EnergonUpdatedEvent.OutputTuple, EnergonUpdatedEvent.OutputObject>;
         EnergonUpdated: TypedContractEvent<EnergonUpdatedEvent.InputTuple, EnergonUpdatedEvent.OutputTuple, EnergonUpdatedEvent.OutputObject>;
-        "OwnershipTransferred(address,address)": TypedContractEvent<OwnershipTransferredEvent$5.InputTuple, OwnershipTransferredEvent$5.OutputTuple, OwnershipTransferredEvent$5.OutputObject>;
-        OwnershipTransferred: TypedContractEvent<OwnershipTransferredEvent$5.InputTuple, OwnershipTransferredEvent$5.OutputTuple, OwnershipTransferredEvent$5.OutputObject>;
+        "OwnershipTransferred(address,address)": TypedContractEvent<OwnershipTransferredEvent$6.InputTuple, OwnershipTransferredEvent$6.OutputTuple, OwnershipTransferredEvent$6.OutputObject>;
+        OwnershipTransferred: TypedContractEvent<OwnershipTransferredEvent$6.InputTuple, OwnershipTransferredEvent$6.OutputTuple, OwnershipTransferredEvent$6.OutputObject>;
         "TokenUpdated(address)": TypedContractEvent<TokenUpdatedEvent.InputTuple, TokenUpdatedEvent.OutputTuple, TokenUpdatedEvent.OutputObject>;
         TokenUpdated: TypedContractEvent<TokenUpdatedEvent.InputTuple, TokenUpdatedEvent.OutputTuple, TokenUpdatedEvent.OutputObject>;
         "Transfer(address,address,uint256)": TypedContractEvent<TransferEvent$2.InputTuple, TransferEvent$2.OutputTuple, TransferEvent$2.OutputObject>;
@@ -10524,7 +10525,7 @@ declare namespace OrgSourcePaidEvent {
     type Log = TypedEventLog<Event>;
     type LogDescription = TypedLogDescription<Event>;
 }
-declare namespace OwnershipTransferredEvent$4 {
+declare namespace OwnershipTransferredEvent$5 {
     type InputTuple = [previousOwner: AddressLike, newOwner: AddressLike];
     type OutputTuple = [previousOwner: string, newOwner: string];
     interface OutputObject {
@@ -11173,7 +11174,7 @@ interface PayRouter extends BaseContract {
     getEvent(key: "DepositedBond"): TypedContractEvent<DepositedBondEvent.InputTuple, DepositedBondEvent.OutputTuple, DepositedBondEvent.OutputObject>;
     getEvent(key: "OrgCreated"): TypedContractEvent<OrgCreatedEvent.InputTuple, OrgCreatedEvent.OutputTuple, OrgCreatedEvent.OutputObject>;
     getEvent(key: "OrgSourcePaid"): TypedContractEvent<OrgSourcePaidEvent.InputTuple, OrgSourcePaidEvent.OutputTuple, OrgSourcePaidEvent.OutputObject>;
-    getEvent(key: "OwnershipTransferred"): TypedContractEvent<OwnershipTransferredEvent$4.InputTuple, OwnershipTransferredEvent$4.OutputTuple, OwnershipTransferredEvent$4.OutputObject>;
+    getEvent(key: "OwnershipTransferred"): TypedContractEvent<OwnershipTransferredEvent$5.InputTuple, OwnershipTransferredEvent$5.OutputTuple, OwnershipTransferredEvent$5.OutputObject>;
     getEvent(key: "ProtocolFeeWithdrawn"): TypedContractEvent<ProtocolFeeWithdrawnEvent.InputTuple, ProtocolFeeWithdrawnEvent.OutputTuple, ProtocolFeeWithdrawnEvent.OutputObject>;
     getEvent(key: "RequestCancelled"): TypedContractEvent<RequestCancelledEvent.InputTuple, RequestCancelledEvent.OutputTuple, RequestCancelledEvent.OutputObject>;
     getEvent(key: "RequestClosed"): TypedContractEvent<RequestClosedEvent.InputTuple, RequestClosedEvent.OutputTuple, RequestClosedEvent.OutputObject>;
@@ -11202,8 +11203,8 @@ interface PayRouter extends BaseContract {
         OrgCreated: TypedContractEvent<OrgCreatedEvent.InputTuple, OrgCreatedEvent.OutputTuple, OrgCreatedEvent.OutputObject>;
         "OrgSourcePaid(uint256)": TypedContractEvent<OrgSourcePaidEvent.InputTuple, OrgSourcePaidEvent.OutputTuple, OrgSourcePaidEvent.OutputObject>;
         OrgSourcePaid: TypedContractEvent<OrgSourcePaidEvent.InputTuple, OrgSourcePaidEvent.OutputTuple, OrgSourcePaidEvent.OutputObject>;
-        "OwnershipTransferred(address,address)": TypedContractEvent<OwnershipTransferredEvent$4.InputTuple, OwnershipTransferredEvent$4.OutputTuple, OwnershipTransferredEvent$4.OutputObject>;
-        OwnershipTransferred: TypedContractEvent<OwnershipTransferredEvent$4.InputTuple, OwnershipTransferredEvent$4.OutputTuple, OwnershipTransferredEvent$4.OutputObject>;
+        "OwnershipTransferred(address,address)": TypedContractEvent<OwnershipTransferredEvent$5.InputTuple, OwnershipTransferredEvent$5.OutputTuple, OwnershipTransferredEvent$5.OutputObject>;
+        OwnershipTransferred: TypedContractEvent<OwnershipTransferredEvent$5.InputTuple, OwnershipTransferredEvent$5.OutputTuple, OwnershipTransferredEvent$5.OutputObject>;
         "ProtocolFeeWithdrawn(address,uint256)": TypedContractEvent<ProtocolFeeWithdrawnEvent.InputTuple, ProtocolFeeWithdrawnEvent.OutputTuple, ProtocolFeeWithdrawnEvent.OutputObject>;
         ProtocolFeeWithdrawn: TypedContractEvent<ProtocolFeeWithdrawnEvent.InputTuple, ProtocolFeeWithdrawnEvent.OutputTuple, ProtocolFeeWithdrawnEvent.OutputObject>;
         "RequestCancelled(uint256)": TypedContractEvent<RequestCancelledEvent.InputTuple, RequestCancelledEvent.OutputTuple, RequestCancelledEvent.OutputObject>;
@@ -11263,7 +11264,7 @@ interface ProviderRegistryInterface extends Interface {
     decodeFunctionResult(functionFragment: "updateWriter", data: BytesLike): Result;
     decodeFunctionResult(functionFragment: "writers", data: BytesLike): Result;
 }
-declare namespace OwnershipTransferredEvent$3 {
+declare namespace OwnershipTransferredEvent$4 {
     type InputTuple = [previousOwner: AddressLike, newOwner: AddressLike];
     type OutputTuple = [previousOwner: string, newOwner: string];
     interface OutputObject {
@@ -11349,16 +11350,391 @@ interface ProviderRegistry extends BaseContract {
         void
     ], "nonpayable">;
     getFunction(nameOrSignature: "writers"): TypedContractMethod<[arg0: AddressLike], [boolean], "view">;
-    getEvent(key: "OwnershipTransferred"): TypedContractEvent<OwnershipTransferredEvent$3.InputTuple, OwnershipTransferredEvent$3.OutputTuple, OwnershipTransferredEvent$3.OutputObject>;
+    getEvent(key: "OwnershipTransferred"): TypedContractEvent<OwnershipTransferredEvent$4.InputTuple, OwnershipTransferredEvent$4.OutputTuple, OwnershipTransferredEvent$4.OutputObject>;
     getEvent(key: "ProviderRegistered"): TypedContractEvent<ProviderRegisteredEvent.InputTuple, ProviderRegisteredEvent.OutputTuple, ProviderRegisteredEvent.OutputObject>;
     getEvent(key: "WriterUpdated"): TypedContractEvent<WriterUpdatedEvent.InputTuple, WriterUpdatedEvent.OutputTuple, WriterUpdatedEvent.OutputObject>;
     filters: {
-        "OwnershipTransferred(address,address)": TypedContractEvent<OwnershipTransferredEvent$3.InputTuple, OwnershipTransferredEvent$3.OutputTuple, OwnershipTransferredEvent$3.OutputObject>;
-        OwnershipTransferred: TypedContractEvent<OwnershipTransferredEvent$3.InputTuple, OwnershipTransferredEvent$3.OutputTuple, OwnershipTransferredEvent$3.OutputObject>;
+        "OwnershipTransferred(address,address)": TypedContractEvent<OwnershipTransferredEvent$4.InputTuple, OwnershipTransferredEvent$4.OutputTuple, OwnershipTransferredEvent$4.OutputObject>;
+        OwnershipTransferred: TypedContractEvent<OwnershipTransferredEvent$4.InputTuple, OwnershipTransferredEvent$4.OutputTuple, OwnershipTransferredEvent$4.OutputObject>;
         "ProviderRegistered(address,uint256)": TypedContractEvent<ProviderRegisteredEvent.InputTuple, ProviderRegisteredEvent.OutputTuple, ProviderRegisteredEvent.OutputObject>;
         ProviderRegistered: TypedContractEvent<ProviderRegisteredEvent.InputTuple, ProviderRegisteredEvent.OutputTuple, ProviderRegisteredEvent.OutputObject>;
         "WriterUpdated(address,bool)": TypedContractEvent<WriterUpdatedEvent.InputTuple, WriterUpdatedEvent.OutputTuple, WriterUpdatedEvent.OutputObject>;
         WriterUpdated: TypedContractEvent<WriterUpdatedEvent.InputTuple, WriterUpdatedEvent.OutputTuple, WriterUpdatedEvent.OutputObject>;
+    };
+}
+
+declare namespace StructsLib {
+    type SwapQuoteForBaseParamsStruct = {
+        marketId: AddressLike;
+        provider: AddressLike;
+        recipient: AddressLike;
+        lid: BigNumberish;
+        amount: BigNumberish;
+        maxPrice: BigNumberish;
+        ids: BigNumberish[];
+        expireAt: BigNumberish;
+        operator: BigNumberish;
+        marketMgrData: BytesLike;
+    };
+    type SwapQuoteForBaseParamsStructOutput = [
+        marketId: string,
+        provider: string,
+        recipient: string,
+        lid: bigint,
+        amount: bigint,
+        maxPrice: bigint,
+        ids: bigint[],
+        expireAt: bigint,
+        operator: bigint,
+        marketMgrData: string
+    ] & {
+        marketId: string;
+        provider: string;
+        recipient: string;
+        lid: bigint;
+        amount: bigint;
+        maxPrice: bigint;
+        ids: bigint[];
+        expireAt: bigint;
+        operator: bigint;
+        marketMgrData: string;
+    };
+    type SwapResultStruct = {
+        quoteReceived: BigNumberish;
+        baseReceived: BigNumberish;
+        totalFees: BigNumberish;
+        instant: boolean;
+        orderId: BigNumberish;
+    };
+    type SwapResultStructOutput = [
+        quoteReceived: bigint,
+        baseReceived: bigint,
+        totalFees: bigint,
+        instant: boolean,
+        orderId: bigint
+    ] & {
+        quoteReceived: bigint;
+        baseReceived: bigint;
+        totalFees: bigint;
+        instant: boolean;
+        orderId: bigint;
+    };
+}
+declare namespace ProxyLPStructs {
+    type CrossLiquidityParamsStruct = {
+        marketId: AddressLike;
+        price: BigNumberish;
+        usePriceFromRegistry: boolean;
+        priceScaleBps: BigNumberish;
+    };
+    type CrossLiquidityParamsStructOutput = [
+        marketId: string,
+        price: bigint,
+        usePriceFromRegistry: boolean,
+        priceScaleBps: bigint
+    ] & {
+        marketId: string;
+        price: bigint;
+        usePriceFromRegistry: boolean;
+        priceScaleBps: bigint;
+    };
+    type UpdateFungibleLiquidityParamsStruct = {
+        marketId: AddressLike;
+        crossLiquidity: ProxyLPStructs.CrossLiquidityParamsStruct;
+        target: AddressLike;
+        lid: BigNumberish;
+        amount: BigNumberish;
+        price: BigNumberish;
+        timeToPay: BigNumberish;
+        expireAt: BigNumberish;
+        wantOrIds: BigNumberish[];
+        wantAndIds: BigNumberish[];
+        priceScaleBps: BigNumberish;
+        deduct: boolean;
+        pause: boolean;
+        usePriceFromRegistry: boolean;
+    };
+    type UpdateFungibleLiquidityParamsStructOutput = [
+        marketId: string,
+        crossLiquidity: ProxyLPStructs.CrossLiquidityParamsStructOutput,
+        target: string,
+        lid: bigint,
+        amount: bigint,
+        price: bigint,
+        timeToPay: bigint,
+        expireAt: bigint,
+        wantOrIds: bigint[],
+        wantAndIds: bigint[],
+        priceScaleBps: bigint,
+        deduct: boolean,
+        pause: boolean,
+        usePriceFromRegistry: boolean
+    ] & {
+        marketId: string;
+        crossLiquidity: ProxyLPStructs.CrossLiquidityParamsStructOutput;
+        target: string;
+        lid: bigint;
+        amount: bigint;
+        price: bigint;
+        timeToPay: bigint;
+        expireAt: bigint;
+        wantOrIds: bigint[];
+        wantAndIds: bigint[];
+        priceScaleBps: bigint;
+        deduct: boolean;
+        pause: boolean;
+        usePriceFromRegistry: boolean;
+    };
+}
+interface ProxyLPInterface extends Interface {
+    getFunction(nameOrSignature: "afterSwap" | "beforeSwap" | "core" | "crossLiqs" | "liqOwned" | "liqOwners" | "onCancel" | "onPaid" | "onRelease" | "owner" | "renounceOwnership" | "supportsInterface" | "transferOwnership" | "updateCore" | "updateFungibleLiquidity"): FunctionFragment;
+    getEvent(nameOrSignatureOrTopic: "CoreUpdated" | "OwnershipTransferred" | "UpdatedFungibleLiquidity"): EventFragment;
+    encodeFunctionData(functionFragment: "afterSwap", values: [
+        StructsLib.SwapQuoteForBaseParamsStruct,
+        StructsLib.SwapResultStruct
+    ]): string;
+    encodeFunctionData(functionFragment: "beforeSwap", values: [StructsLib.SwapQuoteForBaseParamsStruct]): string;
+    encodeFunctionData(functionFragment: "core", values?: undefined): string;
+    encodeFunctionData(functionFragment: "crossLiqs", values: [AddressLike, BigNumberish]): string;
+    encodeFunctionData(functionFragment: "liqOwned", values: [AddressLike, AddressLike]): string;
+    encodeFunctionData(functionFragment: "liqOwners", values: [AddressLike, BigNumberish]): string;
+    encodeFunctionData(functionFragment: "onCancel", values: [BigNumberish]): string;
+    encodeFunctionData(functionFragment: "onPaid", values: [BigNumberish]): string;
+    encodeFunctionData(functionFragment: "onRelease", values: [StructsLib.SwapResultStruct]): string;
+    encodeFunctionData(functionFragment: "owner", values?: undefined): string;
+    encodeFunctionData(functionFragment: "renounceOwnership", values?: undefined): string;
+    encodeFunctionData(functionFragment: "supportsInterface", values: [BytesLike]): string;
+    encodeFunctionData(functionFragment: "transferOwnership", values: [AddressLike]): string;
+    encodeFunctionData(functionFragment: "updateCore", values: [AddressLike]): string;
+    encodeFunctionData(functionFragment: "updateFungibleLiquidity", values: [ProxyLPStructs.UpdateFungibleLiquidityParamsStruct]): string;
+    decodeFunctionResult(functionFragment: "afterSwap", data: BytesLike): Result;
+    decodeFunctionResult(functionFragment: "beforeSwap", data: BytesLike): Result;
+    decodeFunctionResult(functionFragment: "core", data: BytesLike): Result;
+    decodeFunctionResult(functionFragment: "crossLiqs", data: BytesLike): Result;
+    decodeFunctionResult(functionFragment: "liqOwned", data: BytesLike): Result;
+    decodeFunctionResult(functionFragment: "liqOwners", data: BytesLike): Result;
+    decodeFunctionResult(functionFragment: "onCancel", data: BytesLike): Result;
+    decodeFunctionResult(functionFragment: "onPaid", data: BytesLike): Result;
+    decodeFunctionResult(functionFragment: "onRelease", data: BytesLike): Result;
+    decodeFunctionResult(functionFragment: "owner", data: BytesLike): Result;
+    decodeFunctionResult(functionFragment: "renounceOwnership", data: BytesLike): Result;
+    decodeFunctionResult(functionFragment: "supportsInterface", data: BytesLike): Result;
+    decodeFunctionResult(functionFragment: "transferOwnership", data: BytesLike): Result;
+    decodeFunctionResult(functionFragment: "updateCore", data: BytesLike): Result;
+    decodeFunctionResult(functionFragment: "updateFungibleLiquidity", data: BytesLike): Result;
+}
+declare namespace CoreUpdatedEvent {
+    type InputTuple = [oldCore: AddressLike, newCore: AddressLike];
+    type OutputTuple = [oldCore: string, newCore: string];
+    interface OutputObject {
+        oldCore: string;
+        newCore: string;
+    }
+    type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>;
+    type Filter = TypedDeferredTopicFilter<Event>;
+    type Log = TypedEventLog<Event>;
+    type LogDescription = TypedLogDescription<Event>;
+}
+declare namespace OwnershipTransferredEvent$3 {
+    type InputTuple = [previousOwner: AddressLike, newOwner: AddressLike];
+    type OutputTuple = [previousOwner: string, newOwner: string];
+    interface OutputObject {
+        previousOwner: string;
+        newOwner: string;
+    }
+    type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>;
+    type Filter = TypedDeferredTopicFilter<Event>;
+    type Log = TypedEventLog<Event>;
+    type LogDescription = TypedLogDescription<Event>;
+}
+declare namespace UpdatedFungibleLiquidityEvent {
+    type InputTuple = [
+        marketId: AddressLike,
+        lid: BigNumberish,
+        owner: AddressLike,
+        arg3: BigNumberish
+    ];
+    type OutputTuple = [
+        marketId: string,
+        lid: bigint,
+        owner: string,
+        arg3: bigint
+    ];
+    interface OutputObject {
+        marketId: string;
+        lid: bigint;
+        owner: string;
+        arg3: bigint;
+    }
+    type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>;
+    type Filter = TypedDeferredTopicFilter<Event>;
+    type Log = TypedEventLog<Event>;
+    type LogDescription = TypedLogDescription<Event>;
+}
+interface ProxyLP extends BaseContract {
+    connect(runner?: ContractRunner | null): ProxyLP;
+    waitForDeployment(): Promise<this>;
+    interface: ProxyLPInterface;
+    queryFilter<TCEvent extends TypedContractEvent>(event: TCEvent, fromBlockOrBlockhash?: string | number | undefined, toBlock?: string | number | undefined): Promise<Array<TypedEventLog<TCEvent>>>;
+    queryFilter<TCEvent extends TypedContractEvent>(filter: TypedDeferredTopicFilter<TCEvent>, fromBlockOrBlockhash?: string | number | undefined, toBlock?: string | number | undefined): Promise<Array<TypedEventLog<TCEvent>>>;
+    on<TCEvent extends TypedContractEvent>(event: TCEvent, listener: TypedListener<TCEvent>): Promise<this>;
+    on<TCEvent extends TypedContractEvent>(filter: TypedDeferredTopicFilter<TCEvent>, listener: TypedListener<TCEvent>): Promise<this>;
+    once<TCEvent extends TypedContractEvent>(event: TCEvent, listener: TypedListener<TCEvent>): Promise<this>;
+    once<TCEvent extends TypedContractEvent>(filter: TypedDeferredTopicFilter<TCEvent>, listener: TypedListener<TCEvent>): Promise<this>;
+    listeners<TCEvent extends TypedContractEvent>(event: TCEvent): Promise<Array<TypedListener<TCEvent>>>;
+    listeners(eventName?: string): Promise<Array<Listener>>;
+    removeAllListeners<TCEvent extends TypedContractEvent>(event?: TCEvent): Promise<this>;
+    afterSwap: TypedContractMethod<[
+        params: StructsLib.SwapQuoteForBaseParamsStruct,
+        swapResult: StructsLib.SwapResultStruct
+    ], [
+        void
+    ], "nonpayable">;
+    beforeSwap: TypedContractMethod<[
+        params: StructsLib.SwapQuoteForBaseParamsStruct
+    ], [
+        void
+    ], "nonpayable">;
+    core: TypedContractMethod<[], [string], "view">;
+    crossLiqs: TypedContractMethod<[
+        arg0: AddressLike,
+        arg1: BigNumberish
+    ], [
+        [
+            string,
+            string,
+            bigint,
+            boolean,
+            bigint,
+            boolean,
+            bigint
+        ] & {
+            owner: string;
+            marketId: string;
+            lid: bigint;
+            isLiqSet: boolean;
+            price: bigint;
+            usePriceFromRegistry: boolean;
+            priceScaleBps: bigint;
+        }
+    ], "view">;
+    liqOwned: TypedContractMethod<[
+        arg0: AddressLike,
+        arg1: AddressLike
+    ], [
+        [bigint, boolean] & {
+            lid: bigint;
+            isSet: boolean;
+        }
+    ], "view">;
+    liqOwners: TypedContractMethod<[
+        arg0: AddressLike,
+        arg1: BigNumberish
+    ], [
+        string
+    ], "view">;
+    onCancel: TypedContractMethod<[orderId: BigNumberish], [void], "nonpayable">;
+    onPaid: TypedContractMethod<[orderId: BigNumberish], [void], "nonpayable">;
+    onRelease: TypedContractMethod<[
+        swapResult: StructsLib.SwapResultStruct
+    ], [
+        void
+    ], "nonpayable">;
+    owner: TypedContractMethod<[], [string], "view">;
+    renounceOwnership: TypedContractMethod<[], [void], "nonpayable">;
+    supportsInterface: TypedContractMethod<[
+        interfaceId: BytesLike
+    ], [
+        boolean
+    ], "view">;
+    transferOwnership: TypedContractMethod<[
+        newOwner: AddressLike
+    ], [
+        void
+    ], "nonpayable">;
+    updateCore: TypedContractMethod<[_core: AddressLike], [void], "nonpayable">;
+    updateFungibleLiquidity: TypedContractMethod<[
+        params: ProxyLPStructs.UpdateFungibleLiquidityParamsStruct
+    ], [
+        void
+    ], "payable">;
+    getFunction<T extends ContractMethod = ContractMethod>(key: string | FunctionFragment): T;
+    getFunction(nameOrSignature: "afterSwap"): TypedContractMethod<[
+        params: StructsLib.SwapQuoteForBaseParamsStruct,
+        swapResult: StructsLib.SwapResultStruct
+    ], [
+        void
+    ], "nonpayable">;
+    getFunction(nameOrSignature: "beforeSwap"): TypedContractMethod<[
+        params: StructsLib.SwapQuoteForBaseParamsStruct
+    ], [
+        void
+    ], "nonpayable">;
+    getFunction(nameOrSignature: "core"): TypedContractMethod<[], [string], "view">;
+    getFunction(nameOrSignature: "crossLiqs"): TypedContractMethod<[
+        arg0: AddressLike,
+        arg1: BigNumberish
+    ], [
+        [
+            string,
+            string,
+            bigint,
+            boolean,
+            bigint,
+            boolean,
+            bigint
+        ] & {
+            owner: string;
+            marketId: string;
+            lid: bigint;
+            isLiqSet: boolean;
+            price: bigint;
+            usePriceFromRegistry: boolean;
+            priceScaleBps: bigint;
+        }
+    ], "view">;
+    getFunction(nameOrSignature: "liqOwned"): TypedContractMethod<[
+        arg0: AddressLike,
+        arg1: AddressLike
+    ], [
+        [bigint, boolean] & {
+            lid: bigint;
+            isSet: boolean;
+        }
+    ], "view">;
+    getFunction(nameOrSignature: "liqOwners"): TypedContractMethod<[
+        arg0: AddressLike,
+        arg1: BigNumberish
+    ], [
+        string
+    ], "view">;
+    getFunction(nameOrSignature: "onCancel"): TypedContractMethod<[orderId: BigNumberish], [void], "nonpayable">;
+    getFunction(nameOrSignature: "onPaid"): TypedContractMethod<[orderId: BigNumberish], [void], "nonpayable">;
+    getFunction(nameOrSignature: "onRelease"): TypedContractMethod<[
+        swapResult: StructsLib.SwapResultStruct
+    ], [
+        void
+    ], "nonpayable">;
+    getFunction(nameOrSignature: "owner"): TypedContractMethod<[], [string], "view">;
+    getFunction(nameOrSignature: "renounceOwnership"): TypedContractMethod<[], [void], "nonpayable">;
+    getFunction(nameOrSignature: "supportsInterface"): TypedContractMethod<[interfaceId: BytesLike], [boolean], "view">;
+    getFunction(nameOrSignature: "transferOwnership"): TypedContractMethod<[newOwner: AddressLike], [void], "nonpayable">;
+    getFunction(nameOrSignature: "updateCore"): TypedContractMethod<[_core: AddressLike], [void], "nonpayable">;
+    getFunction(nameOrSignature: "updateFungibleLiquidity"): TypedContractMethod<[
+        params: ProxyLPStructs.UpdateFungibleLiquidityParamsStruct
+    ], [
+        void
+    ], "payable">;
+    getEvent(key: "CoreUpdated"): TypedContractEvent<CoreUpdatedEvent.InputTuple, CoreUpdatedEvent.OutputTuple, CoreUpdatedEvent.OutputObject>;
+    getEvent(key: "OwnershipTransferred"): TypedContractEvent<OwnershipTransferredEvent$3.InputTuple, OwnershipTransferredEvent$3.OutputTuple, OwnershipTransferredEvent$3.OutputObject>;
+    getEvent(key: "UpdatedFungibleLiquidity"): TypedContractEvent<UpdatedFungibleLiquidityEvent.InputTuple, UpdatedFungibleLiquidityEvent.OutputTuple, UpdatedFungibleLiquidityEvent.OutputObject>;
+    filters: {
+        "CoreUpdated(address,address)": TypedContractEvent<CoreUpdatedEvent.InputTuple, CoreUpdatedEvent.OutputTuple, CoreUpdatedEvent.OutputObject>;
+        CoreUpdated: TypedContractEvent<CoreUpdatedEvent.InputTuple, CoreUpdatedEvent.OutputTuple, CoreUpdatedEvent.OutputObject>;
+        "OwnershipTransferred(address,address)": TypedContractEvent<OwnershipTransferredEvent$3.InputTuple, OwnershipTransferredEvent$3.OutputTuple, OwnershipTransferredEvent$3.OutputObject>;
+        OwnershipTransferred: TypedContractEvent<OwnershipTransferredEvent$3.InputTuple, OwnershipTransferredEvent$3.OutputTuple, OwnershipTransferredEvent$3.OutputObject>;
+        "UpdatedFungibleLiquidity(address,uint256,address,uint256)": TypedContractEvent<UpdatedFungibleLiquidityEvent.InputTuple, UpdatedFungibleLiquidityEvent.OutputTuple, UpdatedFungibleLiquidityEvent.OutputObject>;
+        UpdatedFungibleLiquidity: TypedContractEvent<UpdatedFungibleLiquidityEvent.InputTuple, UpdatedFungibleLiquidityEvent.OutputTuple, UpdatedFungibleLiquidityEvent.OutputObject>;
     };
 }
 
@@ -28607,6 +28983,482 @@ declare class ProviderRegistry__factory {
     static connect(address: string, runner?: ContractRunner | null): ProviderRegistry;
 }
 
+declare class ProxyLP__factory {
+    static readonly abi: readonly [{
+        readonly inputs: readonly [{
+            readonly internalType: "address";
+            readonly name: "_core";
+            readonly type: "address";
+        }];
+        readonly stateMutability: "nonpayable";
+        readonly type: "constructor";
+    }, {
+        readonly anonymous: false;
+        readonly inputs: readonly [{
+            readonly indexed: true;
+            readonly internalType: "address";
+            readonly name: "oldCore";
+            readonly type: "address";
+        }, {
+            readonly indexed: true;
+            readonly internalType: "address";
+            readonly name: "newCore";
+            readonly type: "address";
+        }];
+        readonly name: "CoreUpdated";
+        readonly type: "event";
+    }, {
+        readonly anonymous: false;
+        readonly inputs: readonly [{
+            readonly indexed: true;
+            readonly internalType: "address";
+            readonly name: "previousOwner";
+            readonly type: "address";
+        }, {
+            readonly indexed: true;
+            readonly internalType: "address";
+            readonly name: "newOwner";
+            readonly type: "address";
+        }];
+        readonly name: "OwnershipTransferred";
+        readonly type: "event";
+    }, {
+        readonly anonymous: false;
+        readonly inputs: readonly [{
+            readonly indexed: false;
+            readonly internalType: "address";
+            readonly name: "marketId";
+            readonly type: "address";
+        }, {
+            readonly indexed: false;
+            readonly internalType: "uint256";
+            readonly name: "lid";
+            readonly type: "uint256";
+        }, {
+            readonly indexed: false;
+            readonly internalType: "address";
+            readonly name: "owner";
+            readonly type: "address";
+        }, {
+            readonly indexed: false;
+            readonly internalType: "uint256";
+            readonly name: "";
+            readonly type: "uint256";
+        }];
+        readonly name: "UpdatedFungibleLiquidity";
+        readonly type: "event";
+    }, {
+        readonly inputs: readonly [{
+            readonly components: readonly [{
+                readonly internalType: "address";
+                readonly name: "marketId";
+                readonly type: "address";
+            }, {
+                readonly internalType: "address";
+                readonly name: "provider";
+                readonly type: "address";
+            }, {
+                readonly internalType: "address";
+                readonly name: "recipient";
+                readonly type: "address";
+            }, {
+                readonly internalType: "uint256";
+                readonly name: "lid";
+                readonly type: "uint256";
+            }, {
+                readonly internalType: "uint256";
+                readonly name: "amount";
+                readonly type: "uint256";
+            }, {
+                readonly internalType: "uint256";
+                readonly name: "maxPrice";
+                readonly type: "uint256";
+            }, {
+                readonly internalType: "uint256[]";
+                readonly name: "ids";
+                readonly type: "uint256[]";
+            }, {
+                readonly internalType: "uint256";
+                readonly name: "expireAt";
+                readonly type: "uint256";
+            }, {
+                readonly internalType: "uint256";
+                readonly name: "operator";
+                readonly type: "uint256";
+            }, {
+                readonly internalType: "bytes";
+                readonly name: "marketMgrData";
+                readonly type: "bytes";
+            }];
+            readonly internalType: "struct StructsLib.SwapQuoteForBaseParams";
+            readonly name: "params";
+            readonly type: "tuple";
+        }, {
+            readonly components: readonly [{
+                readonly internalType: "uint256";
+                readonly name: "quoteReceived";
+                readonly type: "uint256";
+            }, {
+                readonly internalType: "uint256";
+                readonly name: "baseReceived";
+                readonly type: "uint256";
+            }, {
+                readonly internalType: "uint256";
+                readonly name: "totalFees";
+                readonly type: "uint256";
+            }, {
+                readonly internalType: "bool";
+                readonly name: "instant";
+                readonly type: "bool";
+            }, {
+                readonly internalType: "uint256";
+                readonly name: "orderId";
+                readonly type: "uint256";
+            }];
+            readonly internalType: "struct StructsLib.SwapResult";
+            readonly name: "swapResult";
+            readonly type: "tuple";
+        }];
+        readonly name: "afterSwap";
+        readonly outputs: readonly [];
+        readonly stateMutability: "nonpayable";
+        readonly type: "function";
+    }, {
+        readonly inputs: readonly [{
+            readonly components: readonly [{
+                readonly internalType: "address";
+                readonly name: "marketId";
+                readonly type: "address";
+            }, {
+                readonly internalType: "address";
+                readonly name: "provider";
+                readonly type: "address";
+            }, {
+                readonly internalType: "address";
+                readonly name: "recipient";
+                readonly type: "address";
+            }, {
+                readonly internalType: "uint256";
+                readonly name: "lid";
+                readonly type: "uint256";
+            }, {
+                readonly internalType: "uint256";
+                readonly name: "amount";
+                readonly type: "uint256";
+            }, {
+                readonly internalType: "uint256";
+                readonly name: "maxPrice";
+                readonly type: "uint256";
+            }, {
+                readonly internalType: "uint256[]";
+                readonly name: "ids";
+                readonly type: "uint256[]";
+            }, {
+                readonly internalType: "uint256";
+                readonly name: "expireAt";
+                readonly type: "uint256";
+            }, {
+                readonly internalType: "uint256";
+                readonly name: "operator";
+                readonly type: "uint256";
+            }, {
+                readonly internalType: "bytes";
+                readonly name: "marketMgrData";
+                readonly type: "bytes";
+            }];
+            readonly internalType: "struct StructsLib.SwapQuoteForBaseParams";
+            readonly name: "params";
+            readonly type: "tuple";
+        }];
+        readonly name: "beforeSwap";
+        readonly outputs: readonly [];
+        readonly stateMutability: "nonpayable";
+        readonly type: "function";
+    }, {
+        readonly inputs: readonly [];
+        readonly name: "core";
+        readonly outputs: readonly [{
+            readonly internalType: "contract ICore";
+            readonly name: "";
+            readonly type: "address";
+        }];
+        readonly stateMutability: "view";
+        readonly type: "function";
+    }, {
+        readonly inputs: readonly [{
+            readonly internalType: "address";
+            readonly name: "";
+            readonly type: "address";
+        }, {
+            readonly internalType: "uint256";
+            readonly name: "";
+            readonly type: "uint256";
+        }];
+        readonly name: "crossLiqs";
+        readonly outputs: readonly [{
+            readonly internalType: "address";
+            readonly name: "owner";
+            readonly type: "address";
+        }, {
+            readonly internalType: "address";
+            readonly name: "marketId";
+            readonly type: "address";
+        }, {
+            readonly internalType: "uint256";
+            readonly name: "lid";
+            readonly type: "uint256";
+        }, {
+            readonly internalType: "bool";
+            readonly name: "isLiqSet";
+            readonly type: "bool";
+        }, {
+            readonly internalType: "uint256";
+            readonly name: "price";
+            readonly type: "uint256";
+        }, {
+            readonly internalType: "bool";
+            readonly name: "usePriceFromRegistry";
+            readonly type: "bool";
+        }, {
+            readonly internalType: "int256";
+            readonly name: "priceScaleBps";
+            readonly type: "int256";
+        }];
+        readonly stateMutability: "view";
+        readonly type: "function";
+    }, {
+        readonly inputs: readonly [{
+            readonly internalType: "address";
+            readonly name: "";
+            readonly type: "address";
+        }, {
+            readonly internalType: "address";
+            readonly name: "";
+            readonly type: "address";
+        }];
+        readonly name: "liqOwned";
+        readonly outputs: readonly [{
+            readonly internalType: "uint256";
+            readonly name: "lid";
+            readonly type: "uint256";
+        }, {
+            readonly internalType: "bool";
+            readonly name: "isSet";
+            readonly type: "bool";
+        }];
+        readonly stateMutability: "view";
+        readonly type: "function";
+    }, {
+        readonly inputs: readonly [{
+            readonly internalType: "address";
+            readonly name: "";
+            readonly type: "address";
+        }, {
+            readonly internalType: "uint256";
+            readonly name: "";
+            readonly type: "uint256";
+        }];
+        readonly name: "liqOwners";
+        readonly outputs: readonly [{
+            readonly internalType: "address";
+            readonly name: "";
+            readonly type: "address";
+        }];
+        readonly stateMutability: "view";
+        readonly type: "function";
+    }, {
+        readonly inputs: readonly [{
+            readonly internalType: "uint256";
+            readonly name: "orderId";
+            readonly type: "uint256";
+        }];
+        readonly name: "onCancel";
+        readonly outputs: readonly [];
+        readonly stateMutability: "nonpayable";
+        readonly type: "function";
+    }, {
+        readonly inputs: readonly [{
+            readonly internalType: "uint256";
+            readonly name: "orderId";
+            readonly type: "uint256";
+        }];
+        readonly name: "onPaid";
+        readonly outputs: readonly [];
+        readonly stateMutability: "nonpayable";
+        readonly type: "function";
+    }, {
+        readonly inputs: readonly [{
+            readonly components: readonly [{
+                readonly internalType: "uint256";
+                readonly name: "quoteReceived";
+                readonly type: "uint256";
+            }, {
+                readonly internalType: "uint256";
+                readonly name: "baseReceived";
+                readonly type: "uint256";
+            }, {
+                readonly internalType: "uint256";
+                readonly name: "totalFees";
+                readonly type: "uint256";
+            }, {
+                readonly internalType: "bool";
+                readonly name: "instant";
+                readonly type: "bool";
+            }, {
+                readonly internalType: "uint256";
+                readonly name: "orderId";
+                readonly type: "uint256";
+            }];
+            readonly internalType: "struct StructsLib.SwapResult";
+            readonly name: "swapResult";
+            readonly type: "tuple";
+        }];
+        readonly name: "onRelease";
+        readonly outputs: readonly [];
+        readonly stateMutability: "nonpayable";
+        readonly type: "function";
+    }, {
+        readonly inputs: readonly [];
+        readonly name: "owner";
+        readonly outputs: readonly [{
+            readonly internalType: "address";
+            readonly name: "";
+            readonly type: "address";
+        }];
+        readonly stateMutability: "view";
+        readonly type: "function";
+    }, {
+        readonly inputs: readonly [];
+        readonly name: "renounceOwnership";
+        readonly outputs: readonly [];
+        readonly stateMutability: "nonpayable";
+        readonly type: "function";
+    }, {
+        readonly inputs: readonly [{
+            readonly internalType: "bytes4";
+            readonly name: "interfaceId";
+            readonly type: "bytes4";
+        }];
+        readonly name: "supportsInterface";
+        readonly outputs: readonly [{
+            readonly internalType: "bool";
+            readonly name: "";
+            readonly type: "bool";
+        }];
+        readonly stateMutability: "view";
+        readonly type: "function";
+    }, {
+        readonly inputs: readonly [{
+            readonly internalType: "address";
+            readonly name: "newOwner";
+            readonly type: "address";
+        }];
+        readonly name: "transferOwnership";
+        readonly outputs: readonly [];
+        readonly stateMutability: "nonpayable";
+        readonly type: "function";
+    }, {
+        readonly inputs: readonly [{
+            readonly internalType: "address";
+            readonly name: "_core";
+            readonly type: "address";
+        }];
+        readonly name: "updateCore";
+        readonly outputs: readonly [];
+        readonly stateMutability: "nonpayable";
+        readonly type: "function";
+    }, {
+        readonly inputs: readonly [{
+            readonly components: readonly [{
+                readonly internalType: "address";
+                readonly name: "marketId";
+                readonly type: "address";
+            }, {
+                readonly components: readonly [{
+                    readonly internalType: "address";
+                    readonly name: "marketId";
+                    readonly type: "address";
+                }, {
+                    readonly internalType: "uint256";
+                    readonly name: "price";
+                    readonly type: "uint256";
+                }, {
+                    readonly internalType: "bool";
+                    readonly name: "usePriceFromRegistry";
+                    readonly type: "bool";
+                }, {
+                    readonly internalType: "int256";
+                    readonly name: "priceScaleBps";
+                    readonly type: "int256";
+                }];
+                readonly internalType: "struct ProxyLPStructs.CrossLiquidityParams";
+                readonly name: "crossLiquidity";
+                readonly type: "tuple";
+            }, {
+                readonly internalType: "address";
+                readonly name: "target";
+                readonly type: "address";
+            }, {
+                readonly internalType: "uint256";
+                readonly name: "lid";
+                readonly type: "uint256";
+            }, {
+                readonly internalType: "uint256";
+                readonly name: "amount";
+                readonly type: "uint256";
+            }, {
+                readonly internalType: "uint256";
+                readonly name: "price";
+                readonly type: "uint256";
+            }, {
+                readonly internalType: "uint256";
+                readonly name: "timeToPay";
+                readonly type: "uint256";
+            }, {
+                readonly internalType: "uint256";
+                readonly name: "expireAt";
+                readonly type: "uint256";
+            }, {
+                readonly internalType: "uint256[]";
+                readonly name: "wantOrIds";
+                readonly type: "uint256[]";
+            }, {
+                readonly internalType: "uint256[]";
+                readonly name: "wantAndIds";
+                readonly type: "uint256[]";
+            }, {
+                readonly internalType: "int256";
+                readonly name: "priceScaleBps";
+                readonly type: "int256";
+            }, {
+                readonly internalType: "bool";
+                readonly name: "deduct";
+                readonly type: "bool";
+            }, {
+                readonly internalType: "bool";
+                readonly name: "pause";
+                readonly type: "bool";
+            }, {
+                readonly internalType: "bool";
+                readonly name: "usePriceFromRegistry";
+                readonly type: "bool";
+            }];
+            readonly internalType: "struct ProxyLPStructs.UpdateFungibleLiquidityParams";
+            readonly name: "params";
+            readonly type: "tuple";
+        }];
+        readonly name: "updateFungibleLiquidity";
+        readonly outputs: readonly [];
+        readonly stateMutability: "payable";
+        readonly type: "function";
+    }, {
+        readonly stateMutability: "payable";
+        readonly type: "receive";
+    }];
+    static createInterface(): ProxyLPInterface;
+    static connect(address: string, runner?: ContractRunner | null): ProxyLP;
+}
+
 declare class Router__factory {
     static readonly abi: readonly [{
         readonly inputs: readonly [{
@@ -33254,6 +34106,8 @@ type index$1_PayRouter__factory = PayRouter__factory;
 declare const index$1_PayRouter__factory: typeof PayRouter__factory;
 type index$1_ProviderRegistry__factory = ProviderRegistry__factory;
 declare const index$1_ProviderRegistry__factory: typeof ProviderRegistry__factory;
+type index$1_ProxyLP__factory = ProxyLP__factory;
+declare const index$1_ProxyLP__factory: typeof ProxyLP__factory;
 type index$1_Router__factory = Router__factory;
 declare const index$1_Router__factory: typeof Router__factory;
 type index$1_TokenPool__factory = TokenPool__factory;
@@ -33273,7 +34127,7 @@ declare const index$1_UniswapV3Router__factory: typeof UniswapV3Router__factory;
 type index$1_WETH__factory = WETH__factory;
 declare const index$1_WETH__factory: typeof WETH__factory;
 declare namespace index$1 {
-  export { index$1_AssetRegistry__factory as AssetRegistry__factory, index$1_BadgeManager__factory as BadgeManager__factory, index$1_BondCurveDistro__factory as BondCurveDistro__factory, index$1_Core__factory as Core__factory, index$1_DisputeManager__factory as DisputeManager__factory, index$1_ERC20__factory as ERC20__factory, index$1_ERC721__factory as ERC721__factory, index$1_Energon__factory as Energon__factory, index$1_FeePool__factory as FeePool__factory, index$1_LPPool__factory as LPPool__factory, index$1_MarketCore__factory as MarketCore__factory, index$1_MarketManager__factory as MarketManager__factory, index$1_MediatorManager__factory as MediatorManager__factory, index$1_MinerRegistry__factory as MinerRegistry__factory, index$1_NFT__factory as NFT__factory, index$1_PayRouter__factory as PayRouter__factory, index$1_ProviderRegistry__factory as ProviderRegistry__factory, index$1_Router__factory as Router__factory, index$1_TokenPool__factory as TokenPool__factory, index$1_Token__factory as Token__factory, index$1_UniswapV2Router2__factory as UniswapV2Router2__factory, index$1_UniswapV2Router__factory as UniswapV2Router__factory, index$1_UniswapV3Router2__factory as UniswapV3Router2__factory, index$1_UniswapV3RouterUniversal__factory as UniswapV3RouterUniversal__factory, index$1_UniswapV3Router__factory as UniswapV3Router__factory, index$1_WETH__factory as WETH__factory };
+  export { index$1_AssetRegistry__factory as AssetRegistry__factory, index$1_BadgeManager__factory as BadgeManager__factory, index$1_BondCurveDistro__factory as BondCurveDistro__factory, index$1_Core__factory as Core__factory, index$1_DisputeManager__factory as DisputeManager__factory, index$1_ERC20__factory as ERC20__factory, index$1_ERC721__factory as ERC721__factory, index$1_Energon__factory as Energon__factory, index$1_FeePool__factory as FeePool__factory, index$1_LPPool__factory as LPPool__factory, index$1_MarketCore__factory as MarketCore__factory, index$1_MarketManager__factory as MarketManager__factory, index$1_MediatorManager__factory as MediatorManager__factory, index$1_MinerRegistry__factory as MinerRegistry__factory, index$1_NFT__factory as NFT__factory, index$1_PayRouter__factory as PayRouter__factory, index$1_ProviderRegistry__factory as ProviderRegistry__factory, index$1_ProxyLP__factory as ProxyLP__factory, index$1_Router__factory as Router__factory, index$1_TokenPool__factory as TokenPool__factory, index$1_Token__factory as Token__factory, index$1_UniswapV2Router2__factory as UniswapV2Router2__factory, index$1_UniswapV2Router__factory as UniswapV2Router__factory, index$1_UniswapV3Router2__factory as UniswapV3Router2__factory, index$1_UniswapV3RouterUniversal__factory as UniswapV3RouterUniversal__factory, index$1_UniswapV3Router__factory as UniswapV3Router__factory, index$1_WETH__factory as WETH__factory };
 }
 
 type index_AssetRegistry = AssetRegistry;
@@ -33327,6 +34181,9 @@ declare const index_PayRouter__factory: typeof PayRouter__factory;
 type index_ProviderRegistry = ProviderRegistry;
 type index_ProviderRegistry__factory = ProviderRegistry__factory;
 declare const index_ProviderRegistry__factory: typeof ProviderRegistry__factory;
+type index_ProxyLP = ProxyLP;
+type index_ProxyLP__factory = ProxyLP__factory;
+declare const index_ProxyLP__factory: typeof ProxyLP__factory;
 type index_Router = Router;
 type index_Router__factory = Router__factory;
 declare const index_Router__factory: typeof Router__factory;
@@ -33355,7 +34212,7 @@ type index_WETH = WETH;
 type index_WETH__factory = WETH__factory;
 declare const index_WETH__factory: typeof WETH__factory;
 declare namespace index {
-  export { type index_AssetRegistry as AssetRegistry, index_AssetRegistry__factory as AssetRegistry__factory, type index_BadgeManager as BadgeManager, index_BadgeManager__factory as BadgeManager__factory, type index_BondCurveDistro as BondCurveDistro, index_BondCurveDistro__factory as BondCurveDistro__factory, type index_Core as Core, index_Core__factory as Core__factory, type index_DisputeManager as DisputeManager, index_DisputeManager__factory as DisputeManager__factory, type index_ERC20 as ERC20, index_ERC20__factory as ERC20__factory, type index_ERC721 as ERC721, index_ERC721__factory as ERC721__factory, type index_Energon as Energon, index_Energon__factory as Energon__factory, type index_FeePool as FeePool, index_FeePool__factory as FeePool__factory, type index_LPPool as LPPool, index_LPPool__factory as LPPool__factory, type index_MarketCore as MarketCore, index_MarketCore__factory as MarketCore__factory, type index_MarketManager as MarketManager, index_MarketManager__factory as MarketManager__factory, type index_MediatorManager as MediatorManager, index_MediatorManager__factory as MediatorManager__factory, type index_MinerRegistry as MinerRegistry, index_MinerRegistry__factory as MinerRegistry__factory, type index_NFT as NFT, index_NFT__factory as NFT__factory, type index_PayRouter as PayRouter, index_PayRouter__factory as PayRouter__factory, type index_ProviderRegistry as ProviderRegistry, index_ProviderRegistry__factory as ProviderRegistry__factory, type index_Router as Router, index_Router__factory as Router__factory, type index_Token as Token, type index_TokenPool as TokenPool, index_TokenPool__factory as TokenPool__factory, index_Token__factory as Token__factory, type index_UniswapV2Router as UniswapV2Router, type index_UniswapV2Router2 as UniswapV2Router2, index_UniswapV2Router2__factory as UniswapV2Router2__factory, index_UniswapV2Router__factory as UniswapV2Router__factory, type index_UniswapV3Router as UniswapV3Router, type index_UniswapV3Router2 as UniswapV3Router2, index_UniswapV3Router2__factory as UniswapV3Router2__factory, type index_UniswapV3RouterUniversal as UniswapV3RouterUniversal, index_UniswapV3RouterUniversal__factory as UniswapV3RouterUniversal__factory, index_UniswapV3Router__factory as UniswapV3Router__factory, type index_WETH as WETH, index_WETH__factory as WETH__factory, index$1 as factories };
+  export { type index_AssetRegistry as AssetRegistry, index_AssetRegistry__factory as AssetRegistry__factory, type index_BadgeManager as BadgeManager, index_BadgeManager__factory as BadgeManager__factory, type index_BondCurveDistro as BondCurveDistro, index_BondCurveDistro__factory as BondCurveDistro__factory, type index_Core as Core, index_Core__factory as Core__factory, type index_DisputeManager as DisputeManager, index_DisputeManager__factory as DisputeManager__factory, type index_ERC20 as ERC20, index_ERC20__factory as ERC20__factory, type index_ERC721 as ERC721, index_ERC721__factory as ERC721__factory, type index_Energon as Energon, index_Energon__factory as Energon__factory, type index_FeePool as FeePool, index_FeePool__factory as FeePool__factory, type index_LPPool as LPPool, index_LPPool__factory as LPPool__factory, type index_MarketCore as MarketCore, index_MarketCore__factory as MarketCore__factory, type index_MarketManager as MarketManager, index_MarketManager__factory as MarketManager__factory, type index_MediatorManager as MediatorManager, index_MediatorManager__factory as MediatorManager__factory, type index_MinerRegistry as MinerRegistry, index_MinerRegistry__factory as MinerRegistry__factory, type index_NFT as NFT, index_NFT__factory as NFT__factory, type index_PayRouter as PayRouter, index_PayRouter__factory as PayRouter__factory, type index_ProviderRegistry as ProviderRegistry, index_ProviderRegistry__factory as ProviderRegistry__factory, type index_ProxyLP as ProxyLP, index_ProxyLP__factory as ProxyLP__factory, type index_Router as Router, index_Router__factory as Router__factory, type index_Token as Token, type index_TokenPool as TokenPool, index_TokenPool__factory as TokenPool__factory, index_Token__factory as Token__factory, type index_UniswapV2Router as UniswapV2Router, type index_UniswapV2Router2 as UniswapV2Router2, index_UniswapV2Router2__factory as UniswapV2Router2__factory, index_UniswapV2Router__factory as UniswapV2Router__factory, type index_UniswapV3Router as UniswapV3Router, type index_UniswapV3Router2 as UniswapV3Router2, index_UniswapV3Router2__factory as UniswapV3Router2__factory, type index_UniswapV3RouterUniversal as UniswapV3RouterUniversal, index_UniswapV3RouterUniversal__factory as UniswapV3RouterUniversal__factory, index_UniswapV3Router__factory as UniswapV3Router__factory, type index_WETH as WETH, index_WETH__factory as WETH__factory, index$1 as factories };
 }
 
 declare enum PaymentMethodType {

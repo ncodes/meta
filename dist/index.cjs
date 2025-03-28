@@ -17498,6 +17498,614 @@ var ProviderRegistry_default = [
   }
 ];
 
+// src/abi/ProxyLP.json
+var ProxyLP_default = [
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "_core",
+        type: "address"
+      }
+    ],
+    stateMutability: "nonpayable",
+    type: "constructor"
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: true,
+        internalType: "address",
+        name: "oldCore",
+        type: "address"
+      },
+      {
+        indexed: true,
+        internalType: "address",
+        name: "newCore",
+        type: "address"
+      }
+    ],
+    name: "CoreUpdated",
+    type: "event"
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: true,
+        internalType: "address",
+        name: "previousOwner",
+        type: "address"
+      },
+      {
+        indexed: true,
+        internalType: "address",
+        name: "newOwner",
+        type: "address"
+      }
+    ],
+    name: "OwnershipTransferred",
+    type: "event"
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: false,
+        internalType: "address",
+        name: "marketId",
+        type: "address"
+      },
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "lid",
+        type: "uint256"
+      },
+      {
+        indexed: false,
+        internalType: "address",
+        name: "owner",
+        type: "address"
+      },
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "",
+        type: "uint256"
+      }
+    ],
+    name: "UpdatedFungibleLiquidity",
+    type: "event"
+  },
+  {
+    inputs: [
+      {
+        components: [
+          {
+            internalType: "address",
+            name: "marketId",
+            type: "address"
+          },
+          {
+            internalType: "address",
+            name: "provider",
+            type: "address"
+          },
+          {
+            internalType: "address",
+            name: "recipient",
+            type: "address"
+          },
+          {
+            internalType: "uint256",
+            name: "lid",
+            type: "uint256"
+          },
+          {
+            internalType: "uint256",
+            name: "amount",
+            type: "uint256"
+          },
+          {
+            internalType: "uint256",
+            name: "maxPrice",
+            type: "uint256"
+          },
+          {
+            internalType: "uint256[]",
+            name: "ids",
+            type: "uint256[]"
+          },
+          {
+            internalType: "uint256",
+            name: "expireAt",
+            type: "uint256"
+          },
+          {
+            internalType: "uint256",
+            name: "operator",
+            type: "uint256"
+          },
+          {
+            internalType: "bytes",
+            name: "marketMgrData",
+            type: "bytes"
+          }
+        ],
+        internalType: "struct StructsLib.SwapQuoteForBaseParams",
+        name: "params",
+        type: "tuple"
+      },
+      {
+        components: [
+          {
+            internalType: "uint256",
+            name: "quoteReceived",
+            type: "uint256"
+          },
+          {
+            internalType: "uint256",
+            name: "baseReceived",
+            type: "uint256"
+          },
+          {
+            internalType: "uint256",
+            name: "totalFees",
+            type: "uint256"
+          },
+          {
+            internalType: "bool",
+            name: "instant",
+            type: "bool"
+          },
+          {
+            internalType: "uint256",
+            name: "orderId",
+            type: "uint256"
+          }
+        ],
+        internalType: "struct StructsLib.SwapResult",
+        name: "swapResult",
+        type: "tuple"
+      }
+    ],
+    name: "afterSwap",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function"
+  },
+  {
+    inputs: [
+      {
+        components: [
+          {
+            internalType: "address",
+            name: "marketId",
+            type: "address"
+          },
+          {
+            internalType: "address",
+            name: "provider",
+            type: "address"
+          },
+          {
+            internalType: "address",
+            name: "recipient",
+            type: "address"
+          },
+          {
+            internalType: "uint256",
+            name: "lid",
+            type: "uint256"
+          },
+          {
+            internalType: "uint256",
+            name: "amount",
+            type: "uint256"
+          },
+          {
+            internalType: "uint256",
+            name: "maxPrice",
+            type: "uint256"
+          },
+          {
+            internalType: "uint256[]",
+            name: "ids",
+            type: "uint256[]"
+          },
+          {
+            internalType: "uint256",
+            name: "expireAt",
+            type: "uint256"
+          },
+          {
+            internalType: "uint256",
+            name: "operator",
+            type: "uint256"
+          },
+          {
+            internalType: "bytes",
+            name: "marketMgrData",
+            type: "bytes"
+          }
+        ],
+        internalType: "struct StructsLib.SwapQuoteForBaseParams",
+        name: "params",
+        type: "tuple"
+      }
+    ],
+    name: "beforeSwap",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function"
+  },
+  {
+    inputs: [],
+    name: "core",
+    outputs: [
+      {
+        internalType: "contract ICore",
+        name: "",
+        type: "address"
+      }
+    ],
+    stateMutability: "view",
+    type: "function"
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "",
+        type: "address"
+      },
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256"
+      }
+    ],
+    name: "crossLiqs",
+    outputs: [
+      {
+        internalType: "address",
+        name: "owner",
+        type: "address"
+      },
+      {
+        internalType: "address",
+        name: "marketId",
+        type: "address"
+      },
+      {
+        internalType: "uint256",
+        name: "lid",
+        type: "uint256"
+      },
+      {
+        internalType: "bool",
+        name: "isLiqSet",
+        type: "bool"
+      },
+      {
+        internalType: "uint256",
+        name: "price",
+        type: "uint256"
+      },
+      {
+        internalType: "bool",
+        name: "usePriceFromRegistry",
+        type: "bool"
+      },
+      {
+        internalType: "int256",
+        name: "priceScaleBps",
+        type: "int256"
+      }
+    ],
+    stateMutability: "view",
+    type: "function"
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "",
+        type: "address"
+      },
+      {
+        internalType: "address",
+        name: "",
+        type: "address"
+      }
+    ],
+    name: "liqOwned",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "lid",
+        type: "uint256"
+      },
+      {
+        internalType: "bool",
+        name: "isSet",
+        type: "bool"
+      }
+    ],
+    stateMutability: "view",
+    type: "function"
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "",
+        type: "address"
+      },
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256"
+      }
+    ],
+    name: "liqOwners",
+    outputs: [
+      {
+        internalType: "address",
+        name: "",
+        type: "address"
+      }
+    ],
+    stateMutability: "view",
+    type: "function"
+  },
+  {
+    inputs: [
+      {
+        internalType: "uint256",
+        name: "orderId",
+        type: "uint256"
+      }
+    ],
+    name: "onCancel",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function"
+  },
+  {
+    inputs: [
+      {
+        internalType: "uint256",
+        name: "orderId",
+        type: "uint256"
+      }
+    ],
+    name: "onPaid",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function"
+  },
+  {
+    inputs: [
+      {
+        components: [
+          {
+            internalType: "uint256",
+            name: "quoteReceived",
+            type: "uint256"
+          },
+          {
+            internalType: "uint256",
+            name: "baseReceived",
+            type: "uint256"
+          },
+          {
+            internalType: "uint256",
+            name: "totalFees",
+            type: "uint256"
+          },
+          {
+            internalType: "bool",
+            name: "instant",
+            type: "bool"
+          },
+          {
+            internalType: "uint256",
+            name: "orderId",
+            type: "uint256"
+          }
+        ],
+        internalType: "struct StructsLib.SwapResult",
+        name: "swapResult",
+        type: "tuple"
+      }
+    ],
+    name: "onRelease",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function"
+  },
+  {
+    inputs: [],
+    name: "owner",
+    outputs: [
+      {
+        internalType: "address",
+        name: "",
+        type: "address"
+      }
+    ],
+    stateMutability: "view",
+    type: "function"
+  },
+  {
+    inputs: [],
+    name: "renounceOwnership",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function"
+  },
+  {
+    inputs: [
+      {
+        internalType: "bytes4",
+        name: "interfaceId",
+        type: "bytes4"
+      }
+    ],
+    name: "supportsInterface",
+    outputs: [
+      {
+        internalType: "bool",
+        name: "",
+        type: "bool"
+      }
+    ],
+    stateMutability: "view",
+    type: "function"
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "newOwner",
+        type: "address"
+      }
+    ],
+    name: "transferOwnership",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function"
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "_core",
+        type: "address"
+      }
+    ],
+    name: "updateCore",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function"
+  },
+  {
+    inputs: [
+      {
+        components: [
+          {
+            internalType: "address",
+            name: "marketId",
+            type: "address"
+          },
+          {
+            components: [
+              {
+                internalType: "address",
+                name: "marketId",
+                type: "address"
+              },
+              {
+                internalType: "uint256",
+                name: "price",
+                type: "uint256"
+              },
+              {
+                internalType: "bool",
+                name: "usePriceFromRegistry",
+                type: "bool"
+              },
+              {
+                internalType: "int256",
+                name: "priceScaleBps",
+                type: "int256"
+              }
+            ],
+            internalType: "struct ProxyLPStructs.CrossLiquidityParams",
+            name: "crossLiquidity",
+            type: "tuple"
+          },
+          {
+            internalType: "address",
+            name: "target",
+            type: "address"
+          },
+          {
+            internalType: "uint256",
+            name: "lid",
+            type: "uint256"
+          },
+          {
+            internalType: "uint256",
+            name: "amount",
+            type: "uint256"
+          },
+          {
+            internalType: "uint256",
+            name: "price",
+            type: "uint256"
+          },
+          {
+            internalType: "uint256",
+            name: "timeToPay",
+            type: "uint256"
+          },
+          {
+            internalType: "uint256",
+            name: "expireAt",
+            type: "uint256"
+          },
+          {
+            internalType: "uint256[]",
+            name: "wantOrIds",
+            type: "uint256[]"
+          },
+          {
+            internalType: "uint256[]",
+            name: "wantAndIds",
+            type: "uint256[]"
+          },
+          {
+            internalType: "int256",
+            name: "priceScaleBps",
+            type: "int256"
+          },
+          {
+            internalType: "bool",
+            name: "deduct",
+            type: "bool"
+          },
+          {
+            internalType: "bool",
+            name: "pause",
+            type: "bool"
+          },
+          {
+            internalType: "bool",
+            name: "usePriceFromRegistry",
+            type: "bool"
+          }
+        ],
+        internalType: "struct ProxyLPStructs.UpdateFungibleLiquidityParams",
+        name: "params",
+        type: "tuple"
+      }
+    ],
+    name: "updateFungibleLiquidity",
+    outputs: [],
+    stateMutability: "payable",
+    type: "function"
+  },
+  {
+    stateMutability: "payable",
+    type: "receive"
+  }
+];
+
 // src/abi/Router.json
 var Router_default = [
   {
@@ -23450,7 +24058,8 @@ var Abi = {
   UniswapV3Router: UniswapV3Router_default,
   UniswapV3Router2: UniswapV3Router2_default,
   UniswapV3RouterUniversal: UniswapV3RouterUniversal_default,
-  BondCurveDistro: BondCurveDistro_default
+  BondCurveDistro: BondCurveDistro_default,
+  ProxyLP: ProxyLP_default
 };
 
 // src/badge_manifest.ts
@@ -31546,11 +32155,17 @@ function getTokenInfo(network, address) {
   const netList = TokenLists[network];
   if (!netList)
     return;
-  return import_lodash.default.find(netList.tokens, (x) => (0, import_viem2.isAddressEqual)(x.address, address));
+  return import_lodash.default.find(
+    netList.tokens,
+    (x) => (0, import_viem2.isAddressEqual)(x.address, address)
+  );
 }
 function findTokenInLocalhost(address) {
   return TokenLists.localhost.tokens.find((token) => {
-    const match = (0, import_viem2.isAddressEqual)(token.address, address);
+    const match = (0, import_viem2.isAddressEqual)(
+      token.address,
+      address
+    );
     if (!match)
       return;
     token.isSynthetic = token.isSynthetic || token.type == "SYNTHETIC";
@@ -31559,7 +32174,10 @@ function findTokenInLocalhost(address) {
 }
 function findTokenInSynthetic(address) {
   return TokenLists.synthetic.tokens.find((token) => {
-    const match = (0, import_viem2.isAddressEqual)(token.address, address);
+    const match = (0, import_viem2.isAddressEqual)(
+      token.address,
+      address
+    );
     if (!match)
       return;
     token.isSynthetic = token.isSynthetic || token.type == "SYNTHETIC";
@@ -31590,6 +32208,7 @@ __export(typechain_exports, {
   NFT__factory: () => NFT__factory,
   PayRouter__factory: () => PayRouter__factory,
   ProviderRegistry__factory: () => ProviderRegistry__factory,
+  ProxyLP__factory: () => ProxyLP__factory,
   Router__factory: () => Router__factory,
   TokenPool__factory: () => TokenPool__factory,
   Token__factory: () => Token__factory,
@@ -31622,6 +32241,7 @@ __export(factories_exports, {
   NFT__factory: () => NFT__factory,
   PayRouter__factory: () => PayRouter__factory,
   ProviderRegistry__factory: () => ProviderRegistry__factory,
+  ProxyLP__factory: () => ProxyLP__factory,
   Router__factory: () => Router__factory,
   TokenPool__factory: () => TokenPool__factory,
   Token__factory: () => Token__factory,
@@ -56507,8 +57127,625 @@ var ProviderRegistry__factory = class {
   }
 };
 
-// src/typechain/factories/Router__factory.ts
+// src/typechain/factories/ProxyLP__factory.ts
 var _abi18 = [
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "_core",
+        type: "address"
+      }
+    ],
+    stateMutability: "nonpayable",
+    type: "constructor"
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: true,
+        internalType: "address",
+        name: "oldCore",
+        type: "address"
+      },
+      {
+        indexed: true,
+        internalType: "address",
+        name: "newCore",
+        type: "address"
+      }
+    ],
+    name: "CoreUpdated",
+    type: "event"
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: true,
+        internalType: "address",
+        name: "previousOwner",
+        type: "address"
+      },
+      {
+        indexed: true,
+        internalType: "address",
+        name: "newOwner",
+        type: "address"
+      }
+    ],
+    name: "OwnershipTransferred",
+    type: "event"
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: false,
+        internalType: "address",
+        name: "marketId",
+        type: "address"
+      },
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "lid",
+        type: "uint256"
+      },
+      {
+        indexed: false,
+        internalType: "address",
+        name: "owner",
+        type: "address"
+      },
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "",
+        type: "uint256"
+      }
+    ],
+    name: "UpdatedFungibleLiquidity",
+    type: "event"
+  },
+  {
+    inputs: [
+      {
+        components: [
+          {
+            internalType: "address",
+            name: "marketId",
+            type: "address"
+          },
+          {
+            internalType: "address",
+            name: "provider",
+            type: "address"
+          },
+          {
+            internalType: "address",
+            name: "recipient",
+            type: "address"
+          },
+          {
+            internalType: "uint256",
+            name: "lid",
+            type: "uint256"
+          },
+          {
+            internalType: "uint256",
+            name: "amount",
+            type: "uint256"
+          },
+          {
+            internalType: "uint256",
+            name: "maxPrice",
+            type: "uint256"
+          },
+          {
+            internalType: "uint256[]",
+            name: "ids",
+            type: "uint256[]"
+          },
+          {
+            internalType: "uint256",
+            name: "expireAt",
+            type: "uint256"
+          },
+          {
+            internalType: "uint256",
+            name: "operator",
+            type: "uint256"
+          },
+          {
+            internalType: "bytes",
+            name: "marketMgrData",
+            type: "bytes"
+          }
+        ],
+        internalType: "struct StructsLib.SwapQuoteForBaseParams",
+        name: "params",
+        type: "tuple"
+      },
+      {
+        components: [
+          {
+            internalType: "uint256",
+            name: "quoteReceived",
+            type: "uint256"
+          },
+          {
+            internalType: "uint256",
+            name: "baseReceived",
+            type: "uint256"
+          },
+          {
+            internalType: "uint256",
+            name: "totalFees",
+            type: "uint256"
+          },
+          {
+            internalType: "bool",
+            name: "instant",
+            type: "bool"
+          },
+          {
+            internalType: "uint256",
+            name: "orderId",
+            type: "uint256"
+          }
+        ],
+        internalType: "struct StructsLib.SwapResult",
+        name: "swapResult",
+        type: "tuple"
+      }
+    ],
+    name: "afterSwap",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function"
+  },
+  {
+    inputs: [
+      {
+        components: [
+          {
+            internalType: "address",
+            name: "marketId",
+            type: "address"
+          },
+          {
+            internalType: "address",
+            name: "provider",
+            type: "address"
+          },
+          {
+            internalType: "address",
+            name: "recipient",
+            type: "address"
+          },
+          {
+            internalType: "uint256",
+            name: "lid",
+            type: "uint256"
+          },
+          {
+            internalType: "uint256",
+            name: "amount",
+            type: "uint256"
+          },
+          {
+            internalType: "uint256",
+            name: "maxPrice",
+            type: "uint256"
+          },
+          {
+            internalType: "uint256[]",
+            name: "ids",
+            type: "uint256[]"
+          },
+          {
+            internalType: "uint256",
+            name: "expireAt",
+            type: "uint256"
+          },
+          {
+            internalType: "uint256",
+            name: "operator",
+            type: "uint256"
+          },
+          {
+            internalType: "bytes",
+            name: "marketMgrData",
+            type: "bytes"
+          }
+        ],
+        internalType: "struct StructsLib.SwapQuoteForBaseParams",
+        name: "params",
+        type: "tuple"
+      }
+    ],
+    name: "beforeSwap",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function"
+  },
+  {
+    inputs: [],
+    name: "core",
+    outputs: [
+      {
+        internalType: "contract ICore",
+        name: "",
+        type: "address"
+      }
+    ],
+    stateMutability: "view",
+    type: "function"
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "",
+        type: "address"
+      },
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256"
+      }
+    ],
+    name: "crossLiqs",
+    outputs: [
+      {
+        internalType: "address",
+        name: "owner",
+        type: "address"
+      },
+      {
+        internalType: "address",
+        name: "marketId",
+        type: "address"
+      },
+      {
+        internalType: "uint256",
+        name: "lid",
+        type: "uint256"
+      },
+      {
+        internalType: "bool",
+        name: "isLiqSet",
+        type: "bool"
+      },
+      {
+        internalType: "uint256",
+        name: "price",
+        type: "uint256"
+      },
+      {
+        internalType: "bool",
+        name: "usePriceFromRegistry",
+        type: "bool"
+      },
+      {
+        internalType: "int256",
+        name: "priceScaleBps",
+        type: "int256"
+      }
+    ],
+    stateMutability: "view",
+    type: "function"
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "",
+        type: "address"
+      },
+      {
+        internalType: "address",
+        name: "",
+        type: "address"
+      }
+    ],
+    name: "liqOwned",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "lid",
+        type: "uint256"
+      },
+      {
+        internalType: "bool",
+        name: "isSet",
+        type: "bool"
+      }
+    ],
+    stateMutability: "view",
+    type: "function"
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "",
+        type: "address"
+      },
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256"
+      }
+    ],
+    name: "liqOwners",
+    outputs: [
+      {
+        internalType: "address",
+        name: "",
+        type: "address"
+      }
+    ],
+    stateMutability: "view",
+    type: "function"
+  },
+  {
+    inputs: [
+      {
+        internalType: "uint256",
+        name: "orderId",
+        type: "uint256"
+      }
+    ],
+    name: "onCancel",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function"
+  },
+  {
+    inputs: [
+      {
+        internalType: "uint256",
+        name: "orderId",
+        type: "uint256"
+      }
+    ],
+    name: "onPaid",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function"
+  },
+  {
+    inputs: [
+      {
+        components: [
+          {
+            internalType: "uint256",
+            name: "quoteReceived",
+            type: "uint256"
+          },
+          {
+            internalType: "uint256",
+            name: "baseReceived",
+            type: "uint256"
+          },
+          {
+            internalType: "uint256",
+            name: "totalFees",
+            type: "uint256"
+          },
+          {
+            internalType: "bool",
+            name: "instant",
+            type: "bool"
+          },
+          {
+            internalType: "uint256",
+            name: "orderId",
+            type: "uint256"
+          }
+        ],
+        internalType: "struct StructsLib.SwapResult",
+        name: "swapResult",
+        type: "tuple"
+      }
+    ],
+    name: "onRelease",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function"
+  },
+  {
+    inputs: [],
+    name: "owner",
+    outputs: [
+      {
+        internalType: "address",
+        name: "",
+        type: "address"
+      }
+    ],
+    stateMutability: "view",
+    type: "function"
+  },
+  {
+    inputs: [],
+    name: "renounceOwnership",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function"
+  },
+  {
+    inputs: [
+      {
+        internalType: "bytes4",
+        name: "interfaceId",
+        type: "bytes4"
+      }
+    ],
+    name: "supportsInterface",
+    outputs: [
+      {
+        internalType: "bool",
+        name: "",
+        type: "bool"
+      }
+    ],
+    stateMutability: "view",
+    type: "function"
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "newOwner",
+        type: "address"
+      }
+    ],
+    name: "transferOwnership",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function"
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "_core",
+        type: "address"
+      }
+    ],
+    name: "updateCore",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function"
+  },
+  {
+    inputs: [
+      {
+        components: [
+          {
+            internalType: "address",
+            name: "marketId",
+            type: "address"
+          },
+          {
+            components: [
+              {
+                internalType: "address",
+                name: "marketId",
+                type: "address"
+              },
+              {
+                internalType: "uint256",
+                name: "price",
+                type: "uint256"
+              },
+              {
+                internalType: "bool",
+                name: "usePriceFromRegistry",
+                type: "bool"
+              },
+              {
+                internalType: "int256",
+                name: "priceScaleBps",
+                type: "int256"
+              }
+            ],
+            internalType: "struct ProxyLPStructs.CrossLiquidityParams",
+            name: "crossLiquidity",
+            type: "tuple"
+          },
+          {
+            internalType: "address",
+            name: "target",
+            type: "address"
+          },
+          {
+            internalType: "uint256",
+            name: "lid",
+            type: "uint256"
+          },
+          {
+            internalType: "uint256",
+            name: "amount",
+            type: "uint256"
+          },
+          {
+            internalType: "uint256",
+            name: "price",
+            type: "uint256"
+          },
+          {
+            internalType: "uint256",
+            name: "timeToPay",
+            type: "uint256"
+          },
+          {
+            internalType: "uint256",
+            name: "expireAt",
+            type: "uint256"
+          },
+          {
+            internalType: "uint256[]",
+            name: "wantOrIds",
+            type: "uint256[]"
+          },
+          {
+            internalType: "uint256[]",
+            name: "wantAndIds",
+            type: "uint256[]"
+          },
+          {
+            internalType: "int256",
+            name: "priceScaleBps",
+            type: "int256"
+          },
+          {
+            internalType: "bool",
+            name: "deduct",
+            type: "bool"
+          },
+          {
+            internalType: "bool",
+            name: "pause",
+            type: "bool"
+          },
+          {
+            internalType: "bool",
+            name: "usePriceFromRegistry",
+            type: "bool"
+          }
+        ],
+        internalType: "struct ProxyLPStructs.UpdateFungibleLiquidityParams",
+        name: "params",
+        type: "tuple"
+      }
+    ],
+    name: "updateFungibleLiquidity",
+    outputs: [],
+    stateMutability: "payable",
+    type: "function"
+  },
+  {
+    stateMutability: "payable",
+    type: "receive"
+  }
+];
+var ProxyLP__factory = class {
+  static abi = _abi18;
+  static createInterface() {
+    return new Interface(_abi18);
+  }
+  static connect(address, runner) {
+    return new Contract(address, _abi18, runner);
+  }
+};
+
+// src/typechain/factories/Router__factory.ts
+var _abi19 = [
   {
     inputs: [
       {
@@ -56823,17 +58060,17 @@ var _abi18 = [
   }
 ];
 var Router__factory = class {
-  static abi = _abi18;
+  static abi = _abi19;
   static createInterface() {
-    return new Interface(_abi18);
+    return new Interface(_abi19);
   }
   static connect(address, runner) {
-    return new Contract(address, _abi18, runner);
+    return new Contract(address, _abi19, runner);
   }
 };
 
 // src/typechain/factories/Token__factory.ts
-var _abi19 = [
+var _abi20 = [
   {
     inputs: [
       {
@@ -57336,17 +58573,17 @@ var _abi19 = [
   }
 ];
 var Token__factory = class {
-  static abi = _abi19;
+  static abi = _abi20;
   static createInterface() {
-    return new Interface(_abi19);
+    return new Interface(_abi20);
   }
   static connect(address, runner) {
-    return new Contract(address, _abi19, runner);
+    return new Contract(address, _abi20, runner);
   }
 };
 
 // src/typechain/factories/TokenPool__factory.ts
-var _abi20 = [
+var _abi21 = [
   {
     inputs: [
       {
@@ -58088,17 +59325,17 @@ var _abi20 = [
   }
 ];
 var TokenPool__factory = class {
-  static abi = _abi20;
+  static abi = _abi21;
   static createInterface() {
-    return new Interface(_abi20);
+    return new Interface(_abi21);
   }
   static connect(address, runner) {
-    return new Contract(address, _abi20, runner);
+    return new Contract(address, _abi21, runner);
   }
 };
 
 // src/typechain/factories/UniswapV2Router__factory.ts
-var _abi21 = [
+var _abi22 = [
   {
     inputs: [
       {
@@ -58913,17 +60150,17 @@ var _abi21 = [
   }
 ];
 var UniswapV2Router__factory = class {
-  static abi = _abi21;
+  static abi = _abi22;
   static createInterface() {
-    return new Interface(_abi21);
+    return new Interface(_abi22);
   }
   static connect(address, runner) {
-    return new Contract(address, _abi21, runner);
+    return new Contract(address, _abi22, runner);
   }
 };
 
 // src/typechain/factories/UniswapV2Router2__factory.ts
-var _abi22 = [
+var _abi23 = [
   {
     inputs: [],
     name: "WETH",
@@ -59920,17 +61157,17 @@ var _abi22 = [
   }
 ];
 var UniswapV2Router2__factory = class {
-  static abi = _abi22;
+  static abi = _abi23;
   static createInterface() {
-    return new Interface(_abi22);
+    return new Interface(_abi23);
   }
   static connect(address, runner) {
-    return new Contract(address, _abi22, runner);
+    return new Contract(address, _abi23, runner);
   }
 };
 
 // src/typechain/factories/UniswapV3Router__factory.ts
-var _abi23 = [
+var _abi24 = [
   {
     inputs: [
       {
@@ -60539,17 +61776,17 @@ var _abi23 = [
   }
 ];
 var UniswapV3Router__factory = class {
-  static abi = _abi23;
+  static abi = _abi24;
   static createInterface() {
-    return new Interface(_abi23);
+    return new Interface(_abi24);
   }
   static connect(address, runner) {
-    return new Contract(address, _abi23, runner);
+    return new Contract(address, _abi24, runner);
   }
 };
 
 // src/typechain/factories/UniswapV3Router2__factory.ts
-var _abi24 = [
+var _abi25 = [
   {
     inputs: [
       {
@@ -61656,17 +62893,17 @@ var _abi24 = [
   }
 ];
 var UniswapV3Router2__factory = class {
-  static abi = _abi24;
+  static abi = _abi25;
   static createInterface() {
-    return new Interface(_abi24);
+    return new Interface(_abi25);
   }
   static connect(address, runner) {
-    return new Contract(address, _abi24, runner);
+    return new Contract(address, _abi25, runner);
   }
 };
 
 // src/typechain/factories/UniswapV3RouterUniversal__factory.ts
-var _abi25 = [
+var _abi26 = [
   {
     inputs: [
       {
@@ -62207,21 +63444,21 @@ var _abi25 = [
   }
 ];
 var UniswapV3RouterUniversal__factory = class {
-  static abi = _abi25;
+  static abi = _abi26;
   static createInterface() {
-    return new Interface(_abi25);
+    return new Interface(_abi26);
   }
   static connect(address, runner) {
     return new Contract(
       address,
-      _abi25,
+      _abi26,
       runner
     );
   }
 };
 
 // src/typechain/factories/WETH__factory.ts
-var _abi26 = [
+var _abi27 = [
   {
     anonymous: false,
     inputs: [
@@ -62508,12 +63745,12 @@ var _abi26 = [
   }
 ];
 var WETH__factory = class {
-  static abi = _abi26;
+  static abi = _abi27;
   static createInterface() {
-    return new Interface(_abi26);
+    return new Interface(_abi27);
   }
   static connect(address, runner) {
-    return new Contract(address, _abi26, runner);
+    return new Contract(address, _abi27, runner);
   }
 };
 

@@ -18,6 +18,7 @@ export { MinerRegistry__factory } from "./MinerRegistry__factory";
 export { NFT__factory } from "./NFT__factory";
 export { PayRouter__factory } from "./PayRouter__factory";
 export { ProviderRegistry__factory } from "./ProviderRegistry__factory";
+export { ProxyLP__factory } from "./ProxyLP__factory";
 export { Router__factory } from "./Router__factory";
 export { Token__factory } from "./Token__factory";
 export { TokenPool__factory } from "./TokenPool__factory";
