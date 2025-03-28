@@ -26217,6 +26217,10 @@ var Chains = [
         address: import.meta.env.ETHEREUM_BOND_CURVE_DISTRO_ADDRESS ?? import.meta.env.NEXT_PUBLIC_ETHEREUM_BOND_CURVE_DISTRO_ADDRESS ?? import.meta.env.VITE_ETHEREUM_BOND_CURVE_DISTRO_ADDRESS,
         abi: BondCurveDistro_default
       },
+      proxyLP: {
+        address: import.meta.env.ETHEREUM_PROXY_LP_ADDRESS ?? import.meta.env.NEXT_PUBLIC_ETHEREUM_PROXY_LP_ADDRESS ?? import.meta.env.VITE_ETHEREUM_PROXY_LP_ADDRESS,
+        abi: ProxyLP_default
+      },
       uniswapV2Router: {
         address: "0xf164fC0Ec4E93095b804a4795bBe1e041497b92a",
         abi: Abi.UniswapV2Router
@@ -26407,6 +26411,10 @@ var Chains = [
       bondCurveDistro: {
         address: import.meta.env.BASE_BOND_CURVE_DISTRO_ADDRESS ?? import.meta.env.NEXT_PUBLIC_BASE_BOND_CURVE_DISTRO_ADDRESS ?? import.meta.env.VITE_BASE_BOND_CURVE_DISTRO_ADDRESS ?? "0x11b157C9C11c269B840372EF08d7F8b1EcEEA920",
         abi: BondCurveDistro_default
+      },
+      proxyLP: {
+        address: import.meta.env.BASE_PROXY_LP_ADDRESS ?? import.meta.env.NEXT_PUBLIC_BASE_PROXY_LP_ADDRESS ?? import.meta.env.VITE_BASE_PROXY_LP_ADDRESS,
+        abi: ProxyLP_default
       }
     }
   },
@@ -26519,6 +26527,10 @@ var Chains = [
       marketManager: {
         address: import.meta.env.ARBITRUM_MARKET_MGR_ADDRESS ?? import.meta.env.NEXT_PUBLIC_ARBITRUM_MARKET_MGR_ADDRESS ?? import.meta.env.VITE_ARBITRUM_MARKET_MGR_ADDRESS,
         abi: MarketManager_default
+      },
+      proxyLP: {
+        address: import.meta.env.ARBITRUM_PROXY_LP_ADDRESS ?? import.meta.env.NEXT_PUBLIC_ARBITRUM_PROXY_LP_ADDRESS ?? import.meta.env.VITE_ARBITRUM_PROXY_LP_ADDRESS,
+        abi: ProxyLP_default
       }
     }
   },
@@ -26605,6 +26617,10 @@ var Chains = [
       marketManager: {
         address: import.meta.env.ARBITRUM_SEPOLIA_MARKET_MGR_ADDRESS ?? import.meta.env.NEXT_PUBLIC_ARBITRUM_SEPOLIA_MARKET_MGR_ADDRESS ?? import.meta.env.VITE_ARBITRUM_SEPOLIA_MARKET_MGR_ADDRESS,
         abi: MarketManager_default
+      },
+      proxyLP: {
+        address: import.meta.env.ARBITRUM_SEPOLIA_PROXY_LP_ADDRESS ?? import.meta.env.NEXT_PUBLIC_ARBITRUM_SEPOLIA_PROXY_LP_ADDRESS ?? import.meta.env.VITE_ARBITRUM_SEPOLIA_PROXY_LP_ADDRESS,
+        abi: ProxyLP_default
       }
     }
   },
@@ -26690,6 +26706,10 @@ var Chains = [
       marketManager: {
         address: import.meta.env.SEPOLIA_MARKET_MGR_ADDRESS ?? import.meta.env.NEXT_PUBLIC_SEPOLIA_MARKET_MGR_ADDRESS ?? import.meta.env.VITE_SEPOLIA_MARKET_MGR_ADDRESS,
         abi: MarketManager_default
+      },
+      proxyLP: {
+        address: import.meta.env.SEPOLIA_PROXY_LP_ADDRESS ?? import.meta.env.NEXT_PUBLIC_SEPOLIA_PROXY_LP_ADDRESS ?? import.meta.env.VITE_SEPOLIA_PROXY_LP_ADDRESS,
+        abi: ProxyLP_default
       }
     }
   },
@@ -26779,6 +26799,10 @@ var Chains = [
       bondCurveDistro: {
         address: import.meta.env.LOCALHOST_BOND_CURVE_DISTRO_ADDRESS ?? import.meta.env.NEXT_PUBLIC_LOCALHOST_BOND_CURVE_DISTRO_ADDRESS ?? import.meta.env.VITE_LOCALHOST_BOND_CURVE_DISTRO_ADDRESS,
         abi: BondCurveDistro_default
+      },
+      proxyLP: {
+        address: import.meta.env.LOCALHOST_PROXY_LP_ADDRESS ?? import.meta.env.NEXT_PUBLIC_LOCALHOST_PROXY_LP_ADDRESS ?? import.meta.env.VITE_LOCALHOST_PROXY_LP_ADDRESS,
+        abi: ProxyLP_default
       }
     }
   }
@@ -26788,14 +26812,18 @@ function getChainsID(testnetOnly = false, ignoreTestnet = false, ignore = []) {
   if (testnetOnly) {
     supported = supported.filter((s) => s.testnet);
   }
-  return supported.filter((s) => !s.disabled && !ignore.includes(s.chainId) && (!ignoreTestnet || !s.testnet)).map((s) => s.chainId);
+  return supported.filter(
+    (s) => !s.disabled && !ignore.includes(s.chainId) && (!ignoreTestnet || !s.testnet)
+  ).map((s) => s.chainId);
 }
 function getChains(testnetOnly = false, ignoreTestnet = false, ignore = []) {
   let supported = Chains;
   if (testnetOnly) {
     supported = supported.filter((s) => s.testnet);
   }
-  return supported.filter((s) => !s.disabled && !ignore.includes(s.chainId) && (!ignoreTestnet || !s.testnet)).map((s) => s.chain);
+  return supported.filter(
+    (s) => !s.disabled && !ignore.includes(s.chainId) && (!ignoreTestnet || !s.testnet)
+  ).map((s) => s.chain);
 }
 function getChain(id2) {
   if (!id2)
@@ -26881,7 +26909,8 @@ var contractsParams = {
       payRouterProtocolFeeBp: 0
     },
     marketManager: {},
-    chainlink: {}
+    chainlink: {},
+    proxyLP: {}
   },
   sepolia: {
     others: {
@@ -26937,7 +26966,8 @@ var contractsParams = {
     payRouter: {
       payRouterProtocolFeeBp: 0
     },
-    marketManager: {}
+    marketManager: {},
+    proxyLP: {}
   },
   base: {
     others: {
@@ -26993,7 +27023,8 @@ var contractsParams = {
     payRouter: {
       payRouterProtocolFeeBp: 0
     },
-    marketManager: {}
+    marketManager: {},
+    proxyLP: {}
   },
   arbitrum: {
     others: {
@@ -27049,7 +27080,8 @@ var contractsParams = {
     payRouter: {
       payRouterProtocolFeeBp: 0
     },
-    marketManager: {}
+    marketManager: {},
+    proxyLP: {}
   },
   "arbitrum-sepolia": {
     others: {
@@ -27105,7 +27137,8 @@ var contractsParams = {
     payRouter: {
       payRouterProtocolFeeBp: 0
     },
-    marketManager: {}
+    marketManager: {},
+    proxyLP: {}
   },
   ethereum: {
     others: {
@@ -27161,7 +27194,8 @@ var contractsParams = {
     payRouter: {
       payRouterProtocolFeeBp: 0
     },
-    marketManager: {}
+    marketManager: {},
+    proxyLP: {}
   }
 };
 function getContractsParams(network) {

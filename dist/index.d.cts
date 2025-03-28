@@ -39,7 +39,7 @@ interface ContractInfo {
 type Contracts = Partial<{
     [key in ContractNames]: ContractInfo;
 }>;
-type ContractNames = 'core' | 'token' | 'energon' | 'nft' | 'badgeManager' | 'marketCore' | 'disputeManager' | 'mediatorManager' | 'assetRegistry' | 'minerRegistry' | 'providerRegistry' | 'router' | 'payRouter' | 'bondCurveDistro' | 'marketManager' | 'uniswapV2Router' | 'uniswapV2Router2' | 'uniswapV3Router' | 'uniswapV3Router02' | 'uniswapV3UniversalRouter';
+type ContractNames = "core" | "token" | "energon" | "nft" | "badgeManager" | "marketCore" | "disputeManager" | "mediatorManager" | "assetRegistry" | "minerRegistry" | "providerRegistry" | "router" | "payRouter" | "bondCurveDistro" | "proxyLP" | "marketManager" | "uniswapV2Router" | "uniswapV2Router2" | "uniswapV3Router" | "uniswapV3Router02" | "uniswapV3UniversalRouter";
 type ContractsParams = {
     [key in ChainNames]?: {
         core: CoreParams;
@@ -56,6 +56,7 @@ type ContractsParams = {
         nft: {};
         badgeManager: {};
         assetRegistry: {};
+        proxyLP: {};
     };
 };
 type CoreParams = {
@@ -292,6 +293,7 @@ declare function getContractsParams(network: ChainNames): {
     nft: {};
     badgeManager: {};
     assetRegistry: {};
+    proxyLP: {};
 } | undefined;
 
 type MediatorPool = {
