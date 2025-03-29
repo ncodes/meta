@@ -26245,7 +26245,10 @@ var TokenInfo = class {
   isEqual(o) {
     if (!this.address || !o.address)
       return false;
-    return isAddressEqual(this.address, o.address);
+    return isAddressEqual(
+      this.address,
+      o.address
+    );
   }
 };
 

@@ -26292,7 +26292,10 @@ var TokenInfo = class {
   isEqual(o) {
     if (!this.address || !o.address)
       return false;
-    return (0, import_viem.isAddressEqual)(this.address, o.address);
+    return (0, import_viem.isAddressEqual)(
+      this.address,
+      o.address
+    );
   }
 };
 

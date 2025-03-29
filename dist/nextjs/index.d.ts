@@ -162,12 +162,12 @@ declare namespace TokenList {
     }
     export interface Token {
         asset?: string;
-        type?: string | 'ERC20' | 'SYNTHETIC';
-        address?: string;
-        name?: string;
-        symbol?: string;
-        decimals?: number;
-        logoURI?: string;
+        type: string | "NATIVE" | "ERC20" | "SYNTHETIC" | "ERC721" | "ERC1155";
+        address: string;
+        name: string;
+        symbol: string;
+        decimals: number;
+        logoURI: string;
         disabled?: boolean;
         native?: boolean;
         price?: number;
