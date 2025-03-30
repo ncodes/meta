@@ -1,5 +1,4 @@
 import {
-  Chain,
   arbitrum,
   arbitrumSepolia,
   base,
@@ -1271,21 +1270,19 @@ export function getChains(
   testnetOnly = false,
   ignoreTestnet = false,
   ignore: number[] = [],
-): Chain[] {
+): ChainInfo[] {
   let supported = Chains;
 
   if (testnetOnly) {
     supported = supported.filter((s) => s.testnet);
   }
 
-  return supported
-    .filter(
-      (s) =>
-        !s.disabled &&
-        !ignore.includes(s.chainId) &&
-        (!ignoreTestnet || !s.testnet),
-    )
-    .map((s) => s.chain);
+  return supported.filter(
+    (s) =>
+      !s.disabled &&
+      !ignore.includes(s.chainId) &&
+      (!ignoreTestnet || !s.testnet),
+  );
 }
 
 /**

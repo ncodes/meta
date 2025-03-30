@@ -6,7 +6,7 @@
 		{
 			"asset": "0000",
 			"type": "NATIVE",
-			"address": "0x4263541D13298963498ff1f83d992812Ef3d2E73",
+			"address": "0x1000000000000000000000000000000000000000",
 			"name": "ETH",
 			"symbol": "ETH",
 			"native": true,

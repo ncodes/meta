@@ -26995,7 +26995,7 @@ function getChains(testnetOnly = false, ignoreTestnet = false, ignore = []) {
   }
   return supported.filter(
     (s) => !s.disabled && !ignore.includes(s.chainId) && (!ignoreTestnet || !s.testnet)
-  ).map((s) => s.chain);
+  );
 }
 function getChain(id2) {
   if (!id2)
@@ -28479,7 +28479,7 @@ var ethereum_default = {
       chainId: 1,
       asset: "c60_t0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
       type: "NATIVE",
-      address: "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      address: "0x1000000000000000000000000000000000000000",
       name: "ETH",
       symbol: "ETH",
       native: true,
@@ -32227,7 +32227,7 @@ var sepolia_default = {
     {
       asset: "0000",
       type: "NATIVE",
-      address: "0x4263541D13298963498ff1f83d992812Ef3d2E73",
+      address: "0x1000000000000000000000000000000000000000",
       name: "ETH",
       symbol: "ETH",
       native: true,

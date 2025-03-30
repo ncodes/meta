@@ -246,7 +246,7 @@ declare function getChainsID(testnetOnly?: boolean, ignoreTestnet?: boolean, ign
  * @param ignoreTestnet Indicate whether to ignore testnet chains
  * @param ignore - Optionally specify an ID to omit in the result
  */
-declare function getChains(testnetOnly?: boolean, ignoreTestnet?: boolean, ignore?: number[]): Chain[];
+declare function getChains(testnetOnly?: boolean, ignoreTestnet?: boolean, ignore?: number[]): ChainInfo[];
 /**
  * Get a chain by its chain ID
  * @param id - The chain ID
